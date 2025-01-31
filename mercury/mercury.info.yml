@@ -1,0 +1,22 @@
+name: mercury
+type: theme
+'base theme': stable9
+version: 1.0.0
+libraries:
+  - mercury/base
+  - mercury/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - mercury/user
+  core/drupal.dropbutton:
+    - mercury/dropbutton
+  core/drupal.dialog:
+    - mercury/dialog
+  file/drupal.file:
+    - mercury/file
+  core/drupal.progress:
+    - mercury/progress
+description: 'Mercury is the first step toward a scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system.'
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.1.1'
