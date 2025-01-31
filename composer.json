@@ -1,5 +1,5 @@
 {
-  "name": "xb-theme/mercury",
+  "name": "xb-drupal-theme/mercury",
   "description": "Development version of drupal theme.",
   "type": "drupal-theme",
   "version": "1.0.0",
@@ -23,7 +23,7 @@
       "drupal": {
           "type": "theme",
           "name": "Mercury",
-          "package": "xb-theme/mercury"
+          "package": "xb-drupal-theme/mercury"
       }
   }
 }
