@@ -1,29 +1,10 @@
 {
-  "name": "xb-drupal-theme/mercury",
-  "description": "Development version of drupal theme.",
-  "type": "drupal-theme",
-  "version": "1.0.0",
-  "license": "MIT",
-  "require": {
-      "php": "^8.3",
-      "drupal/drupal": "^11"
-  },
-  "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://bitbucket.org/mediacurrent/xb-drupal-theme.git"
-    }
-  ],
-  "autoload": {
-      "psr-4": {
-          "Xb\\Theme\\Mercury\\": "src/Mercury/"
-      }
-  },
-  "extra": {
-      "drupal": {
-          "type": "theme",
-          "name": "Mercury",
-          "package": "xb-drupal-theme/mercury"
-      }
-  }
+    "name": "mediacurrent/xb-drupal-theme",
+    "type": "drupal-theme",
+    "authors": [
+        {
+            "name": "Mediacurrent"
+        }
+    ],
+    "require": {}
 }
