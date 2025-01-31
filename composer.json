@@ -11,7 +11,7 @@
   "repositories": [
     {
         "type": "vcs",
-        "url": "@bitbucket.org:mediacurrent/xb-drupal-theme.git"
+        "url": "https://bitbucket.org/mediacurrent/xb-drupal-theme.git"
     }
   ],
   "autoload": {
