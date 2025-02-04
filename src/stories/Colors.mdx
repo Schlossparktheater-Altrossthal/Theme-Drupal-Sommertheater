@@ -1,0 +1,95 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
+
+<Meta title="Colors" />
+
+# Colors
+
+The color system is built using HSL values and CSS custom properties, allowing for flexible theming and consistent color usage across the application.
+
+## Base Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Base Colors"
+    subtitle="Primary background and text colors"
+    colors={{
+      'Base Dark': 'var(--color-base-dark)',
+      'Base Light': 'var(--color-base-light)',
+    }}
+  />
+</ColorPalette>
+
+## Gray Scale
+
+For subtle backgrounds, borders, and accents.
+
+<ColorPalette>
+  <ColorItem
+    title="Gray Scale"
+    subtitle="Neutral colors for UI elements"
+    colors={{
+      'Gray Darkest': 'var(--color-gray-darkest)',
+      'Gray Dark': 'var(--color-gray-dark)',
+      'Gray': 'var(--color-gray)',
+      'Gray Light': 'var(--color-gray-light)',
+      'Gray Lightest': 'var(--color-gray-lightest)',
+    }}
+  />
+</ColorPalette>
+
+## Branding Colors
+Defined per project, used for primary visual identity.
+
+<ColorPalette>
+  <ColorItem
+    title="Brand Colors"
+    subtitle="Primary brand identity colors"
+    colors={{
+      'Brand Darkest': 'var(--color-brand-darkest)',
+      'Brand Dark': 'var(--color-brand-dark)',
+      'Brand': 'var(--color-brand)',
+      'Brand Light': 'var(--color-brand-light)',
+      'Brand Lightest': 'var(--color-brand-lightest)',
+    }}
+  />
+
+  <ColorItem
+    title="Accent Colors"
+    subtitle="Accent/secondary brand identity colors"
+    colors={{
+      'Accent Darkest': 'var(--color-accent-darkest)',
+      'Accent Dark': 'var(--color-accent-dark)',
+      'Accent': 'var(--color-accent)',
+      'Accent Light': 'var(--color-accent-light)',
+      'Accent Lightest': 'var(--color-accent-lightest)',
+    }}
+  />
+</ColorPalette>
+
+## Feedback Colors
+For specific UI feedback: informative, positive, warning, and negative.
+
+<ColorPalette>
+  <ColorItem
+    title="Feedback Colors"
+    subtitle="Used for UI feedback elements"
+    colors={{
+      'Informative': 'var(--color-info)',
+      'Positive': 'var(--color-positive)',
+      'Warning': 'var(--color-warning)',
+      'Negative': 'var(--color-negative)',
+    }}
+  />
+</ColorPalette>
+
+## Utilizing colors within Tailwind
+
+```css
+.base-example {
+    @apply
+        bg-base-light
+        text-base-dark
+        data-[state=checked]:bg-base-dark
+        data-[state=checked]:text-base-light;
+}
+```

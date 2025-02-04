@@ -1,0 +1,117 @@
+@import '../node_modules/tailwindcss';
+
+@theme {
+    /* Base colors or neutrals meant for default text and backgrounds. */
+    /* Base background and text color definitions */
+    --color-base-dark: hsl(240, 5%, 7%);
+    --color-base-light: hsl(210, 20%, 98%);
+
+    /* Gray color definitions */
+    /* Hue should stay within 210 +/- 5 */
+    /* Saturation should be 5% to 15% for grays */
+    --color-gray-darkest: var(--color-gray-700);
+    --color-gray-dark: var(--color-gray-600);
+    --color-gray: var(--color-gray-500);
+    --color-gray-light: var(--color-gray-400);
+    --color-gray-lightest: var(--color-gray-300);
+
+    /* Below are the designed branding colors. These are defined per project. */
+    /* Primary branding color definitions */
+    --color-brand-darkest: hsl(from var(--color-brand) h s calc(l - 30)); /* -15 from dark */
+    --color-brand-dark: hsl(from var(--color-brand) h s calc(l - 10)); /* -10 from default */
+    --color-brand: hsl(217, 100%, 49%);         /* Default */
+    --color-brand-light: hsl(from var(--color-brand) h s calc(l + 20));   /* +20 from default */
+    --color-brand-lightest: hsl(from var(--color-brand) h s calc(l + 30)); /* +10 from light */
+
+    /* Branding accent color definitions */
+    --color-accent-darkest: hsl(from var(--color-accent) h s calc(l - 30)); /* -15 from dark */
+    --color-accent-dark: hsl(from var(--color-accent) h s calc(l - 10));    /* -10 from default */
+    --color-accent: hsl(279, 100%, 45%);         /* Default */
+    --color-accent-light: hsl(from var(--color-accent) h s calc(l + 20));   /* +20 from default */
+    --color-accent-lightest: hsl(from var(--color-accent) h s calc(l + 30)); /* +10 from light */
+
+    /* Below are the 4 feedback colors. These can be defined per project but should stay within the general color areas defined. */
+    /* Info Color Guidelines:
+       - Hue (H): Blue hues range 190°–240°. Lighter tones: 190°–210°. >210° = deeper blue, >240° = purple.
+       - Saturation (S): 70%–100% for vibrancy. <70% risks muted or grayish tones.
+       - Lightness (L): 40%–70% for light blue. <40% = dark/heavy, >70% = pale/washed out.
+    */
+    /* Informative color definitions */
+    --color-info: hsl(196, 99%, 45%);
+
+    /* Success/Additive Color Guidelines:
+             - Hue (H): Green hues range 90°–150°. Lighter tones: 120°–140°. <90° = yellow-leaning, >150° = teal-leaning.
+             - Saturation (S): 50%–100% for vibrancy. <50% risks muted/grayish tones.
+             - Lightness (L): 40%–70% for balanced green. <40% = dark/heavy, >70% = pale/washed out.
+          */
+    /* Success/Additive color definitions */
+    --color-positive: hsl(139, 100%, 40%);
+
+    /* Warning/Attention Color Guidelines:
+             - Hue (H): Yellow hues range 30°–60°. Lighter tones: 45°–55°. <30° = orange-leaning, >60° = green-leaning.
+             - Saturation (S): 70%–100% for vibrancy. <70% risks muted or dull tones.
+             - Lightness (L): 40%–70% for balanced yellow. <40% = dark/heavy, >70% = pale/washed out.
+          */
+    /* Warning/Attention color definitions */
+    --color-warning: hsl(45, 100%, 50%);
+
+    /* Error/Destructive Color Guidelines:
+             - Hue (H): Red hues range 345°–360° (classic red) or 0°–15° (warm red, orange-leaning).
+             - Saturation (S): 70%–100% for a vibrant and bold red. <70% risks looking muted or dull.
+             - Lightness (L): 40%–70% for balanced red tones. <40% = dark/heavy, >70% = pale/washed out.
+          */
+    /* Error/Destructive color definitions */
+    --color-negative: hsl(347, 100%, 45%);
+
+
+    /* Utility color definitions */
+    --color-border: var(--color-gray-light);
+    --color-input: var(--color-gray-lightest);
+    --color-ring: var(--color-gray-dark);
+
+    /* Base Font family definitions */
+    --font-sans: 'Work Sans', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    /* Base Typography (Major Third) */
+    --text-6xl: 3.815rem;
+    --text-6xl--line-height: 1;
+    --text-5xl: 3.052rem;
+    --text-5xl--line-height: 1.1;
+    --text-4xl: 2.441rem;
+    --text-4xl--line-height: 1.2;
+    --text-3xl: 1.953rem;
+    --text-3xl--line-height: 1.3;
+    --text-2xl: 1.563rem;
+    --text-2xl--line-height: 1.4;
+    --text-xl: 1.25rem;
+    --text-xl--line-height: 1.5;
+    --text-base: 1rem;
+    --text-base--line-height: 1.5;
+    --text-sm: 0.75rem;
+    --text-sm--line-height: 1.5;
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Spacing (Always px for layout) */
+    --spacing-0: 0px;
+    --spacing-1: 4px;
+    --spacing-2: 8px;
+    --spacing-3: 12px;
+    --spacing-4: 16px;
+    --spacing-5: 20px;
+    --spacing-6: 24px;
+    --spacing-7: 28px;
+    --spacing-8: 32px;
+    --spacing-9: 36px;
+    --spacing-10: 40px;
+    --spacing-11: 44px;
+    --spacing-12: 48px;
+    --spacing-14: 56px;
+    --spacing-16: 64px;
+    --spacing-px: 1px;
+}
