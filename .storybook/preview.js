@@ -1,0 +1,24 @@
+import parse from 'html-react-parser';
+import '../src/main.css';
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
+};
+
+export const loaders = [
+  async ({ args, originalStoryFn }) => {
+    if (originalStoryFn.render) {
+      const component = parse(await originalStoryFn.render(args));
+      return { component };
+    }
+  }
+];
+
+export default preview;
