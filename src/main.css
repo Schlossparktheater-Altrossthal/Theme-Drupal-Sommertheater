@@ -69,6 +69,17 @@
     --color-input: var(--color-gray-lightest);
     --color-ring: var(--color-gray-dark);
 
+    /**
+        Checked status color, ex: Checkbox, Radio etc
+     */
+    --color-checked: hsl(240 5.9% 10%);
+
+    /*
+       Muted colors
+     */
+    --color-muted: hsl(240 4.8% 95.9%);
+    --color-muted-foreground: hsl(240 3.8% 46.1%);
+
     /* Base Font family definitions */
     --font-sans: 'Work Sans', sans-serif;
     --font-mono: 'Fira Code', monospace;
