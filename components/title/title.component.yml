@@ -1,0 +1,10 @@
+name: Title
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      description: The main page title
+      examples:
+        - This is a page title
