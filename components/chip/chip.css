@@ -1,19 +1,21 @@
-.chip {
-  display: inline-block;
-  font-family: sans-serif;
-  padding: 0.25rem;
-}
+[data-component-id="mercury:chip"] {
 
-.chip--color-primary {
-  background-color: var(--color--primary-50);
-  color: red;
-}
-
-.chip--color-secondary {
-  background-color: var(--color--gray-100);
-  color: var(--color-text-primary-medium);
-}
-
-.chip--dismissed {
-  display: none;
+  &.chip {
+    display: inline-block;
+    font-family: sans-serif;
+    padding: 0.5em;
+    color: #fff;
+  }
+  
+  &.chip--color-primary {
+    background-color: rgb(221, 12, 124);
+  }
+  
+  &.chip--color-secondary {
+    background-color: rgb(32, 165, 226);
+  }
+  
+  .chip--dismissed {
+    display: none;
+  }
 }

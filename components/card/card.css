@@ -1,0 +1,7 @@
+[data-component-id="mercury:card"] {
+
+  &.card {
+    padding: 20px;
+    border: 2px solid blue;
+  }
+}

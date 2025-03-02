@@ -1,0 +1,11 @@
+{% set classes = [
+    'card',
+    'is-' ~ orientation|clean_class,
+  ]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+  <img src="{{ componentMetadata.path ~ '/img/' ~ mediaImage }}" alt="Thumbnail image" />
+  <h2 class="card__heading">{{ heading }}</h2>
+  <div class="card__text">{{ text }}</div>
+</div>

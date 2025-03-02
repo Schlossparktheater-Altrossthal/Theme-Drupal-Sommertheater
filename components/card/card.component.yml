@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Card
+description: Basic card with image, title, teaser, tags
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Title of article
+      # @todo Add examples here.
+      examples: 
+        - 'This is my title eu torquent suscipit'
+    mediaImage:
+      title: Media Image
+      description: Media image for the hero.
+      type: string
+      examples: 
+        - 'thumbnail.png'
+    text:
+      type: string
+      title: Text
+      description: Teaser text
+      # @todo Add examples here.
+      examples: 
+        - 'Lorem ipsum dolor sit amet praesent nascetur eget interdum felis placerat ac ad dapibus eu torquent suscipit'
+    orientation:
+      type: string
+      title: Orientation
+      description: "Set card to horz or vert."
+      enum: ['stacked', 'landscape']
+      examples:
+        - 'stacked'
