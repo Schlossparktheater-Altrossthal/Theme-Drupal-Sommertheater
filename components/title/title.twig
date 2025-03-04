@@ -1,0 +1,10 @@
+{% set classes = [
+    'title',
+  ]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+  <h1>
+    {% block title_content %}{{ title }}{% endblock %}
+  </h1>
+</div>

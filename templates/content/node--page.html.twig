@@ -74,26 +74,44 @@
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
-  {% if label and not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
   {{ title_suffix }}
 
-  {% if display_submitted %}
-    <footer class="node__meta">
-      {{ author_picture }}
-      <div{{ author_attributes.addClass('node__submitted') }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    <h1>{{ label }}</h1>
+
+{# 
+    {% embed '@mercury/components/title/title.twig' %}
+
+      {% block title_content %}
+        {{ label }}
+      {% endblock %}
+
+    {% endembed %} #}
+
+    {% embed '@mercury/components/title/title.twig' with {
+      title: node.title.value,
+      title_class: 'my-title-class',
+    } %}
+
+      {% block title_content %}
+        {{ title }}
+      {% endblock %}
+
+    {% endembed %}
+
     {{ content }}
+
+    {% embed 'mercury:chip' with {
+      color: 'primary',
+      dismissable: true
+    } %}
+
+
+      {% block chip_content %}
+        Type: <span>{{ node.bundle() }}</span>
+      {% endblock %}
+
+    {% endembed %}
   </div>
 
 </article>
