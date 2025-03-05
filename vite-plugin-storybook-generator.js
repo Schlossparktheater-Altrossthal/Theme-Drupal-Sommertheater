@@ -1,6 +1,6 @@
 /**
  * Vite plugin to automatically generate Storybook stories for components.
- * This plugin scans the components directory and generates stories based on YAML metadata.
+ * This plugin generates physical story files in a separate directory (not in component directories).
  */
 
 import fs from 'fs';
@@ -8,33 +8,36 @@ import path from 'path';
 import {glob} from 'glob';
 
 /**
- * Generate a story file content for a component
- * @param {string} componentPath - Path to the component directory
+ * Generate story content for a component
+ * @param {string} componentPath - Path to the component
  * @param {string} componentName - Name of the component
- * @returns {string} - Content of the generated story file
+ * @param {boolean} includeJs - Whether to include JS imports
+ * @returns {string} - Story content
  */
-function generateStoryContent(componentPath, componentName) {
+function generateStoryContent(componentPath, componentName, includeJs = true) {
   const lowerCaseName = componentName.toLowerCase();
   
   // Check if JS file exists
   const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
   const hasJsFile = fs.existsSync(jsFilePath);
   
+  // Use absolute paths for imports to ensure they work from any location
+  const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
+  
   let imports = `// Import the YAML metadata and the Twig template.
-import ${lowerCaseName}Metadata from './${lowerCaseName}.component.yml';
-import ${lowerCaseName}Template from './${lowerCaseName}.twig';
-import './${lowerCaseName}.css';`;
+import ${lowerCaseName}Metadata from '/${componentRelativePath}/${lowerCaseName}.component.yml';
+import ${lowerCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig';
+import '/${componentRelativePath}/${lowerCaseName}.css';`;
 
-  // Conditionally add the JS import if the file exists
-  if (hasJsFile) {
+  // Conditionally add the JS import if the file exists and includeJs is true
+  if (hasJsFile && includeJs) {
     imports += `
-import './${lowerCaseName}.js';`;
+import '/${componentRelativePath}/${lowerCaseName}.js';`;
   }
 
   return `${imports}
-import twingStory from '../../src/common/twingStory.js';
-import generateArgTypesAndArgs from '../../src/common/generateArgTypesAndArgs.js';
-
+import twingStory from '/src/common/twingStory.js';
+import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
 
 const { argTypes, args } = generateArgTypesAndArgs(${lowerCaseName}Metadata);
 
@@ -50,53 +53,86 @@ export const Default = twingStory(${lowerCaseName}Template);
 }
 
 /**
- * Vite plugin for generating Storybook stories
- * @param {Object} options - Plugin options
- * @returns {Object} - Vite plugin object
+ * Vite plugin for generating Storybook stories in a separate directory
  */
 export default function storybookGenerator(options = {}) {
   const {
     componentsDir = 'components',
-    forceOverwrite = false,
+    includeJs = true,
+    storiesDir = './src/generated-stories'  // Directory to store generated stories
   } = options;
+  
+  /**
+   * Generate story files for all components in a separate directory
+   */
+  function generateStoryFiles() {
+    // Ensure the stories directory exists
+    const absoluteStoriesDir = path.resolve(storiesDir);
+    if (!fs.existsSync(absoluteStoriesDir)) {
+      fs.mkdirSync(absoluteStoriesDir, { recursive: true });
+    } else {
+      // Clean up old story files
+      const oldStoryFiles = glob.sync(`${absoluteStoriesDir}/*.stories.js`);
+      oldStoryFiles.forEach(file => {
+        fs.unlinkSync(file);
+      });
+      console.log(`[storybook-generator] Cleaned up ${oldStoryFiles.length} old story files`);
+    }
+    
+    const componentDirs = glob.sync(`${componentsDir}/*/`);
+    console.log(`[storybook-generator] Found ${componentDirs.length} component directories`);
+    
+    componentDirs.forEach(dir => {
+      const componentName = path.basename(dir);
+      const lowerCaseName = componentName.toLowerCase();
+      
+      // Check if the component has the required files
+      const hasYaml = fs.existsSync(path.join(dir, `${lowerCaseName}.component.yml`));
+      const hasTwig = fs.existsSync(path.join(dir, `${lowerCaseName}.twig`));
+      
+      // Skip if any required file is missing
+      if (!hasYaml || !hasTwig) {
+        console.warn(`[storybook-generator] Skipping ${componentName}: missing required files (YAML or Twig)`);
+        return;
+      }
+      
+      try {
+        // Generate the story content
+        const storyContent = generateStoryContent(dir, componentName, includeJs);
+        
+        // Create story file path in the separate directory
+        const storyFilePath = path.join(absoluteStoriesDir, `${lowerCaseName}.stories.js`);
+        
+        // Write the story file to the separate directory
+        fs.writeFileSync(storyFilePath, storyContent);
+        console.log(`[storybook-generator] Generated story file for ${componentName} at ${storyFilePath}`);
+      } catch (error) {
+        console.error(`[storybook-generator] Error generating story for ${componentName}:`, error);
+      }
+    });
+    
+    console.log(`[storybook-generator] All stories generated in ${absoluteStoriesDir}`);
+  }
   
   return {
     name: 'vite-plugin-storybook-generator',
     
+    // Initialize during build start
     buildStart() {
-      const componentDirs = glob.sync(`${componentsDir}/*/`);
+      generateStoryFiles();
+    },
+    
+    // Set up file watching and HMR
+    configureServer({ watcher }) {
+      // Initial generation
+      generateStoryFiles();
       
-      componentDirs.forEach(dir => {
-        const componentName = path.basename(dir);
-        const storyFilePath = path.join(dir, `${componentName.toLowerCase()}.stories.js`);
-        
-        // Check if the component has the required files
-        const hasYaml = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.component.yml`));
-        const hasTwig = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.twig`));
-        const hasCss = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.css`));
-        const hasJs = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.js`));
-        
-        // Skip if any required file is missing
-        if (!hasYaml || !hasTwig) {
-          console.warn(`Skipping ${componentName}: missing required files (YAML or Twig)`);
-          return;
-        }
-        
-        // Skip if story file already exists and forceOverwrite is false
-        if (fs.existsSync(storyFilePath) && !forceOverwrite) {
-          console.log(`Story file for ${componentName} already exists, skipping`);
-          return;
-        }
-        
-        try {
-          // Generate the story file content
-          const storyContent = generateStoryContent(dir, componentName);
-          
-          // Write the story file
-          fs.writeFileSync(storyFilePath, storyContent, 'utf-8');
-          console.log(`Generated story file for ${componentName}${hasJs ? ' (with JS file)' : ''}`);
-        } catch (error) {
-          console.error(`Error generating story for ${componentName}:`, error);
+      // Watch for changes in component files
+      watcher.add(`${componentsDir}/**/*`);
+      watcher.on('change', (changedPath) => {
+        if (changedPath.includes(componentsDir)) {
+          console.log(`[storybook-generator] Change detected in ${changedPath}, regenerating stories`);
+          generateStoryFiles();
         }
       });
     }

@@ -14,9 +14,10 @@ export default defineConfig({
     yaml(),
     createTwigPlugin(TwingEnvironment),
     storybookGenerator({
-       // Optional: override default options
-       componentsDir: 'components',   // Default directory containing components
-       forceOverwrite: true,         // Whether to overwrite existing story files
+      // Generate story files in a separate directory (NOT in component directories)
+      componentsDir: 'components',
+      includeJs: true,
+      storiesDir: './src/generated-stories'
     }),
   ],
 });
