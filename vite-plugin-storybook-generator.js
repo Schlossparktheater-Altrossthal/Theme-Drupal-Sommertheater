@@ -16,10 +16,22 @@ import {glob} from 'glob';
 function generateStoryContent(componentPath, componentName) {
   const lowerCaseName = componentName.toLowerCase();
   
-  return `// Import the YAML metadata and the Twig template.
+  // Check if JS file exists
+  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
+  const hasJsFile = fs.existsSync(jsFilePath);
+  
+  let imports = `// Import the YAML metadata and the Twig template.
 import ${lowerCaseName}Metadata from './${lowerCaseName}.component.yml';
 import ${lowerCaseName}Template from './${lowerCaseName}.twig';
-import './${lowerCaseName}.css';
+import './${lowerCaseName}.css';`;
+
+  // Conditionally add the JS import if the file exists
+  if (hasJsFile) {
+    imports += `
+import './${lowerCaseName}.js';`;
+  }
+
+  return `${imports}
 import twingStory from '../../src/common/twingStory.js';
 import generateArgTypesAndArgs from '../../src/common/generateArgTypesAndArgs.js';
 
@@ -62,6 +74,7 @@ export default function storybookGenerator(options = {}) {
         const hasYaml = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.component.yml`));
         const hasTwig = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.twig`));
         const hasCss = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.css`));
+        const hasJs = fs.existsSync(path.join(dir, `${componentName.toLowerCase()}.js`));
         
         // Skip if any required file is missing
         if (!hasYaml || !hasTwig) {
@@ -81,7 +94,7 @@ export default function storybookGenerator(options = {}) {
           
           // Write the story file
           fs.writeFileSync(storyFilePath, storyContent, 'utf-8');
-          console.log(`Generated story file for ${componentName}`);
+          console.log(`Generated story file for ${componentName}${hasJs ? ' (with JS file)' : ''}`);
         } catch (error) {
           console.error(`Error generating story for ${componentName}:`, error);
         }

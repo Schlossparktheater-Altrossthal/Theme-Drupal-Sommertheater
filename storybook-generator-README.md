@@ -41,8 +41,10 @@ The plugin:
    - `[component-name].component.yml` - YAML metadata file
    - `[component-name].twig` - Twig template file
    - `[component-name].css` - CSS file (optional)
+   - `[component-name].js` - JavaScript file (optional, imported if exists)
 3. Generates a Storybook story file (`[component-name].stories.js`) that:
    - Imports the component's YAML metadata, Twig template, and CSS
+   - Conditionally imports the component's JavaScript file if it exists
    - Uses the `generateArgTypesAndArgs` helper to generate Storybook args and argTypes
    - Sets up the story with the Default export using the `twingStory` helper
 
@@ -56,6 +58,7 @@ components/
 │   ├── component-name.component.yml
 │   ├── component-name.twig
 │   ├── component-name.css
+│   ├── component-name.js (optional)
 │   └── component-name.stories.js (will be generated)
 ```
 
