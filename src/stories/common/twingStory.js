@@ -6,10 +6,11 @@ export default ( twingComponent, formatArgs ) => {
 	const finalComponent = ( _, { loaded: { component } } ) => component;
 
 	finalComponent.render = async (args) => {
+		
 		if (typeof formatArgs === 'function') {
 			args = formatArgs(args);
 		}
-
+	
 		return await twingComponent.render( environment, args );
 	};
 

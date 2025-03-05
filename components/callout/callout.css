@@ -1,6 +1,4 @@
-[data-component-id="mercury:callout"] {
-  
-  &.callout {
+callout {
     background-color: blue;
     color: #fff;
     padding: 20px;
@@ -16,4 +14,4 @@
   .callout__text {
     font-size: 16px;
   }  
-}
+

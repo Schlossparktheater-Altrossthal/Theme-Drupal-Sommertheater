@@ -3,7 +3,7 @@ import { createEnvironment, createFunction, createFilesystemLoader, createFilter
 import * as fs from 'fs';
 
 const namespacePaths = [
-  '../src/stories'
+  '../components'
 ];
 
 const loader = createFilesystemLoader(fs);
