@@ -1,4 +1,4 @@
-import twingStory from '../common/twingStory.js';
+import twingStory from '../../common/twingStory.js';
 import checkbox from './checkbox.twig';
 import '../../main.css';
 
