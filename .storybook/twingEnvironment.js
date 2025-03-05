@@ -34,5 +34,15 @@ environment.addFunction(
 environment.addFunction(createFunction('attach_scripts', function (t) { return Promise.resolve(null); }));
 environment.addFunction(createFunction('attach_styles', function (t) { return Promise.resolve(null); }));
 environment.addFunction(createFunction('attach_library', function (t) { return Promise.resolve(null); }));
-
+environment.addFilter(
+  createFilter(
+    'clean_class',
+    async function (_executionContext, c) {
+      return c.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^[0-9]+/, '').toLowerCase();
+    },
+    [
+      { name: 'c', defaultValue: '' },
+    ]
+  )
+);
 export default environment;
