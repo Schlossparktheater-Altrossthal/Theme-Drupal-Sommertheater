@@ -1,4 +1,4 @@
-const CONTROL_TYPE_MAP = {
+const controlTypeMap = {
   array: 'object',
   string: 'text'
 };
@@ -23,7 +23,7 @@ const generateControlType = (property) => {
 
   // Look up mapped control type or use property type directly
   return {
-    type: CONTROL_TYPE_MAP[property.type] || property.type
+    type: controlTypeMap[property.type] || property.type
   };
 };
 
