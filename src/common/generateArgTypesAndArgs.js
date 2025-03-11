@@ -14,7 +14,7 @@ const generateControlType = (property) => {
 
   // Handle array of types (e.g. ['string', null])
   if (Array.isArray(property.type)) {
-    const nonNullTypes = property.type.filter(type => type !== null);
+    const nonNullTypes = property.type.filter(type => type !== null && type !== 'null');
     if (nonNullTypes.length) {
       return generateControlType({ type: nonNullTypes[0] });
     }
