@@ -11,10 +11,18 @@ const generateControlType = (property) => {
     };
   }
 
-  if (Array.isArray(property.type)) {
+  if (property.type === "string") {
     return {
       type: "text",
     };
+  }
+
+  if (Array.isArray(property.type) && property.type.length > 0) {
+    const firstType = property.type[0];
+    
+    return generateControlType({
+      type: firstType,
+    });
   }
 
   return {
