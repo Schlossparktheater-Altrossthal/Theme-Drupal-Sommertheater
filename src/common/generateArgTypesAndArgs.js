@@ -1,32 +1,29 @@
+const CONTROL_TYPE_MAP = {
+  array: 'object',
+  string: 'text'
+};
+
 const generateControlType = (property) => {
+  // Handle enum types
   if (property.enum) {
     return {
-      type: "select",
-      options: property.enum,
-    };
-  }
-  if (property.type === "array") {
-    return {
-      type: "object",
+      type: 'select', 
+      options: property.enum
     };
   }
 
-  if (property.type === "string") {
-    return {
-      type: "text",
-    };
+  // Handle array of types (e.g. ['string', null])
+  if (Array.isArray(property.type)) {
+    const nonNullTypes = property.type.filter(type => type !== null);
+    if (nonNullTypes.length) {
+      return generateControlType({ type: nonNullTypes[0] });
+    }
+    return { type: 'text' };
   }
 
-  if (Array.isArray(property.type) && property.type.length > 0) {
-    const firstType = property.type[0];
-    
-    return generateControlType({
-      type: firstType,
-    });
-  }
-
+  // Look up mapped control type or use property type directly
   return {
-    type: property.type,
+    type: CONTROL_TYPE_MAP[property.type] || property.type
   };
 };
 
