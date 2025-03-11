@@ -1,3 +1,18 @@
+const generateControlType = (property) => {
+  if(property.enum) {
+    return {
+      type: 'select',
+      options: property.enum,
+    };
+  }
+  
+    return {
+      type:property.type,
+    };
+  
+  
+}
+
 const generateArgTypesAndArgs = (parsedMetadata) => {
     // Parse metadata if it's a string
     const argTypes = {};
@@ -7,35 +22,18 @@ const generateArgTypesAndArgs = (parsedMetadata) => {
       console.error('YAML metadata is missing the "props.properties" field.');
       return { argTypes, args };
     }
-  
     const properties = parsedMetadata.props.properties;
   
     Object.keys(properties).forEach((key) => {
       const property = properties[key];
   
       // Infer the control type based on the property type.
-      let controlType;
-      switch (property.type) {
-        case 'number':
-          controlType = 'number';
-          break;
-        case 'boolean':
-          controlType = 'boolean';
-          break;
-        case 'object':
-          controlType = 'object';
-          break;
-        case 'array':
-          controlType = 'object';
-          break;
-        case 'string':
-        default:
-          controlType = 'text';
-      }
+      const control = generateControlType(property);
+     
   
       // Build the argTypes entry.
       argTypes[key] = {
-        control: { type: controlType },
+         ...control,
         description: property.description,
         table: {
           type: { summary: property.type },

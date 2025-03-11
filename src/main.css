@@ -1,4 +1,4 @@
-@import '../node_modules/tailwindcss';
+@import 'tailwindcss';
 
 @theme {
     /* Base colors or neutrals meant for default text and backgrounds. */

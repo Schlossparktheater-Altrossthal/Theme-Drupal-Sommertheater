@@ -20,16 +20,24 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
   // Check if JS file exists
   const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
   const hasJsFile = fs.existsSync(jsFilePath);
+
+  // Check if the CSS file exists
+  const cssFilePath = path.join(componentPath, `${lowerCaseName}.css`);
+  const hasCssFile = fs.existsSync(cssFilePath);
   
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
   
   let imports = `// Import the YAML metadata and the Twig template.
 import ${lowerCaseName}Metadata from '/${componentRelativePath}/${lowerCaseName}.component.yml';
-import ${lowerCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig';
-import '/${componentRelativePath}/${lowerCaseName}.css';`;
+import ${lowerCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig'`;
 
-  // Conditionally add the JS import if the file exists and includeJs is true
+// Conditionally add the CSS import if the file exists
+if (hasCssFile) {
+  imports += `
+import '/${componentRelativePath}/${lowerCaseName}.css';`;
+}
+// Conditionally add the JS import if the file exists and includeJs is true
   if (hasJsFile && includeJs) {
     imports += `
 import '/${componentRelativePath}/${lowerCaseName}.js';`;
