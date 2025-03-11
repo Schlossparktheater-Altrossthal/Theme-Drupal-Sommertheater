@@ -5,6 +5,18 @@ const generateControlType = (property) => {
       options: property.enum,
     };
   }
+  if(property.type === 'array') {
+
+    return {
+      type: 'object',
+    };
+  }
+
+  if(Array.isArray(property.type)) {
+    return {
+      type: 'text',
+    };
+  }
   
     return {
       type:property.type,

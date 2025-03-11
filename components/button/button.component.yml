@@ -1,0 +1,72 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.3.x/core/assets/schemas/v1/metadata.schema.json'
+name: Button
+description: 'A versatile button component that can be rendered as a button or link with various styles and sizes.'
+status: stable
+group: Elements
+
+props:
+  type: object
+  properties:
+    variant:
+      type: string
+      title: Variant
+      description: 'The type of button.'
+      enum: ['default', 'negative', 'positive', 'secondary']
+      default: 'default'
+      examples:
+        - 'default'
+        - 'secondary'
+    outline:
+      type: boolean
+      title: Outline
+      description: 'Whether the button should be an outline button.'
+      default: false
+      examples:
+        - false
+        - true
+    size:
+      type: string
+      title: Size
+      description: 'The size of the button.'
+      enum: ['default', 'sm']
+      default: 'default'
+      examples:
+        - 'default'
+        - 'sm'
+    disabled:
+      type: boolean
+      title: Disabled
+      description: 'Whether the button is disabled.'
+      default: false
+      examples:
+        - false
+        - true
+    content:
+      type: string
+      title: Content
+      description: 'The text content of the button.'
+      examples:
+        - 'Submit'
+        - 'Read more'
+    href:
+      type: string
+      title: URL
+      description: 'The URL to link to. If provided, the button will be rendered as a link.'
+      examples:
+        - '/path/to/page'
+        - 'https://example.com'
+    type:
+      type: string
+      title: Button Type
+      description: 'The HTML button type attribute.'
+      default: 'button'
+      enum: ['button', 'submit', 'reset']
+      examples:
+        - 'button'
+        - 'submit'
+    class:
+      type: string
+      title: Additional Classes
+      description: 'Additional CSS classes to add to the button.'
+      examples:
+        - 'my-custom-class' 

@@ -5,6 +5,7 @@ import TwingEnvironment from './.storybook/twingEnvironment.js';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
 import storybookGenerator from './vite-plugin-storybook-generator';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     react(),
     yaml(),
     createTwigPlugin(TwingEnvironment),
+    tailwindcss(),
     storybookGenerator({
       // Generate story files in a separate directory (NOT in component directories)
       componentsDir: 'components',
