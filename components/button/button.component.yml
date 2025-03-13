@@ -2,7 +2,7 @@
 name: Button
 description: 'A versatile button component that can be rendered as a button or link with various styles and sizes.'
 status: stable
-group: Elements
+group: Forms
 
 props:
   type: object
