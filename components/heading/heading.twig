@@ -1,0 +1,9 @@
+{% set level = h_level|default(2) %}
+
+{% if h_link %}
+  <a href="{{ h_link }}">
+    <h{{ level }} class="apply-heading hover:underline decoration-2 underline-offset-4">{{ h_text }}</h{{ level }}>
+  </a>
+{% else %}
+  <h{{ level }} class="apply-heading">{{ h_text }}</h{{ level }}>
+{% endif %}
