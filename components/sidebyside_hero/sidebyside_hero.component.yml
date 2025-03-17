@@ -1,0 +1,44 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: SideBySide
+description: Hero with side by side slots for media and content.
+group: Layouts/Hero
+props:
+  type: object
+  properties:
+    layout:
+      type: string
+      title: Layout
+      description: Set hero layout
+      enum: 
+        - media-first
+        - media-last
+      examples: [media-first, media-last]
+    headingText:
+      type: string
+      title: Heading
+      description: Title of article
+      # @todo Add examples here.
+      examples: 
+        - 'This is my title eu torquent suscipit'
+    mediaImage:
+      title: Media Image
+      description: Media image for the hero.
+      type: string
+      examples: 
+        - '/static/images/thumbnail.png'
+    headingLevel:
+      type: integer
+      title: Heading Level
+      description: "Set card to horz or vert."
+      enum:
+        - 1
+        - 2
+        - 3
+      examples: [1]
+slots:
+  mediaslot:
+    title: MediaSlot
+    description: Slot to place media.
+  contentslot:
+    title: ContentSlot
+    description: Slot to place content.

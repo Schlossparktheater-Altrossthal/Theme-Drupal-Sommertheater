@@ -19,7 +19,7 @@ props:
       examples: 
         - 'thumbnail.png'
     text:
-      type: [string, null]
+      type: string
       title: Text
       description: Teaser text
       # @todo Add examples here.
