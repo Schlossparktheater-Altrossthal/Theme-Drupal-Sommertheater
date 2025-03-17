@@ -1,10 +1,10 @@
-[data-component-id="mercury:heading"] {
-  /* @todo Add your styles here. */
-}
-
 @reference '../../src/main.css';
+/* [data-component-id="mercury:heading"] { */
+  /* @todo Add your styles here. */
+/* } */
 
 .apply-heading {
+  color: red;
   @apply font-sans font-extralight tracking-tighter
 }
 
