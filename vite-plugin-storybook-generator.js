@@ -68,7 +68,7 @@ import '/${componentRelativePath}/${lowerCaseName}.js';`;
 import twingStory from '/src/common/twingStory.js';
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
 
-const { argTypes, args } = generateArgTypesAndArgs(${lowerCaseName}Metadata);
+const { argTypes, args } = generateArgTypesAndArgs(${lowerCaseName}Metadata, '${componentPath}');
 
 export default {
     title: '${title}',
@@ -166,4 +166,4 @@ export default function storybookGenerator(options = {}) {
       });
     }
   };
-} 
+}

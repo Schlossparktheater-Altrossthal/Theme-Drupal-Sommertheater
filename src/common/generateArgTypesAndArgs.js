@@ -7,7 +7,7 @@ const generateControlType = (property) => {
   // Handle enum types
   if (property.enum) {
     return {
-      type: 'select', 
+      type: 'select',
       options: property.enum
     };
   }
@@ -27,10 +27,14 @@ const generateControlType = (property) => {
   };
 };
 
-const generateArgTypesAndArgs = (parsedMetadata) => {
+const generateArgTypesAndArgs = (parsedMetadata, componentPath = '') => {
   // Parse metadata if it's a string
   const argTypes = {};
   const args = {};
+
+  args.componentMetadata = {
+    path: componentPath
+  };
 
   if (!parsedMetadata.props || !parsedMetadata.props.properties) {
     console.error('YAML metadata is missing the "props.properties" field.');
