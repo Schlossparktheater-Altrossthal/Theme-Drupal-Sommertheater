@@ -22,4 +22,15 @@ export default defineConfig({
       storiesDir: './src/generated-stories'
     }),
   ],
+  build: {
+    outDir: './build',
+    rollupOptions: {
+      input: {
+        main: './src/main.css',
+      },
+      output: {
+        assetFileNames: 'css/main.min.css',
+      }
+    }
+  }
 });
