@@ -10,7 +10,7 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - 'Provide heading text (defaults to h2)'
+        - Provide heading text
     h_level:
       type: number
       title: Heading Level

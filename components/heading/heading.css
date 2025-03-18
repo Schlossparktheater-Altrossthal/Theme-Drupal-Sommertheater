@@ -4,7 +4,6 @@
 /* } */
 
 .apply-heading {
-  color: red;
   @apply font-sans font-extralight tracking-tighter
 }
 
@@ -12,9 +11,12 @@
 h1.apply-heading {
   @apply font-thin text-5xl md:text-6xl 2xl:text-8xl leading-none uppercase;
 }
+h1.apply-heading-sm {
+  @apply font-thin text-3xl md:text-4xl 2xl:text-6xl leading-none uppercase;
+}
 /* 48, 64 */
 h2.apply-heading {
-  @apply font-thin text-5xl 2xl:text-[64px];
+  @apply font-thin text-5xl 2xl:text-6xl;
 }
 /* 24 32 */
 h3.apply-heading {

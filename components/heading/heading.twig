@@ -1,9 +1,14 @@
+{% set heading_classes = heading_classes|default([])|merge([
+    'apply-heading',
+    'color-inherit',
+    (h_link|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
+  ]) %}
+
 {% set level = h_level|default(2) %}
 
-{% if h_link %}
-  <a href="{{ h_link }}">
-    <h{{ level }} class="apply-heading hover:underline decoration-2 underline-offset-4">{{ h_text }}</h{{ level }}>
-  </a>
-{% else %}
-  <h{{ level }} class="apply-heading">{{ h_text }}</h{{ level }}>
-{% endif %}
+{% if h_link %}<a href="{{ h_link }}">{% endif %}
+  <h{{ level }} class="{{ heading_classes|join(' ') }}">{{ h_text }}</h{{ level }}>
+{% if h_link %}</a>{% endif %}
+
+
+
