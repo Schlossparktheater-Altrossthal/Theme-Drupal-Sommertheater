@@ -1,0 +1,5 @@
+@layer components {
+  .horizontal-scroller > * {
+    @apply text-center border-1;
+  }
+}
