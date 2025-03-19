@@ -1,10 +1,12 @@
-<div class="horizontal-scroller flex flex-nowrap gap-3 xl:container mx-auto xl:grid grid-cols-4 justify-stretch items-stretch">
-  <p>One</p>
-  <p>Two</p>
-  <p>Three</p>
-  <p>Four</p>
-  <p>Five</p>
-  <p>Six</p>
-  <p>Seven</p>
-  <p>Eight</p>
+<div class="snap-x xl:snap-none horizontal-scroller overflow-x-auto flex flex-nowrap justify-start gap-3 xl:container mx-auto xl:grid grid-cols-4 xl:justify-stretch items-stretch">
+  {% block items %}
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+  {% endblock items %}
 </div>

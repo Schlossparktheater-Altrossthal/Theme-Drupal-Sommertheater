@@ -1,5 +1,3 @@
-@layer components {
-  .horizontal-scroller > * {
-    @apply text-center border-1;
-  }
+.horizontal-scroller > * {
+  @apply text-center border-1 min-w-[250px] snap-start;
 }

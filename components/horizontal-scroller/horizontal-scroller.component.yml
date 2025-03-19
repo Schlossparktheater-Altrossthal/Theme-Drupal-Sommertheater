@@ -2,3 +2,15 @@ $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schema
 name: Horizontal Scroller
 description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
 group: Testing
+props:
+  type: object
+  properties:
+    fake:
+      type: string
+      title: Fake prop
+      examples:
+        - whatever
+slots:
+  items:
+    title: Items
+    description: Components to arrange in a grid or horizontal scroller
