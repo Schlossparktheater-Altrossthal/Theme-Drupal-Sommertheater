@@ -19,7 +19,7 @@ export default defineConfig({
       // Generate story files in a separate directory (NOT in component directories)
       componentsDir: 'components',
       includeJs: true,
-      storiesDir: './src/generated-stories'
+      storiesDir: './src/stories/sdc-stories'
     }),
   ],
   build: {
