@@ -6,6 +6,18 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
 import storybookGenerator from './vite-plugin-storybook-generator';
 import tailwindcss from '@tailwindcss/vite';
+import fs from 'fs';
+import { glob } from 'glob';
+
+// Function to generate the components CSS file
+function generateComponentsCSS() {
+  const cssFiles = glob.sync('components/**/*.css');
+  const imports = cssFiles.map(file => `@import '../${file}';`).join('\n');
+  fs.writeFileSync('src/components.css', imports);
+}
+
+// Generate the CSS file before Vite starts
+generateComponentsCSS();
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +28,6 @@ export default defineConfig({
     createTwigPlugin(TwingEnvironment),
     tailwindcss(),
     storybookGenerator({
-      // Generate story files in a separate directory (NOT in component directories)
       componentsDir: 'components',
       includeJs: true,
       storiesDir: './src/stories/sdc-stories'
@@ -27,10 +38,19 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './src/main.css',
+        components: './src/components.css'
       },
       output: {
-        assetFileNames: 'css/main.min.css',
+        assetFileNames: (assetInfo) => {
+          const fileNames = assetInfo.names;
+          const fileName = fileNames.pop();
+          if (fileName === 'style.css') {
+            return 'css/[name].min.css';
+          }
+          return 'css/[name].min[extname]';
+        }
       }
-    }
+    },
+    cssMinify: true
   }
 });
