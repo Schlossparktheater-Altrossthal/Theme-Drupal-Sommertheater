@@ -24,7 +24,7 @@ props:
       examples: 
         - default
       default: default
-    link:
+    url:
       type: boolean
-      title: Add optional link
+      title: Add optional url
       default: false

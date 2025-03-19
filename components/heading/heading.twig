@@ -1,11 +1,15 @@
 {% set heading_classes = heading_classes|default([])|merge([
-    'heading-styles',
-    (link|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
-    styles == 'alt' ? 'size-alt' : 'size-default',
+    'heading',
+    (url|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
+    styles == 'alt' ? 'heading-size-alt' : 'heading-size-default',
 ])|filter(v => v is not empty) %}
 
 {% set level = level|default(2) %}
 
-{% if link %}<a href="{{ link }}">{% endif %}
-  <h{{ level }} class="{{ heading_classes|join(' ') }}">{{ text }}</h{{ level }}>
-{% if link %}</a>{% endif %}
+<h{{ level }} class="{{ heading_classes|join(' ') }}">
+  {% if url %}
+    <a href="{{ url == 1 ? '#' : url }}">{{ text }}</a>
+  {% else %}
+    {{ text }}
+  {% endif %}
+</h{{ level }}>
