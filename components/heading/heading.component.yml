@@ -6,7 +6,7 @@ description: Text wrapped in a heading tag
 props:
   type: object
   properties:
-    text:
+    heading_text:
       type: string
       title: Heading Text
       examples: 
