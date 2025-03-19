@@ -2,7 +2,7 @@
     'heading-styles',
     (link|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
     styles == 'alt' ? 'size-alt' : 'size-default',
-  ]) %}
+])|filter(v => v is not empty) %}
 
 {% set level = level|default(2) %}
 

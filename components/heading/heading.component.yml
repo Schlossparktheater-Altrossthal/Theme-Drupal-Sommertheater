@@ -10,7 +10,7 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - Provide heading text
+        - One Giant Leap for Open Source
     level:
       type: number
       title: Heading Level
