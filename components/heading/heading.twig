@@ -1,14 +1,11 @@
 {% set heading_classes = heading_classes|default([])|merge([
-    'apply-heading',
-    'color-inherit',
-    (h_link|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
+    'heading-styles',
+    (link|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
+    styles == 'alt' ? 'size-alt' : 'size-default',
   ]) %}
 
-{% set level = h_level|default(2) %}
+{% set level = level|default(2) %}
 
-{% if h_link %}<a href="{{ h_link }}">{% endif %}
-  <h{{ level }} class="{{ heading_classes|join(' ') }}">{{ h_text }}</h{{ level }}>
-{% if h_link %}</a>{% endif %}
-
-
-
+{% if link %}<a href="{{ link }}">{% endif %}
+  <h{{ level }} class="{{ heading_classes|join(' ') }}">{{ text }}</h{{ level }}>
+{% if link %}</a>{% endif %}
