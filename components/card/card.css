@@ -1,7 +1,33 @@
-[data-component-id="mercury:card"] {
+.card {}
 
-  &.card {
-    padding: 20px;
-    border: 2px solid blue;
-  }
+.card .card-image {
+  margin-bottom: 16px;
+}
+
+.card .card-badges {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.card .card-badges .badge {
+  margin-right: 8px;
+}
+
+.card .card-heading {
+  color: var(--Color-Dark, #262626);
+  font-family: var(--Type-heading, Vazirmatn);
+  font-size: var(--h4, 32px);
+  font-style: normal;
+  font-weight: 200;
+  line-height: 120%;
+  margin-bottom: 24px;
+}
+
+.card .card-text {
+  color: var(--Color-Dark, #262626);
+  font-family: var(--Type-paragraph, Vazirmatn);
+  font-size: var(--paragraph-1, 20px);
+  font-style: normal;
+  font-weight: 200;
+  line-height: 150%;
 }

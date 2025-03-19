@@ -4,8 +4,19 @@
   ]
 %}
 
-<div {{ classes|join(' ') }}>
-  <img src="{{ '/' ~ componentMetadata.path ~ '/img/' ~ mediaImage }}" alt="Thumbnail image" />
-  <h2 class="card__heading">{{ heading }}</h2>
-  <div class="card__text">{{ text }}</div>
+<div class="{{ classes|join(' ') }}">
+  <img class="card-image" src="{{ '/' ~ componentMetadata.path ~ '/img/' ~ mediaImage }}" alt="Thumbnail image" />
+  <div class="card-badges">
+    {% include '@mercury/components/badge/badge.twig' with {
+      content: 'Features',
+      href: '#',
+    } %}
+    {% include '@mercury/components/badge/badge.twig' with {
+      content: 'Case Study',
+      href: '#',
+    } %}  
+  </div>
+
+  <h4 class="card-heading">{{ heading }}</h2>
+  <div class="card-text">{{ text }}</div>
 </div>

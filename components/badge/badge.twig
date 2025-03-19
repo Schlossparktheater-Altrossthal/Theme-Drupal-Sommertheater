@@ -1,0 +1,10 @@
+{% set classes = [
+    'badge',
+    'badge--color-' ~ color,
+  ]
+%}
+<div class="{{ classes|join(' ') }}">
+  <a href="{{ href }}">
+    {{ content|raw }}
+  </a>
+</div>

@@ -1,0 +1,16 @@
+.badge {
+  display: inline-block;
+}
+
+.badge a {
+  border: 1px solid var(--Color-Dark, #262626);
+  color: var(--Color-Dark, #262626);
+  display: block;
+  font-size: 14px;
+  padding: 8px 24px;
+}
+
+.badge a:hover {
+  background-color: var(--Color-Dark, #262626);
+  color: var(--Color-Light, #ffffff);
+}

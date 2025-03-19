@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Badge
+group: Components
+status: stable
+props:
+  type: 'object'
+  properties:
+    # One of 'primary', or 'secondary'.
+    color:
+      type: string
+      title: Color
+      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
+      # The enum directive restricts the possible values in the element to our list.
+      enum: ['primary', 'secondary']
+      examples:
+        - primary
+    content:
+      type: string
+      title: Content
+      description: 'The text content of the badge.'
+      examples:
+        - 'Features'
+        - 'Cases'
+    href:
+      type: string
+      title: URL
+      description: 'The URL to link to. If provided, the button will be rendered as a link.'
+      examples:
+        - '#'
+slots:
+  # Content to display in the badge.
+  badge_content:
+      title: Content
+      description: Content of the badge

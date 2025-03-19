@@ -13,18 +13,18 @@ props:
       examples: 
         - 'This is my title eu torquent suscipit'
     mediaImage:
-      title: Media Image
+      title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
       description: Media image for the hero.
       type: string
       examples: 
-        - 'thumbnail.png'
+        - 'pexels-pixabay-416676.jpg'
     text:
       type: string
       title: Text
       description: Teaser text
       # @todo Add examples here.
       examples: 
-        - 'Lorem ipsum dolor sit amet praesent nascetur eget interdum felis placerat ac ad dapibus eu torquent suscipit'
+        - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
     orientation:
       type: string
       title: Orientation
