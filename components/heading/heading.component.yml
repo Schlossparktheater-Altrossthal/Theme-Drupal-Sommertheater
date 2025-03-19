@@ -6,18 +6,25 @@ description: Text wrapped in a heading tag
 props:
   type: object
   properties:
-    h_text:
+    heading_text:
       type: string
       title: Heading Text
       examples: 
-        - 'Provide heading text (defaults to h2)'
-    h_level:
+        - One Giant Leap for Open Source
+    level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
-    h_link:
+    styles:
+      type: string
+      title: Heading Styles
+      enum: [default, alt]
+      examples: 
+        - default
+      default: default
+    url:
       type: boolean
-      title: Add optional link
+      title: Add optional url
       default: false

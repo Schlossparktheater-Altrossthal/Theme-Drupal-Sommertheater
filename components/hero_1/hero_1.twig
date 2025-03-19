@@ -1,0 +1,19 @@
+{% set classes = [
+    'hero-overlay',
+    'h-dvh md:h-3/4',
+  ]
+%}
+
+<section class="{{ classes|join(' ') }}">
+  <div class="hero-region media relative bg-gray-lightest h-full">
+  {% block media_slot %}
+    <div class="absolute inset-0 bg-black/20"></div>
+    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+  {% endblock %}
+  </div>
+  <div class="hero-region content absolute inset-0 p-6 md:p-10 xl:p-20 flex items-center md:items-end text-white">
+  {% block content_slot %}
+    {{ include('../heading/heading.twig') }}
+  {% endblock %}
+  </div>
+</section>

@@ -1,34 +1,39 @@
 @reference '../../src/main.css';
-/* [data-component-id="mercury:heading"] { */
-  /* @todo Add your styles here. */
-/* } */
 
-.apply-heading {
-  color: red;
-  @apply font-sans font-extralight tracking-tighter
+/* Use Tailwind directive to set some baseline styles. */
+.heading {
+  @apply font-sans tracking-tighter text-inherit;
 }
 
-/* 48 96 */
-h1.apply-heading {
+/* sizes: 48 64 96 */
+h1.heading--size-default {
   @apply font-thin text-5xl md:text-6xl 2xl:text-8xl leading-none uppercase;
 }
-/* 48, 64 */
-h2.apply-heading {
-  @apply font-thin text-5xl 2xl:text-[64px];
+/* sizes: 40 48 64 - for fullwidth hero */
+h1.heading--size-alt {
+  @apply font-thin text-4xl md:text-5xl 2xl:text-6xl leading-none uppercase;
 }
-/* 24 32 */
-h3.apply-heading {
-  @apply text-[32px];
+/* sizes: 48 64 */
+h2.heading--size-default {
+  @apply font-thin text-5xl 2xl:text-6xl;
 }
-/* 24 30 */
-h4.apply-heading {
-  @apply text-2xl 2xl:text-3xl; 
+/* sizes: placeholder */
+h2.heading--size-alt {
+  @apply font-thin text-3xl 2xl:text-5xl;
 }
-/* 24 */
-h5.apply-heading {
+/* sizes: 24 32 */
+h3.heading {
+  @apply font-extralight text-[32px];
+}
+/* sizes: 24 30 */
+h4.heading {
+  @apply font-extralight text-2xl 2xl:text-3xl; 
+}
+/* sizes: 24 */
+h5.heading {
   @apply font-medium 2xl:text-2xl;
 }
-/* 20 */
-h6.apply-heading {
+/* sizes: 20 */
+h6.heading {
   @apply font-medium text-[20px];
 }

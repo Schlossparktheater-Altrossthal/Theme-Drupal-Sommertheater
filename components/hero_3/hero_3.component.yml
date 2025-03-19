@@ -1,0 +1,42 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Full width
+description: Hero with stacked slots for media and content.
+group: Layouts/Hero
+props:
+  type: object
+  properties:
+    layout:
+      type: string
+      title: Layout
+      description: Set hero layout
+      enum: 
+        - media-first (default)
+        - media-last
+      examples: [media-first (default), media-last]
+    media:
+      title: Media Image
+      description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'thumbnail.png'
+          alt: 'A picture of the sea shore.'
+          width: 1536
+          height: 915
+    h_text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Driven by creativity and powered by technology, we design experiences that transform brands'
+    h_level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 1
+slots:
+  mediaslot:
+    title: MediaSlot
+    description: Slot to place media.
+  contentslot:
+    title: ContentSlot
+    description: Slot to place content.

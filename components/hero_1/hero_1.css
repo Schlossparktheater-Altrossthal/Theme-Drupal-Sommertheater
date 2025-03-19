@@ -1,0 +1,16 @@
+@reference '../../src/main.css';
+/* [data-component-id="mercury:hero_1"] { */
+  /* @todo Add your styles here. */
+/* } */
+
+.sb-main-padded:has(.hero-overlay) {
+  @apply h-screen p-0;
+}
+
+#storybook-root:has(.hero-overlay) {
+  @apply h-full;
+}
+
+.hero-overlay {
+  @apply container mx-auto relative;
+}
