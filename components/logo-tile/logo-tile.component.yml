@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Logo Tile
+description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
+group: Testing
+props:
+  type: object
+  required:
+    - background
+  properties:
+    background:
+      type: string
+      enum:
+        - light
+        - dark
+      default: light
+    image:
+      type: object
+      required:
+        - src
+        - alt
+      properties:
+        src:
+          type: string
+          title: URI
+          description: The image URL.
+          examples: ['https://picsum.photos/600/600']
+        alt:
+          type: string
+          title: Alt Text
+          description: The alt text.
+          examples: ['A random placeholder image']

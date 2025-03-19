@@ -1,12 +1,16 @@
 <div class="horizontal-scroller snap-x xl:snap-none overflow-x-auto flex flex-nowrap justify-start gap-3 xl:container mx-auto xl:grid grid-cols-4 xl:justify-stretch items-stretch">
   {% block items %}
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-    <p>Six</p>
-    <p>Seven</p>
-    <p>Eight</p>
+    {% for i in 1..8 %}
+      {{ include(
+        '../logo-tile/logo-tile.twig',
+        {
+          image: {
+            src: 'https://picsum.photos/300/300?' ~ i,
+            alt: 'Test image ' ~ i,
+          },
+          background: 'dark',
+        }
+      ) }}
+    {% endfor %}
   {% endblock items %}
 </div>
