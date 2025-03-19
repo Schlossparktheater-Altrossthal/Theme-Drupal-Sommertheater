@@ -8,15 +8,18 @@
   <img class="card-image" src="{{ '/' ~ componentMetadata.path ~ '/img/' ~ media_image }}" alt="Thumbnail image" />
   <div class="card-badges">
     {% include '@mercury/components/badge/badge.twig' with {
-      content: 'Features',
-      href: '#',
+      link: {
+        url: '#',
+        text: 'Features',
+      }
     } %}
     {% include '@mercury/components/badge/badge.twig' with {
-      content: 'Case Study',
-      href: '#',
-    } %}  
+      link: {
+        url: '#',
+        text: 'Case Study',
+      }
+    } %}
   </div>
-
   <h3 class="card-heading">{{ heading }}</h2>
   <div class="card-text">{{ text }}</div>
 </div>

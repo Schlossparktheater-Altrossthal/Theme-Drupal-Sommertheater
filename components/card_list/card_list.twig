@@ -3,17 +3,16 @@
   ]
 %}
 
-{# <section {{ attributes.addClass(classes, [layout]) }}> #}
 <section class="{{ classes|join(' ') }}">
-  <pre>{{ dump(cards) }}</pre>
-
+  <h4>{{ heading }}</h4>
   {% for card in cards %}
-    {# {% include '@mercury/components/card/card.twig' with {
+    {% include '@mercury/components/card/card.twig' with {
       heading: card.heading,
       text: card.text,
       media_image: card.media_image,
       orientation: card.orientation,
-    } %} #}
+    } %}
+
   {% endfor %}
 
 </section>

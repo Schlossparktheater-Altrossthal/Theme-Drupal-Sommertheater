@@ -5,7 +5,7 @@ group: Layouts/Cards
 props:
   type: object
   properties:
-    headingText:
+    heading:
       type: string
       title: Heading
       description: Title of article
@@ -13,66 +13,54 @@ props:
       examples: 
         - 'This is my title eu torquent suscipit'
     cards:
-      title: Cards
-      description: A set of cards to display.
       type: array
-      items:
-        type: object
-        properties:
-          headingText:
-            type: string
-            title: Heading
-            description: Title of article
-            examples: 
-              - 'This is my title eu torquent suscipit'
-          media:
-            type: object
-            title: Media
-            properties:
-              src:
-                type: string
-                title: Source
-                description: URL of image
-                examples: 
-                  - 'https://via.placeholder.com/150'
-              alt:
-                type: string
-                title: Alt
-                description: Alt text for image
-                examples: 
-                  - 'Placeholder image'
-          content:
-            type: string
-            title: Content
-            description: Content of article
-            examples: 
-              - 'This is my content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.'
-          orientation:
-            type: string
-            title: Orientation
-            description: 'Set card to horz or vert.'
-            enum:
-              - stacked
-              - horizontal
-            examples: 
-              - 'stacked'
+      title: Cards
+      description: 'List of cards to display.'
+      properties:
+        card:
+          type: object
+          title: Card
+          description: 'First card to display.'
+          properties:
+            heading:
+              type: string
+              title: Heading
+              description: Title of article
+              # @todo Add examples here.
+              examples: 
+                - 'This is my title eu torquent suscipit'
+            media_image:
+              title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
+              description: Media image for the hero.
+              type: string
+              examples: 
+                - 'pexels-pok-rie-33563-4006534'
+            text:
+              type: string
+              title: Text
+              description: Teaser text
+              # @todo Add examples here.
+              examples: 
+                - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation:
+              type: string
+              title: Orientation
+              description: "Set card to horz or vert."
+              enum: ['stacked', 'landscape']
+              examples:
+                - 'stacked'
       examples:
-        - 
-          headingText: 'This is my title eu torquent suscipit'
-          media:
-            src: 'https://via.placeholder.com/150'
-            alt: 'Placeholder image'
-          content: 'This is my content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.'
-          orientation: 'stacked'
-    headingLevel:
-      type: integer
-      title: Heading Level
-      description: "Set card to horz or vert."
-      enum:
-        - 1
-        - 2
-        - 3
-      examples: [2]
+        - card1:
+            heading: 'This is my Card'
+            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation: 'stacked'
+        - card2:
+            heading: 'This is my Card'
+            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation: 'stacked'            
+
 slots:
   mediaslot:
     title: MediaSlot
