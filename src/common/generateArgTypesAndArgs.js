@@ -1,10 +1,10 @@
 const controlTypeMap = {
   array: 'object',
-  string: 'text'
+  string: 'text',
 };
 
 const generateControlType = (property) => {
-  // Handle enum types
+  // Handle enum types.
   if (property.enum) {
     return {
       type: 'select',
@@ -12,7 +12,12 @@ const generateControlType = (property) => {
     };
   }
 
-  // Handle array of types (e.g. ['string', null])
+  // Handle objects.
+  if (property.type === 'object') {
+
+  }
+
+  // Handle array of types (e.g. ['string', null]).
   if (Array.isArray(property.type)) {
     const nonNullTypes = property.type.filter(type => type !== null && type !== 'null');
     if (nonNullTypes.length) {
@@ -57,11 +62,22 @@ const generateArgTypesAndArgs = (parsedMetadata, componentPath = '') => {
       },
     };
 
-    // Set the default value from the first example, if available.
-    args[key] =
+    if (argTypes[key].type === 'object') {
+      const arg = {};
+      for (const childPropertyName in property.properties) {
+        arg[childPropertyName] = property.properties[childPropertyName].examples?.[0] || '';
+      }
+
+      args[key] = arg;
+    } else {
+      // Set the default value from the first example, if available.
+      args[key] =
       property.examples && property.examples.length > 0
         ? property.examples[0]
         : "";
+    }
+
+
   });
 
   return { argTypes, args };
