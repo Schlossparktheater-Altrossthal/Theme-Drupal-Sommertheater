@@ -20,7 +20,7 @@ props:
       description: 'The text content of the badge.'
       examples:
         - 'Features'
-        - 'Cases'
+        - 'Case Study'
     href:
       type: string
       title: URL
