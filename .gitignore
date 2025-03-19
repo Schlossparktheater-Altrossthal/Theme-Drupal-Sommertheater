@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 *storybook.log
-src/generated-stories
+storybook-static/
+src/stories/sdc-stories
+build

@@ -6,6 +6,8 @@ base:
   version: VERSION
   css:
     component:
+      build/css/main.min.css:
+        weight: -10
       css/components/action-links.css:
         weight: -10
       css/components/breadcrumb.css:

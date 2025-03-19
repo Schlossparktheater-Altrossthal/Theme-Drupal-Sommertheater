@@ -88,7 +88,7 @@ export default function storybookGenerator(options = {}) {
   const {
     componentsDir = 'components',
     includeJs = true,
-    storiesDir = './src/generated-stories'  // Directory to store generated stories
+    storiesDir = './src/stories/sdc-stories'  // Directory to store generated stories
   } = options;
 
   /**
