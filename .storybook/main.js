@@ -4,7 +4,6 @@ const config = {
   stories: [
     "../src/**/*.mdx", 
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../src/generated-stories/**/*.stories.js"  // Include our generated stories
   ],
   addons: [
     "@storybook/addon-a11y",
