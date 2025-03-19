@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
     "build": "vite build",
     "lint": "npm run lint:css & npm run lint:js",
     "lint:fix": "npm run lint:css-fix & npm run lint:js-fix",
