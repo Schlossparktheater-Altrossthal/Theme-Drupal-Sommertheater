@@ -1,29 +1,23 @@
-.card {}
+@reference '../../src/main.css';
 
-.card .card-image {
+.apply-card .card-image {
   margin-bottom: 16px;
 }
 
-.card .card-badges {
+.apply-card .card-badges {
   display: flex;
   margin-bottom: 16px;
 }
 
-.card .card-badges .badge {
+.apply-card .card-badges .badge {
   margin-right: 8px;
 }
 
-.card .card-heading {
-  color: var(--Color-Dark, #262626);
-  font-family: var(--Type-heading, Vazirmatn);
-  font-size: var(--h4, 32px);
-  font-style: normal;
-  font-weight: 200;
-  line-height: 120%;
-  margin-bottom: 24px;
+.apply-card .card-heading {
+  /* @apply text-dark font-heading text-4xl font-light leading-tight mb-6; */
 }
 
-.card .card-text {
+.apply-card .card-text {
   color: var(--Color-Dark, #262626);
   font-family: var(--Type-paragraph, Vazirmatn);
   font-size: var(--paragraph-1, 20px);

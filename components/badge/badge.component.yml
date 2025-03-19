@@ -14,21 +14,27 @@ props:
       enum: ['primary', 'secondary']
       examples:
         - primary
-    content:
-      type: string
-      title: Content
-      description: 'The text content of the badge.'
+    link:
+      title:
+      type: object
+      description: 'The link object containing URL and text.'
+      properties:
+        url:
+          type: string
+          title: URL
+          description: 'The URL to link to. If provided, the badge will be rendered as a link.'
+          examples:
+            - '#'
+        text:
+          type: string
+          title: Link Text
+          description: 'The text for the link.'
       examples:
-        - 'Features'
-        - 'Case Study'
-    href:
-      type: string
-      title: URL
-      description: 'The URL to link to. If provided, the button will be rendered as a link.'
-      examples:
-        - '#'
+        - url: '#'
+          text: Features
+        
 slots:
   # Content to display in the badge.
   badge_content:
-      title: Content
-      description: Content of the badge
+    title: Content
+    description: Content of the badge

@@ -3,8 +3,9 @@
     'badge--color-' ~ color,
   ]
 %}
+
 <div class="{{ classes|join(' ') }}">
-  <a href="{{ href }}">
-    {{ content|raw }}
+  <a href="{{ link.url }}" aria-label="{{ link.text }}" class="badge__link">
+    {{ link.text }}
   </a>
 </div>

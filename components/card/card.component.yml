@@ -12,7 +12,7 @@ props:
       # @todo Add examples here.
       examples: 
         - 'This is my title eu torquent suscipit'
-    mediaImage:
+    media_image:
       title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
       description: Media image for the hero.
       type: string

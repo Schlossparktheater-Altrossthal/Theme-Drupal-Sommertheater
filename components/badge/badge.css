@@ -4,13 +4,13 @@
 /* } */
 
 .apply-badge {
-  @apply block;
+  @apply inline-block;
 }
 
 .apply-badge a {
-  @apply border border-dark text-dark block text-sm px-6 py-2;
+  @apply border block text-md px-6 py-2;
 }
 
 .apply-badge a:hover {
-  @apply bg-dark text-light;
+  @apply bg-base-dark text-white;
 }
