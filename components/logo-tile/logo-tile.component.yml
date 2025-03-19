@@ -8,24 +8,18 @@ props:
     - background
   properties:
     background:
+      title: Background color
       type: string
       enum:
         - light
         - dark
       default: light
+      examples:
+        - dark
     image:
+      $ref: json-schema-definitions://experience_builder.module/image
       type: object
-      required:
-        - src
-        - alt
-      properties:
-        src:
-          type: string
-          title: URI
-          description: The image URL.
-          examples: ['https://picsum.photos/600/600']
-        alt:
-          type: string
-          title: Alt Text
-          description: The alt text.
-          examples: ['A random placeholder image']
+      title: Image
+      examples:
+        - src: 'https://picsum.com/300/300.jpg'
+          alt: 'Placeholder image'
