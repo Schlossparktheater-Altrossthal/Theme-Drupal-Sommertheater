@@ -5,11 +5,6 @@ group: Testing
 props:
   type: object
   properties:
-    fake:
-      type: string
-      title: Fake prop
-      examples:
-        - whatever
 slots:
   items:
     title: Items
