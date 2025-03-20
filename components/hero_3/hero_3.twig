@@ -7,20 +7,13 @@
 <section class="{{ classes|join(' ') }}">
   <div class="hero-region media aspect-4/3 sm:aspect-2/1">
   {% block media_slot %}
+    {# Image will get swapped out in XB #}
     <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
   {% endblock %}
   </div>
   <div class="hero-region content">
   {% block content_slot %}
-    {% include '../heading/heading.twig' with {
-    heading_classes: heading_classes|default([]) 
-} %}
-
-
-<br>
-    {% include '../heading/heading.twig' with {
-      heading_classes: (['md:text-3xl', '2xl:text-6xl'])|merge(heading_classes|default([]))
-    } %}
+    {{ include('../heading/heading.twig') }}
   {% endblock %}
   </div>
 </section>

@@ -1,5 +1,5 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Side-by-side
+name: 02 Side-by-side
 description: Hero with side by side slots for media and content.
 group: Layouts/Hero
 props:
@@ -22,17 +22,29 @@ props:
           alt: 'A picture of the sea shore.'
           width: 1536
           height: 915
-    h_text:
+    heading_text:
       type: string
       title: Heading Text
       examples: 
-        - 'Provide heading text (defaults to h2)'
-    h_level:
+        - 'Castro Chemical'
+    text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
+    level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
+    background:
+      type: string
+      title: Hero background color
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
 slots:
   mediaslot:
     title: MediaSlot
