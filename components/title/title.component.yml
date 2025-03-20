@@ -1,5 +1,5 @@
 name: Title
-group: Particles
+group: Base
 props:
   type: object
   properties:

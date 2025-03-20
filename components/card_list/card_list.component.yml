@@ -1,0 +1,70 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Card List
+description: Hero with side by side slots for media and content.
+group: Layouts/Card List
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Title of article
+      # @todo Add examples here.
+      examples: 
+        - 'This is my title eu torquent suscipit'
+    cards:
+      type: array
+      title: Cards
+      description: 'List of cards to display.'
+      properties:
+        card:
+          type: object
+          title: Card
+          description: 'First card to display.'
+          properties:
+            heading:
+              type: string
+              title: Heading
+              description: Title of article
+              # @todo Add examples here.
+              examples: 
+                - 'This is my title eu torquent suscipit'
+            media_image:
+              title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
+              description: Media image for the hero.
+              type: string
+              examples: 
+                - 'pexels-pok-rie-33563-4006534'
+            text:
+              type: string
+              title: Text
+              description: Teaser text
+              # @todo Add examples here.
+              examples: 
+                - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation:
+              type: string
+              title: Orientation
+              description: "Set card to horz or vert."
+              enum: ['stacked', 'landscape']
+              examples:
+                - 'stacked'
+      examples:
+        - card1:
+            heading: 'This is my Card'
+            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation: 'stacked'
+        - card2:
+            heading: 'This is my Card'
+            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+            orientation: 'stacked'            
+
+slots:
+  mediaslot:
+    title: MediaSlot
+    description: Slot to place media.
+  contentslot:
+    title: ContentSlot
+    description: Slot to place content.

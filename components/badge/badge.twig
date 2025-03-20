@@ -1,0 +1,8 @@
+{% set classes = [
+    'badge',
+  ]
+%}
+
+<a href="{{ link.url }}" aria-label="{{ link.text }}" class="{{ classes|join(' ') }}">
+  <span class="font-extralight text-md leading-none">{{ link.text }}</span>
+</a>

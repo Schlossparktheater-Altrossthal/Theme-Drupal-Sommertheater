@@ -1,11 +1,31 @@
 {% set classes = [
     'card',
-    'is-' ~ orientation|clean_class,
+    'flex flex-col gap-4',
+    'stacked' in orientation ? 'is-stacked' : 'md:flex-row is-landscape',
   ]
 %}
 
-<div {{ classes|join(' ') }}>
-  <img src="{{ '/' ~ componentMetadata.path ~ '/img/' ~ mediaImage }}" alt="Thumbnail image" />
-  <h2 class="card__heading">{{ heading }}</h2>
-  <div class="card__text">{{ text }}</div>
+<div class="{{ classes|join(' ') }}">
+  <div class="card--media overflow-hidden">
+    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ image }}" alt="Thumbnail image" />
+  </div>
+  <div class="card--content flex flex-col gap-4 items-baseline">
+    {# This should be a loop #}
+    <div class="flex items-center gap-2">
+      {% include '@mercury/components/badge/badge.twig' with {
+        link: {
+          url: '#',
+          text: 'Features',
+        }
+      } %}
+      {% include '@mercury/components/badge/badge.twig' with {
+        link: {
+          url: '#',
+          text: 'Case Study',
+        }
+      } %}
+    </div>
+    {{ include('../heading/heading.twig') }}
+    <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
+  </div>
 </div>
