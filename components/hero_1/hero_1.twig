@@ -1,23 +1,31 @@
 {% set classes = [
     'hero-overlay',
-    'h-dvh md:h-3/4',
-    background == 'dark' ? 'bg-black text-white' : 'bg-white text-black',
+    'h-dvh md:max-h-3/4 min:min-h-3/4 xl:max-h-[900px]',
+    background == 'image' or background == 'dark' ? 'bg-accent text-base-light' : 'bg-brand-lightest text-base-dark',
   ]
 %}
 
+{% set img_position = 'object-' ~ background_position %}
+
 <section class="{{ classes|join(' ') }}">
-  <div class="hero-region media relative h-full">
-  {% block media_slot %}
-    {% if media.src is not empty %}
-      <div class="absolute inset-0 bg-black/20"></div>
-    {% endif %}
-    {# Image will get swapped out in XB #}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
-  {% endblock %}
-  </div>
-  <div class="hero-region content absolute inset-0 p-6 md:p-10 lg:pw-0 xl:p-20 xl:pe-0 flex items-center md:items-end lg:max-w-3/5">
+  {% if background == 'image' %}
+    <div class="hero-region media relative h-full">
+    {% block media_slot %}
+      {% if media.src is not empty %}
+        <div class="absolute inset-0 bg-black/20"></div>
+      {% endif %}
+      {# Image will get swapped out in XB #}
+      <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover {{ img_position }}"/>
+    {% endblock %}
+    </div>
+  {% endif %}
+  <div class="hero-region content absolute inset-0 flex flex-col gap-6 {{ text ? 'justify-center pb-16' : 'justify-end' }} p-6 md:p-10 lg:max-w-3/5 xl:p-20">
   {% block content_slot %}
     {{ include('../heading/heading.twig') }}
+    {% if text is not empty %}
+    <p class="font-thin text-2xl xl:text-3xl">{{ text }}</p>
+    {% endif %}
   {% endblock %}
   </div>
 </section>
+

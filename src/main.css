@@ -22,7 +22,7 @@
     --color-brand-dark: hsl(from var(--color-brand) h s calc(l - 10)); /* -10 from default */
     --color-brand: hsl(25, 5%, 45%);         /* Default */
     --color-brand-light: hsl(from var(--color-brand) h s calc(l + 20));   /* +20 from default */
-    --color-brand-lightest: hsl(from var(--color-brand) h s calc(l + 30)); /* +10 from light */
+    --color-brand-lightest: hsl(0, 0%, 90%); /* +10 from light */
 
     /* Branding accent color definitions */
     --color-accent-darkest: hsl(from var(--color-accent) h s calc(l - 30)); /* -15 from dark */

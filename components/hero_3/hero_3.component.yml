@@ -40,6 +40,13 @@ props:
       examples: 
         - alt
       default: alt
+    background:
+      type: string
+      title: Hero background color
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
 slots:
   mediaslot:
     title: MediaSlot

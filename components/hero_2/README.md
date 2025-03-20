@@ -10,4 +10,4 @@ for developers or for editors, depending on the component type.
 
 ## Additional information
 
-Some extra info about the component.
+If no paragraph text is present, the heading will align at the bottom with image.
