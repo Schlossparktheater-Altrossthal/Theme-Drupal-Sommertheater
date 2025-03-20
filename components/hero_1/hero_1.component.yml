@@ -17,13 +17,18 @@ props:
         - src: 'mermaid.jpg'
           alt: 'A team of professionals collaborating.'
       examples:
-        - src: 'seashore.png'
-          alt: 'A picture of the sea shore.'
+        - src: 'starshot.png'
+          alt: 'A plane in the sky.'
     heading_text:
       type: string
       title: Heading Text
       examples: 
         - 'We are a brand acceleration agency'
+    text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
     level:
       type: number
       title: Heading Level
@@ -33,10 +38,17 @@ props:
     background:
       type: string
       title: Hero background color
-      enum: [light, dark]
+      enum: [light, dark, image]
       examples: 
-        - dark
-      default: dark
+        - image
+      default: image
+    background_position:
+      type: string
+      title: Hero background image position
+      enum: [center, top, bottom]
+      examples: 
+        - center
+      default: center
 slots:
   mediaslot:
     title: MediaSlot
