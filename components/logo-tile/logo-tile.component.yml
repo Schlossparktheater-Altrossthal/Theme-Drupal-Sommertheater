@@ -21,5 +21,5 @@ props:
       type: object
       title: Image
       examples:
-        - src: 'https://picsum.com/300/300'
+        - src: 'https://picsum.com/300/300?0.jpg'
           alt: 'Placeholder image'
