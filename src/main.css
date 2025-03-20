@@ -20,14 +20,14 @@
     /* Primary branding color definitions */
     --color-brand-darkest: hsl(from var(--color-brand) h s calc(l - 30)); /* -15 from dark */
     --color-brand-dark: hsl(from var(--color-brand) h s calc(l - 10)); /* -10 from default */
-    --color-brand: hsl(217, 100%, 49%);         /* Default */
+    --color-brand: hsl(25, 5%, 45%);         /* Default */
     --color-brand-light: hsl(from var(--color-brand) h s calc(l + 20));   /* +20 from default */
     --color-brand-lightest: hsl(from var(--color-brand) h s calc(l + 30)); /* +10 from light */
 
     /* Branding accent color definitions */
     --color-accent-darkest: hsl(from var(--color-accent) h s calc(l - 30)); /* -15 from dark */
     --color-accent-dark: hsl(from var(--color-accent) h s calc(l - 10));    /* -10 from default */
-    --color-accent: hsl(279, 100%, 45%);         /* Default */
+    --color-accent: hsl(217, 33%, 17%);         /* Default */
     --color-accent-light: hsl(from var(--color-accent) h s calc(l + 20));   /* +20 from default */
     --color-accent-lightest: hsl(from var(--color-accent) h s calc(l + 30)); /* +10 from light */
 

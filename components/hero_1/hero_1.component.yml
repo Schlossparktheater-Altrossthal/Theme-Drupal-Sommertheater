@@ -1,38 +1,42 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Full overlay
+name: 01 Full overlay
 description: Hero with stacked slots for media and content.
 group: Layouts/Hero
 props:
   type: object
   properties:
-    layout:
-      type: string
-      title: Layout
-      description: Set hero layout
-      enum: 
-        - media-first (default)
-        - media-last
-      examples: [media-first (default), media-last]
     media:
       title: Media Image
       description: Media image for the hero.
       type: object
-      examples:
-        - src: 'thumbnail.png'
+      enum:
+        - src: 'seashore.png'
           alt: 'A picture of the sea shore.'
-          width: 1536
-          height: 915
-    h_text:
+        - src: 'vaportrails.jpg'
+          alt: 'A bold and colorful hero banner.'
+        - src: 'mermaid.jpg'
+          alt: 'A team of professionals collaborating.'
+      examples:
+        - src: 'seashore.png'
+          alt: 'A picture of the sea shore.'
+    heading_text:
       type: string
       title: Heading Text
       examples: 
         - 'We are a brand acceleration agency'
-    h_level:
+    level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
+    background:
+      type: string
+      title: Hero background color
+      enum: [light, dark]
+      examples: 
+        - dark
+      default: dark
 slots:
   mediaslot:
     title: MediaSlot

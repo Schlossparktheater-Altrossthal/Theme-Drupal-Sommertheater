@@ -1,7 +1,5 @@
 @reference '../../src/main.css';
-/* [data-component-id="mercury:hero_1"] { */
-  /* @todo Add your styles here. */
-/* } */
+@reference '../heading/heading.css';
 
 #storybook-root > .hero-fullwidth {
   @apply outline outline-dotted outline-gray-lightest rounded-xs;
