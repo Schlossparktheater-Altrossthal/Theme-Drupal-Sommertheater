@@ -1,0 +1,9 @@
+@reference '../../src/main.css';
+
+.outlined {
+  @apply inline-flex text-xl border border-solid border-base-light text-base-light px-5 py-2;
+}
+
+.outlined-dark {
+  @apply border-base-dark text-base-dark;
+}

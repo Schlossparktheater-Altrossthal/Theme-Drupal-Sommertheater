@@ -1,0 +1,12 @@
+{% if style != 'primary' %}
+  <div class="outlined {{ style }}">
+{% endif %}
+  <a href="{{ url }}" class="link" title="{{ title }}">
+    {{ text }}
+    {% if icon %}
+      <i class="{{ icon }}"></i>
+    {% endif %}
+  </a>
+{% if style != 'primary' %}
+  </div>
+{% endif %}

@@ -1,0 +1,41 @@
+name: Link
+description: A customizable link component with text, title, style, and an optional icon.
+group: Base
+status: stable
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: Link Text
+      description: The text inside the link.
+      examples:
+        - Learn More
+    title:
+      type: string
+      title: Link Title
+      description: Tooltip text shown on hover.
+      examples:
+        - 'Go to the details page'
+    style:
+      type: string
+      title: Link Style
+      description: Choose the link style.
+      enum:
+        - primary
+        - outlined
+        - outlined-dark
+      examples:
+        - 'outlined-dark'
+    icon:
+      type: string
+      title: Icon Class
+      description: An optional icon to display before the text (e.g., FontAwesome or Heroicons class).
+      examples:
+        - 'fa-solid fa-arrow-right'
+    url:
+      type: string
+      title: URL
+      description: The destination URL of the link.
+      examples:
+        - '/details'
