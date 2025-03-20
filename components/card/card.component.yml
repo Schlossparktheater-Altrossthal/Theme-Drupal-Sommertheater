@@ -5,19 +5,29 @@ group: Components
 props:
   type: object
   properties:
-    heading:
+    heading_text:
       type: string
-      title: Heading
-      description: Title of article
-      # @todo Add examples here.
+      title: Heading Text
       examples: 
         - 'This is my title eu torquent suscipit'
-    media_image:
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 3
+    url:
+      type: boolean
+      title: Add optional url
+      examples: 
+        - true
+      default: true
+    image:
       title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
       description: Media image for the hero.
       type: string
       examples: 
-        - 'pexels-pixabay-416676.jpg'
+        - 'artist.png'
     text:
       type: string
       title: Text

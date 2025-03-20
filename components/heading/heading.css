@@ -23,7 +23,7 @@ h2.heading--size-alt {
 }
 /* sizes: 24 32 */
 h3.heading {
-  @apply font-extralight text-[32px];
+  @apply font-extralight leading-none text-[32px];
 }
 /* sizes: 24 30 */
 h4.heading {

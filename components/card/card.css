@@ -1,21 +1,32 @@
 @reference '../../src/main.css';
 
-.apply-card .card-image {
-  @apply mb-4;
+/* Storybook specific */
+#storybook-root:has(.card) {
+  @apply max-w-md;
+}
+#storybook-root:has(.card.is-landscape) {
+  @apply max-w-2xl;
 }
 
-.apply-card .card-badges {
-  @apply flex items-center mb-4;
+.card .card--media {
+  @apply aspect-video
 }
 
-.apply-card .card-badges .apply-badge {
-  @apply mr-2;
+.card.is-stacked .card--media {
+  @apply aspect-video overflow-hidden;
 }
 
-.apply-card .card-heading {
-  @apply text-3xl font-light mb-6;
+.card.is-landscape .card--media {
+  @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
 }
 
-.apply-card .card-text {
+.card.is-landscape .card--content {
+  @apply md:flex-[0_1_50%] md:py-4;
+}
+
+.card--content .heading {
+  @apply mt-2;
+}
+/* .card .card-text {
   @apply text-xl;
-}
+} */
