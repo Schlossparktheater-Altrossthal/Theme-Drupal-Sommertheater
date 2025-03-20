@@ -4,8 +4,8 @@
 @theme {
     /* Base colors or neutrals meant for default text and backgrounds. */
     /* Base background and text color definitions */
-    --color-base-dark: hsl(240, 5%, 7%);
-    --color-base-light: hsl(210, 20%, 98%);
+    --color-base-dark: hsl(0, 0%, 15%);
+    --color-base-light: hsl(0, 0%, 98%);
 
     /* Gray color definitions */
     /* Hue should stay within 210 +/- 5 */
