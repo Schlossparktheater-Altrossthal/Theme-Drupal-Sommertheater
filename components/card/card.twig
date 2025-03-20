@@ -10,6 +10,7 @@
     <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ image }}" alt="Thumbnail image" />
   </div>
   <div class="card--content flex flex-col gap-4 items-baseline">
+    {# This should be a loop #}
     <div class="flex items-center gap-2">
       {% include '@mercury/components/badge/badge.twig' with {
         link: {
