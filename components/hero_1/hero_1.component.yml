@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: SideBySide
-description: Hero with side by side slots for media and content.
+name: Full overlay
+description: Hero with stacked slots for media and content.
 group: Layouts/Hero
 props:
   type: object
@@ -10,31 +10,29 @@ props:
       title: Layout
       description: Set hero layout
       enum: 
-        - media-first
+        - media-first (default)
         - media-last
-      examples: [media-first, media-last]
-    headingText:
-      type: string
-      title: Heading
-      description: Title of article
-      # @todo Add examples here.
-      examples: 
-        - 'This is my title eu torquent suscipit'
-    mediaImage:
+      examples: [media-first (default), media-last]
+    media:
       title: Media Image
       description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'thumbnail.png'
+          alt: 'A picture of the sea shore.'
+          width: 1536
+          height: 915
+    h_text:
       type: string
+      title: Heading Text
       examples: 
-        - '/static/images/thumbnail.png'
-    headingLevel:
-      type: integer
+        - 'We are a brand acceleration agency'
+    h_level:
+      type: number
       title: Heading Level
-      description: "Set card to horz or vert."
-      enum:
+      enum: [1,2,3,4,5,6]
+      examples: 
         - 1
-        - 2
-        - 3
-      examples: [1]
 slots:
   mediaslot:
     title: MediaSlot

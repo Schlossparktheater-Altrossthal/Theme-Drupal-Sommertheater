@@ -82,7 +82,7 @@
     --color-muted-foreground: hsl(240 3.8% 46.1%);
 
     /* Base Font family definitions */
-    --font-sans: 'Work Sans', sans-serif;
+    --font-sans: 'Vazirmatn', 'IBM Plex Sans Condensed', 'Roboto Condensed', 'Arial Narrow', 'Helvetica Condensed', sans-serif;
     --font-mono: 'Fira Code', monospace;
 
     /* Base Typography (Major Third) */

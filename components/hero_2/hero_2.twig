@@ -1,0 +1,20 @@
+{% set classes = [
+    'hero-sidebyside',
+    'media-last' in layout ? 'flex-col md:flex-row-reverse' : 'flex-col md:flex-row',
+    'md:items-end',
+    'md:justify-between',
+  ]
+%}
+
+<section class="{{ classes|join(' ') }}">
+  <div class="hero-region media flex-1 md:flex-[0_1_50%] aspect-3/2">
+  {% block media_slot %}
+    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+  {% endblock %}
+  </div>
+  <div class="hero-region content flex-1 md:flex-[0_1_50%] lg:flex-[0_1_40%]">
+  {% block content_slot %}
+    {{ include('../heading/heading.twig') }}
+  {% endblock %}
+  </div>
+</section>

@@ -1,0 +1,12 @@
+@reference '../../src/main.css';
+
+/* [data-component-id="mercury:sidebyside_hero"] { */
+  /* @todo Add your styles here. */
+/* } */
+#storybook-root > .hero-sidebyside {
+  @apply outline outline-dotted outline-gray-lightest rounded-xs;
+}
+
+.hero-sidebyside {
+  @apply container mx-auto flex gap-4 md:gap-6;
+}
