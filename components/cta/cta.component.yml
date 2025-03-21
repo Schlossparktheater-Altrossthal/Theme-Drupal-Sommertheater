@@ -1,0 +1,58 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: CTA
+description: A CTA section with inline styles for testing purposes
+group: Layouts/CTA
+props:
+  type: object
+  properties:
+    heading_text:
+      type: string
+      title: Heading
+      description: The main heading of the cta
+      examples:
+        - Let‘s Work Together
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 2
+    text:
+      type: string
+      title: Text
+      examples:
+        - Lorem ipsum dolor sit amet finibus aliquam pharetra mauris aenean pellentesque enim mus.
+    cta_link_1:
+      type: string
+      examples:
+        - url: '#'
+          text: 'Read the Article'
+          style: 'button-light'
+    cta_link_2:
+      type: string
+      examples:
+        - url: '#'
+          text: 'Sign Up'
+          style: 'button-outline-light'
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'architecture.png'
+          alt: 'A plane in the sky.'
+    text_align:
+      type: string
+      description: Set alignment of text
+      enum: [center, left, right]
+      examples: 
+        - center
+      default: center
+    background:
+      type: string
+      title: CTA background color
+      enum: [light, dark, image]
+      examples: 
+        - image
+      default: image

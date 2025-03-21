@@ -1,0 +1,67 @@
+{% set classes = [
+    'cta',
+    'relative',
+    background == 'image' or background == 'dark' ? 'bg-accent text-base-light' : 'bg-gray-lighter text-base-dark',
+  ]
+%}
+
+{% if text_align == 'left' %}
+  {% set alignment = 'text-left' %}
+  {% set list_extras = 'text-left' %}
+{% elseif text_align == 'right' %}
+  {% set alignment = 'text-right' %}
+  {% set list_extras = 'md:justify-end' %}
+{% else %}
+  {% set alignment = 'text-center max-w-3/4 mx-auto' %}
+  {% set list_extras = 'mx-auto' %}
+{% endif %}
+
+{# This may be only for Storybook #}
+{% if background == 'light' %}
+  {% set cta_link_1_style = 'button-dark' %}
+  {% set cta_link_2_style = 'button-outline-dark' %}
+{% else %}
+  {% set cta_link_1_style = 'button-light' %}
+  {% set cta_link_2_style = 'button-outline-light' %}
+{% endif %}
+
+<section class="{{ classes|join(' ') }}">
+  {% if background == 'image' %}
+    {% if media.src is not empty %}
+    <div class="cta--media absolute inset-0">
+      <div class="absolute inset-0 bg-black/30"></div>
+      {# Image will get swapped out in XB #}
+      {# <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover {{ img_position }}"/> #}
+      <img src="/components/cta/{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+    </div>
+    {% endif %}
+  {% endif %}
+  <div class="cta--content relative min-h-80 flex flex-col justify-center gap-6 lg:gap-8 px-6 py-[90px] lg:px-12 lg:py-[115px] xl:px-16 xl:py-[140px]">
+    {# @todo add icon #}
+    {{ include('../heading/heading.twig', {
+        heading_classes: (heading_classes|default([]))|merge([ alignment ])
+    }) }}
+    <p class="font-extralight text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
+    {# Will be a slot in XB #}
+    <ul class="flex gap-4 list-none {{ list_extras }}">
+      <li>
+        {{ include(
+          '../link/link.twig', {
+            url: cta_link_1.url,
+            text: cta_link_1.text,
+            style: cta_link_1_style
+          } 
+          ) }}
+      </li>
+      <li>
+        {{ include(
+          '../link/link.twig', {
+            url: cta_link_2.url,
+            text: cta_link_2.text,
+            style: cta_link_2_style
+          } 
+          ) }}
+      </li>
+    </ul>
+  </div>
+</section>
