@@ -5,6 +5,7 @@ import TwingEnvironment from './.storybook/twingEnvironment.js';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
 import storybookGenerator from './vite-plugin-storybook-generator';
+import sdcCssWatcher from './vite-plugin-sdc-storybook-css-watcher.js';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
@@ -16,11 +17,11 @@ export default defineConfig({
     createTwigPlugin(TwingEnvironment),
     tailwindcss(),
     storybookGenerator({
-      // Generate story files in a separate directory (NOT in component directories)
       componentsDir: 'components',
       includeJs: true,
       storiesDir: './src/stories/sdc-stories'
     }),
+    sdcCssWatcher(),
   ],
   build: {
     outDir: './build',
@@ -29,8 +30,16 @@ export default defineConfig({
         main: './src/main.css',
       },
       output: {
-        assetFileNames: 'css/main.min.css',
+        assetFileNames: (assetInfo) => {
+          const fileNames = assetInfo.names;
+          const fileName = fileNames.pop();
+          if (fileName === 'style.css') {
+            return 'css/[name].min.css';
+          }
+          return 'css/[name].min[extname]';
+        }
       }
-    }
+    },
+    cssMinify: true
   }
 });
