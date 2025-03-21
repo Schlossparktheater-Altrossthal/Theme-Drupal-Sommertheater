@@ -8,8 +8,6 @@ base:
     component:
       build/css/main.min.css:
         weight: -10
-      build/css/components.min.css:
-        weight: -10
       css/components/action-links.css:
         weight: -10
       css/components/breadcrumb.css:
