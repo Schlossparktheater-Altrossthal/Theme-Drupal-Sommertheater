@@ -165,14 +165,14 @@ export default function storybookGenerator(options = {}) {
 
     configureServer({ watcher }) {
       plugin.generateAllStoryFiles();
-
       watcher.add(`${componentsDir}/**/*`);
       watcher.on('change', (changedPath) => {
         if (changedPath.includes(componentsDir) && !changedPath.endsWith('.css')) {
           const componentDir = path.dirname(changedPath);
           if (fs.existsSync(componentDir)) {
             console.log(`[storybook-generator] Change detected in ${changedPath}, regenerating story`);
-            plugin.generateStoryForComponent(componentDir);
+            const componentName = path.basename(componentDir);
+            plugin.generateStoryForComponent(`${componentsDir}/${componentName}`);
           }
         }
       });
