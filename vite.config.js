@@ -12,8 +12,8 @@ import { glob } from 'glob';
 // Function to generate the components CSS file
 function generateComponentsCSS() {
   const cssFiles = glob.sync('components/**/*.css');
-  const imports = cssFiles.map(file => `@import '../${file}';`).join('\n');
-  fs.writeFileSync('src/components.css', imports);
+  const imports = cssFiles.map(file => `@import '../../../${file}';`).join('\n');
+  fs.writeFileSync('./src/stories/sdc-stories/components.css', imports);
 }
 
 // Generate the CSS file before Vite starts
