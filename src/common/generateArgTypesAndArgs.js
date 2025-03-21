@@ -1,40 +1,67 @@
 const controlTypeMap = {
-  array: 'object',
-  string: 'text'
+  array: "object",
+  string: "text",
 };
 
 const generateControlType = (property) => {
-  // Handle enum types
+  // Handle enum types.
   if (property.enum) {
     return {
-      type: 'select',
-      options: property.enum
+      type: "select",
+      options: property.enum,
     };
   }
 
-  // Handle array of types (e.g. ['string', null])
+  // Handle objects.
+  if (property.type === "object") {
+  }
+
+  // Handle array of types (e.g. ['string', null]).
   if (Array.isArray(property.type)) {
-    const nonNullTypes = property.type.filter(type => type !== null && type !== 'null');
+    const nonNullTypes = property.type.filter(
+      (type) => type !== null && type !== "null"
+    );
     if (nonNullTypes.length) {
       return generateControlType({ type: nonNullTypes[0] });
     }
-    return { type: 'text' };
+    return { type: "text" };
   }
 
   // Look up mapped control type or use property type directly
   return {
-    type: controlTypeMap[property.type] || property.type
+    type: controlTypeMap[property.type] || property.type,
   };
 };
 
-const generateArgTypesAndArgs = (parsedMetadata, componentPath = '') => {
+const getArgForObjectProp = (property) => {
+  if (
+    property.$ref ===
+    "json-schema-definitions://experience_builder.module/image"
+  ) {
+    if (property.examples?.length) {
+      return property.examples[0];
+    } else {
+      return {
+        src: "",
+        alt: "",
+      };
+    }
+  }
+
+  const arg = {};
+
+  for (const childPropertyName in property.properties) {
+    arg[childPropertyName] =
+      property.properties[childPropertyName].examples?.[0] || "";
+  }
+
+  return arg;
+};
+
+const generateArgTypesAndArgs = (parsedMetadata, componentPath = "") => {
   // Parse metadata if it's a string
   const argTypes = {};
-  const args = {};
-
-  args.componentMetadata = {
-    path: componentPath
-  };
+  let args = {};
 
   if (!parsedMetadata.props || !parsedMetadata.props.properties) {
     console.error('YAML metadata is missing the "props.properties" field.');
@@ -57,11 +84,15 @@ const generateArgTypesAndArgs = (parsedMetadata, componentPath = '') => {
       },
     };
 
-    // Set the default value from the first example, if available.
-    args[key] =
-      property.examples && property.examples.length > 0
-        ? property.examples[0]
-        : "";
+    if (argTypes[key].type === "object") {
+      args[key] = getArgForObjectProp(property);
+    } else {
+      // Set the default value from the first example, if available.
+      args[key] =
+        property.examples && property.examples.length > 0
+          ? property.examples[0]
+          : "";
+    }
   });
 
   return { argTypes, args };

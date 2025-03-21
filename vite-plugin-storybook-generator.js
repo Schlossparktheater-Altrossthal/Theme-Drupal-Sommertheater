@@ -17,6 +17,16 @@ import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component 
  */
 function generateStoryContent(componentPath, componentName, includeJs = true) {
   const lowerCaseName = componentName.toLowerCase();
+  const camelCaseName = lowerCaseName.split('-').map(
+    (word, index) => {
+      if (index === 0) {
+        return word;
+      }
+
+      return word.slice(0, 1).toUpperCase() + word.slice(1)
+    }
+  ).join('');
+
   const yamlFilePath = path.join(componentPath, `${lowerCaseName}.component.yml`);
   const cssFilePath = path.join(componentPath, `${lowerCaseName}.css`);
   const hasCssFile = fs.existsSync(cssFilePath);
@@ -46,8 +56,8 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
 
   let imports = `// Import the YAML metadata and the Twig template.
-import ${lowerCaseName}Metadata from '/${componentRelativePath}/${lowerCaseName}.component.yml';
-import ${lowerCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig'`;
+import ${camelCaseName}Metadata from '/${componentRelativePath}/${lowerCaseName}.component.yml';
+import ${camelCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig'`;
 
   // Only add CSS import if the file exists
   if (hasCssFile) {
@@ -65,7 +75,7 @@ import '/${componentRelativePath}/${lowerCaseName}.js';`;
 import twingStory from '/src/common/twingStory.js';
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
 
-const { argTypes, args } = generateArgTypesAndArgs(${lowerCaseName}Metadata, '${componentPath}');
+const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '${componentPath}');
 
 export default {
     title: '${title}',
@@ -74,7 +84,7 @@ export default {
     args
 };
 
-export const Default = twingStory(${lowerCaseName}Template);
+export const Default = twingStory(${camelCaseName}Template);
 `;
 }
 

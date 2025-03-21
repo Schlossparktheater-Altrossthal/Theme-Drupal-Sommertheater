@@ -1,0 +1,11 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Horizontal Scroller
+description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
+group: Testing
+props:
+  type: object
+  properties:
+slots:
+  items:
+    title: Items
+    description: Components to arrange in a grid or horizontal scroller
