@@ -1,4 +1,4 @@
-@reference '../../main.css'
+@reference '../../src/main.css';
 
 .horizontal-scroller > * {
   @apply text-center border-1 min-w-[250px] snap-start;
