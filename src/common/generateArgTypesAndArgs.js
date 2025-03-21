@@ -63,6 +63,10 @@ const generateArgTypesAndArgs = (parsedMetadata, componentPath = "") => {
   const argTypes = {};
   let args = {};
 
+  args.componentMetadata = {
+    path: componentPath,
+  };
+
   if (!parsedMetadata.props || !parsedMetadata.props.properties) {
     console.error('YAML metadata is missing the "props.properties" field.');
     return { argTypes, args };
