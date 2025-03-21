@@ -23,7 +23,7 @@ props:
       description: Choose the link style.
       enum:
         - default
-        - outlined
+        - outlined-light
         - outlined-dark
       examples:
         - 'outlined-dark'
