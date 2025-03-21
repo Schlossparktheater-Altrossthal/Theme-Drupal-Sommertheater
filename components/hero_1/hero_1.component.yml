@@ -6,19 +6,17 @@ props:
   type: object
   properties:
     media:
+      $ref: json-schema-definitions://experience_builder.module/image
       title: Media Image
       description: Media image for the hero.
       type: object
-      enum:
+      examples:
         - src: 'seashore.png'
           alt: 'A picture of the sea shore.'
         - src: 'vaportrails.jpg'
           alt: 'A bold and colorful hero banner.'
         - src: 'mermaid.jpg'
           alt: 'A team of professionals collaborating.'
-      examples:
-        - src: 'starshot.png'
-          alt: 'A plane in the sky.'
     heading_text:
       type: string
       title: Heading Text

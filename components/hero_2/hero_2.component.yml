@@ -14,14 +14,13 @@ props:
         - media-last
       examples: [media-first (default), media-last]
     media:
+      $ref: json-schema-definitions://experience_builder.module/image
       title: Media Image
       description: Media image for the hero.
       type: object
       examples:
         - src: 'thumbnail.png'
           alt: 'A picture of the sea shore.'
-          width: 1536
-          height: 915
     heading_text:
       type: string
       title: Heading Text
