@@ -16,17 +16,17 @@ props:
       title: Link Title
       description: Tooltip text shown on hover.
       examples:
-        - 'Go to the details page'
+        - 'This is link title'
     style:
       type: string
       title: Link Style
       description: Choose the link style.
       enum:
         - default
-        - outlined-light
-        - outlined-dark
+        - button-light
+        - button-dark
       examples:
-        - 'outlined-dark'
+        - 'default'
     icon:
       type: string
       title: Icon Class
@@ -38,4 +38,4 @@ props:
       title: URL
       description: The destination URL of the link.
       examples:
-        - '/details'
+        - '#'
