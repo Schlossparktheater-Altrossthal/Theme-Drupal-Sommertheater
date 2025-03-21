@@ -4,32 +4,29 @@
 @theme {
     /* Base colors or neutrals meant for default text and backgrounds. */
     /* Base background and text color definitions */
-    --color-base-dark: hsl(0, 0%, 15%);
+    --color-base-dark: hsl(0, 0%, 4%);
     --color-base-light: hsl(0, 0%, 98%);
 
     /* Gray color definitions */
     /* Hue should stay within 210 +/- 5 */
     /* Saturation should be 5% to 15% for grays */
-    --color-gray-darkest: var(--color-gray-700);
-    --color-gray-dark: var(--color-gray-600);
-    --color-gray: var(--color-gray-500);
-    --color-gray-light: var(--color-gray-400);
-    --color-gray-lightest: var(--color-gray-300);
+    --color-gray-darkest: 	hsl(0, 0%, 4%);
+    --color-gray-darker: hsl(0, 0%, 15%);
+    --color-gray-dark: hsl(0, 0%, 32%);
+    --color-gray-light: hsl(0, 0%, 64%);
+    --color-gray-lighter: 	hsl(0, 0%, 90%);
+    --color-gray-lightest: hsl(0, 0%, 98%);
 
     /* Below are the designed branding colors. These are defined per project. */
     /* Primary branding color definitions */
-    --color-brand-darkest: hsl(from var(--color-brand) h s calc(l - 30)); /* -15 from dark */
-    --color-brand-dark: hsl(from var(--color-brand) h s calc(l - 10)); /* -10 from default */
+    --color-brand-dark: hsl(24, 10%, 10%); /* -10 from default */
     --color-brand: hsl(25, 5%, 45%);         /* Default */
-    --color-brand-light: hsl(from var(--color-brand) h s calc(l + 20));   /* +20 from default */
-    --color-brand-lightest: hsl(0, 0%, 90%); /* +10 from light */
+    --color-brand-light: hsl(60, 5%, 96%);   /* +20 from default */
 
     /* Branding accent color definitions */
-    --color-accent-darkest: hsl(from var(--color-accent) h s calc(l - 30)); /* -15 from dark */
-    --color-accent-dark: hsl(from var(--color-accent) h s calc(l - 10));    /* -10 from default */
+    --color-accent-dark: hsl(229, 84%, 5%);    /* -10 from default */
     --color-accent: hsl(217, 33%, 17%);         /* Default */
-    --color-accent-light: hsl(from var(--color-accent) h s calc(l + 20));   /* +20 from default */
-    --color-accent-lightest: hsl(from var(--color-accent) h s calc(l + 30)); /* +10 from light */
+    --color-accent-light: hsl(210, 40%, 96%);   /* +20 from default */
 
     /* Below are the 4 feedback colors. These can be defined per project but should stay within the general color areas defined. */
     /* Info Color Guidelines:
