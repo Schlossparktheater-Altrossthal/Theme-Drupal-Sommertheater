@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Icon Tile
+description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
+group: Testing
+props:
+  type: object
+  required:
+    - background
+    - text
+  properties:
+    background:
+      title: Background color
+      type: string
+      enum:
+        - light
+        - medium
+        - dark
+      default: medium
+      examples:
+        - medium
+    text:
+      title: Text
+      type: string
+      examples:
+        - brand
+    icon:
+      title: Material Symbols icon slug
+      type: string
+      examples:
+        - deblur
+    url:
+      title: Link URL
+      type: string
+      examples:
+        - https://drupal.org

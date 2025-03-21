@@ -10,12 +10,12 @@
     /* Gray color definitions */
     /* Hue should stay within 210 +/- 5 */
     /* Saturation should be 5% to 15% for grays */
-    --color-gray-darkest: 	hsl(0, 0%, 4%);
-    --color-gray-darker: hsl(0, 0%, 15%);
-    --color-gray-dark: hsl(0, 0%, 32%);
-    --color-gray-light: hsl(0, 0%, 64%);
-    --color-gray-lighter: 	hsl(0, 0%, 90%);
-    --color-gray-lightest: hsl(0, 0%, 98%);
+    --color-gray-lightest: hsl(0, 0%, 98%); /* "Lightest" */
+    --color-gray-lighter: 	hsl(0, 0%, 90%); /* "Light" */
+    --color-gray-light: hsl(0, 0%, 64%);    /* "Light Grey" */
+    --color-gray-dark: hsl(0, 0%, 32%);     /* "Grey" */
+    --color-gray-darker: hsl(0, 0%, 15%);   /* "Dark" */
+    --color-gray-darkest: 	hsl(0, 0%, 4%);  /* "Darkest" */
 
     /* Below are the designed branding colors. These are defined per project. */
     /* Primary branding color definitions */
