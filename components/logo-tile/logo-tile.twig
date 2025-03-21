@@ -1,4 +1,4 @@
-<div class="logo-tile {{ background == 'dark' ? 'bg-base-dark' }} aspect-square">
+<div class="logo-tile {{ background|default('dark') == 'light' ? 'bg-base-light' : 'bg-base-dark' }} aspect-square">
   <div class="p-[10%] h-[100%] flex justify-center items-center">
     <img src="{{ image.src }}" alt="{{ image.alt }}">
   </div>

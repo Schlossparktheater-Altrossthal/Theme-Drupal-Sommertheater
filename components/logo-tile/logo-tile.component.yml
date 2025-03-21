@@ -13,7 +13,7 @@ props:
       enum:
         - light
         - dark
-      default: light
+      default: dark
       examples:
         - dark
     image:
