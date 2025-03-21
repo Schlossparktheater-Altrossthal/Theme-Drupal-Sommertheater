@@ -1,9 +1,11 @@
 @reference '../../src/main.css';
-
-.outlined {
-  @apply inline-flex text-xl border border-solid border-base-light text-base-light px-5 py-2;
+.link {
+  @apply inline-flex text-xl border border-solid text-inherit hover:underline;
+}
+.link--outlined {
+  @apply border-base-light px-5 py-2;
 }
 
-.outlined-dark {
-  @apply border-base-dark text-base-dark;
+.link--outlined-dark {
+  @apply border-base-dark px-5 py-2;
 }

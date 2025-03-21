@@ -22,7 +22,7 @@ props:
       title: Link Style
       description: Choose the link style.
       enum:
-        - primary
+        - default
         - outlined
         - outlined-dark
       examples:
