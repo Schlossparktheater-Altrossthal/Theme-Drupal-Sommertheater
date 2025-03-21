@@ -1,13 +1,26 @@
 @reference '../../src/main.css';
+
+#storybook-root:has(.link) {
+  @apply p-5;
+}
+
+#storybook-root:has(.link.link--button-light) {
+  @apply bg-gray-lighter;
+}
+
 .link {
-  @apply text-inherit hover:underline;
+  @apply inline-block text-gray-dark font-extralight uppercase underline decoration-1 underline-offset-4 hover:text-gray-darkest;
 }
 
-.link--outlined-light,
-.link--outlined-dark {
-  @apply border border-solid px-5 py-2;
+.link--button-light,
+.link--button-dark {
+  @apply border px-5 pt-[9px] pb-[6px] no-underline hover:no-underline;
 }
 
-.link--outlined-light {
-  @apply border-base-light text-base-light;
+.link--button-light {
+  @apply border-white text-white hover:bg-gray-dark hover:border-gray-dark;
+}
+
+.link--button-dark {
+  @apply border-gray-dark text-gray-dark hover:bg-gray-dark hover:text-white;
 }
