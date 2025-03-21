@@ -5,19 +5,8 @@ import TwingEnvironment from './.storybook/twingEnvironment.js';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
 import storybookGenerator from './vite-plugin-storybook-generator';
+import sdcCssWatcher from './vite-plugin-sdc-storybook-css-watcher.js';
 import tailwindcss from '@tailwindcss/vite';
-import fs from 'fs';
-import { glob } from 'glob';
-
-// Function to generate the components CSS file
-function generateComponentsCSS() {
-  const cssFiles = glob.sync('components/**/*.css');
-  const imports = cssFiles.map(file => `@import '../../../${file}';`).join('\n');
-  fs.writeFileSync('./src/stories/sdc-stories/components.css', imports);
-}
-
-// Generate the CSS file before Vite starts
-generateComponentsCSS();
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -32,13 +21,13 @@ export default defineConfig({
       includeJs: true,
       storiesDir: './src/stories/sdc-stories'
     }),
+    sdcCssWatcher(),
   ],
   build: {
     outDir: './build',
     rollupOptions: {
       input: {
         main: './src/main.css',
-        components: './src/components.css'
       },
       output: {
         assetFileNames: (assetInfo) => {
