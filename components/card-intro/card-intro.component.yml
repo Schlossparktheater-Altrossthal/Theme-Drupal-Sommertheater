@@ -1,0 +1,47 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Card intro
+description: Hero with side by side slots for media and content.
+group: Layouts/Card intro
+props:
+  type: object
+  properties:
+    heading_text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Our work is mysterious and important'
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 2
+    image2_caption:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Hic illo est voluptatem quaerat totam'
+    image1:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'walking.png'
+          alt: 'A picture of the sea shore.'
+    image2:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'mermaid.png'
+          alt: 'A picture of the sea shore.'
+    layout:
+      type: string
+      title: Layout
+      description: Set hero layout
+      enum: 
+        - xxx
+        - yyy
+      examples: [media-first (default), media-last]
