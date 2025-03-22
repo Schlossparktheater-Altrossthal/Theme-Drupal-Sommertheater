@@ -1,0 +1,64 @@
+
+<main class="page bg-base-light">
+
+  {# hero #}
+  {{ include('../hero_1/hero_1.twig',
+    {
+      heading_text: 'We are a brand acceleration agency',
+      text: '',
+      media: {
+        src: 'vaportrails.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+      background: 'image',
+    }
+  ) }}
+
+  {# intro #}
+  {{ include('../card-intro/card-intro.twig',
+    {
+      heading_text: 'Our work is mysterious and important',
+      level: 2,
+      image2_caption: 'Lorem ipsum dolor sit amet donec dis parturient',
+      image1: {
+        src: 'walking.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+      image2: {
+        src: 'mermaid.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+    }
+  ) }}
+
+  {# logos #}
+
+  {# icon tiles #}
+
+  {# projects #}
+
+  {# blockquotes #}
+
+  {# cta #}
+  {{ include('../cta/cta.twig',
+    {
+      heading_text: 'Lorem ipsum dolor sit amet',
+      level: 2,
+      text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+      media: {
+        src: 'architecture.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+      background: 'image',
+      cta_link_1: {
+        url: '#',
+        text: 'Click here',
+        style: 'button-outline-light'
+      },
+      cta_link_2: '',
+    }
+  ) }}
+
+  {# 2 cards #}
+
+</main>
