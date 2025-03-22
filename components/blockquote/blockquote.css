@@ -1,0 +1,25 @@
+@reference '../../src/main.css';
+
+#storybook-root:has(>.blockquote) {
+  @apply max-w-2xl;
+}
+
+.sb-show-main:has(#storybook-root>.blockquote.bg-accent) {
+  @apply bg-accent;
+}
+
+.blockquote {
+  @apply pb-4 border-b-1;
+}
+
+.blockquote p {
+  @apply font-extralight leading-none text-3xl lg:text-4xl leading-tight text-inherit;
+}
+
+.blockquote footer {
+  @apply font-extralight leading-tight not-italic text-xl lg:text-2xl;
+}
+
+.blockquote footer cite {
+  @apply not-italic;
+}

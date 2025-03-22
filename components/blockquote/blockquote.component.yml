@@ -1,0 +1,36 @@
+name: Blockquote
+group: Base
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: Blockquote text
+      description: The blockquote text.
+      examples:
+        - 'To confine our attention to terrestrial matters would be to limit the human spirit.'
+    cite_name:
+      type: string
+      title: Cite name
+      description: The cite name.
+      examples:
+        - 'Stephen Hawking'
+    cite_text:
+      type: string
+      title: Cite text
+      description: The cite text.
+      examples:
+        - 'A big deal scientist'
+    cite_url:
+      type: string
+      title: Cite URL
+      description: The cite url.
+      examples:
+        - '#'
+    color:
+      type: string
+      title: Heading Styles
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
