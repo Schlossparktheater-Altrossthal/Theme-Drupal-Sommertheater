@@ -1,0 +1,23 @@
+{% set color_classes = {
+  light: 'bg-brand-light text-accent',
+  medium: 'bg-brand text-gray-lighter',
+  dark: 'bg-brand-dark bg-brand-light',
+} %}
+
+<div class="icon-tile {{ color_classes[background|default('medium')] }} aspect-square p-6 grid grid-rows-2 grid-columns-1 relative text-[4rem] uppercase font-thin">
+  <div class="w-full h-full flex justify-end items-start">
+    {% if icon %}
+      <span class="material-symbols-outlined text-[7.5rem]! font-thin!">{{ icon }}</span>
+    {% endif %}
+  </div>
+
+  <div class="w-full h-full flex justify-start items-end">
+    {% if url is not empty %}
+      <a href="{{ url }}" class="before:absolute before:content-[''] before:top-0 before:left-0 before:w-full before:h-full">
+        {{ text }}
+      </a>
+    {% else %}
+      {{ text }}
+    {% endif %}
+  </div>
+</div>
