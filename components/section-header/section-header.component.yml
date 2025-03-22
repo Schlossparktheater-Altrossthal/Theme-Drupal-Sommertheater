@@ -5,6 +5,29 @@ group: Layouts/Section Header
 props:
   type: object
   properties:
+    heading_text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Section Header'
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 2
+    text:
+      type: string
+      title: Link Text
+      description: The text inside the link.
+      examples:
+        - more about us
+    url:
+      type: string
+      title: URL
+      description: The destination URL of the link.
+      examples:
+        - '#'
     layout:
       type: string
       title: Layout

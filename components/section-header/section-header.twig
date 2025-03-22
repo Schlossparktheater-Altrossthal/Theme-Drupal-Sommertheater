@@ -1,0 +1,18 @@
+{% set classes = classes|default([])|merge([
+    'section-header',
+    'w-full gap-6',
+    'flex justify-between items-baseline border',
+])|filter(v => v is not empty) %}
+
+<div class="{{ classes|join(' ') }}">
+  <div class="">
+    {% block heading_slot %}
+      {{ include('../heading/heading.twig', { url: false }) }}
+    {% endblock %}
+  </div>
+  <div class="">
+    {% block content_slot %}
+      {{ include('../link/link.twig') }}
+    {% endblock %}
+  </div>
+</div>
