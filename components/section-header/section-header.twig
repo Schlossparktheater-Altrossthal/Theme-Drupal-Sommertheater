@@ -1,7 +1,7 @@
 {% set classes = classes|default([])|merge([
     'section-header',
     'w-full gap-6',
-    'flex justify-between items-baseline border',
+    'flex justify-between items-baseline',
 ])|filter(v => v is not empty) %}
 
 <div class="{{ classes|join(' ') }}">

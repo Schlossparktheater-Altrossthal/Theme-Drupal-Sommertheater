@@ -1,5 +1,5 @@
 
-<main class="page bg-base-light">
+<main class="page max-w-screen-xl mx-auto bg-base-light">
 
   {# hero #}
   {{ include('../hero_1/hero_1.twig',
@@ -15,6 +15,7 @@
   ) }}
 
   {# intro #}
+  <section class="px-6 lg:px-8 xl:px-16">
   {{ include('../card-intro/card-intro.twig',
     {
       heading_text: 'Our work is mysterious and important',
@@ -30,12 +31,96 @@
       },
     }
   ) }}
+  </section>
 
   {# logos #}
 
   {# icon tiles #}
-
-  {# projects #}
+  <section class="flex flex-col gap-6 md:gap-0 px-6 lg:px-8 xl:px-16 py-6 lg:py-8 xl:py-16 lg:py-12 bg-accent text-base-light">
+    {# projects #}
+    {{ include('../card-project/card-project.twig',
+      {
+        heading_text: 'We are a brand acceleration agency',
+        level: 3,
+        text: '',
+        media: {
+          src: 'coffee.png',
+          alt: 'A bold and colorful hero banner.',
+        },
+        background: 'dark',
+        badge_1: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+        badge_2: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+      }
+    ) }}
+    {{ include('../card-project/card-project.twig',
+      {
+        heading_text: 'We are a brand acceleration agency',
+        level: 3,
+        text: '',
+        media: {
+          src: 'stillhouse.png',
+          alt: 'A bold and colorful hero banner.',
+        },
+        background: 'dark',
+        layout: 'media-last',
+        badge_1: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+        badge_2: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+      }
+    ) }}
+   {{ include('../card-project/card-project.twig',
+      {
+        heading_text: 'We are a brand acceleration agency',
+        level: 3,
+        text: '',
+        media: {
+          src: 'coffee.png',
+          alt: 'A bold and colorful hero banner.',
+        },
+        background: 'dark',
+        badge_1: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+        badge_2: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+      }
+    ) }}
+    {{ include('../card-project/card-project.twig',
+      {
+        heading_text: 'We are a brand acceleration agency',
+        level: 3,
+        text: '',
+        media: {
+          src: 'stillhouse.png',
+          alt: 'A bold and colorful hero banner.',
+        },
+        background: 'dark',
+        layout: 'media-last',
+        badge_1: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+        badge_2: {
+          url: '#',
+          label: 'Visual Identity'
+        },
+      }
+    ) }}
+  </section>
 
   {# blockquotes #}
 
