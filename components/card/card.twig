@@ -11,20 +11,34 @@
   </div>
   <div class="card--content flex flex-col gap-4 items-baseline">
     {# This should be a loop #}
-    <div class="flex items-center gap-2">
-      {% include '@mercury/components/badge/badge.twig' with {
-        link: {
-          url: '#',
-          text: 'Features',
-        }
-      } %}
-      {% include '@mercury/components/badge/badge.twig' with {
-        link: {
-          url: '#',
-          text: 'Case Study',
-        }
-      } %}
-    </div>
+    {% if (badge_1.url and badge_1.label) or (badge_2.url and badge_2.label) %}
+    <ul class="list-none flex items-center gap-2">
+      
+      {% if badge_1.url and badge_1.label %}
+        <li>
+          {{ include('../badge/badge.twig', 
+            {
+              link: {
+                url: badge_1.url,
+                label: badge_1.label,
+              }
+            }) }}
+        </li>
+      {% endif %}
+
+      {% if badge_2.url and badge_2.label %}
+        <li>
+          {{ include('../badge/badge.twig', 
+            {
+              link: {
+                url: badge_2.url,
+                label: badge_2.label,
+              }
+            }) }}
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
     {{ include('../heading/heading.twig') }}
     <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
   </div>

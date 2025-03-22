@@ -1,0 +1,17 @@
+@reference '../../src/main.css';
+
+/* .columns {
+  @apply bg-brand-light;
+} */
+
+.columns--2 {
+  @apply md:grid-cols-2;
+}
+
+.columns--3 {
+  @apply md:grid-cols-3;
+}
+
+.columns--4 {
+  @apply md:grid-cols-4;
+}
