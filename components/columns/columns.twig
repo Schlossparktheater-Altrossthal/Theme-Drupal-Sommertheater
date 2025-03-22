@@ -1,0 +1,81 @@
+{% set classes = classes|default([])|merge([
+    'columns',
+    'columns--' ~ columns,
+    'w-full gap-4',
+    'grid',
+])|filter(v => v is not empty) %}
+
+<section class="{{ classes|join(' ') }}">
+
+  {% block columns %}
+
+
+    {% set cards = [
+      
+        {
+          heading_text: 'Lorem ipsum dolor sit amet',
+          text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+          image: 'thumbnail.png',
+          orientation: 'stacked',
+          badge_1: {
+            url: '#',
+            label: 'test',
+          },
+        },
+        {
+          heading_text: 'Lorem ipsum dolor sit amet tellus senectus',
+          text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+          image: 'thumbnail.png',
+          orientation: 'stacked',
+          badge_1: {
+            url: '#',
+            label: 'test',
+          },
+          badge_2: {
+            url: '#',
+            label: 'test',
+          },
+        },
+        {
+          heading_text: 'Lorem ipsum dolor sit amet tempor',
+          text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+          image: 'thumbnail.png',
+          orientation: 'stacked',
+          badge_1: {
+            url: '#',
+            label: 'test',
+          },
+          badge_2: {
+            url: '#',
+            label: 'test',
+          },
+        },
+        {
+          heading_text: 'Lorem ipsum dolor sit amet arcu bibendum',
+          text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+          image: 'thumbnail.png',
+          orientation: 'stacked',
+          badge_1: {
+            url: '#',
+            label: 'test',
+          },
+          badge_2: {
+            url: '#',
+            label: 'test',
+          },
+        },
+
+      ] %}
+
+    {% for i in 0..columns-1 %}
+
+      {{ include('../card/card.twig',
+        cards[i]
+      ) }}
+
+    {% endfor %}
+
+  {% endblock %}
+
+</section>
+

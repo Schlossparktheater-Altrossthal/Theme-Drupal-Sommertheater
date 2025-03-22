@@ -35,6 +35,34 @@ props:
       # @todo Add examples here.
       examples: 
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+    badge_1: 
+      type: string
+      title: Badge text 1
+      description: A category badge
+      # @todo Add examples here.
+      examples:
+        - url: '#'
+          label: 'Amazing'
+    badge_2: 
+      type: string
+      title: Badge text 2
+      description: A category badge
+      # @todo Add examples here.
+      examples:
+        - url: '#'
+          label: 'New Release'
+
+    badge_links:
+      type: array
+      title: Badge links
+      description: A list of badges
+      examples:
+        - url: '#'
+          label: 'Bob'
+        - url: '#'
+          label: 'Fred'
+
+
     orientation:
       type: string
       title: Orientation

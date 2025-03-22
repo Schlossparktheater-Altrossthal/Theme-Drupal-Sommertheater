@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(.card) {
+#storybook-root:has(>.card) {
   @apply max-w-md;
 }
 #storybook-root:has(.card.is-landscape) {
@@ -27,6 +27,3 @@
 .card--content .heading {
   @apply mt-2;
 }
-/* .card .card-text {
-  @apply text-xl;
-} */

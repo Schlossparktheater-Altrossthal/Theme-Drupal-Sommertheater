@@ -5,7 +5,7 @@
 
 <section class="{{ classes|join(' ') }}">
   <h4>{{ heading }}</h4>
-  {% for card in cards %}
+  {# {% for card in cards %}
     {% include '@mercury/components/card/card.twig' with {
       heading: card.heading,
       text: card.text,
@@ -13,6 +13,38 @@
       orientation: card.orientation,
     } %}
 
-  {% endfor %}
+  {% endfor %} #}
 
+  {% block cards %}
+    {{ include('../card/card.twig',
+      {
+        heading: 'test',
+        text: card.text,
+        media_image: card.media_image,
+        orientation: card.orientation,
+      }
+    
+    ) }}
+
+        {{ include('../card/card.twig',
+      {
+        heading: 'test2',
+        text: card.text,
+        media_image: card.media_image,
+        orientation: card.orientation,
+      }
+    
+    ) }}
+
+        {{ include('../card/card.twig',
+      {
+        heading: 'test3',
+        text: card.text,
+        media_image: card.media_image,
+        orientation: card.orientation,
+      }
+    
+    ) }}
+
+  {% endblock %}
 </section>
