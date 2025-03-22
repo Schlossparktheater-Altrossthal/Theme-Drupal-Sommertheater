@@ -1,0 +1,71 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Project card
+description: Basic card with image, title, teaser, tags
+group: Components
+props:
+  type: object
+  properties:
+    heading_text:
+      type: string
+      title: Heading Text
+      examples: 
+        - 'Stillhouse Spirits Co.'
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 3
+    url:
+      type: boolean
+      title: Add optional url
+      examples: 
+        - true
+      default: true
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the card.
+      type: object
+      examples:
+        - src: 'stillhouse.png'
+          alt: 'A picture of the sea shore.'
+    text:
+      type: string
+      title: Text
+      description: Teaser text
+      # @todo Add examples here.
+      examples: 
+        - ''
+    badge_1: 
+      type: string
+      title: Badge text 1
+      description: A category badge
+      # @todo Add examples here.
+      examples:
+        - url: '#'
+          label: 'Visual Identity'
+    badge_2: 
+      type: string
+      title: Badge text 2
+      description: A category badge
+      # @todo Add examples here.
+      examples:
+        - url: '#'
+          label: 'Packaging'
+    background:
+      type: string
+      title: Background color
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
+    layout:
+      type: string
+      title: Layout
+      description: Set hero layout
+      enum: 
+        - media-first (default)
+        - media-last
+      examples: [media-first (default), media-last]
+
