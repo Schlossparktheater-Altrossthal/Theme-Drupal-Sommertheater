@@ -1,10 +1,11 @@
 @reference '../../src/main.css';
 
-#storybook-root:has(.link) {
+#storybook-root:has(>.link) {
   @apply p-5;
 }
 
-#storybook-root:has(.link.link--button-light) {
+#storybook-root:has(>.link.link--button-outline-light),
+#storybook-root:has(>.link.link--button-light) {
   @apply bg-gray-lighter;
 }
 
@@ -13,14 +14,24 @@
 }
 
 .link--button-light,
-.link--button-dark {
-  @apply border px-5 pt-[9px] pb-[6px] no-underline hover:no-underline;
+.link--button-outline-light,
+.link--button-dark,
+.link--button-outline-dark {
+  @apply border px-5 pt-[9px] pb-[6px] no-underline hover:no-underline normal-case;
 }
 
 .link--button-light {
-  @apply border-white text-white hover:bg-gray-dark hover:border-gray-dark;
+  @apply border-gray-lightest bg-gray-lightest text-gray-dark hover:bg-gray-dark hover:border-gray-lightest hover:text-gray-lightest;
+}
+
+.link--button-outline-light {
+  @apply border-gray-lightest text-gray-lightest hover:bg-gray-dark hover:bg-gray-lightest hover:text-gray-dark;
+}
+
+.link--button-outline-dark {
+  @apply border-gray-dark text-gray-dark hover:bg-gray-dark hover:text-white;
 }
 
 .link--button-dark {
-  @apply border-gray-dark text-gray-dark hover:bg-gray-dark hover:text-white;
+  @apply border-gray-dark bg-gray-dark text-gray-lightest hover:bg-gray-lightest hover:text-gray-dark;
 }

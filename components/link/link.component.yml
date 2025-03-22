@@ -23,6 +23,8 @@ props:
       description: Choose the link style.
       enum:
         - default
+        - button-outline-light
+        - button-outline-dark
         - button-light
         - button-dark
       examples:
