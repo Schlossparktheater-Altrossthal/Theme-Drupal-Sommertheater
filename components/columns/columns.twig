@@ -1,7 +1,7 @@
 {% set classes = classes|default([])|merge([
     'columns',
     'columns--' ~ columns,
-    'w-full gap-4',
+    'w-full gap-6',
     'grid',
 ])|filter(v => v is not empty) %}
 
@@ -15,11 +15,11 @@
         {
           heading_text: 'Lorem ipsum dolor sit amet',
           text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
-          image: 'thumbnail.png',
+          image: 'artist.png',
           orientation: 'stacked',
           badge_1: {
             url: '#',
-            label: 'test',
+            label: 'Featured',
           },
         },
         {
@@ -29,11 +29,11 @@
           orientation: 'stacked',
           badge_1: {
             url: '#',
-            label: 'test',
+            label: 'Architecture',
           },
           badge_2: {
             url: '#',
-            label: 'test',
+            label: 'Modern',
           },
         },
         {
@@ -43,11 +43,11 @@
           orientation: 'stacked',
           badge_1: {
             url: '#',
-            label: 'test',
+            label: 'Special',
           },
           badge_2: {
             url: '#',
-            label: 'test',
+            label: 'New release',
           },
         },
         {
@@ -57,11 +57,11 @@
           orientation: 'stacked',
           badge_1: {
             url: '#',
-            label: 'test',
+            label: 'Modern',
           },
           badge_2: {
             url: '#',
-            label: 'test',
+            label: 'New release',
           },
         },
 

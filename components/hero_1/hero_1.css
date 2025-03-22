@@ -1,5 +1,4 @@
 @reference '../../src/main.css';
-@reference '../heading/heading.css';
 
 .sb-main-padded:has(.hero-overlay) {
   @apply h-screen p-0;

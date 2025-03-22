@@ -43,7 +43,9 @@
     }) }}
     <p class="font-extralight text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
     {# Will be a slot in XB #}
+    {% if cta_link_1.url is not empty or cta_link_2.url is not empty %}
     <ul class="flex gap-4 list-none {{ list_extras }}">
+      {% if cta_link_1.url is not empty %}
       <li>
         {{ include(
           '../link/link.twig', {
@@ -53,6 +55,8 @@
           } 
           ) }}
       </li>
+      {% endif %}
+      {% if cta_link_2.url is not empty %}
       <li>
         {{ include(
           '../link/link.twig', {
@@ -62,6 +66,8 @@
           } 
           ) }}
       </li>
+      {% endif %}
     </ul>
+    {% endif %}
   </div>
 </section>
