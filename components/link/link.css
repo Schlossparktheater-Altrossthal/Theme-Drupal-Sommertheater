@@ -6,7 +6,7 @@
 
 #storybook-root:has(>.link.link--button-outline-light),
 #storybook-root:has(>.link.link--button-light) {
-  @apply bg-gray-lighter;
+  @apply bg-gray-light;
 }
 
 .link {
