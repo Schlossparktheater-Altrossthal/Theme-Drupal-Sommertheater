@@ -8,34 +8,34 @@ props:
     heading_text:
       type: string
       title: Heading Text
-      examples: 
+      examples:
         - 'This is my title eu torquent suscipit'
     level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
-      examples: 
+      examples:
         - 3
     url:
       type: boolean
       title: Add optional url
-      examples: 
+      examples:
         - true
       default: true
     image:
       title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
       description: Media image for the hero.
       type: string
-      examples: 
-        - 'artist.png'
+      examples:
+        - 'artist.jpg'
     text:
       type: string
       title: Text
       description: Teaser text
       # @todo Add examples here.
-      examples: 
+      examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
-    badge_1: 
+    badge_1:
       type: string
       title: Badge text 1
       description: A category badge
@@ -43,7 +43,7 @@ props:
       examples:
         - url: '#'
           label: 'Amazing'
-    badge_2: 
+    badge_2:
       type: string
       title: Badge text 2
       description: A category badge

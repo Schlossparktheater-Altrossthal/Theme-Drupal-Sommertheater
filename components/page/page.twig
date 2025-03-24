@@ -1,5 +1,5 @@
 
-<main class="page max-w-screen-xl mx-auto bg-base-light">
+<main class="page max-w-screen-xl mx-auto bg-base-light p-4">
 
   {# hero #}
   {{ include('../hero_1/hero_1.twig',
@@ -35,7 +35,43 @@
 
   {# logos #}
 
+  <section class="my-12">
+    {{ include(
+      '../horizontal-scroller/horizontal-scroller.twig'
+    )}}
+  </section>
+
   {# icon tiles #}
+  <section class="gap-4 flex flex-col md:grid grid-cols-3 my-12">
+    {{ include(
+      '../icon-tile/icon-tile.twig',
+      {
+        text: 'Eiusmod',
+        icon: 'mail',
+        url: 'https://example.com',
+      }
+    ) }}
+
+    {{ include(
+      '../icon-tile/icon-tile.twig',
+      {
+        text: 'Incididunt',
+        icon: 'globe',
+        url: 'https://example.com',
+      }
+    ) }}
+
+    {{ include(
+      '../icon-tile/icon-tile.twig',
+      {
+        text: 'Tempor',
+        icon: 'deblur',
+        url: 'https://example.com',
+      }
+    ) }}
+  </section>
+
+
   <section class="flex flex-col gap-6 md:gap-0 px-6 lg:px-8 xl:px-16 py-6 lg:py-8 xl:py-16 lg:py-12 bg-accent text-base-light">
     {# projects #}
     {{ include('../card-project/card-project.twig',
@@ -79,50 +115,63 @@
         },
       }
     ) }}
-   {{ include('../card-project/card-project.twig',
-      {
-        heading_text: 'We are a brand acceleration agency',
-        level: 3,
-        text: '',
-        media: {
-          src: 'coffee.png',
-          alt: 'A bold and colorful hero banner.',
-        },
-        background: 'dark',
-        badge_1: {
-          url: '#',
-          label: 'Visual Identity'
-        },
-        badge_2: {
-          url: '#',
-          label: 'Visual Identity'
-        },
-      }
-    ) }}
-    {{ include('../card-project/card-project.twig',
-      {
-        heading_text: 'We are a brand acceleration agency',
-        level: 3,
-        text: '',
-        media: {
-          src: 'stillhouse.png',
-          alt: 'A bold and colorful hero banner.',
-        },
-        background: 'dark',
-        layout: 'media-last',
-        badge_1: {
-          url: '#',
-          label: 'Visual Identity'
-        },
-        badge_2: {
-          url: '#',
-          label: 'Visual Identity'
-        },
-      }
-    ) }}
+  {{ include('../card-project/card-project.twig',
+    {
+      heading_text: 'We are a brand acceleration agency',
+      level: 3,
+      text: '',
+      media: {
+        src: 'coffee.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+      background: 'dark',
+      badge_1: {
+        url: '#',
+        label: 'Visual Identity'
+      },
+      badge_2: {
+        url: '#',
+        label: 'Visual Identity'
+      },
+    }
+  ) }}
+  {{ include('../card-project/card-project.twig',
+    {
+      heading_text: 'We are a brand acceleration agency',
+      level: 3,
+      text: '',
+      media: {
+        src: 'stillhouse.png',
+        alt: 'A bold and colorful hero banner.',
+      },
+      background: 'dark',
+      layout: 'media-last',
+      badge_1: {
+        url: '#',
+        label: 'Visual Identity'
+      },
+      badge_2: {
+        url: '#',
+        label: 'Visual Identity'
+      },
+    }
+  ) }}
   </section>
 
   {# blockquotes #}
+  <section class="container my-12 md:grid grid-cols-4">
+    <div class="col-start-2 col-end-4">
+      {{ include(
+        '../blockquote/blockquote.twig',
+        {
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.',
+          cite_name: 'Beatae Vitae Dicta',
+          cite_text: 'Sunt explicabo, nemo enim ipsam voluptatem',
+          cite_url: 'https://example.com'
+        }
+      ) }}
+    </div>
+  </section>
 
   {# cta #}
   {{ include('../cta/cta.twig',
@@ -145,5 +194,50 @@
   ) }}
 
   {# 2 cards #}
+  <section class="gap-4 flex flex-col md:grid grid-cols-2 my-12 pb-12">
+    {{ include(
+      '../card/card.twig',
+      {
+        heading_text:  'Quia Voluptas Sit Aspernatur Aut Odit',
+        level: 3,
+        url: 'https://example.com',
+        image: 'artist.jpg',
+        text: 'Aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
+        badge_1: {
+          url: 'https://example.com',
+          label: 'Neque',
+        },
+        badge_2: {
+          url: 'https://example.com',
+          label: 'Porro',
+        },
+        orientation: 'stacked',
+      }
+    )}}
+
+        {{ include(
+      '../card/card.twig',
+      {
+        heading_text:  'At Vero Eos et Accusamus',
+        level: 3,
+        url: 'https://example.com',
+        image: 'room.jpg',
+        text: 'Et iusto odio dignissimos ducimus qui blanditiis, praesentium voluptatum deleniti.',
+        badge_1: {
+          url: 'https://example.com',
+          label: 'Atque',
+        },
+        badge_2: {
+          url: 'https://example.com',
+          label: 'Corrupti',
+        },
+        badge_links: [
+
+
+        ],
+        orientation: 'stacked',
+      }
+    )}}
+  </section>
 
 </main>

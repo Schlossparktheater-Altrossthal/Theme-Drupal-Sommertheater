@@ -1,10 +1,10 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(>.card) {
+#storybook-root:has(> .card) {
   @apply max-w-md;
 }
-#storybook-root:has(.card.is-landscape) {
+#storybook-root:has(> .card.is-landscape) {
   @apply max-w-2xl;
 }
 
