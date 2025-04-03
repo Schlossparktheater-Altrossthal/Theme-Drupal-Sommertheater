@@ -1,8 +1,8 @@
-{% set classes = [
-  'list-text text-dark text-base md:text-xl list-disc',
-] %}
+{% set classes = 
+  'list-text text-dark text-base md:text-xl list-disc'
+ %}
 
-<ul class="{{ classes|join(' ') }}">
+<ul class="{{ classes }}">
   {% for item in items %}
     <li>
       {{ item.text }}
