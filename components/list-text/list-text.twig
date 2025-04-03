@@ -1,0 +1,11 @@
+{% set classes = [
+  'list-text text-dark text-base md:text-xl list-disc',
+] %}
+
+<ul class="{{ classes|join(' ') }}">
+  {% for item in items %}
+    <li>
+      {{ item.text }}
+    </li>
+  {% endfor %}
+</ul>
