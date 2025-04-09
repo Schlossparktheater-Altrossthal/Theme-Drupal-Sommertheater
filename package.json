@@ -15,7 +15,7 @@
     "lint:report": "stylelint src/**/*.css --config stylelint-report.config.mjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --output-dir .vercel/output/static"
+    "build-storybook": "storybook build --output-dir .vercel/output/storybook-static"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

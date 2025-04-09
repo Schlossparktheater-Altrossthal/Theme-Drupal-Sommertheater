@@ -3,8 +3,5 @@
     "installCommand": "pnpm install",
     "buildCommand": "pnpm run build && pnpm run build-storybook",
     "framework": "vite",
-    "outputDirectory": ".vercel/output/static",
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
-    ]
+    "outputDirectory": ".vercel/output"
 }
