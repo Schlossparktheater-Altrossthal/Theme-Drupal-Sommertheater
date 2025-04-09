@@ -7,7 +7,7 @@ const config = {
   ],
   staticDirs: [
     "../public",
-    "../public2"
+    "../storybook-static",
   ],
   addons: [
     "@storybook/addon-a11y",
