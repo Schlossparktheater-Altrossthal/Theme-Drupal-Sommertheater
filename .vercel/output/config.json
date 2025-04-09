@@ -1,7 +1,3 @@
 {
-    "version": 3,
-    "routes": [
-        { "handle": "filesystem" },
-        { "src": "/(.*)", "status": 200, "dest": "/storybook-static/index.html" }
-    ]
+    "version": 3
 }
