@@ -1,7 +1,6 @@
 {
     "version": 3,
-    "routes": [
-        { "handle": "filesystem" },
-        { "src": "/(.*)", "dest": "/storybook-static/index.html" }
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
     ]
 }

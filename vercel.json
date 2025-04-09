@@ -2,5 +2,9 @@
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "installCommand": "pnpm install",
     "buildCommand": "pnpm run build && pnpm run build-storybook",
-    "framework": "vite"
+    "framework": "vite",
+    "outputDirectory": ".vercel/output/static",
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
+    ]
 }
