@@ -40,7 +40,7 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'architecture.png'
+        - src: 'images/architecture.png'
           alt: 'A plane in the sky.'
     text_align:
       type: string

@@ -11,11 +11,11 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'seashore.png'
+        - src: 'images/seashore.png'
           alt: 'A picture of the sea shore.'
-        - src: 'vaportrails.jpg'
+        - src: 'images/vaportrails.jpg'
           alt: 'A bold and colorful hero banner.'
-        - src: 'mermaid.jpg'
+        - src: 'images/mermaid.jpg'
           alt: 'A team of professionals collaborating.'
     heading_text:
       type: string
