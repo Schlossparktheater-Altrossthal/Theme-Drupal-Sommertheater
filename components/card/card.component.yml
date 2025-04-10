@@ -27,7 +27,7 @@ props:
       description: Media image for the hero.
       type: string
       examples:
-        - 'images/artist.jpg'
+        - 'assets/artist.jpg'
     text:
       type: string
       title: Text

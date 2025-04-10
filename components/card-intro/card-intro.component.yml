@@ -27,7 +27,7 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'images/walking.png'
+        - src: 'assets/walking.png'
           alt: 'A picture of the sea shore.'
     image2:
       $ref: json-schema-definitions://experience_builder.module/image
@@ -35,7 +35,7 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'images/mermaid.png'
+        - src: 'assets/mermaid.png'
           alt: 'A picture of the sea shore.'
     layout:
       type: string

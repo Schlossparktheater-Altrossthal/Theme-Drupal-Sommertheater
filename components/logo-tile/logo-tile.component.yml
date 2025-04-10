@@ -21,5 +21,5 @@ props:
       type: object
       title: Image
       examples:
-        - src: 'images/logo.png'
+        - src: 'assets/logo.png'
           alt: 'Placeholder brand logo'
