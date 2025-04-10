@@ -5,6 +5,9 @@ const config = {
     "../src/**/*.mdx", 
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+  staticDirs: [
+    "../public"
+  ],
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-onboarding",
@@ -20,8 +23,9 @@ const config = {
   },
   
   // Configure Vite for Storybook
-  viteFinal: (config) => {
-    console.log('[storybook] Configuring Vite for Storybook');
+  viteFinal: (config, { configType }) => {
+    console.log(`[storybook] Configuring Vite for Storybook (${configType})`);
+  
     return config;
   },
 };

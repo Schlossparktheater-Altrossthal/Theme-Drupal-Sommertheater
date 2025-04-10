@@ -1,23 +1,41 @@
+/**
+ * Maps JSON schema types to Storybook control types
+ */
 const controlTypeMap = {
   array: "object",
   string: "text",
 };
 
-const generateControlType = (property) => {
-  // Handle enum types.
-  if (property.enum) {
-    return {
-      type: "select",
-      options: property.enum,
-    };
-  }
+/**
+ * Strategy for handling different property types
+ */
+const propertyHandlers = {
+  /**
+   * Handle enum properties
+   */
+  enum: (property) => ({
+    type: "select",
+    options: property.enum,
+  }),
 
-  // Handle objects.
-  if (property.type === "object") {
-  }
+  /**
+   * Handle object properties
+   */
+  object: () => ({
+    type: "object",
+  }),
 
-  // Handle array of types (e.g. ['string', null]).
-  if (Array.isArray(property.type)) {
+  /**
+   * Handle array properties
+   */
+  array: () => ({
+    type: "object",
+  }),
+
+  /**
+   * Handle array of types (e.g. ['string', null])
+   */
+  arrayOfTypes: (property) => {
     const nonNullTypes = property.type.filter(
       (type) => type !== null && type !== "null"
     );
@@ -25,61 +43,143 @@ const generateControlType = (property) => {
       return generateControlType({ type: nonNullTypes[0] });
     }
     return { type: "text" };
-  }
+  },
 
-  // Look up mapped control type or use property type directly
-  return {
+  /**
+   * Default handler for other property types
+   */
+  default: (property) => ({
     type: controlTypeMap[property.type] || property.type,
-  };
+  }),
 };
 
-const getArgForObjectProp = (property) => {
+/**
+ * Generate the appropriate control type for a property
+ */
+function generateControlType(property) {
+  // Handle enum types
+  if (property.enum) {
+    return propertyHandlers.enum(property);
+  }
+
+  // Handle objects
+  if (property.type === "object") {
+    return propertyHandlers.object(property);
+  }
+
+  // Handle arrays
+  if (property.type === "array") {
+    return propertyHandlers.array(property);
+  }
+
+  // Handle array of types
+  if (Array.isArray(property.type)) {
+    return propertyHandlers.arrayOfTypes(property);
+  }
+
+  // Default handler
+  return propertyHandlers.default(property);
+}
+
+/**
+ * Strategy for generating default values for different property types
+ */
+const valueGenerators = {
+  /**
+   * Generate default value for image properties
+   */
+  image: (property) => {
+    if (property.examples?.length) {
+      return property.examples[0];
+    }
+    return {
+      src: "",
+      alt: "",
+    };
+  },
+
+  /**
+   * Generate default value for object properties
+   */
+  object: (property) => {
+    const arg = {};
+    for (const childPropertyName in property.properties) {
+      arg[childPropertyName] =
+        property.properties[childPropertyName].examples?.[0] || "";
+    }
+    return arg;
+  },
+
+  /**
+   * Generate default value for array properties
+   */
+  array: (property) => {
+    return property.examples || [];
+  },
+
+  /**
+   * Generate default value for primitive properties
+   */
+  primitive: (property) => {
+    return property.examples && property.examples.length > 0
+      ? property.examples[0]
+      : "";
+  },
+};
+
+/**
+ * Generate default value for a property
+ */
+function generateDefaultValue(property) {
+  // Handle image properties
   if (
     property.$ref ===
     "json-schema-definitions://experience_builder.module/image"
   ) {
-    if (property.examples?.length) {
-      return property.examples[0];
-    } else {
-      return {
-        src: "",
-        alt: "",
-      };
-    }
+    return valueGenerators.image(property);
   }
 
-  const arg = {};
-
-  for (const childPropertyName in property.properties) {
-    arg[childPropertyName] =
-      property.properties[childPropertyName].examples?.[0] || "";
+  // Handle object properties
+  if (property.type === "object") {
+    return valueGenerators.object(property);
   }
 
-  return arg;
-};
+  // Handle array properties
+  if (property.type === "array") {
+    return valueGenerators.array(property);
+  }
 
-const generateArgTypesAndArgs = (parsedMetadata, componentPath = "") => {
-  // Parse metadata if it's a string
+  // Handle primitive properties
+  return valueGenerators.primitive(property);
+}
+
+/**
+ * Generate argTypes and args for a component
+ */
+function generateArgTypesAndArgs(parsedMetadata, componentPath = "") {
   const argTypes = {};
-  let args = {};
-
-  args.componentMetadata = {
-    path: componentPath,
+  const args = {
+    componentMetadata: {
+      path: componentPath,
+    },
   };
 
+  // Validate metadata
   if (!parsedMetadata.props || !parsedMetadata.props.properties) {
     console.error('YAML metadata is missing the "props.properties" field.');
     return { argTypes, args };
   }
+
   const properties = parsedMetadata.props.properties;
 
+  // Process each property
   Object.keys(properties).forEach((key) => {
     const property = properties[key];
 
-    // Infer the control type based on the property type.
+    // Generate control type
     const control = generateControlType(property);
 
-    // Build the argTypes entry.
+    // Build argTypes entry
     argTypes[key] = {
       ...control,
       description: property.description,
@@ -88,18 +188,11 @@ const generateArgTypesAndArgs = (parsedMetadata, componentPath = "") => {
       },
     };
 
-    if (argTypes[key].type === "object") {
-      args[key] = getArgForObjectProp(property);
-    } else {
-      // Set the default value from the first example, if available.
-      args[key] =
-        property.examples && property.examples.length > 0
-          ? property.examples[0]
-          : "";
-    }
+    // Generate default value
+    args[key] = generateDefaultValue(property);
   });
 
   return { argTypes, args };
-};
+}
 
 export default generateArgTypesAndArgs;

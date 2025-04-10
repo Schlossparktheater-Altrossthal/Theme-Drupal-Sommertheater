@@ -28,7 +28,7 @@ props:
       description: Media image for the card.
       type: object
       examples:
-        - src: 'stillhouse.png'
+        - src: 'assets/stillhouse.png'
           alt: 'A picture of the sea shore.'
     text:
       type: string

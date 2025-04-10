@@ -34,7 +34,7 @@ props:
               description: Media image for the hero.
               type: string
               examples: 
-                - 'pexels-pok-rie-33563-4006534'
+                - 'assets/pexels-pok-rie-33563-4006534.jpg'
             text:
               type: string
               title: Text
@@ -52,12 +52,12 @@ props:
       examples:
         - card1:
             heading: 'This is my Card'
-            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            media_image: 'assets/pexels-pok-rie-33563-4006534.jpg'
             text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
             orientation: 'stacked'
         - card2:
             heading: 'This is my Card'
-            media_image: 'pexels-pok-rie-33563-4006534.jpg'
+            media_image: 'assets/pexels-pok-rie-33563-4006534.jpg'
             text: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
             orientation: 'stacked'            
 

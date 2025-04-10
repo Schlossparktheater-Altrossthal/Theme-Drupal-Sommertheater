@@ -19,7 +19,7 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'thumbnail.png'
+        - src: 'assets/thumbnail.png'
           alt: 'A picture of the sea shore.'
     heading_text:
       type: string
