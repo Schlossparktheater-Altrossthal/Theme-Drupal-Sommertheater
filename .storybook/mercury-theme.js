@@ -10,7 +10,7 @@ import logo from '../static/images/logo-light.svg';
 export default create({
   base: 'auto',
   brandTitle: 'Mercury Drupal XB Design System',
-  brandUrl: '#',
+  brandUrl: '/',
   brandImage: logo,
   brandTarget: '_blank',
 });

@@ -1,5 +1,6 @@
 import parse from 'html-react-parser';
 import '../src/main.css';
+import '../src/ui.css';
 import '../src/stories/sdc-stories/components.css';
 
 /** @type { import('@storybook/react').Preview } */
