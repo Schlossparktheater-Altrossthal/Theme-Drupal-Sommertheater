@@ -10,13 +10,13 @@ props:
       title: Link Text
       description: The text inside the link.
       examples:
-        - Learn More
+        - This is a link
     title:
       type: string
       title: Link Title
       description: Tooltip text shown on hover.
       examples:
-        - 'This is link title'
+        - 'This is a link title'
     style:
       type: string
       title: Link Style
