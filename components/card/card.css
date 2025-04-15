@@ -25,5 +25,9 @@
 }
 
 .card--content .heading {
-  @apply mt-2;
+  @apply font-semibold;
+}
+
+.card--content p {
+  @apply font-normal text-lg xl:text-xl;
 }

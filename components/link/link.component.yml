@@ -29,6 +29,13 @@ props:
         - button-dark
       examples:
         - 'default'
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm 
     icon:
       type: string
       title: Icon Class

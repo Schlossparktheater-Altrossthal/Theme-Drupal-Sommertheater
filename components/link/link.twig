@@ -1,5 +1,11 @@
 
-<a href="{{ url }}" class="link link--{{ style }} font-[inherit]" title="{{ title }}">
+{% set link_classes = link_classes|default([])|merge([
+    'link',
+    'link--' ~ style,
+    radius,
+])|filter(v => v is not empty) %}
+
+<a href="{{ url }}" class="{{ link_classes|join(' ') }}" title="{{ title }}">
   {{ text }}
   {% if icon %}
     <i class="{{ icon }}"></i>

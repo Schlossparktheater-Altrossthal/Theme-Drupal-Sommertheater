@@ -2,32 +2,32 @@
 
 /* Use Tailwind directive to set some baseline styles. */
 .heading {
-  @apply font-sans tracking-tighter text-inherit;
+  @apply font-sans tracking-normal text-inherit leading-[1.2];
 }
 
 /* sizes: 48 64 96 */
 h1.heading--size-default {
-  @apply font-thin text-5xl md:text-6xl 2xl:text-8xl leading-none uppercase;
+  @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;
 }
 /* sizes: 40 48 64 - for fullwidth hero */
 h1.heading--size-alt {
-  @apply font-thin text-4xl md:text-5xl 2xl:text-6xl leading-none uppercase;
+  @apply font-normal text-4xl md:text-5xl 2xl:text-6xl leading-none;
 }
 /* sizes: 48 64 */
 h2.heading--size-default {
-  @apply font-thin text-5xl 2xl:text-6xl;
+  @apply font-normal text-5xl 2xl:text-6xl;
 }
 /* sizes: placeholder */
 h2.heading--size-alt {
-  @apply font-thin text-3xl 2xl:text-5xl;
+  @apply font-normal text-3xl 2xl:text-5xl;
 }
 /* sizes: 24 32 */
 h3.heading {
-  @apply font-extralight leading-none text-[32px];
+  @apply font-normal text-[32px];
 }
 /* sizes: 24 30 */
 h4.heading {
-  @apply font-extralight text-2xl 2xl:text-3xl; 
+  @apply font-normal text-2xl 2xl:text-3xl; 
 }
 /* sizes: 24 */
 h5.heading {

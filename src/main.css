@@ -101,6 +101,7 @@
    --text-sm--line-height: 1.5;
 
    /* Font Weights */
+   --font-weight-light: 300;
    --font-weight-normal: 400;
    --font-weight-medium: 500;
    --font-weight-semibold: 600;

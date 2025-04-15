@@ -10,7 +10,7 @@ props:
       title: Heading
       description: The main heading of the cta
       examples:
-        - Let‘s Work Together
+        - Lorem ipsum dolor sit amet finibus aliquam pharetra
     level:
       type: number
       title: Heading Level
@@ -40,8 +40,15 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/architecture.png'
-          alt: 'A plane in the sky.'
+        - src: 'assets/256381.jpg'
+          alt: 'Photo by pixabay'
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm 
     text_align:
       type: string
       description: Set alignment of text
@@ -54,5 +61,5 @@ props:
       title: CTA background color
       enum: [light, dark, image]
       examples: 
-        - image
-      default: image
+        - light
+      default: light

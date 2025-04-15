@@ -1,25 +1,32 @@
 @reference '../../src/main.css';
 
+/* Storybook UI specific */
+.sb-show-main:has(#storybook-root>.blockquote) {
+  padding: 0;
+}
+
 #storybook-root:has(>.blockquote) {
   @apply max-w-2xl;
 }
 
-.sb-show-main:has(#storybook-root>.blockquote.bg-accent) {
-  @apply bg-accent;
+#storybook-root .blockquote {
+  @apply max-w-2xl;
+  padding: 1rem;
 }
 
+/* Blockquote */
 .blockquote {
-  @apply pb-4 border-b-1;
+  @apply font-semibold;
 }
 
 .blockquote p {
-  @apply font-extralight leading-none text-3xl lg:text-4xl leading-tight text-inherit;
+  @apply font-semibold text-xl leading-[1.5] text-inherit;
 }
 
 .blockquote footer {
-  @apply font-extralight leading-tight not-italic text-xl lg:text-2xl;
+  @apply font-bold text-xl leading-[1.2] not-italic;
 }
 
 .blockquote footer cite {
-  @apply not-italic;
+  @apply font-normal text-base leading-[1.2] italic;
 }
