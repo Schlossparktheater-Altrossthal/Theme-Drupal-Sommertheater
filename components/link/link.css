@@ -1,37 +1,37 @@
 @reference '../../src/main.css';
 
 #storybook-root:has(>.link) {
-  @apply p-5;
+  @apply p-5 font-normal text-xl;
 }
 
 #storybook-root:has(>.link.link--button-outline-light),
 #storybook-root:has(>.link.link--button-light) {
-  @apply bg-gray-light;
+  @apply bg-gray;
 }
 
 .link {
-  @apply inline-block text-gray-dark font-extralight uppercase underline decoration-1 underline-offset-4 hover:text-gray-darkest;
+  @apply inline-block text-brand-dark underline decoration-1 underline-offset-4 hover:text-brand-dark;
 }
 
 .link--button-light,
 .link--button-outline-light,
 .link--button-dark,
 .link--button-outline-dark {
-  @apply border px-5 pt-[9px] pb-[6px] no-underline hover:no-underline normal-case;
+  @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
 
 .link--button-light {
-  @apply border-gray-lightest bg-gray-lightest text-gray-dark hover:bg-gray-dark hover:border-gray-lightest hover:text-gray-lightest;
-}
-
-.link--button-outline-light {
-  @apply border-gray-lightest text-gray-lightest hover:bg-gray-dark hover:bg-gray-lightest hover:text-gray-dark;
-}
-
-.link--button-outline-dark {
-  @apply border-gray-dark text-gray-dark hover:bg-gray-dark hover:text-white;
+  @apply border-base-light bg-base-light text-brand-dark hover:bg-brand-dark hover:border-base-light hover:text-base-light;
 }
 
 .link--button-dark {
-  @apply border-gray-dark bg-gray-dark text-gray-lightest hover:bg-gray-lightest hover:text-gray-dark;
+  @apply border-brand-dark bg-brand-dark text-base-light hover:bg-base-light hover:text-brand-dark;
+}
+
+.link--button-outline-light {
+  @apply border-base-light text-base-light hover:bg-brand-dark hover:text-base-light;
+}
+
+.link--button-outline-dark {
+  @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-base-light;
 }
