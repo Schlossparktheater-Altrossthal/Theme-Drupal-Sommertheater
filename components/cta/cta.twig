@@ -1,7 +1,7 @@
 {% set classes = [
     'cta',
     'relative',
-    background == 'image' or background == 'dark' ? 'bg-accent text-base-light' : 'bg-gray-lighter text-base-dark',
+    background == 'image' or background == 'dark' ? 'bg-base-dark text-base-light' : 'bg-base-light text-base-dark',
   ]
 %}
 
@@ -41,7 +41,7 @@
     {{ include('../heading/heading.twig', {
         heading_classes: (heading_classes|default([]))|merge([ alignment ])
     }) }}
-    <p class="font-extralight text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
+    <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
     {# Will be a slot in XB #}
     {% if cta_link_1.url is not empty or cta_link_2.url is not empty %}
     <ul class="flex gap-4 list-none {{ list_extras }}">
@@ -51,7 +51,8 @@
           '../link/link.twig', {
             url: cta_link_1.url,
             text: cta_link_1.text,
-            style: cta_link_1_style
+            style: cta_link_1_style,
+            link_classes: (link_classes|default([]))|merge([ radius ])
           } 
           ) }}
       </li>
@@ -62,7 +63,8 @@
           '../link/link.twig', {
             url: cta_link_2.url,
             text: cta_link_2.text,
-            style: cta_link_2_style
+            style: cta_link_2_style,
+            link_classes: (link_classes|default([]))|merge([ radius ])
           } 
           ) }}
       </li>
