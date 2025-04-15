@@ -23,11 +23,17 @@ props:
         - true
       default: true
     image:
-      title: Photo by Pixabay https://www.pexels.com/photo/person-surfing-416676/
+      title: Photo
       description: Media image for the hero.
       type: string
       examples:
-        - 'assets/artist.jpg'
+        - 'assets/277628-911758.jpg'
+    alt:
+      title: Photo
+      description: Alt tag for media image
+      type: string
+      examples:
+        - 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
     text:
       type: string
       title: Text
@@ -35,6 +41,13 @@ props:
       # @todo Add examples here.
       examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm 
     badge_1:
       type: string
       title: Badge text 1
