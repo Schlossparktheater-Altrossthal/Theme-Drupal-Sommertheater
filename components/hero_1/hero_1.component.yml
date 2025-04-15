@@ -11,8 +11,8 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/seashore.png'
-          alt: 'A picture of the sea shore.'
+        - src: 'assets/8474492.jpg'
+          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
         - src: 'assets/vaportrails.jpg'
           alt: 'A bold and colorful hero banner.'
         - src: 'assets/mermaid.jpg'
@@ -21,7 +21,7 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - 'We are a brand acceleration agency'
+        - 'One Giant Leap for Drupal'
     text:
       type: string
       title: Heading Text

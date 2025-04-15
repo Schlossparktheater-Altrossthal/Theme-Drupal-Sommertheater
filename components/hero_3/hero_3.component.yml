@@ -19,13 +19,13 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/thumbnail.png'
-          alt: 'A picture of the sea shore.'
+        - src: 'assets/8474492.jpg'
+          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
     heading_text:
       type: string
       title: Heading Text
       examples: 
-        - 'Driven by creativity and powered by technology, we design experiences that transform brands'
+        - 'From One Small Push to a Bold New Orbit'
     level:
       type: number
       title: Heading Level

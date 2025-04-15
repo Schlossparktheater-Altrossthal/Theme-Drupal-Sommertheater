@@ -1,7 +1,7 @@
 {% set classes = [
     'hero-overlay',
     'h-dvh md:max-h-3/4 min:min-h-3/4 xl:max-h-[900px]',
-    background == 'image' or background == 'dark' ? 'bg-accent text-base-light' : 'bg-brand-lightest text-base-dark',
+    background == 'image' or background == 'dark' ? 'bg-brand-dark text-base-light' : 'bg-brand text-base-dark',
   ]
 %}
 
@@ -12,7 +12,7 @@
     <div class="hero-region media relative h-full">
     {% block media_slot %}
       {% if media.src is not empty %}
-        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
       {% endif %}
       {# Image will get swapped out in XB #}
       <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover {{ img_position }}"/>
@@ -23,7 +23,7 @@
   {% block content_slot %}
     {{ include('../heading/heading.twig') }}
     {% if text is not empty %}
-    <p class="font-thin text-2xl xl:text-3xl">{{ text }}</p>
+    <p>{{ text }}</p>
     {% endif %}
   {% endblock %}
   </div>
