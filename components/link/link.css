@@ -10,7 +10,7 @@
 }
 
 .link {
-  @apply inline-block text-brand-dark underline decoration-1 underline-offset-4 hover:text-brand-dark;
+  @apply font-sans inline-block text-brand-dark underline decoration-1 underline-offset-4 hover:text-brand-dark;
 }
 
 .link--button-light,
