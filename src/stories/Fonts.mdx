@@ -1,0 +1,56 @@
+import { Meta, Typeset } from "@storybook/blocks";
+
+<Meta title="Fonts" />
+
+export const typography = {
+  type: {
+    FontPrimary: 'Inter',
+    FontSecondary: 'Georgia',
+  },
+  weight: {
+    light: '300',
+    normal: '400',
+  },
+  sizes: [120, 96, 72, 64, 48, 40, 32, 24, 20, 18, 16, 14, 12],
+  tailwind: ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs',],
+};
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Fonts
+
+## Sans Serif
+
+<div className="docblock-waterfall flex flex-wrap gap-y-5">
+  {typography.sizes.map((size, i) => (
+    <>
+      <div className="docblock-tw-code">
+        {typography.tailwind[i]}
+      </div>
+      <Typeset
+        fontSizes={[size]} // ← single size in an array
+        fontFamily={typography.type.FontPrimary}
+        fontWeight={typography.weight.light}
+        sampleText={SampleText}
+      />
+    </>
+  ))}
+</div>
+
+## Serif
+
+<div className="docblock-waterfall flex flex-wrap gap-y-5">
+  {typography.sizes.map((size, i) => (
+    <>
+      <div className="docblock-tw-code">
+        {typography.tailwind[i]}
+      </div>
+      <Typeset
+        fontSizes={[size]} // ← single size in an array
+        fontFamily={typography.type.FontSecondary}
+        fontWeight={typography.weight.normal}
+        sampleText={SampleText}
+      />
+    </>
+  ))}
+</div>
