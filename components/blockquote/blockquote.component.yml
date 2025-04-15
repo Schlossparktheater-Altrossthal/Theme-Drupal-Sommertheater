@@ -8,7 +8,7 @@ props:
       title: Blockquote text
       description: The blockquote text.
       examples:
-        - 'To confine our attention to terrestrial matters would be to limit the human spirit.'
+        - '“To confine our attention to terrestrial matters would be to limit the human spirit.”'
     cite_name:
       type: string
       title: Cite name

@@ -1,12 +1,20 @@
 {% set classes = [
     'blockquote',
-    'flex flex-col gap-4 lg:gap-6',
+    'flex flex-col gap-4',
     'text-' ~ color,
-    color == 'dark' ? 'bg-accent text-base-light border-gray-lightest' : 'border-gray-darker text-gray-darker',
+    color == 'dark' ? 'bg-base-dark text-base-light' : 'text-base-dark',
   ]
 %}
 
 <blockquote class="{{ classes|join(' ') }}" cite="{{ cite_url }}">
   <p>{{ text }}</p>
-  <footer class="text-right">{{ cite_name }}<br><cite>{{ cite_text }}</cite></footer>
+  <footer class="text-left">{{ cite_name }}<br>
+  <cite class="{{ color == 'dark' ? 'text-inherit' : 'text-gray' }}">
+    {% if cite_url %}
+      <a href="{{ cite_url}}" target="_blank" class="not-italic">{{ cite_text }}</a>
+    {% else %}
+      <span class="italic">{{ cite_text }}</span>
+    {% endif %}
+  </cite>
+  </footer>
 </blockquote>
