@@ -11,9 +11,16 @@ props:
       title: Color
       description: "Background color to use for the badge, one of 'primary' or 'secondary'."
       # The enum directive restricts the possible values in the element to our list.
-      enum: ['primary', 'secondary']
-      examples:
-        - primary
+      enum: [light, dark]
+      examples: 
+        - dark
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm 
     link:
       title:
       type: object
@@ -33,8 +40,7 @@ props:
             - 'New Release'
       examples:
         - url: '#'
-          label: New Release
-        
+          label: New Release 
 slots:
   # Content to display in the badge.
   badge_content:
