@@ -49,7 +49,7 @@ props:
         - rounded-sm
       default: rounded-sm 
     badge_1:
-      type: string
+      type: object
       title: Badge text 1
       description: A category badge
       # @todo Add examples here.
@@ -57,14 +57,13 @@ props:
         - url: '#'
           label: 'Amazing'
     badge_2:
-      type: string
+      type: object
       title: Badge text 2
       description: A category badge
       # @todo Add examples here.
       examples:
         - url: '#'
           label: 'New Release'
-
     badge_links:
       type: array
       title: Badge links
@@ -74,8 +73,6 @@ props:
           label: 'Bob'
         - url: '#'
           label: 'Fred'
-
-
     orientation:
       type: string
       title: Orientation

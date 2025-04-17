@@ -13,9 +13,8 @@ const propertyHandlers = {
   /**
    * Handle enum properties
    */
-  enum: (property) => ({
+  enum: () => ({
     type: "select",
-    options: property.enum,
   }),
 
   /**
@@ -59,26 +58,31 @@ const propertyHandlers = {
 function generateControlType(property) {
   // Handle enum types
   if (property.enum) {
-    return propertyHandlers.enum(property);
+    return {
+      control: {
+        ...propertyHandlers.enum(property),
+      },
+      options: property.enum,
+    };
   }
 
   // Handle objects
   if (property.type === "object") {
-    return propertyHandlers.object(property);
+    return {control: {...propertyHandlers.object(property)}};
   }
 
   // Handle arrays
   if (property.type === "array") {
-    return propertyHandlers.array(property);
+    return {control: {...propertyHandlers.array(property)}};
   }
 
   // Handle array of types
   if (Array.isArray(property.type)) {
-    return propertyHandlers.arrayOfTypes(property);
+    return {control: {...propertyHandlers.arrayOfTypes(property)}};
   }
 
   // Default handler
-  return propertyHandlers.default(property);
+  return {control: {...propertyHandlers.default(property)}};
 }
 
 /**
@@ -102,12 +106,7 @@ const valueGenerators = {
    * Generate default value for object properties
    */
   object: (property) => {
-    const arg = {};
-    for (const childPropertyName in property.properties) {
-      arg[childPropertyName] =
-        property.properties[childPropertyName].examples?.[0] || "";
-    }
-    return arg;
+    return property.examples.length > 0 ? property.examples[0] : {};
   },
 
   /**
@@ -125,6 +124,12 @@ const valueGenerators = {
       ? property.examples[0]
       : "";
   },
+
+  enum: (property) => {
+   return property.examples && property.examples.length > 0
+      ? property.examples[0]
+      : "";
+  },
 };
 
 /**
@@ -137,6 +142,10 @@ function generateDefaultValue(property) {
     "json-schema-definitions://experience_builder.module/image"
   ) {
     return valueGenerators.image(property);
+  }
+
+  if (property.enum) {
+    return valueGenerators.enum(property);
   }
 
   // Handle object properties
@@ -166,7 +175,7 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "") {
 
   // Validate metadata
   if (!parsedMetadata.props || !parsedMetadata.props.properties) {
-    console.error('YAML metadata is missing the "props.properties" field.');
+    console.error('YAML metadata is missing the "props.properties" field.', parsedMetadata);
     return { argTypes, args };
   }
 
@@ -177,12 +186,14 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "") {
     const property = properties[key];
 
     // Generate control type
-    const control = generateControlType(property);
+    const control = 
+      generateControlType(property);
 
     // Build argTypes entry
     argTypes[key] = {
       ...control,
       description: property.description,
+      name: property.title,
       table: {
         type: { summary: property.type },
       },
