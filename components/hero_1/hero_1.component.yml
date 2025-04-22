@@ -6,17 +6,25 @@ props:
   type: object
   properties:
     media:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Media Image
-      description: Media image for the hero.
-      type: object
+      title: Select Media
+      description: Choose a predefined media image.
+      type: string
+      enum:
+        - image-1
+        - image-2
+        - image-3
       examples:
-        - src: 'assets/8474492.jpg'
+        - image-1
+      media_options:
+        image-1:
+          src: 'assets/8474492.jpg'
           alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
-        - src: 'assets/vaportrails.jpg'
-          alt: 'A bold and colorful hero banner.'
-        - src: 'assets/mermaid.jpg'
-          alt: 'A team of professionals collaborating.'
+        image-2:
+          src: 'assets/9697595.jpg'
+          alt: 'Placeholder alt'
+        image-3:
+          src: 'assets/starshot.png'
+          alt: 'Placeholder alt'
     heading_text:
       type: string
       title: Heading Text
@@ -24,7 +32,7 @@ props:
         - 'One Giant Leap for Drupal'
     text:
       type: string
-      title: Heading Text
+      title: Text
       examples: 
         - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
     level:

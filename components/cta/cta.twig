@@ -16,22 +16,12 @@
   {% set list_extras = 'mx-auto' %}
 {% endif %}
 
-{# This may be only for Storybook #}
-{% if background == 'light' %}
-  {% set cta_link_1_style = 'button-dark' %}
-  {% set cta_link_2_style = 'button-outline-dark' %}
-{% else %}
-  {% set cta_link_1_style = 'button-light' %}
-  {% set cta_link_2_style = 'button-outline-light' %}
-{% endif %}
-
 <section class="{{ classes|join(' ') }}">
   {% if background == 'image' %}
     {% if media.src is not empty %}
     <div class="cta--media absolute inset-0">
       <div class="absolute inset-0 bg-black/30"></div>
       {# Image will get swapped out in XB #}
-      {# <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover {{ img_position }}"/> #}
       <img src="/components/cta/{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
     </div>
     {% endif %}
@@ -43,32 +33,33 @@
     }) }}
     <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
     {# Will be a slot in XB #}
-    {% if cta_link_1.url is not empty or cta_link_2.url is not empty %}
+    {% if links %}
     <ul class="flex gap-4 list-none {{ list_extras }}">
-      {% if cta_link_1.url is not empty %}
+      {% for link in links %}
+        {% if background == 'light' %}
+          {% if  loop.index == 1 %}
+            {% set link_style = 'button-dark' %}
+          {% else %}
+            {% set link_style = 'button-outline-dark' %}
+          {% endif %}
+        {% else %}
+          {% if  loop.index == 1 %}
+            {% set link_style = 'button-light' %}
+          {% else %}
+            {% set link_style = 'button-outline-light' %}
+          {% endif %}
+        {% endif %}
       <li>
         {{ include(
           '../link/link.twig', {
-            url: cta_link_1.url,
-            text: cta_link_1.text,
-            style: cta_link_1_style,
+            url: link.url,
+            text: link.text,
+            style: link_style,
             link_classes: (link_classes|default([]))|merge([ radius ])
           } 
-          ) }}
+        ) }}
       </li>
-      {% endif %}
-      {% if cta_link_2.url is not empty %}
-      <li>
-        {{ include(
-          '../link/link.twig', {
-            url: cta_link_2.url,
-            text: cta_link_2.text,
-            style: cta_link_2_style,
-            link_classes: (link_classes|default([]))|merge([ radius ])
-          } 
-          ) }}
-      </li>
-      {% endif %}
+      {% endfor %}
     </ul>
     {% endif %}
   </div>

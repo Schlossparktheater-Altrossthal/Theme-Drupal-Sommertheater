@@ -7,37 +7,27 @@
 
 <div class="{{ classes|join(' ') }}">
   <div class="card--media overflow-hidden">
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ image }}" alt="{{ alt }}" />
+    {# Image will get swapped out in XB #}
+    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
   </div>
   <div class="card--content flex flex-col gap-4 items-baseline">
     {# This should be a loop #}
-    {% if (badge_1.url and badge_1.label) or (badge_2.url and badge_2.label) %}
+    {% if badges %}
     <ul class="list-none flex items-center gap-2">
-      
-      {% if badge_1.url and badge_1.label %}
-        <li>
-          {{ include('../badge/badge.twig', 
-            {
-              link: {
-                url: badge_1.url,
-                label: badge_1.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
-      {% if badge_2.url and badge_2.label %}
-        <li>
-          {{ include('../badge/badge.twig', 
-            {
-              link: {
-                url: badge_2.url,
-                label: badge_2.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
+      {% for badge in badges %}
+      <li>
+        {{ include('../badge/badge.twig', 
+          {
+            link: {
+              url: badge.url,
+              label: badge.label,
+            }
+          }
+        ) }}
+      </li>
+      {% endfor %}
     </ul>
-  {% endif %}
+    {% endif %}
     <div class="flex flex-col gap-6">
       {{ include('../heading/heading.twig') }}
       <p>{{ text }}</p>
