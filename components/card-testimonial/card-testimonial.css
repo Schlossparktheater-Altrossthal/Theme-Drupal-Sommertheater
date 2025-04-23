@@ -1,0 +1,33 @@
+@reference '../../src/main.css';
+
+/* Storybook specific */
+#storybook-root:has(> .card) {
+  @apply max-w-md;
+}
+#storybook-root:has(> .card.is-landscape) {
+  @apply max-w-2xl;
+}
+
+.card .card--media {
+  @apply aspect-video
+}
+
+.card.is-stacked .card--media {
+  @apply aspect-video overflow-hidden;
+}
+
+.card.is-landscape .card--media {
+  @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
+}
+
+.card.is-landscape .card--content {
+  @apply md:flex-[0_1_50%] md:py-4;
+}
+
+.card--content .heading {
+  @apply font-semibold;
+}
+
+.card--content p {
+  @apply font-normal text-lg xl:text-xl;
+}
