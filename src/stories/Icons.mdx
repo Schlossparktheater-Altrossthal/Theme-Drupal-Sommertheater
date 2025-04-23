@@ -1,0 +1,24 @@
+import { Meta, Title, IconGallery, IconItem } from '@storybook/blocks';
+
+export const icons = {
+  names: ['home', 'menu', 'close'],
+};
+
+<Meta title="Icons" />
+
+# Icons
+
+<IconGallery>
+  {
+    icons.names.map(icon => (
+      <IconItem key={icon} name={icon}>
+        <span
+          className="material-symbols-outlined"
+          style={{ color: '#000', fontSize: '24px' }}
+        >
+          {icon}
+        </span>
+      </IconItem>
+    ))
+  }
+</IconGallery>
