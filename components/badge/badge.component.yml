@@ -14,6 +14,24 @@ props:
       enum: [light, dark]
       examples: 
         - dark
+    icon:
+      type: string
+      title: Icon
+      description: 'Select an Icon.'
+      # The enum directive restricts the possible values in the element to our list.
+      enum: [close, bolt]
+      examples: 
+        - close
+      default: close
+    icon_position:
+      type: string
+      title: Icon position
+      description: 'Icon can display before or after label.'
+      # The enum directive restricts the possible values in the element to our list.
+      enum: [start, end]
+      examples: 
+        - start
+      default: start
     radius:
       type: number
       name: Corner radius

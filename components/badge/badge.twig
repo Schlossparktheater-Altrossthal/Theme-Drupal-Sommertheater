@@ -1,10 +1,11 @@
 {% set classes = [
     'badge',
+    icon_position == 'start' ? 'flex flex-row gap-2' : 'flex flex-row-reverse gap-2',
     radius,
     color == 'dark' ? 'bg-base-dark text-base-light hover:bg-base-light hover:text-base-dark ' : 'bg-base-light text-base-dark hover:bg-base-dark hover:text-base-light',
   ]
 %}
 
 <a href="{{ link.url }}" aria-label="{{ link.label }}" class="{{ classes|join(' ') }}">
-  <span>{{ link.label }}</span>
+  <span class="material-symbols-outlined">{{ icon }}</span><span class="badge-label">{{ link.label }}</span>
 </a>

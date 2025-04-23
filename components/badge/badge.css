@@ -4,6 +4,6 @@
   @apply border inline-flex items-center px-4 pt-[9px] pb-[8px];
 }
 
-.badge span {
+.badge .badge-label {
   @apply font-sans font-normal text-md leading-none text-inherit select-none;
 }
