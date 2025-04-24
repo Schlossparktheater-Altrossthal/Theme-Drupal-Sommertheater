@@ -22,35 +22,40 @@ props:
       title: Text
       examples:
         - Lorem ipsum dolor sit amet finibus aliquam pharetra mauris aenean pellentesque enim mus.
-    cta_link_1:
-      type: string
+    links:
+      type: array
+      title: Links
+      description: CTA links
+      properties:
+        url:
+          type: string
+          format: uri
+        text:
+          type: string
       examples:
         - url: '#'
-          text: 'Read the Article'
-          style: 'button-light'
-    cta_link_2:
-      type: string
-      examples:
+          text: 'button text 1'
+          style: 'default'
         - url: '#'
-          text: 'Sign Up'
-          style: 'button-outline-light'
+          text: 'button text 2'
     media:
       $ref: json-schema-definitions://experience_builder.module/image
-      title: Media Image
-      description: Media image for the hero.
+      title: Background Image
+      description: The background image for the cta.
       type: object
       examples:
         - src: 'assets/256381.jpg'
           alt: 'Photo by pixabay'
     radius:
       type: number
-      name: Corner radius
+      title: Button Corner Radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm
       default: rounded-sm 
     text_align:
       type: string
+      title: Text alignment
       description: Set alignment of text
       enum: [center, left, right]
       examples: 
