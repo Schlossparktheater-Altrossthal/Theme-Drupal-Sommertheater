@@ -21,8 +21,8 @@ props:
       # The enum directive restricts the possible values in the element to our list.
       enum: [close, bolt]
       examples: 
-        - close
-      default: close
+        - ''
+      default: ''
     icon_position:
       type: string
       title: Icon position
@@ -58,7 +58,7 @@ props:
             - 'New Release'
       examples:
         - url: '#'
-          label: New Release 
+          label: Example Tag 
 slots:
   # Content to display in the badge.
   badge_content:
