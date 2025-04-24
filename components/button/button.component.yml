@@ -9,29 +9,20 @@ props:
     variant:
       type: string
       title: Variant
-      description: 'The type of button.'
-      enum: ['default', 'negative', 'positive', 'secondary']
-      default: 'default'
+      description: 'The style of button.'
+      enum:
+        - light
+        - dark
       examples:
-        - 'default'
-        - 'secondary'
+        - light
     outline:
       type: boolean
-      title: Outline
-      description: 'Whether the button should be an outline button.'
+      title: Outlined
+      description: 'Whether the button is outlined.'
       default: false
       examples:
         - false
         - true
-    size:
-      type: string
-      title: Size
-      description: 'The size of the button.'
-      enum: ['default', 'sm']
-      default: 'default'
-      examples:
-        - 'default'
-        - 'sm'
     disabled:
       type: boolean
       title: Disabled
@@ -40,32 +31,48 @@ props:
       examples:
         - false
         - true
-    content:
+    label:
       type: string
-      title: Content
+      title: Button text
       description: 'The text content of the button.'
       examples:
-        - 'Submit'
-        - 'Read more'
-    href:
+        - 'Button Label'
+    icon:
       type: string
+      title: Icon
+      description: 'Select an Icon.'
+      enum: [arrow_forward, arrow_back, chevron_right, chevron_left, download, person_add]
+      examples: 
+        - arrow_forward
+      default: arrow_forward
+    icon_first:
+      type: boolean
+      title: Icon First
+      description: 'Icon can display before or after label.'
+      examples:
+        - false
+      default: false
+    href:
+      type: boolean
       title: URL
       description: 'The URL to link to. If provided, the button will be rendered as a link.'
       examples:
-        - '/path/to/page'
-        - 'https://example.com'
-    type:
+        - false
+      default: false
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm 
+    color_mode:
       type: string
-      title: Button Type
-      description: 'The HTML button type attribute.'
-      default: 'button'
-      enum: ['button', 'submit', 'reset']
-      examples:
-        - 'button'
-        - 'submit'
-    class:
-      type: string
-      title: Additional Classes
-      description: 'Additional CSS classes to add to the button.'
-      examples:
-        - 'my-custom-class' 
+      title: Color Mode
+      description: Color mode of component.
+      enum: 
+        - light
+        - dark
+      examples: 
+        - light
+      default: light

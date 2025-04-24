@@ -1,158 +1,22 @@
-{# 
-  Button Component 
-
-  This component is used to create different types of buttons.
-
-  Parameters:
-    - variant (string): The type of button. Can be 'default', 'negative', 'positive', 'secondary'.
-    - outline (boolean): Whether the button should be an outline button.
-    - size (string): The size of the button. Can be 'default' or 'sm'.
-    - disabled (boolean): Whether the button is disabled.
-    - content (string): The text content of the button.
-    - href (string): The URL to link to.
-#}
-
-
-{# Base classes that apply to every button #}
-{% set base_classes = [
-  'border',
-  'border-solid',
-  'inline-flex',
-  'items-center',
-  'justify-center',
-  'gap-2',
-  'whitespace-nowrap',
-  'rounded-md',
-  'font-medium',
-  'ring-offset-base-light',
-  'transition-colors',
-  'focus-visible:outline-hidden',
-  'focus-visible:ring-2',
-  'focus-visible:ring-offset-2',
-  'disabled:pointer-events-none',
-  'disabled:opacity-50',
-  '[&_svg]:pointer-events-none',
-  '[&_svg]:size-4',
-  '[&_svg]:shrink-0'
-] %}
-
-{# Classes for non-outline variants #}
-{% set non_outline_classes = {
-  'default': [
-    'bg-gray-lightest',
-    'text-base-dark',
-    'hover:bg-gray-lightest',
-    'border-gray-lightest',
-    'active:border-brand-darkest',
-    'active:bg-gray-lightest',
-    'disabled:bg-brand-light',
-    'focus-visible:outline-[2px_solid_var(--color-brand-lightest)]',
-    'focus-visible:ring-brand-lightest'
-  ],
-  'secondary': [
-    'bg-accent',
-    'text-base-light',
-    'hover:bg-accent-dark',
-    'active:bg-accent-darkest',
-    'focus:outline-[2px_solid_accent-lightest]',
-    'focus:outline-offset-[2px]',
-    'disabled:bg-accent-light',
-    'focus-visible:outline-[2px_solid_var(--color-accent-lightest)]',
-    'focus-visible:ring-accent-lightest'
-  ],
-  'negative': [
-    'bg-negative',
-    'text-base-light',
-    'hover:bg-negative-hover',
-    'active:border-negative-active',
-    'disabled:bg-negative-disabled',
-    'focus-visible:outline-[2px_solid_var(--color-negative)]',
-    'focus-visible:ring-negative'
-  ],
-  'positive': [
-    'bg-positive',
-    'text-base-light',
-    'hover:bg-positive-hover',
-    'active:border-positive-active',
-    'disabled:bg-positive-disabled',
-    'focus-visible:outline-[2px_solid_var(--color-positive)]',
-    'focus-visible:ring-positive'
-  ]
-} %}
-
-{# Classes for outline variants #}
-{% set outline_classes = {
-  'default': [
-    'bg-transparent',
-    'border-brand',
-    'text-brand',
-    'hover:bg-brand',
-    'hover:text-base-light',
-    'focus-visible:outline-[2px_solid_var(--color-gray-light)]',
-    'focus-visible:ring-gray-light'
-  ],
-  'secondary': [
-    'bg-transparent',
-    'border-accent',
-    'text-accent',
-    'hover:bg-accent',
-    'hover:text-base-light',
-    'focus-visible:outline-[2px_solid_var(--color-gray-light)]',
-    'focus-visible:ring-gray-light'
-  ],
-  'negative': [
-    'bg-transparent',
-    'border-negative',
-    'text-negative',
-    'hover:bg-negative',
-    'hover:text-base-light',
-    'focus-visible:outline-[2px_solid_var(--color-gray-light)]',
-    'focus-visible:ring-gray-light'
-  ],
-  'positive': [
-    'bg-transparent',
-    'border-positive',
-    'text-positive',
-    'hover:bg-positive',
-    'hover:text-base-light',
-    'focus-visible:outline-[2px_solid_var(--color-gray-light)]',
-    'focus-visible:ring-gray-light'
-  ]
-} %}
-
-
-{% set sizeClasses = {
-  'default': [
-    'text-base',
-    'h-10',
-    'py-2',
-    'px-4'
-  ],
-  'sm': [
-    'text-sm',
-    'h-8',
-    'px-3'
-  ]
-} %}
-
-{# Set sensible defaults for variant, outline, and size #}
-{% set variant_classes = outline ? outline_classes[variant] : non_outline_classes[variant] %}
-{% set size_class = sizeClasses[size|default('default')] %}
-
-{# Merge all class arrays #}
-{% set final_classes = base_classes|merge(variant_classes)|merge(size_class) %}
-{% if class|default('') != '' %}
-  {% set final_classes = final_classes|merge([class]) %}
-{% endif %}
-{% set classes = final_classes|join(' ') %}
+{% set btn_classes = btn_classes|default([])|merge([
+    'button',
+    'button-' ~ variant,
+    radius,
+    outline ? 'outlined',
+    color_mode == 'dark' ? 'dark-mode' : 'light-mode',
+    icon ? 'gap-1' : 'px-5',
+    icon_first ? 'flex flex-row ps-4 pe-5' : 'flex flex-row-reverse ps-5 pe-4',
+])|filter(v => v is not empty) %}
 
 {# If href is provided, present a link; otherwise render a button #}
 {% if href %}
-  <a href="{{ href }}" class="{{ classes }}" {% if disabled|default(false) %}aria-disabled="true" {% endif %}>
-    {{ content|raw }}
+  <a href="{{ href }}" class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}aria-disabled="true" {% endif %}>
+    {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+    {{ label }}
   </a>
 {% else %}
-  <button type="{{ type|default('button') }}" class="{{ classes }}" {% if disabled|default(false) %}disabled{% endif %}>
-    {{ content|raw }}
+  <button class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}disabled{% endif %}>
+    {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+    {{ label }}
   </button>
 {% endif %}
