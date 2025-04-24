@@ -1,7 +1,7 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: Logo Tile
+name: Logo
 description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
-group: Components
+group: Components/Tiles
 props:
   type: object
   required:

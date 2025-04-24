@@ -34,7 +34,6 @@
   </section>
 
   {# logos #}
-
   <section class="my-12">
     {{ include(
       '../horizontal-scroller/horizontal-scroller.twig'
@@ -44,7 +43,7 @@
   {# icon tiles #}
   <section class="gap-4 flex flex-col md:grid grid-cols-3 my-12">
     {{ include(
-      '../icon-tile/icon-tile.twig',
+      '../tile-icon/tile-icon.twig',
       {
         text: 'Eiusmod',
         icon: 'mail',
@@ -53,7 +52,7 @@
     ) }}
 
     {{ include(
-      '../icon-tile/icon-tile.twig',
+      '../tile-icon/tile-icon.twig',
       {
         text: 'Incididunt',
         icon: 'globe',
@@ -62,7 +61,7 @@
     ) }}
 
     {{ include(
-      '../icon-tile/icon-tile.twig',
+      '../tile-icon/tile-icon.twig',
       {
         text: 'Tempor',
         icon: 'deblur',

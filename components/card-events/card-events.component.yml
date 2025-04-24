@@ -1,5 +1,5 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Card
+name: Event
 description: Basic card with image, title, teaser, tags
 group: Components/Cards
 props:
@@ -22,18 +22,23 @@ props:
       examples:
         - true
       default: true
-    media:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Card Media
-      description: Media and Alt for the card.
-      type: object
+    image:
+      title: Photo
+      description: Media image for the hero.
+      type: string
       examples:
-        - src: 'assets/277628-911758.jpg'
-          alt: 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
+        - 'assets/277628-911758.jpg'
+    alt:
+      title: Photo
+      description: Alt tag for media image
+      type: string
+      examples:
+        - 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
     text:
       type: string
       title: Text
       description: Teaser text
+      # @todo Add examples here.
       examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
     radius:
@@ -42,26 +47,7 @@ props:
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm
-      default: rounded-sm
-    badges:
-      type: array
-      title: badges
-      description: Category badges.
-      items:
-        type: object
-        title: Badge
-        description: List of badges.
-        properties:
-          url:
-            type: string
-            format: uri
-          label:
-            type: string
-      examples:
-        - url: '#'
-          label: 'badge one'
-        - url: '#'
-          label: 'badge two'
+      default: rounded-sm 
     badge_1:
       type: object
       title: Badge text 1
@@ -78,6 +64,15 @@ props:
       examples:
         - url: '#'
           label: 'New Release'
+    badge_links:
+      type: array
+      title: Badge links
+      description: A list of badges
+      examples:
+        - url: '#'
+          label: 'Bob'
+        - url: '#'
+          label: 'Fred'
     orientation:
       type: string
       title: Orientation
