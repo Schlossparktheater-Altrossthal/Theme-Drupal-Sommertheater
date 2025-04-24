@@ -5,15 +5,28 @@ status: stable
 props:
   type: 'object'
   properties:
-    # One of 'primary', or 'secondary'.
     color:
       type: string
       title: Color
       description: "Background color to use for the badge, one of 'primary' or 'secondary'."
-      # The enum directive restricts the possible values in the element to our list.
       enum: [light, dark]
       examples: 
         - dark
+    icon:
+      type: string
+      title: Icon
+      description: 'Select an Icon.'
+      enum: [close, bolt]
+      examples: 
+        - ''
+      default: ''
+    icon_first:
+      type: boolean
+      title: Icon First
+      description: 'Icon can display before or after label.'
+      examples:
+        - true
+      default: true
     radius:
       type: number
       name: Corner radius
@@ -40,7 +53,7 @@ props:
             - 'New Release'
       examples:
         - url: '#'
-          label: New Release 
+          label: Example Tag 
 slots:
   # Content to display in the badge.
   badge_content:
