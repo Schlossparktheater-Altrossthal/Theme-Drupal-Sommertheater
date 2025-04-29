@@ -28,7 +28,7 @@
   {% endif %}
   <div class="cta--content relative min-h-80 flex flex-col justify-center gap-6 lg:gap-8 px-6 py-[90px] lg:px-12 lg:py-[115px] xl:px-16 xl:py-[140px]">
     {# @todo add icon #}
-    {{ include('../heading/heading.twig', {
+    {{ include('@components/heading/heading.twig', {
         heading_classes: (heading_classes|default([]))|merge([ alignment ])
     }) }}
     <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
@@ -50,8 +50,7 @@
           {% endif %}
         {% endif %}
       <li>
-        {{ include(
-          '../link/link.twig', {
+        {{ include('@components/link/link.twig', {
             url: link.url,
             text: link.text,
             style: link_style,
