@@ -56,26 +56,25 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
 
   let imports = `// Import the YAML metadata and the Twig template.
-import ${camelCaseName}Metadata from '/${componentRelativePath}/${lowerCaseName}.component.yml';
-import ${camelCaseName}Template from '/${componentRelativePath}/${lowerCaseName}.twig'`;
+import ${camelCaseName}Metadata from '../../../${componentRelativePath}/${lowerCaseName}.component.yml';
+import { render as ${camelCaseName}RenderTemplate } from './${componentRelativePath}/${lowerCaseName}.twig'`;
 
   // Only add CSS import if the file exists
   if (hasCssFile) {
     imports += `
-import '/${componentRelativePath}/${lowerCaseName}.css';`;
+import '../../../${componentRelativePath}/${lowerCaseName}.css';`;
   }
 
   // Conditionally add the JS import if the file exists and includeJs is true
   if (hasJsFile && includeJs) {
     imports += `
-import '/${componentRelativePath}/${lowerCaseName}.js';`;
+import '../../../${componentRelativePath}/${lowerCaseName}.js';`;
   }
 
   return `${imports}
-import twingStory from '/src/common/twingStory.js';
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
-
-const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '${componentPath}');
+import React, { useState, useEffect } from 'react';
+const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '../../../${componentPath}');
 
 export default {
     title: '${title}',
@@ -84,7 +83,20 @@ export default {
     args
 };
 
-export const Default = twingStory(${camelCaseName}Template);
+// Create a template component that uses the args
+const Template = (args) => {
+  const [html, setHtml] = useState('Loading...');
+  const deps= Object.values(args);
+  useEffect(() => {
+  
+    // Render the Twig template with the new context
+    ${camelCaseName}RenderTemplate (args).then(setHtml);
+  }, [...deps]); // Re-render when any arg changes
+  
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
+export const Default = Template.bind({});
 `;
 }
 
@@ -125,7 +137,7 @@ export default function storybookGenerator(options = {}) {
           fs.mkdirSync(absoluteStoriesDir, { recursive: true });
         }
         
-        const storyFilePath = path.join(absoluteStoriesDir, `${lowerCaseName}.stories.js`);
+        const storyFilePath = path.join(absoluteStoriesDir, `${lowerCaseName}.stories.jsx`);
 
         // Write the story file to the separate directory
         fs.writeFileSync(storyFilePath, storyContent);

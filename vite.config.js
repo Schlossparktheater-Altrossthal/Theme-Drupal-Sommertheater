@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import createTwigPlugin from '@nightlycommit/rollup-plugin-twig';
-import TwingEnvironment from './.storybook/twingEnvironment.js';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
-import storybookGenerator from './vite-plugin-storybook-generator';
-import sdcCssWatcher from './vite-plugin-sdc-storybook-css-watcher.js';
+import storybookGenerator from './vite plugins/vite-plugin-storybook-generator.js';
+import sdcCssWatcher from './vite plugins/vite-plugin-sdc-storybook-css-watcher.js';
 import tailwindcss from '@tailwindcss/vite';
+import precompileTwig from './vite plugins/vite-plugin-precompile-twig.js';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,8 +13,15 @@ export default defineConfig({
     nodePolyfills(),
     react(),
     yaml(),
-    createTwigPlugin(TwingEnvironment),
+    precompileTwig({
+      templatesDir: 'components',      // adjust as needed
+      include: /\.twig(\?.*)?$/     ,      // match bare and query imports
+      namespaces: {
+        components: 'components'
+      }
+    }),
     tailwindcss(),
+
     storybookGenerator({
       componentsDir: 'components',
       includeJs: true,
