@@ -1,6 +1,11 @@
 // plugins/vite-plugin-precompile-twig.js
 import { readdirSync, readFileSync } from 'fs';
-import { resolve, relative } from 'path';
+import { resolve, relative, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// Get current file directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default function precompileTwigPlugin(options = {}) {
   const {
@@ -114,9 +119,12 @@ export default function precompileTwigPlugin(options = {}) {
           `'${templateKey}': ${JSON.stringify(templateContent)}`)
         .join(',\n    ');
 
-      // Generate a module that uses the ESM-friendly Twing APIs
+      // Generate a module that uses the ESM-friendly Twing APIs 
+      // and creates direct imports of the custom functions/filters
       return `
         import { createArrayLoader, createEnvironment } from 'twing';
+        import functions from '/${relative(cwd, resolve(__dirname, './twingCustoms/functions.js'))}';
+        import filters from '/${relative(cwd, resolve(__dirname, './twingCustoms/filters.js'))}';
         
         // Include all templates, including namespaced ones
         const allSources = {
@@ -126,6 +134,15 @@ export default function precompileTwigPlugin(options = {}) {
         // Create a loader and environment
         const loader = createArrayLoader(allSources);
         const env = createEnvironment(loader);
+        
+        // Add functions and filters directly
+        for (const func of functions) {
+          env.addFunction(func);
+        }
+        
+        for (const filter of filters) {
+          env.addFilter(filter);
+        }
         
         /**
          * Renders the preloaded Twig template.
@@ -138,7 +155,6 @@ export default function precompileTwigPlugin(options = {}) {
 
         // Add default export to support both import styles
         export default render;
-        
       `;
     },
 

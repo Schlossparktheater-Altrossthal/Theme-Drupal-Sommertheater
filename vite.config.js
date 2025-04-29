@@ -2,10 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
-import storybookGenerator from './vite plugins/vite-plugin-storybook-generator.js';
-import sdcCssWatcher from './vite plugins/vite-plugin-sdc-storybook-css-watcher.js';
+import storybookGenerator from './vitePlugins/vite-plugin-storybook-generator.js';
+import sdcCssWatcher from './vitePlugins/vite-plugin-sdc-storybook-css-watcher.js';
 import tailwindcss from '@tailwindcss/vite';
-import precompileTwig from './vite plugins/vite-plugin-precompile-twig.js';
+import precompileTwig from './vitePlugins/vite-plugin-precompile-twig.js';
 
 // https://vite.dev/config/
 export default defineConfig({
