@@ -10,7 +10,6 @@ const config = {
   ],
   addons: [
     "@storybook/addon-a11y",
-    "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],

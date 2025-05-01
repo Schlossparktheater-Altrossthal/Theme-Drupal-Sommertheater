@@ -2,7 +2,7 @@
   {% block items %}
     {% for i in 1..8 %}
       {{ include(
-        '../tile-logo/tile-logo.twig',
+        '@components/tile-logo/tile-logo.twig',
         {
           image: {
             src: 'assets/logo_' ~ i ~ '.png',

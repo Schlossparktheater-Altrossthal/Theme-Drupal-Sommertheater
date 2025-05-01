@@ -18,7 +18,7 @@
       
       {% if badge_1.url and badge_1.label %}
         <li>
-          {{ include('../badge/badge.twig', 
+          {{ include('@components/badge/badge.twig', 
             {
               link: {
                 url: badge_1.url,
@@ -30,7 +30,7 @@
 
       {% if badge_2.url and badge_2.label %}
         <li>
-          {{ include('../badge/badge.twig', 
+          {{ include('@components/badge/badge.twig', 
             {
               link: {
                 url: badge_2.url,
@@ -41,7 +41,7 @@
       {% endif %}
     </ul>
   {% endif %}
-    {{ include('../heading/heading.twig') }}
+    {{ include('@components/heading/heading.twig') }}
     <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
   </div>
 </div>
