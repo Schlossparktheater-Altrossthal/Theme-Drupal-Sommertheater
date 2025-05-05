@@ -14,7 +14,7 @@
   </div>
   <div class="hero-region content flex-1 flex flex-col  gap-4 lg:gap-6 {{ text ? 'md:justify-center' : 'md:justify-end md:mb-[-10px]' }}">
   {% block content_slot %}
-    {{ include('@components/heading/heading.twig') }}
+    {{ include('@mercury/heading/heading.twig') }}
     {% if text is not empty %}
     <p class="font-thin text-2xl xl:text-3xl">{{ text }}</p>
     {% endif %}

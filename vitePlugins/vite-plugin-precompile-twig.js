@@ -1,6 +1,6 @@
 // plugins/vite-plugin-precompile-twig.js
-import { readdirSync, readFileSync } from 'fs';
-import { resolve, relative, dirname } from 'path';
+import { readdirSync, readFileSync, existsSync } from 'fs';
+import { resolve, relative, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 // Get current file directory.
@@ -9,14 +9,19 @@ const __dirname = dirname(__filename);
 
 export default function precompileTwigPlugin(options = {}) {
   const {
-    templatesDir = 'src/templates',
+    templatesDir = ['src/templates'],
     include = /\.twig(\?.*)?$/,
     namespaces = {} // e.g. { components: 'src/components' }
   } = options;
 
   // Fix process.cwd() linter error.
   const cwd = typeof process !== 'undefined' ? process.cwd() : '.';
-  const templateDirPath = resolve(cwd, templatesDir);
+  
+  // Convert templatesDir to array if it's a string
+  const templateDirs = Array.isArray(templatesDir) ? templatesDir : [templatesDir];
+  
+  // Resolve all template directory paths
+  const templateDirPaths = templateDirs.map(dir => resolve(cwd, dir));
   
   // Resolve all namespace paths.
   const resolvedNamespaces = {};
@@ -26,22 +31,38 @@ export default function precompileTwigPlugin(options = {}) {
 
   // Function to collect templates from a directory.
   function walk(dir, filemap = {}, prefix = '') {
-    for (const entry of readdirSync(dir, { withFileTypes: true })) {
-      const full = resolve(dir, entry.name);
-      if (entry.isDirectory()) {
-        walk(full, filemap, prefix ? `${prefix}/${entry.name}` : entry.name);
-      } else if (entry.isFile() && /\.twig$/.test(entry.name)) {
-        const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
-        filemap[relativePath] = readFileSync(full, 'utf8');
+    try {
+      const entries = readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const full = resolve(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(full, filemap, prefix ? `${prefix}/${entry.name}` : entry.name);
+        } else if (entry.isFile() && /\.twig$/.test(entry.name)) {
+          const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
+          filemap[relativePath] = readFileSync(full, 'utf8');
+        }
       }
+    } catch (err) {
+      console.warn(`Warning: Could not walk directory ${dir}: ${err.message}`);
     }
     return filemap;
   }
   
-  // Load templates from main directory and all namespaces
+  // Load templates from all directories and namespaces
   function loadAllTemplates() {
-    // Start with main templates directory
-    const templates = walk(templateDirPath);
+    const templates = {};
+    
+    // Load templates from all template directories
+    templateDirPaths.forEach(dirPath => {
+      try {
+        const dirTemplates = walk(dirPath);
+        Object.entries(dirTemplates).forEach(([path, content]) => {
+          templates[path] = content;
+        });
+      } catch (err) {
+        console.error(`Error loading templates from directory "${dirPath}": ${err.message}`);
+      }
+    });
     
     // Add templates from each namespace.
     Object.entries(resolvedNamespaces).forEach(([namespace, dir]) => {
@@ -66,6 +87,110 @@ export default function precompileTwigPlugin(options = {}) {
   // Track which modules import which templates
   const templateToModuleMap = new Map();
 
+  // Utility function to check if a file exists
+  function fileExists(filePath) {
+    return existsSync(filePath);
+  }
+
+  // Improved template resolution function
+  function resolveTemplate(path) {
+    // Check if the path is already in our template sources
+    if (templateSources[path]) {
+      return { key: path, content: templateSources[path] };
+    }
+
+    // If path starts with @, it's a namespaced path
+    if (path.startsWith('@')) {
+      const [, namespace, ...rest] = path.split('/');
+      const namespacePath = resolvedNamespaces[namespace];
+      if (namespacePath) {
+        const relativePath = rest.join('/');
+        const fullPath = resolve(namespacePath, relativePath);
+        if (fileExists(fullPath)) {
+          const key = `@${namespace}/${relativePath}`;
+          const content = readFileSync(fullPath, 'utf8');
+          templateSources[key] = content; // Cache it
+          return { key, content };
+        }
+      }
+    }
+
+    // Try to resolve via template directories
+    for (const dirPath of templateDirPaths) {
+      const fullPath = resolve(dirPath, path);
+      if (fileExists(fullPath)) {
+        const key = path;
+        const content = readFileSync(fullPath, 'utf8');
+        templateSources[key] = content; // Cache it
+        return { key, content };
+      }
+    }
+
+    // Try each template directory with a direct relative path
+    for (const dirPath of templateDirPaths) {
+      if (path.startsWith(dirPath)) {
+        const relativePath = relative(dirPath, path).replace(/\\/g, '/');
+        if (templateSources[relativePath]) {
+          return { key: relativePath, content: templateSources[relativePath] };
+        }
+      }
+    }
+
+    // Try as an absolute path
+    if (fileExists(path)) {
+      // Find which directory it belongs to
+      for (const dirPath of templateDirPaths) {
+        if (path.startsWith(dirPath)) {
+          const relativePath = relative(dirPath, path).replace(/\\/g, '/');
+          const content = readFileSync(path, 'utf8');
+          templateSources[relativePath] = content; // Cache it
+          return { key: relativePath, content };
+        }
+      }
+      
+      // Not under a template directory, use as is
+      const content = readFileSync(path, 'utf8');
+      templateSources[path] = content; // Cache it
+      return { key: path, content };
+    }
+
+    // Try namespace directories with direct paths
+    for (const [namespace, dir] of Object.entries(resolvedNamespaces)) {
+      // Check if path is under this namespace directory
+      if (path.startsWith(dir)) {
+        const relativePath = relative(dir, path).replace(/\\/g, '/');
+        const key = `@${namespace}/${relativePath}`;
+        if (templateSources[key]) {
+          return { key, content: templateSources[key] };
+        }
+        
+        // If not in cache but file exists, load it
+        if (fileExists(path)) {
+          const content = readFileSync(path, 'utf8');
+          templateSources[key] = content; // Cache it
+          return { key, content };
+        }
+      }
+      
+      // Try path as subdirectory within the namespace
+      const fullPath = resolve(dir, path);
+      if (fileExists(fullPath)) {
+        const content = readFileSync(fullPath, 'utf8');
+        const key = `@${namespace}/${path}`;
+        templateSources[key] = content; // Cache it
+        return { key, content };
+      }
+    }
+
+    // Last resort: check if any template path ends with the requested path
+    const key = Object.keys(templateSources).find(k => k.endsWith(path.replace(/\\/g, '/')));
+    if (key) {
+      return { key, content: templateSources[key] };
+    }
+
+    return null;
+  }
+
   return {
     name: 'vite-plugin-precompile-twig',
     enforce: 'pre',
@@ -78,34 +203,18 @@ export default function precompileTwigPlugin(options = {}) {
       const clean = id.split('?')[0];
       if (!include.test(clean)) return null;
 
-      // Try to find this template in our sources.
-      // First check if it's a direct match by path.
-      let key = relative(templateDirPath, clean).replace(/\\/g, '/');
-    
-      let content = templateSources[key];
+      // Use the improved resolution function
+      const resolved = resolveTemplate(clean);
       
-      // If not found directly, see if it's a namespaced template.
-      if (!content) {
-        // Check if it's under any of our namespace directories.
-        for (const [namespace, dir] of Object.entries(resolvedNamespaces)) {
-          if (clean.startsWith(dir)) {
-            const relPath = relative(dir, clean).replace(/\\/g, '/');
-            key = `@${namespace}/${relPath}`;
-            content = templateSources[key];
-            if (content) break;
-          }
-        }
-        
-        // If still not found, check if it matches any template ending.
-        if (!content) {
-          key = Object.keys(templateSources).find(k => k.endsWith(clean.replace(/\\/g, '/')));
-          content = key ? templateSources[key] : null;
-        }
-      }
-     
-      if (content == null) {
+      if (!resolved) {
+        console.error(`Cannot find template: ${clean}`);
+        console.error(`Available templates: ${Object.keys(templateSources).join(', ')}`);
+        console.error(`Template directories: ${templateDirPaths.join(', ')}`);
+        console.error(`Namespaces: ${JSON.stringify(resolvedNamespaces)}`);
         this.error(`Cannot find template: ${clean}`);
       }
+      
+      const { key, content } = resolved;
       
       // Track this module for HMR
       if (!templateToModuleMap.has(key)) {
@@ -163,36 +272,21 @@ export default function precompileTwigPlugin(options = {}) {
       // Only handle .twig files.
       if (!file.endsWith('.twig')) return;
       
-      // Figure out the template key.
-      let templateKey = '';
+      // Use the improved resolution logic
+      const resolved = resolveTemplate(file);
       
-      // Check if it's in the main templates directory.
-      if (file.startsWith(templateDirPath)) {
-        templateKey = relative(templateDirPath, file).replace(/\\/g, '/');
-      } else {
-        // Check if it's in a namespace directory.
-        for (const [namespace, dir] of Object.entries(resolvedNamespaces)) {
-          if (file.startsWith(dir)) {
-            const relPath = relative(dir, file).replace(/\\/g, '/');
-            templateKey = `@${namespace}/${relPath}`;
-            break;
-          }
-        }
-      }
-      
-      if (!templateKey) {
+      if (!resolved) {
         console.warn(`[HMR] Could not determine template key for file: ${file}`);
         return [];
       }
       
-      console.log(`[HMR] Twig template updated: ${templateKey}`);
+      const { key, content } = resolved;
+      
+      console.log(`[HMR] Twig template updated: ${key}`);
       
       try {
-        // Read the updated template content.
-        const updatedContent = readFileSync(file, 'utf8');
-        
         // Update our template cache.
-        templateSources[templateKey] = updatedContent;
+        templateSources[key] = content;
         
         // Find modules that import this template.
         const affectedModules = [];
