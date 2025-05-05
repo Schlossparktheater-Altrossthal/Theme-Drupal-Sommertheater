@@ -18,18 +18,14 @@ import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component 
 function generateStoryContent(componentPath, componentName, includeJs = true) {
   const lowerCaseName = componentName.toLowerCase();
   const camelCaseName = lowerCaseName.split('-').map(
-    (word, index) => {
-      if (index === 0) {
-        return word;
-      }
-
-      return word.slice(0, 1).toUpperCase() + word.slice(1)
-    }
+    (word, index) => index === 0 ? word : word.slice(0, 1).toUpperCase() + word.slice(1)
   ).join('');
 
   const yamlFilePath = path.join(componentPath, `${lowerCaseName}.component.yml`);
   const cssFilePath = path.join(componentPath, `${lowerCaseName}.css`);
   const hasCssFile = fs.existsSync(cssFilePath);
+  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
+  const hasJsFile = fs.existsSync(jsFilePath);
 
   // Variables to org components based on .yml
   let group = null;
@@ -48,17 +44,12 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
 
   const title = group ? `${group}/${name}` : `Components/${name}`;
 
-  // Check if JS file exists
-  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
-  const hasJsFile = fs.existsSync(jsFilePath);
-
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
-
-  // For JS, we'll use dynamic import to ensure it runs after component mount
   const jsPath = `../../../${componentRelativePath}/${lowerCaseName}.js`;
 
-  let imports = `// Import the YAML metadata and the Twig template.
+  // Base imports that are always needed
+  let imports = `// Import the YAML metadata and the Twig template
 import ${camelCaseName}Metadata from '../../../${componentRelativePath}/${lowerCaseName}.component.yml';
 import { render as ${camelCaseName}RenderTemplate } from './${componentRelativePath}/${lowerCaseName}.twig'`;
 
@@ -70,87 +61,137 @@ import '../../../${componentRelativePath}/${lowerCaseName}.css';`;
 
   return `${imports}
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+
 const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '../../../${componentPath}');
 
+/**
+ * ${componentName} component story
+ */
 export default {
-    title: '${title}',
-    component: '${componentName}',
-    argTypes,
-    args
+  title: '${title}',
+  component: '${componentName}',
+  parameters: {
+    docs: {
+      description: {
+        component: '${name || componentName} component'
+      }
+    }
+  },
+  argTypes,
+  args
 };
 
-// Create a template component that uses the args
+/**
+ * Component template that renders the ${componentName} component with provided args
+ */
 const Template = (args) => {
-  const [html, setHtml] = useState('Loading...');
-  const componentRef = useRef(null);
-  const jsInitializedRef = useRef(false);
-  const deps = Object.values(args);
+  // Component state
+  const [html, setHtml] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   
-  // First effect to render the Twig template when args change
+  // Refs
+  const componentRef = useRef(null);
+  const isInitializedRef = useRef(false);
+  
+  // Memoize args values to use in effect dependencies
+  const depsArray = Object.values(args);
+  
+  // Render Twig template when args change
   useEffect(() => {
-    // Render the Twig template with the new context
-    ${camelCaseName}RenderTemplate(args).then(renderedHtml => {
-      setHtml(renderedHtml);
-    });
-  }, [...deps]); // Re-render when any arg changes
+    let isMounted = true;
+    setIsLoading(true);
+    
+    ${camelCaseName}RenderTemplate(args)
+      .then(renderedHtml => {
+        if (isMounted) {
+          setHtml(renderedHtml);
+          setIsLoading(false);
+          setError(null);
+        }
+      })
+      .catch(err => {
+        if (isMounted) {
+          console.error('[Storybook] Error rendering template:', err);
+          setError(err.message);
+          setIsLoading(false);
+        }
+      });
+      
+    return () => {
+      isMounted = false;
+    };
+  }, depsArray);
   
   ${hasJsFile && includeJs ? `
-  // Second effect to initialize JS after the HTML has been updated
-  useEffect(() => {
-    const initComponent = async () => {
-      try {
-        // Only initialize once and when the HTML is set
-        if (html !== 'Loading...' && componentRef.current && !jsInitializedRef.current) {
-          console.log('[Storybook] Initializing JS for ${componentName}');
-          
-          // Use dynamic import for the JS
-          const componentModule = await import('${jsPath}');
-          
-          // Try different ways to initialize the component
-          if (typeof componentModule.initialize === 'function') {
-            componentModule.initialize(componentRef.current);
-          } else if (typeof componentModule.default === 'function') {
-            componentModule.default(componentRef.current);
-          } else if (typeof componentModule.init === 'function') {
-            componentModule.init(componentRef.current);
-          } else {
-            // Just run the module itself which may auto-initialize
-            console.log('[Storybook] No explicit initialization function found, module may self-initialize');
-          }
-          
-          jsInitializedRef.current = true;
-        }
-      } catch (error) {
-        console.error('[Storybook] Error initializing JS for ${componentName}:', error);
-      }
-    };
+  // Initialize JS when component is rendered
+  const initializeComponent = useCallback(async () => {
+    // Skip if not mounted, already initialized, or still loading
+    if (!componentRef.current || isInitializedRef.current || isLoading || !html) {
+      return;
+    }
     
-    initComponent();
-    
-    // Cleanup function to prevent memory leaks
-    return () => {
-      if (jsInitializedRef.current && componentRef.current) {
-        // Call cleanup function if it exists
-        import('${jsPath}').then(module => {
-          if (typeof module.cleanup === 'function') {
-            module.cleanup(componentRef.current);
-          }
-        }).catch(err => {
-          console.warn('[Storybook] Error during cleanup:', err);
-        });
-        
-        jsInitializedRef.current = false;
+    try {
+      // Dynamically import the component JS
+      const componentModule = await import('${jsPath}');
+      
+      // Try different initialization methods
+      if (typeof componentModule.initialize === 'function') {
+        componentModule.initialize(componentRef.current);
+      } else if (typeof componentModule.default === 'function') {
+        componentModule.default(componentRef.current);
+      } else if (typeof componentModule.init === 'function') {
+        componentModule.init(componentRef.current);
+      } else {
+        console.log('[Storybook] No explicit initialization found for ${componentName}');
       }
-    };
-  }, [html]);` : ''}
+      
+      isInitializedRef.current = true;
+    } catch (error) {
+      console.error('[Storybook] Failed to initialize ${componentName}:', error);
+    }
+  }, [html, isLoading]);
   
+  // Run initialization after HTML updates
+  useEffect(() => {
+    initializeComponent();
+    
+    // Cleanup when unmounting
+    return () => {
+      if (isInitializedRef.current && componentRef.current) {
+        // Call cleanup if available
+        import('${jsPath}')
+          .then(module => {
+            if (typeof module.cleanup === 'function') {
+              module.cleanup(componentRef.current);
+            }
+          })
+          .catch(err => {
+            console.warn('[Storybook] Cleanup error:', err);
+          });
+          
+        isInitializedRef.current = false;
+      }
+    };
+  }, [initializeComponent]);` : ''}
+  
+  // Early render states
+  if (isLoading && !html) {
+    return <div className="storybook-loading">Loading component...</div>;
+  }
+  
+  if (error) {
+    return <div className="storybook-error">Error: {error}</div>;
+  }
+  
+  // Render the component
   return (
     <div 
-      id="${lowerCaseName}-wrapper" 
-      ref={componentRef} 
+      className="storybook-component ${lowerCaseName}"
+      data-component="${componentName}"
+      ref={componentRef}
       dangerouslySetInnerHTML={{ __html: html }} 
-      className="storybook-component"
     />
   );
 };
