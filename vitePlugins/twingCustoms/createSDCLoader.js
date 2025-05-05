@@ -6,23 +6,38 @@
 import { createArrayLoader } from 'twing';
 
 
+/**
+ * Determines if a template name refers to an SDC component
+ * @param {string} name - Template name to check
+ * @returns {boolean} True if the template is an SDC component
+ */
 const isSDC = (name) => name.includes('@') || name.includes('/');
 
-const getTemplateByColon = (templateDataByColon, templates) => {
-  const namespace = templateDataByColon[0];
-  const template = templateDataByColon[1];
+/**
+ * Resolves a template using namespace:template syntax
+ * @param {string[]} templateParts - Array containing namespace and template name
+ * @param {Object} templates - Object containing all available templates
+ * @returns {Object} Template source object with code, path and name
+ * @throws {Error} If template cannot be found
+ */
+const getTemplateByColon = (templateParts, templates) => {
+  const [namespace, templateName] = templateParts;
   
-  for (const [key, value] of Object.entries(templates)) {
-    if(key.startsWith(`@${namespace}`) && key.endsWith(`${template}.twig`)) {
-        return {
-            code: value,
-            path: key,
-            name: key
-        }
-    }
-    
+  // Find the first template that matches the namespace and template name pattern
+  const matchingEntry = Object.entries(templates).find(([key, _]) => 
+    key.startsWith(`@${namespace}`) && key.endsWith(`${templateName}.twig`)
+  );
+  
+  if (matchingEntry) {
+    const [key, value] = matchingEntry;
+    return {
+      code: value,
+      path: key,
+      name: key
+    };
   }
-  throw new Error(`Template "${template}" does not exist.`);
+  
+  throw new Error(`Template "${templateName}" in namespace "${namespace}" does not exist.`);
 };
 
 /**
