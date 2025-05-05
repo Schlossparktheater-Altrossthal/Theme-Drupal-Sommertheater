@@ -228,7 +228,8 @@ export default function precompileTwigPlugin(options = {}) {
       const clean = id.split('?')[0];
       if (!include.test(clean)) return null;
 
-      // Use the improved resolution function
+      // Use the improved resolution function.
+      console.log(`[Twig] Resolving template: ${clean}`);
       const resolved = resolveTemplate(clean);
       
       if (!resolved) {
@@ -257,6 +258,7 @@ export default function precompileTwigPlugin(options = {}) {
       // and creates direct imports of the custom functions/filters
       return `
         import { createArrayLoader, createEnvironment } from 'twing';
+        import twingSDCLoader from '/${relative(cwd, resolve(__dirname, './twingCustoms/createSDCLoader.js'))}';
         import functions from '/${relative(cwd, resolve(__dirname, './twingCustoms/functions.js'))}';
         import filters from '/${relative(cwd, resolve(__dirname, './twingCustoms/filters.js'))}';
         
@@ -266,7 +268,7 @@ export default function precompileTwigPlugin(options = {}) {
         };
         
         // Create a loader and environment.
-        const loader = createArrayLoader(allSources);
+        const loader = twingSDCLoader(allSources);
         const env = createEnvironment(loader);
         
         // Add functions and filters directly.
