@@ -14,8 +14,8 @@ export default defineConfig({
     react(),
     yaml(),
     precompileTwig({
-      templatesDir: 'components',      // adjust as needed
-      include: /\.twig(\?.*)?$/     ,      // match bare and query imports
+      templatesDir: 'components',      // adjust as needed.
+      include: /\.twig(\?.*)?$/     ,      // match bare and query imports.
       namespaces: {
         components: 'components'
       }

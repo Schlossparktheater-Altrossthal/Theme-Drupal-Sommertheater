@@ -18,7 +18,7 @@ export default function sdcCssWatcher(options = {}) {
     
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig;
-      // Find the story generator plugin
+      // Find the story generator plugin.
       storyGeneratorPlugin = viteConfig.plugins.find(p => p.name === 'vite-plugin-storybook-generator');
     },
 
@@ -45,11 +45,11 @@ export default function sdcCssWatcher(options = {}) {
       
       watcher.on('unlink', (filePath) => {
         if (filePath.endsWith('.css')) {
-          // Get the component directory from the CSS file path
+          // Get the component directory from the CSS file path.
           const componentDir = path.dirname(filePath);
           regenerateComponentCSS(filePath);
           
-          // Trigger story regeneration for this component
+          // Trigger story regeneration for this component.
           if (storyGeneratorPlugin && storyGeneratorPlugin.generateStoryForComponent) {
             console.log(`[css-watcher] CSS file removed, regenerating story for ${componentDir}`);
             storyGeneratorPlugin.generateStoryForComponent(componentDir);
