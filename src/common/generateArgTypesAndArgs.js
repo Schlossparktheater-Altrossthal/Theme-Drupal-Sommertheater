@@ -106,7 +106,22 @@ const valueGenerators = {
    * Generate default value for object properties
    */
   object: (property) => {
-    return property.examples && property.examples.length > 0 ? property.examples[0] : {};
+    // If examples are provided, use the first example
+    if (property.examples && property.examples.length > 0) {
+      return property.examples[0];
+    }
+    
+    // If the object has properties defined, recursively generate values for them
+    if (property.properties) {
+      const result = {};
+      Object.keys(property.properties).forEach(key => {
+        result[key] = generateDefaultValue(property.properties[key]);
+      });
+      return result;
+    }
+    
+    // Fallback to empty object
+    return {};
   },
 
   /**

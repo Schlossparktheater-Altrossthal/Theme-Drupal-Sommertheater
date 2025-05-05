@@ -51,14 +51,9 @@ props:
       examples: 
         - rounded-sm
       default: rounded-sm 
-    cta_label:
-      type: string
-      title: CTA Label
-      examples:
-        - 'Choose this plan'
     cta:
       type: object
-      title: CTA
+      title: CTA Card
       description: CTA for the card
       properties:
         url:
@@ -70,14 +65,7 @@ props:
           type: string
           title: Text
           examples:
-            - 'Choose this plan'
-        radius:
-          type: number
-          name: Corner radius
-          enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
-          examples: 
-            - rounded-sm
-          default: rounded-sm 
+            - 'Choose this plan' 
           
     
     
