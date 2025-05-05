@@ -28,12 +28,12 @@
 
   {# Call-to-action button #}
   <div class="mt-auto">
-    {{ include('@components/link/link.twig', {
+    {# {{ include('@components/link/link.twig', {
             url: link.url,
             text: link.text,
             style: link_style,
             link_classes: (link_classes|default([]))|merge([ radius ])
           } 
-        ) }}
+        ) }} #}
   </div>
 </div>

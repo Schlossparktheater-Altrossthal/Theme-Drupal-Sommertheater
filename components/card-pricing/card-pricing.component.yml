@@ -73,10 +73,11 @@ props:
             - 'Choose this plan'
         radius:
           type: number
-          title: Button radius
+          name: Corner radius
           enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
           examples: 
             - rounded-sm
+          default: rounded-sm 
           
     
     

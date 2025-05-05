@@ -106,7 +106,7 @@ const valueGenerators = {
    * Generate default value for object properties
    */
   object: (property) => {
-    return property.examples.length > 0 ? property.examples[0] : {};
+    return property.examples && property.examples.length > 0 ? property.examples[0] : {};
   },
 
   /**
