@@ -1,27 +1,35 @@
 {# templates/components/pricing-card.twig #}
-<div class="max-w-sm mx-auto border border-brand-dark rounded-lg p-6 flex flex-col">
+
+{% set background_color = background == 'light' ? 'bg-base-light' : 'bg-base-dark' %}
+{% set heading_color = background == 'light' ? '!text-gray-dark' : '!text-gray-lightest' %}
+{% set description_color = background == 'light' ? 'text-gray' : 'text-gray-lightest' %}
+{% set price_color = background == 'light' ? 'text-gray-dark' : 'text-gray-lightest' %}
+{% set divider_color = background == 'light' ? 'border-brand-dark' : 'border-gray-lightest' %}
+{% set features_color = background == 'light' ? 'text-gray-dark' : 'text-gray-lightest' %}
+<div class="{{background_color ~ ' max-w-sm mx-auto border border-brand-dark rounded-lg p-12 flex flex-col '}}">
   {# Title #}
   {{ include('@components/heading/heading.twig', {
     heading_text: heading_text,
     level: level,
     styles: 'alt',
+    heading_classes: [heading_color],
   }) }}
 
   {# Short description #}
-  <p class="text-gray mb-4 text-[24px] mt-2 mb-6 leading-[120%]">
+  <p class="{{description_color ~ ' mb-4 text-[24px] mt-2 mb-6 leading-[120%]'}}">
     {{ description }}
   </p>
 
   {# Price #}
-  <p  class="text-[50px] text-gray-dark mb-6 leading-[120%]"  aria-label="Price"> 
+  <p  class="{{price_color ~ ' text-[50px] mb-6 leading-[120%]'}}"  aria-label="Price"> 
     {{price}}
   </p>
 
   {# Divider #}
-  <hr class="border-t border-brand-dark" />
+  <hr class="{{divider_color ~ ' border-t'}}" />
 
   {# Features list #}
-  <div class="text-xl mt-4 mb-6 leading-[120%] flex-col gap-2 [&>*]:flex [&>*]:flex-col [&>*]:gap-2" >
+  <div class="{{features_color ~ ' text-xl mt-4 mb-6 leading-[120%] flex-col gap-2 [&>*]:flex [&>*]:flex-col [&>*]:gap-2'}}">
     {{text}}
   </div>
   
@@ -32,6 +40,7 @@
             url: cta.url,
             text: cta.text,
             style: 'button-brand',
+            radius: radius,
           } 
         ) }}
 
