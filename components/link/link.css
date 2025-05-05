@@ -16,6 +16,7 @@
 .link--button-light,
 .link--button-outline-light,
 .link--button-dark,
+.link--button-brand,
 .link--button-outline-dark {
   @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
@@ -34,4 +35,8 @@
 
 .link--button-outline-dark {
   @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-base-light;
+}
+
+.link--button-brand {
+  @apply border-brand bg-brand text-gray-dark hover:bg-gray-dark hover:text-brand;
 }
