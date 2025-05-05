@@ -28,6 +28,7 @@ props:
         - button-light
         - button-dark
         - button-brand
+        - button-brand-dark
       examples:
         - 'default'
     radius:

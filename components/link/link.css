@@ -17,6 +17,7 @@
 .link--button-outline-light,
 .link--button-dark,
 .link--button-brand,
+.link--button-brand-dark,
 .link--button-outline-dark {
   @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
@@ -38,5 +39,11 @@
 }
 
 .link--button-brand {
-  @apply border-brand bg-brand text-gray-dark hover:bg-gray-dark hover:text-brand;
+  @apply border-brand bg-brand text-brand-dark hover:bg-brand-dark hover:text-brand;
 }
+
+.link--button-brand-dark {
+  @apply border-brand-dark bg-brand-dark text-brand-light hover:bg-brand-light hover:text-brand-dark;
+}
+
+
