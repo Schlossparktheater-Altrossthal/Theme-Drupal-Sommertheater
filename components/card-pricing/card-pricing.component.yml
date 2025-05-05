@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Pricing
-description: Basic card with image, title, teaser, tags
+description: Card with pricing information
 group: Components/Cards
 props:
   type: object
@@ -9,74 +9,74 @@ props:
       type: string
       title: Heading Text
       examples:
-        - 'This is my title eu torquent suscipit'
+        - 'Name'
     level:
       type: number
       title: Heading Level
       enum: [2,3,4,5,6]
       examples:
         - 3
-    url:
-      type: boolean
-      title: Add optional url
+    background:
+      type: string
+      title: Card background color
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
+    description:
+      type: string
+      title: Description
       examples:
-        - true
-      default: true
-    image:
-      title: Photo
-      description: Media image for the hero.
+        - 'Short description'
+    price:
+      title: Price
+      description: Price of the product
       type: string
       examples:
-        - 'assets/277628-911758.jpg'
-    alt:
-      title: Photo
-      description: Alt tag for media image
-      type: string
-      examples:
-        - 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
+        - '$100.00'
     text:
-      type: string
       title: Text
-      description: Teaser text
-      # @todo Add examples here.
+      description: A text description of the pricing
+      type: string
       examples:
-        - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
+        - '<ul>
+            <li>Feature 1</li>
+            <li>Feature 2</li>
+            <li>Feature 3</li>
+          </ul>'
     radius:
       type: number
-      name: Corner radius
+      title: Button radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm
       default: rounded-sm 
-    badge_1:
-      type: object
-      title: Badge text 1
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'Amazing'
-    badge_2:
-      type: object
-      title: Badge text 2
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'New Release'
-    badge_links:
-      type: array
-      title: Badge links
-      description: A list of badges
-      examples:
-        - url: '#'
-          label: 'Bob'
-        - url: '#'
-          label: 'Fred'
-    orientation:
+    cta_label:
       type: string
-      title: Orientation
-      description: "Set card to horz or vert."
-      enum: ['stacked', 'landscape']
+      title: CTA Label
       examples:
-        - 'stacked'
+        - 'Choose this plan'
+    cta:
+      type: object
+      title: CTA
+      description: CTA for the card
+      properties:
+        url:
+          type: string
+          title: URL
+          examples:
+            - 'https://example.com'
+        text:
+          type: string
+          title: Text
+          examples:
+            - 'Choose this plan'
+        radius:
+          type: number
+          title: Button radius
+          enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+          examples: 
+            - rounded-sm
+          
+    
+    
