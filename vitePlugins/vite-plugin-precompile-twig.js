@@ -254,11 +254,14 @@ export default function precompileTwigPlugin(options = {}) {
           `'${templateKey}': ${JSON.stringify(templateContent)}`)
         .join(',\n    ');
 
+      const twingNamespacesString = Object.keys(resolvedNamespaces).map(namespace => `'${namespace}': ${JSON.stringify(resolvedNamespaces[namespace])}`).join(',\n    ');
+
+      
       // Generate a module that uses the ESM-friendly Twing APIs 
       // and creates direct imports of the custom functions/filters
       return `
         import { createArrayLoader, createEnvironment } from 'twing';
-        import twingSDCLoader from '/${relative(cwd, resolve(__dirname, './twingCustoms/createSDCLoader.js'))}';
+        import createSDCLoader from '/${relative(cwd, resolve(__dirname, './twingCustoms/createSDCLoader.js'))}';
         import functions from '/${relative(cwd, resolve(__dirname, './twingCustoms/functions.js'))}';
         import filters from '/${relative(cwd, resolve(__dirname, './twingCustoms/filters.js'))}';
         
@@ -266,9 +269,13 @@ export default function precompileTwigPlugin(options = {}) {
         const allSources = {
           ${allSourcesString}
         };
+
+        const twingNamespaces = {
+          ${twingNamespacesString}
+        };
         
         // Create a loader and environment.
-        const loader = twingSDCLoader(allSources);
+        const loader = createSDCLoader(allSources, twingNamespaces);
         const env = createEnvironment(loader);
         
         // Add functions and filters directly.

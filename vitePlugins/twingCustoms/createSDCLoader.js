@@ -5,6 +5,26 @@
 
 import { createArrayLoader } from 'twing';
 
+
+const isSDC = (name) => name.includes('@') || name.includes('/');
+
+const getTemplateByColon = (templateDataByColon, templates) => {
+  const namespace = templateDataByColon[0];
+  const template = templateDataByColon[1];
+  
+  for (const [key, value] of Object.entries(templates)) {
+    if(key.startsWith(`@${namespace}`) && key.endsWith(`${template}.twig`)) {
+        return {
+            code: value,
+            path: key,
+            name: key
+        }
+    }
+    
+  }
+  throw new Error(`Template "${template}" does not exist.`);
+};
+
 /**
  * Creates a custom loader for SDC components, extending Twing's array loader functionality
  * 
@@ -13,7 +33,9 @@ import { createArrayLoader } from 'twing';
  * 
  * @returns {Object} A Twing loader with enhanced SDC functionality
  */
-export function createSDCLoader(templates, name = 'sdc-array') {
+
+
+export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
   // Get the base array loader
   const baseLoader = createArrayLoader(templates);
   
@@ -24,7 +46,7 @@ export function createSDCLoader(templates, name = 'sdc-array') {
       console.log(`[SDC Loader] Getting source for: ${name}`);
       
       // If baseLoader has getSource method, use it
-      if (typeof baseLoader.getSource === 'function') {
+      if (typeof baseLoader.getSource === 'function' && !name.includes(':') ) {
         return baseLoader.getSource(name);
       }
       
@@ -36,8 +58,9 @@ export function createSDCLoader(templates, name = 'sdc-array') {
           name: name
         };
       }
-      
-      throw new Error(`Template "${name}" does not exist.`);
+
+      return getTemplateByColon(name.split(':'), templates);
+    
     },
     
     // Forward other methods directly to the base loader
@@ -60,7 +83,7 @@ export function createSDCLoader(templates, name = 'sdc-array') {
     
     // Add the critical resolve method
     resolve: (name, from = null) => {
-      console.log(`[SDC Loader] Resolving template: ${name} from ${from}`);
+      console.log(`[SDC Loader] Resolving template: ${name} ${from ? `from ${from}` : ''}`);
       // If baseLoader has resolve method, use it
       if (typeof baseLoader.resolve === 'function') {
         return baseLoader.resolve(name, from);
@@ -108,12 +131,10 @@ export function createSDCLoader(templates, name = 'sdc-array') {
     load: async (env, name, path = null) => {
       try {
         // Get the template from the base loader
-        const template = await baseLoader.load(env, name, path);
-        
+        const template = await baseLoader.load(env, name, path);        
         // Check if this is an SDC component (based on naming conventions)
-        const isSDC = name.includes('@') || name.includes('/');
         
-        if (isSDC) {
+        if (isSDC(name, namespaces)) {
           // We can't modify the template directly, but we can create a wrapper with additional functionality
           const enhancedRender = async (context) => {
             // Add SDC-specific context variables if needed
