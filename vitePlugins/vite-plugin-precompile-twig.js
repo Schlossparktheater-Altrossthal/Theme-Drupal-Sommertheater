@@ -11,7 +11,7 @@ export default function precompileTwigPlugin(options = {}) {
   const {
     templatesDir = ['src/templates'],
     include = /\.twig(\?.*)?$/,
-    namespaces = {} // e.g. { components: 'src/components' }
+    namespaces = {} // e.g. { components: 'src/components' } or { components: ['src/components', 'other-components'] }
   } = options;
 
   // Fix process.cwd() linter error.
@@ -23,10 +23,13 @@ export default function precompileTwigPlugin(options = {}) {
   // Resolve all template directory paths
   const templateDirPaths = templateDirs.map(dir => resolve(cwd, dir));
   
-  // Resolve all namespace paths.
+  // Resolve all namespace paths - support multiple directories per namespace
   const resolvedNamespaces = {};
-  Object.entries(namespaces).forEach(([namespace, path]) => {
-    resolvedNamespaces[namespace] = resolve(cwd, path);
+  Object.entries(namespaces).forEach(([namespace, paths]) => {
+    // Convert to array if a single string is provided
+    const pathsArray = Array.isArray(paths) ? paths : [paths];
+    // Resolve all paths for this namespace
+    resolvedNamespaces[namespace] = pathsArray.map(path => resolve(cwd, path));
   });
 
   // Function to collect templates from a directory.
@@ -64,17 +67,20 @@ export default function precompileTwigPlugin(options = {}) {
       }
     });
     
-    // Add templates from each namespace.
-    Object.entries(resolvedNamespaces).forEach(([namespace, dir]) => {
-      try {
-        const namespacedTemplates = walk(dir);
-        // Add namespace prefix to all templates from this directory.
-        Object.entries(namespacedTemplates).forEach(([path, content]) => {
-          templates[`@${namespace}/${path}`] = content;
-        });
-      } catch (err) {
-        console.error(`Error loading templates from namespace "${namespace}": ${err.message}`);
-      }
+    // Add templates from each namespace (which may have multiple directories).
+    Object.entries(resolvedNamespaces).forEach(([namespace, dirPaths]) => {
+      // Process each directory path for this namespace
+      dirPaths.forEach(dir => {
+        try {
+          const namespacedTemplates = walk(dir);
+          // Add namespace prefix to all templates from this directory.
+          Object.entries(namespacedTemplates).forEach(([path, content]) => {
+            templates[`@${namespace}/${path}`] = content;
+          });
+        } catch (err) {
+          console.error(`Error loading templates from namespace "${namespace}" directory "${dir}": ${err.message}`);
+        }
+      });
     });
     
     return templates;
@@ -102,15 +108,19 @@ export default function precompileTwigPlugin(options = {}) {
     // If path starts with @, it's a namespaced path
     if (path.startsWith('@')) {
       const [, namespace, ...rest] = path.split('/');
-      const namespacePath = resolvedNamespaces[namespace];
-      if (namespacePath) {
+      const namespacePaths = resolvedNamespaces[namespace];
+      if (namespacePaths) {
         const relativePath = rest.join('/');
-        const fullPath = resolve(namespacePath, relativePath);
-        if (fileExists(fullPath)) {
-          const key = `@${namespace}/${relativePath}`;
-          const content = readFileSync(fullPath, 'utf8');
-          templateSources[key] = content; // Cache it
-          return { key, content };
+        
+        // Try each directory for this namespace
+        for (const dir of namespacePaths) {
+          const fullPath = resolve(dir, relativePath);
+          if (fileExists(fullPath)) {
+            const key = `@${namespace}/${relativePath}`;
+            const content = readFileSync(fullPath, 'utf8');
+            templateSources[key] = content; // Cache it
+            return { key, content };
+          }
         }
       }
     }
@@ -148,6 +158,19 @@ export default function precompileTwigPlugin(options = {}) {
         }
       }
       
+      // Check if it belongs to any namespace directory
+      for (const [namespace, dirPaths] of Object.entries(resolvedNamespaces)) {
+        for (const dir of dirPaths) {
+          if (path.startsWith(dir)) {
+            const relativePath = relative(dir, path).replace(/\\/g, '/');
+            const key = `@${namespace}/${relativePath}`;
+            const content = readFileSync(path, 'utf8');
+            templateSources[key] = content; // Cache it
+            return { key, content };
+          }
+        }
+      }
+      
       // Not under a template directory, use as is
       const content = readFileSync(path, 'utf8');
       templateSources[path] = content; // Cache it
@@ -155,30 +178,32 @@ export default function precompileTwigPlugin(options = {}) {
     }
 
     // Try namespace directories with direct paths
-    for (const [namespace, dir] of Object.entries(resolvedNamespaces)) {
-      // Check if path is under this namespace directory
-      if (path.startsWith(dir)) {
-        const relativePath = relative(dir, path).replace(/\\/g, '/');
-        const key = `@${namespace}/${relativePath}`;
-        if (templateSources[key]) {
-          return { key, content: templateSources[key] };
+    for (const [namespace, dirPaths] of Object.entries(resolvedNamespaces)) {
+      for (const dir of dirPaths) {
+        // Check if path is under this namespace directory
+        if (path.startsWith(dir)) {
+          const relativePath = relative(dir, path).replace(/\\/g, '/');
+          const key = `@${namespace}/${relativePath}`;
+          if (templateSources[key]) {
+            return { key, content: templateSources[key] };
+          }
+          
+          // If not in cache but file exists, load it
+          if (fileExists(path)) {
+            const content = readFileSync(path, 'utf8');
+            templateSources[key] = content; // Cache it
+            return { key, content };
+          }
         }
         
-        // If not in cache but file exists, load it
-        if (fileExists(path)) {
-          const content = readFileSync(path, 'utf8');
+        // Try path as subdirectory within the namespace
+        const fullPath = resolve(dir, path);
+        if (fileExists(fullPath)) {
+          const content = readFileSync(fullPath, 'utf8');
+          const key = `@${namespace}/${path}`;
           templateSources[key] = content; // Cache it
           return { key, content };
         }
-      }
-      
-      // Try path as subdirectory within the namespace
-      const fullPath = resolve(dir, path);
-      if (fileExists(fullPath)) {
-        const content = readFileSync(fullPath, 'utf8');
-        const key = `@${namespace}/${path}`;
-        templateSources[key] = content; // Cache it
-        return { key, content };
       }
     }
 

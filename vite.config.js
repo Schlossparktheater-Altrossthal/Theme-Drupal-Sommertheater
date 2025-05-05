@@ -17,7 +17,7 @@ export default defineConfig({
       templatesDir: ['components', 'templates'],      // adjust as needed.
       include: /\.twig(\?.*)?$/     ,      // match bare and query imports.
       namespaces: {
-        mercury: 'components'
+        mercury: ['components', 'templates']
       }
     }),
     tailwindcss(),
