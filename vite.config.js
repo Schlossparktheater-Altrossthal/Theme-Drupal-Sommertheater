@@ -12,7 +12,6 @@ export default defineConfig({
     nodePolyfills(),
     yaml(),
     precompileTwig({
-      templatesDir: ['components', 'templates'],      // adjust as needed.
       include: /\.twig(\?.*)?$/     ,      // match bare and query imports.
       namespaces: {
         mercury: ['components', 'templates']

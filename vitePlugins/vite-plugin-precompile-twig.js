@@ -9,7 +9,6 @@ const __dirname = dirname(__filename);
 
 export default function precompileTwigPlugin(options = {}) {
   const {
-    templatesDir = ['src/templates'],
     include = /\.twig(\?.*)?$/,
     namespaces = {} // e.g. { components: 'src/components' } or { components: ['src/components', 'other-components'] }
   } = options;
@@ -17,8 +16,8 @@ export default function precompileTwigPlugin(options = {}) {
   // Fix process.cwd() linter error.
   const cwd = typeof process !== 'undefined' ? process.cwd() : '.';
   
-  // Convert templatesDir to array if it's a string
-  const templateDirs = Array.isArray(templatesDir) ? templatesDir : [templatesDir];
+  // Get all template directories from namespaces
+  const templateDirs = Object.values(namespaces)?.flatMap(namespace => Array.isArray(namespace) ? namespace : [namespace]);
   
   // Resolve all template directory paths
   const templateDirPaths = templateDirs.map(dir => resolve(cwd, dir));
