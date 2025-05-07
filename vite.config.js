@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import yaml from '@rollup/plugin-yaml';
 import storybookGenerator from './vitePlugins/vite-plugin-storybook-generator.js';
@@ -11,13 +10,11 @@ import precompileTwig from './vitePlugins/vite-plugin-precompile-twig.js';
 export default defineConfig({
   plugins: [
     nodePolyfills(),
-    react(),
     yaml(),
     precompileTwig({
-      templatesDir: 'components',      // adjust as needed
-      include: /\.twig(\?.*)?$/     ,      // match bare and query imports
+      include: /\.twig(\?.*)?$/     ,      // match bare and query imports.
       namespaces: {
-        components: 'components'
+        mercury: ['components', 'templates']
       }
     }),
     tailwindcss(),

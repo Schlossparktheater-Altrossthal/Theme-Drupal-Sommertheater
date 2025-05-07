@@ -18,18 +18,14 @@ import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component 
 function generateStoryContent(componentPath, componentName, includeJs = true) {
   const lowerCaseName = componentName.toLowerCase();
   const camelCaseName = lowerCaseName.split('-').map(
-    (word, index) => {
-      if (index === 0) {
-        return word;
-      }
-
-      return word.slice(0, 1).toUpperCase() + word.slice(1)
-    }
+    (word, index) => index === 0 ? word : word.slice(0, 1).toUpperCase() + word.slice(1)
   ).join('');
 
   const yamlFilePath = path.join(componentPath, `${lowerCaseName}.component.yml`);
   const cssFilePath = path.join(componentPath, `${lowerCaseName}.css`);
   const hasCssFile = fs.existsSync(cssFilePath);
+  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
+  const hasJsFile = fs.existsSync(jsFilePath);
 
   // Variables to org components based on .yml
   let group = null;
@@ -48,14 +44,12 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
 
   const title = group ? `${group}/${name}` : `Components/${name}`;
 
-  // Check if JS file exists
-  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
-  const hasJsFile = fs.existsSync(jsFilePath);
-
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
+  const jsPath = `../../../${componentRelativePath}/${lowerCaseName}.js`;
 
-  let imports = `// Import the YAML metadata and the Twig template.
+  // Base imports that are always needed
+  let imports = `// Import the YAML metadata and the Twig template
 import ${camelCaseName}Metadata from '../../../${componentRelativePath}/${lowerCaseName}.component.yml';
 import { render as ${camelCaseName}RenderTemplate } from './${componentRelativePath}/${lowerCaseName}.twig'`;
 
@@ -65,35 +59,141 @@ import { render as ${camelCaseName}RenderTemplate } from './${componentRelativeP
 import '../../../${componentRelativePath}/${lowerCaseName}.css';`;
   }
 
-  // Conditionally add the JS import if the file exists and includeJs is true
-  if (hasJsFile && includeJs) {
-    imports += `
-import '../../../${componentRelativePath}/${lowerCaseName}.js';`;
-  }
-
   return `${imports}
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+
 const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '../../../${componentPath}');
 
+/**
+ * ${componentName} component story
+ */
 export default {
-    title: '${title}',
-    component: '${componentName}',
-    argTypes,
-    args
+  title: '${title}',
+  component: '${componentName}',
+  parameters: {
+    docs: {
+      description: {
+        component: '${name || componentName} component'
+      }
+    }
+  },
+  argTypes,
+  args
 };
 
-// Create a template component that uses the args
+/**
+ * Component template that renders the ${componentName} component with provided args
+ */
 const Template = (args) => {
-  const [html, setHtml] = useState('Loading...');
-  const deps= Object.values(args);
+  // Component state
+  const [html, setHtml] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // Refs
+  const componentRef = useRef(null);
+  const isInitializedRef = useRef(false);
+  
+  // Memoize args values to use in effect dependencies
+  const depsArray = Object.values(args);
+  
+  // Render Twig template when args change
   useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+    
+    ${camelCaseName}RenderTemplate(args)
+      .then(renderedHtml => {
+        if (isMounted) {
+          setHtml(renderedHtml);
+          setIsLoading(false);
+          setError(null);
+        }
+      })
+      .catch(err => {
+        if (isMounted) {
+          console.error('[Storybook] Error rendering template:', err);
+          setError(err.message);
+          setIsLoading(false);
+        }
+      });
+      
+    return () => {
+      isMounted = false;
+    };
+  }, depsArray);
   
-    // Render the Twig template with the new context
-    ${camelCaseName}RenderTemplate (args).then(setHtml);
-  }, [...deps]); // Re-render when any arg changes
+  ${hasJsFile && includeJs ? `
+  // Initialize JS when component is rendered
+  const initializeComponent = useCallback(async () => {
+    // Skip if not mounted, already initialized, or still loading
+    if (!componentRef.current || isInitializedRef.current || isLoading || !html) {
+      return;
+    }
+    
+    try {
+      // Dynamically import the component JS
+      const componentModule = await import('${jsPath}');
+      
+      // Try different initialization methods
+      if (typeof componentModule.initialize === 'function') {
+        componentModule.initialize(componentRef.current);
+      } else if (typeof componentModule.default === 'function') {
+        componentModule.default(componentRef.current);
+      } else if (typeof componentModule.init === 'function') {
+        componentModule.init(componentRef.current);
+      } else {
+        console.log('[Storybook] No explicit initialization found for ${componentName}');
+      }
+      
+      isInitializedRef.current = true;
+    } catch (error) {
+      console.error('[Storybook] Failed to initialize ${componentName}:', error);
+    }
+  }, [html, isLoading]);
   
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  // Run initialization after HTML updates
+  useEffect(() => {
+    initializeComponent();
+    
+    // Cleanup when unmounting
+    return () => {
+      if (isInitializedRef.current && componentRef.current) {
+        // Call cleanup if available
+        import('${jsPath}')
+          .then(module => {
+            if (typeof module.cleanup === 'function') {
+              module.cleanup(componentRef.current);
+            }
+          })
+          .catch(err => {
+            console.warn('[Storybook] Cleanup error:', err);
+          });
+          
+        isInitializedRef.current = false;
+      }
+    };
+  }, [initializeComponent]);` : ''}
+  
+  // Early render states
+  if (isLoading && !html) {
+    return <div className="storybook-loading">Loading component...</div>;
+  }
+  
+  if (error) {
+    return <div className="storybook-error">Error: {error}</div>;
+  }
+  
+  // Render the component
+  return (
+    <div 
+      className="storybook-component ${lowerCaseName}"
+      data-component="${componentName}"
+      ref={componentRef}
+      dangerouslySetInnerHTML={{ __html: html }} 
+    />
+  );
 };
 
 export const Default = Template.bind({});
@@ -101,7 +201,7 @@ export const Default = Template.bind({});
 }
 
 /**
- * Vite plugin for generating Storybook stories in a separate directory
+ * Vite plugin for generating Storybook stories in a separate directory.
  */
 export default function storybookGenerator(options = {}) {
   const {
@@ -117,21 +217,21 @@ export default function storybookGenerator(options = {}) {
       const componentName = path.basename(componentDir);
       const lowerCaseName = componentName.toLowerCase();
 
-      // Check if the component has the required files
+      // Check if the component has the required files.
       const hasYaml = fs.existsSync(path.join(componentDir, `${lowerCaseName}.component.yml`));
       const hasTwig = fs.existsSync(path.join(componentDir, `${lowerCaseName}.twig`));
 
-      // Skip if any required file is missing
+      // Skip if any required file is missing.
       if (!hasYaml || !hasTwig) {
         console.warn(`[storybook-generator] Skipping ${componentName}: missing required files (YAML or Twig)`);
         return;
       }
 
       try {
-        // Generate the story content
+        // Generate the story content.
         const storyContent = generateStoryContent(componentDir, componentName, includeJs);
 
-        // Create story file path in the separate directory
+        // Create story file path in the separate directory.
         const absoluteStoriesDir = path.resolve(storiesDir);
         if (!fs.existsSync(absoluteStoriesDir)) {
           fs.mkdirSync(absoluteStoriesDir, { recursive: true });
@@ -139,7 +239,7 @@ export default function storybookGenerator(options = {}) {
         
         const storyFilePath = path.join(absoluteStoriesDir, `${lowerCaseName}.stories.jsx`);
 
-        // Write the story file to the separate directory
+        // Write the story file to the separate directory.
         fs.writeFileSync(storyFilePath, storyContent);
         console.log(`[storybook-generator] Generated story file for ${componentName} at ${storyFilePath}`);
       } catch (error) {
@@ -148,12 +248,12 @@ export default function storybookGenerator(options = {}) {
     },
 
     generateAllStoryFiles() {
-      // Ensure the stories directory exists
+      // Ensure the stories directory exists.
       const absoluteStoriesDir = path.resolve(storiesDir);
       if (!fs.existsSync(absoluteStoriesDir)) {
         fs.mkdirSync(absoluteStoriesDir, { recursive: true });
       } else {
-        // Clean up old story files
+        // Clean up old story files.
         const oldStoryFiles = glob.sync(`${absoluteStoriesDir}/*.stories.js`);
         oldStoryFiles.forEach(file => {
           fs.unlinkSync(file);
