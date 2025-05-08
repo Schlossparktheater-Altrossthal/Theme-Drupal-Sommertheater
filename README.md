@@ -1,6 +1,6 @@
 # Mercury Theme
 
-**Mercury** is a modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools such as Vite, Storybook, and the SDC (Starshot Design System) to create a seamless development experience. 
+**Mercury** is a modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools such as Vite, Storybook, and the SDC (Starshot Design System) to create a seamless development experience.
 
 ## Features
 
@@ -15,15 +15,15 @@ To install the theme, follow these steps:
 1. Clone the repository into your Drupal themes directory:
    `git clone <repository-url> themes/custom/mercury`
 2. Make sure you are using the correct node version
-`nvm use'
+   `nvm use'
 3. Install the required dependencies using pnpm:
-`pnpm install`
+   `pnpm install`
 4. Enable the theme in Drupal:
-`drush theme:enable mercury`
+   `drush theme:enable mercury`
 5. (Optional) If you want to run Storybook locally for component development, you can use the following command:
-`pnpm run storybook`
+   `pnpm run storybook`
 
-***
+---
 
 ## Storybook Generator Vite Plugin
 
@@ -44,15 +44,15 @@ npm install glob --save-dev
 Add the plugin to your `vite.config.js` file:
 
 ```javascript
-import { defineConfig } from 'vite';
-import storybookGenerator from './vite-plugin-storybook-generator';
+import { defineConfig } from "vite";
+import storybookGenerator from "./vite-plugin-storybook-generator";
 
 export default defineConfig({
   plugins: [
     storybookGenerator({
       // Optional: override default options
-      componentsDir: 'components',   // Default directory containing components
-      forceOverwrite: false,         // Whether to overwrite existing story files
+      componentsDir: "components", // Default directory containing components
+      forceOverwrite: false, // Whether to overwrite existing story files
     }),
     // Your other plugins...
   ],
@@ -98,4 +98,15 @@ components/
 
 - The plugin runs during the Vite build process
 - It will log information about generated stories and any errors
-- If `forceOverwrite` is set to `false`, it will skip components that already have a story file 
+- If `forceOverwrite` is set to `false`, it will skip components that already have a story file
+
+## Storybook: Variants and custom data
+
+Components may have a `component-name.storybook.yml` file with arbitrary data, which will be available in its Twig files as a top-level `storybook` variable.
+
+Components may also have additional Twig files for variants of the main component. Any file named like`component-name~variant-name.twig` will show up as a variant nested under the main component. (Note the tilde (~) separating the component name from the variable name. If you wish for one of your variants to replace the main component Twig altogether in Storybook, do two things:
+
+- Add a component-name.storybook.yml file, with `hide_main: true` as a top-level property
+- Name your variant file `component-name~main.twig`.
+
+You can see all of the above in action in the Collapsible Section component.
