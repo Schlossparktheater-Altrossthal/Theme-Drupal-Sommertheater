@@ -19,7 +19,7 @@
 
 <div class="{{ card_classes }}">
   {# Title #}
-  {{ include('@components/heading/heading.twig', {
+  {{ include('@mercury/heading/heading.twig', {
     heading_text: heading_text,
     level: level,
     styles: 'alt',
@@ -46,7 +46,7 @@
   
   {# Call-to-action button #}
   <div class="mt-auto">
-    {{ include('@components/link/link.twig', {
+    {{ include('@mercury/link/link.twig', {
       url: cta.url,
       text: cta.text,
       style: colors.cta,
