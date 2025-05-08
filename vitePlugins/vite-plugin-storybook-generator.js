@@ -55,9 +55,6 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
     name: null,
   }
 
-  // Redo the names now that we have a possible friendly name.
-  name = nameFormatsFromSlug(componentName, metadata.name);
-
   if (fs.existsSync(yamlFilePath)) {
     try {
       const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
@@ -69,7 +66,8 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
     }
   }
 
-
+  // Redo the names now that we have a possible friendly name.
+  name = nameFormatsFromSlug(componentName, metadata.name);
 
   let storybookMetadata = {};
 
@@ -152,7 +150,6 @@ const { argTypes, args } = generateArgTypesAndArgs(${name.camelCase}Metadata, '.
  */
 export default {
   title: '${title}',
-  component: '${name.original} foo foo',
   parameters: {
     docs: {
       description: {
