@@ -1,1 +1,2 @@
-variants_only: true
+content: '<p>Yo dawg!</p>'
+hide_main: true
