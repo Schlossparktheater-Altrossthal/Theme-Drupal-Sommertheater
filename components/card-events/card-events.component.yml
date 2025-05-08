@@ -5,6 +5,13 @@ group: Components/Cards
 props:
   type: object
   properties:
+    style:
+      type: string
+      title: Card background color
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
     title:
       type: string
       title: Heading Text
@@ -26,3 +33,4 @@ props:
       type: string
       examples:
         - '29013 Bednar Spurs'
+    
