@@ -99,11 +99,6 @@ export default function precompileTwigPlugin(options = {}) {
 
   // Improved template resolution function
   function resolveTemplate(path) {
-    // Check if the path is already in our template sources
-    if (templateSources[path]) {
-      return { key: path, content: templateSources[path] };
-    }
-
     // If path starts with @, it's a namespaced path
     if (path.startsWith('@')) {
       const [, namespace, ...rest] = path.split('/');
