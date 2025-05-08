@@ -104,7 +104,7 @@ components/
 
 Components may have a `component-name.storybook.yml` file with arbitrary data, which will be available in its Twig files as a top-level `storybook` variable.
 
-Components may also have additional Twig files for variants of the main component. Any file named like`component-name~variant-name.twig` will show up as a variant nested under the main component. (Note the tilde (~) separating the component name from the variable name. If you wish for one of your variants to replace the main component Twig altogether in Storybook, do two things:
+Components may also have additional Twig files for variants of the main component. Any file named like `component-name~variant-name.twig` will show up as a variant nested under the main component. (Note the tilde (~) separating the component name from the variable name.) If you wish for one of your variants to replace the main component Twig altogether in Storybook, do two things:
 
 - Add a component-name.storybook.yml file, with `hide_main: true` as a top-level property
 - Name your variant file `component-name~main.twig`.
