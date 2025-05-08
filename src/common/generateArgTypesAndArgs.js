@@ -68,21 +68,21 @@ function generateControlType(property) {
 
   // Handle objects
   if (property.type === "object") {
-    return {control: {...propertyHandlers.object(property)}};
+    return { control: { ...propertyHandlers.object(property) } };
   }
 
   // Handle arrays
   if (property.type === "array") {
-    return {control: {...propertyHandlers.array(property)}};
+    return { control: { ...propertyHandlers.array(property) } };
   }
 
   // Handle array of types
   if (Array.isArray(property.type)) {
-    return {control: {...propertyHandlers.arrayOfTypes(property)}};
+    return { control: { ...propertyHandlers.arrayOfTypes(property) } };
   }
 
   // Default handler
-  return {control: {...propertyHandlers.default(property)}};
+  return { control: { ...propertyHandlers.default(property) } };
 }
 
 /**
@@ -141,7 +141,7 @@ const valueGenerators = {
   },
 
   enum: (property) => {
-   return property.examples && property.examples.length > 0
+    return property.examples && property.examples.length > 0
       ? property.examples[0]
       : "";
   },
@@ -180,12 +180,13 @@ function generateDefaultValue(property) {
 /**
  * Generate argTypes and args for a component
  */
-function generateArgTypesAndArgs(parsedMetadata, componentPath = "") {
+function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMetadata = {}) {
   const argTypes = {};
   const args = {
     componentMetadata: {
       path: componentPath,
     },
+    storybook: storybookMetadata,
   };
 
   // Validate metadata
@@ -201,7 +202,7 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "") {
     const property = properties[key];
 
     // Generate control type
-    const control = 
+    const control =
       generateControlType(property);
 
     // Build argTypes entry

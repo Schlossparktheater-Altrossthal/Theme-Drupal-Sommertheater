@@ -7,6 +7,24 @@ import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component metadata (e.g., extracting 'group' property)
+import storyTemplate from './storyTemplate';
+
+function nameFormatsFromSlug(slug, friendlyTitle = null) {
+  const kebabCase = slug.toLowerCase();
+  const camelCase = kebabCase.split('-').map(
+    (word, index) => index === 0 ? word : word.slice(0, 1).toUpperCase() + word.slice(1)
+  ).join('');
+  const pascalCase = camelCase.slice(0, 1).toLocaleUpperCase() + camelCase.slice(1);
+  const titleCase = friendlyTitle || kebabCase.split('-').map(word => word.slice(0, 1).toLocaleUpperCase() + word.slice(1)).join(' ');
+
+  return {
+    original: slug,
+    kebabCase,
+    camelCase,
+    pascalCase,
+    titleCase,
+  };
+}
 
 /**
  * Generate story content for a component
@@ -16,65 +34,129 @@ import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component 
  * @returns {string} - Story content
  */
 function generateStoryContent(componentPath, componentName, includeJs = true) {
-  const lowerCaseName = componentName.toLowerCase();
-  const camelCaseName = lowerCaseName.split('-').map(
-    (word, index) => index === 0 ? word : word.slice(0, 1).toUpperCase() + word.slice(1)
-  ).join('');
 
-  const yamlFilePath = path.join(componentPath, `${lowerCaseName}.component.yml`);
-  const cssFilePath = path.join(componentPath, `${lowerCaseName}.css`);
+  let name = nameFormatsFromSlug(componentName);
+
+  const yamlFilePath = path.join(componentPath, `${name.kebabCase}.component.yml`);
+  const storybookYamlFilePath = path.join(componentPath, `${name.kebabCase}.storybook.yml`);
+  const cssFilePath = path.join(componentPath, `${name.kebabCase}.css`);
+  const jsFilePath = path.join(componentPath, `${name.kebabCase}.js`);
+
+  const hasStorybookYamlFile = fs.existsSync(storybookYamlFilePath);
   const hasCssFile = fs.existsSync(cssFilePath);
-  const jsFilePath = path.join(componentPath, `${lowerCaseName}.js`);
   const hasJsFile = fs.existsSync(jsFilePath);
 
+  const variantRegExp = new RegExp(`^${name.kebabCase}\~(.*)\.twig$`);
+  const variantPaths = fs.readdirSync(componentPath).filter(filename => variantRegExp.test(filename));
+
   // Variables to org components based on .yml
-  let group = null;
-  let name = null;
+  let metadata = {
+    group: null,
+    name: null,
+  }
+
+  // Redo the names now that we have a possible friendly name.
+  name = nameFormatsFromSlug(componentName, metadata.name);
 
   if (fs.existsSync(yamlFilePath)) {
     try {
       const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
       const parsedYaml = yaml.load(yamlContent);
-      group = parsedYaml?.group ?? null;
-      name = parsedYaml?.name ?? null;
+      metadata.group = parsedYaml?.group ?? null;
+      metadata.name = parsedYaml?.name ?? null;
     } catch (error) {
-      console.warn(`[storybook-generator] Warning: Could not read YAML for ${componentName}: ${error.message}`);
+      console.warn(`[storybook-generator] Warning: Could not read SDC YAML for ${name.original}: ${error.message}`);
     }
   }
 
-  const title = group ? `${group}/${name}` : `Components/${name}`;
+
+
+  let storybookMetadata = {};
+
+  if (fs.existsSync(storybookYamlFilePath)) {
+    try {
+      storybookMetadata = yaml.load(fs.readFileSync(storybookYamlFilePath, 'utf8'));
+    } catch (error) {
+      console.warn(`[storybook-generator] Warning: Could not read Storybook YAML for ${name.original}: ${error.message}`)
+    }
+  }
+
+  const variants = variantPaths.map(variantPath => {
+    const variantSlug = variantPath.match(variantRegExp)[1];
+
+    if (variantSlug.toLocaleLowerCase() === 'main') {
+      return {
+        withComponent: name,
+        withoutComponent: name,
+        path: variantPath,
+      }
+    }
+
+    return {
+      withComponent: nameFormatsFromSlug(`${name.original}-${variantSlug}`),
+      withoutComponent: nameFormatsFromSlug(`${variantSlug}`),
+    };
+  });
+
+  const title = metadata.group ? `${metadata.group}/${metadata.name}` : `Components/${metadata.name}`;
 
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
-  const jsPath = `../../../${componentRelativePath}/${lowerCaseName}.js`;
+  const jsPath = `../../../${componentRelativePath}/${name.kebabCase}.js`;
 
   // Base imports that are always needed
   let imports = `// Import the YAML metadata and the Twig template
-import ${camelCaseName}Metadata from '../../../${componentRelativePath}/${lowerCaseName}.component.yml';
-import { render as ${camelCaseName}RenderTemplate } from './${componentRelativePath}/${lowerCaseName}.twig'`;
+import ${name.camelCase}Metadata from '../../../${componentRelativePath}/${name.kebabCase}.component.yml';`
+
+  // Import the main Twig file only if none of the variants is supposed to take its place.
+  if (variants.map(variantNames => variantNames.withComponent.original).indexOf(name.original) === -1) {
+    imports += `
+import { render as ${name.camelCase}RenderTemplate } from './${componentRelativePath}/${name.original}.twig';
+    `;
+  }
+
 
   // Only add CSS import if the file exists
   if (hasCssFile) {
     imports += `
-import '../../../${componentRelativePath}/${lowerCaseName}.css';`;
+import '../../../${componentRelativePath}/${name.kebabCase}.css';`;
   }
+
+  if (hasStorybookYamlFile) {
+    imports += `
+import ${name.camelCase}StorybookMetadata from '../../../${componentRelativePath}/${name.kebabCase}.storybook.yml';
+    `
+  }
+
+  variants.forEach(variantNames => {
+    imports += `
+import { render as ${variantNames.withComponent.camelCase}RenderTemplate } from './${componentRelativePath}/${variantNames.path}'
+`;
+  });
 
   return `${imports}
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-const { argTypes, args } = generateArgTypesAndArgs(${camelCaseName}Metadata, '../../../${componentPath}');
+let storybookMetadata = {};
+
+try {
+  storybookMetadata = ${name.camelCase}StorybookMetadata
+} catch {}
+
+
+const { argTypes, args } = generateArgTypesAndArgs(${name.camelCase}Metadata, '../../../${componentPath}', storybookMetadata);
 
 /**
- * ${componentName} component story
+ * ${name.titleCase} component story.
  */
 export default {
   title: '${title}',
-  component: '${componentName}',
+  component: '${name.original} foo foo',
   parameters: {
     docs: {
       description: {
-        component: '${name || componentName} component'
+        component: '${metadata.name || name.original} component'
       }
     }
   },
@@ -82,121 +164,11 @@ export default {
   args
 };
 
-/**
- * Component template that renders the ${componentName} component with provided args
- */
-const Template = (args) => {
-  // Component state
-  const [html, setHtml] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  
-  // Refs
-  const componentRef = useRef(null);
-  const isInitializedRef = useRef(false);
-  
-  // Memoize args values to use in effect dependencies
-  const depsArray = Object.values(args);
-  
-  // Render Twig template when args change
-  useEffect(() => {
-    let isMounted = true;
-    setIsLoading(true);
-    
-    ${camelCaseName}RenderTemplate(args)
-      .then(renderedHtml => {
-        if (isMounted) {
-          setHtml(renderedHtml);
-          setIsLoading(false);
-          setError(null);
-        }
-      })
-      .catch(err => {
-        if (isMounted) {
-          console.error('[Storybook] Error rendering template:', err);
-          setError(err.message);
-          setIsLoading(false);
-        }
-      });
-      
-    return () => {
-      isMounted = false;
-    };
-  }, depsArray);
-  
-  ${hasJsFile && includeJs ? `
-  // Initialize JS when component is rendered
-  const initializeComponent = useCallback(async () => {
-    // Skip if not mounted, already initialized, or still loading
-    if (!componentRef.current || isInitializedRef.current || isLoading || !html) {
-      return;
-    }
-    
-    try {
-      // Dynamically import the component JS
-      const componentModule = await import('${jsPath}');
-      
-      // Try different initialization methods
-      if (typeof componentModule.initialize === 'function') {
-        componentModule.initialize(componentRef.current);
-      } else if (typeof componentModule.default === 'function') {
-        componentModule.default(componentRef.current);
-      } else if (typeof componentModule.init === 'function') {
-        componentModule.init(componentRef.current);
-      } else {
-        console.log('[Storybook] No explicit initialization found for ${componentName}');
-      }
-      
-      isInitializedRef.current = true;
-    } catch (error) {
-      console.error('[Storybook] Failed to initialize ${componentName}:', error);
-    }
-  }, [html, isLoading]);
-  
-  // Run initialization after HTML updates
-  useEffect(() => {
-    initializeComponent();
-    
-    // Cleanup when unmounting
-    return () => {
-      if (isInitializedRef.current && componentRef.current) {
-        // Call cleanup if available
-        import('${jsPath}')
-          .then(module => {
-            if (typeof module.cleanup === 'function') {
-              module.cleanup(componentRef.current);
-            }
-          })
-          .catch(err => {
-            console.warn('[Storybook] Cleanup error:', err);
-          });
-          
-        isInitializedRef.current = false;
-      }
-    };
-  }, [initializeComponent]);` : ''}
-  
-  // Early render states
-  if (isLoading && !html) {
-    return <div className="storybook-loading">Loading component...</div>;
-  }
-  
-  if (error) {
-    return <div className="storybook-error">Error: {error}</div>;
-  }
-  
-  // Render the component
-  return (
-    <div 
-      className="storybook-component ${lowerCaseName}"
-      data-component="${componentName}"
-      ref={componentRef}
-      dangerouslySetInnerHTML={{ __html: html }} 
-    />
-  );
-};
+// TEMPLATE HERE
 
-export const Default = Template.bind({});
+
+${!storybookMetadata?.hide_main ? storyTemplate(name, hasJsFile, includeJs, jsPath) : ''}
+${variants.map(variantNames => storyTemplate(variantNames.withComponent, hasJsFile, includeJs, jsPath)).join('\n')}
 `;
 }
 
@@ -214,36 +186,35 @@ export default function storybookGenerator(options = {}) {
     name: 'vite-plugin-storybook-generator',
 
     generateStoryForComponent(componentDir) {
-      const componentName = path.basename(componentDir);
-      const lowerCaseName = componentName.toLowerCase();
+      const name = nameFormatsFromSlug(path.basename(componentDir));
 
       // Check if the component has the required files.
-      const hasYaml = fs.existsSync(path.join(componentDir, `${lowerCaseName}.component.yml`));
-      const hasTwig = fs.existsSync(path.join(componentDir, `${lowerCaseName}.twig`));
+      const hasYaml = fs.existsSync(path.join(componentDir, `${name.kebabCase}.component.yml`));
+      const hasTwig = fs.existsSync(path.join(componentDir, `${name.kebabCase}.twig`));
 
       // Skip if any required file is missing.
       if (!hasYaml || !hasTwig) {
-        console.warn(`[storybook-generator] Skipping ${componentName}: missing required files (YAML or Twig)`);
+        console.warn(`[storybook-generator] Skipping ${name.original}: missing required files (YAML or Twig)`);
         return;
       }
 
       try {
         // Generate the story content.
-        const storyContent = generateStoryContent(componentDir, componentName, includeJs);
+        const storyContent = generateStoryContent(componentDir, name.original, includeJs);
 
         // Create story file path in the separate directory.
         const absoluteStoriesDir = path.resolve(storiesDir);
         if (!fs.existsSync(absoluteStoriesDir)) {
           fs.mkdirSync(absoluteStoriesDir, { recursive: true });
         }
-        
-        const storyFilePath = path.join(absoluteStoriesDir, `${lowerCaseName}.stories.jsx`);
+
+        const storyFilePath = path.join(absoluteStoriesDir, `${name.kebabCase}.stories.jsx`);
 
         // Write the story file to the separate directory.
         fs.writeFileSync(storyFilePath, storyContent);
-        console.log(`[storybook-generator] Generated story file for ${componentName} at ${storyFilePath}`);
+        console.log(`[storybook-generator] Generated story file for ${name.original} at ${storyFilePath}`);
       } catch (error) {
-        console.error(`[storybook-generator] Error generating story for ${componentName}:`, error);
+        console.error(`[storybook-generator] Error generating story for ${name.original}:`, error);
       }
     },
 
