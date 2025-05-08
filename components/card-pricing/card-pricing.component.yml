@@ -47,10 +47,10 @@ props:
     radius:
       type: number
       title: Button radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      enum: [none, small, medium, large, full]
       examples: 
-        - rounded-sm
-      default: rounded-sm 
+        - small
+      default: small 
     cta:
       type: object
       title: CTA Card
