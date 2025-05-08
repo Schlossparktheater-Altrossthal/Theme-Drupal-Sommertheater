@@ -1,46 +1,64 @@
-{% set classes = [
-    'card',
-    'flex flex-col gap-4',
-    'stacked' in orientation ? 'is-stacked' : 'md:flex-row is-landscape',
-  ]
-%}
+{# templates/components/pricing-card.twig #}
 
-<div class="{{ classes|join(' ') }}">
-  <div class="card--media overflow-hidden">
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ image }}" alt="{{ alt }}" />
+{# Define color scheme based on background #}
+{% set colors = {
+  'heading': background == 'light' ? '!text-gray-dark' : '!text-gray-lightest',
+  'text': background == 'light' ? 'text-gray' : 'text-gray-lightest',
+  'price': background == 'light' ? 'text-gray-dark' : 'text-gray-lightest',
+  'divider': background == 'light' ? 'border-brand-dark' : 'border-gray-lightest',
+  'features': background == 'light' ? 'text-gray-dark' : 'text-gray-lightest',
+  'bg': background == 'light' ? 'bg-base-light' : 'bg-base-dark',
+  'cta': background == 'light' ? 'button-brand' : 'button-brand-dark'
+} %}
+
+{% set radius_classes = {
+  'none': 'rounded-none',
+  'small': 'rounded-sm',
+  'medium': 'rounded-md',
+  'large': 'rounded-lg',
+  'full': 'rounded-full',
+} %}
+
+{# Common styles #}
+{% set card_classes = [
+  colors.bg,
+  'max-w-sm mx-auto border border-brand-dark rounded-lg p-12 flex flex-col'
+] | join(' ') %}
+
+<div class="{{ card_classes }}">
+  {# Title #}
+  {{ include('@mercury/heading/heading.twig', {
+    heading_text: heading_text,
+    level: level,
+    styles: 'alt',
+    heading_classes: [colors.heading],
+  }) }}
+
+  {# Short description #}
+  <p class="{{ colors.text }} mb-4 text-[1.5rem] mt-2 mb-6 leading-[1.2]">
+    {{ description }}
+  </p>
+
+  {# Price #}
+  <p class="{{ colors.price }} text-[3.15rem] mb-6 leading-[1.2]" aria-label="Price"> 
+    {{ price }}
+  </p>
+
+  {# Divider #}
+  <hr class="{{ colors.divider }} border-t" />
+ 
+  {# Features list #}
+  <div class="{{ colors.features }} text-xl mt-4 mb-6 leading-[1.2] flex-col gap-2 [&>*]:flex [&>*]:flex-col [&>*]:gap-2">
+    {{ text }}
   </div>
-  <div class="card--content flex flex-col gap-4 items-baseline">
-    {# This should be a loop #}
-    {% if (badge_1.url and badge_1.label) or (badge_2.url and badge_2.label) %}
-    <ul class="list-none flex items-center gap-2">
-      
-      {% if badge_1.url and badge_1.label %}
-        <li>
-          {{ include('@mercury/badge/badge.twig', 
-            {
-              link: {
-                url: badge_1.url,
-                label: badge_1.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
-      {% if badge_2.url and badge_2.label %}
-        <li>
-          {{ include('@mercury/badge/badge.twig', 
-            {
-              link: {
-                url: badge_2.url,
-                label: badge_2.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
-    </ul>
-  {% endif %}
-    <div class="flex flex-col gap-6">
-      {{ include('@mercury/heading/heading.twig') }}
-      <p>{{ text }}</p>
-    </div>
+  
+  {# Call-to-action button #}
+  <div class="mt-auto">
+    {{ include('@mercury/link/link.twig', {
+      url: cta.url,
+      text: cta.text,
+      style: colors.cta,
+      radius: radius_classes[radius],
+    }) }}
   </div>
 </div>
