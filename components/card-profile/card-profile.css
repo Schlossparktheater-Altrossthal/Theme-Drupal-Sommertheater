@@ -1,33 +1,30 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(> .card) {
-  @apply max-w-md;
-}
-#storybook-root:has(> .card.is-landscape) {
-  @apply max-w-2xl;
+#storybook-root:has(> .card-profile) {
+  @apply max-w-xs;
 }
 
-.card .card--media {
-  @apply aspect-video
+.card-profile .card--media {
+  @apply aspect-[2/3]
 }
 
-.card.is-stacked .card--media {
-  @apply aspect-video overflow-hidden;
-}
-
-.card.is-landscape .card--media {
-  @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
-}
-
-.card.is-landscape .card--content {
-  @apply md:flex-[0_1_50%] md:py-4;
-}
-
-.card--content .heading {
+.card-profile .card--content strong {
   @apply font-semibold;
 }
 
-.card--content p {
+.card-profile .card--content p {
   @apply font-normal text-lg xl:text-xl;
+}
+
+.card-profile .card--content {
+  @apply text-base-light text-center;
+}
+
+.card-profile .person-name {
+  @apply text-[28px];
+}
+
+.card-profile .person-title {
+  @apply text-xl italic;
 }
