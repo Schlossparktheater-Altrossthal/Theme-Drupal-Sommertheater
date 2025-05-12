@@ -93,6 +93,7 @@ function generateStoryContent(componentPath, componentName, includeJs = true) {
     return {
       withComponent: nameFormatsFromSlug(`${name.original}-${variantSlug}`),
       withoutComponent: nameFormatsFromSlug(`${variantSlug}`),
+      path: variantPath,
     };
   });
 
