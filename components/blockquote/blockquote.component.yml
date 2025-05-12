@@ -27,9 +27,9 @@ props:
       description: The cite url.
       examples:
         - '#'
-    color:
+    color_mode:
       type: string
-      title: Heading Styles
+      title: Color Mode
       enum: [light, dark]
       examples: 
         - light
