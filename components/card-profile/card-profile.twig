@@ -9,11 +9,11 @@
 {% else %}
   <div class="{{ classes|join(' ') }}">
 {% endif %}
-    <div class="card--media relative z-1 overflow-hidden">
-      <div class="absolute inset-0 bg-black/50"></div>
-      <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    <div class="card--media image-container">
+      <div class="profile-image-background"></div>
+      <img class="profile-image" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
     </div>
-    <div class="card--content absolute z-2 top-1/2 -translate-y-1/2 w-full p-3">
+    <div class="card--content card-person-container">
       <p>
         <strong class="person-name">{{ name }}</strong><br>
         <span class="person-title">{{ job_title }}</span>
