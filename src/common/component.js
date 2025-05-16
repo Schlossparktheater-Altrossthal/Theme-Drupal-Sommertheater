@@ -82,6 +82,10 @@ export class ComponentType {
       (el) => new this.ComponentInstanceClass(el)
     );
 
+    newInstances.forEach(instance => {
+      instance.init();
+    });
+
     this.instances.push(...newInstances);
     this.updateElements();
   }
@@ -135,6 +139,5 @@ export class ComponentInstance {
    */
   constructor(el) {
     this.el = el;
-    this.init();
   }
 }

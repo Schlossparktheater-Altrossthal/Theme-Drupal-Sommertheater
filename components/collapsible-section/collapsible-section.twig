@@ -1,6 +1,10 @@
-<div class="collapsible-section">
-  <button class="collapsible-section--title">{{ title }}</button>
-  <div class="collapsible-section--content">
+{% set button_id = 'collapsible-section--title'|clean_unique_id %}
+{% set content_id = 'collapsible-section--content'|clean_unique_id %}
+
+<div class="collapsible-section" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
+  {# The heading tag is necessary for accessibility reasons. #}
+  <h{{ heading_level }}><button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title">{{ title }}</button></h{{ heading_level}}>
+  <div class="collapsible-section--content" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
     {% block content %}
       {{ storybook.content }}
     {% endblock %}

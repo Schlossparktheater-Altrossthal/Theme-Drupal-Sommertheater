@@ -10,6 +10,18 @@ props:
       title: Section Title
       examples:
         - Collapsible Section
+    heading_level:
+      type: number
+      enum: [2, 3, 4, 5, 6]
+      title: Heading level for title
+      examples:
+        - 3
+    open_by_default:
+      type: boolean
+      title: Open by default?
+      examples:
+        - false
+
 slots:
   content:
     title: Content
