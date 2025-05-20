@@ -1,0 +1,20 @@
+@reference '../../src/main.css';
+
+.card-events .event-date {
+    @apply text-[1.25rem] leading-[1.2];
+}
+
+.card-events .heading-light {
+  @apply font-bold text-gray-dark;
+}
+
+.card-events .heading-dark {
+  @apply font-bold text-gray-light;
+}
+.card-events .event-description {
+  @apply text-xl;
+}
+
+.card-events .event-place {
+  @apply text-xl font-semibold;
+}
