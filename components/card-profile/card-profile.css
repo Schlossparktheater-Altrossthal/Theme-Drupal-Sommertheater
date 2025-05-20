@@ -9,18 +9,6 @@
   @apply aspect-[2/3]
 }
 
-.card-profile .image-container {
-  @apply relative z-1 overflow-hidden;
-}
-
-.card-profile .profile-image-background {
-  @apply absolute inset-0 bg-black/50;
-}
-
-.card-profile .profile-image {
-  @apply object-cover w-full h-full;
-}
-
 .card-profile .card--content strong {
   @apply font-semibold;
 }
@@ -39,8 +27,4 @@
 
 .card-profile .person-title {
   @apply text-xl italic;
-}
-
-.card-profile .card-person-container{
-  @apply absolute z-2 top-1/2 -translate-y-1/2 w-full p-3;
 }
