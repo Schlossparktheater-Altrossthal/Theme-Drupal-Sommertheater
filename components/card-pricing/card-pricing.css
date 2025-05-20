@@ -1,0 +1,20 @@
+@reference '../../src/main.css';
+
+.card-pricing .heading-light {
+  @apply text-gray-dark;
+}
+
+.card-pricing .heading-dark {
+  @apply text-gray-lightest;
+}
+.card-pricing  .card-description {
+  @apply text-[1.5rem] leading-[1.2]
+}
+
+.card-pricing .card-price {
+  @apply text-[3.15rem] leading-[1.2]
+}
+
+.card-pricing .card-features {
+  @apply text-xl leading-[1.2];
+}
