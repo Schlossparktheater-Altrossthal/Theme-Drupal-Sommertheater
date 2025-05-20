@@ -4,14 +4,14 @@ While utility classes are powerful, overusing them can lead to verbose and clutt
 
 ## Why We Use `@apply`
 
-We use Tailwind's `@apply` directive selectively—primarily to extract and manage **primitive styles** that express the design system’s core visual language. These are often tied to brand identity, and include:
+We use Tailwind's `@apply` directive selectively—primarily for styles linked to the design system’s core visual language. These are often tied to brand identity, and include:
 
 * Font families and font sizes
 * Text colors and emphasis
 * Letter spacing and casing
 * Link and button treatments
 
-These styles are grouped into reusable, semantic utility classes (e.g., `.heading`, `.button`, `.badge`, etc.), defined using `@apply` in CSS—typically within the `@layer components` block:
+Keeping in mind that the end-user for this design system and theme is low to non coders. With this in mind, we anticapte that more often, the styles that users will want to edit are related to their brand - colors, fonts, etc. It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The idea is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in twig. These custom classes have the styles most likely for a low-code user to want to edit. We leave more of the layout and logic related utility classes in twig because those rarely change and we don't want less technical users having to risk breaking templates for more visual styles like color, font-size, etc. that are related to the component and Where possible, these styles are grouped into reusable, semantic utility classes (e.g., `.heading`, `.button`, `.badge`, etc.), defined using `@apply` in CSS—typically within the `@layer components` block:
 
 ```scss
 @layer components {
