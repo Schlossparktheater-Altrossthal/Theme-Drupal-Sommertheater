@@ -3,10 +3,10 @@
  * @param {Object} name An object with `kebabCase`, `camelCase`, `pascalCase`, `titleCase`, and `original` keys.
  * @param {boolean} hasJsFile
  * @param {boolean} includeJs
- * @param {string} jsPath
+ * @param {string[]} jsPaths Array of paths to JS files that need to be initialized
  * @returns
  */
-export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
+export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
   return `/**
    * Component template that renders the ${name.original} component with provided args.
    */
@@ -18,7 +18,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
 
     // Refs
     const componentRef = useRef(null);
-    const isInitializedRef = useRef(false);
+    const initializedModulesRef = useRef(new Set());
 
     // Memoize args values to use in effect dependencies
     const depsArray = Object.values(args);
@@ -52,29 +52,39 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
     ${hasJsFile && includeJs ? `
     // Initialize JS when component is rendered
     const initializeComponent = useCallback(async () => {
-      // Skip if not mounted, already initialized, or still loading
-      if (!componentRef.current || isInitializedRef.current || isLoading || !html) {
+      // Skip if not mounted or still loading
+      if (!componentRef.current || isLoading || !html) {
         return;
       }
 
-      try {
-        // Dynamically import the component JS
-        const componentModule = await import('${jsPath}');
-
-        // Try different initialization methods
-        if (typeof componentModule.initialize === 'function') {
-          componentModule.initialize(componentRef.current);
-        } else if (typeof componentModule.default === 'function') {
-          componentModule.default(componentRef.current);
-        } else if (typeof componentModule.init === 'function') {
-          componentModule.init(componentRef.current);
-        } else {
-          console.log('[Storybook] No explicit initialization found for ${name.original}');
+      // Initialize each JS dependency
+      const jsModules = [${jsPaths.map(path => `'${path}'`).join(', ')}];
+      
+      for (const modulePath of jsModules) {
+        // Skip if already initialized
+        if (initializedModulesRef.current.has(modulePath)) {
+          continue;
         }
 
-        isInitializedRef.current = true;
-      } catch (error) {
-        console.error('[Storybook] Failed to initialize ${name.original}:', error);
+        try {
+          // Dynamically import the component JS
+          const componentModule = await import(modulePath);
+
+          // Try different initialization methods
+          if (typeof componentModule.initialize === 'function') {
+            componentModule.initialize(componentRef.current);
+          } else if (typeof componentModule.default === 'function') {
+            componentModule.default(componentRef.current);
+          } else if (typeof componentModule.init === 'function') {
+            componentModule.init(componentRef.current);
+          } else {
+            console.log('[Storybook] No explicit initialization found for module:', modulePath);
+          }
+
+          initializedModulesRef.current.add(modulePath);
+        } catch (error) {
+          console.error('[Storybook] Failed to initialize module:', modulePath, error);
+        }
       }
     }, [html, isLoading]);
 
@@ -84,19 +94,25 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
 
       // Cleanup when unmounting
       return () => {
-        if (isInitializedRef.current && componentRef.current) {
-          // Call cleanup if available
-          import('${jsPath}')
-            .then(module => {
-              if (typeof module.cleanup === 'function') {
-                module.cleanup(componentRef.current);
-              }
-            })
-            .catch(err => {
-              console.warn('[Storybook] Cleanup error:', err);
-            });
-
-          isInitializedRef.current = false;
+        if (componentRef.current) {
+          // Clean up each initialized module
+          const jsModules = [${jsPaths.map(path => `'${path}'`).join(', ')}];
+          
+          for (const modulePath of jsModules) {
+            if (initializedModulesRef.current.has(modulePath)) {
+              import(modulePath)
+                .then(module => {
+                  if (typeof module.cleanup === 'function') {
+                    module.cleanup(componentRef.current);
+                  }
+                })
+                .catch(err => {
+                  console.warn('[Storybook] Cleanup error for module:', modulePath, err);
+                });
+            }
+          }
+          
+          initializedModulesRef.current.clear();
         }
       };
     }, [initializeComponent]);` : ''}

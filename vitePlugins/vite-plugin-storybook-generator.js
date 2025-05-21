@@ -169,7 +169,7 @@ function generateStoryContent(namespaces, componentPath, componentName, includeJ
   const componentPaths = [`${name.kebabCase}.twig`].concat(variantPaths);
   const componentDependencies = getComponentDependencies(namespaces, componentPaths);
   if(componentDependencies.length > 0) {
-    console.log(`[storybook-generator] Found ${componentDependencies.length} dependencies for ${name.original}`);
+    console.log(`[storybook-generator] Found ${componentDependencies.length} JS dependencies for ${name.original}`);
     console.log(componentDependencies);
   }
   
@@ -226,6 +226,7 @@ function generateStoryContent(namespaces, componentPath, componentName, includeJ
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path.relative(process.cwd(), componentPath).replace(/\\/g, '/');
   const jsPath = `../../../${componentRelativePath}/${name.kebabCase}.js`;
+  const jsPaths = componentDependencies.map(dependency => `../../../${dependency}`);
 
   // Base imports that are always needed
   let imports = `// Import the YAML metadata and the Twig template
@@ -287,8 +288,8 @@ export default {
 };
 
 // TEMPLATE HERE
-${!storybookMetadata?.hide_main ? storyTemplate(name, hasJsFile, includeJs, jsPath) : ''}
-${variants.map(variantNames => storyTemplate(variantNames.withComponent, hasJsFile, includeJs, jsPath)).join('\n')}
+${!storybookMetadata?.hide_main ? storyTemplate(name, hasJsFile, includeJs, jsPaths) : ''}
+${variants.map(variantNames => storyTemplate(variantNames.withComponent, hasJsFile, includeJs, jsPaths)).join('\n')}
 `;
 }
 
