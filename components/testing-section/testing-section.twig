@@ -1,6 +1,14 @@
 <div class="testing-section">
   <button class="testing-section--title">{{ title }}</button>
   <div class="testing-section--content">
+  {{ include('@mercury/jsbadge/jsbadge.twig', 
+          {
+            link: {
+              url: '#',
+              label: 'Testing Section badge',
+            }
+          }
+        ) }}
   <p>Yo dawg!</p>
     {% block content %}
       {{ storybook.content }}

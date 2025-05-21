@@ -68,7 +68,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
 
         try {
           // Dynamically import the component JS
-          const componentModule = await import(modulePath);
+          const componentModule = await import(/* @vite-ignore */ modulePath);
 
           // Try different initialization methods
           if (typeof componentModule.initialize === 'function') {
@@ -100,7 +100,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
           
           for (const modulePath of jsModules) {
             if (initializedModulesRef.current.has(modulePath)) {
-              import(modulePath)
+              import(/* @vite-ignore */ modulePath)
                 .then(module => {
                   if (typeof module.cleanup === 'function') {
                     module.cleanup(componentRef.current);

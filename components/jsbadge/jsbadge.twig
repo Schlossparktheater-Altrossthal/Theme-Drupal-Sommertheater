@@ -1,0 +1,13 @@
+{% set classes = [
+    'badge',
+    radius,
+    icon ? 'pt-[9px] pb-[8px]' : 'px-4 pt-[9px] pb-[8px]',
+    icon_first ? 'flex flex-row ps-1 pe-3' : 'flex flex-row-reverse ps-3 pe-1',
+    color == 'dark' ? 'bg-base-dark text-base-light hover:bg-base-light hover:text-base-dark ' : 'bg-base-light text-base-dark hover:bg-base-dark hover:text-base-light',
+  ]
+%}
+
+<a href="{{ link.url }}" aria-label="{{ link.label }}" class="{{ classes|join(' ') }}">
+  {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+  <span class="badge-label">{{ link.label }}</span>
+</a>
