@@ -1,0 +1,16 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Testing Section Duplicate
+description: A single section of content than can be collapsed and expanded. Put several of these in an Accordion Container to prevent more than one from being opened at a time.
+group: Components/Widgets/Testing
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Section Title
+      examples:
+        - Testing Section Duplicate
+slots:
+  content:
+    title: Content
+    description: Elements to collapse away.

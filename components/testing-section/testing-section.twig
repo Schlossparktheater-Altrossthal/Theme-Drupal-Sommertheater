@@ -1,0 +1,9 @@
+<div class="testing-section">
+  <button class="testing-section--title">{{ title }}</button>
+  <div class="testing-section--content">
+  <p>Yo dawg!</p>
+    {% block content %}
+      {{ storybook.content }}
+    {% endblock %}
+  </div>
+</div>
