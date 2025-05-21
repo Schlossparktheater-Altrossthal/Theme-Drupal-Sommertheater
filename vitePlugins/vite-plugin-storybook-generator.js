@@ -9,21 +9,11 @@ import { glob } from 'glob';
 import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component metadata (e.g., extracting 'group' property)
 import storyTemplate from './storyTemplate';
 
-// Utility functions for functional programming
-const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x);
-const tap = (fn) => (x) => { fn(x); return x; };
-const map = (fn) => (arr) => arr.map(fn);
-const flatMap = (fn) => (arr) => arr.flatMap(fn);
-const filter = (fn) => (arr) => arr.filter(fn);
-const reduce = (fn, initial) => (arr) => arr.reduce(fn, initial);
 
 function getComponentDependencies(namespaces, componentFiles) {
-  console.group(`Getting dependencies for component files`);
-  console.log('namespaces', namespaces);
-  console.log('componentFiles', componentFiles);
 
   const findFileInNamespaces = (filePath) => {
-    console.log('Searching for file:', filePath);
+    
     
     // Handle namespaced paths (e.g., @mercury/heading/heading.twig)
     if (filePath.startsWith('@')) {
@@ -34,7 +24,7 @@ function getComponentDependencies(namespaces, componentFiles) {
         const relativePath = rest.join('/');
         for (const namespacePath of Array.isArray(namespacePaths) ? namespacePaths : [namespacePaths]) {
           const fullPath = path.join(namespacePath, relativePath);
-          console.log('Trying namespaced path:', fullPath);
+          
           if (fs.existsSync(fullPath)) {
             return { path: fullPath, namespace };
           }
@@ -58,110 +48,83 @@ function getComponentDependencies(namespaces, componentFiles) {
           baseName,
           `${fileName}.twig`
         );
-        console.log('Trying path in namespace:', fullPath);
+        
         if (fs.existsSync(fullPath)) {
           return { path: fullPath, namespace };
         }
       }
     }
 
-    console.log('File not found in any namespace:', filePath);
+    
     return null;
   };
 
-  const hasJsFile = (filePath) => {
-    const jsPath = filePath.replace('.twig', '.js');
-    console.log('Checking for JS file:', jsPath);
-    const exists = fs.existsSync(jsPath);
-    console.log('JS file exists:', exists);
-    return exists;
-  };
-
-  const readFile = (filePath) => {
-    console.log('Reading file:', filePath);
-    const fileInfo = findFileInNamespaces(filePath);
-    if (!fileInfo) {
-      console.warn(`Warning: Could not find file ${filePath} in any namespace`);
-      return { content: '', path: null };
-    }
-
-    try {
-      const content = fs.readFileSync(fileInfo.path, 'utf8');
-      console.log(`Successfully read file from ${fileInfo.namespace || 'root'}: ${filePath}`);
-      return { content, path: fileInfo.path };
-    } catch (error) {
-      console.warn(`Warning: Could not read file ${filePath} from ${fileInfo.namespace || 'root'}: ${error.message}`);
-      return { content: '', path: null };
-    }
+  const getJsPath = (twigPath) => {
+    // Convert the Twig path to a potential JS path
+    const jsPath = twigPath.replace('.twig', '.js');
+    return fs.existsSync(jsPath) ? jsPath : null;
   };
 
   const extractDependencies = (content) => {
-    console.log('Extracting dependencies from content');
     const patterns = [
       /{%\s*extends\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*include\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*embed\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*import\s+['"]([^'"]+)['"]\s*%}/g,
-      /{%\s*from\s+['"]([^'"]+)['"]\s*%}/g,
-      /{%\s*embed\s+['"]mercury:([^'"]+)['"]\s*%}/g
+      /{%\s*from\s+['"]([^'"]+)['"]\s*%}/g
     ];
 
     const deps = patterns.flatMap(pattern => {
       const matches = [];
       let match;
       while ((match = pattern.exec(content)) !== null) {
-        matches.push(match[1]);
+        const dep = match[1];
+        // Convert mercury: format to @mercury format
+        if (dep.startsWith('mercury:')) {
+          const componentName = dep.replace('mercury:', '');
+          matches.push(`@mercury/${componentName}/${componentName}.twig`);
+        } else {
+          matches.push(dep);
+        }
       }
       return matches;
     });
-    console.log('Extracted dependencies:', deps);
     return deps;
   };
 
-  const processDependencies = (dependencies, processed = new Set()) => {
-    console.log('Processing dependencies:', dependencies);
-    return dependencies.reduce((acc, dep) => {
-      if (processed.has(dep)) {
-        console.log('Skipping already processed dependency:', dep);
-        return acc;
-      }
-      processed.add(dep);
-      console.log('Processing dependency:', dep);
+  const processFile = (filePath, processed = new Set()) => {
+    if (processed.has(filePath)) {
+      return [];
+    }
+    processed.add(filePath);
 
-      const fileInfo = readFile(dep);
-      console.log('File info for dependency:', dep, fileInfo);
+    const fileInfo = findFileInNamespaces(filePath);
+    if (!fileInfo) {
+      return [];
+    }
+
+    try {
+      const content = fs.readFileSync(fileInfo.path, 'utf8');
+      const jsPath = getJsPath(fileInfo.path);
       
-      if (fileInfo.path && hasJsFile(fileInfo.path)) {
-        console.log('Adding dependency with JS file:', fileInfo.path);
-        const newDeps = extractDependencies(fileInfo.content);
-        return [...acc, fileInfo.path, ...processDependencies(newDeps, processed)];
-      }
+      // Get dependencies from the content
+      const deps = extractDependencies(content);
       
-      console.log('Skipping dependency without JS file:', dep);
-      return acc;
-    }, []);
+      // Process each dependency recursively
+      const depJsPaths = deps.flatMap(dep => processFile(dep, processed));
+      
+      // Return JS path of current file (if exists) plus all dependency JS paths
+      return jsPath ? [jsPath, ...depJsPaths] : depJsPaths;
+    } catch (error) {
+      console.warn(`Warning: Could not process file ${filePath}: ${error.message}`);
+      return [];
+    }
   };
 
-  // Main processing pipeline
-  console.log('Starting main processing pipeline');
-  const dependencies = pipe(
-    tap(files => console.log('Initial files:', files)),
-    map(readFile),
-    filter(({ path }) => path && hasJsFile(path)),
-   
-    map(({ path }) => path),
-    
-    flatMap(extractDependencies),
-   
-    deps => processDependencies(deps),
-    
-    deps => [...new Set(deps)],
-    
-  )(componentFiles);
-
-  console.log('Final dependencies:', dependencies);
-  console.groupEnd();
-  return dependencies;
+  // Process all component files and get unique JS paths
+  const jsFiles = [...new Set(componentFiles.flatMap(file => processFile(file)))];
+  
+  return jsFiles;
 }
 
 function nameFormatsFromSlug(slug, friendlyTitle = null) {
@@ -205,6 +168,10 @@ function generateStoryContent(namespaces, componentPath, componentName, includeJ
   const variantPaths = fs.readdirSync(componentPath).filter(filename => variantRegExp.test(filename));
   const componentPaths = [`${name.kebabCase}.twig`].concat(variantPaths);
   const componentDependencies = getComponentDependencies(namespaces, componentPaths);
+  if(componentDependencies.length > 0) {
+    console.log(`[storybook-generator] Found ${componentDependencies.length} dependencies for ${name.original}`);
+    console.log(componentDependencies);
+  }
   
   // Variables to org components based on .yml
   let metadata = {
@@ -320,8 +287,6 @@ export default {
 };
 
 // TEMPLATE HERE
-
-
 ${!storybookMetadata?.hide_main ? storyTemplate(name, hasJsFile, includeJs, jsPath) : ''}
 ${variants.map(variantNames => storyTemplate(variantNames.withComponent, hasJsFile, includeJs, jsPath)).join('\n')}
 `;
