@@ -23,6 +23,6 @@ props:
         - false
 
 slots:
-  content:
-    title: Content
+  collapsible_content:
+    title: Collapsible Content
     description: Elements to collapse away.

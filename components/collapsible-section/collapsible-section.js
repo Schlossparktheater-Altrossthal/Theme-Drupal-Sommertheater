@@ -40,65 +40,69 @@ class CollapsibleSection extends ComponentInstance {
     });
 
     // Make the button work.
-    this.button.addEventListener('click', e => {
-      this.toggle();
+    this.button.addEventListener('click', () => {
+      // Toggle the collapsible.
+      this.isOpen = !this.isOpen;
     });
   }
 
-  // Do all the stuff to open or close the collapsible.
+  // This setter makes it so the collapsible can be opened and closed just by
+  // doing `this.isOpen = true` or `this.isOpen = false` rather than calling a
+  // method. The advantage is that (for example) if you have a boolean variable
+  // `shouldOpen`, you can just do `this.isOpen = shouldOpen` rather than all
+  // this:
+  //
+  // ```js
+  // if(shouldOpen) {
+  //   this.open();
+  // } else {
+  //   this.close();
+  // }
+  // ```Even
   set isOpen(val) {
     if (val) {
-      this.#open();
+      // First do all the DOM manipulation needed to actually open the
+      // collapsible.
+      this.el.classList.add(this.openClass);
+      this.button.setAttribute('aria-expanded', 'true');
+
+      // Then stash the current state in a simple private property with no
+      // getters or setters involved.
+      this.#savedAsOpen = true;
+
+      // Dispatch an event that any accordion container ancestors can use to
+      // close other collapsibles.
+      this.el.dispatchEvent(new Event('collapsibleopen', { bubbles: true }));
     } else {
-      this.#close();
+      // DOM manipulation.
+      this.el.classList.remove(this.openClass);
+      this.button.setAttribute('aria-expanded', 'false');
+      // Stash current state.
+      this.#savedAsOpen = false;
     }
   }
 
-  // We stash the current state in a private #savedAsOpen property with no getters
-  // or setters involved.
+  // Get the simple boolean we saved in the setter.
   get isOpen() {
     return this.#savedAsOpen;
   }
 
-  // Open the collapsible with no animations
+  // Measure how tall the content should be when open so we can smoothly animate
+  // to it using CSS.
   measureNaturalHeight() {
+    // Remember what state the collapsible started in.
     const previousState = this.isOpen;
-    this.popOpen();
+    // Turn off animations.
+    this.el.classList.remove(this.animateClass);
+    // Open the collapsible if it's not already open.
+    this.isOpen = true;
+    // Measure the natural height and make it available to CSS as a custom
+    // property.
     const height = this.contentContainer.getBoundingClientRect().height;
     this.el.style.setProperty('--natural-height', `${height}px`);
+    // Restore the collapsible to the state it started in.
     this.isOpen = previousState;
-  }
-
-  // Open the collapsible. This is a private method; the correct way to change
-  // the state of the accordion is to set the `isOpen` property.
-  #open() {
-    this.el.classList.add(this.openClass);
-    this.button.setAttribute('aria-expanded', 'true');
-    this.#savedAsOpen = true;
-  }
-
-  // Open the collapsible. This is a private method; the correct way to change
-  // the state of the accordion is to set the `isOpen` property.
-  #close() {
-    this.el.classList.remove(this.openClass);
-    this.button.setAttribute('aria-expanded', 'false');
-    this.#savedAsOpen = false;
-  }
-
-  // Toggle the current state. This can be a public method since it calls the private
-  toggle() {
-    this.isOpen = !this.isOpen;
-  }
-
-  popOpen() {
-    this.el.classList.remove(this.animateClass);
-    this.isOpen = true;
-    this.el.classList.add(this.animateClass);
-  }
-
-  popClosed() {
-    this.el.classList.remove(this.animateClass);
-    this.isOpen = false;
+    // Re-enable animations.
     this.el.classList.add(this.animateClass);
   }
 }
