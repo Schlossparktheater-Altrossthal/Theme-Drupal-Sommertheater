@@ -65,10 +65,45 @@ function getComponentDependencies(namespaces, componentFiles) {
     return fs.existsSync(jsPath) ? jsPath : null;
   };
 
+  const extractJsDependencies = (jsPath) => {
+    try {
+      const content = fs.readFileSync(jsPath, 'utf8');
+      const importRegex = /import\s+(?:(?:[\w*\s{},]*)\s+from\s+)?['"]([^'"]+)['"]/g;
+      const deps = [];
+      let match;
+      
+      while ((match = importRegex.exec(content)) !== null) {
+        const importPath = match[1];
+        // Only process relative imports that might be component dependencies
+        if (importPath.startsWith('.')) {
+          const resolvedPath = path.resolve(path.dirname(jsPath), importPath);
+          // If it's a directory, look for index.js
+          if (fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isDirectory()) {
+            const indexPath = path.join(resolvedPath, 'index.js');
+            if (fs.existsSync(indexPath)) {
+              deps.push(indexPath);
+            }
+          } else {
+            // Try with .js extension if not provided
+            const jsImportPath = importPath.endsWith('.js') ? resolvedPath : `${resolvedPath}.js`;
+            if (fs.existsSync(jsImportPath)) {
+              deps.push(jsImportPath);
+            }
+          }
+        }
+      }
+      return deps;
+    } catch (error) {
+      console.warn(`Warning: Could not extract JS dependencies from ${jsPath}: ${error.message}`);
+      return [];
+    }
+  };
+
   const extractDependencies = (content) => {
     const patterns = [
       /{%\s*extends\s+['"]([^'"]+)['"]\s*%}/g,
-      /{%\s*include\s+['"]([^'"]+)['"]\s*%}/g,
+      /{{?\s*include\s*\(\s*['"]([^'"]+)['"]/g,  // Updated to catch include() with parameters
+      /{%\s*include\s+['"]([^'"]+)['"]\s*%}/g,   // Keep original include pattern
       /{%\s*embed\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*import\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*from\s+['"]([^'"]+)['"]\s*%}/g
@@ -105,16 +140,43 @@ function getComponentDependencies(namespaces, componentFiles) {
 
     try {
       const content = fs.readFileSync(fileInfo.path, 'utf8');
+      
+      // Get Twig dependencies from the content
+      const twigDeps = extractDependencies(content);
+      
+      // Process each Twig dependency recursively and collect their JS files
+      const twigDepResults = twigDeps.flatMap(dep => {
+        // If it's a mercury: dependency, convert it to the proper format
+        if (dep.startsWith('mercury:')) {
+          const componentName = dep.replace('mercury:', '');
+          const twigPath = `@mercury/${componentName}/${componentName}.twig`;
+          return processFile(twigPath, processed);
+        }
+        return processFile(dep, processed);
+      });
+
+      // Get the JS file for the current component if it exists
       const jsPath = getJsPath(fileInfo.path);
       
-      // Get dependencies from the content
-      const deps = extractDependencies(content);
-      
-      // Process each dependency recursively
-      const depJsPaths = deps.flatMap(dep => processFile(dep, processed));
-      
-      // Return JS path of current file (if exists) plus all dependency JS paths
-      return jsPath ? [jsPath, ...depJsPaths] : depJsPaths;
+      if (jsPath) {
+        // Get JS dependencies and process them recursively
+        const jsDeps = extractJsDependencies(jsPath);
+        const jsDepResults = jsDeps.flatMap(dep => {
+          if (!processed.has(dep)) {
+            processed.add(dep);
+            // For each JS dependency, also check its imports
+            const nestedJsDeps = extractJsDependencies(dep);
+            return [dep, ...nestedJsDeps];
+          }
+          return [];
+        });
+
+        // Return all JS paths (current component + twig dependencies + js dependencies)
+        return [jsPath, ...twigDepResults, ...jsDepResults];
+      }
+
+      // Return just the Twig dependency results if no JS file
+      return twigDepResults;
     } catch (error) {
       console.warn(`Warning: Could not process file ${filePath}: ${error.message}`);
       return [];
