@@ -1,0 +1,29 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Text field
+description: Used to collect user input.
+group: Components/Form Elements
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+      description: The label for the text field.
+      examples:
+        - 'First Name'
+    placeholder:
+      type: string
+      title: Placeholder
+      description: The placeholder text for the text field.
+      examples:
+        - 'Enter your first name'
+    required:
+      type: boolean
+      title: Required
+      description: Whether the text field is required.
+      examples:
+        - true
+    disabled:
+      type: boolean
+      title: Disabled
+      description: Whether the text field is disabled.

@@ -1,0 +1,22 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Form
+description: Used to collect user input.
+group: Components/Forms
+props:
+  type: object
+  properties:
+    id:
+      type: string
+      title: Form ID
+      description: The unique identifier for the form.
+      examples:
+        - contact-form
+    method:
+      type: string
+      title: Method
+      description: The HTTP method to use for form submission.
+      enum: [GET, POST]
+      examples:
+        - POST
+    text_field:
+      $ref: '../text-field/text-field.component.yml#props'
