@@ -9,51 +9,31 @@ props:
       type: string
       title: Heading Text
       examples:
-        - 'Name'
-    level:
-      type: number
-      title: Heading Level
-      enum: [2,3,4,5,6]
-      examples:
-        - 3
-    background:
-      type: string
-      title: Card background color
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
+        - 'Gold Plan'
     description:
       type: string
       title: Description
       examples:
-        - 'Short description'
+        - 'Curabitur nascetur non potenti pede luctus vivamus'
     price:
       title: Price
       description: Price of the product
       type: string
       examples:
-        - '$100.00'
+        - '159.00'
     text:
       title: Text
       description: A text description of the pricing
       type: string
       examples:
         - '<ul>
-            <li>Feature 1</li>
-            <li>Feature 2</li>
-            <li>Feature 3</li>
+            <li>Etiam suspendisse lobortis natoque</li>
+            <li>Facilisis dictumst letius in</li>
+            <li>Diam mus est faucibus ornare ut consectetuer metus</li>
           </ul>'
-    radius:
-      type: number
-      title: Button radius
-      enum: [none, small, medium, large, full]
-      examples: 
-        - small
-      default: small 
     cta:
       type: object
-      title: CTA Card
+      title: CTA
       description: CTA for the card
       properties:
         url:
@@ -65,7 +45,21 @@ props:
           type: string
           title: Text
           examples:
-            - 'Choose this plan' 
-          
+            - 'Choose this plan'
+    card_radius:
+      type: number
+      title: Corner radius
+      description: Set card corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg]
+      examples: 
+        - rounded-none
+      default: rounded-none 
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light
     
     
