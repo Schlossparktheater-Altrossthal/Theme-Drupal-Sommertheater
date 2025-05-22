@@ -67,7 +67,7 @@ function getComponentDependencies(namespaces, componentFiles) {
       /{%\s*extends\s+['"]([^'"]+)['"]\s*%}/g,
       /{{?\s*include\s*\(\s*['"]([^'"]+)['"]/g,  // Updated to catch include() with parameters
       /{%\s*include\s+['"]([^'"]+)['"]\s*%}/g,   // Keep original include pattern
-      /{%\s*embed\s+['"]([^'"]+)['"]\s*%}/g,
+      /{%\s*embed\s+['"]([^'"]+)['"](\s+with\s+{[^}]*})?\s*%}/g,  // Updated to handle with clause
       /{%\s*import\s+['"]([^'"]+)['"]\s*%}/g,
       /{%\s*from\s+['"]([^'"]+)['"]\s*%}/g
     ];
@@ -106,7 +106,6 @@ function getComponentDependencies(namespaces, componentFiles) {
       
       // Get Twig dependencies from the content
       const twigDeps = extractDependencies(content);
-      
       // Process each Twig dependency recursively and collect their JS files
       const twigDepResults = twigDeps.flatMap(dep => {
         // If it's a mercury: dependency, convert it to the proper format
@@ -316,8 +315,8 @@ export default function storybookGenerator(options = {}) {
     name: 'vite-plugin-storybook-generator',
 
     generateStoryForComponent(namespaces, componentDir) {
+    
       const name = nameFormatsFromSlug(path.basename(componentDir));
-
       // Check if the component has the required files.
       const hasYaml = fs.existsSync(path.join(componentDir, `${name.kebabCase}.component.yml`));
       const hasTwig = fs.existsSync(path.join(componentDir, `${name.kebabCase}.twig`));
