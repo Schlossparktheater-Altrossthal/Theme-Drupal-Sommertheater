@@ -5,36 +5,7 @@ status: stable
 props:
   type: 'object'
   properties:
-    color:
-      type: string
-      title: Color
-      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
-      enum: [light, dark]
-      examples: 
-        - dark
-    icon:
-      type: string
-      title: Icon
-      description: 'Select an Icon.'
-      enum: [close, bolt]
-      examples: 
-        - ''
-      default: ''
-    icon_first:
-      type: boolean
-      title: Icon First
-      description: 'Icon can display before or after label.'
-      examples:
-        - true
-      default: true
-    radius:
-      type: number
-      name: Corner radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
-      examples: 
-        - rounded-sm
-      default: rounded-sm 
-    link:
+    badge:
       title:
       type: object
       description: 'The link object containing URL and text.'
@@ -51,9 +22,42 @@ props:
           description: 'The text for the link.'
           examples:
             - 'New Release'
-      examples:
-        - url: '#'
-          label: Example Tag 
+        icon:
+          type: string
+          title: Icon
+          description: 'Select an Icon.'
+          enum: [close, bolt]
+          examples: 
+            - ''
+          default: ''
+        icon_first:
+          type: boolean
+          title: Icon First
+          description: 'Icon can display before or after label.'
+          examples:
+            - true
+          default: true
+        examples:
+          - url: '#'
+            label: Example Tag
+            icon: ''
+            icon_first: false
+
+    radius:
+      type: number
+      name: Corner radius
+      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      examples: 
+        - rounded-sm
+      default: rounded-sm
+    color_mode:
+      type: string
+      title: Color
+      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
+      enum: [light, dark, inherit]
+      examples: 
+        - dark
+
 slots:
   # Content to display in the badge.
   badge_content:
