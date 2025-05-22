@@ -2,143 +2,199 @@
 @import 'tailwindcss';
 
 @theme {
-   /* Base colors or neutrals meant for default text and backgrounds. */
-   /* Base background and text color definitions */
-   --color-base-dark: hsl(0, 0%, 0%);
-   --color-base-light: hsl(0, 0%, 100%);
+  /* Base colors or neutrals meant for default text and backgrounds. */
+  /* Base background and text color definitions */
+  --color-base-dark: hsl(0, 0%, 0%);
+  --color-base-light: hsl(0, 0%, 100%);
 
-   /* Gray color definitions */
-   /* Hue should stay within 210 +/- 5 */
-   /* Saturation should be 5% to 15% for grays */
-   --color-gray-darkest: 	hsl(0, 0%, 0%);      /* "Darkest" 000000 */
-   --color-gray-dark: hsl(221, 39%, 11%);     /* "Dark" 111827 */
-   --color-gray: hsl(215, 14%, 34%);       /* "Grey" 4B5563 */
-   --color-gray-light: hsl(216, 12%, 84%);      /* "Light Grey" D1D5DB*/
-   --color-gray-lightest: 	hsl(220, 14%, 96%);  /* "Light" F3F4F6 */
+  /* Gray color definitions */
+  /* Hue should stay within 210 +/- 5 */
+  /* Saturation should be 5% to 15% for grays */
+  --color-gray-darkest: 	hsl(0, 0%, 0%);      /* "Darkest" 000000 */
+  --color-gray-dark: hsl(221, 39%, 11%);     /* "Dark" 111827 */
+  --color-gray: hsl(215, 14%, 34%);       /* "gray" 4B5563 */
+  --color-gray-light: hsl(216, 12%, 84%);      /* "Light gray" D1D5DB*/
+  --color-gray-lightest: 	hsl(220, 14%, 96%);  /* "Light" F3F4F6 */
 
-   /* Below are the designed branding colors. These are defined per project. */
-   /* Primary branding color definitions */
-   --color-brand-dark: hsl(215, 19%, 35%);      /* 475569 */
-   --color-brand: hsl(210, 40%, 96%);           /* F1F5F9 */
-   --color-brand-light: hsl(210, 40%, 98%);     /* F8FAFC */
+  /* Below are the designed branding colors. These are defined per project. */
+  /* Primary branding color definitions */
+  --color-brand-dark: #1E3A8A;
+  --color-brand: #2563EB;
+  --color-brand-light: #EFF6FF;
 
-   /* Branding accent color definitions */
-   --color-accent-dark: hsl(226, 71%, 40%);     /* 1E40AF */
-   --color-accent: hsl(217, 91%, 60%);          /* 3B82F6 */
-   --color-accent-light: hsl(214, 95%, 93%);    /* DBEAFEt */
+  /* Branding accent color definitions */
+  --color-accent-dark: hsl(226, 71%, 40%);     /* 1E40AF */
+  --color-accent: orange;          /* 3B82F6 */
+  --color-accent-light: hsl(214, 95%, 93%);    /* DBEAFEt */
 
-   /* Below are the 4 feedback colors. These can be defined per project but should stay within the general color areas defined. */
-   /* Info Color Guidelines:
-      - Hue (H): Blue hues range 190°–240°. Lighter tones: 190°–210°. >210° = deeper blue, >240° = purple.
-      - Saturation (S): 70%–100% for vibrancy. <70% risks muted or grayish tones.
-      - Lightness (L): 40%–70% for light blue. <40% = dark/heavy, >70% = pale/washed out.
-   */
-   /* Informative color definitions */
-   --color-info: hsl(196, 99%, 45%);
+  /* Below are the 4 feedback colors. These can be defined per project but should stay within the general color areas defined. */
+  /* Info Color Guidelines:
+    - Hue (H): Blue hues range 190°–240°. Lighter tones: 190°–210°. >210° = deeper blue, >240° = purple.
+    - Saturation (S): 70%–100% for vibrancy. <70% risks muted or grayish tones.
+    - Lightness (L): 40%–70% for light blue. <40% = dark/heavy, >70% = pale/washed out.
+  */
+  /* Informative color definitions */
+  --color-info: hsl(196, 99%, 45%);
 
-   /* Success/Additive Color Guidelines:
-      - Hue (H): Green hues range 90°–150°. Lighter tones: 120°–140°. <90° = yellow-leaning, >150° = teal-leaning.
-      - Saturation (S): 50%–100% for vibrancy. <50% risks muted/grayish tones.
-      - Lightness (L): 40%–70% for balanced green. <40% = dark/heavy, >70% = pale/washed out.
-   */
-   /* Success/Additive color definitions */
-   --color-positive: hsl(139, 100%, 40%);
+  /* Success/Additive Color Guidelines:
+    - Hue (H): Green hues range 90°–150°. Lighter tones: 120°–140°. <90° = yellow-leaning, >150° = teal-leaning.
+    - Saturation (S): 50%–100% for vibrancy. <50% risks muted/grayish tones.
+    - Lightness (L): 40%–70% for balanced green. <40% = dark/heavy, >70% = pale/washed out.
+  */
+  /* Success/Additive color definitions */
+  --color-positive: hsl(139, 100%, 40%);
 
-   /* Warning/Attention Color Guidelines:
-      - Hue (H): Yellow hues range 30°–60°. Lighter tones: 45°–55°. <30° = orange-leaning, >60° = green-leaning.
-      - Saturation (S): 70%–100% for vibrancy. <70% risks muted or dull tones.
-      - Lightness (L): 40%–70% for balanced yellow. <40% = dark/heavy, >70% = pale/washed out.
-   */
-   /* Warning/Attention color definitions */
-   --color-warning: hsl(45, 100%, 50%);
+  /* Warning/Attention Color Guidelines:
+    - Hue (H): Yellow hues range 30°–60°. Lighter tones: 45°–55°. <30° = orange-leaning, >60° = green-leaning.
+    - Saturation (S): 70%–100% for vibrancy. <70% risks muted or dull tones.
+    - Lightness (L): 40%–70% for balanced yellow. <40% = dark/heavy, >70% = pale/washed out.
+  */
+  /* Warning/Attention color definitions */
+  --color-warning: hsl(45, 100%, 50%);
 
-   /* Error/Destructive Color Guidelines:
-      - Hue (H): Red hues range 345°–360° (classic red) or 0°–15° (warm red, orange-leaning).
-      - Saturation (S): 70%–100% for a vibrant and bold red. <70% risks looking muted or dull.
-      - Lightness (L): 40%–70% for balanced red tones. <40% = dark/heavy, >70% = pale/washed out.
-   */
-   /* Error/Destructive color definitions */
-   --color-negative: hsl(347, 100%, 45%);
+  /* Error/Destructive Color Guidelines:
+    - Hue (H): Red hues range 345°–360° (classic red) or 0°–15° (warm red, orange-leaning).
+    - Saturation (S): 70%–100% for a vibrant and bold red. <70% risks looking muted or dull.
+    - Lightness (L): 40%–70% for balanced red tones. <40% = dark/heavy, >70% = pale/washed out.
+  */
+  /* Error/Destructive color definitions */
+  --color-negative: hsl(347, 100%, 45%);
 
-   /* Utility color definitions */
-   --color-border: var(--color-gray-light);
-   --color-input: var(--color-gray-lightest);
-   --color-ring: var(--color-gray-dark);
+  /* Utility color definitions */
+  --color-border: var(--color-gray-light);
+  --color-input: var(--color-gray-lightest);
+  --color-ring: var(--color-gray-dark);
 
-   /**
-      Checked status color, ex: Checkbox, Radio etc
-   */
-   --color-checked: hsl(240 5.9% 10%);
+  /**
+    Checked status color, ex: Checkbox, Radio etc
+  */
+  --color-checked: hsl(240 5.9% 10%);
 
-   /*
-      Muted colors
-   */
-   --color-muted: hsl(240 4.8% 95.9%);
-   --color-muted-foreground: hsl(240 3.8% 46.1%);
+  /*
+    Muted colors
+  */
+  --color-muted: hsl(240 4.8% 95.9%);
+  --color-muted-foreground: hsl(240 3.8% 46.1%);
 
-   /* Base Font family definitions */
-   --font-sans: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-   --font-mono: 'Fira Code', monospace;
+  /* Base Font family definitions */
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-mono: 'Fira Code', monospace;
 
-   /* Base Typography (Major Third) */
-   --text-6xl: 3.815rem; /* 61.04px */
-   --text-6xl--line-height: 1; /* 61.04px */
-   --text-5xl: 3.052rem; /* 48.83px */
-   --text-5xl--line-height: 1.1; /* 53.71px */
-   --text-4xl: 2.441rem; /* 39.06px */
-   --text-4xl--line-height: 1.2; /* 46.87px */
-   --text-3xl: 2rem; /* 32px */
-   --text-3xl--line-height: 1.3; /* 41.6px */
-   --text-2xl: 1.563rem; /* 25px */
-   --text-2xl--line-height: 1.4; /* 35px */
-   --text-xl: 1.25rem; /* 20px */
-   --text-xl--line-height: 1.5; /* 30px */
-   --text-base: 1rem; /* 16px */
-   --text-base--line-height: 1.5; /* 24px */
-   --text-md: 0.875rem; /* 14px */
-   --text-md--line-height: 1.5; /* 21px */
-   --text-sm: 0.75rem; /* 12px */
-   --text-sm--line-height: 1.5; /* 18px */
+  /* Base Typography (Major Third) */
+  --text-6xl: 3.815rem; /* 61.04px */
+  --text-6xl--line-height: 1; /* 61.04px */
+  --text-5xl: 3.052rem; /* 48.83px */
+  --text-5xl--line-height: 1.1; /* 53.71px */
+  --text-4xl: 2.441rem; /* 39.06px */
+  --text-4xl--line-height: 1.2; /* 46.87px */
+  --text-3xl: 2rem; /* 32px */
+  --text-3xl--line-height: 1.3; /* 41.6px */
+  --text-2xl: 1.563rem; /* 25px */
+  --text-2xl--line-height: 1.4; /* 35px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-xl--line-height: 1.5; /* 30px */
+  --text-base: 1rem; /* 16px */
+  --text-base--line-height: 1.5; /* 24px */
+  --text-md: 0.875rem; /* 14px */
+  --text-md--line-height: 1.5; /* 21px */
+  --text-sm: 0.75rem; /* 12px */
+  --text-sm--line-height: 1.5; /* 18px */
 
-   /* Font Weights */
-   --font-weight-light: 300;
-   --font-weight-normal: 400;
-   --font-weight-medium: 500;
-   --font-weight-semibold: 600;
-   --font-weight-bold: 700;
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-   /* Spacing (Always px for layout) */
-   --spacing-0: 0px;
-   --spacing-1: 4px;
-   --spacing-2: 8px;
-   --spacing-3: 12px;
-   --spacing-4: 16px;
-   --spacing-5: 20px;
-   --spacing-6: 24px;
-   --spacing-7: 28px;
-   --spacing-8: 32px;
-   --spacing-9: 36px;
-   --spacing-10: 40px;
-   --spacing-11: 44px;
-   --spacing-12: 48px;
-   --spacing-14: 56px;
-   --spacing-16: 64px;
-   --spacing-px: 1px;
+  /* Spacing (Always px for layout) */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
+  --spacing-14: 56px;
+  --spacing-16: 64px;
+  --spacing-px: 1px;
 }
 
 /* Custom theme classes */
+@layer base {
+
+  p {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+  }
+
+  ul,
+  ol {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit list-disc ps-5;
+  }
+
+  li {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+  }
+
+  code,
+  pre {
+    @apply text-sm text-inherit font-mono;
+  }
+
+  small {
+    @apply text-sm text-inherit;
+  }
+
+  strong,
+  b {
+    @apply font-semibold text-inherit;
+  }
+
+  em,
+  i {
+    @apply italic text-inherit;
+  }
+
+  hr {
+    @apply my-6 border-t border-gray-200;
+  }
+
+  table,
+  th,
+  td {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+  }
+
+  sup {
+    font-size: 70%;
+    position: relative;
+    top: -0.25em;
+  }
+}
+
+/* Classes for light/dark color modes. */
 @layer components {
 
-   .color-mode--dark {
-      --main-bg-color: var(--color-base-dark);
-      --main-text-color: var(--color-base-light);
-      --card-bg: var(--color-gray-dark);
-      --card-text-color: var(--color-base-light);
-   }
-   .color-mode--light {
-      --main-bg-color: var(--color-base-light);
-      --main-text-color: var(--color-base-dark);
-      --card-bg: var(--color-gray-light);
-      --card-text-color: var(--color-base-dark);
-   }
+  .color-mode--dark {
+    --main-bg-color: var(--color-base-dark);
+    --main-heading-color: var(--color-brand-light);
+    --main-text-color: var(--color-base-light);
+    --card-bg: var(--color-gray-dark);
+    --card-text-color: var(--color-base-light);
+    --pricing-card-bg-color: var(--color-brand-dark);
+  }
+  .color-mode--light {
+    --main-bg-color: var(--color-base-light);
+    --main-heading-color: var(--color-brand);
+    --main-text-color: var(--color-base-dark);
+    --card-bg: var(--color-gray-light);
+    --card-text-color: var(--color-base-dark);
+    --pricing-card-bg-color: var(--color-base-light);
+  }
 }
