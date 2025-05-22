@@ -1,6 +1,19 @@
 # Tailwind Styling Guidelines
 
-While utility classes are powerful, overusing them can lead to verbose and cluttered HTML. Strive for balance by using Tailwind’s `@apply` directive in your CSS to avoid repetitive code and keep templates readable.
+This design system and component library is built with [Tailwind CSS v4](https://tailwindcss.com), offering a modern, well-documented foundation for building flexible, brandable Drupal themes. This README outlines the design system’s architecture, key decisions, and recommended practices for customizing it within a Drupal CMS environment.
+
+This system is built with low- to no-code users in mind. Most site builders will be focused on adjusting visual elements—such as colors, typography, and spacing—to align with their organization’s brand. While the core structure is designed to minimize the need for custom code, the system is also developer-friendly. Front-end and Drupal developers can easily extend or override components as needed.
+
+## How to customize
+Customizing the design system is straightforward and follows a specific order to help keep things maintainable and avoid introducing bugs—especially for site builders who may not be comfortable writing a lot of code… this aligns with the [Drupal CMS](https://new.drupal.org/drupal-cms) mission.
+
+**Recommended Order of Customization**
+- **Global Styles** - `src/main.css`
+Start here. This file contains CSS custom properties (variables) that define your brand’s visual identity—colors, font stacks, spacing units, etc. These changes will cascade across all components.
+- **Component CSS** – Granular Tweaks
+Each component has its own CSS file. Use these files to make more specific style adjustments without affecting the global design system. The CSS is still primarily Tailwind based, using Tailwind’s @apply directive. (see more below)
+- **Component TWIG Templates** – Structural or Logical Changes
+Modify the Tailwind utility classes in TWIG templates only if you need to change layout structure or introduce conditional logic. This step is more technical and can affect functionality, so proceed with caution.
 
 ## Why We Use `@apply`
 
@@ -11,7 +24,10 @@ We use Tailwind's `@apply` directive selectively—primarily for styles linked t
 * Letter spacing and casing
 * Link and button treatments
 
-Keeping in mind that the end-user for this design system and theme is low to non coders. With this in mind, we anticapte that more often, the styles that users will want to edit are related to their brand - colors, fonts, etc. It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The idea is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in twig. These custom classes have the styles most likely for a low-code user to want to edit. We leave more of the layout and logic related utility classes in twig because those rarely change and we don't want less technical users having to risk breaking templates for more visual styles like color, font-size, etc. that are related to the component and Where possible, these styles are grouped into reusable, semantic utility classes (e.g., `.heading`, `.button`, `.badge`, etc.), defined using `@apply` in CSS—typically within the `@layer components` block:
+ It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The intention is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in twig. 
+ 
+> For example:
+> Rather than repeating `text-sm uppercase tracking-wide text-gray-500` in every Twig template, we define `.eyebrow` once and reuse it.
 
 ```scss
 @layer components {
@@ -27,20 +43,13 @@ Keeping in mind that the end-user for this design system and theme is low to non
     @apply border inline-flex items-center;
   }
 
-  .badge .badge-label {
+  .badge-label {
     @apply font-sans font-normal text-md leading-none text-inherit select-none;
   }
 }
 ```
 
-### What Are Primitives?
-
-**Primitives** are small, composable design decisions—font sizes, weights, colors, and spacing units—that serve as building blocks for larger UI components. By abstracting them using `@apply`, we create maintainable, predictable tokens that reinforce consistency across the system.
-
-> For example:
-> Rather than repeating `text-sm uppercase tracking-wide text-gray-500` in every Twig template, we define `.eyebrow` once and reuse it.
-
-## What We Avoid
+## What We Avoid (this may change)
 
 We avoid using `@apply` for layout or structural utilities that depend on the document context:
 
@@ -94,6 +103,6 @@ Using `@layer` ensures that Tailwind correctly merges styles and allows tools li
 
 ## Summary
 
-Tailwind excels when used intentionally. By applying utility classes directly for layout and interaction, and using `@apply` for primitives and tokens, we build a design system that’s:
+Tailwind excels when used intentionally. By applying utility classes directly for layout and interaction, and using `@apply` for design tokens, we build a design system that’s:
 
 > ✨ Clear. ✨ Scalable. ✨ Easy to refactor.
