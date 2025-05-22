@@ -15,3 +15,10 @@ props:
         - 3
         - 4
       default: 2
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light

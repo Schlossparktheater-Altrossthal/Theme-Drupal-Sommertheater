@@ -125,3 +125,20 @@
    --spacing-16: 64px;
    --spacing-px: 1px;
 }
+
+/* Custom theme classes */
+@layer components {
+
+   .color-mode--dark {
+      --main-bg-color: var(--color-base-dark);
+      --main-text-color: var(--color-base-light);
+      --card-bg: var(--color-gray-dark);
+      --card-text-color: var(--color-base-light);
+   }
+   .color-mode--light {
+      --main-bg-color: var(--color-base-light);
+      --main-text-color: var(--color-base-dark);
+      --card-bg: var(--color-gray-light);
+      --card-text-color: var(--color-base-dark);
+   }
+}

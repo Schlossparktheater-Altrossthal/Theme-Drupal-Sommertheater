@@ -19,6 +19,7 @@ props:
     url:
       type: boolean
       title: Add optional url
+      ui:control: false
       examples:
         - true
       default: true
@@ -57,27 +58,19 @@ props:
             format: uri
           label:
             type: string
+          icon: 
+            type: string
+          icon_first: 
+            type: boolean
       examples:
         - url: '#'
           label: 'badge one'
+          icon: ''
+          icon_first: true
         - url: '#'
           label: 'badge two'
-    badge_1:
-      type: object
-      title: Badge text 1
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'Amazing'
-    badge_2:
-      type: object
-      title: Badge text 2
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'New Release'
+          icon: ''
+          icon_first: true
     orientation:
       type: string
       title: Orientation
@@ -85,3 +78,10 @@ props:
       enum: ['stacked', 'landscape']
       examples:
         - 'stacked'
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light
