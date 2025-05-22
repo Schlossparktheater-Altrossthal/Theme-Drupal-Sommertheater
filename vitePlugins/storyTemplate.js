@@ -113,7 +113,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
     // Render the component
     return (
       <div
-        className="storybook-component ${name.kebabCase}"
+        className="storybook-component storybook-component--${name.kebabCase}"
         data-component="${name.original}"
         ref={componentRef}
         dangerouslySetInnerHTML={{ __html: html }}
