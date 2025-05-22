@@ -33,9 +33,6 @@ function getComponentDependencies(namespaces, componentFiles) {
       return null;
     }
 
-    // For non-namespaced paths, construct the path following the convention:
-    // namespace/component-base-name/component-base-name.twig
-    // or namespace/component-base-name/component-base-name~variant.twig
     const filePathWithoutTwig = filePath.replace('.twig', '');
     const [baseName, variant] = filePathWithoutTwig.split('~');
     const fileName = variant ? `${baseName}~${variant}` : baseName;
@@ -63,40 +60,6 @@ function getComponentDependencies(namespaces, componentFiles) {
     // Convert the Twig path to a potential JS path
     const jsPath = twigPath.replace('.twig', '.js');
     return fs.existsSync(jsPath) ? jsPath : null;
-  };
-
-  const extractJsDependencies = (jsPath) => {
-    try {
-      const content = fs.readFileSync(jsPath, 'utf8');
-      const importRegex = /import\s+(?:(?:[\w*\s{},]*)\s+from\s+)?['"]([^'"]+)['"]/g;
-      const deps = [];
-      let match;
-      
-      while ((match = importRegex.exec(content)) !== null) {
-        const importPath = match[1];
-        // Only process relative imports that might be component dependencies
-        if (importPath.startsWith('.')) {
-          const resolvedPath = path.resolve(path.dirname(jsPath), importPath);
-          // If it's a directory, look for index.js
-          if (fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isDirectory()) {
-            const indexPath = path.join(resolvedPath, 'index.js');
-            if (fs.existsSync(indexPath)) {
-              deps.push(indexPath);
-            }
-          } else {
-            // Try with .js extension if not provided
-            const jsImportPath = importPath.endsWith('.js') ? resolvedPath : `${resolvedPath}.js`;
-            if (fs.existsSync(jsImportPath)) {
-              deps.push(jsImportPath);
-            }
-          }
-        }
-      }
-      return deps;
-    } catch (error) {
-      console.warn(`Warning: Could not extract JS dependencies from ${jsPath}: ${error.message}`);
-      return [];
-    }
   };
 
   const extractDependencies = (content) => {
@@ -158,25 +121,8 @@ function getComponentDependencies(namespaces, componentFiles) {
       // Get the JS file for the current component if it exists
       const jsPath = getJsPath(fileInfo.path);
       
-      if (jsPath) {
-        // Get JS dependencies and process them recursively
-        const jsDeps = extractJsDependencies(jsPath);
-        const jsDepResults = jsDeps.flatMap(dep => {
-          if (!processed.has(dep)) {
-            processed.add(dep);
-            // For each JS dependency, also check its imports
-            const nestedJsDeps = extractJsDependencies(dep);
-            return [dep, ...nestedJsDeps];
-          }
-          return [];
-        });
-
-        // Return all JS paths (current component + twig dependencies + js dependencies)
-        return [jsPath, ...twigDepResults, ...jsDepResults];
-      }
-
-      // Return just the Twig dependency results if no JS file
-      return twigDepResults;
+      // Return all JS paths (current component + twig dependencies)
+      return jsPath ? [jsPath, ...twigDepResults] : twigDepResults;
     } catch (error) {
       console.warn(`Warning: Could not process file ${filePath}: ${error.message}`);
       return [];
