@@ -1,6 +1,10 @@
-<form id="{{ id }}" method="{{ method }}">
+<form class="webform-submission-form webform-submission-add-form webform-submission-contact-form {{ id }} js-webform-details-toggle webform-details-toggle contextual-region" data-drupal-selector="{{ id }}" action="{{ action }}" method="{{ method }}" id="{{ id }}" accept-charset="UTF-8" data-once="webform-details-toggle form-updated" data-drupal-form-fields="">
   {{ include('@mercury/text-field/text-field.twig', {
     label: text_field.properties.label,
     placeholder: text_field.properties.placeholder,
+    id: text_field.properties.id,
+    name: text_field.properties.name,
+    required: text_field.properties.required,
+    disabled: text_field.properties.disabled,
   }) }}
 </form>

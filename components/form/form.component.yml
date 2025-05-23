@@ -18,6 +18,12 @@ props:
       enum: [GET, POST]
       examples:
         - POST
+    action:
+      type: string
+      title: Action
+      description: The URL to which the form will be submitted.
+      examples:
+        - /submit-form
     text_field:
       type: object
       title: Text Field
@@ -26,5 +32,7 @@ props:
         - properties:
             label: 'First Name'
             placeholder: 'Enter your first name'
+            id: 'first-name'
+            name: 'first_name'
             required: true
             disabled: false
