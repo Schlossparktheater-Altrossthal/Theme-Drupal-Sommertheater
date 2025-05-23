@@ -1,4 +1,11 @@
+<!-- Generic text field -->
 <div class="relative w-full max-w-sm">
   <input type="text" class="text-field peer" id="{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required{% endif %} {% if disabled %}disabled{% endif %} />
   <label for="{{ id }}" class="text-field--label absolute">{{ label }}</label>
+</div>
+
+<!-- Drupal theme -->
+<div class="relative w-full max-w-sm form-type-textfield js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
+  <label for="{{ id }}" class="text-field--label absolute form-item__label js-form-required form-required">Your Name</label>
+  <input data-drupal-selector="{{ id }}" aria-label="{{ label }}" type="text" id="{{ id }}" name="{{ name }}" value="{{ value }}" class="text-field form-text required form-element form-element--type-text form-element--api-textfield" required="required" aria-required="true">
 </div>
