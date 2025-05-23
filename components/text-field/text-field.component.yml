@@ -17,6 +17,12 @@ props:
       description: The name attribute for the text field.
       examples:
         - 'first_name'
+    value:
+      type: string
+      title: Value
+      description: The default value for the text field.
+      examples:
+        - 'John'
     placeholder:
       type: string
       title: Placeholder

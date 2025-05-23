@@ -33,6 +33,7 @@ props:
             label: 'First Name'
             placeholder: 'Enter your first name'
             id: 'first-name'
+            value: 'John Smith'
             name: 'first_name'
             required: true
             disabled: false
