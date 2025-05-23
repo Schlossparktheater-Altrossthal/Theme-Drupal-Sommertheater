@@ -17,7 +17,7 @@ Modify the Tailwind utility classes in TWIG templates only if you need to change
 
 ## Why We Use `@apply`
 
-We use Tailwind's `@apply` directive selectively—primarily for styles linked to the design system’s core visual language. These are often tied to brand identity, and include:
+We use Tailwind’s `@apply` directive selectively—primarily for styles linked to the design system’s core visual language (design tokens). These are often tied to brand identity, and include:
 
 * Font families and font sizes
 * Text colors and emphasis
@@ -27,7 +27,7 @@ We use Tailwind's `@apply` directive selectively—primarily for styles linked t
  It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The intention is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in twig. 
  
 > For example:
-> Rather than repeating `text-sm uppercase tracking-wide text-gray-500` in every Twig template, we define `.eyebrow` once and reuse it.
+> Rather than repeating `font-sans tracking-normal text-inherit leading-[1.2]` in every Twig template, we define `.heading` once and reuse it.
 
 ```scss
 @layer components {
@@ -49,16 +49,6 @@ We use Tailwind's `@apply` directive selectively—primarily for styles linked t
 }
 ```
 
-## What We Avoid (this may change)
-
-We avoid using `@apply` for layout or structural utilities that depend on the document context:
-
-* Spacing (`mb-8`, `gap-4`)
-* Grid/flex layout (`grid-cols-3`, `flex`, `justify-between`)
-* State or behavior-driven styles (`hover:`, `focus:`)
-
-These are left as raw utility classes in markup where they are most readable and flexible.
-
 ## Performance Considerations
 
 Even with PurgeCSS (or Tailwind’s built-in `content` scanning), Tailwind can generate large CSS bundles or verbose markup. While this isn’t typically a performance blocker, it’s still good practice to:
@@ -71,7 +61,7 @@ Even with PurgeCSS (or Tailwind’s built-in `content` scanning), Tailwind can g
 
 ## Use of `@layer` in Tailwind v4
 
-In Tailwind v4, the `@layer` directive continues to be the recommended way to define custom styles in the proper cascade order. Tailwind uses three main layers:
+In Tailwind v4, the `@layer` directive continues to be the recommended way to define custom styles in the proper cascade order. Tailwind uses three main layers: base, components, and utilities. Defining styles within these layers ensures correct order in the final CSS and allows Tailwind’s JIT engine to include only the styles you use. Styles outside these layers may be purged unless explicitly safelisted via the content configuration.
 
 * `@layer base`: For global resets and HTML element styles
 * `@layer components`: For reusable component classes
@@ -81,14 +71,48 @@ Example:
 
 ```scss
 @layer base {
-  h1 {
-    @apply text-3xl font-bold;
+
+  body {
+    @apply text-base text-base-dark;
+  }
+
+  p {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+  }
+
+  ul,
+  ol {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit list-disc ps-5;
+  }
+
+  li {
+    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+  }
+
+  strong,
+  b {
+    @apply font-semibold text-inherit;
+  }
+
+  em,
+  i {
+    @apply italic text-inherit;
   }
 }
 
 @layer components {
-  .card {
-    @apply bg-white shadow-md p-6 rounded;
+
+  .color-mode--dark {
+    --main-bg-color: var(--color-base-dark);
+    --main-text-color: var(--color-base-light);
+    --card-bg: var(--color-gray-dark);
+    --card-text-color: var(--color-base-light);
+  }
+  .color-mode--light {
+    --main-bg-color: var(--color-base-light);
+    --main-text-color: var(--color-base-dark);
+    --card-bg: var(--color-gray-light);
+    --card-text-color: var(--color-base-dark);
   }
 }
 
