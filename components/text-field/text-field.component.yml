@@ -11,6 +11,12 @@ props:
       description: The label for the text field.
       examples:
         - 'First Name'
+    id:
+      type: string
+      title: Name
+      description: The name attribute for the text field.
+      examples:
+        - 'first_name'
     placeholder:
       type: string
       title: Placeholder

@@ -11,5 +11,8 @@
  */
 #}
 <form id="{{ id }}" method="{{ method }}">
-  {{ text_field }}
+  {{ include('@mercury/text-field/text-field.twig', {
+    label: text_field.properties.label,
+    placeholder: text_field.properties.placeholder,
+  }) }}
 </form>

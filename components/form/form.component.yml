@@ -19,4 +19,12 @@ props:
       examples:
         - POST
     text_field:
-      $ref: '../text-field/text-field.component.yml#props'
+      type: object
+      title: Text Field
+      description: A text field for user input.
+      examples:
+        - properties:
+            label: 'First Name'
+            placeholder: 'Enter your first name'
+            required: true
+            disabled: false

@@ -1,1 +1,4 @@
-<input type="text" class="text-field" id="{{ id }}" name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required{% endif %} {% if disabled %}disabled{% endif %} />
+<div class="relative w-full max-w-sm">
+  <input type="text" class="text-field peer" id="{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required{% endif %} {% if disabled %}disabled{% endif %} />
+  <label for="{{ id }}" class="text-field--label absolute">{{ label }}</label>
+</div>
