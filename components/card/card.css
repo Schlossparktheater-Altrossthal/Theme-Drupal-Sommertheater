@@ -1,11 +1,16 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(> .card) {
+.storybook-component--card {
   @apply max-w-md;
 }
-#storybook-root:has(> .card.is-landscape) {
+.storybook-component--card:has(.card.is-landscape) {
   @apply max-w-2xl;
+}
+
+.card {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 .card .card--media {
