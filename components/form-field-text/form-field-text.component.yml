@@ -39,3 +39,5 @@ props:
       type: boolean
       title: Disabled
       description: Whether the text field is disabled.
+      examples:
+        - false

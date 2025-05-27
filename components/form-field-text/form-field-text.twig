@@ -6,6 +6,6 @@
 
 <!-- Drupal theme -->
 <div class="relative w-full max-w-sm form-type-textfield js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
-  <input type="text" class="text-field peer form-text required form-element form-element--type-text form-element--api-textfield" id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required aria-required="true"{% endif %} {% if disabled %}disabled aria-disabled="true"{% endif %} data-drupal-selector="edit-{{ id }}" />
+  <input type="text" class="text-field peer form-text form-element form-element--type-text form-element--api-textfield required" id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required aria-required="true"{% endif %} {% if disabled %}disabled aria-disabled="true"{% endif %} data-drupal-selector="edit-{{ id }}" />
   <label for="edit-{{ id }}" class="text-field--label absolute form-item__label js-form-required form-required">{{ label }}</label>
 </div>
