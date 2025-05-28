@@ -5,8 +5,7 @@ class AccordionContainer extends ComponentInstance {
     // collapsibles.
     this.el.addEventListener('collapsibleopen', e => {
       // Close all descendant collapsibles except the one that just opened.
-      const otherCollapsibleInstances = window.mercuryComponents.collapsibleSection
-        .filter(collapsible => this.el.contains(collapsible.el) && e.target !== collapsible.el)
+      const otherCollapsibleInstances = window.mercuryComponents.collapsibleSection.instances.filter(collapsible => this.el.contains(collapsible.el) && e.target !== collapsible.el)
       ;
 
       otherCollapsibleInstances.forEach(instance => { instance.isOpen = false });

@@ -5,14 +5,16 @@ class CollapsibleSection extends ComponentInstance {
   // of this file.
   #savedAsOpen;
 
+  openClass = 'collapsible-section--open';
+
+  // Whether aancestor accordion containers should close other collapsibles when
+  // this one is opened.
+  shouldDispatchEvents = true;
+
   init() {
     // Save our togglable classes for easy reference.
-    this.animateClass = 'collapsible-section--animate';
-    this.openClass = 'collapsible-section--open';
     this.button = this.el.querySelector('.collapsible-section--title');
     this.contentContainer = this.el.querySelector('.collapsible-section--content');
-    this.animateSpeed = 500;
-    this.el.style.setProperty('--animate-speed', `${this.animateSpeed}ms`)
 
     // With the `set isOpen()` below, merely setting this property does all the
     // stuff necessary to open or close the collapsible.
@@ -22,18 +24,16 @@ class CollapsibleSection extends ComponentInstance {
     // animate to it with CSS.
     this.measureNaturalHeight();
 
-    // Now that initial states are set, we're good to animate any further
-    // toggles.
-    this.el.classList.add(this.animateClass);
-
     // Remeasure the height on every (debounced) resize event.
     let timeout = 0;
 
     window.addEventListener('resize', e => {
+      this.el.classList.add('collapsible-section--resizing');
       window.clearTimeout(timeout);
       timeout = window.setTimeout(
         () => {
           this.measureNaturalHeight();
+          this.el.classList.remove('collapsible-section--resizing');
         },
         350
       );
@@ -44,6 +44,8 @@ class CollapsibleSection extends ComponentInstance {
       // Toggle the collapsible.
       this.isOpen = !this.isOpen;
     });
+
+    this.el.classList.add('collapsible-section--js');
   }
 
   // This setter makes it so the collapsible can be opened and closed just by
@@ -72,7 +74,10 @@ class CollapsibleSection extends ComponentInstance {
 
       // Dispatch an event that any accordion container ancestors can use to
       // close other collapsibles.
-      this.el.dispatchEvent(new Event('collapsibleopen', { bubbles: true }));
+      if (this.shouldDispatchEvents) {
+        this.el.dispatchEvent(new Event('collapsibleopen', { bubbles: true }));
+      }
+
     } else {
       // DOM manipulation.
       this.el.classList.remove(this.openClass);
@@ -90,12 +95,16 @@ class CollapsibleSection extends ComponentInstance {
   // Measure how tall the content should be when open so we can smoothly animate
   // to it using CSS.
   measureNaturalHeight() {
+    const measuringClass = 'collapsible-section--measuring';
     // Remember what state the collapsible started in.
+    this.shouldDispatchEvents = false;
     const previousState = this.isOpen;
     // Turn off animations.
-    this.el.classList.remove(this.animateClass);
+    this.el.classList.add(measuringClass);
     // Open the collapsible if it's not already open.
     this.isOpen = true;
+    // Force reflow.
+    void (this.contentContainer.offsetHeight);
     // Measure the natural height and make it available to CSS as a custom
     // property.
     const height = this.contentContainer.getBoundingClientRect().height;
@@ -103,7 +112,8 @@ class CollapsibleSection extends ComponentInstance {
     // Restore the collapsible to the state it started in.
     this.isOpen = previousState;
     // Re-enable animations.
-    this.el.classList.add(this.animateClass);
+    this.el.classList.remove(measuringClass);
+    this.shouldDispatchEvents = true;
   }
 }
 

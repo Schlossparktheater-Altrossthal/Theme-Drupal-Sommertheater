@@ -1,33 +1,36 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(> .card) {
-  @apply max-w-md;
-}
-#storybook-root:has(> .card.is-landscape) {
-  @apply max-w-2xl;
+#storybook-root:has(> .collapsible-section) {
+  @apply max-w-lg;
 }
 
-.card .card--media {
-  @apply aspect-video
+.collapsible-section {
+  --animate-speed: 500ms;
+  @apply bg-gray-lightest border-b-1 border-gray-darkest
 }
 
-.card.is-stacked .card--media {
-  @apply aspect-video overflow-hidden;
+.collapsible-section--js .collapsible-section--content {
+  height: 0;
 }
 
-.card.is-landscape .card--media {
-  @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
+.collapsible-section--open .collapsible-section--content {
+  height: var(--natural-height);
 }
 
-.card.is-landscape .card--content {
-  @apply md:flex-[0_1_50%] md:py-4;
+.collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
+  height: auto;
 }
 
-.card--content .heading {
-  @apply font-semibold;
+.collapsible-section--measuring .collapsible-section--content {
+  --animate-speed: 0s;
+  height: auto;
 }
 
-.card--content p {
-  @apply font-normal text-lg xl:text-xl;
+.collapsible-section--title {
+
+}
+
+.collapsible-section--content {
+
 }
