@@ -1,43 +1,35 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Select
-title: Select
+name: Checkbox
+title: Checkbox
 description: Used to collect user selection.
 group: Components/Form Elements
 props:
   type: object
   properties:
     label:
-      type: string
       title: Label
+      type: string
       description: The label for the text.
       examples:
-        - 'Industry'
+        - 'Accept terms and conditions'
     id:
-      type: string
       title: Name
+      type: string
       description: The name attribute for the text.
       examples:
-        - 'industry'
-    options:
-      type: array
-      title: Options
-      description: The options for the select element.
-      items:
-        type: object
-        properties:
-          value:
-            type: array
-            title: Value
-            description: The value of the option.
+        - 'terms-and-conditions'
+    description:
+      title: Description
+      type: string
+      description: The description for the text.
       examples:
-          - value: "accounting"
-            label: "Accounting/Finance"
-          - value: "advertising"
-            label: "Advertising/Public Relations"
-          - value: "engineering"
-            label: "Engineering"
-          - value: "technology"
-            label: "Technology"
+        - 'You agree to our Terms of Service and Privacy Policy.'
+    checked:
+      type: boolean
+      title: Checked
+      description: Whether the checkbox is checked.
+      examples:
+        - true
     required:
       type: boolean
       title: Required

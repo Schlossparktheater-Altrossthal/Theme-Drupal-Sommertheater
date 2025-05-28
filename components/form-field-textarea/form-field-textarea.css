@@ -1,8 +1,11 @@
 @reference '../../src/main.css';
 
 @layer components {
+  .form-item.form-type-textarea {
+    @apply my-0 py-2;
+  }
   .form-element--type-textarea {
-    @apply border border-gray-300 rounded-md px-3 pt-6 pb-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    @apply border border-gray-300 rounded-md text-gray-500 px-3 py-3 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
 
   .form-item__label {

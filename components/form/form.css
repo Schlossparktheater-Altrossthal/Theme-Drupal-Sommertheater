@@ -1,0 +1,7 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-item {
+    @apply my-4;
+  }
+}

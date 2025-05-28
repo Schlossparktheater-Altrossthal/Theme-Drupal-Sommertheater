@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Text Area
 description: Used to collect user message.
-group: Components/Forms/Form Elements
+group: Components/Form Elements
 props:
   type: object
   properties:
@@ -14,7 +14,7 @@ props:
     id:
       type: string
       title: Name
-      description: The name attribute for the text.
+      description: The id for the input.
       examples:
         - 'message'
     value:

@@ -1,11 +1,11 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .text-field {
+  .form-type-textfield .text-field {
     @apply border border-gray-300 rounded-md px-3 pt-6 pb-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
 
-  .text-field--label {
-    @apply left-3 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500;
+  .form-type-textfield .text-field--label {
+    @apply left-3 top-2 p-0 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500;
   }
 }

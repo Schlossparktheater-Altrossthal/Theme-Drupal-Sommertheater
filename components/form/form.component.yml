@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Form
 description: Used to collect user input.
-group: Components/Forms
+group: Components/Form
 props:
   type: object
   properties:
@@ -11,6 +11,12 @@ props:
       description: The unique identifier for the form.
       examples:
         - contact-form
+    title:
+      type: string
+      title: Title
+      description: The title of the form.
+      examples:
+        - Contact Us
     method:
       type: string
       title: Method
@@ -24,16 +30,76 @@ props:
       description: The URL to which the form will be submitted.
       examples:
         - /submit-form
-    text_field:
-      type: object
-      title: Text Field
-      description: A text field for user input.
+    submit_label:
+      type: string
+      title: Submit Button Label
+      description: The label for the form's submit button.
       examples:
-        - properties:
+        - Submit
+    fields:
+      type: array
+      title: Fields
+      description: An array of fields to be included in the form.
+      examples:
+        - type: text
+          properties:
             label: 'First Name'
             placeholder: 'Enter your first name'
             id: 'first-name'
-            value: 'John Smith'
             name: 'first_name'
             required: true
+            disabled: false
+        - type: text
+          properties:
+            label: 'Last Name'
+            placeholder: 'Enter your last name'
+            id: 'last-name'
+            name: 'last_name'
+            required: true
+            disabled: false
+        - type: select
+          properties:
+            label: 'Industry'
+            id: 'industry'
+            options:
+              - value: 'accounting'
+                label: 'Accounting/Finance'
+              - value: 'advertising'
+                label: 'Advertising/Public Relations'
+              - value: 'engineering'
+                label: 'Engineering'
+              - value: 'technology'
+                label: 'Technology'
+            required: true
+            disabled: false
+        - type: radio
+          properties:
+            label: 'Phone type'
+            id: 'phone-type'
+            options:
+              - value: 'work'
+                label: 'Work'
+              - value: 'home'
+                label: 'Home'
+            required: true
+            disabled: false
+        - type: textarea
+          properties:
+            label: 'Message'
+            id: 'message'
+            rows: 5
+            cols: 80
+            required: true
+            disabled: false
+        - type: checkbox
+          properties:
+            id: 'terms-and-conditions'
+            label: 'Accept terms and conditions'
+            description: 'You agree to our Terms of Service and Privacy Policy.'
+            checked: false
+            required: true                        
+        - type: submit
+          properties:
+            label: 'Send Message'
+            id: 'submit'
             disabled: false

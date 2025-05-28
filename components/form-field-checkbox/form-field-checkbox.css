@@ -1,0 +1,15 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-item.form-type-checkbox .form-checkbox {
+    @apply absolute mt-3 ml-0;
+  }
+
+  .form-item.form-type-checkbox .form-item__label {
+    @apply text-gray-900 pl-5;
+  }
+
+  .form-item.form-type-checkbox .form-item__description {
+    @apply text-gray-400 pl-5 text-sm;
+  }
+}

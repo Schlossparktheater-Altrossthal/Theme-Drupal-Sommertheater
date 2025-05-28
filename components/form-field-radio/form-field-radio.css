@@ -1,0 +1,7 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-item.form-type-radio {
+    @apply flex my-0;
+  }
+}

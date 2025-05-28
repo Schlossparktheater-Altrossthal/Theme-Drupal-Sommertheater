@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Text field
+name: Text Field
 description: Used to collect user input.
-group: Components/Forms/Form Elements
+group: Components/Form Elements
 props:
   type: object
   properties:
