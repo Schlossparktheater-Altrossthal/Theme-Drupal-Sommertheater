@@ -21,8 +21,6 @@ props:
       type: string
       title: Value
       description: The default value for the text field.
-      examples:
-        - 'John'
     placeholder:
       type: string
       title: Placeholder
