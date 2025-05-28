@@ -17,11 +17,10 @@ props:
       examples:
         - 3
     url:
-      type: boolean
+      type: string
       title: Add optional url
-      examples:
-        - true
-      default: true
+      examples: 
+        - 'https://www.example.com'
     image:
       title: Photo
       description: Media image for the hero.

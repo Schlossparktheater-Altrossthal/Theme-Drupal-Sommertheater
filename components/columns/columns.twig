@@ -21,13 +21,13 @@
             orientation: 'stacked',
             badges: [
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Architecture',
                 icon: '',
                 icon_first: true,
               },
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Modern',
                 icon: '',
                 icon_first: true,
@@ -45,11 +45,11 @@
             orientation: 'stacked',
             badges: [
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Architecture',
               },
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Modern',
               },
             ]
@@ -67,11 +67,11 @@
             orientation: 'stacked',
             badges: [
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Architecture',
               },
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Modern',
               },
             ]
@@ -87,11 +87,11 @@
             orientation: 'stacked',
             badges: [
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Architecture',
               },
               {
-                url: '#',
+                url: 'https://example.com',
                 label: 'Modern',
               },
             ]
@@ -101,7 +101,7 @@
 
       {% for i in 0..columns-1 %}
 
-        {{ include('@mercury/card/card.twig',
+        {{ include('mercury:card',
           cards[i]
         ) }}
 

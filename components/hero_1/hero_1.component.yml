@@ -6,25 +6,13 @@ props:
   type: object
   properties:
     media:
-      title: Select Media
-      description: Choose a predefined media image.
-      type: string
-      enum:
-        - image-1
-        - image-2
-        - image-3
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
       examples:
-        - image-1
-      media_options:
-        image-1:
-          src: 'assets/8474492.jpg'
+        - src: 'assets/8474492.jpg'
           alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
-        image-2:
-          src: 'assets/9697595.jpg'
-          alt: 'Placeholder alt'
-        image-3:
-          src: 'assets/starshot.png'
-          alt: 'Placeholder alt'
     heading_text:
       type: string
       title: Heading Text

@@ -16,22 +16,13 @@
     <ul class="list-none ps-0 flex items-center gap-2">
       {% for badge in badges %}
       <li>
-        {{ include('@mercury/badge/badge.twig', 
-          {
-            link: {
-              url: badge.url,
-              label: badge.label,
-              icon: badge.icon,
-              icon_first: badge.icon_first,
-            }
-          }
-        ) }}
+        {{ include('mercury:badge', badge) }}
       </li>
       {% endfor %}
     </ul>
     {% endif %}
     <div class="flex flex-col gap-6">
-      {{ include('@mercury/heading/heading.twig') }}
+      {{ include('mercury:heading') }}
       <p>{{ text }}</p>
     </div>
   </div>

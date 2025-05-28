@@ -17,11 +17,10 @@ props:
       examples: 
         - 3
     url:
-      type: boolean
+      type: string
       title: Add optional url
       examples: 
-        - true
-      default: true
+        - 'https://www.example.com'
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Media Image

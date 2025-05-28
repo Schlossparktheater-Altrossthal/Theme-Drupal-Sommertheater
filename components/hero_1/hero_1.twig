@@ -7,23 +7,6 @@
 
 {% set img_position = 'object-' ~ background_position %}
 
-{# Define image options for storybook #}
-{% set media_options = {
-  'image-1': {
-    'src': 'assets/8474492.jpg',
-    'alt': 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
-  },
-  'image-2': {
-    'src': 'assets/9697595.jpg',
-    'alt': 'Placeholder alt'
-  },
-  'image-3': {
-    'src': 'assets/starshot.png',
-    'alt': 'Placeholder alt'
-  }
-} %}
-{% set media = media_options[media] %}
-
 <section class="{{ classes|join(' ') }}">
   {% if background == 'image' %}
     <div class="hero-region media relative h-full">
