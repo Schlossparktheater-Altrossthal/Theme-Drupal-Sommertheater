@@ -47,7 +47,7 @@ props:
         - src: 'assets/256381.jpg'
           alt: 'Photo by pixabay'
     radius:
-      type: number
+      type: string
       title: Button Corner Radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
