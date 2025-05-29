@@ -1,16 +1,15 @@
 @reference '../../src/main.css';
 
-.sb-show-main:has(#storybook-root>.button) {
+.sb-main-padded:has(.storybook-component--button) {
   padding: 0;
 }
 
-#storybook-root:has(.button) {
+.storybook-component--button {
   padding: 1rem;
 }
 
-#storybook-root:has(.button.dark-mode) {
+.storybook-component--button:has(.button.dark-mode) {
   @apply bg-base-dark;
-  padding: 1rem;
 }
 
 button.button {
@@ -21,18 +20,54 @@ button.button {
   @apply w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
 
-.button-light {
-  @apply border-brand-light bg-brand-light text-brand-dark hover:bg-brand-dark hover:border-brand-dark hover:text-base-light;
+.button-fill {
+  @apply border-brand bg-brand text-base-light hover:bg-brand-dark hover:border-brand-dark hover:text-base-light;
 }
 
-.button-dark {
-  @apply border-brand-dark bg-brand-dark text-base-light hover:bg-brand-light hover:border-brand-light hover:text-brand-dark;
+.button-fill-accent {
+  @apply border-accent bg-accent text-base-light hover:bg-accent-dark hover:border-accent-dark hover:text-base-light;
 }
 
-.button-light.outlined {
-  @apply border-brand-light bg-transparent text-base-light hover:bg-brand-light hover:border-brand-light hover:text-brand-dark;
+.dark-mode .button-fill,
+.button-fill.dark-mode {
+  @apply border-brand-light bg-brand-light text-brand hover:bg-base-light hover:border-base-light hover:text-base-dark;
 }
 
-.button-dark.outlined {
-  @apply border-brand-dark bg-base-light text-brand-dark hover:bg-brand-dark hover:border-brand-dark hover:text-base-light;
+.dark-mode .button-fill-accent,
+.button-fill-accent.dark-mode {
+  @apply border-accent bg-accent text-base-light hover:bg-base-light  hover:border-base-light  hover:text-accent;
+}
+
+.button-outline {
+  @apply border-brand bg-base-light text-brand hover:bg-brand hover:border-brand hover:text-base-light;
+}
+
+.button-outline-accent {
+  @apply border-accent bg-base-light text-accent hover:bg-accent hover:border-accent hover:text-base-light;
+}
+
+.dark-mode .button-outline,
+.button-outline.dark-mode {
+  @apply border-base-light bg-transparent text-base-light hover:bg-base-light hover:border-base-light hover:text-brand;
+}
+
+.dark-mode .button-outline-accent,
+.button-outline-accent.dark-mode {
+  @apply border-accent bg-transparent text-accent hover:bg-accent hover:border-accent hover:text-base-light;
+}
+
+.button-fill[aria-disabled="true"],
+.button-fill-accent[aria-disabled="true"],
+.button-fill[disabled],
+.button-fill-accent[disabled] {
+  @apply border-gray-light bg-gray-light text-base-light hover:bg-gray-light hover:border-gray-light hover:text-base-light;
+  cursor: default;
+}
+
+.button-outline[aria-disabled="true"],
+.button-outline-accent[aria-disabled="true"],
+.button-outline[disabled],
+.button-outline-accent[disabled] {
+  @apply border-gray-light bg-base-light text-gray-light hover:bg-base-light hover:border-gray-light hover:text-gray-light;
+  cursor: default;
 }

@@ -161,3 +161,8 @@ new ComponentType(
 ```
 
 This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and either running them immediately in Storybook or adding them to `Drupal.behaviors`.
+
+## Troubleshooting
+
+**If XB throws a fatal error, use this comment to reset the page**
+`ddev drush sql:query "delete from key_value_expire where collection='tempstore.shared.experience_builder.auto_save'"`

@@ -11,18 +11,12 @@ props:
       title: Variant
       description: 'The style of button.'
       enum:
-        - light
-        - dark
+        - fill
+        - outline
+        - fill-accent
+        - outline-accent
       examples:
-        - light
-    outline:
-      type: boolean
-      title: Outlined
-      description: 'Whether the button is outlined.'
-      default: false
-      examples:
-        - false
-        - true
+        - fill
     disabled:
       type: boolean
       title: Disabled
