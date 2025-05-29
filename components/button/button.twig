@@ -1,9 +1,8 @@
 {% set btn_classes = btn_classes|default([])|merge([
     'button',
     'button-' ~ variant,
+    'color-mode--' ~ color_mode,
     radius,
-    outline ? 'outlined',
-    color_mode == 'dark' ? 'dark-mode' : 'light-mode',
     icon ? 'gap-1' : 'px-5',
     icon_first ? 'flex flex-row ps-4 pe-5' : 'flex flex-row-reverse ps-5 pe-4',
 ])|filter(v => v is not empty) %}

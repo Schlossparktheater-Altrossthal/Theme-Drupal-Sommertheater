@@ -31,7 +31,7 @@ props:
             <li>Facilisis dictumst letius in</li>
             <li>Diam mus est faucibus ornare ut consectetuer metus</li>
           </ul>'
-    cta:
+    button:
       type: object
       title: CTA
       description: CTA for the card
@@ -41,7 +41,7 @@ props:
           title: URL
           examples:
             - 'https://example.com'
-        text:
+        label:
           type: string
           title: Text
           examples:
