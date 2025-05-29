@@ -5,7 +5,7 @@
 <div class="collapsible-section overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
   <h{{ heading_level }}>
-    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title px-2 py-4 w-full text-left flex justify-between items-center">
+    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title px-2 py-4 w-full text-left flex justify-between items-center cursor-pointer">
       {{ title }}
       <span class="collapsible-section--icon material-symbols-outlined transition-transform duration-(--animate-speed)">expand_more</span>
     </button>

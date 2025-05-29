@@ -5,30 +5,14 @@
   @apply max-w-lg;
 }
 
+/* Base styles before JS gets involved. */
 .collapsible-section {
-  --animate-speed: 500ms;
-  @apply bg-gray-lightest border-b-1 border-gray-darkest
-}
-
-.collapsible-section--js .collapsible-section--content {
-  @apply pb-0 h-0;
-}
-
-.collapsible-section--open .collapsible-section--icon {
-  rotate: 180deg;
-}
-
-.collapsible-section--open .collapsible-section--content {
-  @apply pb-2 h-(--natural-height);
-}
-
-.collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
-  height: auto;
-}
-
-.collapsible-section--measuring .collapsible-section--content {
   --animate-speed: 0s;
-  height: auto;
+  @apply bg-gray-lightest border-b-1 border-gray-darkest;
+}
+
+.collapsible-section--content {
+  @apply pb-2 h-auto;
 }
 
 .collapsible-section--title {
@@ -37,4 +21,28 @@
 
 .collapsible-section--content {
   @apply text-base pb-2;
+}
+
+/* Styles involving collapsing/expanding. */
+
+.collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
+  @apply pb-0 h-0;
+}
+
+.collapsible-section--animate {
+  --animate-speed: 500ms;
+}
+
+.collapsible-section--open {
+  .collapsible-section--icon {
+    rotate: 180deg;
+  }
+
+  .collapsible-section--content {
+    @apply pb-2 h-(--natural-height);
+  }
+}
+
+.collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
+  height: auto;
 }
