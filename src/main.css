@@ -2,87 +2,79 @@
 @import 'tailwindcss';
 
 @theme {
-   --color-black:         #000000;
-   --color-white:         #ffffff;
+  --color-black:         #000000;
+  --color-white:         #ffffff;
 
-   --color-gray-lightest: #f3f4f6;
-   --color-gray-light:    #d1d5db;
-   --color-gray:          #6b7280;
-   --color-gray-dark:     #374151;
-   --color-gray-darkest:  #111827;
+  --color-gray-lightest: #f3f4f6;
+  --color-gray-light:    #d1d5db;
+  --color-gray:          #6b7280;
+  --color-gray-dark:     #374151;
+  --color-gray-darkest:  #111827;
 
-   /* Below are the designed branding colors. These are defined per project. */
-   /* Primary branding color definitions */
-   --color-brand-light:   #eff6ff;
-   --color-brand:         #2563eb;
-   --color-brand-dark:    #1e3a8a;
+  --color-brand-light:   #eff6ff;
+  --color-brand:         #2563eb;
+  --color-brand-dark:    #1e3a8a;
 
-   /* Branding accent color definitions */
-   --color-accent-light:  #fce7f3;
-   --color-accent:        #ec4899;
-   --color-accent-dark:   #9d174d;
+  --color-accent-light:  #fce7f3;
+  --color-accent:        #ec4899;
+  --color-accent-dark:   #9d174d;
 
-   /* Below are the 4 feedback colors. These can be defined per project but should stay within the general color areas defined. */
-   --color-info:          #01a8e4;
-   --color-positive:      #00cc41;
-   --color-warning: 	     #ffbf00;
-   --color-negative: 	  #e60032;
+  --color-info:          #01a8e4;
+  --color-positive:      #00cc41;
+  --color-warning: 	     #ffbf00;
+  --color-negative: 	   #e60032;
 
-   /* Base Font family definitions */
-   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-   --font-mono: 'Fira Code', monospace;
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-mono: 'Fira Code', monospace;
 
-   /* Base Typography */
-   --text-9xl: 7.5rem;               /* 120px */
-   --text-9xl--line-height: 1;       /* 120px */
+  --text-9xl: 7.5rem;               /* 120px */
+  --text-9xl--line-height: 1;       /* 120px */
 
-   --text-8xl: 6rem;                  /* 96px */
-   --text-8xl: 1;                     /* 96px */
+  --text-8xl: 6rem;                  /* 96px */
+  --text-8xl: 1;                     /* 96px */
 
-   --text-7xl: 4.5rem;                /* 72px */
-   --text-7xl--line-height: 1;        /* 72px */
+  --text-7xl: 4.5rem;                /* 72px */
+  --text-7xl--line-height: 1;        /* 72px */
 
-   --text-6xl: 3.75rem;               /* 60px */
-   --text-6xl--line-height: 1;        /* 60px */
+  --text-6xl: 3.75rem;               /* 60px */
+  --text-6xl--line-height: 1;        /* 60px */
 
-   --text-5xl: 3rem;                  /* 48px */
-   --text-5xl--line-height: 1.083333; /* 52px */
+  --text-5xl: 3rem;                  /* 48px */
+  --text-5xl--line-height: 1.083333; /* 52px */
 
-   --text-4xl: 2.5rem;                /* 40px */
-   --text-4xl--line-height: 1.2;      /* 48px */
+  --text-4xl: 2.5rem;                /* 40px */
+  --text-4xl--line-height: 1.2;      /* 48px */
 
-   --text-3xl: 2rem;                  /* 32px */
-   --text-3xl--line-height: 1.3125;   /* 42px */
+  --text-3xl: 2rem;                  /* 32px */
+  --text-3xl--line-height: 1.3125;   /* 42px */
 
-   --text-2xl: 1.5rem;                /* 24px */
-   --text-2xl--line-height: 1.3333;   /* 32px */
+  --text-2xl: 1.5rem;                /* 24px */
+  --text-2xl--line-height: 1.3333;   /* 32px */
 
-   --text-xl: 1.25rem;                /* 20px */
-   --text-xl--line-height: 1.5;       /* 30px */
+  --text-xl: 1.25rem;                /* 20px */
+  --text-xl--line-height: 1.5;       /* 30px */
 
-   --text-lg: 1.125rem;               /* 18px */
-   --text-lg--line-height: 1.5;       /* 27px */
+  --text-lg: 1.125rem;               /* 18px */
+  --text-lg--line-height: 1.5;       /* 27px */
 
-   --text-base: 1rem;                 /* 16px */
-   --text-base--line-height: 1.5;     /* 24px */
+  --text-base: 1rem;                 /* 16px */
+  --text-base--line-height: 1.5;     /* 24px */
 
-   --text-md: var(--text-base);
-   --text-md--line-height: var(--text-base--line-height);
+  --text-md: var(--text-base);
+  --text-md--line-height: var(--text-base--line-height);
 
-   --text-sm: 0.875rem;               /* 14px */
-   --text-sm--line-height: 1.5;       /* 21px */
+  --text-sm: 0.875rem;               /* 14px */
+  --text-sm--line-height: 1.5;       /* 21px */
 
-   --text-xs: 0.75rem;                /* 12px */
-   --text-xs--line-height: 1.5;       /* 18px */
+  --text-xs: 0.75rem;                /* 12px */
+  --text-xs--line-height: 1.5;       /* 18px */
 
-  /* Font Weights */
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Spacing (Always px for layout) */
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -103,7 +95,6 @@
 
 /* Custom theme classes */
 @layer base {
-
   p {
     @apply text-base lg:text-lg 2xl:text-xl text-inherit;
   }

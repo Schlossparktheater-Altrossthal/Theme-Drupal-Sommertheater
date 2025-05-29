@@ -4,8 +4,13 @@
 
 <div class="collapsible-section overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
-  <h{{ heading_level }}><button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title">{{ title }}</button></h{{ heading_level}}>
-  <div class="collapsible-section--content transition-[height] duration-(--animate-speed)" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
+  <h{{ heading_level }}>
+    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title px-2 py-4 w-full text-left flex justify-between items-center">
+      {{ title }}
+      <span class="collapsible-section--icon material-symbols-outlined transition-transform duration-(--animate-speed)">expand_more</span>
+    </button>
+  </h{{ heading_level}}>
+  <div class="collapsible-section--content transition-[height] duration-(--animate-speed) px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
     {% block collapsible_content %}
       {{ storybook.content }}
     {% endblock %}

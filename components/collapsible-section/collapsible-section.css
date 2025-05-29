@@ -11,11 +11,15 @@
 }
 
 .collapsible-section--js .collapsible-section--content {
-  height: 0;
+  @apply pb-0 h-0;
+}
+
+.collapsible-section--open .collapsible-section--icon {
+  rotate: 180deg;
 }
 
 .collapsible-section--open .collapsible-section--content {
-  height: var(--natural-height);
+  @apply pb-2 h-(--natural-height);
 }
 
 .collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
@@ -28,9 +32,9 @@
 }
 
 .collapsible-section--title {
-
+  @apply text-2xl;
 }
 
 .collapsible-section--content {
-
+  @apply text-base pb-2;
 }
