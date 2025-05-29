@@ -1,7 +1,7 @@
 {% set classes = [
     'cta',
     'relative',
-    background == 'image' or background == 'dark' ? 'bg-base-dark text-base-light' : 'bg-base-light text-base-dark',
+    background == 'image' or background == 'dark' ? 'bg-black text-white' : 'bg-white text-black',
   ]
 %}
 
@@ -55,7 +55,7 @@
             text: link.text,
             style: link_style,
             link_classes: (link_classes|default([]))|merge([ radius ])
-          } 
+          }
         ) }}
       </li>
       {% endfor %}

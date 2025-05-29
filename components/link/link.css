@@ -25,23 +25,23 @@
   }
 
   .link--button-light {
-    @apply border-base-light bg-base-light text-brand-dark hover:bg-brand-dark hover:border-base-light hover:text-base-light;
+    @apply border-white bg-white text-brand-dark hover:bg-brand-dark hover:border-white hover:text-white;
   }
 
   .link--button-dark {
-    @apply border-brand-dark bg-brand-dark text-base-light hover:bg-base-light hover:text-brand-dark;
+    @apply border-brand-dark bg-brand-dark text-white hover:bg-white hover:text-brand-dark;
   }
 
   .link--button-outline-light {
-    @apply border-base-light text-base-light hover:bg-brand-dark hover:text-base-light;
+    @apply border-white text-white hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-outline-dark {
-    @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-base-light;
+    @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-brand {
-    @apply border-brand bg-brand text-base-light hover:bg-brand-dark hover:text-base-light;
+    @apply border-brand bg-brand text-white hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-brand-dark {

@@ -29,5 +29,5 @@
 }
 
 .card--content p {
-  @apply font-normal text-lg xl:text-xl;
+  @apply font-normal text-xl xl:text-xl;
 }

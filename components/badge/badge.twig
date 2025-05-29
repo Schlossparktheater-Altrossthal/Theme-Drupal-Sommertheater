@@ -1,8 +1,9 @@
 {% set classes = [
     'badge',
     radius,
-    icon ? icon_first ? 'flex flex-row pt-[9px] pb-[8px] ps-1 pe-3' : 'flex flex-row-reverse pt-[9px] pb-[8px] ps-3 pe-1' : 'px-4 pt-[9px] pb-[8px]',
-    'color-mode--' ~ color_mode,
+    icon ? 'pt-[9px] pb-[8px]' : 'px-4 pt-[9px] pb-[8px]',
+    icon_first ? 'flex flex-row ps-1 pe-3' : 'flex flex-row-reverse ps-3 pe-1',
+    color == 'dark' ? 'bg-black text-white hover:bg-white hover:text-black ' : 'bg-white text-black hover:bg-black hover:text-white',
   ]
 %}
 
@@ -10,4 +11,3 @@
   {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
   <span class="badge-label">{{ label }}</span>
 </a>
-

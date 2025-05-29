@@ -22,7 +22,10 @@ export default defineConfig({
     storybookGenerator({
       componentsDir: 'components',
       includeJs: true,
-      storiesDir: './src/stories/sdc-stories'
+      storiesDir: './src/stories/sdc-stories',
+      namespaces: {
+        mercury: ['components', 'templates']
+      }
     }),
     sdcCssWatcher(),
   ],
