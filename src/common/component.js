@@ -100,7 +100,6 @@ export class ComponentType {
    */
   removeComponent(context = document) {
     const elementsToDelete = Array.from(context.querySelectorAll(this.selector));
-
     const instancesToDelete = this.instances.filter(instance => elementsToDelete.indexOf(instance.el) !== -1);
 
     if (!instancesToDelete.length) {
@@ -111,7 +110,7 @@ export class ComponentType {
       instancesToDelete.forEach(instance => instance.remove());
     }
 
-    this.instances = this.instances.filter(oldInstance => instancesToDelete.indexOf(oldInstance.el) === -1);
+    this.instances = this.instances.filter(oldInstance => instancesToDelete.indexOf(oldInstance) === -1);
     this.updateElements();
   }
 
