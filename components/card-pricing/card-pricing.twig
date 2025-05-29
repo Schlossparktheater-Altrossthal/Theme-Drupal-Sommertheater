@@ -23,10 +23,10 @@
     </div>
   </div>
   <footer>
-    {{ include('mercury:link', {
-      url: cta.url,
-      text: cta.text,
-      style: color_mode == 'light' ? 'button-brand' : 'button-outline-light',
+    {{ include('mercury:button', {
+      url: button.url,
+      label: button.label,
+      variant: 'fill',
       radius: 'rounded-sm',
     }) }}
   </footer>
