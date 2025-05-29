@@ -19,7 +19,7 @@
 }
 
 .badge .badge-label {
-  @apply font-sans font-normal text-md leading-none text-inherit select-none;
+  @apply font-sans font-normal text-sm leading-none text-inherit select-none;
 }
 
 .badge .material-symbols-outlined {

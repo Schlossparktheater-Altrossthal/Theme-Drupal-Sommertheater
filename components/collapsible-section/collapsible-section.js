@@ -103,8 +103,6 @@ class CollapsibleSection extends ComponentInstance {
     this.el.classList.add(measuringClass);
     // Open the collapsible if it's not already open.
     this.isOpen = true;
-    // Force reflow.
-    void (this.contentContainer.offsetHeight);
     // Measure the natural height and make it available to CSS as a custom
     // property.
     const height = this.contentContainer.getBoundingClientRect().height;

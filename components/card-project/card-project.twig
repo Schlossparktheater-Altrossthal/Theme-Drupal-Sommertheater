@@ -2,7 +2,7 @@
     'card-project',
     'flex flex-col gap-6',
     'media-last' in layout ? 'md:flex-row-reverse' : 'md:flex-row',
-    background == 'dark' ? 'bg-accent text-base-light' : 'bg-brand-lightest text-base-dark',
+    background == 'dark' ? 'bg-accent text-white' : 'bg-brand-lightest text-black',
   ]
 %}
 
@@ -15,10 +15,10 @@
     {# This should be a loop #}
     {% if (badge_1.url and badge_1.label) or (badge_2.url and badge_2.label) %}
     <ul class="list-none flex items-center gap-2 order-2">
-      
+
       {% if badge_1.url and badge_1.label %}
         <li>
-          {{ include('mercury:badge', 
+          {{ include('mercury:badge',
             {
               link: {
                 url: badge_1.url,
@@ -30,7 +30,11 @@
 
       {% if badge_2.url and badge_2.label %}
         <li>
-          {{ include('mercury:badge', 
+<<<<<<< HEAD
+          {{ include('mercury:badge',
+=======
+          {{ include('@mercury/badge/badge.twig',
+>>>>>>> 7a6750b (Final main.css fixes)
             {
               link: {
                 url: badge_2.url,
@@ -41,7 +45,12 @@
       {% endif %}
     </ul>
   {% endif %}
+<<<<<<< HEAD
     {{ include('mercury:heading') }}
     <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
+=======
+    {{ include('@mercury/heading/heading.twig') }}
+    <p class="font-extralight text-xl xl:text-xl">{{ text }}</p>
+>>>>>>> 7a6750b (Final main.css fixes)
   </div>
 </div>

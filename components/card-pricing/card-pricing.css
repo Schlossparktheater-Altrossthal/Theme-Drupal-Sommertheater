@@ -25,6 +25,6 @@
   }
   /* @todo - move this to link component */
   .card-pricing.color-mode--dark .link--button-outline-light {
-    @apply hover:bg-base-light hover:text-brand-dark;
+    @apply hover:bg-white hover:text-brand-dark;
   }
 }

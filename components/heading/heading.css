@@ -29,7 +29,7 @@
   }
   /* sizes: 24 30 */
   h4.heading {
-    @apply font-normal text-2xl 2xl:text-3xl; 
+    @apply font-normal text-2xl 2xl:text-3xl;
   }
   /* sizes: 24 */
   h5.heading {
