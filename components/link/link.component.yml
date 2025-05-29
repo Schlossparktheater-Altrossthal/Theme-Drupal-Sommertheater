@@ -32,7 +32,7 @@ props:
       examples:
         - 'default'
     radius:
-      type: number
+      type: string
       name: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 

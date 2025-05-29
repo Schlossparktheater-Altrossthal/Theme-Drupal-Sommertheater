@@ -2,7 +2,7 @@
 <main class="page max-w-screen-xl mx-auto bg-base-light p-4">
 
   {# hero #}
-  {{ include('@mercury/hero_1/hero_1.twig',
+  {{ include('mercury:hero_1',
     {
       heading_text: 'We are a brand acceleration agency',
       text: '',
@@ -16,7 +16,7 @@
 
   {# intro #}
   <section class="px-6 lg:px-8 xl:px-16">
-  {{ include('@mercury/card-intro/card-intro.twig',
+  {{ include('mercury:card-intro',
     {
       heading_text: 'Our work is mysterious and important',
       level: 2,
@@ -35,37 +35,35 @@
 
   {# logos #}
   <section class="my-12">
-    {{ include(
-      '../horizontal-scroller/horizontal-scroller.twig'
-    )}}
+    {{ include('mercury:horizontal-scroller') }}
   </section>
 
   {# icon tiles #}
   <section class="gap-4 flex flex-col md:grid grid-cols-3 my-12">
-    {{ include(
-      '../tile-icon/tile-icon.twig',
+    {{ include('mercury:tile-icon',
       {
         text: 'Eiusmod',
         icon: 'mail',
         url: 'https://example.com',
+        background: 'light',
       }
     ) }}
 
-    {{ include(
-      '../tile-icon/tile-icon.twig',
+    {{ include('mercury:tile-icon',
       {
         text: 'Incididunt',
         icon: 'globe',
         url: 'https://example.com',
+        background: 'light',
       }
     ) }}
 
-    {{ include(
-      '../tile-icon/tile-icon.twig',
+    {{ include('mercury:tile-icon',
       {
         text: 'Tempor',
         icon: 'deblur',
         url: 'https://example.com',
+        background: 'light',
       }
     ) }}
   </section>
@@ -73,7 +71,7 @@
 
   <section class="flex flex-col gap-6 md:gap-0 px-6 lg:px-8 xl:px-16 py-6 lg:py-8 xl:py-16 lg:py-12 bg-accent text-base-light">
     {# projects #}
-    {{ include('@mercury/card-project/card-project.twig',
+    {{ include('mercury:card-project',
       {
         heading_text: 'We are a brand acceleration agency',
         level: 3,
@@ -93,7 +91,7 @@
         },
       }
     ) }}
-    {{ include('@mercury/card-project/card-project.twig',
+    {{ include('mercury:card-project',
       {
         heading_text: 'We are a brand acceleration agency',
         level: 3,
@@ -114,7 +112,7 @@
         },
       }
     ) }}
-  {{ include('@mercury/card-project/card-project.twig',
+  {{ include('mercury:card-project',
     {
       heading_text: 'We are a brand acceleration agency',
       level: 3,
@@ -134,7 +132,7 @@
       },
     }
   ) }}
-  {{ include('@mercury/card-project/card-project.twig',
+  {{ include('mercury:card-project',
     {
       heading_text: 'We are a brand acceleration agency',
       level: 3,
@@ -160,8 +158,7 @@
   {# blockquotes #}
   <section class="container my-12 md:grid grid-cols-4">
     <div class="col-start-2 col-end-4">
-      {{ include(
-        '../blockquote/blockquote.twig',
+      {{ include('mercury:blockquote',
         {
           text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.',
           cite_name: 'Beatae Vitae Dicta',
@@ -173,7 +170,7 @@
   </section>
 
   {# cta #}
-  {{ include('@mercury/cta/cta.twig',
+  {{ include('mercury:cta',
     {
       heading_text: 'Lorem ipsum dolor sit amet',
       level: 2,
@@ -195,7 +192,7 @@
   {# 2 cards #}
   <section class="gap-4 flex flex-col md:grid grid-cols-2 my-12 pb-12">
     {{ include(
-      '@mercury/card/card.twig',
+      'mercury:card',
       {
         heading_text:  'Quia Voluptas Sit Aspernatur Aut Odit',
         level: 3,
@@ -215,7 +212,7 @@
     )}}
 
         {{ include(
-      '@mercury/card/card.twig',
+      'mercury:card',
       {
         heading_text:  'At Vero Eos et Accusamus',
         level: 3,

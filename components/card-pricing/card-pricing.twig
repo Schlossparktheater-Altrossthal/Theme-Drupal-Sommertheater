@@ -23,7 +23,7 @@
     </div>
   </div>
   <footer>
-    {{ include('@mercury/link/link.twig', {
+    {{ include('mercury:link', {
       url: cta.url,
       text: cta.text,
       style: color_mode == 'light' ? 'button-brand' : 'button-outline-light',

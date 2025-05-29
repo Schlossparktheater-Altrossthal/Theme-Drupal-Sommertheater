@@ -25,6 +25,7 @@ props:
         - default
       default: default
     url:
-      type: boolean
+      type: string
       title: Add optional url
-      default: false
+      examples: 
+        - 'https://www.example.com'

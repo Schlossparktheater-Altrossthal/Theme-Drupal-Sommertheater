@@ -1,13 +1,13 @@
 {% set classes = [
     'badge',
     radius,
-    badge.icon ? badge.icon_first ? 'flex flex-row pt-[9px] pb-[8px] ps-1 pe-3' : 'flex flex-row-reverse pt-[9px] pb-[8px] ps-3 pe-1' : 'px-4 pt-[9px] pb-[8px]',
+    icon ? icon_first ? 'flex flex-row pt-[9px] pb-[8px] ps-1 pe-3' : 'flex flex-row-reverse pt-[9px] pb-[8px] ps-3 pe-1' : 'px-4 pt-[9px] pb-[8px]',
     'color-mode--' ~ color_mode,
   ]
 %}
 
-<a href="{{ badge.url }}" aria-label="{{ badge.label }}" class="{{ classes|join(' ') }}">
-  {% if badge.icon %}<span class="material-symbols-outlined">{{ badge.icon }}</span>{% endif %}
-  <span class="badge-label">{{ badge.label }}</span>
+<a href="{{ url }}" aria-label="{{ label }}" class="{{ classes|join(' ') }}">
+  {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+  <span class="badge-label">{{ label }}</span>
 </a>
 

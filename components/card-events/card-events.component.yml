@@ -18,7 +18,8 @@ props:
       examples:
         - 'Transition'
     event_date:
-      type: date
+      type: string
+      format: date
       title: Event Date
       examples:
         - 2026-02-12

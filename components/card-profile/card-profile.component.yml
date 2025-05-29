@@ -17,11 +17,10 @@ props:
       examples:
         - 3
     url:
-      type: boolean
+      type: string
       title: Add optional url
-      examples:
-        - true
-      default: true
+      examples: 
+        - 'https://www.example.com'
     image:
       title: Photo
       description: Media image for the hero.
@@ -42,37 +41,39 @@ props:
       examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
     radius:
-      type: number
-      name: Corner radius
+      type: string
+      title: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm
       default: rounded-sm 
-    badge_1:
-      type: object
-      title: Badge text 1
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'Amazing'
-    badge_2:
-      type: object
-      title: Badge text 2
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'New Release'
-    badge_links:
+    badges:
       type: array
-      title: Badge links
-      description: A list of badges
-      examples:
-        - url: '#'
-          label: 'Bob'
-        - url: '#'
-          label: 'Fred'
+      title: badges
+      description: Category badges.
+      items:
+        type: object
+        title: Badge
+        description: List of badges.
+        properties:
+          url:
+            type: string
+            format: uri
+          label:
+            type: string
+          icon: 
+            type: string
+          icon_first: 
+            type: boolean
+        examples:
+          - url: 'https://www.example.com'
+            label: 'badge one'
+            icon: ''
+            icon_first: true
+          - url: 'https://www.example.com'
+            label: 'badge two'
+            icon: ''
+            icon_first: true
     orientation:
       type: string
       title: Orientation

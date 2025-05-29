@@ -47,7 +47,7 @@ props:
           examples:
             - 'Choose this plan'
     card_radius:
-      type: number
+      type: string
       title: Corner radius
       description: Set card corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg]

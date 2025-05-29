@@ -4,7 +4,7 @@ description: A component showing its children in a grid on desktop and in a hori
 group: Layouts/Horz Scroller
 props:
   type: object
-  properties:
+  properties: {}
 slots:
   items:
     title: Items

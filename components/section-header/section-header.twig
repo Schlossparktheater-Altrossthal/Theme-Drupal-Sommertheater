@@ -7,12 +7,12 @@
 <div class="{{ classes|join(' ') }}">
   <div class="">
     {% block heading_slot %}
-      {{ include('@mercury/heading/heading.twig', { url: false }) }}
+      {{ include('mercury:heading', { url: '' }) }}
     {% endblock %}
   </div>
   <div class="">
     {% block content_slot %}
-      {{ include('@mercury/link/link.twig') }}
+      {{ include('mercury:link') }}
     {% endblock %}
   </div>
 </div>
