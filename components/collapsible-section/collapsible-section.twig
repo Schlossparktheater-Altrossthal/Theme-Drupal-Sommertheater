@@ -10,7 +10,7 @@
       <span class="collapsible-section--icon material-symbols-outlined transition-transform duration-(--animate-speed)">expand_more</span>
     </button>
   </h{{ heading_level}}>
-  <div class="collapsible-section--content transition-[height] duration-(--animate-speed) px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
+  <div class="collapsible-section--content transition-[height, padding] duration-(--animate-speed) px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
     {% block collapsible_content %}
       {{ storybook.content }}
     {% endblock %}
