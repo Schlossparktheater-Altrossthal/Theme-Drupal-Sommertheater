@@ -1,5 +1,37 @@
-<!-- Drupal theme -->
-<div class="relative w-full max-w-sm form-type-textfield js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
-  <input type="text" class="text-field peer form-text form-element form-element--type-text form-element--api-textfield{% if required %} required{% endif %}" id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {% if required %}required aria-required="true"{% endif %} {% if disabled %}disabled aria-disabled="true"{% endif %} data-drupal-selector="edit-{{ id }}" />
-  <label for="edit-{{ id }}" class="text-field--label absolute form-item__label js-form-required form-required">{{ label }}</label>
+{% set field_classes = field_classes|default([])|merge([
+  'relative',
+  'w-full',
+  'form-type-textfield',
+  'js-form-item',
+  'form-item',
+  'js-form-type-textfield',
+  'form-item-' ~ id,
+  'js-form-item-' ~ id,
+])|filter(v => v is not empty) %}
+
+{% set input_classes = input_classes|default([])|merge([
+  'peer',
+  'text-field',
+  'form-text',
+  'form-element',
+  'form-element--type-text',
+  'form-element--api-textfield',
+  required ? 'required' : '',
+  disabled ? 'disabled' : '',
+])|filter(v => v is not empty) %}
+
+{% set field_required = required ? 'required="required" aria-required="true"' : '' %}
+{% set field_disabled = disabled ? 'disabled="disabled" aria-disabled="true"' : '' %}
+
+{% set label_classes = label_classes|default([])|merge([
+  'text-field--label',
+  'absolute',
+  'form-item__label',
+  'js-form-required',
+  required ? 'form-required' : '',
+])|filter(v => v is not empty) %}
+
+<div data-drupal-selector="edit-{{ id }}-wrapper" class="{{ field_classes | join(' ') }}" >
+  <input type="text" data-drupal-selector="edit-{{ id }}"  class="{{ input_classes | join(' ') }}"  id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {{ field_required }} {{ field_disabled }} />
+  <label for="edit-{{ id }}" class="{{ label_classes | join(' ') }}">{{ label }}</label>
 </div>
