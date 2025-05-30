@@ -1,5 +1,5 @@
 @reference '../../src/main.css';
-@reference '../heading/heading.css';
+@reference '../heading/heading.tailwind.css';
 
 #storybook-root > .hero-fullwidth {
   @apply outline outline-dotted outline-gray-lightest rounded-xs;
