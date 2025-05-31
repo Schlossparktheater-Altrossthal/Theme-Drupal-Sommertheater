@@ -1,0 +1,57 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.sb-main-padded:has(.hero-overlay) {
+  height: 100vh;
+  padding: var(--spacing-0, 0px);
+}
+#storybook-root:has(.hero-overlay) {
+  height: 100%;
+}
+.hero-overlay {
+  position: relative;
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+  margin-inline: auto;
+}
+.hero-overlay .hero-region.content p {
+  font-size: var(--text-2xl, 1.5rem);
+  line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+  --tw-leading: 1.5;
+  line-height: 1.5;
+  --tw-font-weight: var(--font-weight-normal, 400);
+  font-weight: var(--font-weight-normal, 400);
+  @media (width >= 80rem) {
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+  }
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+    }
+  }
+}

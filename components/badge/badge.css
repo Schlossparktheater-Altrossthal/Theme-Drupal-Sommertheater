@@ -1,0 +1,56 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+.badge.color-mode--dark:hover, .badge.color-mode--dark:focus {
+  background-color: var(--main-text-color);
+  color: var(--main-bg-color);
+}
+.badge.color-mode--light:hover, .badge.color-mode--light:focus {
+  background-color: var(--main-text-color);
+  color: var(--main-bg-color);
+}
+.badge .badge-label {
+  font-family: var(--font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
+  --tw-leading: 1;
+  line-height: 1;
+  --tw-font-weight: var(--font-weight-normal, 400);
+  font-weight: var(--font-weight-normal, 400);
+  color: inherit;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.badge .material-symbols-outlined {
+  font-size: var(--text-xl, 1.25rem);
+  line-height: calc(var(--spacing, 0.25rem) * 2);
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+    }
+  }
+}

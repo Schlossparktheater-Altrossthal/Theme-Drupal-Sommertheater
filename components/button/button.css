@@ -1,0 +1,241 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.sb-main-padded:has(.storybook-component--button) {
+  padding: 0;
+}
+.storybook-component--button {
+  padding: 1rem;
+}
+.storybook-component--button:has(.color-mode--dark) {
+  background-color: var(--color-black, #000000);
+}
+button.button {
+  cursor: pointer;
+}
+.button {
+  width: fit-content;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  text-decoration-line: none;
+  &:hover {
+    @media (hover: hover) {
+      text-decoration-line: none;
+    }
+  }
+}
+.button--fill {
+  border-color: var(--color-brand, #2563eb);
+  background-color: var(--color-brand, #2563eb);
+  color: var(--color-white, #ffffff);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-brand-dark, #1e3a8a);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-brand-dark, #1e3a8a);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+}
+.button--fill-accent {
+  border-color: var(--color-accent, #ec4899);
+  background-color: var(--color-accent, #ec4899);
+  color: var(--color-white, #ffffff);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-accent-dark, #9d174d);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-accent-dark, #9d174d);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+}
+.color-mode--dark .button--fill, .button--fill.color-mode--dark {
+  border-color: var(--color-brand-light, #eff6ff);
+  background-color: var(--color-brand-light, #eff6ff);
+  color: var(--color-brand, #2563eb);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-black, #000000);
+    }
+  }
+}
+.color-mode--dark .button--fill-accent, .button--fill-accent.color-mode--dark {
+  border-color: var(--color-accent, #ec4899);
+  background-color: var(--color-accent, #ec4899);
+  color: var(--color-white, #ffffff);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-accent, #ec4899);
+    }
+  }
+}
+.button--outline {
+  border-color: var(--color-brand, #2563eb);
+  background-color: var(--color-white, #ffffff);
+  color: var(--color-brand, #2563eb);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-brand, #2563eb);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-brand, #2563eb);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+}
+.button--outline-accent {
+  border-color: var(--color-accent, #ec4899);
+  background-color: var(--color-white, #ffffff);
+  color: var(--color-accent, #ec4899);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-accent, #ec4899);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-accent, #ec4899);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+}
+.color-mode--dark .button--outline, .button--outline.color-mode--dark {
+  border-color: var(--color-white, #ffffff);
+  background-color: transparent;
+  color: var(--color-white, #ffffff);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-brand, #2563eb);
+    }
+  }
+}
+.color-mode--dark .button--outline-accent, .button--outline-accent.dark-mode {
+  border-color: var(--color-accent, #ec4899);
+  background-color: transparent;
+  color: var(--color-accent, #ec4899);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-accent, #ec4899);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-accent, #ec4899);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+}
+.button--fill[aria-disabled="true"], .button--fill-accent[aria-disabled="true"], .button--fill[disabled], .button--fill-accent[disabled] {
+  border-color: var(--color-gray-light, #d1d5db);
+  background-color: var(--color-gray-light, #d1d5db);
+  color: var(--color-white, #ffffff);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-gray-light, #d1d5db);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-gray-light, #d1d5db);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white, #ffffff);
+    }
+  }
+  cursor: default;
+}
+.button--outline[aria-disabled="true"], .button--outline-accent[aria-disabled="true"], .button--outline[disabled], .button--outline-accent[disabled] {
+  border-color: var(--color-gray-light, #d1d5db);
+  background-color: var(--color-white, #ffffff);
+  color: var(--color-gray-light, #d1d5db);
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-gray-light, #d1d5db);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white, #ffffff);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-gray-light, #d1d5db);
+    }
+  }
+  cursor: default;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.storybook-component--card-pricing {
+  max-width: 300px;
+}
+@layer components {
+  .card-pricing {
+    background-color: var(--pricing-card-bg-color);
+    color: var(--main-text-color);
+  }
+  .card-pricing .card-title {
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    font-size: 2.25rem;
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
+    @media (width >= 64rem) {
+      font-size: var(--text-3xl, 2rem);
+      line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    }
+    color: var(--main-heading-color);
+  }
+  .card-pricing header > p {
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    --tw-leading: 1.2;
+    line-height: 1.2;
+    @media (width >= 64rem) {
+      font-size: var(--text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    }
+    @media (width >= 96rem) {
+      font-size: 22px;
+    }
+  }
+  .card-pricing .card-price {
+    font-size: var(--text-4xl, 2.5rem);
+    line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
+    --tw-leading: 1;
+    line-height: 1;
+    @media (width >= 64rem) {
+      font-size: var(--text-5xl, 3rem);
+      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    }
+    @media (width >= 96rem) {
+      font-size: 3.15rem;
+    }
+  }
+  .card-pricing.color-mode--dark .link--button-outline-light {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white, #ffffff);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-leading: initial;
+    }
+  }
+}

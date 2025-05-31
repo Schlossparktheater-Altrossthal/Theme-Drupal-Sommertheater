@@ -1,0 +1,13 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+#storybook-root:has(>.card-project) {
+  max-width: var(--container-md, 28rem);
+  @media (width >= 48rem) {
+    max-width: var(--container-5xl, 64rem);
+  }
+}
+.sb-show-main:has(#storybook-root>.card-project.bg-accent) {
+  background-color: var(--color-accent, #ec4899);
+}
+.card-project .card--media {
+  aspect-ratio: 1 / 1;
+}
