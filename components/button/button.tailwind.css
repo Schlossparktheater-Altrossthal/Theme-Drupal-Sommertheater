@@ -1,0 +1,73 @@
+@reference '../../src/main.css';
+
+.sb-main-padded:has(.storybook-component--button) {
+  padding: 0;
+}
+
+.storybook-component--button {
+  padding: 1rem;
+}
+
+.storybook-component--button:has(.color-mode--dark) {
+  @apply bg-black;
+}
+
+button.button {
+  cursor: pointer;
+}
+
+.button {
+  @apply w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
+}
+
+.button--fill {
+  @apply border-brand bg-brand text-white hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+}
+
+.button--fill-accent {
+  @apply border-accent bg-accent text-white hover:bg-accent-dark hover:border-accent-dark hover:text-white;
+}
+
+.color-mode--dark .button--fill,
+.button--fill.color-mode--dark {
+  @apply border-brand-light bg-brand-light text-brand hover:bg-white hover:border-white hover:text-black;
+}
+
+.color-mode--dark .button--fill-accent,
+.button--fill-accent.color-mode--dark {
+  @apply border-accent bg-accent text-white hover:bg-white  hover:border-white  hover:text-accent;
+}
+
+.button--outline {
+  @apply border-brand bg-white text-brand hover:bg-brand hover:border-brand hover:text-white;
+}
+
+.button--outline-accent {
+  @apply border-accent bg-white text-accent hover:bg-accent hover:border-accent hover:text-white;
+}
+
+.color-mode--dark .button--outline,
+.button--outline.color-mode--dark {
+  @apply border-white bg-transparent text-white hover:bg-white hover:border-white hover:text-brand;
+}
+
+.color-mode--dark .button--outline-accent,
+.button--outline-accent.dark-mode {
+  @apply border-accent bg-transparent text-accent hover:bg-accent hover:border-accent hover:text-white;
+}
+
+.button--fill[aria-disabled="true"],
+.button--fill-accent[aria-disabled="true"],
+.button--fill[disabled],
+.button--fill-accent[disabled] {
+  @apply border-gray-light bg-gray-light text-white hover:bg-gray-light hover:border-gray-light hover:text-white;
+  cursor: default;
+}
+
+.button--outline[aria-disabled="true"],
+.button--outline-accent[aria-disabled="true"],
+.button--outline[disabled],
+.button--outline-accent[disabled] {
+  @apply border-gray-light bg-white text-gray-light hover:bg-white hover:border-gray-light hover:text-gray-light;
+  cursor: default;
+}

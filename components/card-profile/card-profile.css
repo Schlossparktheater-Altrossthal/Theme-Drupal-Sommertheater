@@ -1,30 +1,58 @@
-@reference '../../src/main.css';
-
-/* Storybook specific */
-.storybook-component--card-profile {
-  @apply max-w-xs;
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+#storybook-root:has(> .card) {
+  max-width: var(--container-md, 28rem);
 }
-
-.card-profile .card--media {
-  @apply aspect-[2/3]
+#storybook-root:has(> .card.is-landscape) {
+  max-width: var(--container-2xl, 42rem);
 }
-
-.card-profile .card--content strong {
-  @apply font-semibold;
+.card .card--media {
+  aspect-ratio: var(--aspect-video, 16 / 9);
 }
-
-.card-profile .card--content p {
-  @apply font-normal text-lg xl:text-xl;
+.card.is-stacked .card--media {
+  aspect-ratio: var(--aspect-video, 16 / 9);
+  overflow: hidden;
 }
-
-.card-profile .card--content {
-  @apply text-white text-center;
+.card.is-landscape .card--media {
+  aspect-ratio: var(--aspect-video, 16 / 9);
+  overflow: hidden;
+  @media (width >= 48rem) {
+    aspect-ratio: auto;
+  }
+  @media (width >= 48rem) {
+    flex: 0 1 50%;
+  }
 }
-
-.card-profile .person-name {
-  @apply text-[28px];
+.card.is-landscape .card--content {
+  @media (width >= 48rem) {
+    flex: 0 1 50%;
+  }
+  @media (width >= 48rem) {
+    padding-block: var(--spacing-4, 16px);
+  }
 }
-
-.card-profile .person-title {
-  @apply text-xl italic;
+.card--content .heading {
+  --tw-font-weight: var(--font-weight-semibold, 600);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.card--content p {
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-font-weight: var(--font-weight-normal, 400);
+  font-weight: var(--font-weight-normal, 400);
+  @media (width >= 80rem) {
+    font-size: var(--text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+    }
+  }
 }

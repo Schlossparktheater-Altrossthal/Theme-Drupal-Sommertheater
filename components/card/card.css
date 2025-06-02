@@ -1,41 +1,64 @@
-@reference '../../src/main.css';
-
-/* Storybook specific */
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 .storybook-component--card {
-  @apply max-w-md;
+  max-width: var(--container-md, 28rem);
 }
 .storybook-component--card:has(.card.is-landscape) {
-  @apply max-w-2xl;
+  max-width: var(--container-2xl, 42rem);
 }
-
 @layer components {
-
   .card {
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }
-
   .card .card--media {
-    @apply aspect-video
+    aspect-ratio: var(--aspect-video, 16 / 9);
   }
-
   .card.is-stacked .card--media {
-    @apply aspect-video overflow-hidden;
+    aspect-ratio: var(--aspect-video, 16 / 9);
+    overflow: hidden;
   }
-
   .card.is-landscape .card--media {
-    @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
+    aspect-ratio: var(--aspect-video, 16 / 9);
+    overflow: hidden;
+    @media (width >= 48rem) {
+      aspect-ratio: auto;
+    }
+    @media (width >= 48rem) {
+      flex: 0 1 50%;
+    }
   }
-
   .card.is-landscape .card--content {
-    @apply md:flex-[0_1_50%] md:py-4;
+    @media (width >= 48rem) {
+      flex: 0 1 50%;
+    }
+    @media (width >= 48rem) {
+      padding-block: var(--spacing-4, 16px);
+    }
   }
-
   .card--content .heading {
-    @apply font-semibold;
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
   }
-
   .card--content p {
-    @apply font-normal text-lg xl:text-xl;
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 80rem) {
+      font-size: var(--text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    }
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+    }
   }
 }

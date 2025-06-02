@@ -1,50 +1,150 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 #storybook-root:has(>.link) {
-  @apply p-5 font-normal text-xl;
+  padding: var(--spacing-5, 20px);
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-font-weight: var(--font-weight-normal, 400);
+  font-weight: var(--font-weight-normal, 400);
 }
-
-#storybook-root:has(>.link.link--button-outline-light),
-#storybook-root:has(>.link.link--button-light) {
-  @apply bg-gray;
+#storybook-root:has(>.link.link--button-outline-light), #storybook-root:has(>.link.link--button-light) {
+  background-color: var(--color-gray, #6b7280);
 }
-
 @layer components {
-
   .link {
-    @apply font-sans inline-block text-brand-dark underline decoration-1 underline-offset-4 hover:text-brand-dark;
+    display: inline-block;
+    font-family: var(--font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
+    color: var(--color-brand-dark, #1e3a8a);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
   }
-
-  .link--button-light,
-  .link--button-outline-light,
-  .link--button-dark,
-  .link--button-brand,
-  .link--button-brand-dark,
-  .link--button-outline-dark {
-    @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
+  .link--button-light, .link--button-outline-light, .link--button-dark, .link--button-brand, .link--button-brand-dark, .link--button-outline-dark {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    padding-inline: var(--spacing-5, 20px);
+    padding-top: 8px;
+    padding-bottom: 9px;
+    text-decoration-line: none;
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: none;
+      }
+    }
   }
-
   .link--button-light {
-    @apply border-white bg-white text-brand-dark hover:bg-brand-dark hover:border-white hover:text-white;
+    border-color: var(--color-white, #ffffff);
+    background-color: var(--color-white, #ffffff);
+    color: var(--color-brand-dark, #1e3a8a);
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-white, #ffffff);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white, #ffffff);
+      }
+    }
   }
-
   .link--button-dark {
-    @apply border-brand-dark bg-brand-dark text-white hover:bg-white hover:text-brand-dark;
+    border-color: var(--color-brand-dark, #1e3a8a);
+    background-color: var(--color-brand-dark, #1e3a8a);
+    color: var(--color-white, #ffffff);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white, #ffffff);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
   }
-
   .link--button-outline-light {
-    @apply border-white text-white hover:bg-brand-dark hover:text-white;
+    border-color: var(--color-white, #ffffff);
+    color: var(--color-white, #ffffff);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white, #ffffff);
+      }
+    }
   }
-
   .link--button-outline-dark {
-    @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white;
+    border-color: var(--color-brand-dark, #1e3a8a);
+    color: var(--color-brand-dark, #1e3a8a);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white, #ffffff);
+      }
+    }
   }
-
   .link--button-brand {
-    @apply border-brand bg-brand text-white hover:bg-brand-dark hover:text-white;
+    border-color: var(--color-brand, #2563eb);
+    background-color: var(--color-brand, #2563eb);
+    color: var(--color-white, #ffffff);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white, #ffffff);
+      }
+    }
   }
-
   .link--button-brand-dark {
-    @apply border-brand-dark bg-brand-dark text-brand-light hover:bg-brand-light hover:text-brand-dark;
+    border-color: var(--color-brand-dark, #1e3a8a);
+    background-color: var(--color-brand-dark, #1e3a8a);
+    color: var(--color-brand-light, #eff6ff);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-light, #eff6ff);
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-brand-dark, #1e3a8a);
+      }
+    }
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-border-style: solid;
+    }
   }
 }

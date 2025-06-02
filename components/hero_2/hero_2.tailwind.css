@@ -1,0 +1,13 @@
+@reference '../../src/main.css';
+
+#storybook-root > .hero-sidebyside {
+  @apply outline outline-dotted outline-gray-lightest rounded-xs;
+}
+
+.hero-sidebyside {
+  @apply container mx-auto flex gap-6 px-6 py-8 md:px-10 md:py-12 xl:px-16 xl:py-20;
+}
+
+.hero-sidebyside .hero-region.content p {
+  @apply font-normal text-2xl xl:text-3xl leading-[1.5];
+}

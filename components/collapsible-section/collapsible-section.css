@@ -1,48 +1,56 @@
-@reference '../../src/main.css';
-
-/* Storybook specific */
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 #storybook-root:has(> .collapsible-section) {
-  @apply max-w-lg;
+  max-width: var(--container-lg, 32rem);
 }
-
-/* Base styles before JS gets involved. */
 .collapsible-section {
   --animate-speed: 0s;
-  @apply bg-gray-lightest border-b-1 border-gray-darkest;
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+  border-color: var(--color-gray-darkest, #111827);
+  background-color: var(--color-gray-lightest, #f3f4f6);
 }
-
 .collapsible-section--content {
-  @apply pb-2 h-auto;
+  height: auto;
+  padding-bottom: var(--spacing-2, 8px);
 }
-
 .collapsible-section--title {
-  @apply text-2xl;
+  font-size: var(--text-2xl, 1.5rem);
+  line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
 }
-
 .collapsible-section--content {
-  @apply text-base pb-2;
+  padding-bottom: var(--spacing-2, 8px);
+  font-size: var(--text-base, 1rem);
+  line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
 }
-
-/* Styles involving collapsing/expanding. */
-
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
-  @apply pb-0 h-0;
+  height: var(--spacing-0, 0px);
+  padding-bottom: var(--spacing-0, 0px);
 }
-
 .collapsible-section--animate {
   --animate-speed: 500ms;
 }
-
 .collapsible-section--open {
   .collapsible-section--icon {
     rotate: 180deg;
   }
-
   .collapsible-section--content {
-    @apply pb-2 h-(--natural-height);
+    height: var(--natural-height);
+    padding-bottom: var(--spacing-2, 8px);
   }
 }
-
 .collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
   height: auto;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+    }
+  }
 }

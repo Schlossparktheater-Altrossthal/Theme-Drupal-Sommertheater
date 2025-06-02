@@ -1,42 +1,113 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer components {
-  /* Use Tailwind directive to set some baseline styles. */
   .heading {
-    @apply font-sans tracking-normal text-inherit leading-[1.2];
+    font-family: var(--font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
+    --tw-leading: 1.2;
+    line-height: 1.2;
+    --tw-tracking: var(--tracking-normal, 0em);
+    letter-spacing: var(--tracking-normal, 0em);
+    color: inherit;
   }
-
-  /* sizes: 48 64 96 */
   h1.heading--size-default {
-    @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;
+    font-size: var(--text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 48rem) {
+      font-size: var(--text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+    }
+    @media (width >= 96rem) {
+      font-size: var(--text-8xl, 1);
+      line-height: var(--tw-leading, var(--text-8xl--line-height, 1));
+    }
   }
-  /* sizes: 40 48 64 - for fullwidth hero */
   h1.heading--size-alt {
-    @apply font-normal text-4xl md:text-5xl 2xl:text-6xl leading-none;
+    font-size: var(--text-4xl, 2.5rem);
+    line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 48rem) {
+      font-size: var(--text-5xl, 3rem);
+      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    }
+    @media (width >= 96rem) {
+      font-size: var(--text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+    }
   }
-  /* sizes: 48 64 */
   h2.heading--size-default {
-    @apply font-normal text-5xl 2xl:text-6xl;
+    font-size: var(--text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 96rem) {
+      font-size: var(--text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+    }
   }
-  /* sizes: placeholder */
   h2.heading--size-alt {
-    @apply font-normal text-3xl 2xl:text-5xl;
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 96rem) {
+      font-size: var(--text-5xl, 3rem);
+      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    }
   }
-
-  /* sizes: 24 32 */
   h3.heading {
-    @apply font-normal text-[32px];
+    font-size: 32px;
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
   }
-  /* sizes: 24 30 */
   h4.heading {
-    @apply font-normal text-2xl 2xl:text-3xl;
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 96rem) {
+      font-size: var(--text-3xl, 2rem);
+      line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    }
   }
-  /* sizes: 24 */
   h5.heading {
-    @apply font-medium 2xl:text-2xl;
+    --tw-font-weight: var(--font-weight-medium, 500);
+    font-weight: var(--font-weight-medium, 500);
+    @media (width >= 96rem) {
+      font-size: var(--text-2xl, 1.5rem);
+      line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    }
   }
-  /* sizes: 20 */
   h6.heading {
-    @apply font-medium text-[20px];
+    font-size: 20px;
+    --tw-font-weight: var(--font-weight-medium, 500);
+    font-weight: var(--font-weight-medium, 500);
+  }
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-leading: initial;
+      --tw-tracking: initial;
+      --tw-font-weight: initial;
+    }
   }
 }

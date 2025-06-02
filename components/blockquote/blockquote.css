@@ -1,32 +1,59 @@
-@reference '../../src/main.css';
-
-/* Storybook UI specific */
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 .sb-show-main:has(#storybook-root>.blockquote) {
   padding: 0;
 }
-
 #storybook-root:has(>.blockquote) {
-  @apply max-w-2xl;
+  max-width: var(--container-2xl, 42rem);
 }
-
 #storybook-root .blockquote {
-  @apply max-w-2xl;
+  max-width: var(--container-2xl, 42rem);
   padding: 1rem;
 }
-
-/* Blockquote */
 .blockquote {
-  @apply font-semibold;
+  --tw-font-weight: var(--font-weight-semibold, 600);
+  font-weight: var(--font-weight-semibold, 600);
 }
-
 .blockquote p {
-  @apply font-semibold text-xl leading-[1.5] text-inherit;
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-leading: 1.5;
+  line-height: 1.5;
+  --tw-font-weight: var(--font-weight-semibold, 600);
+  font-weight: var(--font-weight-semibold, 600);
+  color: inherit;
 }
-
 .blockquote footer {
-  @apply font-bold text-xl leading-[1.2] not-italic;
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-leading: 1.2;
+  line-height: 1.2;
+  --tw-font-weight: var(--font-weight-bold, 700);
+  font-weight: var(--font-weight-bold, 700);
+  font-style: normal;
 }
-
 .blockquote footer cite {
-  @apply font-normal text-base leading-[1.2] italic;
+  font-size: var(--text-base, 1rem);
+  line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+  --tw-leading: 1.2;
+  line-height: 1.2;
+  --tw-font-weight: var(--font-weight-normal, 400);
+  font-weight: var(--font-weight-normal, 400);
+  font-style: italic;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-leading: initial;
+    }
+  }
 }

@@ -1,0 +1,14 @@
+@reference '../../src/main.css';
+
+/* Storybook specific */
+#storybook-root:has(>.card-project) {
+  @apply max-w-md md:max-w-5xl;
+}
+
+.sb-show-main:has(#storybook-root>.card-project.bg-accent) {
+  @apply bg-accent;
+}
+
+.card-project .card--media {
+  @apply aspect-square
+}

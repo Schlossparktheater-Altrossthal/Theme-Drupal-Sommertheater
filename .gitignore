@@ -22,9 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+build/*
+!build/css/main.min.css
 *storybook.log
 storybook-static/
 src/stories/sdc-stories
-build
 public/components

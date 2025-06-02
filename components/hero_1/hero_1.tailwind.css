@@ -1,0 +1,17 @@
+@reference '../../src/main.css';
+
+.sb-main-padded:has(.hero-overlay) {
+  @apply h-screen p-0;
+}
+
+#storybook-root:has(.hero-overlay) {
+  @apply h-full;
+}
+
+.hero-overlay {
+  @apply container mx-auto relative;
+}
+
+.hero-overlay .hero-region.content p {
+  @apply font-normal text-2xl xl:text-3xl leading-[1.5];
+}

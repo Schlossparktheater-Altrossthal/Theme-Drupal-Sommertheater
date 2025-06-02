@@ -1,0 +1,48 @@
+@reference '../../src/main.css';
+
+/* Storybook specific */
+#storybook-root:has(> .collapsible-section) {
+  @apply max-w-lg;
+}
+
+/* Base styles before JS gets involved. */
+.collapsible-section {
+  --animate-speed: 0s;
+  @apply bg-gray-lightest border-b-1 border-gray-darkest;
+}
+
+.collapsible-section--content {
+  @apply pb-2 h-auto;
+}
+
+.collapsible-section--title {
+  @apply text-2xl;
+}
+
+.collapsible-section--content {
+  @apply text-base pb-2;
+}
+
+/* Styles involving collapsing/expanding. */
+
+.collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
+  @apply pb-0 h-0;
+}
+
+.collapsible-section--animate {
+  --animate-speed: 500ms;
+}
+
+.collapsible-section--open {
+  .collapsible-section--icon {
+    rotate: 180deg;
+  }
+
+  .collapsible-section--content {
+    @apply pb-2 h-(--natural-height);
+  }
+}
+
+.collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
+  height: auto;
+}

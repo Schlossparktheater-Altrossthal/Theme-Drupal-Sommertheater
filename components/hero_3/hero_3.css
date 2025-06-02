@@ -1,10 +1,63 @@
-@reference '../../src/main.css';
-@reference '../heading/heading.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 #storybook-root > .hero-fullwidth {
-  @apply outline outline-dotted outline-gray-lightest rounded-xs;
+  border-radius: var(--radius-xs, 0.125rem);
+  outline-style: var(--tw-outline-style);
+  outline-width: 1px;
+  outline-color: var(--color-gray-lightest, #f3f4f6);
+  --tw-outline-style: dotted;
+  outline-style: dotted;
 }
-
 .hero-fullwidth {
-  @apply container mx-auto flex gap-6 px-6 py-8 md:gap-8 md:px-10 md:py-12 xl:gap-10 xl:px-16 xl:py-20;
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+  margin-inline: auto;
+  display: flex;
+  gap: var(--spacing-6, 24px);
+  padding-inline: var(--spacing-6, 24px);
+  padding-block: var(--spacing-8, 32px);
+  @media (width >= 48rem) {
+    gap: var(--spacing-8, 32px);
+  }
+  @media (width >= 48rem) {
+    padding-inline: var(--spacing-10, 40px);
+  }
+  @media (width >= 48rem) {
+    padding-block: var(--spacing-12, 48px);
+  }
+  @media (width >= 80rem) {
+    gap: var(--spacing-10, 40px);
+  }
+  @media (width >= 80rem) {
+    padding-inline: var(--spacing-16, 64px);
+  }
+  @media (width >= 80rem) {
+    padding-block: calc(var(--spacing, 0.25rem) * 20);
+  }
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-outline-style: solid;
+    }
+  }
 }
