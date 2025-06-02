@@ -73,7 +73,7 @@ Example:
 @layer base {
 
   body {
-    @apply text-base text-base-dark;
+    @apply text-base text-black;
   }
 
   p {
@@ -103,16 +103,16 @@ Example:
 @layer components {
 
   .color-mode--dark {
-    --main-bg-color: var(--color-base-dark);
-    --main-text-color: var(--color-base-light);
+    --main-bg-color: var(--color-black);
+    --main-text-color: var(--color-white);
     --card-bg: var(--color-gray-dark);
-    --card-text-color: var(--color-base-light);
+    --card-text-color: var(--color-white);
   }
   .color-mode--light {
-    --main-bg-color: var(--color-base-light);
-    --main-text-color: var(--color-base-dark);
+    --main-bg-color: var(--color-white);
+    --main-text-color: var(--color-black);
     --card-bg: var(--color-gray-light);
-    --card-text-color: var(--color-base-dark);
+    --card-text-color: var(--color-black);
   }
 }
 
