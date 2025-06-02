@@ -13,8 +13,8 @@ This page outlines the core color palette used across the design system, includi
     title="Base Colors"
     subtitle="Primary background and text colors"
     colors={{
-      'Base Dark': 'var(--color-base-dark)',
-      'Base Light': 'var(--color-base-light)',
+      'Black': 'var(--color-black)',
+      'White': 'var(--color-white)',
     }}
   />
 </ColorPalette>
@@ -87,9 +87,9 @@ For specific UI feedback: informative, positive, warning, and negative.
 ```css
 .base-example {
     @apply
-        bg-base-light
-        text-base-dark
-        data-[state=checked]:bg-base-dark
+        bg-white
+        text-black
+        data-[state=checked]:bg-black
         data-[state=checked]:text-white;
 }
 ```

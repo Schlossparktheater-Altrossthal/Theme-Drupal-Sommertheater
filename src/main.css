@@ -4,8 +4,6 @@
 @theme {
   --color-black:         #000000;
   --color-white:         #ffffff;
-  --color-base-dark: hsl(0, 0%, 0%);
-  --color-base-light: hsl(0, 0%, 100%);
 
   --color-gray-lightest: #f3f4f6;
   --color-gray-light:    #d1d5db;
