@@ -1,33 +1,48 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(> .card) {
-  @apply max-w-md;
-}
-#storybook-root:has(> .card.is-landscape) {
-  @apply max-w-2xl;
+#storybook-root:has(> .collapsible-section) {
+  @apply max-w-lg;
 }
 
-.card .card--media {
-  @apply aspect-video
+/* Base styles before JS gets involved. */
+.collapsible-section {
+  --animate-speed: 0s;
+  @apply bg-gray-lightest border-b-1 border-gray-darkest;
 }
 
-.card.is-stacked .card--media {
-  @apply aspect-video overflow-hidden;
+.collapsible-section--content {
+  @apply pb-2 h-auto;
 }
 
-.card.is-landscape .card--media {
-  @apply aspect-video md:aspect-auto md:flex-[0_1_50%] overflow-hidden;
+.collapsible-section--title {
+  @apply text-2xl;
 }
 
-.card.is-landscape .card--content {
-  @apply md:flex-[0_1_50%] md:py-4;
+.collapsible-section--content {
+  @apply text-base pb-2;
 }
 
-.card--content .heading {
-  @apply font-semibold;
+/* Styles involving collapsing/expanding. */
+
+.collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
+  @apply pb-0 h-0;
 }
 
-.card--content p {
-  @apply font-normal text-lg xl:text-xl;
+.collapsible-section--animate {
+  --animate-speed: 500ms;
+}
+
+.collapsible-section--open {
+  .collapsible-section--icon {
+    rotate: 180deg;
+  }
+
+  .collapsible-section--content {
+    @apply pb-2 h-(--natural-height);
+  }
+}
+
+.collapsible-section--resizing.collapsible-section--open .collapsible-section--content {
+  height: auto;
 }

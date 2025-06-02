@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 /* Storybook specific */
-#storybook-root:has(> .card-profile) {
+.storybook-component--card-profile {
   @apply max-w-xs;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .card-profile .card--content {
-  @apply text-base-light text-center;
+  @apply text-white text-center;
 }
 
 .card-profile .person-name {

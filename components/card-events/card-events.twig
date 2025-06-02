@@ -17,14 +17,13 @@
       </time>
     </strong>
     </p>
-    {{ include('@mercury/heading/heading.twig', 
-      { 
-        level: 3, 
-        heading_text: title, 
-        heading_classes: ['!font-bold', style == 'dark' ? '!text-gray-light' : '!text-gray-dark'] 
-      }) 
+    {{ include('mercury:heading',
+      {
+        level: 3,
+        heading_text: title,
+        heading_classes: ['!font-bold', style == 'dark' ? '!text-gray-light' : '!text-gray-dark']
+      })
     }}
     <p class="text-xl {{ text_color }}">{{ description }}</p>
     <p class="text-xl {{ text_color }} font-semibold">{{ place }}</p>
   </div>
-

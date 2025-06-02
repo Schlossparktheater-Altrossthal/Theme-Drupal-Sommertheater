@@ -17,7 +17,7 @@ props:
       examples:
         - 'Operations Manager'
     url:
-      type: boolean
+      type: string
       title: Add optional url
       examples:
         - true

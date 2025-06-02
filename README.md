@@ -6,7 +6,7 @@
 
 - **Vite**: A fast and modern build tool for web development, providing lightning-fast hot module replacement (HMR) and optimized production builds.
 - **Storybook**: Automatically generates stories for components, enabling UI development in isolation and ensuring consistency across components.
-- **SDC (Starshot Design System)**: A design system used to maintain consistent UI elements and improve design-to-development workflows.
+- **SDC (Starshot Design System)**: A design system used to maintain consistent UI elements and improve design-to-development workflows.n
 
 ## Installation
 
@@ -129,7 +129,7 @@ import {
 // Make a new class with the code for our component.
 //
 // In every method of this class, `this.el` is an HTMLElement object of
-// the component container, whose selector you provide below. You don't'
+// the component container, whose selector you provide below. You don't
 // have an array of elements that you have to `.forEach()` over yourself;
 // the ComponentType class handles all that for you.
 class CollapsibleSection extends ComponentInstance {
@@ -138,6 +138,10 @@ class CollapsibleSection extends ComponentInstance {
     this.el.querySelector('.collapsible-section__content').classList.toggle('visible');
     this.el.addClass('js');
   }
+
+  // You may also implement a `remove()` method to clean up when a component is
+  // about to be removed from the document. This will be invoked during the
+  // `detach()` method of the Drupal behavior.
 
   // You can create as many other methods as you want; in all of them,
   // `this.el` represents the single instance of the component. Any other
@@ -161,3 +165,12 @@ new ComponentType(
 ```
 
 This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and either running them immediately in Storybook or adding them to `Drupal.behaviors`.
+
+All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `mercuryComponents`, you would find the Collapsible Section's ComponentType instance at `window.mercuryComponents.collapsibleSection`.
+
+Furthermore, `window.mercuryComponents.collapsibleSection.instances` is an array of all the ComponentInstance objects, and `window.mercuryComponents.collapsibleSection.elements` is an array of all the component container elements.
+
+## Troubleshooting
+
+**If XB throws a fatal error, use this comment to reset the page**
+`ddev drush sql:query "delete from key_value_expire where collection='tempstore.shared.experience_builder.auto_save'"`

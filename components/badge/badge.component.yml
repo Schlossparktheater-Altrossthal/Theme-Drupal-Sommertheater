@@ -5,21 +5,26 @@ status: stable
 props:
   type: 'object'
   properties:
-    color:
+    url:
       type: string
-      title: Color
-      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
-      enum: [light, dark]
-      examples: 
-        - dark
+      title: URL
+      description: 'The URL to link to. If provided, the badge will be rendered as a link.'
+      examples:
+        - '#'
+    label:
+      type: string
+      title: Link Text
+      description: 'The text for the link.'
+      examples:
+        - 'New Release'
     icon:
       type: string
       title: Icon
       description: 'Select an Icon.'
-      enum: [close, bolt]
+      enum: [close, bolt, '']
       examples: 
-        - ''
-      default: ''
+        - close
+      default: close
     icon_first:
       type: boolean
       title: Icon First
@@ -28,32 +33,20 @@ props:
         - true
       default: true
     radius:
-      type: number
-      name: Corner radius
+      type: string
+      title: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm
-      default: rounded-sm 
-    link:
-      title:
-      type: object
-      description: 'The link object containing URL and text.'
-      properties:
-        url:
-          type: string
-          title: URL
-          description: 'The URL to link to. If provided, the badge will be rendered as a link.'
-          examples:
-            - '#'
-        label:
-          type: string
-          title: Link Text
-          description: 'The text for the link.'
-          examples:
-            - 'New Release'
-      examples:
-        - url: '#'
-          label: Example Tag 
+      default: rounded-sm
+    color_mode:
+      type: string
+      title: Color
+      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
+      enum: [light, dark, inherit]
+      examples: 
+        - dark
+
 slots:
   # Content to display in the badge.
   badge_content:

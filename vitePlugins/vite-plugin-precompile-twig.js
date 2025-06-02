@@ -234,7 +234,7 @@ export default function precompileTwigPlugin(options = {}) {
         this.error(`Cannot find template: ${clean}`);
       }
       
-      const { key, content } = resolved;
+      const { key } = resolved;
       
       // Track this module for HMR
       if (!templateToModuleMap.has(key)) {

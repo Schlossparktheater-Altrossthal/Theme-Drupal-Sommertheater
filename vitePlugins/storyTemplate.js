@@ -3,12 +3,14 @@
  * @param {Object} name An object with `kebabCase`, `camelCase`, `pascalCase`, `titleCase`, and `original` keys.
  * @param {boolean} hasJsFile
  * @param {boolean} includeJs
- * @param {string} jsPath
+ * @param {string[]} jsPaths Array of paths to JS files that need to be initialized
  * @returns
  */
-export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
+export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
   return `/**
-   * Component template that renders the ${name.original} component with provided args.
+   * Component template that renders the ${
+     name.original
+   } component with provided args.
    */
   const ${name.pascalCase}Template = (args) => {
     // Component state
@@ -18,7 +20,8 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
 
     // Refs
     const componentRef = useRef(null);
-    const isInitializedRef = useRef(false);
+    const initializedModulesRef = useRef(new Set());
+    const moduleInstancesRef = useRef(new Map());
 
     // Memoize args values to use in effect dependencies
     const depsArray = Object.values(args);
@@ -49,57 +52,95 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
       };
     }, depsArray);
 
-    ${hasJsFile && includeJs ? `
+    ${
+      hasJsFile && includeJs
+        ? `
     // Initialize JS when component is rendered
     const initializeComponent = useCallback(async () => {
-      // Skip if not mounted, already initialized, or still loading
-      if (!componentRef.current || isInitializedRef.current || isLoading || !html) {
+      
+
+      // Skip if not mounted or still loading
+      if (!componentRef.current || isLoading || !html) {
         return;
       }
 
-      try {
-        // Dynamically import the component JS
-        const componentModule = await import('${jsPath}');
-
-        // Try different initialization methods
-        if (typeof componentModule.initialize === 'function') {
-          componentModule.initialize(componentRef.current);
-        } else if (typeof componentModule.default === 'function') {
-          componentModule.default(componentRef.current);
-        } else if (typeof componentModule.init === 'function') {
-          componentModule.init(componentRef.current);
-        } else {
-          console.log('[Storybook] No explicit initialization found for ${name.original}');
+      // Initialize each JS dependency
+      const jsModules = [${jsPaths.map((path) => `'${path}'`).join(", ")}];
+      
+      for (const modulePath of jsModules) {
+        try {
+          // Dynamically import the component JS
+          const componentModule = await import(/* @vite-ignore */ modulePath);
+    
+          // The module import will register the component with window.mercuryComponents
+          // We need to manually trigger initialization since we're not in Drupal
+          await new Promise(resolve => setTimeout(resolve, 10)); // Small delay to ensure registration
+          
+          // Find all registered components and initialize them within our container
+          if (window.mercuryComponents) {
+            Object.values(window.mercuryComponents).forEach(componentType => {
+              if (componentType && typeof componentType.initComponent === 'function') {
+                if (componentRef.current) {
+                  componentType.initComponent(componentRef.current);
+                }
+              }
+            });
+          }
+          
+          moduleInstancesRef.current.set(modulePath, componentModule);
+          initializedModulesRef.current.add(modulePath);
+        } catch (error) {
+          console.error('[Storybook] Failed to initialize module:', modulePath, error);
         }
-
-        isInitializedRef.current = true;
-      } catch (error) {
-        console.error('[Storybook] Failed to initialize ${name.original}:', error);
       }
     }, [html, isLoading]);
 
     // Run initialization after HTML updates
     useEffect(() => {
+    
+      
+      // Ensure window.mercuryComponents exists
+      if (!window.mercuryComponents) {
+        window.mercuryComponents = {};
+      }
+
+      // Clean up any existing instances before initialization
+      if (window.mercuryComponents) {
+        Object.values(window.mercuryComponents).forEach(componentType => {
+          if (componentType && typeof componentType.removeComponent === 'function') {
+            if (componentRef.current) {
+              componentType.removeComponent(componentRef.current);
+            }
+          }
+        });
+      }
+
       initializeComponent();
 
       // Cleanup when unmounting
       return () => {
-        if (isInitializedRef.current && componentRef.current) {
-          // Call cleanup if available
-          import('${jsPath}')
-            .then(module => {
-              if (typeof module.cleanup === 'function') {
-                module.cleanup(componentRef.current);
+        if (componentRef.current) {
+          // Clean up component instances using the ComponentType's removeComponent method
+          if (window.mercuryComponents) {
+            Object.values(window.mercuryComponents).forEach(componentType => {
+              if (componentType && typeof componentType.removeComponent === 'function') {
+                if (componentRef.current) {
+                  componentType.removeComponent(componentRef.current);
+                }
               }
-            })
-            .catch(err => {
-              console.warn('[Storybook] Cleanup error:', err);
             });
-
-          isInitializedRef.current = false;
+          }
+          
+          // Clear all references
+          moduleInstancesRef.current.clear();
+          initializedModulesRef.current.clear();
+          
+          // Debug logs removed
         }
       };
-    }, [initializeComponent]);` : ''}
+    }, [initializeComponent]);`
+        : ""
+    }
 
     // Early render states
     if (isLoading && !html) {
@@ -113,7 +154,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
     // Render the component
     return (
       <div
-        className="storybook-component ${name.kebabCase}"
+        className="storybook-component storybook-component--${name.kebabCase}"
         data-component="${name.original}"
         ref={componentRef}
         dangerouslySetInnerHTML={{ __html: html }}
@@ -122,5 +163,5 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPath) {
   };
 
   export const ${name.pascalCase} = ${name.pascalCase}Template.bind({});
-  `
+  `;
 }
