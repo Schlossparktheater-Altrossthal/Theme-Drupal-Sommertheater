@@ -9,22 +9,21 @@
 {% set card_background_color = style == 'dark' ? 'bg-gray-dark' : 'bg-gray-lightest' %}
 {% set text_color = style == 'dark' ? 'text-gray-light' : 'text-gray-dark' %}
 {% set event_date_formatted = (event_date / 1000)|date('l, M. j, Y') %}
-  <div class="card-events max-w-md mx-auto {{ card_background_color }} p-6 flex flex-col gap-6 rounded-lg">
-    <p class="event-date {{ text_color }}">
-      <strong>
-        <time datetime="{{event_date_formatted }}">
-          {{ event_date_formatted }}
-        </time>
-      </strong>
-    </p>
-    {{ include('@mercury/heading/heading.twig', 
-      { 
-        level: 3, 
-        heading_text: title, 
-        heading_classes: [ style == 'dark' ? 'heading-dark' : 'heading-light'] 
-      }) 
-    }}
-    <p class="event-description {{ text_color }}">{{ description }}</p>
-    <p class="event-place {{ text_color }}">{{ place }}</p>
-  </div>
-
+<div class="card-events max-w-md mx-auto {{ card_background_color }} p-6 flex flex-col gap-6 rounded-lg">
+  <p class="event-date {{ text_color }}">
+    <strong>
+      <time datetime="{{event_date_formatted }}">
+        {{ event_date_formatted }}
+      </time>
+    </strong>
+  </p>
+  {{ include('mercury:heading',
+    {
+      level: 3,
+      heading_text: title,
+      heading_classes: ['!font-bold', style == 'dark' ? '!text-gray-light' : '!text-gray-dark']
+    } )
+  }}
+  <p class="event-description {{ text_color }}">{{ description }}</p>
+  <p class="event-place {{ text_color }}">{{ place }}</p>
+</div>

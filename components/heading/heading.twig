@@ -1,6 +1,6 @@
 {% set heading_classes = heading_classes|default([])|merge([
     'heading',
-    (url|default(false)) ? 'hover:underline decoration-2 underline-offset-4',
+    url ? 'hover:underline decoration-2 underline-offset-4',
     styles == 'alt' ? 'heading--size-alt' : 'heading--size-default',
 ])|filter(v => v is not empty) %}
 
@@ -8,7 +8,7 @@
 
 <h{{ level }} class="{{ heading_classes|join(' ') }}">
   {% if url %}
-    <a href="{{ url == 1 ? '#' : url }}">{{ heading_text }}</a>
+    <a href="{{ url }}">{{ heading_text }}</a>
   {% else %}
     {{ heading_text }}
   {% endif %}

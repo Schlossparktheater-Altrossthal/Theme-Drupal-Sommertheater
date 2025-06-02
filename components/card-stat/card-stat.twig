@@ -16,7 +16,7 @@
       
       {% if badge_1.url and badge_1.label %}
         <li>
-          {{ include('@mercury/badge/badge.twig', 
+          {{ include('mercury:badge', 
             {
               link: {
                 url: badge_1.url,
@@ -27,7 +27,7 @@
       {% endif %}
       {% if badge_2.url and badge_2.label %}
         <li>
-          {{ include('@mercury/badge/badge.twig', 
+          {{ include('mercury:badge', 
             {
               link: {
                 url: badge_2.url,
@@ -39,7 +39,7 @@
     </ul>
   {% endif %}
     <div class="flex flex-col gap-6">
-      {{ include('@mercury/heading/heading.twig') }}
+      {{ include('mercury:heading') }}
       <p>{{ text }}</p>
     </div>
   </div>

@@ -2,8 +2,9 @@
   {% block items %}
     {% for i in 1..8 %}
       {{ include(
-        '@mercury/tile-logo/tile-logo.twig',
+        'mercury:tile-logo',
         {
+          background: 'light',
           image: {
             src: 'assets/logo_' ~ i ~ '.png',
             alt: 'Placeholder logo ' ~ i,

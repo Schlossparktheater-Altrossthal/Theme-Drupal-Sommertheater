@@ -2,6 +2,7 @@
     'card',
     'flex flex-col gap-4',
     'stacked' in orientation ? 'is-stacked' : 'md:flex-row is-landscape',
+    'color-mode--' ~ color_mode,
   ]
 %}
 
@@ -11,25 +12,17 @@
     <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
   </div>
   <div class="card--content flex flex-col gap-4 items-baseline">
-    {# This should be a loop #}
     {% if badges %}
-    <ul class="list-none flex items-center gap-2">
+    <ul class="list-none ps-0 flex items-center gap-2">
       {% for badge in badges %}
       <li>
-        {{ include('@mercury/badge/badge.twig', 
-          {
-            link: {
-              url: badge.url,
-              label: badge.label,
-            }
-          }
-        ) }}
+        {{ include('mercury:badge', badge) }}
       </li>
       {% endfor %}
     </ul>
     {% endif %}
     <div class="flex flex-col gap-6">
-      {{ include('@mercury/heading/heading.twig') }}
+      {{ include('mercury:heading') }}
       <p>{{ text }}</p>
     </div>
   </div>

@@ -80,7 +80,7 @@
   <div{{ content_attributes.addClass('node__content') }}>
 
 {# 
-    {% embed '@mercury/components/title/title.twig' %}
+    {% embed 'mercury:components' %}
 
       {% block title_content %}
         {{ label }}
@@ -88,7 +88,7 @@
 
     {% endembed %} #}
 
-    {% embed '@mercury/components/title/title.twig' with {
+    {% embed 'mercury:components' with {
       title: node.title.value,
       title_class: 'my-title-class',
     } %}

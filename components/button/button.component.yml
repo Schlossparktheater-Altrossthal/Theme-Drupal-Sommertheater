@@ -11,18 +11,12 @@ props:
       title: Variant
       description: 'The style of button.'
       enum:
-        - light
-        - dark
+        - fill
+        - outline
+        - fill-accent
+        - outline-accent
       examples:
-        - light
-    outline:
-      type: boolean
-      title: Outlined
-      description: 'Whether the button is outlined.'
-      default: false
-      examples:
-        - false
-        - true
+        - fill
     disabled:
       type: boolean
       title: Disabled
@@ -60,8 +54,8 @@ props:
         - false
       default: false
     radius:
-      type: number
-      name: Corner radius
+      type: string
+      title: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
         - rounded-sm

@@ -17,11 +17,10 @@ props:
       examples:
         - 3
     url:
-      type: boolean
+      type: string
       title: Add optional url
-      examples:
-        - true
-      default: true
+      examples: 
+        - 'https://www.example.com'
     image:
       title: Photo
       description: Media image for the hero.
@@ -42,7 +41,7 @@ props:
       examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
     radius:
-      type: number
+      type: string
       name: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
       examples: 
