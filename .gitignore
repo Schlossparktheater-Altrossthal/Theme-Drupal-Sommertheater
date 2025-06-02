@@ -26,5 +26,4 @@ dist-ssr
 *storybook.log
 storybook-static/
 src/stories/sdc-stories
-build
 public/components
