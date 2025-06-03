@@ -1,14 +1,17 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .form-item.form-type-radio {
-    @apply mt-0 mb-2;
+    margin-top: var(--spacing-0, 0px);
+    margin-bottom: var(--spacing-2, 8px);
   }
-
   .radios--wrapper .form-item__label {
-    @apply block mb-2 text-black;
+    margin-bottom: var(--spacing-2, 8px);
+    display: block;
+    color: var(--color-black, #000000);
   }
   .radios--wrapper .form-item__label.option {
-    @apply inline pl-2 text-gray-900;
+    display: inline;
+    padding-left: var(--spacing-2, 8px);
+    color: var(--color-gray-900, oklch(0.21 0.034 264.665));
   }
 }

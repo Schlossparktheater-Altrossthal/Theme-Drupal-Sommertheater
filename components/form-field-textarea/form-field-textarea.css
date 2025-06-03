@@ -1,14 +1,18 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .form-item.form-type-textarea {
-    @apply relative;
+    position: relative;
   }
   .form-element--type-textarea {
-    @apply pt-6 px-3;
+    padding-inline: var(--spacing-3, 12px);
+    padding-top: var(--spacing-6, 24px);
   }
-
   .form-type-textarea .form-item__label {
-    @apply text-md peer-focus:text-sm;
+    font-size: var(--text-md, var(--text-base));
+    line-height: var(--tw-leading, var(--text-md--line-height, var(--text-base--line-height)));
+    &:is(:where(.peer):focus ~ *) {
+      font-size: var(--text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
+    }
   }
 }

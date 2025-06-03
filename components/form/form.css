@@ -1,13 +1,161 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer components {
   .form-item {
-    @apply my-4;
+    margin-block: var(--spacing-4, 16px);
   }
   .form-element {
-    @apply w-full border border-gray-300 rounded-s placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600;
+    width: 100%;
+    border-start-start-radius: 0.25rem;
+    border-end-start-radius: 0.25rem;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-gray-300, oklch(0.872 0.01 258.338));
+    &::placeholder {
+      color: transparent;
+    }
+    &:focus {
+      border-color: var(--color-blue-600, oklch(0.546 0.245 262.881));
+    }
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    &:focus {
+      --tw-ring-color: var(--color-blue-600, oklch(0.546 0.245 262.881));
+    }
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
   }
   .form-item__label {
-    @apply left-3 top-2 p-0 text-md text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-blue-600 peer-valid:text-sm peer-valid:text-blue-600 peer-valid:top-1;
+    top: var(--spacing-2, 8px);
+    left: var(--spacing-3, 12px);
+    padding: var(--spacing-0, 0px);
+    font-size: var(--text-md, var(--text-base));
+    line-height: var(--tw-leading, var(--text-md--line-height, var(--text-base--line-height)));
+    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
+    &:is(:where(.peer):placeholder-shown ~ *) {
+      top: var(--spacing-4, 16px);
+    }
+    &:is(:where(.peer):placeholder-shown ~ *) {
+      font-size: var(--text-base, 1rem);
+      line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    }
+    &:is(:where(.peer):valid ~ *) {
+      top: var(--spacing-1, 4px);
+    }
+    &:is(:where(.peer):valid ~ *) {
+      font-size: var(--text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
+    }
+    &:is(:where(.peer):valid ~ *) {
+      color: var(--color-blue-600, oklch(0.546 0.245 262.881));
+    }
+    &:is(:where(.peer):focus ~ *) {
+      top: var(--spacing-1, 4px);
+    }
+    &:is(:where(.peer):focus ~ *) {
+      font-size: var(--text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
+    }
+    &:is(:where(.peer):focus ~ *) {
+      color: var(--color-blue-600, oklch(0.546 0.245 262.881));
+    }
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+    }
   }
 }

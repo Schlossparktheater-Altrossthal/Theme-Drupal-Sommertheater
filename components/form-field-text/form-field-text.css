@@ -1,7 +1,8 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .form-element.form-element--type-text {
-    @apply px-3 pt-6 pb-2;
+    padding-inline: var(--spacing-3, 12px);
+    padding-top: var(--spacing-6, 24px);
+    padding-bottom: var(--spacing-2, 8px);
   }
 }
