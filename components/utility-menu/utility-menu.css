@@ -1,11 +1,21 @@
-@reference '../../src/main.css';
-
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .utility-menu {
-    @apply list-none max-w-fit pt-10 pb-6 px-12 gap-y-4 flex flex-col;
+    display: flex;
+    max-width: fit-content;
+    list-style-type: none;
+    flex-direction: column;
+    row-gap: var(--spacing-4, 16px);
   }
-
   .utility-menu .utility-menu--item-text {
-    @apply text-base text-brand-dark decoration-brand-dark group-hover:underline;
+    font-size: var(--text-base, 1rem);
+    line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    color: var(--color-brand-dark, #1e3a8a);
+    text-decoration-color: var(--color-brand-dark, #1e3a8a);
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
   }
 }
