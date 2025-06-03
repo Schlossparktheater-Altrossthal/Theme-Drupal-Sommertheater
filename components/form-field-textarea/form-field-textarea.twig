@@ -1,6 +1,18 @@
-<div class="form-type-textarea js-form-item form-item js-form-type-textarea form-item-{{ id }} js-form-item-{{ id }}">
-  <label for="edit-{{ id }}" class="form-item__label js-form-required form-required">{{ label }}</label>
-  <div>
-    <textarea data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" name="{{ id }}" rows="{{ rows }}" cols="{{ cols }}" class="form-textarea {% if required %}required{% endif %} resize-vertical form-element form-element--type-textarea form-element--api-textarea" {% if required %}required aria-required="true"{% endif %} {% if disabled %}disabled aria-disabled="true"{% endif %}>{{ value }}</textarea>
+<div class="js-form-item form-item js-form-type-textarea form-type-textarea js-form-item-message form-item-message relative">
+  <div class="form-textarea-wrapper">
+    <textarea
+      data-drupal-selector="edit-{{ id }}"
+      id="edit-{{ id }}"
+      name="{{ id }}"
+      rows="5"
+      cols="60"
+      class="peer form-textarea form-element form-element--type-textarea required resize-vertical w-full"
+      required
+      aria-required="true"
+    ></textarea>
+    <label
+      for="edit-{{ id }}"
+      class="absolute form-item__label"
+    >{{ label }}</label>
   </div>
 </div>

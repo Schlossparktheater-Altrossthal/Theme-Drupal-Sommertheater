@@ -20,8 +20,8 @@
   disabled ? 'disabled' : '',
 ])|filter(v => v is not empty) %}
 
-{% set field_required = required ? 'required="required" aria-required="true"' : '' %}
-{% set field_disabled = disabled ? 'disabled="disabled" aria-disabled="true"' : '' %}
+{% set input_required = required ? 'required="required" aria-required="true"' : '' %}
+{% set input_disabled = disabled ? 'disabled="disabled" aria-disabled="true"' : '' %}
 
 {% set label_classes = label_classes|default([])|merge([
   'text-field--label',
@@ -32,6 +32,6 @@
 ])|filter(v => v is not empty) %}
 
 <div data-drupal-selector="edit-{{ id }}-wrapper" class="{{ field_classes | join(' ') }}" >
-  <input type="text" data-drupal-selector="edit-{{ id }}"  class="{{ input_classes | join(' ') }}"  id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {{ field_required }} {{ field_disabled }} />
+  <input type="text" data-drupal-selector="edit-{{ id }}"  class="{{ input_classes | join(' ') }}" id="edit-{{ id }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {{ input_required }} {{ input_disabled }} />
   <label for="edit-{{ id }}" class="{{ label_classes | join(' ') }}">{{ label }}</label>
 </div>

@@ -1,12 +1,22 @@
-<div class="form-type-select js-form-item form-item js-form-type-select form-item-{{ id }} js-form-item-{{ id }}">
-  <label for="edit-{{ id }}" class="form-item__label">
-    {{ label }}
-  </label>
-  <select data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" name="{{ id }}" class="form-select form-element form-element--type-select">
+{% set input_required = required ? 'required="required" aria-required="true"' : '' %}
+{% set input_disabled = disabled ? 'disabled="disabled" aria-disabled="true"' : '' %}
+
+{# Ensure options is an array if not provided #}
+{% if options is not iterable %}
+  {% set options = [] %}
+{% endif %}
+
+
+{# Render the select field with the provided options #}
+
+<div class="form-type-select js-form-item form-item js-form-type-select relative form-item-{{ id }} js-form-item-{{ id }}">
+  <select data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" name="{{ id }}" class="form-select form-element form-element--type-select peer" {{input_required}} {{input_disabled}}>
+    <option value="" disabled selected hidden></option>
     {% for option in options %}
       <option value="{{ option.value }}" {% if option.selected %}selected="selected"{% endif %}>
         {{ option.label }}
       </option>
     {% endfor %}
   </select>
+  <label for="edit-{{ id }}" class="absolute form-item__label">{{ label }}</label>  
 </div>

@@ -10,7 +10,7 @@ props:
       title: Label
       description: The label for the text.
       examples:
-        - 'Message'
+        - 'Type your message here.'
     id:
       type: string
       title: Name

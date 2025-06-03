@@ -1,11 +1,11 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .form-element--type-select {
-    @apply border border-gray-300 block rounded-md px-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  .form-element.form-element--type-select {
+    @apply block px-3 pt-6 pb-2;
   }
 
-  .form-item__label {
-    @apply block p-2 text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500;
+  .form-type-select .form-item__label {
+    @apply absolute top-1/2 -translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-1.5 peer-focus:-translate-y-0 peer-valid:top-1.5 peer-valid:-translate-y-0;
   }
 }

@@ -1,10 +1,10 @@
-<div data-drupal-selector="edit-{{ id }}-type" id="edit-{{ id }}-type--wrapper" class="radios--wrapper fieldgroup form-composite js-form-wrapper form-wrapper">
-  <label for="edit-{{ id }}-type" class="form-item__label js-form-required form-required">{{ label }}</label>
-  <div id="edit-{{ id }}-type" class="js-webform-radios webform-options-display-one-column form-boolean-group">
+<div data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}--wrapper" class="radios--wrapper fieldgroup form-composite js-form-wrapper form-wrapper">
+  <label for="edit-{{ id }}" class="form-item__label js-form-required form-required">{{ label }}</label>
+  <div id="edit-{{ id }}" class="js-webform-radios webform-options-display-one-column form-boolean-group">
     {% for option in options %}
-      <div class="form-type-radio form-type-boolean js-form-item form-item js-form-type-radio form-item-{{ id }}-type js-form-item-{{ id }}-type">
-        <input data-drupal-selector="edit-{{ id }}-type-{{ option.value }}" type="radio" id="edit-{{ id }}-type-{{ option.value }}" name="{{ id }}_type" value="{{ option.label }}" class="form-radio form-boolean form-boolean--type-radio">
-        <label for="edit-{{ id }}-type-{{ option.value }}" class="form-item__label option">{{ option.label }}</label>
+      <div class="form-type-radio form-type-boolean js-form-item form-item js-form-type-radio form-item-{{ id }} js-form-item-{{ id }}">
+        <input data-drupal-selector="edit-{{ id }}-{{ option.value }}" type="radio" id="edit-{{ id }}-{{ option.value }}" name="{{ id }}_type" value="{{ option.label }}" class="form-radio form-boolean form-boolean--type-radio">
+        <label for="edit-{{ id }}-{{ option.value }}" class="form-item__label option">{{ option.label }}</label>
       </div>
     {% endfor %}
   </div>
