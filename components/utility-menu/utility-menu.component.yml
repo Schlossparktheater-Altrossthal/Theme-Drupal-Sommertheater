@@ -1,0 +1,26 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Utility Menu
+description: A navigation menu component that displays a list of utility links.
+group: Components
+props:
+  type: object
+  properties:
+    items:
+      type: array
+      description: List of menu items to display
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            description: The text to display for the menu item
+          url:
+            type: string
+            description: The URL the menu item links to
+      examples:
+        - title: Sign In
+          url: /user/login
+        - title: Contact Us
+          url: /contact
+        - title: Help
+          url: /help
