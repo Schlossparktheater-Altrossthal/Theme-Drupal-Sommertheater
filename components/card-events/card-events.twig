@@ -8,7 +8,7 @@
 #}
 {% set card_background_color = style == 'dark' ? 'bg-gray-dark' : 'bg-gray-lightest' %}
 {% set text_color = style == 'dark' ? 'text-gray-light' : 'text-gray-dark' %}
-{% set event_date_formatted = (event_date / 1000)|date('l, M. j, Y') %}
+{% set event_date_formatted = event_date|date('l, M. j, Y') %}
 <div class="card-events max-w-md mx-auto {{ card_background_color }} p-6 flex flex-col gap-6 rounded-lg">
   <p class="event-date {{ text_color }}">
     <strong>
