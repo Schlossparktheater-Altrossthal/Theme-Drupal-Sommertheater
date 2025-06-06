@@ -17,15 +17,15 @@ Modify the Tailwind utility classes in TWIG templates only if you need to change
 
 ## Why We Use `@apply`
 
-We use Tailwind’s `@apply` directive selectively—primarily for styles linked to the design system’s core visual language (design tokens). These are often tied to brand identity, and include:
+We use Tailwind’s `@apply` directive selectively, primarily for styles linked to the design system’s core visual language (design tokens). These are often tied to brand identity, and include:
 
 * Font families and font sizes
 * Text colors and emphasis
 * Letter spacing and casing
 * Link and button treatments
 
- It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The intention is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in twig. 
- 
+ It's easier to discover and edit these styles in a CSS file, and reduces the chance of breaking a twig template where there is more complex logic present. The intention is to create custom classes and define the base styles using the `@apply` directive and avoid having to repeat a bunch of utility classes in Twig.
+
 > For example:
 > Rather than repeating `font-sans tracking-normal text-inherit leading-[1.2]` in every Twig template, we define `.heading` once and reuse it.
 
