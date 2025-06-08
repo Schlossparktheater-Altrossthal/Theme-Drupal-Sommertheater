@@ -30,11 +30,7 @@
 
       {% if badge_2.url and badge_2.label %}
         <li>
-<<<<<<< HEAD
           {{ include('mercury:badge',
-=======
-          {{ include('@mercury/badge/badge.twig',
->>>>>>> 7a6750b (Final main.css fixes)
             {
               link: {
                 url: badge_2.url,
@@ -45,12 +41,7 @@
       {% endif %}
     </ul>
   {% endif %}
-<<<<<<< HEAD
     {{ include('mercury:heading') }}
     <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
-=======
-    {{ include('@mercury/heading/heading.twig') }}
-    <p class="font-extralight text-xl xl:text-xl">{{ text }}</p>
->>>>>>> 7a6750b (Final main.css fixes)
   </div>
 </div>
