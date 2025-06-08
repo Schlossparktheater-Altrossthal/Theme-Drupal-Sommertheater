@@ -1,0 +1,31 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Navbar
+group: Base
+description: A search form component for the navbar, styled for Drupal search integration.
+props:
+  type: "object"
+  properties:
+    action:
+      type: string
+      title: Form Action
+      description: The form action URL.
+      examples:
+        - "/search/node"
+    method:
+      type: string
+      title: Form Method
+      description: The form method.
+      examples:
+        - "get"
+    label:
+      type: string
+      title: Input Label
+      description: The label for the search input.
+      examples:
+        - "Search"
+    buttonLabel:
+      type: string
+      title: Button Label
+      description: The label for the submit button.
+      examples:
+        - "Search"
