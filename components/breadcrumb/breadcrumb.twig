@@ -1,0 +1,48 @@
+{# Breadcrumb Component - Tailwind CSS #}
+{% if breadcrumb %}
+  {% set total_items = breadcrumb|length %}
+  {% set needs_truncation = total_items > 3 %}
+
+  <nav aria-label="breadcrumb" class="breadcrumb relative w-full">
+    <h2 id="system-breadcrumb" class="sr-only">{{ 'Breadcrumb' }}</h2>
+    <ol class="flex flex-row gap-2 items-center p-0 m-0 list-none">
+      
+      {% for item in breadcrumb %}
+        {% set is_first = loop.first %}
+        {% set is_last_two = loop.revindex <= 2 %}
+        {% set should_show = not needs_truncation or is_first or is_last_two %}
+        
+        {# Insert ellipsis after first item if truncation is needed #}
+        {% if needs_truncation and loop.index == 2 %}
+          <li aria-hidden="true" class="breadcrumb-icon">
+            <span class="material-symbols-outlined">more_horiz</span>
+          </li>
+          <li aria-hidden="true" class="breadcrumb-icon">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </li>
+        {% endif %}
+        
+        {# Render breadcrumb item #}
+        {% if should_show %}
+          {% if item.url %}
+            <li class="breadcrumb-item">
+              <a href="{{ item.url }}">{{ item.text }}</a>
+            </li>
+          {% else %}
+            <li class="breadcrumb-item" aria-current="page">
+              {{ item.text }}
+            </li>
+          {% endif %}
+          
+          {# Add chevron after item (except last) #}
+          {% if not loop.last and (not needs_truncation or is_last_two or is_first) %}
+            <li aria-hidden="true" class="breadcrumb-icon">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </li>
+          {% endif %}
+        {% endif %}
+        
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %} 
