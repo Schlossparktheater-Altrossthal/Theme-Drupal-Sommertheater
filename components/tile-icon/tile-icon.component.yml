@@ -47,3 +47,10 @@ props:
       type: string
       examples:
         - https://drupal.org
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light

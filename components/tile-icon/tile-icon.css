@@ -1,7 +1,14 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
+.sb-main-padded:has(.storybook-component--tile-icon) {
+  padding: 0;
+}
 .storybook-component--tile-icon {
   max-width: 300px;
+  padding: 1rem;
+}
+.storybook-component--tile-icon:has(.color-mode--dark) {
+  background-color: var(--color-black, #000000);
 }
 .icon-tile h3 {
   font-size: var(--text-3xl, 2rem);

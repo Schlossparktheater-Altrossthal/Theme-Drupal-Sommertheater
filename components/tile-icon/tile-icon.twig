@@ -1,10 +1,11 @@
-{% set color_classes = {
-  light: 'bg-white border text-black',
-  medium: 'bg-brand text-white',
-  dark: 'bg-brand-dark text-white',
-} %}
+{% set tile_classes = tile_classes|default([])|merge([
+    'icon-tile',
+    'color-mode--' ~ color_mode,
+    background == 'light' ? 'bg-white text-black' : background == 'medium' ? 'bg-brand text-white' : 'bg-brand-dark text-white',
+    color_mode == 'dark' ? 'bg-brand' : 'border',
+])|filter(v => v is not empty) %}
 
-<div class="icon-tile {{ color_classes[background|default('medium')] }} aspect-square p-6 grid grid-rows-2 grid-columns-1 relative">
+<div class="{{ tile_classes|join(' ') }} aspect-square p-6 grid grid-rows-2 grid-columns-1 relative">
   <div class="w-full h-full flex {{ icon_position == 'left' ? 'justify-start' : 'justify-end' }}">
     {% if icon %}
       <span class="material-symbols-outlined text-[7.5rem]! font-thin!">{{ icon }}</span>
