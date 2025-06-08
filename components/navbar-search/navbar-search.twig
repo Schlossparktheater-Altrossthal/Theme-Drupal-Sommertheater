@@ -5,9 +5,10 @@
   accept-charset="UTF-8"
   class="w-full max-w-xs"
 >
-  <div class="relative">
+  <div class="relative w-full">
     <label for="edit-keys" class="sr-only">{{ label }}</label>
     <input
+      title="Enter the terms you wish to search for."
       data-drupal-selector="edit-keys"
       type="search"
       id="edit-keys"
@@ -23,10 +24,10 @@
       type="submit"
       data-drupal-selector="edit-submit"
       id="edit-submit"
-      class="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand transition"
-      aria-label={{buttonLabel}}
+      aria-label="{{buttonLabel}}"
+      class="absolute right-0 top-0 bottom-0 flex items-center justify-center w-10 rounded-lg border border-gray-500 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-brand transition"
     >
-      <span class="w-4 h-4 text-gray-500 material-symbols-outlined" >
+      <span class="material-symbols-outlined text-gray-500 text-xl leading-none flex items-center justify-center">
         search
       </span>
     </button>
