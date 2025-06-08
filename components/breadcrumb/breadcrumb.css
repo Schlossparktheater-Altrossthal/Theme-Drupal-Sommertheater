@@ -21,6 +21,9 @@
     color: var(--color-gray, #6b7280);
   }
 }
+.breadcrumb .breadcrumb-item a.active {
+  color: var(--color-gray, #6b7280);
+}
 .breadcrumb .breadcrumb-icon {
   display: flex;
   flex-direction: column;
