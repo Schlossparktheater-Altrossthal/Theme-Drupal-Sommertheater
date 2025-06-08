@@ -1,4 +1,13 @@
-#storybook-root > .icon-tile {
-  max-width: 464px;
-  margin-inline: auto;
+@reference '../../src/main.css';
+
+.storybook-component--tile-icon {
+  max-width: 300px;
+}
+
+.icon-tile h3 {
+  @apply text-3xl font-light;
+}
+
+.icon-tile p {
+  @apply text-xl font-light;
 }

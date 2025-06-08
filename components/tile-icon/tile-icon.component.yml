@@ -22,12 +22,26 @@ props:
       title: Text
       type: string
       examples:
-        - brand
+        - BRAND
+    description:
+      title: Text
+      type: string
+      examples:
+        - Lorem ipsum dolor sit amet luctus rutrum
     icon:
       title: Material Symbols icon slug
       type: string
       examples:
         - deblur
+    icon_position:
+      title: Icon left/right
+      type: string
+      enum:
+        - left
+        - right
+      default: right
+      examples:
+        - right
     url:
       title: Link URL
       type: string
