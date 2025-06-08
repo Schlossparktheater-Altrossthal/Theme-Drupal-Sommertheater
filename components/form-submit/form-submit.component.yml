@@ -1,0 +1,19 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Submit
+description: Used to collect user input.
+group: Components/Form Elements
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+      description: The label for the submit button.
+      examples:
+        - 'Send message'
+    disabled:
+      type: boolean
+      title: Disabled
+      description: Whether the submit button is disabled.
+      examples:
+        - false

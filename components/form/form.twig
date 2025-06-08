@@ -1,0 +1,18 @@
+<form data-drupal-selector="{{ id }}" action="{{ action }}" method="{{ method }}" id="{{ id }}" class="webform-submission-form webform-submission-add-form webform-submission-contact-form {{ id }} js-webform-details-toggle webform-details-toggle contextual-region" accept-charset="UTF-8" data-once="webform-details-toggle form-updated" data-drupal-form-fields="">
+  {{ include('mercury:heading', { level: 3 } ) }}
+  {% for field in fields %}
+    {% if field.type == 'text' %}
+      {{ include('@mercury/form-field-text/form-field-text.twig', field.properties) }}
+    {% elseif field.type == 'textarea' %}
+      {{ include('@mercury/form-field-textarea/form-field-textarea.twig', field.properties) }}
+    {% elseif field.type == 'select' %}
+      {{ include('@mercury/form-field-select/form-field-select.twig', field.properties) }}
+    {% elseif field.type == 'radio' %}
+      {{ include('@mercury/form-field-radio/form-field-radio.twig', field.properties) }}
+    {% elseif field.type == 'checkbox' %}
+      {{ include('@mercury/form-field-checkbox/form-field-checkbox.twig', field.properties) }}
+    {% elseif field.type == 'submit' %}
+      {{ include('@mercury/form-submit/form-submit.twig', field.properties) }}
+    {% endif %}
+  {% endfor %}
+</form>

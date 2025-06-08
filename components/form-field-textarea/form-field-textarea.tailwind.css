@@ -1,0 +1,14 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-item.form-type-textarea {
+    @apply relative;
+  }
+  .form-element--type-textarea {
+    @apply pt-6 px-3;
+  }
+
+  .form-type-textarea .form-item__label {
+    @apply text-md peer-focus:text-sm;
+  }
+}

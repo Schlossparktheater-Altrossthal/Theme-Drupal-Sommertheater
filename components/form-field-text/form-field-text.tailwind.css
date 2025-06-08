@@ -1,0 +1,7 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-element.form-element--type-text {
+    @apply px-3 pt-6 pb-2;
+  }
+}

@@ -1,0 +1,14 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .form-item.form-type-radio {
+    @apply mt-0 mb-2;
+  }
+
+  .radios--wrapper .form-item__label {
+    @apply block mb-2 text-black;
+  }
+  .radios--wrapper .form-item__label.option {
+    @apply inline pl-2 text-gray-900;
+  }
+}

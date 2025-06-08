@@ -1,0 +1,7 @@
+{% set input_required = required ? 'required="required" aria-required="true"' : '' %}
+{% set input_disabled = disabled ? 'disabled="disabled" aria-disabled="true"' : '' %}
+
+<div data-drupal-selector="edit-{{ id }}-wrapper" class="relative w-full form-item form-item-{{ id }} js-form-item js-form-item-{{ id }} form-type-textfield js-form-type-textfield" >
+  <input type="text" data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" class="peer text-field form-text form-element form-element--type-text form-element--api-textfield {{ required ? 'required' }} {{ disabled ? 'disabled' }}" aria-label="{{ label }}" value="{{ value }}" placeholder="{{ placeholder }}" {{ input_required }} {{ input_disabled }} />
+  <label for="edit-{{ id }}" class="text-field--label absolute form-item__label js-form-required {{ required ? 'form-required' }}">{{ label }}</label>
+</div>

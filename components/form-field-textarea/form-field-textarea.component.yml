@@ -1,0 +1,49 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Text Area
+description: Used to collect user message.
+group: Components/Form Elements
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+      description: The label for the text.
+      examples:
+        - 'Type your message here.'
+    id:
+      type: string
+      title: Name
+      description: The id for the input.
+      examples:
+        - 'message'
+    value:
+      type: string
+      title: Value
+      description: The default value for the text.
+      examples:
+        - 'Send me a message'
+    rows:
+      type: integer
+      title: Rows
+      description: The number of rows for the text.
+      examples:
+        - 5
+    cols:
+      type: integer
+      title: Columns
+      description: The number of columns for the text.
+      examples:
+        - 40
+    required:
+      type: boolean
+      title: Required
+      description: Whether the text is required.
+      examples:
+        - true
+    disabled:
+      type: boolean
+      title: Disabled
+      description: Whether the text is disabled.
+      examples:
+        - false
