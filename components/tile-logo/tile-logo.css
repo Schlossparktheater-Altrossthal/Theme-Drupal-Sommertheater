@@ -1,4 +1,11 @@
-#storybook-root > .logo-tile {
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+.sb-main-padded:has(.storybook-component--tile-logo) {
+  padding: 0;
+}
+.storybook-component--tile-logo {
   max-width: 300px;
-  margin-inline: auto;
+  padding: 1rem;
+}
+.storybook-component--tile-logo:has(.color-mode--dark) {
+  background-color: var(--color-black, #000000);
 }
