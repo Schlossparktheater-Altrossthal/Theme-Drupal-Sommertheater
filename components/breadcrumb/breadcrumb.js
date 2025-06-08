@@ -4,8 +4,6 @@ import {
 } from "../../src/common/component.js";
 class Breadcrumb extends ComponentInstance {
   init() {
-    // Listen for `collapsibleopen` events bubbling up from descendant
-    // collapsibles.
     const anchors = this.el.querySelectorAll("a");
     anchors.forEach((anchor) => {
       anchor.addEventListener("click", function (event) {
