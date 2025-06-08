@@ -11,10 +11,9 @@ props:
       description: The unique identifier for the form.
       examples:
         - contact-form
-    title:
+    heading_text:
       type: string
-      title: Title
-      description: The title of the form.
+      title: Heading Text
       examples:
         - Contact Us
     method:

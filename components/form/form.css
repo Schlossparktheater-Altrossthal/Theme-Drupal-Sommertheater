@@ -1,5 +1,8 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
+.storybook-component--form {
+  max-width: 600px;
+}
 @layer components {
   .form-item {
     margin-block: var(--spacing-4, 16px);

@@ -1,6 +1,11 @@
 @reference '../../src/main.css';
 
+.storybook-component--form {
+  max-width: 600px;
+}
+
 @layer components {
+
   .form-item {
     @apply my-4;
   }
