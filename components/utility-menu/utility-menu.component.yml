@@ -1,7 +1,7 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Utility Menu
 description: A navigation menu component that displays a list of utility links.
-group: Components
+group: Navigation/Utility Menu
 props:
   type: object
   properties:
@@ -19,8 +19,14 @@ props:
             description: The URL the menu item links to
       examples:
         - title: Sign In
-          url: /user/login
+          url: '#'
         - title: Contact Us
-          url: /contact
+          url: '#'
         - title: Help
-          url: /help
+          url: '#'
+    align:
+      type: boolean
+      title: Display links in row?
+      description: Align links in row or stack
+      examples:
+        - true
