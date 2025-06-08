@@ -27,4 +27,14 @@
   .card-pricing.color-mode--dark .link--button-outline-light {
     @apply hover:bg-white hover:text-brand-dark;
   }
+
+  .card-pricing.promote {
+    --main-heading-color: var(--color-white);
+    --main-text-color: var(--color-white);
+    --pricing-card-bg-color: var(--color-brand);
+  }
+
+  .card-pricing.promote .button--fill {
+  @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
+}
 }
