@@ -1,0 +1,13 @@
+@reference '../../src/main.css';
+
+.navbar-search .input-search {
+  @apply border border-gray bg-white py-2.5 pl-4 pr-12 text-gray placeholder-gray font-medium text-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition;
+}
+
+.navbar-search .button-search {
+  @apply border-gray focus:outline-none focus:ring-2 focus:ring-brand transition;
+}
+
+.navbar-search .search-icon {
+  @apply text-gray text-xl leading-none;
+}
