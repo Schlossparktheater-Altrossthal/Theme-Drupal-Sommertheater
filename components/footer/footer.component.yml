@@ -116,16 +116,12 @@ props:
           url:
             type: string
             description: The URL the menu item links to
-          name:
-            type: string
-            description: The name to use for icon
       examples:
         - title: Facebook
           url: '#'
-          name: ''
         - title: Instagram
           url: '#'
-          name: ''
+        - title: YouTube
+          url: '#'
         - title: X
           url: '#'
-          name: ''
