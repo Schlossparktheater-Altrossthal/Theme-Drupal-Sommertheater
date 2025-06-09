@@ -1,11 +1,12 @@
-{% set color_classes = {
-  light: 'bg-brand-light text-accent',
-  medium: 'bg-brand text-gray-lighter',
-  dark: 'bg-brand-dark bg-brand-light',
-} %}
+{% set tile_classes = tile_classes|default([])|merge([
+    'icon-tile',
+    'color-mode--' ~ color_mode,
+    background == 'light' ? 'bg-white text-black' : background == 'medium' ? 'bg-brand text-white' : 'bg-brand-dark text-white',
+    color_mode == 'dark' ? 'bg-brand' : 'border',
+])|filter(v => v is not empty) %}
 
-<div class="icon-tile {{ color_classes[background|default('medium')] }} aspect-square p-6 grid grid-rows-2 grid-columns-1 relative text-[4rem] uppercase font-thin">
-  <div class="w-full h-full flex justify-end items-start">
+<div class="{{ tile_classes|join(' ') }} aspect-square p-6 grid grid-rows-2 grid-columns-1 relative">
+  <div class="w-full h-full flex {{ icon_position == 'left' ? 'justify-start' : 'justify-end' }}">
     {% if icon %}
       <span class="material-symbols-outlined text-[7.5rem]! font-thin!">{{ icon }}</span>
     {% endif %}
@@ -13,11 +14,15 @@
 
   <div class="w-full h-full flex justify-start items-end">
     {% if url is not empty %}
-      <a href="{{ url }}" class="before:absolute before:content-[''] before:top-0 before:left-0 before:w-full before:h-full">
-        {{ text }}
+      <a href="{{ url }}" class="leading-none before:absolute before:content-[''] before:inset-0">
+        <h3>{{ text }}</h3>
+        <p>{{ description }}</p>
       </a>
     {% else %}
-      {{ text }}
+      <span class="leading-none before:absolute before:content-[''] before:inset-0">
+        <h3>{{ text }}</h3>
+        <p>{{ description }}</p>
+      </span>
     {% endif %}
   </div>
 </div>

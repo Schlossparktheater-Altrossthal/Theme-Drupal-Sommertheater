@@ -1,4 +1,35 @@
-#storybook-root > .icon-tile {
-  max-width: 464px;
-  margin-inline: auto;
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.sb-main-padded:has(.storybook-component--tile-icon) {
+  padding: 0;
+}
+.storybook-component--tile-icon {
+  max-width: 300px;
+  padding: 1rem;
+}
+.storybook-component--tile-icon:has(.color-mode--dark) {
+  background-color: var(--color-black, #000000);
+}
+.icon-tile h3 {
+  font-size: var(--text-3xl, 2rem);
+  line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+  --tw-font-weight: var(--font-weight-light, 300);
+  font-weight: var(--font-weight-light, 300);
+}
+.icon-tile p {
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-font-weight: var(--font-weight-light, 300);
+  font-weight: var(--font-weight-light, 300);
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+    }
+  }
 }
