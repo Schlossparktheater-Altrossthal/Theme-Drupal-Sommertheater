@@ -23,6 +23,10 @@ class NavbarSearch extends ComponentInstance {
     this.submitButton.addEventListener("click", (event) =>
       this.handleButtonClick(event)
     );
+
+    // Add document click listener for outside clicks
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    document.addEventListener("click", this.handleOutsideClick);
   }
 
   handleButtonClick(event) {
@@ -36,8 +40,19 @@ class NavbarSearch extends ComponentInstance {
     // Allow form submission when input has content
   }
 
+  handleOutsideClick(event) {
+    // Check if click is outside the component and search is visible
+    if (!this.el.contains(event.target) && this.isInputVisible()) {
+      this.clearAndHideInput();
+    }
+  }
+
   isInputHidden() {
     return this.searchInput?.classList.contains("hidden");
+  }
+
+  isInputVisible() {
+    return !this.isInputHidden();
   }
 
   isInputEmpty() {
@@ -58,6 +73,19 @@ class NavbarSearch extends ComponentInstance {
     event.preventDefault();
     this.searchInput.classList.add("hidden");
     this.searchInput.classList.remove("block");
+  }
+
+  clearAndHideInput() {
+    this.searchInput.value = "";
+    this.searchInput.classList.add("hidden");
+    this.searchInput.classList.remove("block");
+  }
+
+  destroy() {
+    // Clean up event listener when component is destroyed
+    if (this.handleOutsideClick) {
+      document.removeEventListener("click", this.handleOutsideClick);
+    }
   }
 }
 
