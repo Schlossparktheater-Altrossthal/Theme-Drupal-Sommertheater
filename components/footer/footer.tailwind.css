@@ -1,0 +1,13 @@
+@reference '../../src/main.css';
+/* 
+/* Storybook specific */
+.storybook-component--card {
+  @apply max-w-md;
+}
+.storybook-component--card:has(.card.is-landscape) {
+  @apply max-w-2xl;
+} */
+
+@layer components {
+
+}

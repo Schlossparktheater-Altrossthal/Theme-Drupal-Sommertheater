@@ -1,0 +1,21 @@
+<ul class="utility-menu">
+  {# Loop over each link in the “links” array #}
+  {% for item in items %}
+    <li class="py-1">
+      <a
+        href="{{ item.url }}"
+        class="
+          flex items-center justify-between gap-x-1
+          group
+        "
+      >
+        {# Link text: large, medium‐weight, blue, underlined #}
+        <span class="utility-menu--item-text">
+          {{ item.title }}
+        </span>
+
+        <span class="material-symbols-outlined">chevron_right</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

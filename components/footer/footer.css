@@ -1,0 +1,7 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+.storybook-component--card {
+  max-width: var(--container-md, 28rem);
+}
+.storybook-component--card:has(.card.is-landscape) {
+  max-width: var(--container-2xl, 42rem);
+}

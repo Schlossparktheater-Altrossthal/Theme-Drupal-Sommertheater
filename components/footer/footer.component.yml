@@ -1,7 +1,7 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: Footer Menu
-description: A navigation menu component that displays a list of utility links with optional nested children.
-group: Navigation/Footer Menu
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Footer
+group: Pages/Footer
+description: The site footer assembled
 props:
   type: object
   properties:
@@ -85,13 +85,47 @@ props:
               url: "#"
             - title: Feedback & Feature Requests Form
               url: "#"
-      color_mode:
-        type: string
-        title: Color Mode
-        description: Color mode of component.
-        enum: 
-          - light
-          - dark
-        examples: 
-          - light
-        default: light
+    utility:
+      type: array
+      description: List of menu items to display
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            description: The text to display for the menu item
+          url:
+            type: string
+            description: The URL the menu item links to
+      examples:
+        - title: Sign In
+          url: /user/login
+        - title: Contact Us
+          url: /contact
+        - title: Help
+          url: /help
+    social:
+      type: array
+      description: List of social platforms to display
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            description: The text to display for the menu item
+          url:
+            type: string
+            description: The URL the menu item links to
+          name:
+            type: string
+            description: The name to use for icon
+      examples:
+        - title: Facebook
+          url: '#'
+          name: ''
+        - title: Instagram
+          url: '#'
+          name: ''
+        - title: X
+          url: '#'
+          name: ''
