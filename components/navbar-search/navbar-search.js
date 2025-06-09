@@ -7,7 +7,6 @@ class NavbarSearch extends ComponentInstance {
   init() {
     const submitButton = this.el.querySelector('[type="submit"]');
     const searchInput = this.el.querySelector('[type="search"]');
-    console.log(searchInput);
 
     if (submitButton && !submitButton.hasAttribute("data-click-handled")) {
       // Mark button as handled to prevent duplicate listeners
@@ -18,7 +17,6 @@ class NavbarSearch extends ComponentInstance {
 
         if (searchInput && searchInput.classList.contains("hidden")) {
           event.preventDefault();
-          console.log("showing");
           searchInput.classList.remove("hidden");
           searchInput.classList.add("block");
           searchInput.focus();
@@ -29,7 +27,6 @@ class NavbarSearch extends ComponentInstance {
             searchInput.value.trim() === "" &&
             searchInput.classList.contains("block")
           ) {
-            console.log("hiding");
             event.preventDefault();
             searchInput.classList.add("hidden");
             searchInput.classList.remove("block");
