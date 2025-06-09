@@ -1,0 +1,12 @@
+<ul class="social-menu list-none p-0 flex flex-row gap-5">
+  {# Loop over each link in the “links” array #}
+  {% for item in items %}
+    <li class="social-links">
+
+      <a href="{{ item.url }}" class="social-links--item w-[24px] border block aspect-square overflow-hidden" aria-label="Visit us on {{ item.title }}">
+        {# {{ icon('bluesky', 'social') }} #}
+        {{ item.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
