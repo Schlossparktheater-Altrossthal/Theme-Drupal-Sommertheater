@@ -1,0 +1,33 @@
+{% set footer_classes = footer_classes|default([])|merge([
+    'site-footer',
+    'container',
+    'flex flex-col',
+])|filter(v => v is not empty) %}
+    
+<section class="{{ footer_classes|join(' ') }}">
+
+  <div class="site-footer--menu px-4 py-6 xl:px-16 xl:py-20">
+    {% block footer_menu_slot %}
+      {{ include('mercury:menu-footer', { items } ) }}
+    {% endblock %}
+  </div>
+
+  <div class="site-footer--bottom flex flex-col md:grid md:grid-cols-2 gap-4 w-full px-4 py-4 xl:px-16 xl:py-6 border-t">
+    {% if block("footer_bottom_first_slot") is defined %}
+      <div class="site-footer--bottom-col">
+        {% block footer_bottom_first_slot %}
+          {# {{ include('mercury:menu-utility', { items: utility }) }} #}
+          {{ include('mercury:branding') }}
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% if block("footer_bottom_last_slot") is defined %}
+      <div class="site-footer--bottom-col md:flex md:justify-end">
+        {% block footer_bottom_last_slot %}
+          {{ include('mercury:menu-social', { items: social } ) }}
+        {% endblock %}
+      </div>
+    {% endif %}
+  </div>
+</section>

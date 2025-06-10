@@ -1,0 +1,54 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer components {
+  .footer-menu {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+    background-color: var(--color-white, #ffffff);
+  }
+  .footer-menu .parent-link {
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    color: var(--color-black, #000000);
+    text-decoration-color: var(--color-brand, #2563eb);
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-brand, #2563eb);
+      }
+    }
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .footer-menu .child-link {
+    font-size: var(--text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    color: var(--color-black, #000000);
+    text-decoration-color: var(--color-brand, #2563eb);
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-brand, #2563eb);
+      }
+    }
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+}
