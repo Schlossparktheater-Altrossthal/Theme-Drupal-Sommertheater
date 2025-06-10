@@ -42,33 +42,6 @@ props:
       examples: 
         - rounded-sm
       default: rounded-sm
-    badges:
-      type: array
-      title: badges
-      description: Category badges.
-      items:
-        type: object
-        title: Badge
-        description: List of badges.
-        properties:
-          url:
-            type: string
-            format: uri
-          label:
-            type: string
-          icon: 
-            type: string
-          icon_first: 
-            type: boolean
-        examples:
-          - url: 'https://www.example.com'
-            label: 'badge one'
-            icon: ''
-            icon_first: true
-          - url: 'https://www.example.com'
-            label: 'badge two'
-            icon: ''
-            icon_first: true
     orientation:
       type: string
       title: Orientation

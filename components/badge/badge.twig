@@ -8,6 +8,6 @@
 %}
 
 <a href="{{ url }}" aria-label="{{ label }}" class="{{ classes|join(' ') }}">
-  {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+  {% if icon is not empty %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
   <span class="badge-label">{{ label }}</span>
 </a>
