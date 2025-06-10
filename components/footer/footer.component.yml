@@ -16,7 +16,6 @@ props:
     items:
       type: array
       description: List of menu items to display
-
       items:
         type: object
         properties:
