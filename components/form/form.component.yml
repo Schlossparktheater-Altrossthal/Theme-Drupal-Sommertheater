@@ -29,12 +29,6 @@ props:
       description: The URL to which the form will be submitted.
       examples:
         - /submit-form
-    submit_label:
-      type: string
-      title: Submit Button Label
-      description: The label for the form's submit button.
-      examples:
-        - Submit
     fields:
       type: array
       title: Fields
