@@ -1,0 +1,28 @@
+@reference '../../src/main.css';
+
+/* Storybook specific */
+.storybook-component--card-testimonial {
+  @apply max-w-md;
+}
+
+@layer components {
+
+  .card-testimonial {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+
+  .card-testimonial .testimonial-text {
+    @apply text-xl;
+  }
+
+  .card-testimonial .testimonial-cite--text,
+  .card-testimonial .testimonial-name {
+    @apply text-base;
+  }
+
+
+  .card-testimonial a.testimonial-cite--text {
+    @apply underline hover:underline;
+  }
+}

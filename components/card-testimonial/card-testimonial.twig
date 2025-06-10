@@ -1,0 +1,33 @@
+{% set classes = [
+    'card-testimonial',
+    'flex flex-col px-8 py-12',
+    'color-mode--' ~ color_mode,
+    align == 'center' ? 'text-center items-center gap-6' : 'text-left items-start gap-4',
+  ]
+%}
+
+<div class="{{ classes|join(' ') }}">
+  <div class="card-testimonial--media w-[100px] aspect-square rounded-full overflow-hidden">
+    {# Image will get swapped out in XB #}
+    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+  </div>
+  
+  <blockquote class="flex flex-col gap-4" cite="{{ cite_url }}">
+    <p class="testimonial-text">{{ text }}</p>
+
+    <footer class="testimonial-name">
+      {% set citation = cite_name %}
+      {% if cite_name and cite_text %} 
+        {% set citation = cite_name ~ ', ' %}
+      {% endif %}
+      {{ citation }} 
+      <cite class="testimonial-cite">
+        {% if cite_url %}
+          <a href="{{ cite_url}}" target="_blank" class="testimonial-cite--text">{{ cite_text }}</a>
+        {% else %}
+          <span class="testimonial-cite--text">{{ cite_text }}</span>
+        {% endif %}
+      </cite>
+    </footer>
+  </blockquote>
+</div>
