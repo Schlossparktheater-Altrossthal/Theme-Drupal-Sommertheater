@@ -1,21 +1,17 @@
-<ul class="utility-menu">
+{% set menu_classes = menu_classes|default([])|merge([
+  'social-menu',
+  'list-none flex flex-row gap-4 p-0',
+])|filter(v => v is not empty) %}
+
+<ul class="{{ menu_classes|join(' ') }}">
   {# Loop over each link in the “links” array #}
   {% for item in items %}
-    <li class="py-1">
-      <a
-        href="{{ item.url }}"
-        class="
-          flex items-center justify-between gap-x-1
-          group
-        "
-      >
-        {# Link text: large, medium‐weight, blue, underlined #}
-        <span class="utility-menu--item-text">
-          {{ item.title }}
-        </span>
-
-        <span class="material-symbols-outlined">chevron_right</span>
+    <li class="social-menu--item">
+      <a href="{{ item.url }}" aria-label="Follow us on {{ item.title }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon block w-[24px] aspect-square flex align-center">
+        {{ item.icon }}
       </a>
     </li>
   {% endfor %}
 </ul>
+
+
