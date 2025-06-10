@@ -58,6 +58,31 @@
       }
     }
   }
+  .card-pricing.promote {
+    --main-heading-color: var(--color-white);
+    --main-text-color: var(--color-white);
+    --pricing-card-bg-color: var(--color-brand);
+  }
+  .card-pricing.promote .button--fill {
+    border-color: var(--color-brand-light, #eff6ff) !important;
+    background-color: var(--color-brand-light, #eff6ff) !important;
+    color: var(--color-brand-dark, #1e3a8a) !important;
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-brand-dark, #1e3a8a) !important;
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand-dark, #1e3a8a) !important;
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white, #ffffff) !important;
+      }
+    }
+  }
 }
 @property --tw-font-weight {
   syntax: "*";

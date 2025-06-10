@@ -7,15 +7,6 @@ props:
   required:
     - background
   properties:
-    background:
-      title: Background color
-      type: string
-      enum:
-        - light
-        - dark
-      default: dark
-      examples:
-        - dark
     image:
       $ref: json-schema-definitions://experience_builder.module/image
       type: object
@@ -23,3 +14,10 @@ props:
       examples:
         - src: 'assets/logo.png'
           alt: 'Placeholder brand logo'
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light

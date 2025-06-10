@@ -1,21 +1,28 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer components {
-  .utility-menu {
-    display: flex;
-    max-width: fit-content;
-    list-style-type: none;
-    flex-direction: column;
-    row-gap: var(--spacing-4, 16px);
-  }
   .utility-menu .utility-menu--item-text {
     font-size: var(--text-base, 1rem);
     line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    --tw-leading: var(--leading-tight, 1.25);
+    line-height: var(--leading-tight, 1.25);
     color: var(--color-brand-dark, #1e3a8a);
     text-decoration-color: var(--color-brand-dark, #1e3a8a);
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         text-decoration-line: underline;
       }
+    }
+  }
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-leading: initial;
     }
   }
 }

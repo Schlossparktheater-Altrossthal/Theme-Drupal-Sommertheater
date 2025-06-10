@@ -1,4 +1,23 @@
-#storybook-root > .icon-tile {
-  max-width: 464px;
-  margin-inline: auto;
+@reference '../../src/main.css';
+
+.sb-main-padded:has(.storybook-component--tile-icon) {
+  padding: 0;
+}
+
+.storybook-component--tile-icon {
+  max-width: 300px;
+  padding: 1rem;
+}
+
+.storybook-component--tile-icon:has(.color-mode--dark) {
+  @apply bg-black;
+}
+
+
+.icon-tile h3 {
+  @apply text-3xl font-light;
+}
+
+.icon-tile p {
+  @apply text-xl font-light;
 }

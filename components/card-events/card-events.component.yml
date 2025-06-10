@@ -9,7 +9,7 @@ props:
       type: string
       title: Card background color
       enum: [light, dark]
-      examples: 
+      examples:
         - light
       default: light
     title:
@@ -22,7 +22,7 @@ props:
       format: date
       title: Event Date
       examples:
-        - 2026-02-12
+        - '2026-02-12'
     description:
       type: string
       title: Description
@@ -34,4 +34,3 @@ props:
       type: string
       examples:
         - '29013 Bednar Spurs'
-    

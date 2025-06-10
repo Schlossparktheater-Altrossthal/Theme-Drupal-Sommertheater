@@ -1,4 +1,10 @@
-<div class="logo-tile {{ background|default('dark') == 'dark' ? 'bg-brand-dark' : 'bg-brand-light'  }} aspect-square">
+{% set tile_classes = tile_classes|default([])|merge([
+    'logo-tile',
+    'color-mode--' ~ color_mode,
+    color_mode == 'dark' ? 'bg-brand' : 'bg-white border',
+])|filter(v => v is not empty) %}
+
+<div class="{{ tile_classes|join(' ') }} aspect-square">
   <div class="p-[10%] h-[100%] flex justify-center items-center">
     <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ image.src }}" alt="{{ image.alt }}" />
   </div>
