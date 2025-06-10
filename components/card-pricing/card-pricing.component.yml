@@ -31,21 +31,18 @@ props:
             <li>Facilisis dictumst letius in</li>
             <li>Diam mus est faucibus ornare ut consectetuer metus</li>
           </ul>'
-    button:
-      type: object
-      title: CTA
+    button_url:
+      type: string
+      title: Button URL
       description: CTA for the card
-      properties:
-        url:
-          type: string
-          title: URL
-          examples:
-            - 'https://example.com'
-        label:
-          type: string
-          title: Text
-          examples:
-            - 'Choose this plan'
+      examples:
+        - 'https://example.com'
+    button_label:
+      type: string
+      title: Button label
+      description: CTA for the card
+      examples:
+        - 'Choose this plan'
     promote:
       type: boolean
       title: Promote card

@@ -1,0 +1,97 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Footer
+description: A navigation menu component that displays a list of utility links with optional nested children.
+group: Navigation/Menus
+props:
+  type: object
+  properties:
+    items:
+      type: array
+      description: List of menu items to display
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            description: The text to display for the menu item
+          url:
+            type: string
+            description: The URL the menu item links to
+          children:
+            type: array
+            description: Optional nested menu items
+            items:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The text to display for the sub-menu item
+                url:
+                  type: string
+                  description: The URL the sub-menu item links to
+      examples:
+        - title: Company
+          url: "#"
+          children:
+            - title: About
+              url: "#"
+            - title: Careers & Culture
+              url: "#"
+            - title: Press Releases
+              url: "#"
+            - title: Sustainability Initiatives
+              url: "#"
+            - title: Investor Relations Portal
+              url: "#"
+
+        - title: Resources & Documentation
+          url: "#"
+          children:
+            - title: API Reference
+              url: "#"
+            - title: Quick-Start Guides
+              url: "#"
+            - title: Full Developer Handbook
+              url: "#"
+            - title: Release Notes & Changelogs
+              url: "#"
+            - title: Component Library
+              url: "#"
+
+        - title: Customer Support Zone
+          url: "#"
+          children:
+            - title: Submit a Ticket
+              url: "#"
+            - title: 24×7 Live Chat Help Desk
+              url: "#"
+            - title: Knowledge Base Articles
+              url: "#"
+            - title: Video Tutorials & Webinars Archive
+              url: "#"
+            - title: Service-Status Dashboard
+              url: "#"
+
+        - title: Stay Connected with Us Today
+          url: "#"
+          children:
+            - title: Newsletter Signup
+              url: "#"
+            - title: Community Forum Discussions
+              url: "#"
+            - title: Upcoming Events & Meet-ups Calendar
+              url: "#"
+            - title: Follow Us on Social Media Platforms
+              url: "#"
+            - title: Feedback & Feature Requests Form
+              url: "#"
+      color_mode:
+        type: string
+        title: Color Mode
+        description: Color mode of component.
+        enum: 
+          - light
+          - dark
+        examples: 
+          - light
+        default: light

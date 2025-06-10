@@ -1,0 +1,6 @@
+links:
+  - url: https://example.com
+    text: 'button text 1'
+    style: 'default'
+  - url: https://example.com
+    text: 'button text 2'

@@ -4,8 +4,6 @@ description: A component showing its children in a grid on desktop and in a hori
 group: Components/Tiles
 props:
   type: object
-  required:
-    - background
   properties:
     image:
       $ref: json-schema-definitions://experience_builder.module/image

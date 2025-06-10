@@ -22,22 +22,6 @@ props:
       title: Text
       examples:
         - Lorem ipsum dolor sit amet finibus aliquam pharetra mauris aenean pellentesque enim mus.
-    links:
-      type: array
-      title: Links
-      description: CTA links
-      properties:
-        url:
-          type: string
-          format: uri
-        text:
-          type: string
-      examples:
-        - url: '#'
-          text: 'button text 1'
-          style: 'default'
-        - url: '#'
-          text: 'button text 2'
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Background Image
@@ -68,3 +52,11 @@ props:
       examples: 
         - light
       default: light
+slots:
+  # The key is the name of the slot. In your template you will use 
+  # {% block body %}.
+  links:
+    # A human-readable name.
+    title: Links
+    # A description.
+    description: This is the links as buttons

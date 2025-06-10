@@ -1,0 +1,16 @@
+@reference '../../src/main.css';
+
+@layer components {
+
+  .footer-menu {
+    @apply bg-white container;
+  }
+
+  .footer-menu .parent-link {
+    @apply text-2xl text-black decoration-brand group-hover:underline group-hover:text-brand;
+  }
+
+  .footer-menu .child-link {
+    @apply text-xl text-black decoration-brand group-hover:underline group-hover:text-brand;
+  }
+}
