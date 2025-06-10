@@ -37,11 +37,3 @@ props:
       examples:
         - src: 'assets/mermaid.png'
           alt: 'A picture of the sea shore.'
-    layout:
-      type: string
-      title: Layout
-      description: Set hero layout
-      enum: 
-        - xxx
-        - yyy
-      examples: [media-first (default), media-last]

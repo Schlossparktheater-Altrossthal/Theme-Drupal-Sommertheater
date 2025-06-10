@@ -20,8 +20,7 @@ props:
       type: string
       title: Add optional url
       examples:
-        - true
-      default: true
+        - 'https://example.com'
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Card Media

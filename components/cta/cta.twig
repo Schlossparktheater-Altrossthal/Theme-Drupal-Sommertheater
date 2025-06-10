@@ -33,33 +33,33 @@
     }) }}
     <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
     {# Will be a slot in XB #}
-    {% if links %}
-    <ul class="flex gap-4 list-none {{ list_extras }}">
-      {% for link in links %}
-        {% if background == 'light' %}
-          {% if  loop.index == 1 %}
-            {% set link_style = 'button-dark' %}
+    {% block links %}
+      <ul class="flex gap-4 list-none {{ list_extras }}">
+        {% for link in storybook.links %}
+          {% if background == 'light' %}
+            {% if  loop.index == 1 %}
+              {% set link_style = 'button-dark' %}
+            {% else %}
+              {% set link_style = 'button-outline-dark' %}
+            {% endif %}
           {% else %}
-            {% set link_style = 'button-outline-dark' %}
+            {% if  loop.index == 1 %}
+              {% set link_style = 'button-light' %}
+            {% else %}
+              {% set link_style = 'button-outline-light' %}
+            {% endif %}
           {% endif %}
-        {% else %}
-          {% if  loop.index == 1 %}
-            {% set link_style = 'button-light' %}
-          {% else %}
-            {% set link_style = 'button-outline-light' %}
-          {% endif %}
-        {% endif %}
-      <li>
-        {{ include('mercury:link', {
-            url: link.url,
-            text: link.text,
-            style: link_style,
-            link_classes: (link_classes|default([]))|merge([ radius ])
-          }
-        ) }}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+        <li>
+          {{ include('mercury:link', {
+              url: link.url,
+              text: link.text,
+              style: link_style,
+              link_classes: (link_classes|default([]))|merge([ radius ])
+            }
+          ) }}
+        </li>
+        {% endfor %}
+      </ul>
+    {% endblock %}
   </div>
 </section>
