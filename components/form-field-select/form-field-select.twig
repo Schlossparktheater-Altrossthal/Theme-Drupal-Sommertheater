@@ -18,5 +18,8 @@
       </option>
     {% endfor %}
   </select>
-  <label for="edit-{{ id }}" class="absolute form-item__label">{{ label }}</label>  
+  <label for="edit-{{ id }}" class="absolute form-item__label">{{ label }}</label>
+  <button type="button" class="clear-select hidden" aria-label="Clear selection">
+    <span class="material-symbols-outlined">close</span>
+  </button>
 </div>

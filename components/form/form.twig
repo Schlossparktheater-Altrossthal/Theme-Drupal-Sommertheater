@@ -2,17 +2,17 @@
   {{ include('mercury:heading', { level: 3 } ) }}
   {% for field in fields %}
     {% if field.type == 'text' %}
-      {{ include('@mercury/form-field-text/form-field-text.twig', field.properties) }}
+      {{ include('mercury:form-field-text', field.properties) }}
     {% elseif field.type == 'textarea' %}
-      {{ include('@mercury/form-field-textarea/form-field-textarea.twig', field.properties) }}
+      {{ include('mercury:form-field-textarea', field.properties) }}
     {% elseif field.type == 'select' %}
-      {{ include('@mercury/form-field-select/form-field-select.twig', field.properties) }}
+      {{ include('mercury:form-field-select', field.properties) }}
     {% elseif field.type == 'radio' %}
-      {{ include('@mercury/form-field-radio/form-field-radio.twig', field.properties) }}
+      {{ include('mercury:form-field-radio', field.properties) }}
     {% elseif field.type == 'checkbox' %}
-      {{ include('@mercury/form-field-checkbox/form-field-checkbox.twig', field.properties) }}
+      {{ include('mercury:form-field-checkbox', field.properties) }}
     {% elseif field.type == 'submit' %}
-      {{ include('@mercury/form-submit/form-submit.twig', field.properties) }}
+      {{ include('mercury:form-submit', field.properties) }}
     {% endif %}
   {% endfor %}
 </form>
