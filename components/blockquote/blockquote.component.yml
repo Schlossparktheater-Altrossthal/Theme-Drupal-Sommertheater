@@ -14,19 +14,19 @@ props:
       title: Cite name
       description: The cite name.
       examples:
-        - 'Stephen Hawking'
+        - 'Isiah Julio'
     cite_text:
       type: string
       title: Cite text
       description: The cite text.
       examples:
-        - 'A big deal scientist'
+        - 'Engineer, Technical Services'
     cite_url:
       type: string
       title: Cite URL
       description: The cite url.
       examples:
-        - '#'
+        - https://example.com
     color_mode:
       type: string
       title: Color Mode

@@ -1,32 +1,41 @@
 @reference '../../src/main.css';
 
 /* Storybook UI specific */
-.sb-show-main:has(#storybook-root>.blockquote) {
-  padding: 0;
+.storybook-component--blockquote {
+  @apply max-w-md;
 }
 
-#storybook-root:has(>.blockquote) {
-  @apply max-w-2xl;
-}
+@layer components {
 
-#storybook-root .blockquote {
-  @apply max-w-2xl;
-  padding: 1rem;
-}
+  .blockquote {
+    @apply font-semibold;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
 
-/* Blockquote */
-.blockquote {
-  @apply font-semibold;
-}
+  .blockquote .blockquote-text {
+    @apply font-semibold text-xl leading-[1.5] text-inherit;
+  }
 
-.blockquote p {
-  @apply font-semibold text-xl leading-[1.5] text-inherit;
-}
+  .blockquote .blockquote-name {
+    @apply font-bold text-xl leading-[1.2] not-italic;
+  }
 
-.blockquote footer {
-  @apply font-bold text-xl leading-[1.2] not-italic;
-}
+  .blockquote .blockquote-cite--text {
+    @apply font-normal text-base leading-[1.2] italic;
+  }
 
-.blockquote footer cite {
-  @apply font-normal text-base leading-[1.2] italic;
+  .blockquote a.blockquote-cite--text {
+    @apply underline hover:underline;
+  }
+
+  .color-mode--light .blockquote .blockquote-cite--text,
+  .color-mode--light.blockquote .blockquote-cite--text {
+    @apply text-gray;
+  }
+
+  .color-mode--dark .blockquote .blockquote-cite--text,
+  .color-mode--dark.blockquote .blockquote-cite--text {
+    @apply text-gray-lightest;
+  }
 }

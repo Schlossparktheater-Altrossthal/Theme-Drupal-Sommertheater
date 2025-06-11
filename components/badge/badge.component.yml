@@ -10,7 +10,7 @@ props:
       title: URL
       description: 'The URL to link to. If provided, the badge will be rendered as a link.'
       examples:
-        - '#'
+        - ''
     label:
       type: string
       title: Link Text
