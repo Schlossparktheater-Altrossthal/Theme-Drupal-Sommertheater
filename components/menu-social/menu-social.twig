@@ -6,11 +6,9 @@
 <ul class="{{ menu_classes|join(' ') }}">
   {% for item in items %}
     <li class="social-menu--item">
-      <a href="{{ item.url }}" aria-label="Follow us on {{ item.title }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon block w-[24px] aspect-square flex align-center">
+      <a href="{{ item.url }}" aria-label="Follow us on {{ item.title }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon w-[24px] aspect-square flex align-center">
         {{ item.icon }}
       </a>
     </li>
   {% endfor %}
 </ul>
-
-
