@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -23,9 +22,13 @@
   --color-positive:      #00cc41;
   --color-warning: 	     #ffbf00;
   --color-negative: 	   #e60032;
+  --color-body:            var(--color-white);
 
   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --font-mono: 'Fira Code', monospace;
+  --font-display: Arial;
+  --font-body: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-ui: 'Fira Code', monospace;
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
@@ -95,6 +98,11 @@
 
 /* Custom theme classes */
 @layer base {
+
+  body {
+    @apply bg-body font-body;
+  }
+
   p {
     @apply text-base lg:text-lg 2xl:text-xl text-inherit;
   }
