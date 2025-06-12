@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --color-brand-light:   #eff6ff;
+  --color-brand:         magenta;
+  --color-brand-dark:    #1e3a8a;
+
+  --color-accent-light:  #fce7f3;
+  --color-accent:        #ec4899;
+  --color-accent-dark:   #9d174d;
+
+  --color-info:          #01a8e4;
+  --color-positive:      #00cc41;
+  --color-warning: 	     #ffbf00;
+  --color-negative: 	   #e60032;
+
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-display: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-body: serif;
+  --font-ui: Arial;
+}

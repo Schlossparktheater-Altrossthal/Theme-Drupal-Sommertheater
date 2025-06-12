@@ -2,7 +2,7 @@
 @layer properties;
 @layer components {
   .heading {
-    font-family: var(--font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
+    font-family: var(--font-display, Arial);
     --tw-leading: 1.2;
     line-height: 1.2;
     --tw-tracking: var(--tracking-normal, 0em);

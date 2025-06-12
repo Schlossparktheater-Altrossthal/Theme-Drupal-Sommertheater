@@ -3,7 +3,7 @@
 @layer components {
   /* Use Tailwind directive to set some baseline styles. */
   .heading {
-    @apply font-sans tracking-normal text-inherit leading-[1.2];
+    @apply font-display tracking-normal text-inherit leading-[1.2];
   }
 
   /* sizes: 48 64 96 */
