@@ -2,7 +2,7 @@
 
 :root {
   --color-brand-light:   #eff6ff;
-  --color-brand:         magenta;
+  --color-brand:         #2563eb;
   --color-brand-dark:    #1e3a8a;
 
   --color-accent-light:  #fce7f3;
@@ -17,6 +17,6 @@
   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --font-mono: 'Fira Code', monospace;
   --font-display: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-body: serif;
-  --font-ui: Arial;
+  --font-body: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-ui: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }

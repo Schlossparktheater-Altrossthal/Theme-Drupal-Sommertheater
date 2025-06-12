@@ -18,6 +18,8 @@ button.button {
   border-width: 1px;
   padding-top: 8px;
   padding-bottom: 9px;
+  --tw-font-weight: var(--font-weight-medium, 500);
+  font-weight: var(--font-weight-medium, 500);
   text-decoration-line: none;
   &:hover {
     @media (hover: hover) {
@@ -232,10 +234,15 @@ button.button {
   inherits: false;
   initial-value: solid;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
+      --tw-font-weight: initial;
     }
   }
 }
