@@ -17,7 +17,7 @@ button.button {
 }
 
 .button {
-  @apply font-medium font-xl w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
+  @apply font-medium text-xl w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
 
 .button--fill {
