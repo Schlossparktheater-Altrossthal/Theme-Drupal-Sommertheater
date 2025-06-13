@@ -1,30 +1,32 @@
-{% set classes = [
+{% set classes = classes|default([])|merge([
     'hero-overlay',
     'h-dvh md:max-h-3/4 min:min-h-3/4 xl:max-h-[900px]',
-    background == 'image' or background == 'dark' ? 'bg-brand-dark text-white' : 'bg-brand text-black',
-  ]
+    'color-mode--' ~ color_mode,
+  ])|filter(v => v is not empty)
 %}
 
 {% set img_position = 'object-' ~ background_position %}
 
 <section class="{{ classes|join(' ') }}">
-  {% if background == 'image' %}
-    <div class="hero-region media relative h-full">
-    {% block media_slot %}
+  {% if media.src is not empty %}
+    <div class="hero-overlay--media relative h-full">
+    {% block hero_media %}
       {% if media.src is not empty %}
         <div class="absolute inset-0 bg-black/40"></div>
       {% endif %}
-      {# Image will get swapped out in XB #}
-      <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover {{ img_position }}"/>
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
     {% endblock %}
     </div>
   {% endif %}
-  <div class="hero-region content absolute inset-0 flex flex-col gap-6 {{ text ? 'justify-center pb-16' : 'justify-end' }} p-6 md:p-10 lg:max-w-3/5 xl:p-20">
-  {% block content_slot %}
+  <div class="hero-overlay--content absolute inset-0 flex flex-col gap-6 {{ text ? 'justify-center pb-16' : 'justify-end' }} p-6 md:p-10 lg:max-w-3/5 xl:p-20">
+  {% block hero_content %}
     {{ include('mercury:heading') }}
     {% if text is not empty %}
-    <p>{{ text }}</p>
+      <p>{{ text }}</p>
     {% endif %}
   {% endblock %}
   </div>
 </section>
+
+    {# background == 'image' or background == 'dark' ? 'bg-brand-dark text-white' : 'bg-brand text-black', #}
+    {# 'bg-' ~ background, #}
