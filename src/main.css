@@ -136,7 +136,7 @@
   }
 
   hr {
-    @apply my-6 border-t border-gray-200;
+    @apply my-6 border-t border-gray;
   }
 
   table,

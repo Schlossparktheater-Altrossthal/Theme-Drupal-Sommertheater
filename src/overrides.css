@@ -2,7 +2,7 @@
 
 :root {
   --color-brand-light:   #eff6ff;
-  --color-brand:         magenta;
+  --color-brand:         #2563eb;
   --color-brand-dark:    #1e3a8a;
 
   --color-accent-light:  #fce7f3;
@@ -13,10 +13,11 @@
   --color-positive:      #00cc41;
   --color-warning: 	     #ffbf00;
   --color-negative: 	   #e60032;
+  --color-body: 	       #ffffff;
 
   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --font-mono: 'Fira Code', monospace;
   --font-display: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-body: serif;
-  --font-ui: Arial;
+  --font-body: var(--font-sans);
+  --font-ui: 'Fira Code', monospace;
 }
