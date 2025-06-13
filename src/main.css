@@ -34,7 +34,7 @@
   --text-9xl--line-height: 1;       /* 120px */
 
   --text-8xl: 6rem;                  /* 96px */
-  --text-8xl: 1;                     /* 96px */
+  --text-8xl--line-height: 1;        /* 96px */
 
   --text-7xl: 4.5rem;                /* 72px */
   --text-7xl--line-height: 1;        /* 72px */

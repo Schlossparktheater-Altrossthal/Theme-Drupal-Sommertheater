@@ -25,29 +25,22 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - 'Launching What Comes Next'
-    text:
-      type: string
-      title: Heading Text
-      examples: 
-        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
+        - Launching What Comes Next
     level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
-    background:
+    text:
       type: string
-      title: Hero background color
+      title: Heading Text
+      examples: 
+        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
+    color_mode:
+      type: string
+      title: Color Mode
       enum: [light, dark]
       examples: 
         - light
       default: light
-slots:
-  mediaslot:
-    title: MediaSlot
-    description: Slot to place media.
-  contentslot:
-    title: ContentSlot
-    description: Slot to place content.

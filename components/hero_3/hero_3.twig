@@ -6,12 +6,12 @@
 %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="hero-region media aspect-4/3 sm:aspect-2/1 overflow-hidden">
+  <div class="hero-fullwidth--media aspect-4/3 sm:aspect-2/1 overflow-hidden">
   {% block hero_media %}
     <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
   {% endblock %}
   </div>
-  <div class="hero-region content">
+  <div class="hero-fullwidth--content">
   {% block hero_content %}
     {{ include('mercury:heading') }}
   {% endblock %}
