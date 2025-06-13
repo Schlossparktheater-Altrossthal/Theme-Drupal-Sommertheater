@@ -39,17 +39,10 @@ props:
       examples: 
         - alt
       default: alt
-    background:
+    color_mode:
       type: string
-      title: Hero background color
+      title: Color Mode
       enum: [light, dark]
       examples: 
         - light
       default: light
-slots:
-  mediaslot:
-    title: MediaSlot
-    description: Slot to place media.
-  contentslot:
-    title: ContentSlot
-    description: Slot to place content.
