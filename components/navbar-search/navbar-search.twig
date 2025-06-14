@@ -5,7 +5,7 @@
   accept-charset="UTF-8"
   class="w-full max-w-xs navbar-search"
 >
-  <div class="relative w-full">
+  <div class="relative w-full flex justify-end">
     <label for="edit-keys" class="sr-only">{{ label }}</label>
     <input
       title="Enter the terms you wish to search for."
@@ -18,14 +18,14 @@
       maxlength="128"
       placeholder={{label}}
       aria-label="Search"
-      class="hidden peer w-full rounded-lg input-search "
+      class="hidden peer w-full rounded-lg input-search h-11"
     />
     <button
       type="submit"
       data-drupal-selector="edit-submit"
       id="edit-submit"
       aria-label="{{buttonLabel}}"
-      class="peer-[.hidden]:static peer-[.hidden]:w-10 peer-[.hidden]:h-10 peer-[.hidden]:rounded-lg absolute right-0 top-0 bottom-0 flex items-center justify-center w-10 rounded-lg border button-search "
+      class="peer-[.hidden]:static peer-[.hidden]:w-10 peer-[.hidden]:h-11 peer-[.hidden]:rounded-lg absolute right-0 top-0 bottom-0 flex items-center justify-center w-10 h-11 rounded-lg border button-search "
     >
       <span class="material-symbols-outlined flex items-center justify-center search-icon">
         search
