@@ -1,7 +1,6 @@
 {# Breadcrumb Component - Tailwind CSS #}
 {% if breadcrumb %}
-  {% set total_items = breadcrumb|length %}
-  {% set needs_truncation = total_items > 3 %}
+{% set needs_truncation = breadcrumb|length > 3 %}
 
   <nav aria-label="breadcrumb" class="breadcrumb relative w-full">
     <h2 id="system-breadcrumb" class="sr-only">{{ 'Breadcrumb' }}</h2>

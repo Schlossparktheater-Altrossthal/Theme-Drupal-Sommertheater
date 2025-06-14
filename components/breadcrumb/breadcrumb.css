@@ -11,6 +11,10 @@
   font-style: normal;
 }
 .breadcrumb .breadcrumb-item a {
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-font-weight: var(--font-weight-medium, 500);
+  font-weight: var(--font-weight-medium, 500);
   color: var(--color-gray-dark, #374151);
   &:hover {
     @media (hover: hover) {
@@ -34,6 +38,9 @@
   font-weight: var(--font-weight-medium, 500);
   color: var(--color-gray-dark, #374151);
   font-style: normal;
+}
+.breadcrumb ol > li:last-of-type > a {
+  color: var(--color-gray, #6b7280);
 }
 @property --tw-font-weight {
   syntax: "*";
