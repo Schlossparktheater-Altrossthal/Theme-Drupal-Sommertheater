@@ -1,7 +1,4 @@
-import {
-  ComponentType,
-  ComponentInstance,
-} from '../../src/common/component.js';
+import { ComponentType, ComponentInstance } from '../../lib/component.js';
 
 class NavbarSearch extends ComponentInstance {
   init() {

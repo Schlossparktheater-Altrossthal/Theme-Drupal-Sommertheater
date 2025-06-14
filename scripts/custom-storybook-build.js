@@ -21,6 +21,9 @@ async function run() {
     const publicComponentsDir = path.resolve('./public/components');
     await fs.mkdir(publicComponentsDir, { recursive: true });
 
+    // Copy lib folder to public directory
+    await copyLibFolder();
+
     // Get all component directories
     const componentDirs = await glob('./components/*/', {
       ignore: ['node_modules/**'],
@@ -101,6 +104,55 @@ async function run() {
   } catch (error) {
     console.error('Error in custom Storybook build step:', error);
     process.exit(1);
+  }
+}
+
+/**
+ * Copy the lib folder to the public directory
+ */
+async function copyLibFolder() {
+  try {
+    const libDir = path.resolve('./lib');
+    const publicLibDir = path.resolve('./public/lib');
+
+    // Check if lib directory exists
+    const libStat = await fs.stat(libDir);
+    if (!libStat.isDirectory()) {
+      console.log('lib directory not found, skipping...');
+      return;
+    }
+
+    console.log('Copying lib folder to public directory...');
+
+    // Create public/lib directory
+    await fs.mkdir(publicLibDir, { recursive: true });
+
+    // Get all files in lib directory recursively
+    const libFiles = await glob(`${libDir}/**/*`, {
+      nodir: true,
+    });
+
+    // Copy each file
+    for (const libFile of libFiles) {
+      const relativePath = path.relative(libDir, libFile);
+      const destPath = path.join(publicLibDir, relativePath);
+
+      // Ensure destination directory exists
+      await fs.mkdir(path.dirname(destPath), { recursive: true });
+
+      // Copy the file
+      await fs.copyFile(libFile, destPath);
+      console.log(`Copied lib file: ${libFile} -> ${destPath}`);
+    }
+
+    console.log('lib folder copied successfully!');
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log('lib directory not found, skipping...');
+    } else {
+      console.error('Error copying lib folder:', error);
+      throw error;
+    }
   }
 }
 

@@ -1,6 +1,5 @@
-import { ComponentType, ComponentInstance } from '../../src/common/component.js';
+import { ComponentType, ComponentInstance } from '../../lib/component.js';
 class FormFieldSelect extends ComponentInstance {
-
   init() {
     let select = this.el.querySelector('.form-element--type-select');
     let clearButton = this.el.querySelector('.clear-select');
@@ -27,8 +26,4 @@ class FormFieldSelect extends ComponentInstance {
   }
 }
 
-new ComponentType(
-  FormFieldSelect,
-  'formFieldSelect',
-  '.form-type-select'
-);
+new ComponentType(FormFieldSelect, 'formFieldSelect', '.form-type-select');
