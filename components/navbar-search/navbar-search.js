@@ -76,8 +76,6 @@ class NavbarSearch extends ComponentInstance {
   }
 
   remove() {
-    // Clean up event listener when component is destroyed
-    console.log('remove');
     document.removeEventListener('click', this.handleOutsideClick);
   }
 }
