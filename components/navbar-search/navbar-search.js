@@ -1,7 +1,7 @@
 import {
   ComponentType,
   ComponentInstance,
-} from "../../src/common/component.js";
+} from '../../src/common/component.js';
 
 class NavbarSearch extends ComponentInstance {
   init() {
@@ -10,23 +10,18 @@ class NavbarSearch extends ComponentInstance {
 
     this.attachEventListeners();
   }
-
   attachEventListeners() {
-    if (
-      !this.submitButton ||
-      this.submitButton.hasAttribute("data-click-handled")
-    ) {
+    if (!this.submitButton) {
       return;
     }
 
-    this.submitButton.setAttribute("data-click-handled", "true");
-    this.submitButton.addEventListener("click", (event) =>
+    this.submitButton.addEventListener('click', (event) =>
       this.handleButtonClick(event)
     );
 
     // Add document click listener for outside clicks
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
-    document.addEventListener("click", this.handleOutsideClick);
+    document.addEventListener('click', this.handleOutsideClick);
   }
 
   handleButtonClick(event) {
@@ -37,7 +32,6 @@ class NavbarSearch extends ComponentInstance {
     } else if (this.isInputEmpty()) {
       this.hideInput(event);
     }
-    // Allow form submission when input has content
   }
 
   handleOutsideClick(event) {
@@ -48,7 +42,7 @@ class NavbarSearch extends ComponentInstance {
   }
 
   isInputHidden() {
-    return this.searchInput?.classList.contains("hidden");
+    return this.searchInput?.classList.contains('hidden');
   }
 
   isInputVisible() {
@@ -57,36 +51,35 @@ class NavbarSearch extends ComponentInstance {
 
   isInputEmpty() {
     return (
-      this.searchInput?.value.trim() === "" &&
-      this.searchInput?.classList.contains("block")
+      this.searchInput?.value.trim() === '' &&
+      this.searchInput?.classList.contains('block')
     );
   }
 
   showInput(event) {
     event.preventDefault();
-    this.searchInput.classList.remove("hidden");
-    this.searchInput.classList.add("block");
+    this.searchInput.classList.remove('hidden');
+    this.searchInput.classList.add('block');
     this.searchInput.focus();
   }
 
   hideInput(event) {
     event.preventDefault();
-    this.searchInput.classList.add("hidden");
-    this.searchInput.classList.remove("block");
+    this.searchInput.classList.add('hidden');
+    this.searchInput.classList.remove('block');
   }
 
   clearAndHideInput() {
-    this.searchInput.value = "";
-    this.searchInput.classList.add("hidden");
-    this.searchInput.classList.remove("block");
+    this.searchInput.value = '';
+    this.searchInput.classList.add('hidden');
+    this.searchInput.classList.remove('block');
   }
 
-  destroy() {
+  remove() {
     // Clean up event listener when component is destroyed
-    if (this.handleOutsideClick) {
-      document.removeEventListener("click", this.handleOutsideClick);
-    }
+    console.log('remove');
+    document.removeEventListener('click', this.handleOutsideClick);
   }
 }
 
-new ComponentType(NavbarSearch, "navbarSearch", ".navbar-search");
+new ComponentType(NavbarSearch, 'navbarSearch', '.navbar-search');

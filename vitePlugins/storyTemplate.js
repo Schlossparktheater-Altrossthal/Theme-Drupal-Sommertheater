@@ -58,14 +58,13 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
     // Initialize JS when component is rendered
     const initializeComponent = useCallback(async () => {
       
-
       // Skip if not mounted or still loading
       if (!componentRef.current || isLoading || !html) {
         return;
       }
 
       // Initialize each JS dependency
-      const jsModules = [${jsPaths.map((path) => `'${path}'`).join(", ")}];
+      const jsModules = [${jsPaths.map((path) => `'${path}'`).join(', ')}];
       
       for (const modulePath of jsModules) {
         try {
@@ -139,7 +138,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
         }
       };
     }, [initializeComponent]);`
-        : ""
+        : ''
     }
 
     // Early render states
