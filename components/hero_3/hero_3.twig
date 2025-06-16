@@ -1,19 +1,18 @@
 {% set classes = [
     'hero-fullwidth',
     'media-last' in layout ? 'flex-col-reverse' : 'flex-col',
-    background == 'dark' ? 'bg-black text-white' : 'bg-brand-lightest text-black',
+    'color-mode--' ~ color_mode,
   ]
 %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="hero-region media aspect-4/3 sm:aspect-2/1 overflow-hidden">
-  {% block media_slot %}
-    {# Image will get swapped out in XB #}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+  <div class="hero-fullwidth--media aspect-4/3 sm:aspect-2/1 overflow-hidden">
+  {% block hero_media %}
+    <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
   {% endblock %}
   </div>
-  <div class="hero-region content">
-  {% block content_slot %}
+  <div class="hero-fullwidth--content">
+  {% block hero_content %}
     {{ include('mercury:heading') }}
   {% endblock %}
   </div>
