@@ -4,11 +4,8 @@
       {{ include(
         'mercury:tile-logo',
         {
-          background: 'light',
-          image: {
-            src: 'assets/logo_' ~ i ~ '.png',
-            alt: 'Placeholder logo ' ~ i,
-          }
+          color_mode: 'light',
+          media: media,
         }
       ) }}
     {% endfor %}

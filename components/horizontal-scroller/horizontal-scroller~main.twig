@@ -1,0 +1,16 @@
+{# Overriding media_slot just for Storybook #}
+{% embed 'mercury:horizontal-scroller' %}
+  {% block items %}
+    {% for i in 1..8 %}
+      {{ include(
+        'mercury:tile-logo',
+        {
+          background: 'light',
+          media: {
+            src: '/' ~ componentMetadata.path ~ '/assets/logo_' ~ i ~ '.png',
+            alt: 'Placeholder logo ' ~ i,
+          }
+        }
+      ) }}
+    {% endfor %}  {% endblock %}
+{% endembed %}
