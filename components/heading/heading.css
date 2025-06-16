@@ -21,7 +21,7 @@
       line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
     }
     @media (width >= 96rem) {
-      font-size: var(--text-8xl, 1);
+      font-size: var(--text-8xl, 6rem);
       line-height: var(--tw-leading, var(--text-8xl--line-height, 1));
     }
   }
