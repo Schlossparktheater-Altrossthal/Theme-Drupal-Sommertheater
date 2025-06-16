@@ -34,7 +34,7 @@
   --text-9xl--line-height: 1;       /* 120px */
 
   --text-8xl: 6rem;                  /* 96px */
-  --text-8xl: 1;                     /* 96px */
+  --text-8xl--line-height: 1;        /* 96px */
 
   --text-7xl: 4.5rem;                /* 72px */
   --text-7xl--line-height: 1;        /* 72px */
@@ -171,4 +171,31 @@
     --card-text-color: var(--color-gray-darkest);
     --pricing-card-bg-color: var(--color-white);
   }
+}
+
+@layer utilities {
+  .bg-gray-lightest { background-color: var(--color-gray-lightest); }
+  .bg-gray-light { background-color: var(--color-gray-light); }
+  .bg-gray-dark { background-color: var(--color-gray-dark); }
+  .bg-gray-darkest { background-color: var(--color-gray-darkest); }
+  .bg-brand-light { background-color: var(--color-brand-light); }
+  .bg-brand-dark { background-color: var(--color-brand-dark); }
+  .bg-accent-light { background-color: var(--color-accent-light); }
+  .bg-accent-dark { background-color: var(--color-accent-dark); }
+  .text-gray-lightest { color: var(--color-gray-lightest); }
+  .text-gray-light { color: var(--color-gray-light); }
+  .text-gray-dark { color: var(--color-gray-dark); }
+  .text-gray-darkest { color: var(--color-gray-darkest); }
+  .text-brand-light { color: var(--color-brand-light); }
+  .text-brand-dark { color: var(--color-brand-dark); }
+  .text-accent-light { color: var(--color-accent-light); }
+  .text-accent-dark { color: var(--color-accent-dark); }
+  .border-gray-lightest { border-color: var(--color-gray-lightest); }
+  .border-gray-light { border-color: var(--color-gray-light); }
+  .border-gray-dark { border-color: var(--color-gray-dark); }
+  .border-gray-darkest { border-color: var(--color-gray-darkest); }
+  .border-brand-light { border-color: var(--color-brand-light); }
+  .border-brand-dark { border-color: var(--color-brand-dark); }
+  .border-accent-light { border-color: var(--color-accent-light)}
+  .border-accent-dark { border-color: var(--color-accent-dark)}
 }

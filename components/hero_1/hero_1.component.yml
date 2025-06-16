@@ -32,10 +32,9 @@ props:
     background:
       type: string
       title: Hero background color
-      enum: [light, dark, image]
+      enum: [brand-light, brand, accent-light, accent, white, black]
       examples: 
-        - image
-      default: image
+        - brand-light
     background_position:
       type: string
       title: Hero background image position
@@ -43,10 +42,9 @@ props:
       examples: 
         - center
       default: center
-slots:
-  mediaslot:
-    title: MediaSlot
-    description: Slot to place media.
-  contentslot:
-    title: ContentSlot
-    description: Slot to place content.
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark]
+      examples: 
+        - dark

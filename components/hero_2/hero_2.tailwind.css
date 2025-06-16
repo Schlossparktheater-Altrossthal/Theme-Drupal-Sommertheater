@@ -1,13 +1,19 @@
 @reference '../../src/main.css';
+@reference '../heading/heading.tailwind.css';
 
-#storybook-root > .hero-sidebyside {
-  @apply outline outline-dotted outline-gray-lightest rounded-xs;
+.storybook-component--hero_2 {
+  @apply outline outline-dotted outline-gray-200 rounded-xs;
 }
 
-.hero-sidebyside {
-  @apply container mx-auto flex gap-6 px-6 py-8 md:px-10 md:py-12 xl:px-16 xl:py-20;
-}
+@layer components {
 
-.hero-sidebyside .hero-region.content p {
-  @apply font-normal text-2xl xl:text-3xl leading-[1.5];
+  .hero-sidebyside {
+    @apply container mx-auto flex gap-6 px-6 py-8 md:px-10 md:py-12 xl:px-16 xl:py-20;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+
+  .hero-sidebyside .hero-description {
+    @apply font-normal text-base xl:text-xl leading-[1.5];
+  }
 }
