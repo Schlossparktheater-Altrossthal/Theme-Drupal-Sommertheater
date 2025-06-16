@@ -1,21 +1,51 @@
 @reference '../../src/main.css';
 
-.breacrumb .breadcrumb-item {
-  @apply flex flex-col font-medium justify-center not-italic text-xl;
-}
 
-.breadcrumb .breadcrumb-item a {
-  @apply text-gray-dark hover:text-gray focus:text-gray text-xl font-medium;
-}
+@layer components {
 
-.breadcrumb .breadcrumb-item a.active {
-  @apply text-gray;
-}
+  .breadcrumb {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
 
-.breadcrumb .breadcrumb-icon {
-  @apply flex flex-col font-medium justify-center not-italic text-xl text-gray-dark;
-}
+  .breadcrumb .breadcrumb-item a {
+    color: var(--hyperlink-color);
+  }
 
-.breadcrumb ol > li:last-of-type > a {
-  @apply text-gray;
+  .breadcrumb .breadcrumb-item a:hover,
+  .breadcrumb .breadcrumb-item a:focus {
+    color: var(--hyperlink-color-hover);
+  }
+
+  .breadcrumb.color-mode--light {
+    --main-text-color: var(--color-gray-darkest);
+    --hyperlink-color: var(--color-gray);
+    --hyperlink-color-hover: var(--color-gray-dark)
+  }
+
+  .breadcrumb.color-mode--dark {
+    --main-text-color: var(--color-white);
+    --hyperlink-color: var(--color-gray-light);
+    --hyperlink-color-hover: var(--color-white)
+  }
+
+  .breadcrumb .breadcrumb-item {
+    @apply font-medium text-xl leading-none;
+  }
+
+  .breadcrumb .breadcrumb-item a {
+    @apply hover:underline focus:underline;
+  }
+
+  .breadcrumb .active {
+    color: var(--main-text-color);
+  }
+
+  .breadcrumb .breadcrumb-icon {
+    color: var(--main-text-color);
+  }
+
+  .breadcrumb .breadcrumb-icon-ellipses {
+    color: var(--hyperlink-color);
+  }
 }

@@ -1,46 +1,57 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-.breacrumb .breadcrumb-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: var(--text-xl, 1.25rem);
-  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  --tw-font-weight: var(--font-weight-medium, 500);
-  font-weight: var(--font-weight-medium, 500);
-  font-style: normal;
-}
-.breadcrumb .breadcrumb-item a {
-  font-size: var(--text-xl, 1.25rem);
-  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  --tw-font-weight: var(--font-weight-medium, 500);
-  font-weight: var(--font-weight-medium, 500);
-  color: var(--color-gray-dark, #374151);
-  &:hover {
-    @media (hover: hover) {
-      color: var(--color-gray, #6b7280);
+@layer components {
+  .breadcrumb {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+  .breadcrumb .breadcrumb-item a {
+    color: var(--hyperlink-color);
+  }
+  .breadcrumb .breadcrumb-item a:hover, .breadcrumb .breadcrumb-item a:focus {
+    color: var(--hyperlink-color-hover);
+  }
+  .breadcrumb.color-mode--light {
+    --main-text-color: var(--color-gray-darkest);
+    --hyperlink-color: var(--color-gray);
+    --hyperlink-color-hover: var(--color-gray-dark);
+  }
+  .breadcrumb.color-mode--dark {
+    --main-text-color: var(--color-white);
+    --hyperlink-color: var(--color-gray-light);
+    --hyperlink-color-hover: var(--color-white);
+  }
+  .breadcrumb .breadcrumb-item {
+    font-size: var(--text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-font-weight: var(--font-weight-medium, 500);
+    font-weight: var(--font-weight-medium, 500);
+  }
+  .breadcrumb .breadcrumb-item a {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+    &:focus {
+      text-decoration-line: underline;
     }
   }
-  &:focus {
-    color: var(--color-gray, #6b7280);
+  .breadcrumb .active {
+    color: var(--main-text-color);
+  }
+  .breadcrumb .breadcrumb-icon {
+    color: var(--main-text-color);
+  }
+  .breadcrumb .breadcrumb-icon-ellipses {
+    color: var(--hyperlink-color);
   }
 }
-.breadcrumb .breadcrumb-item a.active {
-  color: var(--color-gray, #6b7280);
-}
-.breadcrumb .breadcrumb-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: var(--text-xl, 1.25rem);
-  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  --tw-font-weight: var(--font-weight-medium, 500);
-  font-weight: var(--font-weight-medium, 500);
-  color: var(--color-gray-dark, #374151);
-  font-style: normal;
-}
-.breadcrumb ol > li:last-of-type > a {
-  color: var(--color-gray, #6b7280);
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -49,6 +60,7 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-leading: initial;
       --tw-font-weight: initial;
     }
   }

@@ -2,9 +2,9 @@
 {% if breadcrumb %}
 {% set needs_truncation = breadcrumb|length > 3 %}
 
-  <nav aria-label="breadcrumb" class="breadcrumb relative w-full">
+  <nav aria-label="breadcrumb" class="breadcrumb relative w-full {{'color-mode--' ~ color_mode}}">
     <h2 id="system-breadcrumb" class="sr-only">{{ 'Breadcrumb' }}</h2>
-    <ol class="flex flex-row gap-2 items-center p-0 m-0 list-none">
+    <ol class="list-none flex flex-row gap-2 items-center p-0 m-0">
       
       {% for item in breadcrumb %}
         {% set is_first = loop.first %}
@@ -13,29 +13,29 @@
         
         {# Insert ellipsis after first item if truncation is needed #}
         {% if needs_truncation and loop.index == 2 %}
-          <li aria-hidden="true" class="breadcrumb-icon">
+          <li aria-hidden="true" class="breadcrumb-icon-ellipses grid content-center h-10">
             <span class="material-symbols-outlined">more_horiz</span>
           </li>
-          <li aria-hidden="true" class="breadcrumb-icon">
+          <li aria-hidden="true" class="breadcrumb-icon grid content-center h-10">
             <span class="material-symbols-outlined">chevron_right</span>
           </li>
         {% endif %}
         
         {# Render breadcrumb item #}
         {% if should_show %}
-          {% if item.url %}
+          {% if loop.last %}
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ item.text }}
+            </li>
+          {% elseif item.url %}
             <li class="breadcrumb-item">
               <a href="{{ item.url }}" >{{ item.text }}</a>
-            </li>
-          {% else %}
-            <li class="breadcrumb-item" aria-current="page">
-              {{ item.text }}
             </li>
           {% endif %}
           
           {# Add chevron after item (except last) #}
           {% if not loop.last and (not needs_truncation or is_last_two or is_first) %}
-            <li aria-hidden="true" class="breadcrumb-icon">
+            <li aria-hidden="true" class="breadcrumb-icon grid content-center h-10">
               <span class="material-symbols-outlined">chevron_right</span>
             </li>
           {% endif %}

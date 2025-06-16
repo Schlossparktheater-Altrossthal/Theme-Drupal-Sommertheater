@@ -100,7 +100,7 @@
 @layer base {
 
   body {
-    @apply bg-body font-body;
+    @apply bg-body font-body text-gray-darkest;
   }
 
   p {
@@ -158,6 +158,8 @@
     --main-bg-color: var(--color-black);
     --main-heading-color: var(--color-brand-light);
     --main-text-color: var(--color-white);
+    --hyperlink-color: var(--color-gray-lightest);
+    --hyperlink-color-hover: var(--color-white);
     --card-bg: var(--color-gray-dark);
     --card-text-color: var(--color-white);
     --pricing-card-bg-color: var(--color-brand-dark);
@@ -166,7 +168,9 @@
   .color-mode--light {
     --main-bg-color: var(--color-white);
     --main-heading-color: var(--color-brand);
-    --main-text-color: var(--color-black);
+    --main-text-color: var(--color-gray-darkest);
+    --hyperlink-color: var(--color-brand);
+    --hyperlink-color-hover: var(--color-brand-dark);
     --card-bg: var(--color-gray-light);
     --card-text-color: var(--color-black);
     --pricing-card-bg-color: var(--color-white);
