@@ -99,6 +99,10 @@
 /* Custom theme classes */
 @layer base {
 
+  .material-symbols-outlined {
+    font-size: unset;
+  }
+
   body {
     @apply bg-body font-body text-gray-darkest;
   }
@@ -202,4 +206,9 @@
   .border-brand-dark { border-color: var(--color-brand-dark); }
   .border-accent-light { border-color: var(--color-accent-light)}
   .border-accent-dark { border-color: var(--color-accent-dark)}
+}
+
+/* Custom overrides placed outside @layer to ensure they load last and override external styles */
+.icon-5xl {
+  font-size: var(--text-5xl);
 }

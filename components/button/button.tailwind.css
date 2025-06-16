@@ -24,6 +24,14 @@ button.button {
   @apply border-brand bg-brand text-white hover:bg-brand-dark hover:border-brand-dark hover:text-white;
 }
 
+.button--fill-dark {
+  @apply border-brand bg-brand text-gray-lightest hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+}
+
+.button--fill-light {
+  @apply border-brand-light bg-brand-light text-brand-dark hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+}
+
 .button--fill-accent {
   @apply border-accent bg-accent text-white hover:bg-accent-dark hover:border-accent-dark hover:text-white;
 }

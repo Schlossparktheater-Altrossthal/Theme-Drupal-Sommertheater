@@ -16,15 +16,14 @@
     color: var(--color-white, #ffffff);
   }
   .card-profile .person-name {
-    font-size: 28px;
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
     --tw-font-weight: var(--font-weight-bold, 700);
     font-weight: var(--font-weight-bold, 700);
   }
   .card-profile .person-title {
     font-size: var(--text-lg, 1.125rem);
     line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
     font-style: italic;
     @media (width >= 80rem) {
       font-size: var(--text-xl, 1.25rem);

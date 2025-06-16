@@ -20,14 +20,10 @@
   }
 
   .icon-tile h3 {
-    @apply text-[1.75rem];
+    @apply text-3xl;
   }
 
   .icon-tile p {
     @apply text-xl;
-  }
-
-  .icon-tile .material-symbols-outlined {
-    @apply !font-thin !text-5xl;
   }
 }

@@ -40,12 +40,6 @@
     @apply hover:bg-white hover:text-brand-dark;
   }
 
-  .color-mode--dark .card-pricing .button--fill,
-  .color-mode--dark .card-pricing .button--fill.color-mode--dark,
-  .card-pricing .button--fill.color-mode--dark {
-    @apply !bg-brand !border-brand !text-gray-lightest hover:bg-brand-dark! hover:border-brand-dark! hover:text-white!;
-  }
-
   .card-pricing.promote {
     --main-heading-color: var(--color-white);
     --main-text-color: var(--color-white);

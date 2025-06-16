@@ -18,17 +18,12 @@
     font-weight: var(--font-weight-normal, 400);
   }
   .icon-tile h3 {
-    font-size: 1.75rem;
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
   }
   .icon-tile p {
     font-size: var(--text-xl, 1.25rem);
     line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  }
-  .icon-tile .material-symbols-outlined {
-    font-size: var(--text-5xl, 3rem) !important;
-    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333)) !important;
-    --tw-font-weight: var(--font-weight-thin, 100) !important;
-    font-weight: var(--font-weight-thin, 100) !important;
   }
 }
 @property --tw-leading {

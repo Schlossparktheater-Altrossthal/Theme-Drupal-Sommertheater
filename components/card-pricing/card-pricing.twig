@@ -30,7 +30,7 @@
     {{ include('mercury:button', {
       url: button_url,
       label: button_label,
-      variant: 'fill',
+      variant: promote ? 'fill-light' : color_mode == 'dark' ? 'fill-dark' : 'fill',
       radius: 'rounded-sm',
     }) }}
   </footer>
