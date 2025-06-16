@@ -9,6 +9,18 @@
   padding: 1rem;
 }
 
-.storybook-component--tile-logo:has(.color-mode--dark) {
-  @apply bg-black;
+  .storybook-component--tile-logo:has(.color-mode--dark) {
+    @apply bg-black;
+  }
+
+
+@layer components {
+
+  .logo-tile {
+    @apply bg-brand;
+  }
+
+  .logo-tile img {
+    max-height: 86px;
+  }
 }
