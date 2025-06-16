@@ -1,58 +1,62 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-#storybook-root > .hero-sidebyside {
+.storybook-component--hero_2 {
   border-radius: var(--radius-xs, 0.125rem);
   outline-style: var(--tw-outline-style);
   outline-width: 1px;
-  outline-color: var(--color-gray-lightest, #f3f4f6);
+  outline-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
   --tw-outline-style: dotted;
   outline-style: dotted;
 }
-.hero-sidebyside {
-  width: 100%;
-  @media (width >= 40rem) {
-    max-width: 40rem;
+@layer components {
+  .hero-sidebyside {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+    margin-inline: auto;
+    display: flex;
+    gap: var(--spacing-6, 24px);
+    padding-inline: var(--spacing-6, 24px);
+    padding-block: var(--spacing-8, 32px);
+    @media (width >= 48rem) {
+      padding-inline: var(--spacing-10, 40px);
+    }
+    @media (width >= 48rem) {
+      padding-block: var(--spacing-12, 48px);
+    }
+    @media (width >= 80rem) {
+      padding-inline: var(--spacing-16, 64px);
+    }
+    @media (width >= 80rem) {
+      padding-block: calc(var(--spacing, 0.25rem) * 20);
+    }
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
   }
-  @media (width >= 48rem) {
-    max-width: 48rem;
-  }
-  @media (width >= 64rem) {
-    max-width: 64rem;
-  }
-  @media (width >= 80rem) {
-    max-width: 80rem;
-  }
-  @media (width >= 96rem) {
-    max-width: 96rem;
-  }
-  margin-inline: auto;
-  display: flex;
-  gap: var(--spacing-6, 24px);
-  padding-inline: var(--spacing-6, 24px);
-  padding-block: var(--spacing-8, 32px);
-  @media (width >= 48rem) {
-    padding-inline: var(--spacing-10, 40px);
-  }
-  @media (width >= 48rem) {
-    padding-block: var(--spacing-12, 48px);
-  }
-  @media (width >= 80rem) {
-    padding-inline: var(--spacing-16, 64px);
-  }
-  @media (width >= 80rem) {
-    padding-block: calc(var(--spacing, 0.25rem) * 20);
-  }
-}
-.hero-sidebyside .hero-region.content p {
-  font-size: var(--text-2xl, 1.5rem);
-  line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
-  --tw-leading: 1.5;
-  line-height: 1.5;
-  --tw-font-weight: var(--font-weight-normal, 400);
-  font-weight: var(--font-weight-normal, 400);
-  @media (width >= 80rem) {
-    font-size: var(--text-3xl, 2rem);
-    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+  .hero-sidebyside .hero-description {
+    font-size: var(--text-base, 1rem);
+    line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    --tw-leading: 1.5;
+    line-height: 1.5;
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
+    @media (width >= 80rem) {
+      font-size: var(--text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    }
   }
 }
 @property --tw-outline-style {

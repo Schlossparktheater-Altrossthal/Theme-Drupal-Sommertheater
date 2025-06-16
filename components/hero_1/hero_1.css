@@ -1,6 +1,6 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-.sb-main-padded:has(.hero-overlay) {
+.storybook-component--hero_1 {
   height: 100vh;
   padding: var(--spacing-0, 0px);
 }
@@ -26,6 +26,8 @@
     max-width: 96rem;
   }
   margin-inline: auto;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 .hero-overlay .hero-region.content p {
   font-size: var(--text-2xl, 1.5rem);
