@@ -160,7 +160,7 @@
     --main-text-color: var(--color-white);
     --card-bg: var(--color-gray-dark);
     --card-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-brand-dark);
+    --pricing-card-bg-color: var(--color-accent-dark);
   }
 
   .color-mode--light {
