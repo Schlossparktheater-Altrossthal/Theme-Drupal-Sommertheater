@@ -6,6 +6,6 @@ props:
   type: object
   properties: {}
 slots:
-  items:
-    title: Items
+  logos:
+    title: Logos
     description: Components to arrange in a grid or horizontal scroller

@@ -29,12 +29,6 @@ props:
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
-    background:
-      type: string
-      title: Hero background color
-      enum: [brand-light, brand, accent-light, accent, white, black]
-      examples: 
-        - brand-light
     background_position:
       type: string
       title: Hero background image position
