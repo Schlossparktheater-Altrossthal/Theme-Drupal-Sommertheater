@@ -45,8 +45,8 @@
     }
   }
   .card-pricing--footer .button {
-    font-size: var(--text-sm, 0.875rem);
-    line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
+    font-size: var(--text-sm, 0.875rem) !important;
+    line-height: var(--tw-leading, var(--text-sm--line-height, 1.5)) !important;
   }
   .card-pricing.color-mode--dark .link--button-outline-light {
     &:hover {

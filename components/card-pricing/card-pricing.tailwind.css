@@ -33,7 +33,7 @@
   }
 
   .card-pricing--footer .button {
-    @apply text-sm;
+    @apply !text-sm;
   }
 
   .card-pricing.color-mode--dark .link--button-outline-light {

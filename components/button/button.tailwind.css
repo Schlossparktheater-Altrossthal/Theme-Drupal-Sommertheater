@@ -25,7 +25,7 @@ button.button {
 }
 
 .button--fill-dark {
-  @apply border-brand bg-brand text-gray-lightest hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+  @apply border-brand bg-brand text-gray-lightest hover:bg-brand-light hover:border-brand-light hover:text-brand-dark;
 }
 
 .button--fill-light {
