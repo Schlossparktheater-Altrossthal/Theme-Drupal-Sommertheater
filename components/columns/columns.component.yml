@@ -9,16 +9,46 @@ props:
     columns:
       type: integer
       title: Set number of columns
-      enum: [2,3,4]
+      enum: [1,2,3,4]
       examples: 
         - 2
-        - 3
-        - 4
-      default: 2
+    col_w_1:
+      type: integer
+      title: Column width 1
+      enum: [25, 33.3, 40, 50, 66.7, 75]
+      examples: 
+        - 50
+    col_w_2:
+      type: integer
+      title: Column width 2
+      enum: [25, 33.3, 40, 50, 66.7, 75]
+      examples: 
+        - 50
+    col_w_3:
+      type: integer
+      title: Column width 3
+      enum: [25, 33.3, 40, 50, 66.7, 75]
+      examples: 
+        - 33.3
+    col_w_4:
+      type: integer
+      title: Column width 4
+      enum: [25, 33.3, 40, 50, 66.7, 75]
+      examples: 
+        - 25
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark, inherit]
+      enum: [light, dark]
       examples: 
         - light
       default: light
+slots:
+  col_1:
+    title: Column One
+  col_2:
+    title: Column Two
+  col_3:
+    title: Column Three
+  col_4:
+    title: Column Four

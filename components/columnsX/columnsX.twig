@@ -1,0 +1,113 @@
+{% set classes = classes|default([])|merge([
+    'columns',
+    'color-mode--' ~ color_mode,
+])|filter(v => v is not empty) %}
+
+<section class="{{ classes|join(' ') }}">
+  <div class="columns-inner w-full grid gap-6 columns--{{ columns }}">
+
+    {% block columns %}
+
+      {% set cards = [
+        
+          {
+            heading_text: 'Charting New Frontiers in Space Exploration',
+            level: 3,
+            text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+            media: {
+              src: 'assets/957040.jpg',
+              alt: 'Photo by Felix Mittermeier: https://www.pexels.com/photo/silhouette-of-person-under-blue-and-purple-sky-957040/',
+            },
+            orientation: 'stacked',
+            badges: [
+              {
+                url: 'https://example.com',
+                label: 'Architecture',
+                icon: '',
+                icon_first: true,
+              },
+              {
+                url: 'https://example.com',
+                label: 'Modern',
+                icon: '',
+                icon_first: true,
+              },
+            ]
+          },
+          {
+            heading_text: 'Inside the Next Era of Human Spaceflight',
+            level: 3,
+            text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+            media: {
+              src: 'assets/277628-911758.jpg',
+              alt: 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/',
+            },
+            orientation: 'stacked',
+            badges: [
+              {
+                url: 'https://example.com',
+                label: 'Architecture',
+              },
+              {
+                url: 'https://example.com',
+                label: 'Modern',
+              },
+            ]
+          },
+          {
+            heading_text: 'Building the Future of Interplanetary Travel',
+            level: 3,
+            text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+            image: 'assets/5255417.jpg',
+            alt: 'Photo by gdtography:',
+            media: {
+              src: 'assets/5255417.jpg',
+              alt: 'Photo by gdtography:',
+            },
+            orientation: 'stacked',
+            badges: [
+              {
+                url: 'https://example.com',
+                label: 'Architecture',
+              },
+              {
+                url: 'https://example.com',
+                label: 'Modern',
+              },
+            ]
+          },
+          {
+            heading_text: 'From Earth to Orbit: A Mission in Motion',
+            level: 3,
+            text: 'Lorem ipsum dolor sit amet donec dis parturient sit neque fames pulvinar volutpat',
+            media: {
+              src: 'assets/3526020.jpg',
+              alt: 'Photo by Craig Adderley: https://www.pexels.com/photo/chewbacca-of-star-wars-3526020/',
+            },
+            orientation: 'stacked',
+            badges: [
+              {
+                url: 'https://example.com',
+                label: 'Architecture',
+              },
+              {
+                url: 'https://example.com',
+                label: 'Modern',
+              },
+            ]
+          },
+
+        ] %}
+
+      {% for i in 0..columns-1 %}
+
+        {{ include('mercury:card',
+          cards[i]
+        ) }}
+
+      {% endfor %}
+
+    {% endblock %}
+  </div>
+</section>
+

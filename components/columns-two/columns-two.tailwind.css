@@ -1,0 +1,15 @@
+@reference '../../src/main.css';
+/* 
+/* Storybook specific */
+.storybook-component--columns-two {
+
+}
+
+
+@layer components {
+
+  .two-columns {
+    @apply bg-amber-50;
+  }
+  
+}

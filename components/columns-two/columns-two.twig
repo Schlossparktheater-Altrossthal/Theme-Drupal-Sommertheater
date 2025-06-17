@@ -1,0 +1,33 @@
+
+
+{% set size_class = 'md:grid-cols-[' ~ size_column_one ~ '%_' ~ size_column_two ~ '%]' %}
+
+{% set col2_classes = col2_classes|default([])|merge([
+  'two-columns',
+  'w-full',
+  'grid',
+  'gap-6',
+  'color-mode--' ~ color_mode,
+  size_class,
+])|filter(v => v is not empty) %}
+
+{#  #}
+
+<div class="{{ col2_classes|join(' ') }}">
+
+  {% if block('col_one') is defined %}
+    <div class="border border-gray-light">
+      {% block col_one %}
+      Column 1
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if block('col_one') is defined %}
+    <div class="border border-gray-light">
+    {% block col_two %}
+        Column 2
+    {% endblock %}
+    </div>
+  {% endif %}
+</div>

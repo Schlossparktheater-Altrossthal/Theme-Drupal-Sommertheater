@@ -1,0 +1,24 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: ColumnsX
+group: Layouts/Columns
+status: stable
+description: A Column container
+props:
+  type: object
+  properties:
+    columns:
+      type: integer
+      title: Set number of columns
+      enum: [2,3,4]
+      examples: 
+        - 2
+        - 3
+        - 4
+      default: 2
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark, inherit]
+      examples: 
+        - light
+      default: light
