@@ -1,0 +1,52 @@
+{# search-results-card.twig #}
+
+{% set date_formatted = date ? date|date('l, M. j, Y') : null %}
+
+{# {% set event_date_formatted = event_date ? event_date.start|date('l, M. j, Y') : null %} #}
+{% if event_date and event_date.start and event_date.end %}
+  {% set event_date_formatted = event_date.start|date(event_date.format) ~ ' - ' ~ event_date.end|date(event_date.format) %}
+{% endif %}
+
+<div class="search-results-card">
+  {% if media.src is not empty %}
+    <div class="search-results-card--image">
+      <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    </div>
+  {% endif %}
+
+  <div class="search-results-card--content w-auto">
+    {% if event_date_formatted %}
+      <div class="search-results-card--date">
+        <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
+      </div>
+    {% endif %}
+
+    <div class="search-results-card--title">
+      {{ include('mercury:heading', title) }}
+    </div>
+
+    {% if date_formatted %}
+      <div class="search-results-card--date">
+        <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
+      </div>
+    {% endif %}
+
+    <div class="search-results-card--description">
+      {{ description }}
+    </div>
+
+    {% if badges is not empty %}
+      <div class="search-results-card--badges">
+        {% for badge in badges %}
+          {{ include('mercury:badge', badge) }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  
+    {% if link %}
+      <div class="search-results-card--link">
+        {{ include('mercury:link', link) }}
+      </div>
+    {% endif %}
+  </div>
+</div>
