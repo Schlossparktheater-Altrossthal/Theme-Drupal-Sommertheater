@@ -1,5 +1,5 @@
 import parse from 'html-react-parser';
-import once from '../src/common/once.js';
+import once from '@drupal/once';
 import '../src/main.css';
 import '../src/overrides.css';
 import '../src/ui.css';

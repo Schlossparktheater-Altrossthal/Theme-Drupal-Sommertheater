@@ -4,9 +4,9 @@ class NavbarSearch extends ComponentInstance {
   init() {
     this.submitButton = this.el.querySelector('[type="submit"]');
     this.searchInput = this.el.querySelector('[type="search"]');
-
     this.attachEventListeners();
   }
+
   attachEventListeners() {
     if (!this.submitButton) {
       return;
