@@ -1,13 +1,4 @@
 <div class="horizontal-scroller snap-x xl:snap-none overflow-x-auto flex flex-nowrap justify-start gap-3 xl:container mx-auto xl:grid grid-cols-4 xl:justify-stretch items-stretch">
-  {% block items %}
-    {% for i in 1..8 %}
-      {{ include(
-        'mercury:tile-logo',
-        {
-          color_mode: 'light',
-          media: media,
-        }
-      ) }}
-    {% endfor %}
-  {% endblock items %}
+  {% block logos %}
+  {% endblock %}
 </div>

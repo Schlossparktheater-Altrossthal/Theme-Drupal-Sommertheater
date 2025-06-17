@@ -8,12 +8,14 @@
   @apply h-full;
 }
 
-.hero-overlay {
-  @apply container mx-auto relative;
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
-}
+@layer components {
+  .hero-overlay {
+    @apply container mx-auto relative;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
 
-.hero-overlay .hero-region.content p {
-  @apply font-normal text-2xl xl:text-3xl leading-[1.5];
+  .hero-overlay .hero-region.content p {
+    @apply font-normal text-2xl xl:text-3xl leading-[1.5];
+  }
 }
