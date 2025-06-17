@@ -11,19 +11,31 @@
     color: var(--main-text-color);
   }
 
-  .card-pricing .card-title {
-    @apply font-semibold text-2xl lg:text-3xl text-[2.25rem];
+  .card-pricing--header .card-title {
+    @apply font-light text-[2.25rem] leading-tight;
     color: var(--main-heading-color);
   }
 
-  .card-pricing header > p {
-    @apply text-lg lg:text-xl 2xl:text-[22px] leading-[1.2];
+  .card-pricing--header > .card-description {
+    @apply text-xl leading-[1.2];
   }
 
-  .card-pricing .card-price {
+  .card-pricing--features {
+    @apply border-t pt-4;
+  }
+
+  .card-pricing--features li {
+    @apply text-xl;
+  }
+
+  .card-pricing--price .card-price {
     @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] leading-none;
   }
-  /* @todo - move this to link component */
+
+  .card-pricing--footer .button {
+    @apply text-sm;
+  }
+
   .card-pricing.color-mode--dark .link--button-outline-light {
     @apply hover:bg-white hover:text-brand-dark;
   }
@@ -35,6 +47,6 @@
   }
 
   .card-pricing.promote .button--fill {
-  @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
-}
+    @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
+  }
 }

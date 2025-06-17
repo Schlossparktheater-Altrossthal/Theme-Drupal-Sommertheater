@@ -1,11 +1,13 @@
 {% set tile_classes = tile_classes|default([])|merge([
     'logo-tile',
+    'aspect-4/3 rounded-sm',
     'color-mode--' ~ color_mode,
-    color_mode == 'dark' ? 'bg-brand' : 'bg-white border',
 ])|filter(v => v is not empty) %}
 
-<div class="{{ tile_classes|join(' ') }} aspect-4/3 rounded-sm">
+<div class="{{ tile_classes|join(' ') }}">
   <div class="p-[10%] h-[100%] flex justify-center items-center">
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ image.src }}" alt="{{ image.alt }}" />
+    {% block logo %}
+      <img src="{{ media.src }}" alt="{{ media.alt }}" />
+    {% endblock %}
   </div>
 </div>

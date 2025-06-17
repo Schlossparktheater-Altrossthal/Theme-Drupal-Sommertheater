@@ -1,0 +1,54 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.storybook-component--card-events {
+  max-width: var(--container-md, 28rem);
+}
+@layer components {
+  .card-events {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+  .card-events .heading {
+    --tw-font-weight: var(--font-weight-bold, 700);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-brand, #2563eb);
+  }
+  .card-events--date {
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-font-weight: var(--font-weight-bold, 700);
+    font-weight: var(--font-weight-bold, 700);
+  }
+  .card-events--description, .card-events--place {
+    font-size: var(--text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  }
+  .card-events--place {
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
+  }
+  .color-mode--light .card-events, .color-mode--light.card-events {
+    --main-text-color: var(--color-gray-dark);
+  }
+  .color-mode--dark .card-events .heading, .color-mode--dark.card-events .heading {
+    color: var(--color-white, #ffffff);
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-leading: initial;
+    }
+  }
+}

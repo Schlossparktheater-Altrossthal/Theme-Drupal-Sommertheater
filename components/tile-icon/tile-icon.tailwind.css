@@ -13,11 +13,17 @@
   @apply bg-black;
 }
 
+@layer components {
 
-.icon-tile h3 {
-  @apply text-3xl font-light;
-}
+  .icon-tile * {
+    @apply font-normal leading-tight;
+  }
 
-.icon-tile p {
-  @apply text-xl font-light;
+  .icon-tile h3 {
+    @apply text-3xl;
+  }
+
+  .icon-tile p {
+    @apply text-xl;
+  }
 }

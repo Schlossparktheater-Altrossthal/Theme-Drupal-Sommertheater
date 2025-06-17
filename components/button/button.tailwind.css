@@ -17,11 +17,19 @@ button.button {
 }
 
 .button {
-  @apply w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
+  @apply font-medium text-xl w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
 }
 
 .button--fill {
   @apply border-brand bg-brand text-white hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+}
+
+.button--fill-dark {
+  @apply border-brand bg-brand text-gray-lightest hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+}
+
+.button--fill-light {
+  @apply border-brand-light bg-brand-light text-brand-dark hover:bg-brand-dark hover:border-brand-dark hover:text-white;
 }
 
 .button--fill-accent {

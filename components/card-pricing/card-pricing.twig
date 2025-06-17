@@ -8,27 +8,31 @@
 %}
 
 <article class="{{ classes|join(' ') }}">
-  <header class="flex flex-col gap-2">
+
+  <header class="card-pricing--header flex flex-col gap-2">
     <h3 class="card-title">{{ heading_text }}</h3>
-    <p>
+    <p class="card-description">
       {{ description }}
     </p>
   </header>
-  <div class="card-content">
+
+  <div class="card-pricing--price">
     <h4 class="card-price">
       <data value="{{ price }}" data-currency="USD"><sup>$</sup>{{ price }}</data>
     </h4>
-    <hr/>
-    <div class="card-features">
-      {{ text }}
-    </div>
   </div>
-  <footer>
+
+  <div class="card-pricing--features">
+    {{ text }}
+  </div>
+
+  <footer class="card-pricing--footer">
     {{ include('mercury:button', {
       url: button_url,
       label: button_label,
-      variant: 'fill',
+      variant: promote ? 'fill-light' : color_mode == 'dark' ? 'fill-dark' : 'fill',
       radius: 'rounded-sm',
     }) }}
   </footer>
+
 </article>

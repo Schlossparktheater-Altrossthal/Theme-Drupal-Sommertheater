@@ -4,23 +4,25 @@
   ]
 %}
 
-{% if url %}
-  <a href="{{ url }}" class="{{ classes|join(' ') }}">
-{% else %}
-  <div class="{{ classes|join(' ') }}">
-{% endif %}
-    <div class="card--media relative z-1 overflow-hidden">
-      <div class="absolute inset-0 bg-black/50"></div>
-      <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
-    </div>
-    <div class="card--content absolute z-2 top-1/2 -translate-y-1/2 w-full p-3">
-      <p>
+<div class="{{ classes|join(' ') }}">
+  <div class="card--media relative z-1 overflow-hidden">
+    {% block card_media %}
+      {% if media.src is not empty %}
+        <div class="absolute inset-0 bg-black/50"></div>
+      {% endif %}
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="object-cover w-full h-full"/>
+    {% endblock %}
+  </div>
+  <div class="card--content absolute z-2 inset-0">
+    {% if url is not empty %}
+      <a href="{{ url }}" class="before:absolute before:content-[''] before:inset-0">
+    {% endif %}
+      <p class="absolute top-1/2 inset-0">
         <strong class="person-name">{{ name }}</strong><br>
         <span class="person-title">{{ job_title }}</span>
       </p>
-    </div>
-{% if url %}
-  </a>
-{% else %}
+    {% if url %}
+      </a>
+    {% endif %}
   </div>
-{% endif %}
+</div>

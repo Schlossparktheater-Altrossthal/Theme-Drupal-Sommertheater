@@ -5,10 +5,10 @@ group: Components/Tiles
 props:
   type: object
   properties:
-    image:
+    media:
       $ref: json-schema-definitions://experience_builder.module/image
       type: object
-      title: Image
+      title: Logo
       examples:
         - src: 'assets/logo.png'
           alt: 'Placeholder brand logo'

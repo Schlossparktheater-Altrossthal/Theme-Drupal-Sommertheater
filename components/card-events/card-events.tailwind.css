@@ -1,0 +1,40 @@
+@reference '../../src/main.css';
+
+.storybook-component--card-events {
+  @apply max-w-md;
+}
+
+@layer components {
+
+  .card-events {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+
+  .card-events .heading {
+    @apply font-bold text-brand;
+  }
+
+  .card-events--date {
+    @apply font-bold text-2xl leading-none;
+  }
+
+  .card-events--description,
+  .card-events--place {
+    @apply text-xl;
+  }
+
+  .card-events--place {
+    @apply font-semibold;
+  }
+
+  .color-mode--light .card-events,
+  .color-mode--light.card-events {
+    --main-text-color: var(--color-gray-dark);
+  }
+
+  .color-mode--dark .card-events .heading,
+  .color-mode--dark.card-events .heading {
+    @apply text-white;
+  } 
+}

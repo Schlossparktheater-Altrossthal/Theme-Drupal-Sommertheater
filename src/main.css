@@ -99,6 +99,10 @@
 /* Custom theme classes */
 @layer base {
 
+  .material-symbols-outlined {
+    font-size: unset;
+  }
+
   body {
     @apply bg-body font-body text-gray-darkest;
   }
@@ -136,7 +140,7 @@
   }
 
   hr {
-    @apply my-6 border-t border-gray;
+    @apply my-4 border-t border-gray;
   }
 
   table,
@@ -162,7 +166,7 @@
     --hyperlink-color-hover: var(--color-white);
     --card-bg: var(--color-gray-dark);
     --card-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-brand-dark);
+    --pricing-card-bg-color: var(--color-accent-dark);
   }
 
   .color-mode--light {
@@ -172,7 +176,7 @@
     --hyperlink-color: var(--color-brand);
     --hyperlink-color-hover: var(--color-brand-dark);
     --card-bg: var(--color-gray-light);
-    --card-text-color: var(--color-black);
+    --card-text-color: var(--color-gray-darkest);
     --pricing-card-bg-color: var(--color-white);
   }
 }
@@ -202,4 +206,9 @@
   .border-brand-dark { border-color: var(--color-brand-dark); }
   .border-accent-light { border-color: var(--color-accent-light)}
   .border-accent-dark { border-color: var(--color-accent-dark)}
+}
+
+/* Custom overrides placed outside @layer to ensure they load last and override external styles */
+.icon-5xl {
+  font-size: var(--text-5xl);
 }
