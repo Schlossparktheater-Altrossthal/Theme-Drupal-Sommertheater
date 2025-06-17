@@ -1,0 +1,8 @@
+{# Overriding media_slot just for Storybook #}
+{% embed 'mercury:card' %}
+  {% block card_media %}
+    {% if media.src is not empty %}
+      <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    {% endif %}
+  {% endblock %}
+{% endembed %}

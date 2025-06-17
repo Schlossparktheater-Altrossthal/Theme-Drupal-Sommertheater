@@ -1,3 +1,4 @@
+hide_main: true
 badges:
   - url: 'https://www.example.com'
     label: 'badge one'

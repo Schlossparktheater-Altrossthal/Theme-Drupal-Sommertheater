@@ -8,8 +8,11 @@
 
 <div class="{{ classes|join(' ') }}">
   <div class="card--media overflow-hidden">
-    {# Image will get swapped out in XB #}
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    {% block card_media %}
+      {% if media.src is not empty %}
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+      {% endif %}
+    {% endblock %}
   </div>
   <div class="card--content flex flex-col gap-4 items-baseline">
     {% block badges %}
