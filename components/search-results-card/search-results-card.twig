@@ -7,14 +7,14 @@
   {% set event_date_formatted = event_date.start|date(event_date.format) ~ ' - ' ~ event_date.end|date(event_date.format) %}
 {% endif %}
 
-<article class="search-results-card">
+<article class="search-results-card flex flex-col md:flex-row items-start">
   {% if media.src is not empty %}
-    <div class="search-results-card--image">
+    <div class="search-results-card--image max-w-xs mb-6 md:mb-0 md:mr-8">
       <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
     </div>
   {% endif %}
 
-  <div class="search-results-card--content">
+  <div class="search-results-card--content flex flex-col gap-3 w-auto">
     {% if event_date_formatted %}
       <p class="search-results-card--event-date">
         <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
@@ -34,7 +34,7 @@
     </p>
 
     {% if tags is not empty %}
-      <ul class="search-results-card--tags">
+      <ul class="search-results-card--tags flex flex-wrap gap-4 p-0 list-none">
         {% for tag in tags %}
           <li>
             {{ include('mercury:link', tag) }}
