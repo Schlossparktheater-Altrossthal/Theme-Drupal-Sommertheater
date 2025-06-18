@@ -1,12 +1,16 @@
 import parse from 'html-react-parser';
+import once from '@drupal/once';
 import '../src/main.css';
 import '../src/ui.css';
 import '../src/stories/sdc-stories/components.css';
 
+// Make the `once` function globally available in Storybook.
+window.once = once;
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -27,7 +31,7 @@ export const loaders = [
       const component = parse(await originalStoryFn.render(args));
       return { component };
     }
-  }
+  },
 ];
 
 export default preview;

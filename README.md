@@ -113,7 +113,7 @@ You can see all of the above in action in the Collapsible Section component.
 
 ## Component JavaScript
 
-`src/common/component.js` has two classes you can use to nicely encapsulate your component JS without pasting all the `Drupal.behaviors.componentName` boilerplate into every file. The steps are:
+`lib/component.js` has two classes you can use to nicely encapsulate your component JS without pasting all the `Drupal.behaviors.componentName` boilerplate into every file. The steps are:
 
 1. Extend the `ComponentInstance` class to a new class with the code for your component.
 2. Create a new instance of the `ComponentType` class to automatically activate all the component instances on that page.
@@ -121,10 +121,7 @@ You can see all of the above in action in the Collapsible Section component.
 For example, here's a stub of `collapsible-section.js`:
 
 ```js
-import {
-  ComponentType,
-  ComponentInstance,
-} from '../../src/common/component.js';
+import { ComponentType, ComponentInstance } from '../../lib/component.js';
 
 // Make a new class with the code for our component.
 //
@@ -135,7 +132,9 @@ import {
 class CollapsibleSection extends ComponentInstance {
   // Every subclass must have an `init` method to activate the component.
   init() {
-    this.el.querySelector('.collapsible-section__content').classList.toggle('visible');
+    this.el
+      .querySelector('.collapsible-section__content')
+      .classList.toggle('visible');
     this.el.addClass('js');
   }
 

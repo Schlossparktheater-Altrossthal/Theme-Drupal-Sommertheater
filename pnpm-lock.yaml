@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@drupal/once':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@rollup/plugin-yaml':
         specifier: ^4.1.2
         version: 4.1.2(rollup@4.34.1)
@@ -277,6 +280,9 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       postcss-selector-parser: ^7.0.0
+
+  '@drupal/once@1.0.1':
+    resolution: {integrity: sha512-O8tQmNDBgSm3ADuFZ5OZlGxsrdsc+pEqd1NBoMpSzWwiOnWwC91tqDwnlX+mDh7sBJoJ+4vVwFh0NLUV4LPFvg==}
 
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
@@ -3927,6 +3933,8 @@ snapshots:
   '@csstools/selector-specificity@5.0.0(postcss-selector-parser@7.0.0)':
     dependencies:
       postcss-selector-parser: 7.0.0
+
+  '@drupal/once@1.0.1': {}
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 

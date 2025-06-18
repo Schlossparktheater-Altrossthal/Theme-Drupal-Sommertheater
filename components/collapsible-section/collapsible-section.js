@@ -1,4 +1,4 @@
-import { ComponentType, ComponentInstance } from '../../src/common/component.js';
+import { ComponentType, ComponentInstance } from '../../lib/component.js';
 class CollapsibleSection extends ComponentInstance {
   // An internal private property to keep up with the current state of the
   // accordion. The hash makes it so you can't get or set this property outside
@@ -15,7 +15,9 @@ class CollapsibleSection extends ComponentInstance {
   init() {
     // Save our togglable classes for easy reference.
     this.button = this.el.querySelector('.collapsible-section--title');
-    this.contentContainer = this.el.querySelector('.collapsible-section--content');
+    this.contentContainer = this.el.querySelector(
+      '.collapsible-section--content'
+    );
 
     // With the `set isOpen()` below, merely setting this property does all the
     // stuff necessary to open or close the collapsible.
@@ -31,16 +33,13 @@ class CollapsibleSection extends ComponentInstance {
     // Remeasure the height on every (debounced) resize event.
     let timeout = 0;
 
-    window.addEventListener('resize', e => {
+    window.addEventListener('resize', (e) => {
       this.el.classList.add('collapsible-section--resizing');
       window.clearTimeout(timeout);
-      timeout = window.setTimeout(
-        () => {
-          this.measureNaturalHeight();
-          this.el.classList.remove('collapsible-section--resizing');
-        },
-        350
-      );
+      timeout = window.setTimeout(() => {
+        this.measureNaturalHeight();
+        this.el.classList.remove('collapsible-section--resizing');
+      }, 350);
     });
 
     // Make the button work.
@@ -50,8 +49,8 @@ class CollapsibleSection extends ComponentInstance {
     });
 
     this.el.classList.add('collapsible-section--js');
-    void (this.el.offsetHeight);
-    this.el.classList.add(CollapsibleSection.animateClass)
+    void this.el.offsetHeight;
+    this.el.classList.add(CollapsibleSection.animateClass);
   }
 
   // This setter makes it so the collapsible can be opened and closed just by
@@ -83,7 +82,6 @@ class CollapsibleSection extends ComponentInstance {
       if (this.shouldDispatchEvents) {
         this.el.dispatchEvent(new Event('collapsibleopen', { bubbles: true }));
       }
-
     } else {
       // DOM manipulation.
       this.el.classList.remove(CollapsibleSection.openClass);
