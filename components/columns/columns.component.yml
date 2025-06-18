@@ -7,35 +7,23 @@ props:
   type: object
   properties:
     columns:
-      type: integer
+      type: string
       title: Set number of columns
       enum: [1,2,3,4]
       examples: 
         - 2
-    col_w_1:
-      type: integer
-      title: Column width 1
-      enum: [25, 33.3, 40, 50, 66.7, 75]
+    column_ratio:
+      type: string
+      title: Column Size Combos
+      enum: ['100','50 / 50','40 / 60', '60 / 40','25 / 75','75 / 25','33.3 / 66.7','66.7 / 33.3','33.3 / 33.3 / 33.3','25 / 25 / 50','50 / 25 / 25','25 / 50 / 25', '25 / 25 / 25 / 25']
       examples: 
-        - 50
-    col_w_2:
-      type: integer
-      title: Column width 2
-      enum: [25, 33.3, 40, 50, 66.7, 75]
+        - '50 / 50'
+    width:
+      type: string
+      title: Container Width
+      enum: ['full', '9/10', '8/10', '3/4', '1/2']
       examples: 
-        - 50
-    col_w_3:
-      type: integer
-      title: Column width 3
-      enum: [25, 33.3, 40, 50, 66.7, 75]
-      examples: 
-        - 33.3
-    col_w_4:
-      type: integer
-      title: Column width 4
-      enum: [25, 33.3, 40, 50, 66.7, 75]
-      examples: 
-        - 25
+        - 'full'
     color_mode:
       type: string
       title: Color Mode

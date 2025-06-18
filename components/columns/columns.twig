@@ -1,41 +1,61 @@
 {% set classes = classes|default([])|merge([
     'columns',
+    'container',
+    'mx-auto',
+    'px-5 md:px-6',
+    'col-count--' ~ columns,
     'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
 
-{{ columns }}
+{% set ratio_map = {
+  '100': '[1fr]',
+  '50 / 50': '[1fr_1fr]',
+  '40 / 60': '[2fr_3fr]',
+  '60 / 40': '[3fr_2fr]',
+  '25 / 75': '[1fr_3fr]',
+  '75 / 25': '[3fr_1fr]',
+  '33.3 / 66.7': '[1fr_2fr]',
+  '66.7 / 33.3': '[2fr_1fr]',
+  '33.3 / 33.3 / 33.3': '[1fr_1fr_1fr]',
+  '25 / 25 / 50': '[1fr_1fr_2fr]',
+  '50 / 25 / 25': '[2fr_1fr_1fr]',
+  '25 / 50 / 25': '[1fr_2fr_1fr]',
+  '25 / 25 / 25 / 25': '[1fr_1fr_1fr_1fr]'
+} %}
+
+{% set ratio = ratio_map[column_ratio] ?? '' %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="columns-inner w-full grid gap-6 columns--{{ columns }}">
+  <div class="columns-inner w-full grid gap-6 md:grid-cols-{{ ratio }} mx-auto max-w-{{ width }}">
 
   {% if block('col_1') is defined and columns >= 1 %}
-    <div class="border border-gray-light">
+    <div class="col min-h-6">
       {% block col_1 %}
-      Column 1
+
       {% endblock %}
     </div>
   {% endif %}
 
   {% if block('col_2') is defined and columns >= 2 %}
-    <div class="border border-gray-light">
+    <div class="col min-h-6">
     {% block col_2 %}
-        Column 2
+     
     {% endblock %}
     </div>
   {% endif %}
 
     {% if block('col_3') is defined and columns >= 3 %}
-    <div class="border border-gray-light">
+    <div class="col min-h-6">
     {% block col_3 %}
-        Column 3
+   
     {% endblock %}
     </div>
   {% endif %}
 
   {% if block('col_4') is defined and columns >= 4 %}
-    <div class="border border-gray-light">
+    <div class="col min-h-6">
     {% block col_4 %}
-        Column 4
+
     {% endblock %}
     </div>
   {% endif %}

@@ -1,27 +1,15 @@
 @reference '../../src/main.css';
 
-.sb-show-main:has(.storybook-component--columns) {
-  @apply p-0;
+.sb-main-padded .storybook-component--columns {
+  @apply py-5;
 }
-
-/* See custom classes in main.css to modify CSS variables. */
-.columns {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+.sb-show-main:has(.storybook-component--columns) .col {
+  @apply border border-dotted border-gray-light;
 }
+@layer components {
 
-.columns-inner {
-  @apply m-auto p-5 max-w-7xl relative;
-}
-
-.columns--2 {
-  @apply md:grid-cols-2;
-}
-
-.columns--3 {
-  @apply md:grid-cols-3;
-}
-
-.columns--4 {
-  @apply sm:grid-cols-2 lg:grid-cols-4;
+  .columns {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
 }
