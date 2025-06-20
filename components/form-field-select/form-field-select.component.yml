@@ -50,3 +50,6 @@ props:
       description: Whether the text is disabled.
       examples:
         - false
+libraryOverrides:
+  js:
+    form-field-select.js: { attributes: { type: module }}
