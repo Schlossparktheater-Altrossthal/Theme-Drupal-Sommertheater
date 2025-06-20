@@ -36,6 +36,7 @@
     line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
     --tw-leading: 1;
     line-height: 1;
+    color: var(--color-brand, #2563eb);
     @media (width >= 64rem) {
       font-size: var(--text-5xl, 3rem);
       line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
@@ -43,6 +44,12 @@
     @media (width >= 96rem) {
       font-size: 3.15rem;
     }
+  }
+  .card-pricing.color-mode--dark .card-price {
+    color: var(--color-white, #ffffff);
+  }
+  .card-pricing.promote .card-price {
+    color: var(--color-white, #ffffff);
   }
   .card-pricing--footer .button {
     font-size: var(--text-sm, 0.875rem) !important;
