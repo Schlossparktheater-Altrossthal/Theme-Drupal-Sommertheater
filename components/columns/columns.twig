@@ -1,9 +1,10 @@
 {% set classes = classes|default([])|merge([
     'columns',
-    'container',
+    'flex',
+    'flex-col',
     'mx-auto',
-    'px-5 md:px-6',
-    'py-8 md:py-12',
+    'px-5',
+    'md:px-6',
     'col-count--' ~ columns,
     'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
@@ -24,15 +25,32 @@
   '25 / 25 / 25 / 25': '[1fr_1fr_1fr_1fr]'
 } %}
 
+{% set margin_before_map = {
+  'none': 'mt-0',
+  'tight': 'mt-4',
+  'normal': 'mt-8 md:mt-12',
+  'extra': 'mt-12 md:mt-16',
+} %}
+
+{% set margin_after_map = {
+  'none': 'mb-0',
+  'tight': 'mb-4',
+  'normal': 'mb-8 md:mb-12',
+  'extra': 'mb-12 md:mb-16',
+} %}
+
 {% set ratio = ratio_map[column_ratio] ?? '' %}
 
+{% set margin_before = margin_before_map[margin_before] ?? '' %}
+
+{% set margin_after = margin_after_map[margin_after] ?? '' %}
+
 <section class="{{ classes|join(' ') }}">
-  <div class="columns-inner grid gap-4 md:gap-6 xl:gap-8 md:grid-cols-{{ ratio }} w-full max-w-{{ width }} mx-auto">
+  <div class="columns-inner container grid gap-4 md:gap-6 xl:gap-8 md:grid-cols-{{ ratio }} w-full max-w-{{ width }} mx-auto {{ margin_before }} {{ margin_after }}">
 
   {% if block('col_1') is defined and columns >= 1 %}
     <div class="col min-h-6">
       {% block col_1 %}
-
       {% endblock %}
     </div>
   {% endif %}
@@ -40,7 +58,6 @@
   {% if block('col_2') is defined and columns >= 2 %}
     <div class="col min-h-6">
     {% block col_2 %}
-     
     {% endblock %}
     </div>
   {% endif %}
@@ -48,7 +65,6 @@
     {% if block('col_3') is defined and columns >= 3 %}
     <div class="col min-h-6">
     {% block col_3 %}
-   
     {% endblock %}
     </div>
   {% endif %}
@@ -56,7 +72,6 @@
   {% if block('col_4') is defined and columns >= 4 %}
     <div class="col min-h-6">
     {% block col_4 %}
-
     {% endblock %}
     </div>
   {% endif %}
