@@ -1,0 +1,51 @@
+{% set date_formatted = date ? date|date('l, M. j, Y') : null %}
+
+{% if event_date and event_date.start and event_date.end %}
+  {% set event_date_formatted = event_date.start|date(event_date.format) ~ ' - ' ~ event_date.end|date(event_date.format) %}
+{% endif %}
+
+{% block teaser %}
+  <article class="search-results flex flex-col md:grid md:grid-cols-[1fr_2fr] gap-6 md:gap-8 items-start">
+    {% if media.src is not empty %}
+      {% block thumbnail %}
+        <div class="search-results--image aspect-5/4">
+          <img src="{{ media.src }}" alt="{{ media.alt }}" class="object-cover w-full h-full" />
+        </div>
+      {% endblock %}
+    {% endif %}
+
+    <div class="search-results--content flex flex-col gap-3 w-auto">
+
+      {% if event_date_formatted %}
+        <p class="search-results--event-date">
+          <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
+        </p>
+      {% endif %}
+
+      {{ include('mercury:heading', title) }}
+
+      {% if date_formatted %}
+        <p class="search-results--date">
+          <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
+        </p>
+      {% endif %}
+
+      <p class="search-results--description">
+        {{ description }}
+      </p>
+
+    {% if tags is not empty %}
+      <ul class="search-results--tags flex flex-wrap gap-4 p-0 list-none">
+        {% for tag in tags %}
+          <li>
+            {{ include('mercury:link', tag) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if link %}
+      {{ include('mercury:link', link) }}
+    {% endif %}
+    </div>
+  </article>
+{% endblock %}
