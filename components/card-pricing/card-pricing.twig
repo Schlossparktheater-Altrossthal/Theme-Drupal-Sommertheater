@@ -1,7 +1,6 @@
 {% set classes = [
     'card-pricing',
-    'flex flex-col gap-4 md:gap-6 border border-brand-dark p-6 lg:p-10 2xl:p-12',
-    card_radius,
+    'flex flex-col gap-4 md:gap-6 border p-6 lg:p-10 2xl:p-12',
     'color-mode--' ~ color_mode,
     promote ? 'promote',
   ]
@@ -23,7 +22,7 @@
   </div>
 
   <div class="card-pricing--features">
-    {{ text }}
+    {{ text|raw }}
   </div>
 
   <footer class="card-pricing--footer">
