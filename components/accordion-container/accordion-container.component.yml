@@ -9,3 +9,6 @@ slots:
   accordion_content:
     title: Accordion Content
     description: Child content, only one of whose Collapsible Sections can be open at a time.
+libraryOverrides:
+  js:
+    accordion-container.js: { attributes: { type: module }}

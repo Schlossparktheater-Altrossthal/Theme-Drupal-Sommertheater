@@ -26,3 +26,7 @@ slots:
   collapsible_content:
     title: Collapsible Content
     description: Elements to collapse away.
+
+libraryOverrides:
+  js:
+    collapsible-section.js: { attributes: { type: module }}

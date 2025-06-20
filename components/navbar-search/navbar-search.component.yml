@@ -29,3 +29,6 @@ props:
       description: The label for the submit button.
       examples:
         - "Search"
+libraryOverrides:
+  js:
+    navbar-search.js: { attributes: { type: module }}
