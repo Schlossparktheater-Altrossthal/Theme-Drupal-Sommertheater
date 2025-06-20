@@ -210,7 +210,7 @@
 /* Classes for light/dark color modes. */
 @layer components {
   .color-mode--dark {
-    --main-bg-color: var(--color-black);
+    --main-bg-color: var(--color-gray-darkest);
     --main-heading-color: var(--color-brand-light);
     --main-text-color: var(--color-white);
     --hyperlink-color: var(--color-blue-100);
