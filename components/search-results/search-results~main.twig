@@ -1,52 +1,8 @@
- {% block teaser %}
-
-{% set date_formatted = date ? date|date('l, M. j, Y') : null %}
-
-{% if storybook.event_date and storybook.event_date.start and storybook.event_date.end %}
-  {% set event_date_formatted = storybook.event_date.start|date(storybook.event_date.format) ~ ' - ' ~ storybook.event_date.end|date(storybook.event_date.format) %}
-{% endif %}
-
-
- <article class="search-results-card flex flex-col md:flex-row items-start">
-
-   {% if storybook.media.src is not empty %}
-      <div class="search-results-card--image max-w-xs mb-6 md:mb-0 md:mr-8">
-        <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ storybook.media.src }}" alt="{{ storybook.media.alt }}" />
-      </div>
-    {% endif %}
-
-    <div class="search-results-card--content flex flex-col gap-3 w-auto">
-
-      {% if event_date_formatted %}
-        <p class="search-results-card--event-date">
-          <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
-        </p>
-      {% endif %}
-
-      {{ include('mercury:heading', storybook.title) }}
-
-      {% if date_formatted %}
-        <p class="search-results-card--date">
-          <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
-        </p>
-      {% endif %}
-
-      <p class="search-results-card--description">
-        {{ storybook.description }}
-      </p>
-
-    {% if storybook.tags is not empty %}
-      <ul class="search-results-card--tags flex flex-wrap gap-4 p-0 list-none">
-        {% for tag in storybook.tags %}
-          <li>
-            {{ include('mercury:link', tag) }}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-    {% if storybook.link %}
-      {{ include('mercury:link', storybook.link) }}
-    {% endif %}
+{# {{ include('mercury:search-results', storybook) }} #}
+{% embed 'mercury:search-results' with storybook %}
+  {% block thumbnail %}
+    <div class="search-results--image aspect-5/4">
+      <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="object-fit w-full h-full" />
     </div>
-    </article>
- {% endblock %}
+  {% endblock %}
+{% endembed %}
