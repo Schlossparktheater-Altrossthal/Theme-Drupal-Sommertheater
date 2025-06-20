@@ -6,7 +6,7 @@
 
 @layer components {
   .navbar-search .input-search {
-    @apply border border-gray bg-white py-2.5 pl-4 pr-12 text-gray placeholder-gray font-medium text-xl focus:border-dark-gray transition;
+    @apply border border-gray bg-white py-2.5 pl-4 pr-12 text-gray placeholder-gray font-medium text-xl focus:border-gray-dark transition;
   }
 
   .navbar-search .button-search {
