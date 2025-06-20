@@ -3,21 +3,21 @@
  * This plugin generates physical story files in a separate directory (not in component directories).
  */
 
-import fs from "fs";
-import path from "path";
-import { glob } from "glob";
-import yaml from "js-yaml"; // Import js-yaml to parse .yml files for component metadata (e.g., extracting 'group' property)
-import storyTemplate from "./storyTemplate";
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+import yaml from 'js-yaml'; // Import js-yaml to parse .yml files for component metadata (e.g., extracting 'group' property)
+import storyTemplate from './storyTemplate';
 
 function getComponentDependencies(namespaces, componentFiles) {
   const findFileInNamespaces = (filePath) => {
     // Handle namespaced paths (e.g., @mercury/heading/heading.twig)
-    if (filePath.startsWith("@")) {
-      const [namespace, ...rest] = filePath.slice(1).split("/");
+    if (filePath.startsWith('@')) {
+      const [namespace, ...rest] = filePath.slice(1).split('/');
       const namespacePaths = namespaces[namespace];
 
       if (namespacePaths) {
-        const relativePath = rest.join("/");
+        const relativePath = rest.join('/');
         for (const namespacePath of Array.isArray(namespacePaths)
           ? namespacePaths
           : [namespacePaths]) {
@@ -31,8 +31,8 @@ function getComponentDependencies(namespaces, componentFiles) {
       return null;
     }
 
-    const filePathWithoutTwig = filePath.replace(".twig", "");
-    const [baseName, variant] = filePathWithoutTwig.split("~");
+    const filePathWithoutTwig = filePath.replace('.twig', '');
+    const [baseName, variant] = filePathWithoutTwig.split('~');
     const fileName = variant ? `${baseName}~${variant}` : baseName;
 
     for (const [namespace, paths] of Object.entries(namespaces)) {
@@ -51,7 +51,7 @@ function getComponentDependencies(namespaces, componentFiles) {
 
   const getJsPath = (twigPath) => {
     // Convert the Twig path to a potential JS path
-    const jsPath = twigPath.replace(".twig", ".js");
+    const jsPath = twigPath.replace('.twig', '.js');
     return fs.existsSync(jsPath) ? jsPath : null;
   };
 
@@ -71,8 +71,8 @@ function getComponentDependencies(namespaces, componentFiles) {
       while ((match = pattern.exec(content)) !== null) {
         const dep = match[1];
         // Convert mercury: format to @mercury format
-        if (dep.startsWith("mercury:")) {
-          const componentName = dep.replace("mercury:", "");
+        if (dep.startsWith('mercury:')) {
+          const componentName = dep.replace('mercury:', '');
           matches.push(`@mercury/${componentName}/${componentName}.twig`);
         } else {
           matches.push(dep);
@@ -95,15 +95,15 @@ function getComponentDependencies(namespaces, componentFiles) {
     }
 
     try {
-      const content = fs.readFileSync(fileInfo.path, "utf8");
+      const content = fs.readFileSync(fileInfo.path, 'utf8');
 
       // Get Twig dependencies from the content
       const twigDeps = extractDependencies(content);
       // Process each Twig dependency recursively and collect their JS files
       const twigDepResults = twigDeps.flatMap((dep) => {
         // If it's a mercury: dependency, convert it to the proper format
-        if (dep.startsWith("mercury:")) {
-          const componentName = dep.replace("mercury:", "");
+        if (dep.startsWith('mercury:')) {
+          const componentName = dep.replace('mercury:', '');
           const twigPath = `@mercury/${componentName}/${componentName}.twig`;
           return processFile(twigPath, processed);
         }
@@ -134,19 +134,19 @@ function getComponentDependencies(namespaces, componentFiles) {
 function nameFormatsFromSlug(slug, friendlyTitle = null) {
   const kebabCase = slug.toLowerCase();
   const camelCase = kebabCase
-    .split("-")
+    .split('-')
     .map((word, index) =>
       index === 0 ? word : word.slice(0, 1).toUpperCase() + word.slice(1)
     )
-    .join("");
+    .join('');
   const pascalCase =
     camelCase.slice(0, 1).toLocaleUpperCase() + camelCase.slice(1);
   const titleCase =
     friendlyTitle ||
     kebabCase
-      .split("-")
+      .split('-')
       .map((word) => word.slice(0, 1).toLocaleUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
 
   return {
     original: slug,
@@ -214,7 +214,7 @@ function generateStoryContent(
 
   if (fs.existsSync(yamlFilePath)) {
     try {
-      const yamlContent = fs.readFileSync(yamlFilePath, "utf8");
+      const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
       const parsedYaml = yaml.load(yamlContent);
       metadata.group = parsedYaml?.group ?? null;
       metadata.name = parsedYaml?.name ?? null;
@@ -233,7 +233,7 @@ function generateStoryContent(
   if (fs.existsSync(storybookYamlFilePath)) {
     try {
       storybookMetadata = yaml.load(
-        fs.readFileSync(storybookYamlFilePath, "utf8")
+        fs.readFileSync(storybookYamlFilePath, 'utf8')
       );
     } catch (error) {
       console.warn(
@@ -245,7 +245,7 @@ function generateStoryContent(
   const variants = variantPaths.map((variantPath) => {
     const variantSlug = variantPath.match(variantRegExp)[1];
 
-    if (variantSlug.toLocaleLowerCase() === "main") {
+    if (variantSlug.toLocaleLowerCase() === 'main') {
       return {
         withComponent: name,
         withoutComponent: name,
@@ -267,7 +267,7 @@ function generateStoryContent(
   // Use absolute paths for imports to ensure they work from any location
   const componentRelativePath = path
     .relative(process.cwd(), componentPath)
-    .replace(/\\/g, "/");
+    .replace(/\\/g, '/');
   const jsPath = `../../../${componentRelativePath}/${name.kebabCase}.js`;
   const jsPaths = componentDependencies.map(
     (dependency) => `../../../${dependency}`
@@ -319,7 +319,7 @@ try {
 
 const { argTypes, args } = generateArgTypesAndArgs(${
     name.camelCase
-  }Metadata, '../../../${componentPath}', storybookMetadata);
+  }Metadata, '../../../${componentRelativePath}', storybookMetadata);
 
 /**
  * ${name.titleCase} component story.
@@ -341,13 +341,13 @@ export default {
 ${
   !storybookMetadata?.hide_main
     ? storyTemplate(name, hasJsFile, includeJs, jsPaths)
-    : ""
+    : ''
 }
 ${variants
   .map((variantNames) =>
     storyTemplate(variantNames.withComponent, hasJsFile, includeJs, jsPaths)
   )
-  .join("\n")}
+  .join('\n')}
 `;
 }
 
@@ -356,14 +356,14 @@ ${variants
  */
 export default function storybookGenerator(options = {}) {
   const {
-    componentsDir = "components",
+    componentsDir = 'components',
     includeJs = true,
-    storiesDir = "./src/stories/sdc-stories",
+    storiesDir = './src/stories/sdc-stories',
     namespaces = {},
   } = options;
 
   const plugin = {
-    name: "vite-plugin-storybook-generator",
+    name: 'vite-plugin-storybook-generator',
 
     generateStoryForComponent(namespaces, componentDir) {
       const name = nameFormatsFromSlug(path.basename(componentDir));
@@ -453,10 +453,10 @@ export default function storybookGenerator(options = {}) {
     configureServer({ watcher }) {
       plugin.generateAllStoryFiles();
       watcher.add(`${componentsDir}/**/*`);
-      watcher.on("change", (changedPath) => {
+      watcher.on('change', (changedPath) => {
         if (
           changedPath.includes(componentsDir) &&
-          !changedPath.endsWith(".tailwind.css")
+          !changedPath.endsWith('.tailwind.css')
         ) {
           const componentDir = path.dirname(changedPath);
           if (fs.existsSync(componentDir)) {
