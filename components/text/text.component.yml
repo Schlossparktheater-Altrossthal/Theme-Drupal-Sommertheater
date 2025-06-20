@@ -1,0 +1,40 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Text
+description: A component for rich text.
+group: Components
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: Rich Text
+      description: The rich text.
+      examples:
+        - '<h3>Welcome to Our Services</h3>
+          <p>
+            We offer a range of solutions to help your business grow. Learn more about our 
+            <a href="/consulting">consulting services</a> or explore our 
+            <a href="/case-studies">case studies</a> to see results in action.
+          </p>
+          <ul>
+            <li>
+              Custom strategy planning with a 
+              <a href="/team">dedicated team</a>
+            </li>
+            <li>
+              Hands-on workshops to guide your implementation
+            </li>
+            <li>
+              Ongoing support and optimization recommendations
+            </li>
+          </ul>
+          <p>
+            Ready to get started? <a href="/contact">Contact us</a> today for a free consultation.
+          </p>'
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light

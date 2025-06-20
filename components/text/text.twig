@@ -1,0 +1,9 @@
+{% set classes = [
+    'rich-text',
+    'color-mode--' ~ color_mode,
+  ]
+%}
+
+<div class="{{ classes|join(' ') }}">
+  {{ text|raw }}
+</div>
