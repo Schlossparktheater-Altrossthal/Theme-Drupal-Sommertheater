@@ -8,13 +8,13 @@ props:
   properties:
     columns:
       type: string
-      title: Set number of columns
+      title: Number of Columns
       enum: [1,2,3,4]
       examples: 
         - 2
     column_ratio:
       type: string
-      title: Column Size Combos
+      title: Column Ratios
       enum: ['100','50 / 50','40 / 60', '60 / 40','25 / 75','75 / 25','33.3 / 66.7','66.7 / 33.3','33.3 / 33.3 / 33.3','25 / 25 / 50','50 / 25 / 25','25 / 50 / 25', '25 / 25 / 25 / 25']
       examples: 
         - '50 / 50'

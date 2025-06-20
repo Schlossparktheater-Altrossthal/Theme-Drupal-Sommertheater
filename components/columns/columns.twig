@@ -3,6 +3,7 @@
     'container',
     'mx-auto',
     'px-5 md:px-6',
+    'py-8 md:py-12',
     'col-count--' ~ columns,
     'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
@@ -26,7 +27,7 @@
 {% set ratio = ratio_map[column_ratio] ?? '' %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="columns-inner w-full grid gap-6 md:grid-cols-{{ ratio }} mx-auto max-w-{{ width }}">
+  <div class="columns-inner grid gap-4 md:gap-6 xl:gap-8 md:grid-cols-{{ ratio }} w-full max-w-{{ width }} mx-auto">
 
   {% if block('col_1') is defined and columns >= 1 %}
     <div class="col min-h-6">
