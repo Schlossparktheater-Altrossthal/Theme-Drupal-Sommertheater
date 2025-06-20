@@ -24,10 +24,6 @@
   --color-negative: 	   #e60032;
   --color-body:            var(--color-white);
 
-  /* --hyperlink: #0000EE;
-  --hyperlink-hover: #EE0000;
-  --hyperlink-visited: #551A8B; */
-
   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --font-mono: 'Fira Code', monospace;
   --font-display: Arial;
