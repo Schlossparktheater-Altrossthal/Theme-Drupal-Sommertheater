@@ -29,7 +29,15 @@
   }
 
   .card-pricing--price .card-price {
-    @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] leading-none;
+    @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] text-brand leading-none;
+  }
+
+  .card-pricing.color-mode--dark .card-price {
+    @apply text-white;
+  }
+
+  .card-pricing.promote .card-price {
+    @apply text-white;
   }
 
   .card-pricing--footer .button {
