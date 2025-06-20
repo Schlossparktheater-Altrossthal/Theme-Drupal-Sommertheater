@@ -1,8 +1,0 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-.sb-show-main:has(.storybook-component--columns) {
-  padding: var(--spacing-0, 0px);
-}
-.columns {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
-}

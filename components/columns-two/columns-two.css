@@ -1,6 +1,0 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-@layer components {
-  .two-columns {
-    background-color: var(--color-amber-50, oklch(0.987 0.022 95.277));
-  }
-}
