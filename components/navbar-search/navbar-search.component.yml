@@ -1,6 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: Navbar
-group: Base
+name: Search Block
+group: Components/Search
 description: A search form component for the navbar, styled for Drupal search integration.
 props:
   type: "object"
