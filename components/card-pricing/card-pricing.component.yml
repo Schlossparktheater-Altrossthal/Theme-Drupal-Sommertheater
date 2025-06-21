@@ -9,22 +9,24 @@ props:
       type: string
       title: Heading Text
       examples:
-        - 'Gold Plan'
+        - Gold Plan
     description:
       type: string
       title: Description
       examples:
-        - 'Curabitur nascetur non potenti pede luctus vivamus'
+        - Curabitur nascetur non potenti pede luctus vivamus
     price:
       title: Price
-      description: Price of the product
+      description: Price
       type: string
       examples:
         - '159.00'
     text:
       title: Text
-      description: A text description of the pricing
+      description: Rich Text
       type: string
+      contentMediaType: text/html
+      x-formatting-context: block
       examples:
         - '<ul>
             <li>Etiam suspendisse lobortis natoque</li>
@@ -34,15 +36,15 @@ props:
     button_url:
       type: string
       title: Button URL
-      description: CTA for the card
+      description: CTA link the card
       examples:
-        - 'https://example.com'
+        - https://example.com
     button_label:
       type: string
-      title: Button label
-      description: CTA for the card
+      title: Button Label
+      description: CTA label for the card
       examples:
-        - 'Choose this plan'
+        - Choose this plan
     promote:
       type: boolean
       title: Promote card
@@ -50,18 +52,10 @@ props:
       examples:
         - false
       default: false
-    card_radius:
-      type: string
-      title: Corner radius
-      description: Set card corner radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg]
-      examples: 
-        - rounded-none
-      default: rounded-none 
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark, inherit]
+      enum: [light, dark]
       examples: 
         - light
       default: light

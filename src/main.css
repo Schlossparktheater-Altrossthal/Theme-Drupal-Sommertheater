@@ -154,19 +154,71 @@
     position: relative;
     top: -0.25em;
   }
+
+  /* These apply to rich-text blocks only. */
+  .rich-text a {
+    @apply underline underline-offset-2;
+    color: var(--hyperlink-color);
+  }
+
+  .rich-text a:hover,
+  .rich-text a:focus {
+    color: var(--hyperlink-color-hover);
+  }
+
+  .rich-text p {
+    @apply leading-relaxed my-4;
+  }
+
+  .rich-text ul {
+    @apply list-disc pl-5 my-4;
+  }
+
+  .rich-text ul {
+    @apply list-disc pl-5 my-4;
+  }
+
+  .rich-text ol {
+    @apply list-decimal pl-5 my-4;
+  }
+
+  .rich-text li {
+    @apply mb-1;
+  }
+
+  .rich-text h2 {
+    @apply font-normal text-5xl 2xl:text-6xl mt-8 mb-4;
+  }
+
+  .rich-text h3 {
+    @apply font-normal text-3xl mt-6 mb-3;
+  }
+
+  .rich-text h4 {
+    @apply font-normal text-2xl mt-6 mb-2;
+  }
+
+  .rich-text h5 {
+    @apply font-medium text-2xl mt-4 mb-2;
+  }
+
+  .rich-text h6 {
+    @apply font-medium text-[20px] mt-4 mb-2;
+  }
 }
 
 /* Classes for light/dark color modes. */
 @layer components {
   .color-mode--dark {
-    --main-bg-color: var(--color-black);
+    --main-bg-color: var(--color-gray-darkest);
     --main-heading-color: var(--color-brand-light);
     --main-text-color: var(--color-white);
-    --hyperlink-color: var(--color-gray-lightest);
+    --hyperlink-color: var(--color-blue-100);
     --hyperlink-color-hover: var(--color-white);
     --card-bg: var(--color-gray-dark);
     --card-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-gray-dark);
+    --pricing-card-bg-color: var(--color-gray-darkest);
+    --pricing-card-border-color: var(--pricing-card-bg-color);
   }
 
   .color-mode--light {
@@ -178,6 +230,7 @@
     --card-bg: var(--color-gray-light);
     --card-text-color: var(--color-gray-darkest);
     --pricing-card-bg-color: var(--color-white);
+    --pricing-card-border-color: var(--color-gray-darkest);
   }
 }
 

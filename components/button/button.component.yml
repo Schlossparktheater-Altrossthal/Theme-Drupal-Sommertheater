@@ -12,8 +12,10 @@ props:
       description: 'The style of button.'
       enum:
         - fill
-        - outline
         - fill-accent
+        - fill-light
+        - fill-dark
+        - outline
         - outline-accent
       examples:
         - fill

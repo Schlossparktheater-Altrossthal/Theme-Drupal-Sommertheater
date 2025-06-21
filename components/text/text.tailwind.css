@@ -1,0 +1,13 @@
+@reference '../../src/main.css';
+
+.storybook-component--text {
+  @apply max-w-3xl;
+}
+
+@layer components {
+
+  .rich-text {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+}
