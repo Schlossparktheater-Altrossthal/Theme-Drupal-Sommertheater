@@ -7,18 +7,48 @@ props:
   type: object
   properties:
     columns:
-      type: integer
-      title: Set number of columns
-      enum: [2,3,4]
+      type: string
+      title: Number of Columns
+      enum: [1,2,3,4]
       examples: 
         - 2
-        - 3
-        - 4
-      default: 2
+    column_ratio:
+      type: string
+      title: Column Ratios
+      enum: ['100','50 / 50','40 / 60', '60 / 40','25 / 75','75 / 25','33.3 / 66.7','66.7 / 33.3','33.3 / 33.3 / 33.3','25 / 25 / 50','50 / 25 / 25','25 / 50 / 25', '25 / 25 / 25 / 25']
+      examples: 
+        - '50 / 50'
+    margin_before:
+      type: string
+      title: Space Before
+      enum: ['none','tight','normal','extra']
+      examples: 
+        - 'normal'
+    margin_after:
+      type: string
+      title: Space After
+      enum: ['none','tight','normal','extra']
+      examples: 
+        - 'normal'
+    width:
+      type: string
+      title: Container Width
+      enum: ['full', '9/10', '8/10', '3/4', '1/2']
+      examples: 
+        - 'full'
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark, inherit]
+      enum: [light, dark]
       examples: 
         - light
       default: light
+slots:
+  col_1:
+    title: Column One
+  col_2:
+    title: Column Two
+  col_3:
+    title: Column Three
+  col_4:
+    title: Column Four
