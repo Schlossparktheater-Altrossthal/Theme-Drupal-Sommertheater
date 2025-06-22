@@ -7,7 +7,7 @@ props:
   type: object
   properties:
     columns:
-      type: string
+      type: integer
       title: Number of Columns
       enum: [1,2,3,4]
       examples: 
