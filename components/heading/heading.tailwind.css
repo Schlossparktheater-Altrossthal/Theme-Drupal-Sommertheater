@@ -25,7 +25,7 @@
 
   /* sizes: 24 32 */
   h3.heading {
-    @apply font-normal text-[32px];
+    @apply font-normal text-3xl;
   }
   /* sizes: 24 30 */
   h4.heading {
