@@ -34,7 +34,7 @@ props:
       description: Media and Alt for the card.
       type: object
       examples:
-        - src: 'assets/957040.jpg'
+        - src: 'assets/portrait.png'
           alt: 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
     align:
       type: string

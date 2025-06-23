@@ -8,8 +8,9 @@
 
 <div class="{{ classes|join(' ') }}">
   <div class="card-testimonial--media w-[100px] aspect-square rounded-full overflow-hidden">
-    {# Image will get swapped out in XB #}
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    {% block media %}
+      <img class="object-cover w-full h-full" src="{{ media.src }}" alt="{{ media.alt }}" />
+    {% endblock %}
   </div>
   
   <blockquote class="flex flex-col gap-4" cite="{{ cite_url }}">
