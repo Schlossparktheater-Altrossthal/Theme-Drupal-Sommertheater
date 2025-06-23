@@ -16,12 +16,12 @@ props:
       description: Media and Alt for the card.
       type: object
       examples:
-        - src: 'assets/starshot_ds.png'
+        - src: 'assets/starshot_ds.svg'
           alt: 'Site logo'
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark, inherit]
+      enum: [light, dark]
       examples: 
         - light
       default: light
