@@ -1,8 +1,7 @@
 
 {# Overriding media_slot just for Storybook #}
 {% embed 'mercury:card-service' %}
-
-      {% block media %}
-        <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
-      {% endblock %}
-      {% endembed %}
+  {% block media %}
+    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+  {% endblock %}
+{% endembed %}
