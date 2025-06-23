@@ -24,6 +24,11 @@ props:
           url: '#'
         - title: Help
           url: '#'
+    menu_level:
+      type: integer
+      title: Menu Level
+      examples:
+        - 0
     align:
       type: boolean
       title: Display links in row?
