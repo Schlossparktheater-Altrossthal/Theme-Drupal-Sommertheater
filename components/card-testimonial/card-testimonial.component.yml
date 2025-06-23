@@ -35,7 +35,7 @@ props:
       type: object
       examples:
         - src: 'assets/portrait.png'
-          alt: 'Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/'
+          alt: 'Placeholder'
     align:
       type: string
       title: Text alignment
