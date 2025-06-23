@@ -34,7 +34,7 @@
 
       {# {{ menus.menu_links(item.below, attributes, menu_level + 1) }} #}
       {% if item.below %}
-        <ul class="footer-menu-children list-none flex flex-col gap-3 p-0">
+        <ul class="footer-menu-children list-none flex flex-col gap-2 md:gap-4 p-0">
           {% for child in item.below %}
             <li class="group">
               <a href="{{ child.url }}" class="block below-link">

@@ -1,13 +1,13 @@
 @reference '../../src/main.css';
-/* 
-/* Storybook specific */
-.storybook-component--card {
-  @apply max-w-md;
+
+.storybook-component--footer {
+  /* @apply max-w-md; */
 }
-.storybook-component--card:has(.card.is-landscape) {
-  @apply max-w-2xl;
-} */
 
 @layer components {
 
+  .site-footer {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
 }

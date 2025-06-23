@@ -90,13 +90,4 @@ props:
         title: Menu Level
         examples:
           - 0
-      color_mode:
-        type: string
-        title: Color Mode
-        description: Color mode of component.
-        enum: 
-          - light
-          - dark
-        examples: 
-          - light
 

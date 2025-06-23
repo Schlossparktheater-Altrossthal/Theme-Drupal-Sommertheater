@@ -1,16 +1,20 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer components {
-  .utility-menu .utility-menu--item-text {
-    font-size: var(--text-base, 1rem);
-    line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
-    --tw-leading: var(--leading-tight, 1.25);
-    line-height: var(--leading-tight, 1.25);
-    color: var(--color-brand-dark, #1e3a8a);
-    text-decoration-color: var(--color-brand-dark, #1e3a8a);
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        text-decoration-line: underline;
+  .utility-menu {
+    .utility-menu--item-text {
+      font-size: var(--text-base, 1rem);
+      line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+      --tw-leading: var(--leading-tight, 1.25);
+      line-height: var(--leading-tight, 1.25);
+      &:hover {
+        @media (hover: hover) {
+          text-decoration-line: underline;
+        }
+      }
+      color: var(--menu-link-color);
+      &:hover, &:focus {
+        color: var(--menu-link-color-hover);
       }
     }
   }
