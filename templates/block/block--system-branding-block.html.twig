@@ -14,17 +14,13 @@
  */
 #}
 {% block content %}
-  {% if site_logo %}
-    <a href="{{ path('<front>') }}" rel="home" class="site-logo">
-      <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" fetchpriority="high" />
-    </a>
-  {% endif %}
-  {% if site_name %}
-    <div class="site-name">
-      <a href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
-    </div>
-  {% endif %}
-  {% if site_slogan %}
-    <div class="site-slogan">{{ site_slogan }}</div>
-  {% endif %}
+  {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
+
+  {{ include('@mercury/components/branding/branding.twig', {
+    site_logo: {
+      src: site_logo_url,
+      alt: 'Home'|t ~ ' ' ~ site_name
+    },
+    url: path('<front>'),
+  }) }}
 {% endblock %}
