@@ -1,0 +1,6 @@
+hide_main: true
+site_name:
+  - 'Starshot Design System'
+site_logo:
+  src: 'assets/starshot_ds.png'
+  alt: 'Site logo'

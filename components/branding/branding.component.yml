@@ -5,19 +5,6 @@ group: Base
 props:
   type: object
   properties:
-    site_name:
-      type: string
-      title: Site name or slogan
-      examples:
-        - 'Starshot Design System'
-    site_logo:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Card Media
-      description: Media and Alt for the card.
-      type: object
-      examples:
-        - src: 'assets/starshot_ds.svg'
-          alt: 'Site logo'
     color_mode:
       type: string
       title: Color Mode
