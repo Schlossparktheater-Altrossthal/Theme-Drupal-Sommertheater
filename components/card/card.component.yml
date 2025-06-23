@@ -21,7 +21,27 @@ props:
       title: Add optional url
       examples: 
         - 'https://www.example.com'
-    media:
+    badges:
+      type: array
+      title: Badges
+      description: Array of badges to display on the card.
+      items:
+        type: object
+        properties:
+          url:
+            type: string
+            title: URL
+            description: 'The URL to link to. If provided, the badge will be rendered as a link.'
+          label:
+            type: string
+            title: Link Text
+            description: 'The text for the link.'
+      examples:
+        - url: '#'
+          label: 'Visual Identity'
+        - url: '#'
+          label: 'Packaging'
+    card_media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Card Media
       description: Media and Alt for the card.

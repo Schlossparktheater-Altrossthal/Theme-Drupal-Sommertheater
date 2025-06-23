@@ -71,17 +71,31 @@
   ]
 %}
 
+{% if node.field_featured_image.entity.field_media_image %}
+  {% set media = {
+    'src': node.field_featured_image[0]|file_url,
+    'alt': node.field_featured_image.entity.field_media_image.0.alt
+  } %}
+{% endif %}
+
+{% set badges = [] %}
+{% if content.field_tags|field_value %}
+  {% for tag in content.field_tags|field_value %}
+    {% set badges = badges|merge([{
+      'label': tag|render|striptags,
+      'url': tag['#url']|render
+    }]) %}
+  {% endfor %}
+{% endif %}
+
 {% include "mercury:card" with {
     heading_text: node.label,
     url: url,
     level: 3,
-    text: content.field_description,
-    media: {
-      src: node.field_featured_image|file_url,
-      alt: node.field_featured_image.entity.field_media_image.0.alt 
-    },
+    text: content.field_description|field_value,
+    media: media ?? null,
+    badges: badges,
     orientation: 'stacked',
     color_mode: 'light',
   }
 %}
-{# <pre>{{ dump(content.field_tags) }}</pre> #}
