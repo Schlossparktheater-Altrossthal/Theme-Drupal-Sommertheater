@@ -10,7 +10,7 @@
     @apply text-2xl text-black decoration-brand group-hover:underline group-hover:text-brand;
   }
 
-  .footer-menu .child-link {
+  .footer-menu .below-link {
     @apply text-xl text-black decoration-brand group-hover:underline group-hover:text-brand;
   }
 }

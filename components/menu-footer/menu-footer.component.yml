@@ -17,7 +17,7 @@ props:
           url:
             type: string
             description: The URL the menu item links to
-          children:
+          below:
             type: array
             description: Optional nested menu items
             items:
@@ -32,7 +32,7 @@ props:
       examples:
         - title: Company
           url: "#"
-          children:
+          below:
             - title: About
               url: "#"
             - title: Careers & Culture
@@ -46,7 +46,7 @@ props:
 
         - title: Resources & Documentation
           url: "#"
-          children:
+          below:
             - title: API Reference
               url: "#"
             - title: Quick-Start Guides
@@ -60,7 +60,7 @@ props:
 
         - title: Customer Support Zone
           url: "#"
-          children:
+          below:
             - title: Submit a Ticket
               url: "#"
             - title: 24×7 Live Chat Help Desk
@@ -74,7 +74,7 @@ props:
 
         - title: Stay Connected with Us Today
           url: "#"
-          children:
+          below:
             - title: Newsletter Signup
               url: "#"
             - title: Community Forum Discussions
@@ -85,6 +85,11 @@ props:
               url: "#"
             - title: Feedback & Feature Requests Form
               url: "#"
+      menu_level:
+        type: integer
+        title: Menu Level
+        examples:
+          - 0
       color_mode:
         type: string
         title: Color Mode
@@ -94,4 +99,4 @@ props:
           - dark
         examples: 
           - light
-        default: light
+
