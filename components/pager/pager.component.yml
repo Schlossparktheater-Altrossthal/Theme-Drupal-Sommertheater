@@ -1,0 +1,118 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: 'Pager'
+description: 'A pagination component for navigating through multiple pages of content'
+group: 'Navigation'
+props:
+  type: object
+  properties:
+    pagination_heading_level:
+      type: string
+      title: 'Heading Level'
+      description: 'HTML heading level for the pagination heading'
+      enum:
+        - 'h2'
+        - 'h3'
+        - 'h4'
+        - 'h5'
+        - 'h6'
+      examples:
+        - 'h2'
+    heading_id:
+      type: string
+      description: 'The ID of the heading'
+      examples:
+        - 'pagination-heading'
+    items:
+      type: object
+      description: 'Pagination items'
+      title: 'Items'
+      properties:
+        first:
+          type: object
+          description: 'First item'
+          properties:
+            href:
+              type: string
+              description: 'The URL of the item'
+            text:
+              type: string
+              description: 'The text of the item'
+            attributes:
+              type: object
+              description: 'HTML attributes of the item'
+        previous:
+          type: object
+          description: 'Previous item'
+          properties:
+            href:
+              type: string
+              description: 'The URL of the item'
+            text:
+              type: string
+              description: 'The text of the item'
+            attributes:
+              type: object
+              description: 'HTML attributes of the item'
+        next:
+          type: object
+          description: 'Next item'
+          properties:
+            href:
+              type: string
+              description: 'The URL of the item'
+            text:
+              type: string
+              description: 'The text of the item'
+            attributes:
+              type: object
+              description: 'HTML attributes of the item'
+        last:
+          type: object
+          description: 'Last item'
+          properties:
+            href:
+              type: string
+              description: 'The URL of the item'
+            text:
+              type: string
+              description: 'The text of the item'
+            attributes:
+              type: object
+              description: 'HTML attributes of the item'
+        pages:
+          type: object
+          description: 'Pages'
+          title: 'Pages'
+
+      examples:
+        first:
+          href: 'https://example.com'
+          text: 'First'
+          attributes:
+            title: 'First item'
+        previous:
+          href: 'https://example.com'
+          text: 'Previous'
+          attributes:
+            title: 'Previous item'
+        next:
+          href: 'https://example.com'
+          text: 'Next'
+          attributes:
+            title: 'Next item'
+        last:
+          href: 'https://example.com'
+          text: 'Last'
+          attributes:
+            title: 'Last item'
+        pages:
+          - '1':
+              href: 'https://example.com'
+              text: '1'
+              attributes:
+                title: 'Page 1'
+            '2':
+              href: 'https://example.com'
+              text: '2'
+              attributes:
+                title: 'Page 2'
