@@ -2,5 +2,5 @@ hide_main: true
 site_name:
   - 'Starshot Design System'
 site_logo:
-  src: 'assets/starshot_ds.png'
+  src: 'assets/starshot_ds.svg'
   alt: 'Site logo'

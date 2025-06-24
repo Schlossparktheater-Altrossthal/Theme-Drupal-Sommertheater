@@ -10,6 +10,7 @@
     background-color: var(--pricing-card-bg-color);
     border-color: var(--pricing-card-border-color);
     color: var(--main-text-color);
+    height: 100%;
   }
 
   .card-pricing--header .card-title {

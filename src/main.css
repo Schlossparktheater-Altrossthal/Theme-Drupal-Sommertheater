@@ -22,6 +22,7 @@
   --color-positive:      #00cc41;
   --color-warning: 	     #ffbf00;
   --color-negative: 	   #e60032;
+
   --color-body:            var(--color-white);
 
   --menu-link-color: var(--color-gray-darkest);
@@ -126,6 +127,31 @@
     @apply text-base lg:text-lg 2xl:text-xl text-inherit;
   }
 
+  /* Set base heading styles since Tailwind sets them to inherit */
+  h1 {
+    @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;
+  }
+
+  h2 {
+    @apply font-normal text-5xl 2xl:text-6xl;
+  }
+
+  h3 {
+    @apply font-normal text-3xl;
+  }
+
+  h4 {
+    @apply font-normal text-2xl;
+  }
+
+  h5 {
+    @apply font-medium text-2xl;
+  }
+
+  h6 {
+    @apply font-medium text-[20px];
+  }
+
   code,
   pre {
     @apply text-sm text-inherit font-mono;
@@ -180,10 +206,6 @@
     @apply list-disc pl-5 my-4;
   }
 
-  .rich-text ul {
-    @apply list-disc pl-5 my-4;
-  }
-
   .rich-text ol {
     @apply list-decimal pl-5 my-4;
   }
@@ -193,23 +215,23 @@
   }
 
   .rich-text h2 {
-    @apply font-normal text-5xl 2xl:text-6xl mt-8 mb-4;
+    @apply  mt-8 mb-4;
   }
 
   .rich-text h3 {
-    @apply font-normal text-3xl mt-6 mb-3;
+    @apply mt-6 mb-3;
   }
 
   .rich-text h4 {
-    @apply font-normal text-2xl mt-6 mb-2;
+    @apply mt-6 mb-2;
   }
 
   .rich-text h5 {
-    @apply font-medium text-2xl mt-4 mb-2;
+    @apply mt-4 mb-2;
   }
 
   .rich-text h6 {
-    @apply font-medium text-[20px] mt-4 mb-2;
+    @apply mt-4 mb-2;
   }
 }
 
@@ -231,7 +253,7 @@
   }
 
   .color-mode--light {
-    --main-bg-color: var(--color-white);
+    --main-bg-color: transparent;
     --main-heading-color: var(--color-brand);
     --main-text-color: var(--color-gray-darkest);
     --menu-link-color: var(--color-gray-darkest);

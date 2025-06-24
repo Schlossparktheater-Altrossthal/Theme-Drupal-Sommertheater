@@ -1,6 +1,13 @@
 {% set classes = [
     'card-pricing',
-    'flex flex-col gap-4 md:gap-6 border p-6 lg:p-10 2xl:p-12',
+    'flex',
+    'flex-col',
+    'gap-4',
+    'md:gap-6',
+    'border',
+    'p-6',
+    'lg:p-10',
+    '2xl:p-12',
     'color-mode--' ~ color_mode,
     promote ? 'promote',
   ]
@@ -25,7 +32,7 @@
     {{ text|raw }}
   </div>
 
-  <footer class="card-pricing--footer">
+  <footer class="card-pricing--footer mt-auto">
     {{ include('mercury:button', {
       url: button_url,
       label: button_label,
