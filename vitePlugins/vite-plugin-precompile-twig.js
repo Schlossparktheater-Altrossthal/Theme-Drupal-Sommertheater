@@ -269,15 +269,19 @@ export default function precompileTwigPlugin(options = {}) {
   // Helper function to find affected modules
   function findAffectedModules(server, templateKeys) {
     const affectedModules = [];
+    const seenModuleIds = new Set();
 
     for (const moduleId of server.moduleGraph.idToModuleMap.keys()) {
       const module = server.moduleGraph.getModuleById(moduleId);
 
-      if (isModuleAffectedByTemplates(module, templateKeys)) {
+      if (
+        isModuleAffectedByTemplates(module, templateKeys) &&
+        !seenModuleIds.has(moduleId)
+      ) {
         affectedModules.push(module);
+        seenModuleIds.add(moduleId);
       }
     }
-
     return affectedModules;
   }
 
