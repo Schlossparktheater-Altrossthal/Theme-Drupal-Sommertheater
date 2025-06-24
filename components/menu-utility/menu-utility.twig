@@ -1,15 +1,29 @@
 {% set menu_classes = menu_classes|default([])|merge([
   'utility-menu',
+  'list-none',
   'gap-4',
   'flex',
   'p-0',
   align ? 'flex-row' : 'flex-col',
 ])|filter(v => v is not empty) %}
 
-<ul class="{{ menu_classes|join(' ') }}">
-  {# Loop over each link in the “links” array #}
+{% if items %}
+  {% if menu_level == 0 %}
+    <ul class="{{ menu_classes|join(' ') }}">
+  {% else %}
+    <ul class="menu">
+  {% endif %}
   {% for item in items %}
-    <li class="list-none flex flex-col gap-y-4 max-w-fit">
+    {%
+      set classes = [
+        'flex flex-col gap-y-4 max-w-fit',
+        'menu-item',
+        item.is_expanded ? 'menu-item--expanded',
+        item.is_collapsed ? 'menu-item--collapsed',
+        item.in_active_trail ? 'menu-item--active-trail',
+      ]
+    %}
+    <li{{ item.attributes.addClass(classes) }}>
       <a href="{{ item.url }}" class="flex items-center justify-between gap-x-1 group">
         <span class="utility-menu--item-text">
           {{ item.title }}
@@ -18,6 +32,10 @@
         <span class="material-symbols-outlined">chevron_right</span>
         {% endif %}
       </a>
+      {# {% if item.below %}
+        {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+      {% endif %} #}
     </li>
   {% endfor %}
-</ul>
+  </ul>
+{% endif %}

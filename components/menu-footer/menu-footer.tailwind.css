@@ -3,14 +3,25 @@
 @layer components {
 
   .footer-menu {
-    @apply bg-white container;
+    background-color: var(--main-bg-color);
+
+    .parent-link,
+    .below-link {
+      @apply hover:underline;
+      color: var(--menu-link-color);
+
+      &:hover,
+      &:focus {
+        color: var(--menu-link-color-hover);
+      }
+    }
   }
 
   .footer-menu .parent-link {
-    @apply text-2xl text-black decoration-brand group-hover:underline group-hover:text-brand;
+    @apply text-2xl;
   }
 
-  .footer-menu .child-link {
-    @apply text-xl text-black decoration-brand group-hover:underline group-hover:text-brand;
+  .footer-menu .below-link {
+    @apply text-xl;
   }
 }

@@ -1,23 +1,55 @@
-<ul class="footer-menu w-full list-none grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-12 p-0">
-  {% for item in items %}
-    <li class="flex flex-col gap-3">
-      <div class="group">
-        <a href="{{ item.url }}" class="block parent-link">
-          {{ item.title }}
-        </a>
-      </div>
+{% set menu_classes = menu_classes|default([])|merge([
+  'footer-menu',
+  'w-full',
+  'list-none',
+  'grid',
+  'grid-cols-1',
+  'sm:grid-cols-2',
+  'lg:grid-cols-4',
+  'gap-8',
+  'xl:gap-12',
+  'p-0',
+])|filter(v => v is not empty) %}
 
-      {% if item.children is defined and item.children is not empty %}
-        <ul class="footer-menu-children list-none flex flex-col gap-3 p-0">
-          {% for child in item.children %}
+{% if items %}
+  {% if menu_level == 0 %}
+    <ul class="{{ menu_classes|join(' ') }}">
+  {% else %}
+    <ul class="menu">
+  {% endif %}
+  {% for item in items %}
+    {%
+      set classes = [
+        'list-none flex flex-col gap-y-4 max-w-fit',
+        'menu-item',
+        item.is_expanded ? 'menu-item--expanded',
+        item.is_collapsed ? 'menu-item--collapsed',
+        item.in_active_trail ? 'menu-item--active-trail',
+      ]
+    %}
+    <li class="flex flex-col gap-3">
+      <a href="{{ item.url }}" class="parent-link flex items-center justify-between gap-x-1 group">
+        {{ item.title }}
+      </a>
+
+      {# {{ menus.menu_links(item.below, attributes, menu_level + 1) }} #}
+      {% if item.below %}
+        <ul class="footer-menu-children list-none flex flex-col gap-2 md:gap-4 p-0">
+          {% for child in item.below %}
             <li class="group">
-              <a href="{{ child.url }}" class="block child-link">
+              <a href="{{ child.url }}" class="block below-link">
                 {{ child.title }}
               </a>
+
+              {# Recursive call for deeper levels #}
+              {% if child.below %}
+                {{ menus.menu_links(child.below, attributes, menu_level + 2) }}
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
       {% endif %}
     </li>
   {% endfor %}
-</ul>
+  </ul>
+{% endif %}

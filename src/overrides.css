@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
 :root {
+  --color-gray-lightest: #f3f4f6;
+  --color-gray-light:    #d1d5db;
+  --color-gray:          #6b7280;
+  --color-gray-dark:     #374151;
+  --color-gray-darkest:  #111827;
+
   --color-brand-light:   #eff6ff;
   --color-brand:         #2563eb;
   --color-brand-dark:    #1e3a8a;
@@ -15,6 +21,9 @@
   --color-warning: 	     #ffbf00;
   --color-negative: 	   #e60032;
   --color-body: 	       #ffffff;
+
+  --menu-link-color: var(--color-gray-darkest);
+  --menu-link-color-hover: var(--color-brand);
 
   --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --font-mono: 'Fira Code', monospace;

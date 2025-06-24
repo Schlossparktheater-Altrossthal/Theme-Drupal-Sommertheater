@@ -2,7 +2,16 @@
 
 @layer components {
 
-  .utility-menu .utility-menu--item-text {
-    @apply text-base text-brand-dark decoration-brand-dark group-hover:underline leading-tight;
+  .utility-menu {
+
+    .utility-menu--item-text {
+      @apply text-base leading-tight hover:underline;
+      color: var(--menu-link-color);
+
+      &:hover,
+      &:focus {
+        color: var(--menu-link-color-hover);
+      }
+    }
   }
 }

@@ -1,0 +1,13 @@
+{% embed 'mercury:footer' %}
+  {% block footer_menu %}
+    {{ include('mercury:menu-footer', { items: storybook.items } ) }}
+  {% endblock %}
+
+  {% block footer_bottom_first %}
+    {{ include('mercury:menu-utility', { items: storybook.utility }) }}
+  {% endblock %}
+
+  {% block footer_bottom_last %}
+    {{ include('mercury:menu-social', { items: storybook.social } ) }}
+  {% endblock %}
+{% endembed %}

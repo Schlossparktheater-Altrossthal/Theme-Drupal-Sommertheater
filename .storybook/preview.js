@@ -1,6 +1,7 @@
 import parse from 'html-react-parser';
 import once from '@drupal/once';
 import '../src/main.css';
+import '../src/overrides.css';
 import '../src/ui.css';
 import '../src/stories/sdc-stories/components.css';
 
