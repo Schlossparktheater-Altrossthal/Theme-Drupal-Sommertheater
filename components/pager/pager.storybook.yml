@@ -1,4 +1,4 @@
-hide_main: yes
+hide_main: true
 items:
   first:
     href: 'https://www.google.com'
