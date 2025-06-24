@@ -7,7 +7,6 @@ import nameFormatsFromSlug from './nameFormatsFromSlug.js';
  * Generate a Storybook story for a single component
  * @param {Object} options - Configuration options
  * @param {Object} options.namespaces - Namespace configuration
- * @param {string} options.componentsDir - Components directory path
  * @param {string} options.storiesDir - Stories output directory
  * @param {boolean} options.includeJs - Whether to include JS imports
  * @param {string} componentDir - Path to the component directory
