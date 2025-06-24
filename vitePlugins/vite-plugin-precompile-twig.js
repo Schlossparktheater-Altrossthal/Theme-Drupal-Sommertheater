@@ -262,6 +262,7 @@ export default function precompileTwigPlugin(options = {}) {
   function updateTemplateCache(templates) {
     templates.forEach((template) => {
       console.log(`[HMR] Updating template cache: ${template.key}`);
+      console.log(`[HMR] Template content: ${template.content}`);
       templateSources[template.key] = template.content;
     });
   }
@@ -431,7 +432,9 @@ export default function precompileTwigPlugin(options = {}) {
 
         console.log(`[HMR] Found ${affectedModules.length} affected modules`);
 
-        emitHMRCompletionEvent(server, file);
+        //emitHMRCompletionEvent(server, file);
+        // Regenerate all stories (ensures consistency)
+        //  plugin.generateAllStoryFiles();
 
         return affectedModules;
       } catch (error) {
