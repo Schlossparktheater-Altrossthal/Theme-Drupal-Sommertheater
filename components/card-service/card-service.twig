@@ -1,0 +1,26 @@
+{% set classes = classes|default([])|merge([
+    'service-card',
+    'flex',
+    'flex-col',
+    'gap-2',
+    'p-6',
+    'rounded-sm',
+    'color-mode--' ~ color_mode,
+    'relative',
+    alignment == 'left' ? 'text-left' : 'content-center text-center',
+    aspect_ratio,
+])|filter(v => v is not empty) %}
+
+<div class="{{ classes|join(' ') }}">
+  {% if block('media') is defined %}
+    <div class="service-card--media rounded-sm overflow-hidden">
+      {% block media %}
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+      {% endblock %}
+    </div>
+  {% endif %}
+  {{ include('mercury:heading') }}
+  <p>{{ text }}</p>
+</div>
+
+

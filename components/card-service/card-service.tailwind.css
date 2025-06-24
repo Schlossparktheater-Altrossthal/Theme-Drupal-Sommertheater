@@ -1,0 +1,34 @@
+@reference '../../src/main.css';
+
+/* Storybook specific */
+.storybook-component--card-service {
+  @apply max-w-md;
+}
+
+@layer components {
+
+  .service-card {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+
+  .service-card.color-mode--light {
+    --main-bg-color: var(--color-gray-lightest);
+  }
+
+  .service-card .heading > a {
+    @apply before:absolute before:content-[''] before:inset-0;
+  }
+
+  .service-card .heading {
+    @apply font-light text-5xl;
+  }
+
+  .service-card.narrow .service-card--media {
+    @apply aspect-[2/1];
+  }
+
+  .service-card.rectangle .service-card--media {
+    @apply aspect-[5/4];
+  }
+}
