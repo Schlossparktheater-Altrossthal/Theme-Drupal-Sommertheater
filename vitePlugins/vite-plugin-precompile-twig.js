@@ -455,8 +455,6 @@ function createHMRHelpers(
 
   function updateTemplateCache(templates) {
     templates.forEach((template) => {
-      console.log(`[HMR] Updating template cache: ${template.key}`);
-      console.log(`[HMR] Template content: ${template.content}`);
       templateSources[template.key] = template.content;
     });
   }
@@ -554,6 +552,7 @@ export default function precompileTwigPlugin(options = {}) {
     },
 
     load(id) {
+      console.log(`[Twig] Loading template: ${id}`);
       const clean = id.split('?')[0];
       if (!include.test(clean)) return null;
 

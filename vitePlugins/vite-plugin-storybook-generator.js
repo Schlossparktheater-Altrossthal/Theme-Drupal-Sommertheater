@@ -7,7 +7,7 @@ import path from 'path';
 import generateStoryForComponent from './twingCustoms/generateStoryForComponent.js';
 import generateAllStoryFiles from './twingCustoms/generateAllStoryFiles.js';
 import fs from 'fs';
-
+import getComponentReferences from './twingCustoms/getComponentReferences';
 /**
  * Vite plugin for generating Storybook stories in a separate directory.
  */
@@ -30,10 +30,6 @@ export default function storybookGenerator(options = {}) {
   const plugin = {
     name: 'vite-plugin-storybook-generator',
 
-    generateStoryForComponent(namespaces, componentDir) {
-      return generateStoryForComponent(functionOptions, componentDir);
-    },
-
     generateAllStoryFiles() {
       return generateAllStoryFiles(functionOptions);
     },
@@ -55,7 +51,8 @@ export default function storybookGenerator(options = {}) {
             console.log(
               `[storybook-generator] Change detected in ${changedPath}, regenerating story`
             );
-            plugin.generateStoryForComponent(namespaces, componentDir);
+
+            generateStoryForComponent(functionOptions, componentDir);
           }
         }
       });
