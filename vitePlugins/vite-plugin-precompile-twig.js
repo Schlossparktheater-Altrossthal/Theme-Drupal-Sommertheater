@@ -225,6 +225,83 @@ export default function precompileTwigPlugin(options = {}) {
     return null;
   }
 
+  // Helper function to resolve a template and handle errors
+  function resolveTemplateWithErrorHandling(filePath) {
+    try {
+      const resolved = resolveTemplate(filePath);
+      if (!resolved) {
+        console.warn(`[HMR] Could not resolve template: ${filePath}`);
+        return null;
+      }
+      return resolved;
+    } catch (error) {
+      console.error(
+        `[HMR] Error resolving template ${filePath}: ${error.message}`
+      );
+      return null;
+    }
+  }
+
+  // Helper function to get all templates that need to be updated
+  function getTemplatesForUpdate(originalFile) {
+    const originalTemplate = resolveTemplateWithErrorHandling(originalFile);
+    if (!originalTemplate) {
+      return [];
+    }
+
+    const referencingFiles =
+      getComponentReferences(resolvedNamespaces, [originalFile]) ?? [];
+    const referencingTemplates = referencingFiles
+      .map((file) => resolveTemplateWithErrorHandling(file))
+      .filter((template) => template !== null);
+
+    return [originalTemplate, ...referencingTemplates];
+  }
+
+  // Helper function to update template cache
+  function updateTemplateCache(templates) {
+    templates.forEach((template) => {
+      console.log(`[HMR] Updating template cache: ${template.key}`);
+      templateSources[template.key] = template.content;
+    });
+  }
+
+  // Helper function to find affected modules
+  function findAffectedModules(server, templateKeys) {
+    const affectedModules = [];
+
+    for (const moduleId of server.moduleGraph.idToModuleMap.keys()) {
+      const module = server.moduleGraph.getModuleById(moduleId);
+
+      if (isModuleAffectedByTemplates(module, templateKeys)) {
+        affectedModules.push(module);
+      }
+    }
+
+    return affectedModules;
+  }
+
+  // Helper function to check if a module is affected by template changes
+  function isModuleAffectedByTemplates(module, templateKeys) {
+    return (
+      module &&
+      module.file &&
+      module.file.endsWith('.twig') &&
+      templateKeys.some((key) => key.endsWith(module.file))
+    );
+  }
+
+  // Helper function to emit HMR completion event
+  function emitHMRCompletionEvent(server, originalFile) {
+    setTimeout(() => {
+      server.ws.send('twig-compilation-complete', {
+        file: originalFile,
+        key: originalFile,
+        timestamp: Date.now(),
+      });
+    }, 0);
+  }
+
   return {
     name: 'vite-plugin-precompile-twig',
     enforce: 'pre',
@@ -327,68 +404,38 @@ export default function precompileTwigPlugin(options = {}) {
       `;
     },
 
-    // HMR implementation
+    // HMR implementation - main entry point
     handleHotUpdate({ file, server }) {
-      // Only handle .twig files.
-      if (!file.endsWith('.twig')) return;
+      if (!file.endsWith('.twig')) {
+        return;
+      }
 
-      // Use the improved resolution logic
-      console.log(`[HMR] Resolving template: ${file}`);
-      const resolved = resolveTemplate(file);
+      console.log(`[HMR] Processing Twig file change: ${file}`);
 
-      if (!resolved) {
-        console.warn(
-          `[HMR] Could not determine template key for file: ${file}`
+      try {
+        const templatesToUpdate = getTemplatesForUpdate(file);
+
+        if (templatesToUpdate.length === 0) {
+          console.warn(`[HMR] No templates to update for: ${file}`);
+          return [];
+        }
+
+        updateTemplateCache(templatesToUpdate);
+
+        const templateKeys = templatesToUpdate.map((template) => template.key);
+        const affectedModules = findAffectedModules(server, templateKeys);
+
+        console.log(`[HMR] Found ${affectedModules.length} affected modules`);
+
+        emitHMRCompletionEvent(server, file);
+
+        return affectedModules;
+      } catch (error) {
+        console.error(
+          `[HMR] Error processing template update for ${file}: ${error.message}`
         );
         return [];
       }
-
-      const templateReferences =
-        getComponentReferences(resolvedNamespaces, [file]) ?? [];
-
-      const templateResolvedReferences = templateReferences.map((reference) =>
-        resolveTemplate(reference)
-      );
-
-      try {
-        const resolvedTemplates = [resolved, ...templateResolvedReferences];
-
-        // Update our template cache.
-        resolvedTemplates.forEach((reference) => {
-          console.log(`[HMR] Twig template updated: ${reference.key}`);
-          templateSources[reference.key] = reference.content;
-        });
-
-        // Find modules that import this template.
-        const affectedModules = [];
-
-        const affectedTemplatesKey = resolvedTemplates.map(
-          (reference) => reference.key
-        );
-
-        // All modules are affected since they all share templates.
-        for (const moduleId of server.moduleGraph.idToModuleMap.keys()) {
-          const mod = server.moduleGraph.getModuleById(moduleId);
-          if (
-            mod &&
-            mod.file &&
-            mod.file.endsWith('.twig') &&
-            affectedTemplatesKey.some((key) => key.endsWith(mod.file))
-          ) {
-            affectedModules.push(mod);
-          }
-        }
-
-        console.log(`[HMR] Reloading ${affectedModules.length} Twig modules`);
-
-        // Return affected modules to trigger HMR.
-        return affectedModules;
-      } catch (err) {
-        console.error(`[HMR] Error updating Twig template: ${err.message}`);
-      }
-
-      // If we reach here, something went wrong.
-      return [];
     },
   };
 }
