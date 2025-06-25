@@ -30,7 +30,13 @@
 
   <div class="card-pricing--price">
     <h4 class="card-price">
-      <data value="{{ price }}" data-currency="USD"><sup>$</sup>{{ price }}</data>
+      <data value="{{ price }}" data-currency="{{ currency_code|default('USD') }}">
+        {% if symbol_position == 'before' %}
+          <sup>{{ currency_symbol }}</sup>{{ price }}
+        {% else %}
+          {{ price }}<sup>{{ currency_symbol }}</sup>
+        {% endif %}
+      </data>
     </h4>
   </div>
 

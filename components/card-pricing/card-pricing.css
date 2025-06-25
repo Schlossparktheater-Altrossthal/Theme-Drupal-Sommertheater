@@ -30,6 +30,9 @@
       @media (width >= 96rem) {
         font-size: 3.15rem;
       }
+      sup {
+        font-size: 60% !important;
+      }
     }
     .card-description {
       font-size: var(--text-xl, 1.25rem);

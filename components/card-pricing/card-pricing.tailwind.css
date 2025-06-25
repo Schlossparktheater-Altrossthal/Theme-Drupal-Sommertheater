@@ -19,8 +19,12 @@
 
     .card-price {
       @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] text-brand leading-none;
+
+      sup {
+        font-size: 60% !important;
+      }
     }
-  
+
     .card-description {
       @apply text-xl leading-[1.2];
     }

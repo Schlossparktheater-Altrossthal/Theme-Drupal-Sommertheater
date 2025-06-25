@@ -21,6 +21,22 @@ props:
       type: string
       examples:
         - '159.00'
+    currency_code:
+      type: string
+      title: Currency Code
+      examples:
+        - USD
+    currency_symbol:
+      type: string
+      title: Currency Symbol
+      examples:
+        - '$'
+    symbol_position:
+      type: string
+      title: Symbol Position
+      enum: [before, after]
+      examples: 
+        - before
     text:
       title: Text
       description: Rich Text
@@ -51,13 +67,10 @@ props:
       description: 'Visually feature card.'
       examples:
         - false
-      default: false
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
       examples: 
         - light
-      default: light
-    
     

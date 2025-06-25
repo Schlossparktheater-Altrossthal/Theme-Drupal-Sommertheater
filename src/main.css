@@ -182,9 +182,9 @@
   }
 
   sup {
-    font-size: 70%;
-    position: relative;
-    top: -0.25em;
+    font-size: 60%;
+    top: -0.5em;
+    /* ^ match normalize to avoid conflicts. */
   }
 
   /* These apply to rich-text blocks only. */
