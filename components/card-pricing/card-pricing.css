@@ -9,89 +9,93 @@
     border-color: var(--pricing-card-border-color);
     color: var(--main-text-color);
     height: 100%;
-  }
-  .card-pricing--header .card-title {
-    font-size: 2.25rem;
-    --tw-leading: var(--leading-tight, 1.25);
-    line-height: var(--leading-tight, 1.25);
-    --tw-font-weight: var(--font-weight-light, 300);
-    font-weight: var(--font-weight-light, 300);
-    color: var(--main-heading-color);
-  }
-  .card-pricing--header > .card-description {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-    --tw-leading: 1.2;
-    line-height: 1.2;
+    .card-title {
+      font-size: 2.25rem;
+      --tw-leading: var(--leading-tight, 1.25);
+      line-height: var(--leading-tight, 1.25);
+      --tw-font-weight: var(--font-weight-light, 300);
+      font-weight: var(--font-weight-light, 300);
+      color: var(--main-heading-color);
+    }
+    .card-price {
+      font-size: var(--text-4xl, 2.5rem);
+      line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
+      --tw-leading: 1;
+      line-height: 1;
+      color: var(--color-brand, #2563eb);
+      @media (width >= 64rem) {
+        font-size: var(--text-5xl, 3rem);
+        line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+      }
+      @media (width >= 96rem) {
+        font-size: 3.15rem;
+      }
+    }
+    .card-description {
+      font-size: var(--text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+      --tw-leading: 1.2;
+      line-height: 1.2;
+    }
+    .button {
+      font-size: var(--text-sm, 0.875rem) !important;
+      line-height: var(--tw-leading, var(--text-sm--line-height, 1.5)) !important;
+    }
+    &.promote {
+      --main-heading-color: var(--color-white);
+      --main-text-color: var(--color-white);
+      --main-bg-color: var(--pricing-card-bg-color);
+      --pricing-card-bg-color: var(--color-brand);
+      --pricing-card-border-color: var(--pricing-card-bg-color);
+      .card-price {
+        color: var(--color-white, #ffffff);
+      }
+      .button--fill {
+        border-color: var(--color-brand-light, #eff6ff) !important;
+        background-color: var(--color-brand-light, #eff6ff) !important;
+        color: var(--color-brand-dark, #1e3a8a) !important;
+        &:hover {
+          @media (hover: hover) {
+            border-color: var(--color-brand-dark, #1e3a8a) !important;
+          }
+        }
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-brand-dark, #1e3a8a) !important;
+          }
+        }
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-white, #ffffff) !important;
+          }
+        }
+      }
+    }
+    &.color-mode--dark {
+      .card-price {
+        color: var(--color-white, #ffffff);
+      }
+      .link--button-outline-light {
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-white, #ffffff);
+          }
+        }
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-brand-dark, #1e3a8a);
+          }
+        }
+      }
+    }
   }
   .card-pricing--features {
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
     padding-top: var(--spacing-4, 16px);
-  }
-  .card-pricing--features li {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  }
-  .card-pricing--price .card-price {
-    font-size: var(--text-4xl, 2.5rem);
-    line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
-    --tw-leading: 1;
-    line-height: 1;
-    color: var(--color-brand, #2563eb);
-    @media (width >= 64rem) {
-      font-size: var(--text-5xl, 3rem);
-      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
-    }
-    @media (width >= 96rem) {
-      font-size: 3.15rem;
-    }
-  }
-  .card-pricing.color-mode--dark .card-price {
-    color: var(--color-white, #ffffff);
-  }
-  .card-pricing.promote .card-price {
-    color: var(--color-white, #ffffff);
-  }
-  .card-pricing--footer .button {
-    font-size: var(--text-sm, 0.875rem) !important;
-    line-height: var(--tw-leading, var(--text-sm--line-height, 1.5)) !important;
-  }
-  .card-pricing.color-mode--dark .link--button-outline-light {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-white, #ffffff);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-brand-dark, #1e3a8a);
-      }
-    }
-  }
-  .card-pricing.promote {
-    --main-heading-color: var(--color-white);
-    --main-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-brand);
-  }
-  .card-pricing.promote .button--fill {
-    border-color: var(--color-brand-light, #eff6ff) !important;
-    background-color: var(--color-brand-light, #eff6ff) !important;
-    color: var(--color-brand-dark, #1e3a8a) !important;
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-brand-dark, #1e3a8a) !important;
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-brand-dark, #1e3a8a) !important;
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white, #ffffff) !important;
-      }
+    li {
+      font-size: var(--text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
     }
   }
 }
