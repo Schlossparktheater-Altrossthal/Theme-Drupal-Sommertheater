@@ -444,18 +444,19 @@ function createHMRHelpers(
       return [];
     }
 
-    const referencingFiles =
-      getComponentReferences(resolvedNamespaces, [originalFile]) ?? [];
-    const referencingTemplates = referencingFiles
-      .map((file) => resolveTemplateWithErrorHandling(file))
-      .filter((template) => template !== null);
-
-    return [originalTemplate, ...referencingTemplates];
+    return [originalTemplate];
   }
 
   function updateTemplateCache(templates) {
     templates.forEach((template) => {
-      templateSources[template.key] = template.content;
+      const componentUpdated = template.key.split('/').pop();
+      const templateSourcesAffected = Object.keys(templateSources).filter(
+        (key) => key.endsWith(componentUpdated)
+      );
+
+      templateSourcesAffected.forEach((key) => {
+        templateSources[key] = template.content;
+      });
     });
   }
 
@@ -478,12 +479,7 @@ function createHMRHelpers(
   }
 
   function isModuleAffectedByTemplates(module, templateKeys) {
-    return (
-      module &&
-      module.file &&
-      module.file.endsWith('.twig') &&
-      templateKeys.some((key) => key.endsWith(module.file))
-    );
+    return module && module.file && module.file.endsWith('.twig');
   }
 
   function emitHMRCompletionEvent(server, originalFile) {
@@ -552,7 +548,6 @@ export default function precompileTwigPlugin(options = {}) {
     },
 
     load(id) {
-      console.log(`[Twig] Loading template: ${id}`);
       const clean = id.split('?')[0];
       if (!include.test(clean)) return null;
 
@@ -595,6 +590,10 @@ export default function precompileTwigPlugin(options = {}) {
       try {
         const templatesToUpdate = hmrHelpers.getTemplatesForUpdate(file);
 
+        console.log(
+          `[HMR] Templates to update: ${JSON.stringify(templatesToUpdate)}`
+        );
+
         if (templatesToUpdate.length === 0) {
           console.warn(`[HMR] No templates to update for: ${file}`);
           return [];
@@ -607,6 +606,10 @@ export default function precompileTwigPlugin(options = {}) {
           server,
           templateKeys
         );
+
+        affectedModules.forEach((module) => {
+          console.log(`[HMR] Affected module: ${module.id}`);
+        });
 
         console.log(`[HMR] Found ${affectedModules.length} affected modules`);
 

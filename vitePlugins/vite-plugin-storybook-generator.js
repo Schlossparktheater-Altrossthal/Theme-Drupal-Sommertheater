@@ -7,7 +7,7 @@ import path from 'path';
 import generateStoryForComponent from './twingCustoms/generateStoryForComponent.js';
 import generateAllStoryFiles from './twingCustoms/generateAllStoryFiles.js';
 import fs from 'fs';
-import getComponentReferences from './twingCustoms/getComponentReferences';
+
 /**
  * Vite plugin for generating Storybook stories in a separate directory.
  */
