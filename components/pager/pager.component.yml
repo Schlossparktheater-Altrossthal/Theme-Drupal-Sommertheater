@@ -2,13 +2,3 @@ $schema: 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sd
 name: 'Pager'
 description: 'A pagination component for navigating through multiple pages of content'
 group: 'Navigation'
-props:
-  type: object
-  properties:
-    color_mode:
-      type: string
-      title: Color
-      description: "Background color to use for the badge, one of 'primary' or 'secondary'."
-      enum: [light, dark, inherit]
-      examples:
-        - dark
