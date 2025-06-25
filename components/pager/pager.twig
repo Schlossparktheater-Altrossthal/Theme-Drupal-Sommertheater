@@ -25,8 +25,8 @@
       {# Add an ellipsis if there are further previous pages. #}
       
       {% if ellipses.previous %}
-        <li role="presentation">
-          <span class="pager__ellipsis__container">
+        <li>
+          <span class="pager__ellipsis__container" role="presentation">
             <span class="material-symbols-outlined pager__icon" aria-hidden="true">more_horiz</span>
           </span>
         </li>
@@ -51,8 +51,8 @@
       {% endfor %}
       {# Add an ellipsis if there are further next pages. #}
       {% if ellipses.next %}
-        <li role="presentation">
-          <span class="pager__ellipsis__container">
+        <li>
+          <span class="pager__ellipsis__container" role="presentation">
             <span class="material-symbols-outlined pager__icon" aria-hidden="true">more_horiz</span>
           </span>
         </li>
