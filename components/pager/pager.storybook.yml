@@ -1,4 +1,10 @@
 hide_main: true
+ellipses:
+  previous: true
+  next: true
+heading_id: 'pager-heading'
+pagination_heading_level: 'h2'
+current: 2
 items:
   first:
     href: 'https://www.google.com'
@@ -21,18 +27,18 @@ items:
     attributes:
       title: 'Last item'
   pages:
-    - '1':
-        href: 'https://example.com'
-        text: '1'
-        attributes:
-          title: 'Page 1'
-    - '2':
-        href: 'https://example.com'
-        text: '2'
-        attributes:
-          title: 'Page 2'
-    - '3':
-        href: 'https://example.com'
-        text: '3'
-        attributes:
-          title: 'Page 3'
+    '1':
+      href: 'https://example.com'
+      text: '1'
+      attributes:
+        title: 'Page 1'
+    '2':
+      href: 'https://example.com'
+      text: '2'
+      attributes:
+        title: 'Page 2'
+    '3':
+      href: 'https://example.com'
+      text: '3'
+      attributes:
+        title: 'Page 3'
