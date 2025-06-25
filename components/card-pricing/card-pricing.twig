@@ -29,7 +29,14 @@
   </div>
 
   <div class="card-pricing--features rich-text">
-    {{ text|raw }}
+  {% block richtext %}
+    {# {{ text|raw }} #}
+
+    {{ include('mercury:text',
+    {
+      text: text|raw,
+    }) }}
+    {% endblock %}
   </div>
 
   <footer class="card-pricing--footer mt-auto">
