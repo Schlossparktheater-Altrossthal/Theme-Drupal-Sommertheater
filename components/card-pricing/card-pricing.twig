@@ -16,7 +16,13 @@
 <article class="{{ classes|join(' ') }}">
 
   <header class="card-pricing--header flex flex-col gap-2">
-    <h3 class="card-title">{{ heading_text }}</h3>
+    {{ include('mercury:heading',
+      {
+        level: 3,
+        heading_classes: ['card-title'],
+      })
+    }}
+
     <p class="card-description">
       {{ description }}
     </p>
@@ -30,13 +36,12 @@
 
   <div class="card-pricing--features rich-text">
   {% block richtext %}
-    {# {{ text|raw }} #}
-
     {{ include('mercury:text',
-    {
-      text: text|raw,
-    }) }}
-    {% endblock %}
+      {
+        text: text|raw,
+      })
+    }}
+  {% endblock %}
   </div>
 
   <footer class="card-pricing--footer mt-auto">
