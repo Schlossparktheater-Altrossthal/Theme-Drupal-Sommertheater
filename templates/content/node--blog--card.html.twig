@@ -88,7 +88,7 @@
   {% endfor %}
 {% endif %}
 
-{% include "mercury:card" with {
+{{ include ('mercury:card', {
     heading_text: node.label,
     url: url,
     level: 3,
@@ -98,4 +98,4 @@
     orientation: 'stacked',
     color_mode: 'light',
   }
-%}
+)}}

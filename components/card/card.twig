@@ -16,6 +16,7 @@
   {% endif %}
   
   <div class="card--content flex flex-col gap-4 items-baseline">
+  {% if block('badges') is defined %}
     {% block badges %}
       <ul class="list-none ps-0 flex items-center gap-2">
         {% for badge in badges %}
@@ -30,6 +31,7 @@
         {% endfor %}
       </ul>
     {% endblock %}
+  {% endif %}
     <div class="flex flex-col gap-6">
       {{ include('mercury:heading',
         {
