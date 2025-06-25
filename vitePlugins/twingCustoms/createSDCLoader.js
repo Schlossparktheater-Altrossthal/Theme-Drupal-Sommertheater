@@ -30,9 +30,6 @@ const getTemplateByColon = (templateParts, templates) => {
 
   if (matchingEntry) {
     const [key, value] = matchingEntry;
-    console.group(`[SDC Loader] Found template: ${key}`);
-    console.log(`[SDC Loader] Template value: ${value}`);
-    console.groupEnd();
     return {
       code: value,
       path: key,

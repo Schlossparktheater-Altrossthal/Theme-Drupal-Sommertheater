@@ -463,12 +463,15 @@ function createHMRHelpers(
   function findAffectedModules(server, templateKeys) {
     const affectedModules = [];
     const seenModuleIds = new Set();
+    const referencingFiles = templateKeys.map((key) => {
+      return getComponentReferences(resolvedNamespaces, [key]);
+    });
 
     for (const moduleId of server.moduleGraph.idToModuleMap.keys()) {
       const module = server.moduleGraph.getModuleById(moduleId);
 
       if (
-        isModuleAffectedByTemplates(module, templateKeys) &&
+        isModuleAffectedByTemplates(module, templateKeys, referencingFiles) &&
         !seenModuleIds.has(moduleId)
       ) {
         affectedModules.push(module);
@@ -478,18 +481,15 @@ function createHMRHelpers(
     return affectedModules;
   }
 
-  function isModuleAffectedByTemplates(module, templateKeys) {
-    return module && module.file && module.file.endsWith('.twig');
-  }
+  function isModuleAffectedByTemplates(module, templateKeys, referencingFiles) {
+    if (module && module.file && module.file.endsWith('.twig')) {
+      return (
+        referencingFiles.flat().some((file) => file.endsWith(module.file)) ||
+        templateKeys.some((key) => key.endsWith(module.file))
+      );
+    }
 
-  function emitHMRCompletionEvent(server, originalFile) {
-    setTimeout(() => {
-      server.ws.send('twig-compilation-complete', {
-        file: originalFile,
-        key: originalFile,
-        timestamp: Date.now(),
-      });
-    }, 0);
+    return false;
   }
 
   return {
@@ -498,7 +498,6 @@ function createHMRHelpers(
     updateTemplateCache,
     findAffectedModules,
     isModuleAffectedByTemplates,
-    emitHMRCompletionEvent,
   };
 }
 
@@ -590,10 +589,6 @@ export default function precompileTwigPlugin(options = {}) {
       try {
         const templatesToUpdate = hmrHelpers.getTemplatesForUpdate(file);
 
-        console.log(
-          `[HMR] Templates to update: ${JSON.stringify(templatesToUpdate)}`
-        );
-
         if (templatesToUpdate.length === 0) {
           console.warn(`[HMR] No templates to update for: ${file}`);
           return [];
@@ -606,10 +601,6 @@ export default function precompileTwigPlugin(options = {}) {
           server,
           templateKeys
         );
-
-        affectedModules.forEach((module) => {
-          console.log(`[HMR] Affected module: ${module.id}`);
-        });
 
         console.log(`[HMR] Found ${affectedModules.length} affected modules`);
 
