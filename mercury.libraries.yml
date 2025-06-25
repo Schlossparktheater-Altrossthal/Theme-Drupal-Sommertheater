@@ -1,18 +1,11 @@
 global:
-  css:
-    theme:
-      src/overrides.css: {}
-  dependencies:
-    - mercury/tailwind
-tailwind:
-  css:
-    theme:
-      build/css/main.min.css: {}
-base:
   version: VERSION
   css:
-    component:
+    base:
       build/css/main.min.css: {}
+    theme:
+      src/overrides.css: {}
+    component:
       css/components/action-links.css: {}
       css/components/breadcrumb.css: {}
       css/components/button.css: {}

@@ -4,8 +4,6 @@ type: theme
 version: 1.0.0
 libraries:
   - mercury/global
-  - mercury/tailwind
-  - mercury/base
   - mercury/messages
   - core/normalize
 libraries-extend:
