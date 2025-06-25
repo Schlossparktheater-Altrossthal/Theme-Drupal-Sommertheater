@@ -5,6 +5,7 @@ ellipses:
 heading_id: 'pager-heading'
 pagination_heading_level: 'h2'
 current: 2
+color_mode: 'light'
 items:
   first:
     href: 'https://www.google.com'

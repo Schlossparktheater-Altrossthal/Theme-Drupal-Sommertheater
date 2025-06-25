@@ -1,6 +1,11 @@
+{% set classes = [
+    'pager',
+    'color-mode--' ~ color_mode,
+  ]
+%}
 
 {% if items %}
-  <nav class="pager" role="navigation" aria-labelledby="{{ heading_id }}">
+  <nav class="{{ classes|join(' ') }}" role="navigation" aria-labelledby="{{ heading_id }}">
     <{{ pagination_heading_level }} id="{{ heading_id }}" class="sr-only">{{ 'Pagination'|t }}</{{ pagination_heading_level }}>
     <ul class="pager__list">
       {# Print first item if we are not on the first page. #}
