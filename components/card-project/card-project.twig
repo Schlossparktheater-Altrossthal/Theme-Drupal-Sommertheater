@@ -2,45 +2,35 @@
     'card-project',
     'flex flex-col gap-6',
     'media-last' in layout ? 'md:flex-row-reverse' : 'md:flex-row',
-    background == 'dark' ? 'bg-accent text-white' : 'bg-brand-lightest text-black',
+    'color-mode--' ~ color_mode,
   ]
 %}
 
 <div class="{{ classes|join(' ') }}">
+  {% if media.src is not empty %}
   <div class="card--media flex-1 overflow-hidden">
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    {% block media %}
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>    
+    {% endblock %}
   </div>
+  {% endif %}
 
   <div class="card--content flex-1 flex flex-col gap-2 md:py-4 {{ 'media-last' in layout ? 'md:items-end md:text-right' : 'md:items-start' }}">
-    {# This should be a loop #}
-    {% if (badge_1.url and badge_1.label) or (badge_2.url and badge_2.label) %}
-    <ul class="list-none flex items-center gap-2 order-2">
-
-      {% if badge_1.url and badge_1.label %}
-        <li>
-          {{ include('mercury:badge',
-            {
-              badge: {
-                url: badge_1.url,
-                label: badge_1.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
-
-      {% if badge_2.url and badge_2.label %}
-        <li>
-          {{ include('mercury:badge',
-            {
-              badge: {
-                url: badge_2.url,
-                label: badge_2.label,
-              }
-            }) }}
-        </li>
-      {% endif %}
-    </ul>
-  {% endif %}
+    {% if block('badges') is defined %}
+      {% block badges %}
+        <ul class="list-none ps-0 flex items-center gap-2">
+        {% for badge in badges %}
+          <li>
+            {{ include('mercury:badge', {
+              url: badge.url,
+              label: badge.label,
+              })
+            }}
+          </li>
+        {% endfor %}
+        </ul>
+      {% endblock %}
+    {% endif %}
     {{ include('mercury:heading') }}
     <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
   </div>

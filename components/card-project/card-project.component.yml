@@ -33,32 +33,8 @@ props:
       type: string
       title: Text
       description: Teaser text
-      # @todo Add examples here.
       examples: 
         - ''
-    badge_1: 
-      type: string
-      title: Badge text 1
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'Visual Identity'
-    badge_2: 
-      type: string
-      title: Badge text 2
-      description: A category badge
-      # @todo Add examples here.
-      examples:
-        - url: '#'
-          label: 'Packaging'
-    background:
-      type: string
-      title: Background color
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
     layout:
       type: string
       title: Layout
@@ -67,4 +43,9 @@ props:
         - media-first (default)
         - media-last
       examples: [media-first (default), media-last]
-
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark]
+      examples: 
+        - light

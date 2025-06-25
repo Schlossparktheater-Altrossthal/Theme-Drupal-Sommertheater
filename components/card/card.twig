@@ -9,7 +9,7 @@
 <div class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
     <div class="card--media overflow-hidden">
-      {% block card_media %}
+      {% block media %}
         <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>    
       {% endblock %}
     </div>
