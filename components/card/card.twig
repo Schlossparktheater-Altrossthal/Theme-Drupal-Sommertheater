@@ -7,22 +7,39 @@
 %}
 
 <div class="{{ classes|join(' ') }}">
-  <div class="card--media overflow-hidden">
-    {# Image will get swapped out in XB #}
-    <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
-  </div>
+  {% if media.src is not empty %}
+    <div class="card--media overflow-hidden">
+      {% block media %}
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>    
+      {% endblock %}
+    </div>
+  {% endif %}
+  
   <div class="card--content flex flex-col gap-4 items-baseline">
+  {% if block('badges') is defined %}
     {% block badges %}
       <ul class="list-none ps-0 flex items-center gap-2">
-        {% for badge in storybook.badges %}
+        {% for badge in badges %}
+
         <li>
-          {{ include('mercury:badge', badge) }}
+          {{ include('mercury:badge', {
+            url: badge.url,
+            label: badge.label,
+            })
+          }}
         </li>
         {% endfor %}
       </ul>
     {% endblock %}
+  {% endif %}
     <div class="flex flex-col gap-6">
-      {{ include('mercury:heading') }}
+      {{ include('mercury:heading',
+        {
+          level: 3,
+          heading_text: heading_text,
+          url: url,
+        } )
+      }}
       <p>{{ text }}</p>
     </div>
   </div>
