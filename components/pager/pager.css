@@ -1,0 +1,77 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.pager .pager__list {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1, 4px);
+}
+.pager .pager__list__item {
+  font-size: var(--text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  --tw-font-weight: var(--font-weight-medium, 500);
+  font-weight: var(--font-weight-medium, 500);
+  white-space: nowrap;
+  color: var(--color-gray-dark, #374151);
+}
+.pager .pager__ellipsis__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  padding-inline: var(--spacing-2, 8px);
+  padding-block: calc(var(--spacing, 0.25rem) * 1.5);
+}
+.pager .pager__icon {
+  height: var(--spacing-6, 24px);
+  width: var(--spacing-6, 24px);
+  flex-shrink: 0;
+  font-size: var(--text-2xl, 1.5rem);
+  line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+  --tw-leading: 1;
+  line-height: 1;
+}
+.pager .pager__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md, 0.375rem);
+  padding-inline: var(--spacing-2, 8px);
+  padding-block: calc(var(--spacing, 0.25rem) * 1.5);
+}
+.pager .pager__number__current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md, 0.375rem);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  --tw-border-style: solid;
+  border-style: solid;
+  border-color: var(--color-gray, #6b7280);
+  padding-inline: var(--spacing-2, 8px);
+  padding-block: calc(var(--spacing, 0.25rem) * 1.5);
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-leading: initial;
+      --tw-border-style: solid;
+    }
+  }
+}

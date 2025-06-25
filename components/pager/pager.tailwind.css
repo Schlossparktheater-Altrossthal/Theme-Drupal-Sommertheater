@@ -1,0 +1,24 @@
+@reference '../../src/main.css';
+
+.pager .pager__list {
+  @apply flex items-center justify-center gap-1 list-none;
+}
+
+.pager .pager__list__item {
+  @apply font-medium text-xl text-gray-dark whitespace-nowrap;
+}
+.pager .pager__ellipsis__container {
+  @apply flex items-center justify-center rounded px-2 py-1.5;
+}
+
+.pager .pager__icon {
+  @apply w-6 h-6 shrink-0 text-2xl leading-none;
+}
+
+.pager .pager__number {
+  @apply flex items-center justify-center rounded-md px-2 py-1.5;
+}
+
+.pager .pager__number__current {
+  @apply flex items-center justify-center rounded-md px-2 py-1.5 border border-gray border-solid;
+}
