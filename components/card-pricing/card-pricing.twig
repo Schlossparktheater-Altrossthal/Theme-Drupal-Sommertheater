@@ -16,7 +16,13 @@
 <article class="{{ classes|join(' ') }}">
 
   <header class="card-pricing--header flex flex-col gap-2">
-    <h3 class="card-title">{{ heading_text }}</h3>
+    {{ include('mercury:heading',
+      {
+        level: 3,
+        heading_classes: ['card-title'],
+      })
+    }}
+
     <p class="card-description">
       {{ description }}
     </p>
@@ -24,13 +30,27 @@
 
   <div class="card-pricing--price">
     <h4 class="card-price">
-      <data value="{{ price }}" data-currency="USD"><sup>$</sup>{{ price }}</data>
+      <data value="{{ price }}" data-currency="{{ currency_code|default('USD') }}">
+        {% if symbol_position is defined and symbol_position == 'before' %}
+          <sup>{{ currency_symbol }}</sup>{{ price }}
+        {% else %}
+          {{ price }}<sup>{{ currency_symbol }}</sup>
+        {% endif %}
+      </data>
     </h4>
   </div>
 
+{% if block('richtext') is defined and text is not empty %}
   <div class="card-pricing--features rich-text">
-    {{ text|raw }}
+  {% block richtext %}
+    {{ include('mercury:text',
+      {
+        text: text|raw,
+      })
+    }}
+  {% endblock %}
   </div>
+  {% endif %}
 
   <footer class="card-pricing--footer mt-auto">
     {{ include('mercury:button', {

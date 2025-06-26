@@ -10,53 +10,73 @@
     background-color: var(--pricing-card-bg-color);
     border-color: var(--pricing-card-border-color);
     color: var(--main-text-color);
-    height: 100%;
-  }
 
-  .card-pricing--header .card-title {
-    @apply font-light text-[2.25rem] leading-tight;
-    color: var(--main-heading-color);
-  }
+    .columns & {
+      height: 100%;
+    }
 
-  .card-pricing--header > .card-description {
-    @apply text-xl leading-[1.2];
+    .card-title {
+      @apply font-light text-[2.25rem] leading-tight;
+      color: var(--main-heading-color);
+    }
+
+    .card-price {
+      @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] text-brand leading-none;
+
+      sup {
+        font-size: 60% !important;
+      }
+    }
+
+    .card-description {
+      @apply text-xl leading-[1.2];
+    }
+
+    .button {
+      @apply !text-sm;
+    }
+
+    &.promote {
+      --main-heading-color: var(--color-white);
+      --main-text-color: var(--color-white);
+      --main-bg-color: var(--pricing-card-bg-color);
+      --pricing-card-bg-color: var(--color-brand);
+      --pricing-card-border-color: var(--pricing-card-bg-color);
+  
+      .card-price {
+        @apply text-white;
+      }
+
+      .rich-text.color-mode--light {
+        --main-text-color: var(--color-white);
+      }
+
+      .rich-text.color-mode--dark {
+        --main-bg-color: var(--color-brand);
+      }
+  
+      .button--fill {
+        @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
+      }
+    }
+
+    &.color-mode--dark {
+
+      .card-price {
+        @apply text-white;
+      }
+
+      .link--button-outline-light {
+        @apply hover:bg-white hover:text-brand-dark;
+      }
+    }
   }
 
   .card-pricing--features {
     @apply border-t pt-4;
-  }
 
-  .card-pricing--features li {
-    @apply text-xl;
-  }
-
-  .card-pricing--price .card-price {
-    @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] text-brand leading-none;
-  }
-
-  .card-pricing.color-mode--dark .card-price {
-    @apply text-white;
-  }
-
-  .card-pricing.promote .card-price {
-    @apply text-white;
-  }
-
-  .card-pricing--footer .button {
-    @apply !text-sm;
-  }
-
-  .card-pricing.color-mode--dark .link--button-outline-light {
-    @apply hover:bg-white hover:text-brand-dark;
-  }
-
-  .card-pricing.promote {
-    --main-heading-color: var(--color-white);
-    --main-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-brand);
-  }
-
-  .card-pricing.promote .button--fill {
-    @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
+    li {
+      @apply text-xl;
+    }
   }
 }
