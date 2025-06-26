@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-        "drupal/twig_tweak": "^3"
+        "drupal/twig_tweak": "^3",
+        "drupal/twig_field_value": "^2.0"
     }
 }
