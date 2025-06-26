@@ -45,11 +45,16 @@ props:
       type: string
       contentMediaType: text/html
       x-formatting-context: block
+      default:
+        '<ul>
+          <li>Enter rich text</li>
+          <li>Facilisis dictumst letius in</li>
+          <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        </ul>'
       examples:
         - '<ul>
-            <li>Enter rich text</li>
-            <li>Facilisis dictumst letius in</li>
-            <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+            <li>Example item 1</li>
+            <li>Example item 2</li>
           </ul>'
     button_url:
       type: string
