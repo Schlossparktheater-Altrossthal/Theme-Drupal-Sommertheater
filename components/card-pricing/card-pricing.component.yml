@@ -34,8 +34,10 @@ props:
     symbol_position:
       type: string
       title: Symbol Position
-      enum: [before, after]
+      enum: ['before', 'after']
       examples: 
+        - before
+      default:
         - before
     text:
       title: Text
@@ -67,10 +69,14 @@ props:
       description: 'Visually feature card.'
       examples:
         - false
+      default:
+        - false
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
       examples: 
+        - light
+      default:
         - light
     

@@ -31,7 +31,7 @@
   <div class="card-pricing--price">
     <h4 class="card-price">
       <data value="{{ price }}" data-currency="{{ currency_code|default('USD') }}">
-        {% if symbol_position == 'before' %}
+        {% if symbol_position is defined and symbol_position == 'before' %}
           <sup>{{ currency_symbol }}</sup>{{ price }}
         {% else %}
           {{ price }}<sup>{{ currency_symbol }}</sup>

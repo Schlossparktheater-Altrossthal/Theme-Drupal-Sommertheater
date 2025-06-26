@@ -10,7 +10,10 @@
     background-color: var(--pricing-card-bg-color);
     border-color: var(--pricing-card-border-color);
     color: var(--main-text-color);
-    height: 100%;
+
+    .columns & {
+      height: 100%;
+    }
 
     .card-title {
       @apply font-light text-[2.25rem] leading-tight;
@@ -42,7 +45,15 @@
   
       .card-price {
         @apply text-white;
-      }  
+      }
+
+      .rich-text.color-mode--light {
+        --main-text-color: var(--color-white);
+      }
+
+      .rich-text.color-mode--dark {
+        --main-bg-color: var(--color-brand);
+      }
   
       .button--fill {
         @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
