@@ -1,65 +1,42 @@
 {% set classes = [
     'cta',
     'relative',
-    background == 'image' or background == 'dark' ? 'bg-black text-white' : 'bg-white text-black',
+    'color-mode--' ~ color_mode,
   ]
 %}
 
 {% if text_align == 'left' %}
   {% set alignment = 'text-left' %}
-  {% set list_extras = 'text-left' %}
+  {% set list_extras = 'md:justify-start' %}
 {% elseif text_align == 'right' %}
   {% set alignment = 'text-right' %}
   {% set list_extras = 'md:justify-end' %}
 {% else %}
   {% set alignment = 'text-center max-w-3/4 mx-auto' %}
-  {% set list_extras = 'mx-auto' %}
+  {% set list_extras = 'md:justify-center items-center' %}
 {% endif %}
 
 <section class="{{ classes|join(' ') }}">
-  {% if background == 'image' %}
-    {% if media.src is not empty %}
-    <div class="cta--media absolute inset-0">
-      <div class="absolute inset-0 bg-black/30"></div>
-      {# Image will get swapped out in XB #}
-      <img src="/components/cta/{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
-    </div>
-    {% endif %}
+  {% if color_mode == 'image' %}
+    {% block media %}
+      {% if media.src is not empty %}
+      <div class="cta--media absolute inset-0">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+      </div>
+      {% endif %}
+    {% endblock %}
   {% endif %}
-  <div class="cta--content relative min-h-80 flex flex-col justify-center gap-6 lg:gap-8 px-6 py-[90px] lg:px-12 lg:py-[115px] xl:px-16 xl:py-[140px]">
-    {# @todo add icon #}
+  <div class="cta--content relative min-h-80 flex flex-col justify-center gap-6 lg:gap-8 px-6 py-[90px] lg:px-12 lg:py-[115px] xl:px-16 xl:py-[140px] {{ text_align == 'center' ? 'items-center' }}">
     {{ include('mercury:heading', {
         heading_classes: (heading_classes|default([]))|merge([ alignment ])
     }) }}
     <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
-    {# Will be a slot in XB #}
-    {% block links %}
-      <ul class="flex gap-4 list-none {{ list_extras }}">
-        {% for link in storybook.links %}
-          {% if background == 'light' %}
-            {% if  loop.index == 1 %}
-              {% set link_style = 'button-dark' %}
-            {% else %}
-              {% set link_style = 'button-outline-dark' %}
-            {% endif %}
-          {% else %}
-            {% if  loop.index == 1 %}
-              {% set link_style = 'button-light' %}
-            {% else %}
-              {% set link_style = 'button-outline-light' %}
-            {% endif %}
-          {% endif %}
-        <li>
-          {{ include('mercury:link', {
-              url: link.url,
-              text: link.text,
-              style: link_style,
-              link_classes: (link_classes|default([]))|merge([ radius ])
-            }
-          ) }}
-        </li>
-        {% endfor %}
-      </ul>
-    {% endblock %}
+    {% if block('actions') is defined %}
+    <div class="cta--links w-full flex flex-col sm:flex-row gap-4 {{ list_extras }}">
+      {% block actions %}
+      {% endblock %}
+    </div>
+    {% endif %}
   </div>
 </section>

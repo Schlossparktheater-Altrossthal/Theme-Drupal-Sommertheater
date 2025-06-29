@@ -1,6 +1,10 @@
+hide_main: true
 links:
-  - url: https://example.com
-    text: 'button text 1'
-    style: 'default'
-  - url: https://example.com
-    text: 'button text 2'
+  - href: https://example.com
+    label: 'button label 1'
+    variant: 'fill'
+    radius: 'rounded-sm'
+  - href: https://example.com
+    label: 'button text 2'
+    variant: 'outline'
+    radius: 'rounded-sm'

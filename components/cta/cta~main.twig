@@ -1,0 +1,42 @@
+{# Overriding media_slot just for Storybook #}
+{% embed 'mercury:cta' %}
+
+  {% block media %}
+    {% if media.src is not empty %}
+    <div class="cta--media absolute inset-0">
+      <div class="absolute inset-0 bg-black/30"></div>
+      <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+    </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block actions %}
+    {# <ul class="flex gap-4 list-none"> #}
+      {% for link in storybook.links %}
+        {% if color_mode == 'light' %}
+          {% if  loop.index == 1 %}
+            {% set link_style = 'fill' %}
+          {% else %}
+            {% set link_style = 'outline' %}
+          {% endif %}
+        {% else %}
+          {% if  loop.index == 1 %}
+            {% set link_style = 'button-light' %}
+          {% else %}
+            {% set link_style = 'button-outline-light' %}
+          {% endif %}
+        {% endif %}
+      {# <li> #}
+        {{ include('mercury:button', {
+            href: link.href,
+            label: link.label,
+            variant: link.variant,
+            radius: link.radius,
+          }
+        ) }}
+      {# </li> #}
+      {% endfor %}
+    {# </ul> #}
+  {% endblock %}
+
+{% endembed %}
