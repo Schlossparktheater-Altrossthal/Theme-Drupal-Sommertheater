@@ -1,11 +1,10 @@
 name: mercury
 type: theme
-'base theme': stable9
+'base theme': false
 version: 1.0.0
 libraries:
   - mercury/global
   - mercury/messages
-  - core/normalize
 libraries-extend:
   user/drupal.user:
     - mercury/user
