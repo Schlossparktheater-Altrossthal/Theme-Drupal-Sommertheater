@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Grid Section
-group: Layouts/Grid Section
+name: Grid Container
+group: Layouts/Grid Container
 status: stable
 description: A Column container
 props:
@@ -24,20 +24,20 @@ props:
         - '50-50'
       default:
         - '50-50'
-    show_header:
+    grid_header:
       type: boolean
       title: Show Header Region
       examples:
-        - false
+        - true
       default:
-        - false
-    show_footer:
+        - true
+    grid_footer:
       type: boolean
       title: Show Footer Region
       examples:
-        - false
+        - true
       default:
-        - false
+        - true
     margin_before:
       type: string
       title: Space Before

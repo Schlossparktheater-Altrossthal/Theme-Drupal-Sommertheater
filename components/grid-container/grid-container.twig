@@ -1,5 +1,5 @@
 {% set classes = classes|default([])|merge([
-    'grid-layout',
+    'grid-container',
     'flex',
     'flex-col',
     'mx-auto',
@@ -41,21 +41,21 @@
 
 <section class="{{ classes|join(' ') }}">
 
-  {% if show_header %}
-    <header class="grid-inner--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-6">
+  {% if grid_header %}
+    <header class="grid-container--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-4">
     {% block header_region %}
     {% endblock %}
     </header>
   {% endif %}
 
-  <div class="grid-inner--columns container grid gap-4 md:gap-6 xl:gap-8 w-full {{ grid_class }} max-w-{{ width }} mx-auto {{ show_header ? '' : margin_before }} {{ show_footer ? '' : margin_after }}">
+  <div class="grid-container--columns container grid gap-4 md:gap-6 xl:gap-8 w-full {{ grid_class }} max-w-{{ width }} mx-auto {{ grid_header ? '' : margin_before }} {{ grid_footer ? '' : margin_after }}">
 
   {% block container_region %}
   {% endblock %}
 
   </div>
-  {% if show_footer %}
-    <footer class="grid-inner--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-6">
+  {% if grid_footer %}
+    <footer class="grid-container--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-4">
     {% block footer_region %}
     {% endblock %}
     </footer>
