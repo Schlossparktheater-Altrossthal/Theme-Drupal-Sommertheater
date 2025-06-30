@@ -1,6 +1,6 @@
 {% set menu_classes = menu_classes|default([])|merge([
   'social-menu',
-  'list-none flex flex-row gap-9 p-0',
+  'list-none flex flex-row gap-9 p-3',
 ])|filter(v => v is not empty) %}
 
 <ul class="{{ menu_classes|join(' ') }}">
