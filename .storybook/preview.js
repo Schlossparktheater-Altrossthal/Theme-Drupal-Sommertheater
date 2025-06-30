@@ -18,6 +18,7 @@ const preview = {
         date: /Date$/i,
       },
     },
+    layout: 'fullscreen',
     options: {
       storySort: {
         method: 'alphabetical',
