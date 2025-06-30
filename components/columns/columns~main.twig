@@ -1,9 +1,0 @@
-{# Overriding media_slot just for Storybook #}
-{% embed 'mercury:columns' %}
-  {% block col_1 %}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ storybook.media.src }}" alt="{{ storybook.media.alt }}" class="w-full h-full object-cover"/>
-  {% endblock %}
-  {% block col_2 %}
-    {{ storybook.text }}
-  {% endblock %}
-{% endembed %}

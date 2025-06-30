@@ -11,7 +11,7 @@
   border-color: var(--color-gray-light, #d1d5db);
 }
 @layer components {
-  .columns {
+  .grid-layout {
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }

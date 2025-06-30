@@ -8,7 +8,7 @@
 }
 @layer components {
 
-  .columns {
+  .grid-layout {
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }

@@ -1,0 +1,36 @@
+{# Overriding media_slot just for Storybook #}
+{% embed 'mercury:grid-section' %}
+
+  {% block header_region %}
+    {{ include('mercury:heading',
+      {
+        level: 2,
+        heading_text: storybook.heading_text,
+        url: '',
+      } )
+    }}
+  {% endblock %}
+{% block container_region %}
+
+    {% for item in storybook.pricing %}
+      {% embed 'mercury:card-pricing' with {
+        heading_text: item.heading_text,
+        level: 3,
+        description: item.description,
+        price: item.price,
+        button_url: item.button_url,
+        button_label: item.button_label,
+        currency_code: item.currency_code,
+        currency_symbol: item.currency_symbol,
+        symbol_position: item.symbol_position,
+        promote: item.promote,
+        text: item.text|raw
+      } %}
+        {% block richtext %}
+          {{ text }}
+        {% endblock %}
+      {% endembed %}
+    {% endfor %}
+
+  {% endblock %}
+{% endembed %}
