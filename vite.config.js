@@ -29,6 +29,9 @@ export default defineConfig({
     }),
     sdcCssWatcher(),
   ],
+  optimizeDeps: {
+    exclude: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/blocks', '@storybook/react', '@storybook/react-vite', '@storybook/testing-library']
+  },
   build: {
     outDir: './build',
     rollupOptions: {
