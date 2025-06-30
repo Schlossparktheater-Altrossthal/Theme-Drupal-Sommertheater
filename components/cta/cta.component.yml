@@ -30,13 +30,6 @@ props:
       examples:
         - src: 'assets/256381.jpg'
           alt: 'Photo by pixabay'
-    radius:
-      type: string
-      title: Button Corner Radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
-      examples: 
-        - rounded-sm
-      default: rounded-sm 
     text_align:
       type: string
       title: Text alignment
@@ -45,7 +38,7 @@ props:
       examples: 
         - center
       default: center
-    background:
+    color_mode:
       type: string
       title: CTA background color
       enum: [light, dark, image]
@@ -53,10 +46,6 @@ props:
         - light
       default: light
 slots:
-  # The key is the name of the slot. In your template you will use 
-  # {% block body %}.
-  links:
-    # A human-readable name.
-    title: Links
-    # A description.
+  actions:
+    title: Buttons
     description: This is the links as buttons
