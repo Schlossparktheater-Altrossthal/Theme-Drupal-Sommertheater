@@ -1,0 +1,64 @@
+{% set classes = classes|default([])|merge([
+    'grid-container',
+    'flex',
+    'flex-col',
+    'mx-auto',
+    'px-5',
+    'md:px-6',
+    'color-mode--' ~ color_mode,
+])|filter(v => v is not empty) %}
+
+{% set grid_class = {
+  '100':         'grid-cols-1',
+  '50-50':       'md:grid-cols-[1fr_1fr]',
+  '33-33-33':    'md:grid-cols-[1fr_1fr_1fr]',
+  '75-25':       'md:grid-cols-[3fr_1fr]',
+  '25-75':       'md:grid-cols-[1fr_3fr]',
+  '67-33':       'md:grid-cols-[2fr_1fr]',
+  '33-67':       'md:grid-cols-[1fr_2fr]',
+  '50-25-25':    'md:grid-cols-[2fr_1fr_1fr]',
+  '25-25-50':    'md:grid-cols-[1fr_1fr_2fr]',
+  '25-25-25-25': 'md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr]',
+}[columns] ?? 'grid-cols-1' %}
+
+{% set margin_before_map = {
+  'none': 'mt-0',
+  'tight': 'mt-4',
+  'normal': 'mt-8 md:mt-12',
+  'extra': 'mt-12 md:mt-16',
+} %}
+
+{% set margin_after_map = {
+  'none': 'mb-0',
+  'tight': 'mb-4',
+  'normal': 'mb-8 md:mb-12',
+  'extra': 'mb-12 md:mb-16',
+} %}
+
+{% set margin_before = margin_before_map[margin_before] ?? '' %}
+
+{% set margin_after = margin_after_map[margin_after] ?? '' %}
+
+<section class="{{ classes|join(' ') }}">
+
+  {% if grid_header %}
+    <header class="grid-container--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-4">
+    {% block header_region %}
+    {% endblock %}
+    </header>
+  {% endif %}
+
+  <div class="grid-container--columns container grid gap-4 md:gap-6 xl:gap-8 w-full {{ grid_class }} max-w-{{ width }} mx-auto {{ grid_header ? '' : margin_before }} {{ grid_footer ? '' : margin_after }}">
+
+  {% block container_region %}
+  {% endblock %}
+
+  </div>
+  {% if grid_footer %}
+    <footer class="grid-container--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-4">
+    {% block footer_region %}
+    {% endblock %}
+    </footer>
+  {% endif %}
+</section>
+
