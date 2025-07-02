@@ -1,0 +1,34 @@
+{% set classes = classes|default([])|merge([
+    'hero-blog',
+    'py-8',
+    'md:py-12',
+    'color-mode--' ~ color_mode,
+  ])|filter(v => v is not empty)
+%}
+
+
+{% set date_formatted = date|date('l, M. j, Y') %}
+
+<section class="{{ classes|join(' ') }}">
+
+<div class="hero-blog--content container max-w-{{ width }} mx-auto flex flex-col gap-8 md:gap-12">
+
+<p>{{ date_formatted }}</p>
+
+{{ include('mercury:heading') }}
+
+
+
+{% if author is not empty %}
+<p>By 
+  {% if author_url is not empty %}
+    {{ include('mercury:link', {
+      url: author_url,
+      text: author,
+    }) }}
+  {% else %}
+  {{ author }}</p>
+{% endif %}
+{% endif %}
+</div>
+</section>

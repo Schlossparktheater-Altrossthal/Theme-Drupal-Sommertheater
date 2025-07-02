@@ -1,0 +1,17 @@
+@reference '../../src/main.css';
+
+.storybook-component--hero-blog {
+  @apply outline outline-dotted outline-gray-200 rounded-xs;
+}
+
+@layer components {
+
+  .hero-blog {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+
+    .link {
+      @apply text-gray-light hover:text-white;
+    }
+  }
+}

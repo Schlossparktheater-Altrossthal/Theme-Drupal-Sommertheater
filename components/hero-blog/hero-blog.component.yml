@@ -1,0 +1,47 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Blog
+description: Hero with side by side slots for media and content.
+group: Layouts/Hero
+props:
+  type: object
+  properties:
+    heading_text:
+      type: string
+      title: Heading Text
+      examples: 
+        - Vivamus curae metus neque mollis orci ipsum sapien velit cursus arcu nostra pretium duis morbi
+    level:
+      type: number
+      title: Heading Level
+      enum: [1,2,3,4,5,6]
+      examples: 
+        - 1
+    date:
+      type: string
+      format: date
+      title: Published Date
+      examples:
+        - '2026-02-12'
+    author:
+      type: string
+      title: Author
+      examples: 
+        - 'John Smith'
+    author_url:
+      type: string
+      title: Author Link
+      examples:
+        - https://example.com
+    width:
+      type: string
+      title: Container Width
+      enum: ['full', '9/10', '8/10', '3/4', '1/2']
+      examples: 
+        - 'full'
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light

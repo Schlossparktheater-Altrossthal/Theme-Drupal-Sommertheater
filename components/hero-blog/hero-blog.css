@@ -1,0 +1,36 @@
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+@layer properties;
+.storybook-component--hero-blog {
+  border-radius: var(--radius-xs, 0.125rem);
+  outline-style: var(--tw-outline-style);
+  outline-width: 1px;
+  outline-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
+  --tw-outline-style: dotted;
+  outline-style: dotted;
+}
+@layer components {
+  .hero-blog {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    .link {
+      color: var(--color-gray-light, #d1d5db);
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-white, #ffffff);
+        }
+      }
+    }
+  }
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-outline-style: solid;
+    }
+  }
+}
