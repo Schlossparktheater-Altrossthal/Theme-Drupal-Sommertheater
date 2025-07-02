@@ -15,9 +15,14 @@
 
 <p>{{ date_formatted }}</p>
 
-{{ include('mercury:heading') }}
+{% block title %}
 
+{{ include('mercury:heading', {
+  heading_text: node.title.value,
+  level: 1,
+}) }}
 
+{% endblock %}
 
 {% if author is not empty %}
 <p>By 

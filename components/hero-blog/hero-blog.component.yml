@@ -5,6 +5,9 @@ group: Layouts/Hero
 props:
   type: object
   properties:
+    title:
+      type: string
+      title: Node title  
     heading_text:
       type: string
       title: Heading Text
