@@ -8,6 +8,7 @@ props:
   properties:
     columns:
       type: string
+      title: Column Layout
       label: Column layout
       enum:
         - '100'
