@@ -28,4 +28,5 @@ props:
       type: string
       title: Add optional url
       examples: 
-        - 'https://www.example.com'
+        - ''
+      default: ''
