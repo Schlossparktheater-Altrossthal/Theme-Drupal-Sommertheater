@@ -1,0 +1,12 @@
+@reference '../../src/main.css';
+
+@layer components {
+
+  .snap-first > .card {
+    @apply ms-6 sm:ms-0;
+  }
+
+  .snap-last > .card {
+    @apply me-6 sm:me-0;
+  }
+}
