@@ -1,10 +1,18 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: 01 Full overlay
-description: Hero with stacked slots for media and content.
+name: Hero - Side-by-side
+description: Hero with side by side slots for media and content.
 group: Layouts/Hero
 props:
   type: object
   properties:
+    layout:
+      type: string
+      title: Layout
+      description: Set hero layout
+      enum: 
+        - media-first (default)
+        - media-last
+      examples: [media-first (default), media-last]
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Media Image
@@ -17,28 +25,22 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - 'One Giant Leap for Drupal'
-    text:
-      type: string
-      title: Text
-      examples: 
-        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
+        - Launching What Comes Next
     level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
-    background_position:
+    text:
       type: string
-      title: Hero background image position
-      enum: [center, top, bottom]
+      title: Heading Text
       examples: 
-        - center
-      default: center
+        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
       examples: 
-        - dark
+        - light
+      default: light
