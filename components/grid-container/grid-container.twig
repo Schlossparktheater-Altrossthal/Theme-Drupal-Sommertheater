@@ -1,10 +1,10 @@
 {% set classes = classes|default([])|merge([
     'grid-container',
+    'container',
     'flex',
     'flex-col',
     'mx-auto',
-    'px-5',
-    'md:px-6',
+    'px-6',
     'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
 
@@ -41,24 +41,22 @@
 
 <section class="{{ classes|join(' ') }}">
 
-  {% if grid_header %}
-    <header class="grid-container--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-4">
-    {% block header_region %}
-    {% endblock %}
-    </header>
-  {% endif %}
+{% if grid_header %}
+  <header class="grid-container--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-4">
+  {% block header_region %}
+  {% endblock %}
+  </header>
+{% endif %}
 
   <div class="grid-container--columns container grid gap-4 md:gap-6 xl:gap-8 w-full {{ grid_class }} max-w-{{ width }} mx-auto {{ grid_header ? '' : margin_before }} {{ grid_footer ? '' : margin_after }}">
-
-  {% block container_region %}
-  {% endblock %}
-
-  </div>
-  {% if grid_footer %}
-    <footer class="grid-container--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-4">
-    {% block footer_region %}
+    {% block container_region %}
     {% endblock %}
-    </footer>
-  {% endif %}
-</section>
+  </div>
 
+{% if grid_footer %}
+  <footer class="grid-container--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-4">
+  {% block footer_region %}
+  {% endblock %}
+  </footer>
+{% endif %}
+</section>

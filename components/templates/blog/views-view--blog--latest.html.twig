@@ -37,8 +37,6 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    'px-6',
-    'md:px-8',
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
@@ -65,9 +63,7 @@
 
   {% block view_content %}
     {% if rows %}
-      <div class="view-content container mx-auto">
-        {{ rows }}
-      </div>
+      {{ include ('mercury:view-snap', { rows: rows }) }}
     {% elseif empty %}
       <div class="view-empty container mx-auto">
         {{ empty }}
