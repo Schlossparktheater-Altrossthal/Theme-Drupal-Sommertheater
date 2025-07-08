@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: 02 Side-by-side
-description: Hero with side by side slots for media and content.
+name: Hero - Full width
+description: Hero with stacked slots for media and content.
 group: Layouts/Hero
 props:
   type: object
@@ -25,18 +25,20 @@ props:
       type: string
       title: Heading Text
       examples: 
-        - Launching What Comes Next
+        - 'From One Small Push to a Bold New Orbit'
     level:
       type: number
       title: Heading Level
       enum: [1,2,3,4,5,6]
       examples: 
         - 1
-    text:
+    styles:
       type: string
-      title: Heading Text
+      title: Heading Styles
+      enum: [default, alt]
       examples: 
-        - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
+        - alt
+      default: alt
     color_mode:
       type: string
       title: Color Mode

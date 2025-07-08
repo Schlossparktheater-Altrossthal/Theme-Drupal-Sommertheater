@@ -1,6 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--hero_1 {
+.storybook-component--hero-1 {
   @apply h-screen p-0;
 }
 

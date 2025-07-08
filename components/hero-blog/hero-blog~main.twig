@@ -1,0 +1,19 @@
+{# Overriding media_slot just for Storybook #}
+{% embed 'mercury:hero-blog' %}
+  {% block title %}
+  {{ include('mercury:heading') }}
+  {% endblock %}
+  {% block author %}
+    {% if storybook.author is not empty %}
+      <p>By 
+      {% if storybook.author_url is not empty %}
+        {{ include('mercury:link', {
+          url: storybook.author_url,
+          text: storybook.author,
+        }) }}
+      {% else %}
+        {{ storybook.author }}</p>
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+{% endembed %}

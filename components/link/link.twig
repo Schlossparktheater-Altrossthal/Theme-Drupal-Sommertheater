@@ -2,7 +2,7 @@
 {% set link_classes = link_classes|default([])|merge([
     'link',
     'link--' ~ style,
-    radius,
+    'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
 
 <a href="{{ url }}" class="{{ link_classes|join(' ') }}" title="{{ title }}">
@@ -11,4 +11,3 @@
     <i class="{{ icon }}"></i>
   {% endif %}
 </a>
-
