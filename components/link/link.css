@@ -1,30 +1,29 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-#storybook-root:has(>.link) {
+.storybook-component--link {
   padding: var(--spacing-5, 20px);
   font-size: var(--text-xl, 1.25rem);
   line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
   --tw-font-weight: var(--font-weight-normal, 400);
   font-weight: var(--font-weight-normal, 400);
 }
-#storybook-root:has(>.link.link--button-outline-light), #storybook-root:has(>.link.link--button-light) {
-  background-color: var(--color-gray, #6b7280);
+.storybook-component--link:has(.color-mode--dark) {
+  background-color: var(--color-gray-darkest, #111827);
 }
 @layer components {
   .link {
     display: inline-block;
     font-family: var(--font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
-    color: var(--color-brand-dark, #1e3a8a);
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-brand-dark, #1e3a8a);
-      }
+    color: var(--hyperlink-color);
+    &:hover, &:focus {
+      color: var(--hyperlink-color-hover);
     }
   }
   .link--button-light, .link--button-outline-light, .link--button-dark, .link--button-brand, .link--button-brand-dark, .link--button-outline-dark {
+    border-radius: var(--radius-sm, 0.25rem);
     border-style: var(--tw-border-style);
     border-width: 1px;
     padding-inline: var(--spacing-5, 20px);

@@ -1,18 +1,23 @@
 @reference '../../src/main.css';
 
-#storybook-root:has(>.link) {
+.storybook-component--link {
   @apply p-5 font-normal text-xl;
 }
 
-#storybook-root:has(>.link.link--button-outline-light),
-#storybook-root:has(>.link.link--button-light) {
-  @apply bg-gray;
+.storybook-component--link:has(.color-mode--dark) {
+  @apply bg-gray-darkest;
 }
 
 @layer components {
 
   .link {
-    @apply font-sans inline-block text-brand-dark underline decoration-1 underline-offset-4 hover:text-brand-dark;
+    @apply font-sans inline-block  underline decoration-1 underline-offset-4;
+    color: var(--hyperlink-color);
+
+    &:hover,
+    &:focus {
+      color: var(--hyperlink-color-hover);
+    }
   }
 
   .link--button-light,
@@ -21,7 +26,7 @@
   .link--button-brand,
   .link--button-brand-dark,
   .link--button-outline-dark {
-    @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
+    @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline rounded-sm;
   }
 
   .link--button-light {

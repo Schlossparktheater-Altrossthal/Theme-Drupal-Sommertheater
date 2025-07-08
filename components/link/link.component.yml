@@ -31,13 +31,6 @@ props:
         - button-brand-dark
       examples:
         - 'default'
-    radius:
-      type: string
-      name: Corner radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
-      examples: 
-        - rounded-sm
-      default: rounded-sm 
     icon:
       type: string
       title: Icon Class
@@ -50,3 +43,10 @@ props:
       description: The destination URL of the link.
       examples:
         - '#'
+    color_mode:
+      type: string
+      title: Color Mode
+      enum: [light, dark]
+      examples: 
+        - light
+      default: light
