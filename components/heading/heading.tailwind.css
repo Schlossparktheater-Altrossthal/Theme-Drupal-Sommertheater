@@ -5,7 +5,6 @@
   .heading {
     @apply font-display tracking-normal text-inherit leading-[1.2];
   }
-
   /* sizes: 48 64 96 */
   h1.heading--size-default {
     @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;

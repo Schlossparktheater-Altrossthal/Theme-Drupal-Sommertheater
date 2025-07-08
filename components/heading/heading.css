@@ -62,7 +62,8 @@
     }
   }
   h3.heading {
-    font-size: 32px;
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
     --tw-font-weight: var(--font-weight-normal, 400);
     font-weight: var(--font-weight-normal, 400);
   }
