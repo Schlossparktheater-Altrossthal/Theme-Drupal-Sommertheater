@@ -1,55 +1,53 @@
 @reference '../../src/main.css';
 
-.storybook-component--link {
-  @apply hg:p-5 hg:font-normal hg:text-xl;
+#storybook-root:has(>.link) {
+  @apply p-5 font-normal text-xl;
 }
 
-.storybook-component--link:has(.color-mode--dark) {
-  @apply hg:bg-gray-darkest;
+#storybook-root:has(>.link.link--button-outline-light),
+#storybook-root:has(>.link.link--button-light) {
+  @apply bg-gray;
 }
 
 @layer components {
 
   .link {
-    @apply hg:font-sans hg:inline-block  hg:underline hg:decoration-1 hg:underline-offset-4;
-    color: var(--hyperlink-color);
-
-    &:hover,
-    &:focus {
-      color: var(--hyperlink-color-hover);
-    }
+    @apply font-sans inline-block text-brand-dark hover:text-brand-dark;
   }
 
+  .link-text {
+    @apply underline decoration-1 underline-offset-4;
+  }
   .link--button-light,
   .link--button-outline-light,
   .link--button-dark,
   .link--button-brand,
   .link--button-brand-dark,
   .link--button-outline-dark {
-    @apply hg:border hg:px-5 hg:pt-[8px] hg:pb-[9px] hg:no-underline hg:hover:no-underline hg:rounded-sm;
+    @apply border px-5 pt-[8px] pb-[9px] no-underline hover:no-underline;
   }
 
   .link--button-light {
-    @apply hg:border-white hg:bg-white hg:text-brand-dark hg:hover:bg-brand-dark hg:hover:border-white hg:hover:text-white;
+    @apply border-white bg-white text-brand-dark hover:bg-brand-dark hover:border-white hover:text-white;
   }
 
   .link--button-dark {
-    @apply hg:border-brand-dark hg:bg-brand-dark hg:text-white hg:hover:bg-white hg:hover:text-brand-dark;
+    @apply border-brand-dark bg-brand-dark text-white hover:bg-white hover:text-brand-dark;
   }
 
   .link--button-outline-light {
-    @apply hg:border-white hg:text-white hg:hover:bg-brand-dark hg:hover:text-white;
+    @apply border-white text-white hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-outline-dark {
-    @apply hg:border-brand-dark hg:text-brand-dark hg:hover:bg-brand-dark hg:hover:text-white;
+    @apply border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-brand {
-    @apply hg:border-brand hg:bg-brand hg:text-white hg:hover:bg-brand-dark hg:hover:text-white;
+    @apply border-brand bg-brand text-white hover:bg-brand-dark hover:text-white;
   }
 
   .link--button-brand-dark {
-    @apply hg:border-brand-dark hg:bg-brand-dark hg:text-brand-light hg:hover:bg-brand-light hg:hover:text-brand-dark;
+    @apply border-brand-dark bg-brand-dark text-brand-light hover:bg-brand-light hover:text-brand-dark;
   }
 }

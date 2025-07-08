@@ -5,7 +5,7 @@ event_date:
   format: 'M d, Y'
 title:
   heading_text: 'Lorem ipsum dolor sit amet fringilla'
-  level: 3
+  level: 4
   url: 'https://www.google.com'
 date: '2025-06-13'
 description: 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
@@ -17,6 +17,7 @@ tags:
 link:
   text: 'Learn More'
   url: 'https://www.google.com'
+  icon: 'chevron_right'
 media:
   src: 'assets/starshot.png'
   alt: 'Placeholder'

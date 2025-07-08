@@ -1,13 +1,16 @@
 
 {% set link_classes = link_classes|default([])|merge([
     'link',
-    'link--' ~ style,
-    'color-mode--' ~ color_mode,
+    style ? 'link--' ~ style : '',
+    radius,
+    icon ? 'flex items-center' : ''
 ])|filter(v => v is not empty) %}
 
-<a href="{{ url }}" class="{{ link_classes|join(' ') }}" title="{{ title }}">
-  {{ text }}
-  {% if icon %}
-    <i class="{{ icon }}"></i>
+<a href="{{ url }}" class="{{ link_classes|join(' ') }}" title="{{ title ?? text }}">
+  {% if icon is not empty %}
+    <span class="link-text">{{ text }}</span>
+    <span class="material-symbols-outlined">{{ icon }}</span>
+  {% else %}
+    {{ text }}
   {% endif %}
 </a>
