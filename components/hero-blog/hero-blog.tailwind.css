@@ -10,8 +10,16 @@
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
 
-    .link {
-      @apply text-gray-light hover:text-white;
+    /* Override global heading sizes:
+      - text-5xl
+      - md:text-6xl
+      - 2xl:text-8xl
+    */
+    .heading.heading--size-default {
+      @apply leading-[1.2];
+      --text-8xl: 3.5rem;
+      --text-6xl: 3rem;
+      --text-5xl: 2.5rem;
     }
   }
 }

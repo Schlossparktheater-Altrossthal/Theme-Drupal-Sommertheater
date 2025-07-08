@@ -6,34 +6,27 @@
   ])|filter(v => v is not empty)
 %}
 
-
-{% set date_formatted = date|date('l, M. j, Y') %}
+{% set date_formatted = date|date('m.d.Y') %}
 
 <section class="{{ classes|join(' ') }}">
 
-<div class="hero-blog--content container max-w-{{ width }} mx-auto flex flex-col gap-8 md:gap-12">
+  <div class="hero-blog--content container max-w-4xl mx-auto flex flex-col gap-8 md:gap-12 px-6">
 
-<p>{{ date_formatted }}</p>
+    <p>
+      <time datetime="{{date_formatted }}">{{ date_formatted }}</time>
+    </p>
 
-{% block title %}
-
-{{ include('mercury:heading', {
-  heading_text: node.title.value,
-  level: 1,
-}) }}
-
-{% endblock %}
-
-{% if author is not empty %}
-<p>By 
-  {% if author_url is not empty %}
-    {{ include('mercury:link', {
-      url: author_url,
-      text: author,
+  {% block title %}
+    {{ include('mercury:heading', {
+      heading_text: node.title.value,
+      level: 1,
     }) }}
-  {% else %}
-  {{ author }}</p>
-{% endif %}
-{% endif %}
-</div>
+  {% endblock %}
+
+  {% block author %}
+    {% if author is not empty %}
+      <p>By {{ author }}</p>
+    {% endif %}
+  {% endblock %}
+  </div>
 </section>
