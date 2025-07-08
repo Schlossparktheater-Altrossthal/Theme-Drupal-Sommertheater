@@ -5,46 +5,46 @@
 {% endif %}
 
 {% block teaser %}
-<article class="search-results hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-[1fr_2fr] hg:gap-6 hg:md:gap-8 hg:items-start">
-  {% if media.src is not empty %}
-    {% block thumbnail %}
-      <div class="search-results--image hg:aspect-5/4">
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:object-cover hg:w-full hg:h-full" />
+  <article class="search-results flex flex-col md:grid md:grid-cols-[1fr_2fr] gap-6 md:gap-8 items-start">
+    {% if media.src is not empty %}
+      {% block thumbnail %}
+        <div class="search-results--image aspect-5/4">
+          <img src="{{ media.src }}" alt="{{ media.alt }}" class="object-cover w-full h-full" />
+        </div>
+      {% endblock %}
+    {% endif %}
+
+    <div class="search-results--content flex flex-col gap-3 w-auto">
+
+      {% if event_date_formatted %}
+        <p class="search-results--event-date">
+          <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
+        </p>
+      {% endif %}
+
+      {{ include('mercury:heading', title) }}
+
+      {% if date_formatted %}
+        <p class="search-results--date">
+          <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
+        </p>
+      {% endif %}
+
+      <p class="search-results--description">
+        {{ description }}
+      </p>
+
+    {% if tags is not empty %}
+      <div class="search-results--tags">
+        {% for tag in tags %}
+          {{ include('mercury:link', tag) }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
       </div>
-    {% endblock %}
-  {% endif %}
 
-  <div class="search-results--content hg:flex hg:flex-col hg:gap-3 hg:w-auto">
-
-    {% if event_date_formatted %}
-      <p class="search-results--event-date">
-        <time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time>
-      </p>
     {% endif %}
-
-    {{ include('mercury:heading', title) }}
-
-    {% if date_formatted %}
-      <p class="search-results--date">
-        <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
-      </p>
+    {% if link %}
+      {{ include('mercury:link', link) }}
     {% endif %}
-
-    <p class="search-results--description">
-      {{ description }}
-    </p>
-
-  {% if tags is not empty %}
-    <ul class="search-results--tags hg:flex hg:flex-wrap hg:p-0 hg:list-none">
-      {% for tag in tags %}
-        {{ include('mercury:link', tag) }}{% if not loop.last %},&nbsp;{% endif %}
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  {% if link %}
-    {{ include('mercury:link', link) }}
-  {% endif %}
-  </div>
-</article>
+    </div>
+  </article>
 {% endblock %}

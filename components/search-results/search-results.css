@@ -2,31 +2,31 @@
 @layer properties;
 @layer components {
   .storybook-component--search-results {
-    max-width: var(--hg-container-5xl, 64rem);
+    max-width: var(--container-5xl, 64rem);
   }
   .search-results .search-results--event-date, .search-results .search-results--date {
-    font-size: var(--hg-text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
-    --tw-font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
-    font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
-    color: var(--hg-color-gray-dark, var(--hgc-color-gray-dark, #1f2937));
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-gray-dark, #374151);
   }
   .search-results .search-results--content .heading {
-    --tw-font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
-    font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
   }
   .search-results .search-results--content .heading a {
-    color: var(--hg-color-brand, var(--hgc-color-brand, #2563eb));
+    color: var(--color-brand, #2563eb);
   }
   .search-results .search-results--description {
-    font-size: var(--hg-text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
-    color: var(--hg-color-gray-dark, var(--hgc-color-gray-dark, #1f2937));
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    color: var(--color-gray-dark, #374151);
   }
   .search-results .search-results--tags a {
-    font-size: var(--hg-text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
-    color: var(--hg-color-gray-dark, var(--hgc-color-gray-dark, #1f2937));
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    color: var(--color-gray-dark, #374151);
     text-decoration-line: none;
     &:hover {
       @media (hover: hover) {
@@ -35,8 +35,8 @@
     }
   }
   .search-results a .link-text {
-    font-size: var(--hg-text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+    font-size: var(--text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
   }
 }
 @property --tw-font-weight {
