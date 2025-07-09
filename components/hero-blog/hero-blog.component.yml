@@ -4,10 +4,7 @@ description: Hero with side by side slots for media and content.
 group: Layouts/Hero
 props:
   type: object
-  properties:
-    title:
-      type: string
-      title: Node title  
+  properties: 
     heading_text:
       type: string
       title: Heading Text
@@ -33,7 +30,7 @@ props:
     author_url:
       type: string
       title: Author Link
-      examples: ''
+      examples: []
       default: ''
     color_mode:
       type: string
