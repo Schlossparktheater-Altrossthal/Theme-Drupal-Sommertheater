@@ -8,12 +8,13 @@ props:
     title:
       type: string
       title: Heading Text
+      default: 'Enter name of event'
       examples:
         - 'Transition'
     event_date:
       type: string
-      format: date
       title: Event Date
+      default: '2026-01-01'
       examples:
         - '2026-02-12'
     description:
@@ -25,6 +26,7 @@ props:
       title: Place
       description: Place of the event
       type: string
+      default: 'Add location'
       examples:
         - '29013 Bednar Spurs'
     color_mode:
@@ -34,6 +36,6 @@ props:
       enum: 
         - light
         - dark
+      default: light
       examples: 
         - light
-      default: light

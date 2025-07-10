@@ -2,40 +2,47 @@
 name: Hero - Blog
 description: Hero with side by side slots for media and content.
 group: Layouts/Hero
+
 props:
   type: object
-  properties: 
+  properties:
     heading_text:
       type: string
       title: Heading Text
-      examples: 
-        - Vivamus curae metus neque mollis orci ipsum sapien velit cursus arcu nostra pretium duis morbi
+      default: 'Enter the title'
+      examples:
+        - 'Vivamus curae metus neque mollis orci ipsum sapien velit cursus'
+
     level:
-      type: number
+      type: integer
       title: Heading Level
-      enum: [1,2,3,4,5,6]
-      examples: 
+      enum: [1, 2, 3, 4, 5, 6]
+      examples:
         - 1
+
     date:
       type: string
-      format: date
       title: Published Date
+      default: '2026-02-12'
       examples:
         - '2026-02-12'
+
     author:
       type: string
       title: Author
-      examples: 
+      examples:
         - 'John Smith'
+
     author_url:
       type: string
       title: Author Link
-      examples: []
       default: ''
+      examples: []
+
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
-      examples: 
-        - light
       default: light
+      examples:
+        - light

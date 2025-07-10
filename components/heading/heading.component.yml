@@ -9,6 +9,7 @@ props:
     heading_text:
       type: string
       title: Heading Text
+      default: 'Enter title'
       examples: 
         - One Giant Leap for Open Source
     level:
