@@ -1,0 +1,37 @@
+social:
+  enabled: true
+  label: "Mercury"
+  description: 'A set of social media icons for the Mercury theme.'
+  version: 1.0.0
+  extractor: svg
+  config:
+    sources:
+      - 'icons/social/*.svg'
+  settings:
+    size:
+      title: Size
+      type: integer
+      default: 32
+    color:
+      title: Color
+      type: string
+      format: color
+    alt:
+      title: Alt text
+      type: string
+      description: "Accessibility alternative text; leave empty for decorative icons."
+  template: >-
+    <svg xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-{{ icon_id|clean_class }}"
+      height="{{ size|default(32) }}"
+      width="{{ size|default(32) }}"
+      fill="{{ color|default('currentColor') }}"
+      {% if alt is empty %}
+        aria-hidden="true"
+        focusable="false"
+      {% else %}
+        aria-label="{{ alt }}"
+      {% endif %}
+    >
+      <use href="{{ source }}#{{ icon_id }}"/>
+    </svg>
