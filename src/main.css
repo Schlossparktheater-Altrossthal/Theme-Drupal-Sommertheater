@@ -31,11 +31,11 @@
   --hyperlink-color: var(--color-brand);
   --hyperlink-color-hover: var(--color-brand-dark);
 
-  --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-mono: 'Fira Code', monospace;
-  --font-display: Arial;
-  --font-body: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-ui: 'Fira Code', monospace;
+  --font-sans: var(--font-mercury-sans);
+  --font-mono: var(--font-mercury-mono);
+  --font-display: var(--font-mercury-display);
+  --font-body: var(--font-mercury-body);
+  --font-ui: var(--font-mercury-ui);
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
@@ -79,11 +79,11 @@
   --text-xs: 0.75rem;                /* 12px */
   --text-xs--line-height: 1.5;       /* 18px */
 
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-light: var(--mr-font-weight-light);
+  --font-weight-normal: var(--mr-font-weight-normal);
+  --font-weight-medium: var(--mr-font-weight-medium);
+  --font-weight-semibold: var(--mr-font-weight-semibold);
+  --font-weight-bold: var(--mr-font-weight-bold);
 
   --spacing-0: 0px;
   --spacing-1: 4px;
@@ -129,27 +129,27 @@
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;
+    @apply font-(--h1-font-weight) text-5xl md:text-6xl 2xl:text-8xl leading-none;
   }
 
   h2 {
-    @apply font-normal text-5xl 2xl:text-6xl;
+    @apply font-(--h2-font-weight) text-5xl 2xl:text-6xl;
   }
 
   h3 {
-    @apply font-normal text-3xl;
+    @apply font-(--h3-font-weight) text-3xl;
   }
 
   h4 {
-    @apply font-normal text-2xl;
+    @apply font-(--h4-font-weight) text-2xl;
   }
 
   h5 {
-    @apply font-medium text-2xl;
+    @apply font-(--h5-font-weight) text-2xl;
   }
 
   h6 {
-    @apply font-medium text-[20px];
+    @apply font-(--h6-font-weight) text-[20px];
   }
 
   code,

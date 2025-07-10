@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+
+:root {
+  --color-gray-lightest: #f3f4f6;
+  --color-gray-light:    #d1d5db;
+  --color-gray:          #6b7280;
+  --color-gray-dark:     #1f2937;
+  --color-gray-darkest:  #030712;
+
+  --color-brand-light:   #BAE6FD;
+  --color-brand:         #1D4ED8;
+  --color-brand-dark:    #172554;
+
+  --color-accent-light:  #fce7f3;
+  --color-accent:        #ec4899;
+  --color-accent-dark:   #9d174d;
+
+  --color-info:          #01a8e4;
+  --color-positive:      #00cc41;
+  --color-warning: 	     #ffbf00;
+  --color-negative: 	   #e60032;
+  --color-body: 	       var(--color-gray-dark);
+
+  --menu-link-color: var(--color-gray-light);
+  --menu-link-color-hover: var(--color-white);
+
+  --font-sans: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-body: var(--font-sans);
+  --font-ui: 'Fira Code', monospace;
+}
