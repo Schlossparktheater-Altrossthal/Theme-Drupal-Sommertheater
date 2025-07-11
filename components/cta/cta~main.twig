@@ -4,8 +4,8 @@
   {% block media %}
     {% if media.src is not empty %}
     <div class="cta--media absolute inset-0">
-      <div class="absolute inset-0 bg-black/30"></div>
-      <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+      <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
+      <img class="hg:object-cover hg:w-full hg:h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
     </div>
     {% endif %}
   {% endblock %}

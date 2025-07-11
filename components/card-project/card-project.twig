@@ -1,24 +1,24 @@
 {% set classes = [
     'card-project',
-    'flex flex-col gap-6',
-    'media-last' in layout ? 'md:flex-row-reverse' : 'md:flex-row',
+    'hg:flex hg:flex-col hg:gap-6',
+    'media-last' in layout ? 'hg:md:flex-row-reverse' : 'hg:md:flex-row',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 <div class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
-  <div class="card--media flex-1 overflow-hidden">
+  <div class="card--media hg:flex-1 hg:overflow-hidden">
     {% block media %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>    
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
     {% endblock %}
   </div>
   {% endif %}
 
-  <div class="card--content flex-1 flex flex-col gap-2 md:py-4 {{ 'media-last' in layout ? 'md:items-end md:text-right' : 'md:items-start' }}">
+  <div class="card--content hg:flex-1 hg:flex hg:flex-col hg:gap-2 hg:md:py-4 {{ 'media-last' in layout ? 'hg:md:items-end hg:md:text-right' : 'hg:md:items-start' }}">
     {% if block('badges') is defined %}
       {% block badges %}
-        <ul class="list-none ps-0 flex items-center gap-2">
+        <ul class="hg:list-none hg:ps-0 hg:flex hg:items-center hg:gap-2">
         {% for badge in badges %}
           <li>
             {{ include('mercury:badge', {
@@ -32,6 +32,6 @@
       {% endblock %}
     {% endif %}
     {{ include('mercury:heading') }}
-    <p class="font-extralight text-lg xl:text-xl">{{ text }}</p>
+    <p class="hg:font-extralight hg:text-lg hg:xl:text-xl">{{ text }}</p>
   </div>
 </div>

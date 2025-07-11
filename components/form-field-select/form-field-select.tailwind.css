@@ -2,14 +2,14 @@
 
 @layer components {
   .form-element.form-element--type-select {
-    @apply block pl-3 pr-10 pt-6 pb-2 appearance-none z-50 bg-[url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%231f1f1f'%3e%3cpath%20d='M480-360%20280-560h400L480-360Z'/%3e%3c/svg%3e")] bg-[position:99%_50%] bg-no-repeat border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ease-in-out;
+    @apply hg:block hg:pl-3 hg:pr-10 hg:pt-6 hg:pb-2 hg:appearance-none hg:z-50 hg:bg-[url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%231f1f1f'%3e%3cpath%20d='M480-360%20280-560h400L480-360Z'/%3e%3c/svg%3e")] hg:bg-[position:99%_50%] hg:bg-no-repeat hg:border hg:border-gray-300 hg:rounded-lg hg:shadow-sm hg:focus:outline-none hg:focus:ring-2 hg:focus:ring-blue-500 hg:focus:border-blue-500 hg:transition-colors hg:duration-200 hg:ease-in-out;
   }
 
   .form-type-select .form-item__label {
-    @apply absolute top-1/2 -translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-1.5 peer-focus:-translate-y-0 peer-valid:top-1.5 peer-valid:-translate-y-0;
+    @apply hg:absolute hg:top-1/2 hg:-translate-y-1/2 hg:peer-placeholder-shown:top-1/2 hg:peer-placeholder-shown:-translate-y-1/2 hg:peer-focus:top-1.5 hg:peer-focus:-translate-y-0 hg:peer-valid:top-1.5 hg:peer-valid:-translate-y-0;
   }
 
   .form-type-select .clear-select {
-    @apply absolute size-6 right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 bg-white;
+    @apply hg:absolute hg:size-6 hg:right-3 hg:top-1/2 hg:-translate-y-1/2 hg:cursor-pointer hg:text-gray-400 hg:bg-white;
   }
 }

@@ -1,6 +1,6 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 .storybook-component--card-testimonial {
-  max-width: var(--container-md, 28rem);
+  max-width: var(--hg-container-md, 28rem);
 }
 @layer components {
   .card-testimonial {
@@ -8,12 +8,12 @@
     color: var(--main-text-color);
   }
   .card-testimonial .testimonial-text {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
   }
   .card-testimonial .testimonial-cite--text, .card-testimonial .testimonial-name {
-    font-size: var(--text-base, 1rem);
-    line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    font-size: var(--hg-text-base, 1rem);
+    line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
   }
   .card-testimonial a.testimonial-cite--text {
     text-decoration-line: underline;

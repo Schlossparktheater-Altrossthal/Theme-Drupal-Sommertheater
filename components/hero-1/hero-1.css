@@ -1,8 +1,8 @@
-/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--hero-1 {
   height: 100vh;
-  padding: var(--spacing-0, 0px);
+  padding: var(--hg-spacing-0, 0px);
 }
 #storybook-root:has(.hero-overlay) {
   height: 100%;
@@ -31,15 +31,15 @@
     color: var(--main-text-color);
   }
   .hero-overlay .hero-region.content p {
-    font-size: var(--text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    font-size: var(--hg-text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
     --tw-leading: 1.5;
     line-height: 1.5;
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 80rem) {
-      font-size: var(--text-3xl, 2rem);
-      line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+      font-size: var(--hg-text-3xl, 2rem);
+      line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
     }
   }
 }

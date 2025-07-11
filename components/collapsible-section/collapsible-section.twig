@@ -2,15 +2,15 @@
 {% set content_id = 'collapsible-section--content'|clean_unique_id %}
 {% set heading_level = heading_level|default('3') %}
 
-<div class="collapsible-section overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
+<div class="collapsible-section hg:overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
   <h{{ heading_level }}>
-    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title px-2 py-4 w-full text-left flex justify-between items-center cursor-pointer">
+    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title hg:px-2 hg:py-4 hg:w-full hg:text-left hg:flex hg:justify-between hg:items-center hg:cursor-pointer">
       {{ title }}
-      <span class="collapsible-section--icon material-symbols-outlined transition-transform duration-(--animate-speed)">expand_more</span>
+      <span class="collapsible-section--icon material-symbols-outlined hg:transition-transform hg:duration-(--animate-speed)">expand_more</span>
     </button>
   </h{{ heading_level}}>
-  <div class="collapsible-section--content transition-[height, padding] duration-(--animate-speed) px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
+  <div class="collapsible-section--content hg:transition-[height, padding] hg:duration-(--animate-speed) hg:px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">
     {% block collapsible_content %}
       {{ storybook.content }}
     {% endblock %}

@@ -7,7 +7,7 @@
 
     .parent-link,
     .below-link {
-      @apply hover:underline;
+      @apply hg:hover:underline;
       color: var(--menu-link-color);
 
       &:hover,
@@ -18,10 +18,10 @@
   }
 
   .footer-menu .parent-link {
-    @apply text-2xl;
+    @apply hg:text-2xl;
   }
 
   .footer-menu .below-link {
-    @apply text-xl;
+    @apply hg:text-xl;
   }
 }

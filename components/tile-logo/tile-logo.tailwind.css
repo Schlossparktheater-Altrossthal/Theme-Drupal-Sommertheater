@@ -10,14 +10,14 @@
 }
 
   .storybook-component--tile-logo:has(.color-mode--dark) {
-    @apply bg-black;
+    @apply hg:bg-black;
   }
 
 
 @layer components {
 
   .logo-tile {
-    @apply bg-brand;
+    @apply hg:bg-brand;
   }
 
   .logo-tile img {

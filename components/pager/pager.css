@@ -2,71 +2,36 @@
 @layer properties;
 @layer components {
   .pager {
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
+    --tw-font-weight: var(--hg-font-weight-medium, 500);
+    font-weight: var(--hg-font-weight-medium, 500);
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }
-  .pager .pager__list {
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-1, 4px);
-  }
-  .pager .pager__list__item {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+  .pager__list-item {
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     white-space: nowrap;
   }
-  .pager .pager__ellipsis__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25rem;
-    padding-inline: var(--spacing-2, 8px);
-    padding-block: calc(var(--spacing, 0.25rem) * 1.5);
-  }
   .color-mode--light .pager .pager__list__item, .color-mode--light.pager .pager__list__item {
-    color: var(--color-gray-dark, #374151);
+    color: var(--hg-color-gray-dark, #374151);
   }
   .color-mode--dark .pager .pager__list__item, .color-mode--dark.pager .pager__list__item {
-    color: var(--color-gray-lightest, #f3f4f6);
+    color: var(--hg-color-gray-lightest, #f3f4f6);
   }
   .pager .pager__icon {
-    height: var(--spacing-6, 24px);
-    width: var(--spacing-6, 24px);
+    height: var(--hg-spacing-6, 24px);
+    width: var(--hg-spacing-6, 24px);
     flex-shrink: 0;
-    font-size: var(--text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    font-size: var(--hg-text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
     --tw-leading: 1;
     line-height: 1;
   }
-  .pager .pager__number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md, 0.375rem);
-    padding-inline: var(--spacing-2, 8px);
-    padding-block: calc(var(--spacing, 0.25rem) * 1.5);
-  }
-  .pager .pager__number__current {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md, 0.375rem);
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    --tw-border-style: solid;
-    border-style: solid;
-    padding-inline: var(--spacing-2, 8px);
-    padding-block: calc(var(--spacing, 0.25rem) * 1.5);
-  }
   .color-mode--light .pager .pager__number__current, .color-mode--light.pager .pager__number__current {
-    border-color: var(--color-gray, #6b7280);
+    border-color: var(--hg-color-gray, #6b7280);
   }
   .color-mode--dark .pager .pager__number__current, .color-mode--dark.pager .pager__number__current {
-    border-color: var(--color-gray-lightest, #f3f4f6);
+    border-color: var(--hg-color-gray-lightest, #f3f4f6);
   }
 }
 @property --tw-font-weight {
@@ -77,17 +42,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-font-weight: initial;
       --tw-leading: initial;
-      --tw-border-style: solid;
     }
   }
 }

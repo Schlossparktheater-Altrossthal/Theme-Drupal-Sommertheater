@@ -1,13 +1,13 @@
 {% set classes = [
     'blockquote',
-    'flex flex-col gap-4',
+    'hg:flex hg:flex-col hg:gap-4',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 <blockquote class="{{ classes|join(' ') }}" cite="{{ cite_url }}">
   <p class="blockquote-text">{{ text }}</p>
-  <footer class="blockquote-name text-left">{{ cite_name }}<br>
+  <footer class="blockquote-name hg:text-left">{{ cite_name }}<br>
     <cite class="blockquote-cite">
       {% if cite_url %}
         <a href="{{ cite_url}}" target="_blank" class="blockquote-cite--text">{{ cite_text }}</a>

@@ -2,40 +2,40 @@
 
 /* Storybook UI specific */
 .storybook-component--blockquote {
-  @apply max-w-md;
+  @apply hg:max-w-md;
 }
 
 @layer components {
 
   .blockquote {
-    @apply font-semibold;
+    @apply hg:font-semibold;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }
 
   .blockquote .blockquote-text {
-    @apply font-semibold text-xl leading-[1.5] text-inherit;
+    @apply hg:font-semibold hg:text-xl hg:leading-[1.5] hg:text-inherit;
   }
 
   .blockquote .blockquote-name {
-    @apply font-bold text-xl leading-[1.2] not-italic;
+    @apply hg:font-bold hg:text-xl hg:leading-[1.2] hg:not-italic;
   }
 
   .blockquote .blockquote-cite--text {
-    @apply font-normal text-base leading-[1.2] italic;
+    @apply hg:font-normal hg:text-base hg:leading-[1.2] hg:italic;
   }
 
   .blockquote a.blockquote-cite--text {
-    @apply underline hover:underline;
+    @apply hg:underline hg:hover:underline;
   }
 
   .color-mode--light .blockquote .blockquote-cite--text,
   .color-mode--light.blockquote .blockquote-cite--text {
-    @apply text-gray;
+    @apply hg:text-gray;
   }
 
   .color-mode--dark .blockquote .blockquote-cite--text,
   .color-mode--dark.blockquote .blockquote-cite--text {
-    @apply text-gray-lightest;
+    @apply hg:text-gray-lightest;
   }
 }

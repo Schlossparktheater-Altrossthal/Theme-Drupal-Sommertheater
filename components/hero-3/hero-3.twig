@@ -1,14 +1,14 @@
 {% set classes = [
     'hero-fullwidth',
-    'media-last' in layout ? 'flex-col-reverse' : 'flex-col',
+    'media-last' in layout ? 'hg:flex-col-reverse' : 'hg:flex-col',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="hero-fullwidth--media aspect-4/3 sm:aspect-2/1 overflow-hidden">
+  <div class="hero-fullwidth--media hg:aspect-4/3 hg:sm:aspect-2/1 hg:overflow-hidden">
   {% block hero_media %}
-    <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+    <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
   {% endblock %}
   </div>
   <div class="hero-fullwidth--content">

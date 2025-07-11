@@ -1,24 +1,24 @@
 {% set classes = [
     'card',
-    'flex flex-col gap-4',
-    'stacked' in orientation ? 'is-stacked' : 'md:flex-row is-landscape',
+    'hg:flex hg:flex-col hg:gap-4',
+    'stacked' in orientation ? 'is-stacked' : 'hg:md:flex-row is-landscape',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 <div class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
-    <div class="card--media overflow-hidden">
+    <div class="card--media hg:overflow-hidden">
       {% block media %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>    
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
       {% endblock %}
     </div>
   {% endif %}
-  
-  <div class="card--content flex flex-col gap-4 items-baseline">
+
+  <div class="card--content hg:flex hg:flex-col hg:gap-4 hg:items-baseline">
   {% if block('badges') is defined %}
     {% block badges %}
-      <ul class="list-none ps-0 flex items-center gap-2">
+      <ul class="hg:list-none hg:ps-0 hg:flex hg:items-center hg:gap-2">
         {% for badge in badges %}
 
         <li>
@@ -32,7 +32,7 @@
       </ul>
     {% endblock %}
   {% endif %}
-    <div class="flex flex-col gap-6">
+    <div class="hg:flex hg:flex-col hg:gap-6">
       {{ include('mercury:heading',
         {
           level: 3,

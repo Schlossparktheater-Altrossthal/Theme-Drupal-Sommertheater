@@ -2,13 +2,13 @@
 @reference '../heading/heading.tailwind.css';
 
 .storybook-component--hero-3 {
-  @apply outline outline-dotted outline-gray-200 rounded-xs;
+  @apply hg:outline hg:outline-dotted hg:outline-gray-200 hg:rounded-xs;
 }
 
 @layer components {
 
   .hero-fullwidth {
-    @apply container mx-auto flex gap-6 px-6 py-8 md:gap-8 md:px-10 md:py-12 xl:gap-10 xl:px-16 xl:py-20;
+    @apply hg:container hg:mx-auto hg:flex hg:gap-6 hg:px-6 hg:py-8 hg:md:gap-8 hg:md:px-10 hg:md:py-12 hg:xl:gap-10 hg:xl:px-16 hg:xl:py-20;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }

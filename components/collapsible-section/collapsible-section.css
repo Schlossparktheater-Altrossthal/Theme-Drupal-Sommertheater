@@ -1,31 +1,31 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 #storybook-root:has(> .collapsible-section) {
-  max-width: var(--container-lg, 32rem);
+  max-width: var(--hg-container-lg, 32rem);
 }
 .collapsible-section {
   --animate-speed: 0s;
   border-bottom-style: var(--tw-border-style);
   border-bottom-width: 1px;
-  border-color: var(--color-gray-darkest, #111827);
-  background-color: var(--color-gray-lightest, #f3f4f6);
+  border-color: var(--hg-color-gray-darkest, #111827);
+  background-color: var(--hg-color-gray-lightest, #f3f4f6);
 }
 .collapsible-section--content {
   height: auto;
-  padding-bottom: var(--spacing-2, 8px);
+  padding-bottom: var(--hg-spacing-2, 8px);
 }
 .collapsible-section--title {
-  font-size: var(--text-2xl, 1.5rem);
-  line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+  font-size: var(--hg-text-2xl, 1.5rem);
+  line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
 }
 .collapsible-section--content {
-  padding-bottom: var(--spacing-2, 8px);
-  font-size: var(--text-base, 1rem);
-  line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+  padding-bottom: var(--hg-spacing-2, 8px);
+  font-size: var(--hg-text-base, 1rem);
+  line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
 }
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
-  height: var(--spacing-0, 0px);
-  padding-bottom: var(--spacing-0, 0px);
+  height: var(--hg-spacing-0, 0px);
+  padding-bottom: var(--hg-spacing-0, 0px);
 }
 .collapsible-section--animate {
   --animate-speed: 500ms;
@@ -36,7 +36,7 @@
   }
   .collapsible-section--content {
     height: var(--natural-height);
-    padding-bottom: var(--spacing-2, 8px);
+    padding-bottom: var(--hg-spacing-2, 8px);
   }
 }
 .collapsible-section--resizing.collapsible-section--open .collapsible-section--content {

@@ -1,17 +1,17 @@
 {% set classes = [
-    'hero-sidebyside h-full',
-    'media-last' in layout ? 'flex-col md:flex-row-reverse' : 'flex-col md:flex-row',
+    'hero-sidebyside hg:h-full',
+    'media-last' in layout ? 'hg:flex-col hg:md:flex-row-reverse' : 'hg:flex-col hg:md:flex-row',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 <section class="{{ classes|join(' ') }}">
-  <div class="hero-sidebyside--media flex-1">
+  <div class="hero-sidebyside--media hg:flex-1">
   {% block hero_media %}
-    <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+    <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
   {% endblock %}
   </div>
-  <div class="hero-sidebyside--content flex-1 flex flex-col  gap-4 lg:gap-6 {{ text ? 'md:justify-center' : 'md:justify-end md:mb-[-10px]' }}">
+  <div class="hero-sidebyside--content hg:flex-1 hg:flex hg:flex-col  hg:gap-4 hg:lg:gap-6 {{ text ? 'hg:md:justify-center' : 'hg:md:justify-end hg:md:mb-[-10px]' }}">
   {% block hero_content %}
     {{ include('mercury:heading') }}
     {% if text is not empty %}

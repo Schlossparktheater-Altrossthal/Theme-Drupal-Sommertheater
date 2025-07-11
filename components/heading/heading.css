@@ -2,93 +2,93 @@
 @layer properties;
 @layer components {
   .heading {
-    font-family: var(--font-display, Arial);
+    font-family: var(--hg-font-display, Arial);
     --tw-leading: 1.2;
     line-height: 1.2;
-    --tw-tracking: var(--tracking-normal, 0em);
-    letter-spacing: var(--tracking-normal, 0em);
+    --tw-tracking: var(--hg-tracking-normal, 0em);
+    letter-spacing: var(--hg-tracking-normal, 0em);
     color: inherit;
   }
   h1.heading--size-default {
-    font-size: var(--text-5xl, 3rem);
-    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    font-size: var(--hg-text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     --tw-leading: 1;
     line-height: 1;
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 48rem) {
-      font-size: var(--text-6xl, 3.75rem);
-      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+      font-size: var(--hg-text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--hg-text-6xl--line-height, 1));
     }
     @media (width >= 96rem) {
-      font-size: var(--text-8xl, 6rem);
-      line-height: var(--tw-leading, var(--text-8xl--line-height, 1));
+      font-size: var(--hg-text-8xl, 6rem);
+      line-height: var(--tw-leading, var(--hg-text-8xl--line-height, 1));
     }
   }
   h1.heading--size-alt {
-    font-size: var(--text-4xl, 2.5rem);
-    line-height: var(--tw-leading, var(--text-4xl--line-height, 1.2));
+    font-size: var(--hg-text-4xl, 2.5rem);
+    line-height: var(--tw-leading, var(--hg-text-4xl--line-height, 1.2));
     --tw-leading: 1;
     line-height: 1;
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 48rem) {
-      font-size: var(--text-5xl, 3rem);
-      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+      font-size: var(--hg-text-5xl, 3rem);
+      line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     }
     @media (width >= 96rem) {
-      font-size: var(--text-6xl, 3.75rem);
-      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+      font-size: var(--hg-text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--hg-text-6xl--line-height, 1));
     }
   }
   h2.heading--size-default {
-    font-size: var(--text-5xl, 3rem);
-    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    font-size: var(--hg-text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 96rem) {
-      font-size: var(--text-6xl, 3.75rem);
-      line-height: var(--tw-leading, var(--text-6xl--line-height, 1));
+      font-size: var(--hg-text-6xl, 3.75rem);
+      line-height: var(--tw-leading, var(--hg-text-6xl--line-height, 1));
     }
   }
   h2.heading--size-alt {
-    font-size: var(--text-3xl, 2rem);
-    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    font-size: var(--hg-text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 96rem) {
-      font-size: var(--text-5xl, 3rem);
-      line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+      font-size: var(--hg-text-5xl, 3rem);
+      line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     }
   }
   h3.heading {
-    font-size: var(--text-3xl, 2rem);
-    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    font-size: var(--hg-text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
   }
   h4.heading {
-    font-size: var(--text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    font-size: var(--hg-text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     @media (width >= 96rem) {
-      font-size: var(--text-3xl, 2rem);
-      line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+      font-size: var(--hg-text-3xl, 2rem);
+      line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
     }
   }
   h5.heading {
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
+    --tw-font-weight: var(--hg-font-weight-medium, 500);
+    font-weight: var(--hg-font-weight-medium, 500);
     @media (width >= 96rem) {
-      font-size: var(--text-2xl, 1.5rem);
-      line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+      font-size: var(--hg-text-2xl, 1.5rem);
+      line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
     }
   }
   h6.heading {
     font-size: 20px;
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
+    --tw-font-weight: var(--hg-font-weight-medium, 500);
+    font-weight: var(--hg-font-weight-medium, 500);
   }
 }
 @property --tw-leading {

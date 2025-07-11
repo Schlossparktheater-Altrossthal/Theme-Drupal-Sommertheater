@@ -11,7 +11,7 @@
 }
 
 .docblock-tw-code {
-  @apply w-[9%];
+  @apply hg:w-[9%];
   align-items: self-start;
   border: 1px solid rgba(39, 42, 43, 0.15);
   border-right: 0;
@@ -24,7 +24,7 @@
 }
 
 .docblock-typeset {
-  @apply w-[91%];
+  @apply hg:w-[91%];
   border-bottom-left-radius: 0 !important;
   border-top-left-radius: 0 !important;
   margin: 0 !important;

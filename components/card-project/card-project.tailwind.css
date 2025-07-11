@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 .storybook-component--card-project {
-  @apply max-w-md md:max-w-5xl;
+  @apply hg:max-w-md hg:md:max-w-5xl;
 }
 
 @layer components {
@@ -12,6 +12,6 @@
   }
 
   .card-project .card--media {
-    @apply aspect-square;
+    @apply hg:aspect-square;
   }
 }

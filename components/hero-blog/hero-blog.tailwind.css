@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 .storybook-component--hero-blog {
-  @apply outline outline-dotted outline-gray-200 rounded-xs;
+  @apply hg:outline hg:outline-dotted hg:outline-gray-200 hg:rounded-xs;
 }
 
 @layer components {
@@ -16,7 +16,7 @@
       - 2xl:text-8xl
     */
     .heading.heading--size-default {
-      @apply leading-[1.2];
+      @apply hg:leading-[1.2];
       --text-8xl: 3.5rem;
       --text-6xl: 3rem;
       --text-5xl: 2.5rem;

@@ -1,23 +1,23 @@
 {% set classes = [
     'card-profile',
-    'relative',
+    'hg:relative',
   ]
 %}
 
 <div class="{{ classes|join(' ') }}">
-  <div class="card--media relative z-1 overflow-hidden">
+  <div class="card--media hg:relative hg:z-1 hg:overflow-hidden">
     {% block card_media %}
       {% if media.src is not empty %}
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
       {% endif %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="object-cover w-full h-full"/>
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:object-cover hg:w-full hg:h-full"/>
     {% endblock %}
   </div>
-  <div class="card--content absolute z-2 inset-0">
+  <div class="card--content hg:absolute hg:z-2 hg:inset-0">
     {% if url is not empty %}
-      <a href="{{ url }}" class="before:absolute before:content-[''] before:inset-0">
+      <a href="{{ url }}" class="hg:before:absolute hg:before:content-[''] hg:before:inset-0">
     {% endif %}
-      <p class="absolute top-1/2 inset-0">
+      <p class="hg:absolute hg:top-1/2 hg:inset-0">
         <strong class="person-name">{{ name }}</strong><br>
         <span class="person-title">{{ job_title }}</span>
       </p>

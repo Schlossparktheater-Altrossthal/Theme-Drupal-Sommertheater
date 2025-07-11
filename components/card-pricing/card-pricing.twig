@@ -1,13 +1,13 @@
 {% set classes = [
     'card-pricing',
-    'flex',
-    'flex-col',
-    'gap-4',
-    'md:gap-6',
-    'border',
-    'p-6',
-    'lg:p-10',
-    '2xl:p-12',
+    'hg:flex',
+    'hg:flex-col',
+    'hg:gap-4',
+    'hg:md:gap-6',
+    'hg:border',
+    'hg:p-6',
+    'hg:lg:p-10',
+    'hg:2xl:p-12',
     'color-mode--' ~ color_mode,
     promote ? 'promote',
   ]
@@ -15,7 +15,7 @@
 
 <article class="{{ classes|join(' ') }}">
 
-  <header class="card-pricing--header flex flex-col gap-2">
+  <header class="card-pricing--header hg:flex hg:flex-col hg:gap-2">
     {{ include('mercury:heading',
       {
         level: 3,
@@ -52,12 +52,12 @@
   </div>
   {% endif %}
 
-  <footer class="card-pricing--footer mt-auto">
+  <footer class="card-pricing--footer hg:mt-auto">
     {{ include('mercury:button', {
       url: button_url,
       label: button_label,
-      variant: promote ? 'fill-light' : color_mode == 'dark' ? 'fill-dark' : 'fill',
-      radius: 'rounded-sm',
+      variant: promote ? 'hg:fill-light' : color_mode == 'dark' ? 'hg:fill-dark' : 'hg:fill',
+      radius: 'hg:rounded-sm',
     }) }}
   </footer>
 

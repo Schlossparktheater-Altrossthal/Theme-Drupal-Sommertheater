@@ -7,7 +7,7 @@
   padding: 1rem;
 }
 .storybook-component--button:has(.color-mode--dark) {
-  background-color: var(--color-black, #000000);
+  background-color: var(--hg-color-black, #000000);
 }
 button.button {
   cursor: pointer;
@@ -18,10 +18,10 @@ button.button {
   border-width: 1px;
   padding-top: 8px;
   padding-bottom: 9px;
-  font-size: var(--text-xl, 1.25rem);
-  line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
-  --tw-font-weight: var(--font-weight-medium, 500);
-  font-weight: var(--font-weight-medium, 500);
+  font-size: var(--hg-text-xl, 1.25rem);
+  line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+  --tw-font-weight: var(--hg-font-weight-medium, 500);
+  font-weight: var(--hg-font-weight-medium, 500);
   text-decoration-line: none;
   &:hover {
     @media (hover: hover) {
@@ -30,243 +30,243 @@ button.button {
   }
 }
 .button--fill {
-  border-color: var(--color-brand, #2563eb);
-  background-color: var(--color-brand, #2563eb);
-  color: var(--color-white, #ffffff);
+  border-color: var(--hg-color-brand, #2563eb);
+  background-color: var(--hg-color-brand, #2563eb);
+  color: var(--hg-color-white, #ffffff);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-brand-dark, #1e3a8a);
+      border-color: var(--hg-color-brand-dark, #1e3a8a);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-brand-dark, #1e3a8a);
+      background-color: var(--hg-color-brand-dark, #1e3a8a);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .button--fill-dark {
-  border-color: var(--color-brand, #2563eb);
-  background-color: var(--color-brand, #2563eb);
-  color: var(--color-gray-lightest, #f3f4f6);
+  border-color: var(--hg-color-brand, #2563eb);
+  background-color: var(--hg-color-brand, #2563eb);
+  color: var(--hg-color-gray-lightest, #f3f4f6);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-brand-light, #eff6ff);
+      border-color: var(--hg-color-brand-light, #eff6ff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-brand-light, #eff6ff);
+      background-color: var(--hg-color-brand-light, #eff6ff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-brand-dark, #1e3a8a);
+      color: var(--hg-color-brand-dark, #1e3a8a);
     }
   }
 }
 .button--fill-light {
-  border-color: var(--color-brand-light, #eff6ff);
-  background-color: var(--color-brand-light, #eff6ff);
-  color: var(--color-brand-dark, #1e3a8a);
+  border-color: var(--hg-color-brand-light, #eff6ff);
+  background-color: var(--hg-color-brand-light, #eff6ff);
+  color: var(--hg-color-brand-dark, #1e3a8a);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-brand-dark, #1e3a8a);
+      border-color: var(--hg-color-brand-dark, #1e3a8a);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-brand-dark, #1e3a8a);
+      background-color: var(--hg-color-brand-dark, #1e3a8a);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .button--fill-accent {
-  border-color: var(--color-accent, #ec4899);
-  background-color: var(--color-accent, #ec4899);
-  color: var(--color-white, #ffffff);
+  border-color: var(--hg-color-accent, #ec4899);
+  background-color: var(--hg-color-accent, #ec4899);
+  color: var(--hg-color-white, #ffffff);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-accent-dark, #9d174d);
+      border-color: var(--hg-color-accent-dark, #9d174d);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-accent-dark, #9d174d);
+      background-color: var(--hg-color-accent-dark, #9d174d);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .color-mode--dark .button--fill, .button--fill.color-mode--dark {
-  border-color: var(--color-brand-light, #eff6ff);
-  background-color: var(--color-brand-light, #eff6ff);
-  color: var(--color-brand, #2563eb);
+  border-color: var(--hg-color-brand-light, #eff6ff);
+  background-color: var(--hg-color-brand-light, #eff6ff);
+  color: var(--hg-color-brand, #2563eb);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-white, #ffffff);
+      border-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-white, #ffffff);
+      background-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-black, #000000);
+      color: var(--hg-color-black, #000000);
     }
   }
 }
 .color-mode--dark .button--fill-accent, .button--fill-accent.color-mode--dark {
-  border-color: var(--color-accent, #ec4899);
-  background-color: var(--color-accent, #ec4899);
-  color: var(--color-white, #ffffff);
+  border-color: var(--hg-color-accent, #ec4899);
+  background-color: var(--hg-color-accent, #ec4899);
+  color: var(--hg-color-white, #ffffff);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-white, #ffffff);
+      border-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-white, #ffffff);
+      background-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-accent, #ec4899);
+      color: var(--hg-color-accent, #ec4899);
     }
   }
 }
 .button--outline {
-  border-color: var(--color-brand, #2563eb);
-  background-color: var(--color-white, #ffffff);
-  color: var(--color-brand, #2563eb);
+  border-color: var(--hg-color-brand, #2563eb);
+  background-color: var(--hg-color-white, #ffffff);
+  color: var(--hg-color-brand, #2563eb);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-brand, #2563eb);
+      border-color: var(--hg-color-brand, #2563eb);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-brand, #2563eb);
+      background-color: var(--hg-color-brand, #2563eb);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .button--outline-accent {
-  border-color: var(--color-accent, #ec4899);
-  background-color: var(--color-white, #ffffff);
-  color: var(--color-accent, #ec4899);
+  border-color: var(--hg-color-accent, #ec4899);
+  background-color: var(--hg-color-white, #ffffff);
+  color: var(--hg-color-accent, #ec4899);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-accent, #ec4899);
+      border-color: var(--hg-color-accent, #ec4899);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-accent, #ec4899);
+      background-color: var(--hg-color-accent, #ec4899);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .color-mode--dark .button--outline, .button--outline.color-mode--dark {
-  border-color: var(--color-white, #ffffff);
+  border-color: var(--hg-color-white, #ffffff);
   background-color: transparent;
-  color: var(--color-white, #ffffff);
+  color: var(--hg-color-white, #ffffff);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-white, #ffffff);
+      border-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-white, #ffffff);
+      background-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-brand, #2563eb);
+      color: var(--hg-color-brand, #2563eb);
     }
   }
 }
 .color-mode--dark .button--outline-accent, .button--outline-accent.dark-mode {
-  border-color: var(--color-accent, #ec4899);
+  border-color: var(--hg-color-accent, #ec4899);
   background-color: transparent;
-  color: var(--color-accent, #ec4899);
+  color: var(--hg-color-accent, #ec4899);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-accent, #ec4899);
+      border-color: var(--hg-color-accent, #ec4899);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-accent, #ec4899);
+      background-color: var(--hg-color-accent, #ec4899);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
 }
 .button--fill[aria-disabled="true"], .button--fill-accent[aria-disabled="true"], .button--fill[disabled], .button--fill-accent[disabled] {
-  border-color: var(--color-gray-light, #d1d5db);
-  background-color: var(--color-gray-light, #d1d5db);
-  color: var(--color-white, #ffffff);
+  border-color: var(--hg-color-gray-light, #d1d5db);
+  background-color: var(--hg-color-gray-light, #d1d5db);
+  color: var(--hg-color-white, #ffffff);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-gray-light, #d1d5db);
+      border-color: var(--hg-color-gray-light, #d1d5db);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-gray-light, #d1d5db);
+      background-color: var(--hg-color-gray-light, #d1d5db);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-white, #ffffff);
+      color: var(--hg-color-white, #ffffff);
     }
   }
   cursor: default;
 }
 .button--outline[aria-disabled="true"], .button--outline-accent[aria-disabled="true"], .button--outline[disabled], .button--outline-accent[disabled] {
-  border-color: var(--color-gray-light, #d1d5db);
-  background-color: var(--color-white, #ffffff);
-  color: var(--color-gray-light, #d1d5db);
+  border-color: var(--hg-color-gray-light, #d1d5db);
+  background-color: var(--hg-color-white, #ffffff);
+  color: var(--hg-color-gray-light, #d1d5db);
   &:hover {
     @media (hover: hover) {
-      border-color: var(--color-gray-light, #d1d5db);
+      border-color: var(--hg-color-gray-light, #d1d5db);
     }
   }
   &:hover {
     @media (hover: hover) {
-      background-color: var(--color-white, #ffffff);
+      background-color: var(--hg-color-white, #ffffff);
     }
   }
   &:hover {
     @media (hover: hover) {
-      color: var(--color-gray-light, #d1d5db);
+      color: var(--hg-color-gray-light, #d1d5db);
     }
   }
   cursor: default;

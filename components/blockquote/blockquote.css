@@ -1,40 +1,40 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--blockquote {
-  max-width: var(--container-md, 28rem);
+  max-width: var(--hg-container-md, 28rem);
 }
 @layer components {
   .blockquote {
-    --tw-font-weight: var(--font-weight-semibold, 600);
-    font-weight: var(--font-weight-semibold, 600);
+    --tw-font-weight: var(--hg-font-weight-semibold, 600);
+    font-weight: var(--hg-font-weight-semibold, 600);
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }
   .blockquote .blockquote-text {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     --tw-leading: 1.5;
     line-height: 1.5;
-    --tw-font-weight: var(--font-weight-semibold, 600);
-    font-weight: var(--font-weight-semibold, 600);
+    --tw-font-weight: var(--hg-font-weight-semibold, 600);
+    font-weight: var(--hg-font-weight-semibold, 600);
     color: inherit;
   }
   .blockquote .blockquote-name {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     --tw-leading: 1.2;
     line-height: 1.2;
-    --tw-font-weight: var(--font-weight-bold, 700);
-    font-weight: var(--font-weight-bold, 700);
+    --tw-font-weight: var(--hg-font-weight-bold, 700);
+    font-weight: var(--hg-font-weight-bold, 700);
     font-style: normal;
   }
   .blockquote .blockquote-cite--text {
-    font-size: var(--text-base, 1rem);
-    line-height: var(--tw-leading, var(--text-base--line-height, 1.5));
+    font-size: var(--hg-text-base, 1rem);
+    line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     --tw-leading: 1.2;
     line-height: 1.2;
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
     font-style: italic;
   }
   .blockquote a.blockquote-cite--text {
@@ -46,10 +46,10 @@
     }
   }
   .color-mode--light .blockquote .blockquote-cite--text, .color-mode--light.blockquote .blockquote-cite--text {
-    color: var(--color-gray, #6b7280);
+    color: var(--hg-color-gray, #6b7280);
   }
   .color-mode--dark .blockquote .blockquote-cite--text, .color-mode--dark.blockquote .blockquote-cite--text {
-    color: var(--color-gray-lightest, #f3f4f6);
+    color: var(--hg-color-gray-lightest, #f3f4f6);
   }
 }
 @property --tw-font-weight {

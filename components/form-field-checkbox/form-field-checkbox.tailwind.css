@@ -2,14 +2,14 @@
 
 @layer components {
   .form-item.form-type-checkbox .form-checkbox {
-    @apply absolute mt-1.5 ml-0;
+    @apply hg:absolute hg:mt-1.5 hg:ml-0;
   }
 
   .form-item.form-type-checkbox .form-item__label {
-    @apply text-black pl-5;
+    @apply hg:text-black hg:pl-5;
   }
 
   .form-item.form-type-checkbox .form-item__description {
-    @apply text-gray-400 leading-normal	pl-5 text-sm;
+    @apply hg:text-gray-400 hg:leading-normal	hg:pl-5 hg:text-sm;
   }
 }

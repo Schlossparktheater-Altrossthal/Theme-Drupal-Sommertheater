@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' prefix(hg);
 
 @theme {
   --color-black:         #000000;
@@ -111,74 +111,74 @@
   }
 
   body {
-    @apply bg-body font-body text-gray-darkest;
+    @apply hg:bg-body hg:font-body hg:text-gray-darkest;
   }
 
   p {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
   }
 
   ul,
   ol {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit list-disc ps-5;
+    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit hg:list-disc hg:ps-5;
   }
 
   li {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
   }
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply font-normal text-5xl md:text-6xl 2xl:text-8xl leading-none;
+    @apply hg:font-normal hg:text-5xl hg:md:text-6xl hg:2xl:text-8xl hg:leading-none;
   }
 
   h2 {
-    @apply font-normal text-5xl 2xl:text-6xl;
+    @apply hg:font-normal hg:text-5xl hg:2xl:text-6xl;
   }
 
   h3 {
-    @apply font-normal text-3xl;
+    @apply hg:font-normal hg:text-3xl;
   }
 
   h4 {
-    @apply font-normal text-2xl;
+    @apply hg:font-normal hg:text-2xl;
   }
 
   h5 {
-    @apply font-medium text-2xl;
+    @apply hg:font-medium hg:text-2xl;
   }
 
   h6 {
-    @apply font-medium text-[20px];
+    @apply hg:font-medium hg:text-[20px];
   }
 
   code,
   pre {
-    @apply text-sm text-inherit font-mono;
+    @apply hg:text-sm hg:text-inherit hg:font-mono;
   }
 
   small {
-    @apply text-sm text-inherit;
+    @apply hg:text-sm hg:text-inherit;
   }
 
   strong,
   b {
-    @apply font-semibold text-inherit;
+    @apply hg:font-semibold hg:text-inherit;
   }
 
   em,
   i {
-    @apply italic text-inherit;
+    @apply hg:italic hg:text-inherit;
   }
 
   hr {
-    @apply my-4 border-t border-gray;
+    @apply hg:my-4 hg:border-t hg:border-gray;
   }
 
   table,
   th,
   td {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
   }
 
   sup {
@@ -197,7 +197,7 @@
 
   /* These apply to rich-text blocks only. */
   .rich-text a {
-    @apply underline underline-offset-2;
+    @apply hg:underline hg:underline-offset-2;
     color: var(--hyperlink-color);
   }
 
@@ -207,39 +207,39 @@
   }
 
   .rich-text p {
-    @apply leading-relaxed my-4;
+    @apply hg:leading-relaxed hg:my-4;
   }
 
   .rich-text ul {
-    @apply list-disc pl-5 my-4;
+    @apply hg:list-disc hg:pl-5 hg:my-4;
   }
 
   .rich-text ol {
-    @apply list-decimal pl-5 my-4;
+    @apply hg:list-decimal hg:pl-5 hg:my-4;
   }
 
   .rich-text li {
-    @apply mb-1;
+    @apply hg:mb-1;
   }
 
   .rich-text h2 {
-    @apply  mt-8 mb-4;
+    @apply hg:mt-8 hg:mb-4;
   }
 
   .rich-text h3 {
-    @apply mt-6 mb-3;
+    @apply hg:mt-6 hg:mb-3;
   }
 
   .rich-text h4 {
-    @apply mt-6 mb-2;
+    @apply hg:mt-6 hg:mb-2;
   }
 
   .rich-text h5 {
-    @apply mt-4 mb-2;
+    @apply hg:mt-4 hg:mb-2;
   }
 
   .rich-text h6 {
-    @apply mt-4 mb-2;
+    @apply hg:mt-4 hg:mb-2;
   }
 }
 
@@ -247,62 +247,62 @@
 @layer components {
 
   .color-mode--dark {
-    --main-bg-color: var(--color-gray-darkest);
-    --main-heading-color: var(--color-brand-light);
-    --main-text-color: var(--color-white);
-    --menu-link-color: var(--color-white);
-    --menu-link-color-hover: var(--color-brand-light);
-    --hyperlink-color: var(--color-blue-100);
-    --hyperlink-color-hover: var(--color-white);
-    --card-bg: var(--color-gray-dark);
-    --card-text-color: var(--color-white);
-    --pricing-card-bg-color: var(--color-gray-darkest);
+    --main-bg-color: var(--hg-color-gray-darkest);
+    --main-heading-color: var(--hg-color-brand-light);
+    --main-text-color: var(--hg-color-white);
+    --menu-link-color: var(--hg-color-white);
+    --menu-link-color-hover: var(--hg-color-brand-light);
+    --hyperlink-color: var(--hg-color-blue-100);
+    --hyperlink-color-hover: var(--hg-color-white);
+    --card-bg: var(--hg-color-gray-dark);
+    --card-text-color: var(--hg-color-white);
+    --pricing-card-bg-color: var(--hg-color-gray-darkest);
     --pricing-card-border-color: var(--pricing-card-bg-color);
   }
 
   .color-mode--light {
     --main-bg-color: transparent;
-    --main-heading-color: var(--color-brand);
-    --main-text-color: var(--color-gray-darkest);
-    --menu-link-color: var(--color-gray-darkest);
-    --menu-link-color-hover: var(--color-brand);
-    --hyperlink-color: var(--color-brand);
-    --hyperlink-color-hover: var(--color-brand-dark);
-    --card-bg: var(--color-gray-light);
-    --card-text-color: var(--color-gray-darkest);
-    --pricing-card-bg-color: var(--color-white);
-    --pricing-card-border-color: var(--color-gray-darkest);
+    --main-heading-color: var(--hg-color-brand);
+    --main-text-color: var(--hg-color-gray-darkest);
+    --menu-link-color: var(--hg-color-gray-darkest);
+    --menu-link-color-hover: var(--hg-color-brand);
+    --hyperlink-color: var(--hg-color-brand);
+    --hyperlink-color-hover: var(--hg-color-brand-dark);
+    --card-bg: var(--hg-color-gray-light);
+    --card-text-color: var(--hg-color-gray-darkest);
+    --pricing-card-bg-color: var(--hg-color-white);
+    --pricing-card-border-color: var(--hg-color-gray-darkest);
   }
 }
 
 @layer utilities {
-  .bg-gray-lightest { background-color: var(--color-gray-lightest); }
-  .bg-gray-light { background-color: var(--color-gray-light); }
-  .bg-gray-dark { background-color: var(--color-gray-dark); }
-  .bg-gray-darkest { background-color: var(--color-gray-darkest); }
-  .bg-brand-light { background-color: var(--color-brand-light); }
-  .bg-brand-dark { background-color: var(--color-brand-dark); }
-  .bg-accent-light { background-color: var(--color-accent-light); }
-  .bg-accent-dark { background-color: var(--color-accent-dark); }
-  .text-gray-lightest { color: var(--color-gray-lightest); }
-  .text-gray-light { color: var(--color-gray-light); }
-  .text-gray-dark { color: var(--color-gray-dark); }
-  .text-gray-darkest { color: var(--color-gray-darkest); }
-  .text-brand-light { color: var(--color-brand-light); }
-  .text-brand-dark { color: var(--color-brand-dark); }
-  .text-accent-light { color: var(--color-accent-light); }
-  .text-accent-dark { color: var(--color-accent-dark); }
-  .border-gray-lightest { border-color: var(--color-gray-lightest); }
-  .border-gray-light { border-color: var(--color-gray-light); }
-  .border-gray-dark { border-color: var(--color-gray-dark); }
-  .border-gray-darkest { border-color: var(--color-gray-darkest); }
-  .border-brand-light { border-color: var(--color-brand-light); }
-  .border-brand-dark { border-color: var(--color-brand-dark); }
-  .border-accent-light { border-color: var(--color-accent-light)}
-  .border-accent-dark { border-color: var(--color-accent-dark)}
+  .bg-gray-lightest { background-color: var(--hg-color-gray-lightest); }
+  .bg-gray-light { background-color: var(--hg-color-gray-light); }
+  .bg-gray-dark { background-color: var(--hg-color-gray-dark); }
+  .bg-gray-darkest { background-color: var(--hg-color-gray-darkest); }
+  .bg-brand-light { background-color: var(--hg-color-brand-light); }
+  .bg-brand-dark { background-color: var(--hg-color-brand-dark); }
+  .bg-accent-light { background-color: var(--hg-color-accent-light); }
+  .bg-accent-dark { background-color: var(--hg-color-accent-dark); }
+  .text-gray-lightest { color: var(--hg-color-gray-lightest); }
+  .text-gray-light { color: var(--hg-color-gray-light); }
+  .text-gray-dark { color: var(--hg-color-gray-dark); }
+  .text-gray-darkest { color: var(--hg-color-gray-darkest); }
+  .text-brand-light { color: var(--hg-color-brand-light); }
+  .text-brand-dark { color: var(--hg-color-brand-dark); }
+  .text-accent-light { color: var(--hg-color-accent-light); }
+  .text-accent-dark { color: var(--hg-color-accent-dark); }
+  .border-gray-lightest { border-color: var(--hg-color-gray-lightest); }
+  .border-gray-light { border-color: var(--hg-color-gray-light); }
+  .border-gray-dark { border-color: var(--hg-color-gray-dark); }
+  .border-gray-darkest { border-color: var(--hg-color-gray-darkest); }
+  .border-brand-light { border-color: var(--hg-color-brand-light); }
+  .border-brand-dark { border-color: var(--hg-color-brand-dark); }
+  .border-accent-light { border-color: var(--hg-color-accent-light)}
+  .border-accent-dark { border-color: var(--hg-color-accent-dark)}
 }
 
 /* Custom overrides placed outside @layer to ensure they load last and override external styles */
 .icon-5xl {
-  font-size: var(--text-5xl);
+  font-size: var(--hg-text-5xl);
 }

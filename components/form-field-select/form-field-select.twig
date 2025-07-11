@@ -9,8 +9,8 @@
 
 {# Render the select field with the provided options #}
 
-<div class="form-type-select js-form-item form-item js-form-type-select relative form-item-{{ id }} js-form-item-{{ id }}">
-  <select data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" name="{{ id }}" class="form-select form-element form-element--type-select peer" {{input_required}} {{input_disabled}}>
+<div class="form-type-select js-form-item form-item js-form-type-select hg:relative form-item-{{ id }} js-form-item-{{ id }}">
+  <select data-drupal-selector="edit-{{ id }}" id="edit-{{ id }}" name="{{ id }}" class="form-select form-element form-element--type-select hg:peer" {{input_required}} {{input_disabled}}>
     <option value="" disabled selected hidden></option>
     {% for option in options %}
       <option value="{{ option.value }}" {% if option.selected %}selected="selected"{% endif %}>
@@ -18,8 +18,8 @@
       </option>
     {% endfor %}
   </select>
-  <label for="edit-{{ id }}" class="absolute form-item__label">{{ label }}</label>
-  <button type="button" class="clear-select hidden" aria-label="Clear selection">
+  <label for="edit-{{ id }}" class="hg:absolute form-item__label">{{ label }}</label>
+  <button type="button" class="clear-select hg:hidden" aria-label="Clear selection">
     <span class="material-symbols-outlined">close</span>
   </button>
 </div>

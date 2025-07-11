@@ -3,10 +3,10 @@
 @layer components {
 
   .snap-first > .card {
-    @apply ms-6 sm:ms-0;
+    @apply hg:ms-6 hg:sm:ms-0;
   }
 
   .snap-last > .card {
-    @apply me-6 sm:me-0;
+    @apply hg:me-6 hg:sm:me-0;
   }
 }
