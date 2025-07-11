@@ -2,46 +2,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
 :root {
-  --color-gray-lightest: #f3f4f6;
-  --color-gray-light:    #d1d5db;
-  --color-gray:          #6b7280;
-  --color-gray-dark:     #1f2937;
-  --color-gray-darkest:  #030712;
+  --color-hgc-gray-lightest: #f3f4f6;
+  --color-hgc-gray-light:    #d1d5db;
+  --color-hgc-gray:          #6b7280;
+  --color-hgc-gray-dark:     #1f2937;
+  --color-hgc-gray-darkest:  #030712;
 
-  --color-brand-light:   #BAE6FD;
-  --color-brand:         #1D4ED8;
-  --color-brand-dark:    #172554;
+  --color-hgc-brand-light:   #BAE6FD;
+  --color-hgc-brand:         #1D4ED8;
+  --color-hgc-brand-dark:    #172554;
 
-  --color-accent-light:  #fce7f3;
-  --color-accent:        #ec4899;
-  --color-accent-dark:   #9d174d;
+  --color-hgc-accent-light:  #fce7f3;
+  --color-hgc-accent:        #ec4899;
+  --color-hgc-accent-dark:   #9d174d;
 
-  --color-info:          #01a8e4;
-  --color-positive:      #00cc41;
-  --color-warning: 	     #ffbf00;
-  --color-negative: 	   #e60032;
-  --color-body: 	       var(--color-gray-dark);
+  --color-hgc-info:          #01a8e4;
+  --color-hgc-positive:      #00cc41;
+  --color-hgc-warning: 	     #ffbf00;
+  --color-hgc-negative: 	   #e60032;
+  --color-hgc-body: 	       #1f2937;
 
-  --font-weight-mercury-light: 300;
-  --font-weight-mercury-normal: 400;
-  --font-weight-mercury-medium: 500;
-  --font-weight-mercury-semibold: 600;
-  --font-weight-mercury-bold: 700;
+  --font-weight-hgc-light: 300;
+  --font-weight-hgc-normal: 400;
+  --font-weight-hgc-medium: 500;
+  --font-weight-hgc-semibold: 600;
+  --font-weight-hgc-bold: 700;
 
-  --font-weight-mercury-p: var(--font-weight-mercury-normal);
-  --font-weight-mercury-h1: var(--font-weight-mercury-semibold);
-  --font-weight-mercury-h2: var(--font-weight-mercury-semibold);
-  --font-weight-mercury-h3: var(--font-weight-mercury-semibold);
-  --font-weight-mercury-h4: var(--font-weight-mercury-medium);
-  --font-weight-mercury-h5: var(--font-weight-mercury-medium);
-  --font-weight-mercury-h6: var(--font-weight-mercury-medium);
+  --font-weight-hgc-p: 400;
+  --font-weight-hgc-h1: 600;
+  --font-weight-hgc-h2: 600;
+  --font-weight-hgc-h3: 600;
+  --font-weight-hgc-h4: 500;
+  --font-weight-hgc-h5: 500;
+  --font-weight-hgc-h6: 500;
 
-  --menu-link-color: var(--color-gray-light);
-  --menu-link-color-hover: var(--color-white);
+  --menu-link-hgc-color: #1f2937;
+  --menu-link-hgc-color-hover: #1D4ED8;
 
-  --font-mercury-sans: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-mercury-mono: 'Fira Code', monospace;
-  --font-mercury-display: var(--font-mercury-sans);
-  --font-mercury-body: var(--font-mercury-sans);
-  --font-mercury-ui: 'Fira Code', monospace;
+  --hyperlink-hgc-color: #1D4ED8;
+  --hyperlink-hgc-color-hover: #172554;
+
+  --radius-hgc-sm: 0;
+
+  --font-hgc-sans: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-hgc-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-hgc-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-hgc-body: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-hgc-ui: 'Fira Code', monospace;
 }
