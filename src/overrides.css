@@ -22,13 +22,13 @@
   --color-hgc-negative: 	   #e60032;
   --color-hgc-body: 	       #1f2937;
 
-  --font-weight-hgc-light: 300;
-  --font-weight-hgc-normal: 400;
-  --font-weight-hgc-medium: 500;
+  --font-weight-hgc-light:    300;
+  --font-weight-hgc-normal:   400;
+  --font-weight-hgc-medium:   500;
   --font-weight-hgc-semibold: 600;
-  --font-weight-hgc-bold: 700;
+  --font-weight-hgc-bold:     700;
 
-  --font-weight-hgc-p: 400;
+  --font-weight-hgc-p:  400;
   --font-weight-hgc-h1: 600;
   --font-weight-hgc-h2: 600;
   --font-weight-hgc-h3: 600;
@@ -36,17 +36,17 @@
   --font-weight-hgc-h5: 500;
   --font-weight-hgc-h6: 500;
 
-  --menu-link-hgc-color: #1f2937;
-  --menu-link-hgc-color-hover: #1D4ED8;
+  --menu-link-hgc-color:      #1f2937;
+  --menu-link-hgc-color-hover:#1D4ED8;
 
-  --hyperlink-hgc-color: #1D4ED8;
-  --hyperlink-hgc-color-hover: #172554;
+  --hyperlink-hgc-color:      #1D4ED8;
+  --hyperlink-hgc-color-hover:#172554;
 
   --radius-hgc-sm: 0;
 
-  --font-hgc-sans: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-hgc-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-hgc-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-hgc-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
   --font-hgc-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-hgc-body: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-hgc-ui: 'Fira Code', monospace;
+  --font-hgc-body:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --font-hgc-ui:      'Fira Code', monospace;
 }
