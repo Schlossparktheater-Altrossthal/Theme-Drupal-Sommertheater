@@ -1,0 +1,7 @@
+@reference '../../src/main.css';
+
+.storybook-component--image {
+  @apply hg:max-w-lg;
+}
+
+@layer components {}
