@@ -2,7 +2,7 @@
 @layer properties;
 @layer components {
   .heading {
-    font-family: var(--hg-font-display, Arial);
+    font-family: var(--hg-font-display, var(--font-display));
     --tw-leading: 1.2;
     line-height: 1.2;
     --tw-tracking: var(--hg-tracking-normal, 0em);

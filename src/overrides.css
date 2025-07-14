@@ -25,9 +25,8 @@
   --menu-link-color: var(--color-gray-darkest);
   --menu-link-color-hover: var(--color-brand);
 
-  --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-mono: 'Fira Code', monospace;
-  --font-display: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-body: var(--font-sans);
-  --font-ui: 'Fira Code', monospace;
+  --hg-font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hg-font-body: var(--hg-font-sans);
+  --hg-font-mono: 'Fira Code', monospace;
+  --hg-font-display: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
