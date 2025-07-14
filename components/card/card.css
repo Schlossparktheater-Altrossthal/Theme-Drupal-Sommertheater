@@ -37,14 +37,14 @@
     }
   }
   .card--content .heading {
-    --tw-font-weight: var(--font-weight-semibold, 600);
-    font-weight: var(--font-weight-semibold, 600);
+    --tw-font-weight: var(--hgc-font-weight-h3);
+    font-weight: var(--hgc-font-weight-h3);
   }
   .card--content p {
     font-size: var(--text-lg, 1.125rem);
     line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-font-weight: var(--hgc-font-weight-p);
+    font-weight: var(--hgc-font-weight-p);
     @media (width >= 80rem) {
       font-size: var(--text-xl, 1.25rem);
       line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));

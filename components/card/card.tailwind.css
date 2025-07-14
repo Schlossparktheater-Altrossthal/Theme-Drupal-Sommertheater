@@ -32,10 +32,10 @@
   }
 
   .card--content .heading {
-    @apply font-semibold;
+    @apply font-(--hgc-font-weight-h3);
   }
 
   .card--content p {
-    @apply font-normal text-lg xl:text-xl;
+    @apply font-(--hgc-font-weight-p) text-lg xl:text-xl;
   }
 }
