@@ -31,11 +31,11 @@
   --hyperlink-color: var(--hgc-hyperlink-color, #2563eb);
   --hyperlink-color-hover: var(--hgc-hyperlink-color, #1e3a8a);
 
-  --font-sans: var(--hgc-font-sans, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
-  --font-mono: var(--hgc-font-mono, 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace);
-  --font-display: var(--hgc-font-display, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
-  --font-body: var(--hgc-font-body, 'Georgia', 'Times New Roman', serif);
-  --font-ui: var(--hgc-font-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif);
+  --font-sans: var(--hgc-font-sans), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: var(--hgc-font-mono), 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-display: var(--hgc-font-display), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-body: var(--hgc-font-body), 'Georgia', 'Times New Roman', serif;
+  --font-ui: var(--hgc-font-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
