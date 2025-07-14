@@ -1,19 +1,30 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: Image2
+name: Image
+description: An image component.
+group: Base
 props:
   type: object
-  required:
-    - image
   properties:
-    # @todo Consider pulling all these props up a level, and move to components/simple/image: https://www.drupal.org/project/experience_builder/issues/3468944
-    image:
-      title: 'Image'
+    media:
       $ref: json-schema-definitions://experience_builder.module/image
-      # @todo `type: object` should not be necessary, it's because \Drupal\sdc\Component\ComponentValidator::getClassProps() does not yet support $ref
+      title: Image
+      description: Media and Alt for the card.
       type: object
       examples:
-        - src: 'assets/placeholder.png'
-          alt: 'Boring placeholder'
-          width: 600
-          height: 400
-    # @todo Consider adding an `attributes` prop in https://www.drupal.org/project/experience_builder/issues/3468944
+        - src: 'assets/957040.jpg'
+          alt: 'Placeholder text.'
+    size:
+      title: Aspect-ratio
+      description: Set the aspect-ratio of the image container
+      type: string
+      enum: ['4/3', '3/2', '2/1', '1/1', '16/9']
+      default: '4/3'
+      examples:
+        - '4/3'
+    caption:
+      title: Caption
+      description: Set optional caption
+      type: string
+      default: 'This is a caption example'
+      examples:
+        - 'This is a caption example'
