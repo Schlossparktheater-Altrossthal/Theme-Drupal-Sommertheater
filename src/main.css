@@ -31,9 +31,9 @@
   --hyperlink-color: var(--color-brand);
   --hyperlink-color-hover: var(--color-brand-dark);
 
-  --font-sans: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-body: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-sans: var(--hg-font-sans);
+  --font-body: var(--hg-font-body);
+  --font-mono: var(--hg-font-mono);
   --font-display: var(--hg-font-display);
 
   --text-9xl: 7.5rem;               /* 120px */
