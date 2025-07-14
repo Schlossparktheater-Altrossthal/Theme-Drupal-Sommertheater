@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 .storybook-component--card-pricing {
-  @apply max-w-[300px];
+  @apply hg:max-w-[300px];
 }
 
 @layer components {
@@ -16,67 +16,67 @@
     }
 
     .card-title {
-      @apply font-light text-[2.25rem] leading-tight;
+      @apply hg:font-light hg:text-[2.25rem] hg:leading-tight;
       color: var(--main-heading-color);
     }
 
     .card-price {
-      @apply text-4xl lg:text-5xl 2xl:text-[3.15rem] text-brand leading-none;
+      @apply hg:text-4xl hg:lg:text-5xl hg:2xl:text-[3.15rem] hg:text-brand hg:leading-none;
 
       sup {
-        font-size: 60% !important;
+        @apply hg:!text-[60%];
       }
     }
 
     .card-description {
-      @apply text-xl leading-[1.2];
+      @apply hg:text-xl hg:leading-[1.2];
     }
 
     .button {
-      @apply !text-sm;
+      @apply hg:!text-sm;
     }
 
     &.promote {
-      --main-heading-color: var(--color-white);
-      --main-text-color: var(--color-white);
+      --main-heading-color: var(--hg-color-white);
+      --main-text-color: var(--hg-color-white);
       --main-bg-color: var(--pricing-card-bg-color);
-      --pricing-card-bg-color: var(--color-brand);
+      --pricing-card-bg-color: var(--hg-color-brand);
       --pricing-card-border-color: var(--pricing-card-bg-color);
-  
+
       .card-price {
-        @apply text-white;
+        @apply hg:text-white;
       }
 
       .rich-text.color-mode--light {
-        --main-text-color: var(--color-white);
+        --main-text-color: var(--hg-color-white);
       }
 
       .rich-text.color-mode--dark {
-        --main-bg-color: var(--color-brand);
+        --main-bg-color: var(--hg-color-brand);
       }
-  
+
       .button--fill {
-        @apply !border-brand-light !bg-brand-light !text-brand-dark hover:!bg-brand-dark hover:!border-brand-dark hover:!text-white;
+        @apply hg:!border-brand-light hg:!bg-brand-light hg:!text-brand-dark hg:hover:!bg-brand-dark hg:hover:!border-brand-dark hg:hover:!text-white;
       }
     }
 
     &.color-mode--dark {
 
       .card-price {
-        @apply text-white;
+        @apply hg:text-white;
       }
 
       .link--button-outline-light {
-        @apply hover:bg-white hover:text-brand-dark;
+        @apply hg:hover:bg-white hg:hover:text-brand-dark;
       }
     }
   }
 
   .card-pricing--features {
-    @apply border-t pt-4;
+    @apply hg:border-t hg:pt-4;
 
     li {
-      @apply text-xl;
+      @apply hg:text-xl;
     }
   }
 }

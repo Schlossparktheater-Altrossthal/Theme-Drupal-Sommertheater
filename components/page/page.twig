@@ -1,5 +1,5 @@
 
-<main class="page max-w-screen-xl mx-auto bg-white p-4">
+<main class="page hg:max-w-screen-xl hg:mx-auto hg:bg-white hg:p-4">
 
   {# hero #}
   {{ include('mercury:hero-1',
@@ -15,7 +15,7 @@
   ) }}
 
   {# intro #}
-  <section class="px-6 lg:px-8 xl:px-16">
+  <section class="hg:px-6 hg:lg:px-8 hg:xl:px-16">
   {{ include('mercury:card-intro',
     {
       heading_text: 'Our work is mysterious and important',
@@ -34,12 +34,12 @@
   </section>
 
   {# logos #}
-  <section class="my-12">
+  <section class="hg:my-12">
     {{ include('mercury:horizontal-scroller') }}
   </section>
 
   {# icon tiles #}
-  <section class="gap-4 flex flex-col md:grid grid-cols-3 my-12">
+  <section class="hg:gap-4 hg:flex hg:flex-col hg:md:grid hg:grid-cols-3 hg:my-12">
     {{ include('mercury:tile-icon',
       {
         text: 'Eiusmod',
@@ -69,7 +69,7 @@
   </section>
 
 
-  <section class="flex flex-col gap-6 md:gap-0 px-6 lg:px-8 xl:px-16 py-6 lg:py-8 xl:py-16 bg-accent text-white">
+  <section class="hg:flex hg:flex-col hg:gap-6 hg:md:gap-0 hg:px-6 hg:lg:px-8 hg:xl:px-16 hg:py-6 hg:lg:py-8 hg:xl:py-16 hg:bg-accent hg:text-white">
     {# projects #}
     {{ include('mercury:card-project',
       {
@@ -156,8 +156,8 @@
   </section>
 
   {# blockquotes #}
-  <section class="container my-12 md:grid grid-cols-4">
-    <div class="col-start-2 col-end-4">
+  <section class="hg:container hg:my-12 hg:md:grid hg:grid-cols-4">
+    <div class="hg:col-start-2 hg:col-end-4">
       {{ include('mercury:blockquote',
         {
           text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.',
@@ -190,7 +190,7 @@
   ) }}
 
   {# 2 cards #}
-  <section class="gap-4 flex flex-col md:grid grid-cols-2 my-12 pb-12">
+  <section class="hg:gap-4 hg:flex hg:flex-col hg:md:grid hg:grid-cols-2 hg:my-12 hg:pb-12">
     {{ include(
       'mercury:card',
       {

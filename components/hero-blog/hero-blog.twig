@@ -1,7 +1,7 @@
 {% set classes = classes|default([])|merge([
     'hero-blog',
-    'py-8',
-    'md:py-12',
+    'hg:py-8',
+    'hg:md:py-12',
     'color-mode--' ~ color_mode,
   ])|filter(v => v is not empty)
 %}
@@ -10,7 +10,7 @@
 
 <section class="{{ classes|join(' ') }}">
 
-  <div class="hero-blog--content container max-w-4xl mx-auto flex flex-col gap-8 md:gap-12 px-6">
+  <div class="hero-blog--content hg:container hg:max-w-4xl hg:mx-auto hg:flex hg:flex-col hg:gap-8 hg:md:gap-12 hg:px-6">
 
     <p>
       <time datetime="{{date_formatted }}">{{ date_formatted }}</time>

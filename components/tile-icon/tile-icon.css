@@ -8,22 +8,22 @@
   padding: 1rem;
 }
 .storybook-component--tile-icon:has(.color-mode--dark) {
-  background-color: var(--color-black, #000000);
+  background-color: var(--hg-color-black, #000000);
 }
 @layer components {
   .icon-tile * {
-    --tw-leading: var(--leading-tight, 1.25);
-    line-height: var(--leading-tight, 1.25);
-    --tw-font-weight: var(--font-weight-normal, 400);
-    font-weight: var(--font-weight-normal, 400);
+    --tw-leading: var(--hg-leading-tight, 1.25);
+    line-height: var(--hg-leading-tight, 1.25);
+    --tw-font-weight: var(--hg-font-weight-normal, 400);
+    font-weight: var(--hg-font-weight-normal, 400);
   }
   .icon-tile h3 {
-    font-size: var(--text-3xl, 2rem);
-    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    font-size: var(--hg-text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
   }
   .icon-tile p {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
   }
 }
 @property --tw-leading {

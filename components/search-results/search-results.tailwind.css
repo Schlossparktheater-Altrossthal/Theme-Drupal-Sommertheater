@@ -1,5 +1,5 @@
 @reference '../../src/main.css';
 
 .storybook-component--search-results {
-  @apply max-w-5xl;
+  @apply hg:max-w-5xl;
 }

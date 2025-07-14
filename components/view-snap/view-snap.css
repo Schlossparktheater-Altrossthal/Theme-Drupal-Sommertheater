@@ -1,15 +1,15 @@
-/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .snap-first > .card {
-    margin-inline-start: var(--spacing-6, 24px);
+    margin-inline-start: var(--hg-spacing-6, 24px);
     @media (width >= 40rem) {
-      margin-inline-start: var(--spacing-0, 0px);
+      margin-inline-start: var(--hg-spacing-0, 0px);
     }
   }
   .snap-last > .card {
-    margin-inline-end: var(--spacing-6, 24px);
+    margin-inline-end: var(--hg-spacing-6, 24px);
     @media (width >= 40rem) {
-      margin-inline-end: var(--spacing-0, 0px);
+      margin-inline-end: var(--hg-spacing-0, 0px);
     }
   }
 }

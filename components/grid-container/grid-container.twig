@@ -1,38 +1,38 @@
 {% set classes = classes|default([])|merge([
     'grid-container',
-    'container',
-    'flex',
-    'flex-col',
-    'mx-auto',
-    'px-6',
+    'hg:container',
+    'hg:flex',
+    'hg:flex-col',
+    'hg:mx-auto',
+    'hg:px-6',
     'color-mode--' ~ color_mode,
 ])|filter(v => v is not empty) %}
 
 {% set grid_class = {
-  '100':         'grid-cols-1',
-  '50-50':       'md:grid-cols-[1fr_1fr]',
-  '33-33-33':    'md:grid-cols-[1fr_1fr_1fr]',
-  '75-25':       'md:grid-cols-[3fr_1fr]',
-  '25-75':       'md:grid-cols-[1fr_3fr]',
-  '67-33':       'md:grid-cols-[2fr_1fr]',
-  '33-67':       'md:grid-cols-[1fr_2fr]',
-  '50-25-25':    'md:grid-cols-[2fr_1fr_1fr]',
-  '25-25-50':    'md:grid-cols-[1fr_1fr_2fr]',
-  '25-25-25-25': 'md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr]',
-}[columns] ?? 'grid-cols-1' %}
+  '100':         'hg:grid-cols-1',
+  '50-50':       'hg:md:grid-cols-[1fr_1fr]',
+  '33-33-33':    'hg:md:grid-cols-[1fr_1fr_1fr]',
+  '75-25':       'hg:md:grid-cols-[3fr_1fr]',
+  '25-75':       'hg:md:grid-cols-[1fr_3fr]',
+  '67-33':       'hg:md:grid-cols-[2fr_1fr]',
+  '33-67':       'hg:md:grid-cols-[1fr_2fr]',
+  '50-25-25':    'hg:md:grid-cols-[2fr_1fr_1fr]',
+  '25-25-50':    'hg:md:grid-cols-[1fr_1fr_2fr]',
+  '25-25-25-25': 'hg:md:grid-cols-[1fr_1fr] hg:lg:grid-cols-[1fr_1fr_1fr_1fr]',
+}[columns] ?? 'hg:grid-cols-1' %}
 
 {% set margin_before_map = {
-  'none': 'mt-0',
-  'tight': 'mt-4',
-  'normal': 'mt-8 md:mt-12',
-  'extra': 'mt-12 md:mt-16',
+  'none': 'hg:mt-0',
+  'tight': 'hg:mt-4',
+  'normal': 'hg:mt-8 hg:md:mt-12',
+  'extra': 'hg:mt-12 hg:md:mt-16',
 } %}
 
 {% set margin_after_map = {
-  'none': 'mb-0',
-  'tight': 'mb-4',
-  'normal': 'mb-8 md:mb-12',
-  'extra': 'mb-12 md:mb-16',
+  'none': 'hg:mb-0',
+  'tight': 'hg:mb-4',
+  'normal': 'hg:mb-8 hg:md:mb-12',
+  'extra': 'hg:mb-12 hg:md:mb-16',
 } %}
 
 {% set margin_before = margin_before_map[margin_before] ?? '' %}
@@ -42,19 +42,19 @@
 <section class="{{ classes|join(' ') }}">
 
 {% if grid_header %}
-  <header class="grid-container--header container max-w-{{ width }} mx-auto {{ margin_before }} mb-4">
+  <header class="grid-container--header hg:container hg:max-w-{{ width }} hg:mx-auto {{ margin_before }} hg:mb-4">
   {% block header_region %}
   {% endblock %}
   </header>
 {% endif %}
 
-  <div class="grid-container--columns container grid gap-4 md:gap-6 xl:gap-8 w-full {{ grid_class }} max-w-{{ width }} mx-auto {{ grid_header ? '' : margin_before }} {{ grid_footer ? '' : margin_after }}">
+  <div class="grid-container--columns hg:container hg:grid hg:gap-4 hg:md:gap-6 hg:xl:gap-8 hg:w-full {{ grid_class }} hg:max-w-{{ width }} hg:mx-auto {{ grid_header ? '' : margin_before }} {{ grid_footer ? '' : margin_after }}">
     {% block container_region %}
     {% endblock %}
   </div>
 
 {% if grid_footer %}
-  <footer class="grid-container--footer container max-w-{{ width }} mx-auto {{ margin_after }} mt-4">
+  <footer class="grid-container--footer hg:container hg:max-w-{{ width }} hg:mx-auto {{ margin_after }} hg:mt-4">
   {% block footer_region %}
   {% endblock %}
   </footer>

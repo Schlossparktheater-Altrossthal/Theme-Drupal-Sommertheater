@@ -12,22 +12,22 @@
     color: var(--hyperlink-color-hover);
   }
   .breadcrumb.color-mode--light {
-    --main-text-color: var(--color-gray-darkest);
-    --hyperlink-color: var(--color-gray);
-    --hyperlink-color-hover: var(--color-gray-dark);
+    --main-text-color: var(--hg-color-gray-darkest);
+    --hyperlink-color: var(--hg-color-gray);
+    --hyperlink-color-hover: var(--hg-color-gray-dark);
   }
   .breadcrumb.color-mode--dark {
-    --main-text-color: var(--color-white);
-    --hyperlink-color: var(--color-gray-light);
-    --hyperlink-color-hover: var(--color-white);
+    --main-text-color: var(--hg-color-white);
+    --hyperlink-color: var(--hg-color-gray-light);
+    --hyperlink-color-hover: var(--hg-color-white);
   }
   .breadcrumb .breadcrumb-item {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     --tw-leading: 1;
     line-height: 1;
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
+    --tw-font-weight: var(--hg-font-weight-medium, 500);
+    font-weight: var(--hg-font-weight-medium, 500);
   }
   .breadcrumb .breadcrumb-item a {
     &:hover {

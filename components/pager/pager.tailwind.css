@@ -2,36 +2,36 @@
 
 @layer components {
   .pager {
-    @apply font-medium;
+    @apply hg:font-medium;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
   }
 
   .pager__list-item {
-    @apply text-xl whitespace-nowrap;
+    @apply hg:text-xl hg:whitespace-nowrap;
   }
 
   .color-mode--light .pager .pager__list__item,
   .color-mode--light.pager .pager__list__item {
-    @apply text-gray-dark;
+    @apply hg:text-gray-dark;
   }
 
   .color-mode--dark .pager .pager__list__item,
   .color-mode--dark.pager .pager__list__item {
-    @apply text-gray-lightest;
+    @apply hg:text-gray-lightest;
   }
 
   .pager .pager__icon {
-    @apply w-6 h-6 shrink-0 text-2xl leading-none;
+    @apply hg:w-6 hg:h-6 hg:shrink-0 hg:text-2xl hg:leading-none;
   }
 
   .color-mode--light .pager .pager__number__current,
   .color-mode--light.pager .pager__number__current {
-    @apply border-gray;
+    @apply hg:border-gray;
   }
 
   .color-mode--dark .pager .pager__number__current,
   .color-mode--dark.pager .pager__number__current {
-    @apply border-gray-lightest;
+    @apply hg:border-gray-lightest;
   }
 }

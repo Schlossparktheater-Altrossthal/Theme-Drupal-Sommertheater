@@ -3,20 +3,20 @@
 @layer components {
   .form-item.form-type-checkbox .form-checkbox {
     position: absolute;
-    margin-top: calc(var(--spacing, 0.25rem) * 1.5);
-    margin-left: var(--spacing-0, 0px);
+    margin-top: calc(var(--hg-spacing, 0.25rem) * 1.5);
+    margin-left: var(--hg-spacing-0, 0px);
   }
   .form-item.form-type-checkbox .form-item__label {
-    padding-left: var(--spacing-5, 20px);
-    color: var(--color-black, #000000);
+    padding-left: var(--hg-spacing-5, 20px);
+    color: var(--hg-color-black, #000000);
   }
   .form-item.form-type-checkbox .form-item__description {
-    padding-left: var(--spacing-5, 20px);
-    font-size: var(--text-sm, 0.875rem);
-    line-height: var(--tw-leading, var(--text-sm--line-height, 1.5));
-    --tw-leading: var(--leading-normal, 1.5);
-    line-height: var(--leading-normal, 1.5);
-    color: var(--color-gray-400, oklch(0.707 0.022 261.325));
+    padding-left: var(--hg-spacing-5, 20px);
+    font-size: var(--hg-text-sm, 0.875rem);
+    line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
+    --tw-leading: var(--hg-leading-normal, 1.5);
+    line-height: var(--hg-leading-normal, 1.5);
+    color: var(--hg-color-gray-400, oklch(0.707 0.022 261.325));
   }
 }
 @property --tw-leading {

@@ -2,13 +2,13 @@
 
 @layer components {
   .form-item.form-type-radio {
-    @apply mt-0 mb-2;
+    @apply hg:mt-0 hg:mb-2;
   }
 
   .radios--wrapper .form-item__label {
-    @apply block mb-2 text-black;
+    @apply hg:block hg:mb-2 hg:text-black;
   }
   .radios--wrapper .form-item__label.option {
-    @apply inline pl-2 text-gray-900;
+    @apply hg:inline hg:pl-2 hg:text-gray-900;
   }
 }

@@ -15,11 +15,11 @@
     }
   }
   .footer-menu .parent-link {
-    font-size: var(--text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    font-size: var(--hg-text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
   }
   .footer-menu .below-link {
-    font-size: var(--text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+    font-size: var(--hg-text-xl, 1.25rem);
+    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
   }
 }

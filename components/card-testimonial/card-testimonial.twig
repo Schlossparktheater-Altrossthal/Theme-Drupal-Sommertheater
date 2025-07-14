@@ -1,27 +1,27 @@
 {% set classes = [
     'card-testimonial',
-    'flex flex-col px-8 py-12',
+    'hg:flex hg:flex-col hg:px-8 hg:py-12',
     'color-mode--' ~ color_mode,
-    align == 'center' ? 'text-center items-center gap-6' : 'text-left items-start gap-4',
+    align == 'center' ? 'hg:text-center hg:items-center hg:gap-6' : 'hg:text-left hg:items-start hg:gap-4',
   ]
 %}
 
 <div class="{{ classes|join(' ') }}">
-  <div class="card-testimonial--media w-[100px] aspect-square rounded-full overflow-hidden">
+  <div class="card-testimonial--media hg:w-[100px] hg:aspect-square hg:rounded-full hg:overflow-hidden">
     {% block media %}
-      <img class="object-cover w-full h-full" src="{{ media.src }}" alt="{{ media.alt }}" />
+      <img class="hg:object-cover hg:w-full hg:h-full" src="{{ media.src }}" alt="{{ media.alt }}" />
     {% endblock %}
   </div>
-  
-  <blockquote class="flex flex-col gap-4" cite="{{ cite_url }}">
+
+  <blockquote class="hg:flex hg:flex-col hg:gap-4" cite="{{ cite_url }}">
     <p class="testimonial-text">{{ text }}</p>
 
     <footer class="testimonial-name">
       {% set citation = cite_name %}
-      {% if cite_name and cite_text %} 
+      {% if cite_name and cite_text %}
         {% set citation = cite_name ~ ', ' %}
       {% endif %}
-      {{ citation }} 
+      {{ citation }}
       <cite class="testimonial-cite">
         {% if cite_url %}
           <a href="{{ cite_url}}" target="_blank" class="testimonial-cite--text">{{ cite_text }}</a>

@@ -18,23 +18,23 @@
   }
 
   .breadcrumb.color-mode--light {
-    --main-text-color: var(--color-gray-darkest);
-    --hyperlink-color: var(--color-gray);
-    --hyperlink-color-hover: var(--color-gray-dark)
+    --main-text-color: var(--hg-color-gray-darkest);
+    --hyperlink-color: var(--hg-color-gray);
+    --hyperlink-color-hover: var(--hg-color-gray-dark)
   }
 
   .breadcrumb.color-mode--dark {
-    --main-text-color: var(--color-white);
-    --hyperlink-color: var(--color-gray-light);
-    --hyperlink-color-hover: var(--color-white)
+    --main-text-color: var(--hg-color-white);
+    --hyperlink-color: var(--hg-color-gray-light);
+    --hyperlink-color-hover: var(--hg-color-white)
   }
 
   .breadcrumb .breadcrumb-item {
-    @apply font-medium text-xl leading-none;
+    @apply hg:font-medium hg:text-xl hg:leading-none;
   }
 
   .breadcrumb .breadcrumb-item a {
-    @apply hover:underline focus:underline;
+    @apply hg:hover:underline hg:focus:underline;
   }
 
   .breadcrumb .active {

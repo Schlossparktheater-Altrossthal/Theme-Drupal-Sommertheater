@@ -9,7 +9,7 @@
 }
 
 .storybook-component--button:has(.color-mode--dark) {
-  @apply bg-black;
+  @apply hg:bg-black;
 }
 
 button.button {
@@ -17,58 +17,58 @@ button.button {
 }
 
 .button {
-  @apply font-medium text-xl w-fit border pt-[8px] pb-[9px] no-underline hover:no-underline;
+  @apply hg:font-medium hg:text-xl hg:w-fit hg:border hg:pt-[8px] hg:pb-[9px] hg:no-underline hg:hover:no-underline;
 }
 
 .button--fill {
-  @apply border-brand bg-brand text-white hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+  @apply hg:border-brand hg:bg-brand hg:text-white hg:hover:bg-brand-dark hg:hover:border-brand-dark hg:hover:text-white;
 }
 
 .button--fill-dark {
-  @apply border-brand bg-brand text-gray-lightest hover:bg-brand-light hover:border-brand-light hover:text-brand-dark;
+  @apply hg:border-brand hg:bg-brand hg:text-gray-lightest hg:hover:bg-brand-light hg:hover:border-brand-light hg:hover:text-brand-dark;
 }
 
 .button--fill-light {
-  @apply border-brand-light bg-brand-light text-brand-dark hover:bg-brand-dark hover:border-brand-dark hover:text-white;
+  @apply hg:border-brand-light hg:bg-brand-light hg:text-brand-dark hg:hover:bg-brand-dark hg:hover:border-brand-dark hg:hover:text-white;
 }
 
 .button--fill-accent {
-  @apply border-accent bg-accent text-white hover:bg-accent-dark hover:border-accent-dark hover:text-white;
+  @apply hg:border-accent hg:bg-accent hg:text-white hg:hover:bg-accent-dark hg:hover:border-accent-dark hg:hover:text-white;
 }
 
 .color-mode--dark .button--fill,
 .button--fill.color-mode--dark {
-  @apply border-brand-light bg-brand-light text-brand hover:bg-white hover:border-white hover:text-black;
+  @apply hg:border-brand-light hg:bg-brand-light hg:text-brand hg:hover:bg-white hg:hover:border-white hg:hover:text-black;
 }
 
 .color-mode--dark .button--fill-accent,
 .button--fill-accent.color-mode--dark {
-  @apply border-accent bg-accent text-white hover:bg-white  hover:border-white  hover:text-accent;
+  @apply hg:border-accent hg:bg-accent hg:text-white hg:hover:bg-white  hg:hover:border-white  hg:hover:text-accent;
 }
 
 .button--outline {
-  @apply border-brand bg-white text-brand hover:bg-brand hover:border-brand hover:text-white;
+  @apply hg:border-brand hg:bg-white hg:text-brand hg:hover:bg-brand hg:hover:border-brand hg:hover:text-white;
 }
 
 .button--outline-accent {
-  @apply border-accent bg-white text-accent hover:bg-accent hover:border-accent hover:text-white;
+  @apply hg:border-accent hg:bg-white hg:text-accent hg:hover:bg-accent hg:hover:border-accent hg:hover:text-white;
 }
 
 .color-mode--dark .button--outline,
 .button--outline.color-mode--dark {
-  @apply border-white bg-transparent text-white hover:bg-white hover:border-white hover:text-brand;
+  @apply hg:border-white hg:bg-transparent hg:text-white hg:hover:bg-white hg:hover:border-white hg:hover:text-brand;
 }
 
 .color-mode--dark .button--outline-accent,
 .button--outline-accent.dark-mode {
-  @apply border-accent bg-transparent text-accent hover:bg-accent hover:border-accent hover:text-white;
+  @apply hg:border-accent hg:bg-transparent hg:text-accent hg:hover:bg-accent hg:hover:border-accent hg:hover:text-white;
 }
 
 .button--fill[aria-disabled="true"],
 .button--fill-accent[aria-disabled="true"],
 .button--fill[disabled],
 .button--fill-accent[disabled] {
-  @apply border-gray-light bg-gray-light text-white hover:bg-gray-light hover:border-gray-light hover:text-white;
+  @apply hg:border-gray-light hg:bg-gray-light hg:text-white hg:hover:bg-gray-light hg:hover:border-gray-light hg:hover:text-white;
   cursor: default;
 }
 
@@ -76,6 +76,6 @@ button.button {
 .button--outline-accent[aria-disabled="true"],
 .button--outline[disabled],
 .button--outline-accent[disabled] {
-  @apply border-gray-light bg-white text-gray-light hover:bg-white hover:border-gray-light hover:text-gray-light;
+  @apply hg:border-gray-light hg:bg-white hg:text-gray-light hg:hover:bg-white hg:hover:border-gray-light hg:hover:text-gray-light;
   cursor: default;
 }

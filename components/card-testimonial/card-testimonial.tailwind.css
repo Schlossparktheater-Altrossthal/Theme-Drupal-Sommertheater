@@ -2,7 +2,7 @@
 
 /* Storybook specific */
 .storybook-component--card-testimonial {
-  @apply max-w-md;
+  @apply hg:max-w-md;
 }
 
 @layer components {
@@ -13,16 +13,16 @@
   }
 
   .card-testimonial .testimonial-text {
-    @apply text-xl;
+    @apply hg:text-xl;
   }
 
   .card-testimonial .testimonial-cite--text,
   .card-testimonial .testimonial-name {
-    @apply text-base;
+    @apply hg:text-base;
   }
 
 
   .card-testimonial a.testimonial-cite--text {
-    @apply underline hover:underline;
+    @apply hg:underline hg:hover:underline;
   }
 }

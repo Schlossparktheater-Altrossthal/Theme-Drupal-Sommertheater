@@ -1,7 +1,7 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--card-profile {
-  max-width: var(--container-xs, 20rem);
+  max-width: var(--hg-container-xs, 20rem);
 }
 @layer components {
   .card-profile {
@@ -9,25 +9,25 @@
   }
   .card-profile .card--media {
     aspect-ratio: 2/3;
-    border-radius: var(--radius-sm, 0.25rem);
+    border-radius: var(--hg-radius-sm, 0.25rem);
   }
   .card-profile .card--content {
     text-align: center;
-    color: var(--color-white, #ffffff);
+    color: var(--hg-color-white, #ffffff);
   }
   .card-profile .person-name {
-    font-size: var(--text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
-    --tw-font-weight: var(--font-weight-bold, 700);
-    font-weight: var(--font-weight-bold, 700);
+    font-size: var(--hg-text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
+    --tw-font-weight: var(--hg-font-weight-bold, 700);
+    font-weight: var(--hg-font-weight-bold, 700);
   }
   .card-profile .person-title {
-    font-size: var(--text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    font-size: var(--hg-text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
     font-style: italic;
     @media (width >= 80rem) {
-      font-size: var(--text-xl, 1.25rem);
-      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+      font-size: var(--hg-text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     }
   }
 }

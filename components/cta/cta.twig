@@ -1,39 +1,39 @@
 {% set classes = [
     'cta',
-    'relative',
+    'hg:relative',
     'color-mode--' ~ color_mode,
   ]
 %}
 
 {% if text_align == 'left' %}
-  {% set alignment = 'text-left' %}
-  {% set list_extras = 'md:justify-start' %}
+  {% set alignment = 'hg:text-left' %}
+  {% set list_extras = 'hg:md:justify-start' %}
 {% elseif text_align == 'right' %}
-  {% set alignment = 'text-right' %}
-  {% set list_extras = 'md:justify-end' %}
+  {% set alignment = 'hg:text-right' %}
+  {% set list_extras = 'hg:md:justify-end' %}
 {% else %}
-  {% set alignment = 'text-center max-w-3/4 mx-auto' %}
-  {% set list_extras = 'md:justify-center items-center' %}
+  {% set alignment = 'hg:text-center hg:max-w-3/4 hg:mx-auto' %}
+  {% set list_extras = 'hg:md:justify-center hg:items-center' %}
 {% endif %}
 
 <section class="{{ classes|join(' ') }}">
   {% if color_mode == 'image' %}
     {% block media %}
       {% if media.src is not empty %}
-      <div class="cta--media absolute inset-0">
-        <div class="absolute inset-0 bg-black/30"></div>
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+      <div class="cta--media hg:absolute hg:inset-0">
+        <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
       </div>
       {% endif %}
     {% endblock %}
   {% endif %}
-  <div class="cta--content relative min-h-80 flex flex-col justify-center gap-6 lg:gap-8 px-6 py-[90px] lg:px-12 lg:py-[115px] xl:px-16 xl:py-[140px] {{ text_align == 'center' ? 'items-center' }}">
+  <div class="cta--content hg:relative hg:min-h-80 hg:flex hg:flex-col hg:justify-center hg:gap-6 hg:lg:gap-8 hg:px-6 hg:py-[90px] hg:lg:px-12 hg:lg:py-[115px] hg:xl:px-16 hg:xl:py-[140px] {{ text_align == 'center' ? 'hg:items-center' }}">
     {{ include('mercury:heading', {
         heading_classes: (heading_classes|default([]))|merge([ alignment ])
     }) }}
-    <p class="font-normal text-2xl xl:text-3xl {{ alignment }}">{{ text }}</p>
+    <p class="hg:font-normal hg:text-2xl hg:xl:text-3xl {{ alignment }}">{{ text }}</p>
     {% if block('actions') is defined %}
-    <div class="cta--links w-full flex flex-col sm:flex-row gap-4 {{ list_extras }}">
+    <div class="cta--links hg:w-full hg:flex hg:flex-col hg:sm:flex-row hg:gap-4 {{ list_extras }}">
       {% block actions %}
       {% endblock %}
     </div>

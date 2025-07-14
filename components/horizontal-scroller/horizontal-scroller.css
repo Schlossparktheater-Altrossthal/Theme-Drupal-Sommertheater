@@ -1,11 +1,13 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-.horizontal-scroller > * {
-  min-width: 250px;
-  scroll-snap-align: start;
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  text-align: center;
+@layer components {
+  .horizontal-scroller > * {
+    min-width: 250px;
+    scroll-snap-align: start;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    text-align: center;
+  }
 }
 @property --tw-border-style {
   syntax: "*";

@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 .storybook-component--text {
-  @apply max-w-3xl;
+  @apply hg:max-w-3xl;
 }
 
 @layer components {

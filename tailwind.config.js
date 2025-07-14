@@ -36,7 +36,7 @@ export default {
       `2xl:gap-y-${val}`,
     ]),
     // add any other classes you want to force to keep here
-   'mx-auto',"grid", "grid-flow-col", "auto-cols-[248px]", "sm:auto-cols-[272px]", "overflow-x-auto", "snap-x", "snap-mandatory", "gap-4", "px-4", "lg:grid-cols-3", "lg:auto-cols-auto", "lg:overflow-x-visible", "lg:snap-none", "snap-start", "bg-gray-200", "p-6", "rounded",
-   'lg:container','ms-5','me-5','ps-6', 'md:ps-8', 'grid-cols-[272px_248px_272px]',
+  'mx-auto',"grid", "grid-flow-col", "auto-cols-[248px]", "sm:auto-cols-[272px]", "overflow-x-auto", "snap-x", "snap-mandatory", "gap-4", "px-4", "lg:grid-cols-3", "lg:auto-cols-auto", "lg:overflow-x-visible", "lg:snap-none", "snap-start", "bg-gray-200", "p-6", "rounded",
+  'lg:container','ms-5','me-5','ps-6', 'md:ps-8', 'grid-cols-[272px_248px_272px]',
   ],
 }

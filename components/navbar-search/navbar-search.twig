@@ -3,10 +3,10 @@
   method={{method}}
   id="navbarSearch"
   accept-charset="UTF-8"
-  class="w-full navbar-search"
+  class="hg:w-full navbar-search"
 >
-  <div class="relative w-full flex justify-end">
-    <label for="edit-keys" class="sr-only">{{ label }}</label>
+      <div class="hg:relative hg:w-full hg:flex hg:justify-end">
+    <label for="edit-keys" class="hg:sr-only">{{ label }}</label>
     <input
       title="Enter the terms you wish to search for."
       data-drupal-selector="edit-keys"
@@ -18,19 +18,18 @@
       maxlength="128"
       placeholder={{label}}
       aria-label="Search"
-      class="hidden peer w-full rounded-lg input-search h-11"
+      class="hg:hidden hg:peer hg:w-full hg:rounded-lg input-search hg:h-11"
     />
     <button
       type="submit"
       data-drupal-selector="edit-submit"
       id="edit-submit"
       aria-label="{{buttonLabel}}"
-      class="button-search peer-[.hidden]:static peer-[.hidden]:w-11 peer-[.hidden]:h-11 peer-[.hidden]:rounded-lg absolute right-0 top-0 bottom-0 flex items-center justify-center w-11 h-11 rounded-lg border cursor-pointer"
+      class="button-search hg:peer-[.hidden]:static hg:peer-[.hidden]:w-11 hg:peer-[.hidden]:h-11 hg:peer-[.hidden]:rounded-lg hg:absolute hg:right-0 hg:top-0 hg:bottom-0 hg:flex hg:items-center hg:justify-center hg:w-11 hg:h-11 hg:rounded-lg hg:border hg:cursor-pointer"
     >
-      <span class="material-symbols-outlined flex items-center justify-center search-icon">
+      <span class="material-symbols-outlined hg:flex hg:items-center hg:justify-center search-icon">
         search
       </span>
     </button>
   </div>
 </form>
-

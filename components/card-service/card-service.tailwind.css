@@ -2,7 +2,7 @@
 
 /* Storybook specific */
 .storybook-component--card-service {
-  @apply max-w-md;
+  @apply hg:max-w-md;
 }
 
 @layer components {
@@ -13,22 +13,22 @@
   }
 
   .service-card.color-mode--light {
-    --main-bg-color: var(--color-gray-lightest);
+    --main-bg-color: var(--hg-color-gray-lightest);
   }
 
   .service-card .heading > a {
-    @apply before:absolute before:content-[''] before:inset-0;
+    @apply hg:before:absolute hg:before:content-[''] hg:before:inset-0;
   }
 
   .service-card .heading {
-    @apply font-light text-5xl;
+    @apply hg:font-light hg:text-5xl;
   }
 
   .service-card.narrow .service-card--media {
-    @apply aspect-[2/1];
+    @apply hg:aspect-[2/1];
   }
 
   .service-card.rectangle .service-card--media {
-    @apply aspect-[5/4];
+    @apply hg:aspect-[5/4];
   }
 }

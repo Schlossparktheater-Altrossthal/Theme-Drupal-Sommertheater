@@ -1,25 +1,25 @@
 {% set tile_classes = tile_classes|default([])|merge([
     'icon-tile',
     'color-mode--' ~ color_mode,
-    background == 'light' ? 'bg-white text-black' : background == 'medium' ? 'bg-brand text-white' : 'bg-brand-dark text-white',
-    color_mode == 'dark' ? 'bg-brand' : 'border',
+    background == 'light' ? 'hg:bg-white hg:text-black' : background == 'medium' ? 'hg:bg-brand hg:text-white' : 'hg:bg-brand-dark hg:text-white',
+    color_mode == 'dark' ? 'hg:bg-brand' : 'hg:border',
 ])|filter(v => v is not empty) %}
 
-<div class="{{ tile_classes|join(' ') }} aspect-square grid grid-rows-2 grid-columns-1 p-6 relative">
-  <div class="w-full h-full flex {{ icon_position == 'left' ? 'justify-start' : 'justify-end' }}">
+<div class="{{ tile_classes|join(' ') }} hg:aspect-square hg:grid hg:grid-rows-2 hg:grid-columns-1 hg:p-6 hg:relative">
+  <div class="hg:w-full hg:h-full hg:flex {{ icon_position == 'left' ? 'hg:justify-start' : 'hg:justify-end' }}">
     {% if icon %}
       <span class="material-symbols-outlined icon-5xl">{{ icon }}</span>
     {% endif %}
   </div>
 
-  <div class="w-full h-full flex justify-start items-end">
+  <div class="hg:w-full hg:h-full hg:flex hg:justify-start hg:items-end">
     {% if url is not empty %}
-      <a href="{{ url }}" class="flex flex-col gap-[0.75em] before:absolute before:content-[''] before:inset-0">
+      <a href="{{ url }}" class="hg:flex hg:flex-col hg:gap-[0.75em] hg:before:absolute hg:before:content-[''] hg:before:inset-0">
         <h3>{{ text }}</h3>
         <p>{{ description }}</p>
       </a>
     {% else %}
-      <span class="flex flex-col gap-[0.75em] before:absolute before:content-[''] before:inset-0">
+      <span class="hg:flex hg:flex-col hg:gap-[0.75em] hg:before:absolute hg:before:content-[''] hg:before:inset-0">
         <h3>{{ text }}</h3>
         <p>{{ description }}</p>
       </span>

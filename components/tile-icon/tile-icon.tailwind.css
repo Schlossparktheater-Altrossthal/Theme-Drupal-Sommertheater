@@ -10,20 +10,20 @@
 }
 
 .storybook-component--tile-icon:has(.color-mode--dark) {
-  @apply bg-black;
+  @apply hg:bg-black;
 }
 
 @layer components {
 
   .icon-tile * {
-    @apply font-normal leading-tight;
+    @apply hg:font-normal hg:leading-tight;
   }
 
   .icon-tile h3 {
-    @apply text-3xl;
+    @apply hg:text-3xl;
   }
 
   .icon-tile p {
-    @apply text-xl;
+    @apply hg:text-xl;
   }
 }

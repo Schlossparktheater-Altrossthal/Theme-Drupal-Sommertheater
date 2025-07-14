@@ -45,8 +45,7 @@
   --hgc-radius-sm: 0;
 
   --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hgc-font-body:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
   --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-body:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-ui:      'Fira Code', monospace;
 }

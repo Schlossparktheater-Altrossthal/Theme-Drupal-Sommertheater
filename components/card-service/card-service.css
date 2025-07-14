@@ -1,7 +1,7 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--card-service {
-  max-width: var(--container-md, 28rem);
+  max-width: var(--hg-container-md, 28rem);
 }
 @layer components {
   .service-card {
@@ -9,7 +9,7 @@
     color: var(--main-text-color);
   }
   .service-card.color-mode--light {
-    --main-bg-color: var(--color-gray-lightest);
+    --main-bg-color: var(--hg-color-gray-lightest);
   }
   .service-card .heading > a {
     &::before {
@@ -18,7 +18,7 @@
     }
     &::before {
       content: var(--tw-content);
-      inset: var(--spacing-0, 0px);
+      inset: var(--hg-spacing-0, 0px);
     }
     &::before {
       content: var(--tw-content);
@@ -27,10 +27,10 @@
     }
   }
   .service-card .heading {
-    font-size: var(--text-5xl, 3rem);
-    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
-    --tw-font-weight: var(--font-weight-light, 300);
-    font-weight: var(--font-weight-light, 300);
+    font-size: var(--hg-text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
+    --tw-font-weight: var(--hg-font-weight-light, 300);
+    font-weight: var(--hg-font-weight-light, 300);
   }
   .service-card.narrow .service-card--media {
     aspect-ratio: 2/1;

@@ -1,12 +1,12 @@
 {% set menu_classes = menu_classes|default([])|merge([
   'social-menu',
-  'list-none flex flex-row gap-4 p-3',
+  'hg:list-none hg:flex hg:flex-row hg:gap-4 hg:p-3',
 ])|filter(v => v is not empty) %}
 
 <ul class="{{ menu_classes|join(' ') }}">
   {% for item in items %}
     <li class="social-menu--item">
-      <a href="{{ item.url }}" aria-label="Follow us on {{ item.title }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon flex align-center w-[24px] aspect-square">
+      <a href="{{ item.url }}" aria-label="Follow us on {{ item.title }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon hg:flex hg:align-center hg:w-[24px] hg:aspect-square">
         {{ item.icon }}
       </a>
     </li>

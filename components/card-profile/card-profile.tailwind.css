@@ -2,28 +2,28 @@
 
 /* Storybook specific */
 .storybook-component--card-profile {
-  @apply max-w-xs;
+  @apply hg:max-w-xs;
 }
 
 @layer components {
 
   .card-profile {
-    @apply aspect-[2/3];
+    @apply hg:aspect-[2/3];
   }
 
   .card-profile .card--media {
-    @apply aspect-[2/3] rounded-sm;
+    @apply hg:aspect-[2/3] hg:rounded-sm;
   }
 
   .card-profile .card--content {
-    @apply text-white text-center;
+    @apply hg:text-white hg:text-center;
   }
 
   .card-profile .person-name {
-    @apply font-bold text-2xl;
+    @apply hg:font-bold hg:text-2xl;
   }
 
   .card-profile .person-title {
-    @apply italic text-lg xl:text-xl;
+    @apply hg:italic hg:text-lg hg:xl:text-xl;
   }
 }

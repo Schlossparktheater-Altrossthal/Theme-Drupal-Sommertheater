@@ -1,10 +1,10 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--card {
-  max-width: var(--container-md, 28rem);
+  max-width: var(--hg-container-md, 28rem);
 }
 .storybook-component--card:has(.card.is-landscape) {
-  max-width: var(--container-2xl, 42rem);
+  max-width: var(--hg-container-2xl, 42rem);
 }
 @layer components {
   .card {
@@ -12,14 +12,14 @@
     color: var(--main-text-color);
   }
   .card .card--media {
-    aspect-ratio: var(--aspect-video, 16 / 9);
+    aspect-ratio: var(--hg-aspect-video, 16 / 9);
   }
   .card.is-stacked .card--media {
-    aspect-ratio: var(--aspect-video, 16 / 9);
+    aspect-ratio: var(--hg-aspect-video, 16 / 9);
     overflow: hidden;
   }
   .card.is-landscape .card--media {
-    aspect-ratio: var(--aspect-video, 16 / 9);
+    aspect-ratio: var(--hg-aspect-video, 16 / 9);
     overflow: hidden;
     @media (width >= 48rem) {
       aspect-ratio: auto;
@@ -33,21 +33,31 @@
       flex: 0 1 50%;
     }
     @media (width >= 48rem) {
-      padding-block: var(--spacing-4, 16px);
+      padding-block: var(--hg-spacing-4, 16px);
     }
   }
   .card--content .heading {
-    --tw-font-weight: var(--hgc-font-weight-h3);
-    font-weight: var(--hgc-font-weight-h3);
+    --tw-font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
+    font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
   }
   .card--content p {
-    font-size: var(--text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--text-lg--line-height, 1.5));
+    font-size: var(--hg-text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
+    --tw-font-weight: var(--hgc-font-weight-h3);
+    font-weight: var(--hgc-font-weight-h3);
+    @media (width >= 80rem) {
+      font-size: var(--hg-text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+    }
+  }
+  .card--content p {
+    font-size: var(--hg-text-lg, 1.125rem);
+    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
     --tw-font-weight: var(--hgc-font-weight-p);
     font-weight: var(--hgc-font-weight-p);
     @media (width >= 80rem) {
-      font-size: var(--text-xl, 1.25rem);
-      line-height: var(--tw-leading, var(--text-xl--line-height, 1.5));
+      font-size: var(--hg-text-xl, 1.25rem);
+      line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     }
   }
 }

@@ -1,9 +1,8 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 .storybook-component--text {
-  max-width: var(--container-3xl, 48rem);
+  max-width: var(--hg-container-3xl, 48rem);
 }
 @layer components {
-
   .rich-text {
     background-color: var(--main-bg-color);
     color: var(--main-text-color);

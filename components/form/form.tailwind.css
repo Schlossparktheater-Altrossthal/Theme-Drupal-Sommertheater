@@ -7,12 +7,12 @@
 @layer components {
 
   .form-item {
-    @apply my-4;
+    @apply hg:my-4;
   }
   .form-element {
-    @apply w-full border border-gray-300 rounded-s placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600;
+    @apply hg:w-full hg:border hg:border-gray-300 hg:rounded-s hg:placeholder-transparent hg:focus:outline-none hg:focus:ring-2 hg:focus:ring-blue-600 hg:focus:border-blue-600;
   }
   .form-item__label {
-    @apply left-3 top-2 p-0 text-md text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-blue-600 peer-valid:text-sm peer-valid:text-blue-600 peer-valid:top-1;
+    @apply hg:left-3 hg:top-2 hg:p-0 hg:text-md hg:text-gray-500 hg:transition-all hg:peer-placeholder-shown:top-4 hg:peer-placeholder-shown:text-base hg:peer-focus:top-1 hg:peer-focus:text-sm hg:peer-focus:text-blue-600 hg:peer-valid:text-sm hg:peer-valid:text-blue-600 hg:peer-valid:top-1;
   }
 }

@@ -2,31 +2,31 @@
 
 /* Storybook specific */
 #storybook-root:has(> .collapsible-section) {
-  @apply max-w-lg;
+  @apply hg:max-w-lg;
 }
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
   --animate-speed: 0s;
-  @apply bg-gray-lightest border-b-1 border-gray-darkest;
+  @apply hg:bg-gray-lightest hg:border-b-1 hg:border-gray-darkest;
 }
 
 .collapsible-section--content {
-  @apply pb-2 h-auto;
+  @apply hg:pb-2 hg:h-auto;
 }
 
 .collapsible-section--title {
-  @apply text-2xl;
+  @apply hg:text-2xl;
 }
 
 .collapsible-section--content {
-  @apply text-base pb-2;
+  @apply hg:text-base hg:pb-2;
 }
 
 /* Styles involving collapsing/expanding. */
 
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
-  @apply pb-0 h-0;
+  @apply hg:pb-0 hg:h-0;
 }
 
 .collapsible-section--animate {
@@ -39,7 +39,7 @@
   }
 
   .collapsible-section--content {
-    @apply pb-2 h-(--natural-height);
+    @apply hg:pb-2 hg:h-(--natural-height);
   }
 }
 

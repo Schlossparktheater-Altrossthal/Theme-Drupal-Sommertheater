@@ -2,6 +2,6 @@
 
 @layer components {
   .form-submit {
-    @apply bg-gray-900 text-white rounded-md py-2 px-4 rounded hover:bg-blue-600;
+    @apply hg:bg-gray-900 hg:text-white hg:rounded-md hg:py-2 hg:px-4 hg:rounded hg:hover:bg-blue-600;
   }
 }

@@ -1,18 +1,18 @@
 {% set footer_classes = footer_classes|default([])|merge([
-    'container',
-    'flex',
-    'flex-col',
+    'hg:container',
+    'hg:flex',
+    'hg:flex-col',
 ])|filter(v => v is not empty) %}
 
 <section class="site-footer color-mode--{{ color_mode }}">
   <div class="{{ footer_classes|join(' ') }}">
-    <div class="site-footer--menu px-4 py-6 xl:px-16 xl:py-20">
+    <div class="site-footer--menu hg:px-4 hg:py-6 hg:xl:px-16 hg:xl:py-20">
       {% block footer_menu %}
         {# Slot for components. #}
       {% endblock %}
     </div>
 
-    <div class="site-footer--bottom flex flex-col md:grid md:grid-cols-2 gap-4 w-full px-4 py-4 xl:px-16 xl:py-6 border-t">
+    <div class="site-footer--bottom hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:gap-4 hg:w-full hg:px-4 hg:py-4 hg:xl:px-16 hg:xl:py-6 hg:border-t">
       {% if block("footer_bottom_first") is defined %}
         <div class="site-footer--bottom-col">
           {% block footer_bottom_first %}
@@ -22,7 +22,7 @@
       {% endif %}
 
       {% if block("footer_bottom_last") is defined %}
-        <div class="site-footer--bottom-col md:flex md:justify-end">
+        <div class="site-footer--bottom-col hg:md:flex hg:md:justify-end">
           {% block footer_bottom_last %}
             {# Slot for components. #}
           {% endblock %}
