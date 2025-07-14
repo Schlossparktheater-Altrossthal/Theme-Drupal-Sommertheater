@@ -31,10 +31,10 @@
   --hyperlink-color: var(--color-brand);
   --hyperlink-color-hover: var(--color-brand-dark);
 
-  --font-sans: var(--hg-font-sans);
-  --font-body: var(--hg-font-body);
-  --font-mono: var(--hg-font-mono);
-  --font-display: var(--hg-font-display);
+  --font-sans: var(--hgc-font-sans);
+  --font-body: var(--hgc-font-body);
+  --font-mono: var(--hgc-font-mono);
+  --font-display: var(--hgc-font-display);
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
