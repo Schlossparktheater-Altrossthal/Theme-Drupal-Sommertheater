@@ -36,6 +36,10 @@
   }
 
   .card--content p {
-    @apply hg:font-normal hg:text-lg hg:xl:text-xl;
+    @apply hg:font-(--hgc-font-weight-h3) hg:text-lg hg:xl:text-xl;
+  }
+
+  .card--content p {
+    @apply hg:font-(--hgc-font-weight-p) hg:text-lg hg:xl:text-xl;
   }
 }

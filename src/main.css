@@ -4,37 +4,38 @@
   --color-black:         #000000;
   --color-white:         #ffffff;
 
-  --color-gray-lightest: #f3f4f6;
-  --color-gray-light:    #d1d5db;
-  --color-gray:          #6b7280;
-  --color-gray-dark:     #374151;
-  --color-gray-darkest:  #111827;
+  --color-gray-lightest: var(--hgc-color-gray-lightest, #f3f4f6);
+  --color-gray-light:    var(--hgc-color-gray-light, #d1d5db);
+  --color-gray:          var(--hgc-color-gray, #6b7280);
+  --color-gray-dark:     var(--hgc-color-gray-dark, #1f2937);
+  --color-gray-darkest:  var(--hgc-color-gray-darkest, #030712);
 
-  --color-brand-light:   #eff6ff;
-  --color-brand:         #2563eb;
-  --color-brand-dark:    #1e3a8a;
+  --color-brand-light:   var(--hgc-color-brand-light, #eff6ff);
+  --color-brand:         var(--hgc-color-brand, #2563eb);
+  --color-brand-dark:    var(--hgc-color-brand-lightest, #1e3a8a);
 
-  --color-accent-light:  #fce7f3;
-  --color-accent:        #ec4899;
-  --color-accent-dark:   #9d174d;
+  --color-accent-light:  var(--hgc-color-accent-light, #fce7f3);
+  --color-accent:        var(--hgc-color-accent, #ec4899);
+  --color-accent-dark:   var(--hgc-color-accent-lightest, #9d174d);
 
-  --color-info:          #01a8e4;
-  --color-positive:      #00cc41;
-  --color-warning: 	     #ffbf00;
-  --color-negative: 	   #e60032;
+  --color-info:          var(--hgc-color-info, #01a8e4);
+  --color-positive:      var(--hgc-color-positive, #00cc41);
+  --color-warning: 	     var(--hgc-color-warning, #ffbf00);
+  --color-negative: 	   var(--hgc-color-negative, #e60032);
 
-  --color-body:            var(--color-white);
+  --color-body:          var(--hgc-color-body, #ffffff);
 
-  --menu-link-color: var(--color-gray-darkest);
-  --menu-link-color-hover: var(--color-brand);
+  --menu-link-color: var(--hgc-menu-link-color, #030712);
+  --menu-link-color-hover: var(--hgc-menu-link-color-hover, #2563eb);
 
-  --hyperlink-color: var(--color-brand);
-  --hyperlink-color-hover: var(--color-brand-dark);
+  --hyperlink-color: var(--hgc-hyperlink-color, #2563eb);
+  --hyperlink-color-hover: var(--hgc-hyperlink-color, #1e3a8a);
 
-  --font-sans: var(--hgc-font-sans);
-  --font-body: var(--hgc-font-body);
-  --font-mono: var(--hgc-font-mono);
-  --font-display: var(--hgc-font-display);
+  --font-sans: var(--hgc-font-sans), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: var(--hgc-font-mono), 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-display: var(--hgc-font-display), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-body: var(--hgc-font-body), 'Georgia', 'Times New Roman', serif;
+  --font-ui: var(--hgc-font-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
@@ -78,11 +79,11 @@
   --text-xs: 0.75rem;                /* 12px */
   --text-xs--line-height: 1.5;       /* 18px */
 
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-light: var(--hgc-font-weight-light, 300);
+  --font-weight-normal: var(--hgc-font-weight-normal, 400);
+  --font-weight-medium: var(--hgc-font-weight-medium, 500);
+  --font-weight-semibold: var(--hgc-font-weight-semibold, 600);
+  --font-weight-bold: var(--hgc-font-weight-bold, 700);
 
   --spacing-0: 0px;
   --spacing-1: 4px;
@@ -110,45 +111,49 @@
   }
 
   body {
-    @apply hg:bg-body hg:font-body hg:text-gray-darkest;
+    @apply hg:bg-body hg:font-(--hgc-font-weight-p) hg:text-gray-darkest;
   }
 
   p {
-    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
+    @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
   }
 
   ul,
   ol {
-    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit hg:list-disc hg:ps-5;
+    @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit hg:list-disc hg:ps-5;
   }
 
   li {
-    @apply hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
+    @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply hg:font-display;
   }
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply hg:font-normal hg:text-5xl hg:md:text-6xl hg:2xl:text-8xl hg:leading-none;
+    @apply hg:font-(--hgc-font-weight-h1) hg:text-5xl hg:md:text-6xl hg:2xl:text-8xl hg:leading-none;
   }
 
   h2 {
-    @apply hg:font-normal hg:text-5xl hg:2xl:text-6xl;
+    @apply hg:font-(--hgc-font-weight-h2) hg:text-5xl hg:2xl:text-6xl;
   }
 
   h3 {
-    @apply hg:font-normal hg:text-3xl;
+    @apply hg:font-(--hgc-font-weight-h3) hg:text-3xl;
   }
 
   h4 {
-    @apply hg:font-normal hg:text-2xl;
+    @apply hg:font-(--hgc-font-weight-h4) hg:text-2xl;
   }
 
   h5 {
-    @apply hg:font-medium hg:text-2xl;
+    @apply hg:font-(--hgc-font-weight-h5) hg:text-2xl;
   }
 
   h6 {
-    @apply hg:font-medium hg:text-[20px];
+    @apply hg:font-(--hgc-font-weight-h6) hg:text-[20px];
   }
 
   code,
@@ -189,6 +194,7 @@
   .hide-scrollbar-x::-webkit-scrollbar {
     height: 0px;
   }
+
   .hide-scrollbar-x {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */

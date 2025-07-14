@@ -2,7 +2,11 @@
 @layer properties;
 @layer components {
   .heading {
+<<<<<<< HEAD
     font-family: var(--hg-font-display, var(--hg-font-display));
+=======
+    font-family: var(--font-display, var(--hgc-font-display, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif));
+>>>>>>> develop
     --tw-leading: 1.2;
     line-height: 1.2;
     --tw-tracking: var(--hg-tracking-normal, 0em);
@@ -14,8 +18,13 @@
     line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     --tw-leading: 1;
     line-height: 1;
+<<<<<<< HEAD
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+=======
+    --tw-font-weight: var(--hgc-font-weight-h1);
+    font-weight: var(--hgc-font-weight-h1);
+>>>>>>> develop
     @media (width >= 48rem) {
       font-size: var(--hg-text-6xl, 3.75rem);
       line-height: var(--tw-leading, var(--hg-text-6xl--line-height, 1));
@@ -30,8 +39,13 @@
     line-height: var(--tw-leading, var(--hg-text-4xl--line-height, 1.2));
     --tw-leading: 1;
     line-height: 1;
+<<<<<<< HEAD
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+=======
+    --tw-font-weight: var(--hgc-font-weight-h1);
+    font-weight: var(--hgc-font-weight-h1);
+>>>>>>> develop
     @media (width >= 48rem) {
       font-size: var(--hg-text-5xl, 3rem);
       line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
@@ -42,26 +56,41 @@
     }
   }
   h2.heading--size-default {
+<<<<<<< HEAD
     font-size: var(--hg-text-5xl, 3rem);
     line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+=======
+    font-size: var(--text-5xl, 3rem);
+    line-height: var(--tw-leading, var(--text-5xl--line-height, 1.083333));
+    --tw-font-weight: var(--hgc-font-weight-h2);
+    font-weight: var(--hgc-font-weight-h2);
+>>>>>>> develop
     @media (width >= 96rem) {
       font-size: var(--hg-text-6xl, 3.75rem);
       line-height: var(--tw-leading, var(--hg-text-6xl--line-height, 1));
     }
   }
   h2.heading--size-alt {
+<<<<<<< HEAD
     font-size: var(--hg-text-3xl, 2rem);
     line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+=======
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    --tw-font-weight: var(--hgc-font-weight-h2);
+    font-weight: var(--hgc-font-weight-h2);
+>>>>>>> develop
     @media (width >= 96rem) {
       font-size: var(--hg-text-5xl, 3rem);
       line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
     }
   }
   h3.heading {
+<<<<<<< HEAD
     font-size: var(--hg-text-3xl, 2rem);
     line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
     --tw-font-weight: var(--hg-font-weight-normal, 400);
@@ -72,14 +101,31 @@
     line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+=======
+    font-size: var(--text-3xl, 2rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, 1.3125));
+    --tw-font-weight: var(--hgc-font-weight-h3);
+    font-weight: var(--hgc-font-weight-h3);
+  }
+  h4.heading {
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, 1.3333));
+    --tw-font-weight: var(--hgc-font-weight-h4);
+    font-weight: var(--hgc-font-weight-h4);
+>>>>>>> develop
     @media (width >= 96rem) {
       font-size: var(--hg-text-3xl, 2rem);
       line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
     }
   }
   h5.heading {
+<<<<<<< HEAD
     --tw-font-weight: var(--hg-font-weight-medium, 500);
     font-weight: var(--hg-font-weight-medium, 500);
+=======
+    --tw-font-weight: var(--hgc-font-weight-h5);
+    font-weight: var(--hgc-font-weight-h5);
+>>>>>>> develop
     @media (width >= 96rem) {
       font-size: var(--hg-text-2xl, 1.5rem);
       line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
@@ -87,8 +133,13 @@
   }
   h6.heading {
     font-size: 20px;
+<<<<<<< HEAD
     --tw-font-weight: var(--hg-font-weight-medium, 500);
     font-weight: var(--hg-font-weight-medium, 500);
+=======
+    --tw-font-weight: var(--hgc-font-weight-h6);
+    font-weight: var(--hgc-font-weight-h6);
+>>>>>>> develop
   }
 }
 @property --tw-leading {
