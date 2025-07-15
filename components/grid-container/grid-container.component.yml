@@ -66,8 +66,8 @@ props:
       default: light
 slots:
   header_region:
-    title: Header
+    title: 'Grid Container: Header'
   container_region:
-    title: Container
+    title: 'Grid Container: Columns'
   footer_region:
-    title: Footer
+    title: 'Grid Container: Footer'
