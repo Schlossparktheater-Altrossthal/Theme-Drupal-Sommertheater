@@ -1,5 +1,5 @@
 {
-    "name": "mediacurrent/mercury",
+    "name": "drupal/mercury",
     "type": "drupal-theme",
     "repositories": {
         "drupal": {
