@@ -2,7 +2,7 @@
     'button',
     'button--' ~ variant,
     'color-mode--' ~ color_mode,
-    radius,
+    'hg:' ~ radius,
     icon ? 'hg:gap-1' : 'hg:px-5',
     icon_first ? 'hg:flex hg:flex-row hg:ps-4 hg:pe-5' : 'hg:flex hg:flex-row-reverse hg:ps-5 hg:pe-4',
 ])|filter(v => v is not empty) %}
