@@ -59,9 +59,9 @@ props:
       type: string
       title: Corner radius
       enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      default: rounded-sm 
       examples: 
         - rounded-sm
-      default: rounded-sm 
     color_mode:
       type: string
       title: Color Mode
