@@ -70,5 +70,5 @@ props:
         - scroll
 slots:
   logos:
-    title: Add Logo components here
+    title: Logo components
     description: Components to arrange in a grid or horizontal scroller.
