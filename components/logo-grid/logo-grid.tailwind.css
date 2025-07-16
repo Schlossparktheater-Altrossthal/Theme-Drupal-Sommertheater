@@ -1,0 +1,68 @@
+@reference '../../src/main.css';
+
+@layer components {
+  .logo-grid {
+    @apply hg:text-center hg:min-w-[250px] hg:snap-start;
+
+    > * {
+      flex: 0 0 250px
+    }
+  }
+
+  .logo-grid--columns-desktop-1 {
+    --hgc-columns-desktop: repeat(1, minmax(0, 1fr));
+  }
+  .logo-grid--columns-desktop-2 {
+    --hgc-columns-desktop: repeat(2, minmax(0, 1fr));
+  }
+  .logo-grid--columns-desktop-3 {
+    --hgc-columns-desktop: repeat(3, minmax(0, 1fr));
+  }
+  .logo-grid--columns-desktop-4 {
+    --hgc-columns-desktop: repeat(4, minmax(0, 1fr));
+  }
+  .logo-grid--columns-desktop-5 {
+    --hgc-columns-desktop: repeat(5, minmax(0, 1fr));
+  }
+  .logo-grid--columns-desktop-6 {
+    --hgc-columns-desktop: repeat(6, minmax(0, 1fr));
+  }
+
+  .logo-grid--columns-tablet-1 {
+    --hgc-columns-tablet: repeat(1, minmax(0, 1fr));
+  }
+  .logo-grid--columns-tablet-2 {
+    --hgc-columns-tablet: repeat(2, minmax(0, 1fr));
+  }
+  .logo-grid--columns-tablet-3 {
+    --hgc-columns-tablet: repeat(3, minmax(0, 1fr));
+  }
+  .logo-grid--columns-tablet-4 {
+    --hgc-columns-tablet: repeat(4, minmax(0, 1fr));
+  }
+  .logo-grid--columns-tablet-5 {
+    --hgc-columns-tablet: repeat(5, minmax(0, 1fr));
+  }
+  .logo-grid--columns-tablet-6 {
+    --hgc-columns-tablet: repeat(6, minmax(0, 1fr));
+  }
+
+  .logo-grid--columns-mobile-1 {
+    --hgc-columns-mobile: repeat(1, minmax(0, 1fr));
+  }
+  .logo-grid--columns-mobile-2 {
+    --hgc-columns-mobile: repeat(2, minmax(0, 1fr));
+  }
+  .logo-grid--columns-mobile-3 {
+    --hgc-columns-mobile: repeat(3, minmax(0, 1fr));
+  }
+  .logo-grid--columns-mobile-4 {
+    --hgc-columns-mobile: repeat(4, minmax(0, 1fr));
+  }
+  .logo-grid--columns-mobile-5 {
+    --hgc-columns-mobile: repeat(5, minmax(0, 1fr));
+  }
+  .logo-grid--columns-mobile-6 {
+    --hgc-columns-mobile: repeat(6, minmax(0, 1fr));
+  }
+}

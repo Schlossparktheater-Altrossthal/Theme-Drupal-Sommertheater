@@ -1,0 +1,90 @@
+{# Can't do any of this with arrays or macros because the Tailwind tree-shaker won't see any of the full classes. #}
+{% set columns_mobile = behavior_mobile == 'scroll' ? false : behavior_mobile %}
+{% set scroll_classes_mobile = [
+  'hg:snap-x',
+  'hg:overflow-x-auto',
+  'hg:flex',
+  'hg:flex-nowrap',
+  'hg:justify-start',
+]|join(' ') %}
+
+{% set grid_classes_mobile = [
+  'logo-grid--columns-mobile-' ~ columns_mobile,
+  'hg:container',
+  'hg:mx-auto',
+  'hg:grid',
+  'hg:justify-stretch',
+  'hg:items-stretch',
+  'hg:grid-cols-(--hgc-columns-mobile)'
+]|join(' ') %}
+
+{% set columns_tablet = behavior_tablet == 'scroll' ? false : behavior_tablet %}
+{% set scroll_classes_tablet = [
+  'hg:md:snap-x',
+  'hg:md:overflow-x-auto',
+  'hg:md:flex',
+  'hg:md:flex-nowrap',
+  'hg:md:justify-start'
+]|join(' ') %}
+{% set cancel_grid_classes_tablet = [
+  'hg:md:max-w-[none]',
+  'hg:md:mx-0',
+  'hg:md:justify-[initial]',
+  'hg:md:items-[initial]'
+]|join(' ') %}
+
+{% set grid_classes_tablet = [
+  'logo-grid--columns-tablet-' ~ columns_tablet,
+  'hg:md:container',
+  'hg:md:mx-auto',
+  'hg:md:grid',
+  'hg:md:justify-stretch',
+  'hg:md:items-stretch',
+  'hg:md:grid-cols-(--hgc-columns-tablet)'
+]|join(' ') %}
+{% set cancel_scroll_classes_tablet = [
+  'hg:md:overflow-x-visible',
+]|join(' ') %}
+
+{% set columns_desktop = behavior_desktop == 'scroll' ? false : behavior_desktop %}
+{% set scroll_classes_desktop = [
+  'hg:xl:snap-x',
+  'hg:xl:overflow-x-auto',
+  'hg:xl:flex',
+  'hg:xl:flex-nowrap',
+  'hg:xl:justify-start',
+  'hg:xl:max-w-[none]'
+]|join(' ') %}
+{% set cancel_grid_classes_desktop = [
+  'hg:xl:max-w-[none]',
+  'hg:xl:mx-0',
+  'hg:xl:justify-[initial]',
+  'hg:xl:items-[initial]'
+]|join(' ') %}
+
+{% set grid_classes_desktop = [
+  'logo-grid--columns-desktop-' ~ columns_desktop,
+  'hg:xl:container',
+  'hg:xl:mx-auto',
+  'hg:xl:grid',
+  'hg:xl:justify-stretch',
+  'hg:xl:items-stretch',
+  'hg:xl:grid-cols-(--hgc-columns-desktop)'
+]|join(' ') %}
+{% set cancel_scroll_classes_desktop = [
+  'hg:xl:overflow-x-visible',
+]|join(' ') %}
+
+{% set classes = [
+  'logo-grid hg:gap-3',
+  columns_mobile ? grid_classes_mobile : scroll_classes_mobile,
+  columns_tablet ? grid_classes_tablet : scroll_classes_tablet,
+  (not columns_mobile) != (not columns_tablet) ? (columns_tablet ? cancel_scroll_classes_tablet : cancel_grid_classes_tablet) : '',
+  columns_desktop ? grid_classes_desktop : scroll_classes_desktop,
+  (not columns_tablet) != (not columns_desktop) ? (columns_desktop ? cancel_scroll_classes_desktop : cancel_grid_classes_desktop) : '',
+] %}
+
+<div class="{{ classes|join(' ') }}">
+  {% block logos %}
+  {% endblock %}
+</div>
