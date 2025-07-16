@@ -8,14 +8,14 @@ props:
     behavior_desktop:
       title: Desktop behavior
       type: string
-      default: '4'
+      default: "4"
       enum:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-        - 6
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
+        - "6"
         - scroll
       meta:enum:
         1: Stacked (1 Column)
@@ -27,19 +27,19 @@ props:
         scroll: Scroll horizontally
       description: How to display the grid on desktop
       examples:
-        - 4
+        - "4"
     behavior_tablet:
       title: Tablet behavior
       type: string
-      default: 2
+      default: "2"
       enum:
         - scroll
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-        - 6
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
+        - "6"
       meta:enum:
         1: Stacked (1 Column)
         2: 2 Columns
@@ -49,17 +49,17 @@ props:
         6: 6 Columns
         scroll: Scroll horizontally
       examples:
-        - 2
+        - "2"
     behavior_mobile:
       title: Mobile behavior
       type: string
       default: scroll
       enum:
         - scroll
-        - 1
-        - 2
-        - 3
-        - 4
+        - "1"
+        - "2"
+        - "3"
+        - "4"
       meta:enum:
         1: Stacked (1 Column)
         2: 2 Columns
