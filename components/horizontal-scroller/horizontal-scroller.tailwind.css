@@ -1,7 +1,36 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .horizontal-scroller > * {
-    @apply hg:text-center hg:border-1 hg:min-w-[250px] hg:snap-start;
+  .horizontal-scroller {
+    @apply hg:text-center hg:min-w-[250px] hg:snap-start;
+
+    > * {
+      flex: 0 0 250px
+    }
+  }
+
+  .horizontal-scroller--columns-desktop-1 {
+    --hgc-columns-desktop: repeat(1, minmax(0, 1fr));
+  }
+
+  .horizontal-scroller--columns-desktop-2 {
+    --hgc-columns-desktop: repeat(2, minmax(0, 1fr));
+  }
+
+  .horizontal-scroller--columns-desktop-3 {
+    --hgc-columns-desktop: repeat(3, minmax(0, 1fr));
+  }
+
+  .horizontal-scroller--columns-desktop-4 {
+    --hgc-columns-desktop: repeat(4, minmax(0, 1fr));
+  }
+
+  .horizontal-scroller--columns-desktop-5 {
+    --hgc-columns-desktop: repeat(5, minmax(0, 1fr));
+  }
+
+  .horizontal-scroller--columns-desktop-6 {
+    --hgc-columns-desktop: repeat(6, minmax(0, 1fr));
   }
 }
+}}}

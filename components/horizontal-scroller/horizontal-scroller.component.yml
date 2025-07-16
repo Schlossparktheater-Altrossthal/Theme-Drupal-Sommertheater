@@ -4,7 +4,14 @@ description: A component showing its children in a grid on desktop and in a hori
 group: Layouts/Horz Scroller
 props:
   type: object
-  properties: {}
+  properties:
+    columns_on_desktop:
+      type: integer
+      default: 4
+      enum: [1, 2, 3, 4, 5, 6]
+      description: The number of columns to display on desktop.
+      examples:
+        - 4
 slots:
   logos:
     title: Logos
