@@ -6,6 +6,7 @@ props:
   type: object
   properties:
     columns_on_desktop:
+      title: Columns on desktop
       type: integer
       default: 4
       enum: [1, 2, 3, 4, 5, 6]
