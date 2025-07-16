@@ -1,12 +1,12 @@
 # Mercury Theme
 
-**Mercury** is a modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools such as Vite, Storybook, and the SDC (Starshot Design System) to create a seamless development experience.
+**Mercury** is a modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools such as Vite, Storybook, and the Starshot Design System to create a seamless development experience.
 
 ## Features
 
 - **Vite**: A fast and modern build tool for web development, providing lightning-fast hot module replacement (HMR) and optimized production builds.
 - **Storybook**: Automatically generates stories for components, enabling UI development in isolation and ensuring consistency across components.
-- **SDC (Starshot Design System)**: A design system used to maintain consistent UI elements and improve design-to-development workflows.n
+- **Starshot Design System**: A design system used to maintain consistent UI elements and improve design-to-development workflows.n
 
 ## Installation
 
