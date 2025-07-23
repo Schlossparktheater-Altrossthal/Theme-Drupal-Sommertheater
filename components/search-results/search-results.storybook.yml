@@ -18,6 +18,7 @@ link:
   text: 'Learn More'
   url: 'https://www.google.com'
   icon: 'chevron_right'
+  style: 'default'
 media:
   src: 'assets/starshot.png'
   alt: 'Placeholder'
