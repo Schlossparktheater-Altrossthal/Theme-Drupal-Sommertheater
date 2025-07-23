@@ -3,12 +3,14 @@
     'link',
     style ? 'link--' ~ style : '',
     radius,
-    icon ? 'flex items-center' : ''
+    icon ? 'hg:flex hg:items-center' : '',
+    'color-mode--' ~ color_mode,
+    'hg:no-underline'
 ])|filter(v => v is not empty) %}
 
 <a href="{{ url }}" class="{{ link_classes|join(' ') }}" title="{{ title ?? text }}">
   {% if icon is not empty %}
-    <span class="link-text">{{ text }}</span>
+    <span class="link-text{{ style == 'default' ? '  hg:underline hg:decoration-1 hg:underline-offset-4' }}">{{ text }}</span>
     <span class="material-symbols-outlined">{{ icon }}</span>
   {% else %}
     {{ text }}

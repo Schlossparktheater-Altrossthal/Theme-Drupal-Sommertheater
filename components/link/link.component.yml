@@ -36,17 +36,17 @@ props:
       title: Icon Class
       description: An optional icon to display before the text (e.g., FontAwesome or Heroicons class).
       examples:
-        - 'fa-solid fa-arrow-right'
+        - 'chevron_right'
     url:
       type: string
       title: URL
       description: The destination URL of the link.
       examples:
-        - '#'
+        - 'https://example.com'
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
+      default: light
       examples: 
         - light
-      default: light

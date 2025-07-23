@@ -2,3 +2,25 @@
 name: Results
 description: Search card with date, heading, description
 group: Components/Search
+props:
+  type: object
+  properties:
+    heading_text:
+      type: string
+      title: Heading Text
+      default: 'Enter title'
+      examples: 
+        - One Giant Leap for Open Source
+    link:
+      type: string
+      title: The Link
+      examples:
+        - text: 'Testing'
+          url: 'https://www.google.com'
+          icon: 'chevron_right'
+          style: 'button-outline-light'
+    description:
+      type: string
+      title: Description
+      examples: 
+        - 'Lorem ipsum dolor sit amet fringilla'

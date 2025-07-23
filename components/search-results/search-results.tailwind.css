@@ -2,29 +2,29 @@
 
 @layer components {
   .storybook-component--search-results {
-    @apply max-w-5xl;
+    @apply hg:max-w-5xl;
   }
 
   .search-results .search-results--event-date,
   .search-results .search-results--date {
-    @apply text-lg text-gray-dark font-semibold;
+    @apply hg:text-lg hg:text-gray-dark hg:font-semibold;
   }
   .search-results .search-results--content .heading {
-    @apply font-semibold;
+    @apply hg:font-semibold;
   }
 
   .search-results .search-results--content .heading a {
-    @apply text-brand;
+    @apply hg:text-brand;
   }
 
   .search-results .search-results--description {
-    @apply text-lg text-gray-dark;
+    @apply hg:text-lg hg:text-gray-dark;
   }
 
   .search-results .search-results--tags a {
-    @apply text-lg text-gray-dark no-underline hover:underline;
+    @apply hg:text-lg hg:text-gray-dark hg:no-underline hg:hover:underline;
   }
   .search-results a .link-text {
-    @apply text-xl;
+    @apply hg:text-xl;
   }
 }
