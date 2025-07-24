@@ -1,7 +1,6 @@
 name: mercury
 type: theme
 'base theme': false
-version: 1.0.0
 libraries:
   - mercury/global
   - mercury/messages

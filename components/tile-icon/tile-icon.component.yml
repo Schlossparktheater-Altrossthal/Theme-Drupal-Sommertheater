@@ -51,6 +51,6 @@ props:
       type: string
       title: Color Mode
       enum: [light, dark, inherit]
-      examples: 
+      examples:
         - light
       default: light

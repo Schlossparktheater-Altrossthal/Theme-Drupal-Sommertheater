@@ -9,7 +9,7 @@ props:
       type: string
       title: Heading Text
       default: 'Enter title'
-      examples: 
+      examples:
         - One Giant Leap for Open Source
     link:
       type: string
@@ -22,5 +22,5 @@ props:
     description:
       type: string
       title: Description
-      examples: 
+      examples:
         - 'Lorem ipsum dolor sit amet fringilla'

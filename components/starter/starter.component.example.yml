@@ -1,6 +1,6 @@
 # source:
 # https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components/annotated-example-componentyml
-# Everything in this file is optional. Still, the file needs to exist. 
+# Everything in this file is optional. Still, the file needs to exist.
 # Adding metadata here will improve the DX when using components.
 
 # Note: currently in Drupal 10.1, the schema will fail to validate if
@@ -18,8 +18,8 @@ status: experimental
 # Use this key to organize components together.
 group: Navigation
 
-# Override components provided by other themes or modules. The format 
-# is <module-or-theme-machineName>:<component-machineName>. Note that  
+# Override components provided by other themes or modules. The format
+# is <module-or-theme-machineName>:<component-machineName>. Note that
 # only themes can override components. This will not work in modules.
 replaces: 'sdc_module_test:my-component'
 
@@ -75,7 +75,7 @@ props:
 # Slots always hold arbitrary markup. We know that beforehand, so no need
 # for a schema for slots.
 slots:
-  # The key is the name of the slot. In your template you will use 
+  # The key is the name of the slot. In your template you will use
   # {% block body %}.
   body:
     # A human-readable name.
@@ -85,13 +85,13 @@ slots:
     # A description.
     description: This is the body
 
-  # Only the key is required when declaring slots. This is how you 
+  # Only the key is required when declaring slots. This is how you
   # declare a slot with minimal typing.
   minimal: {}
 
 # This is how you take control of the keys in your library
 # declaration. The overrides specified here will be merged (shallow merge)
-# with the auto-generated library. The result of the merge will become the 
+# with the auto-generated library. The result of the merge will become the
 # library for the component.
 libraryOverrides:
   # Once you add a key in the overrides, you take control of it. What you
@@ -102,7 +102,7 @@ libraryOverrides:
 
   # Here we are taking control of the JS assets. So we need to specify
   # everything, even the parts that were auto-generated. This is useful
-  # when adding additional files or tweaking the <script> 
+  # when adding additional files or tweaking the <script>
   # tag's attributes.
   js:
     my-component.js: { attributes: { defer: true } }

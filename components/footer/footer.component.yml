@@ -15,7 +15,7 @@ props:
       type: string
       title: Color Mode
       enum: [light, dark]
-      examples: 
+      examples:
         - light
 slots:
   footer_menu:

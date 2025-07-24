@@ -43,25 +43,25 @@ props:
       type: string
       title: Space Before
       enum: ['none','tight','normal','extra']
-      examples: 
+      examples:
         - 'normal'
     margin_after:
       type: string
       title: Space After
       enum: ['none','tight','normal','extra']
-      examples: 
+      examples:
         - 'normal'
     width:
       type: string
       title: Container Width
       enum: ['full', '9/10', '8/10', '3/4', '1/2']
-      examples: 
+      examples:
         - 'full'
     color_mode:
       type: string
       title: Color Mode
       enum: [light, dark]
-      examples: 
+      examples:
         - light
       default: light
 slots:
