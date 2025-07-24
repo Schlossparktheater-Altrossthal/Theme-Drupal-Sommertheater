@@ -13,9 +13,13 @@ props:
     level:
       type: number
       title: Heading Level
+      description: The heading level (h2-h6) for the component title.
       enum: [2,3,4,5,6]
+      default: 3
       examples: 
+        - 2
         - 3
+        - 4
     url:
       type: string
       title: Add optional url
@@ -34,18 +38,24 @@ props:
       title: Text
       description: Teaser text
       examples: 
-        - ''
+        - 'Lorem ipsum dolor sit amet suspendisse consectetur sociosqu dapibus ridiculus etiam malesuada. Luctus inceptos dictumst pede commodo donec bibendum blandit. Egestas molestie litora pulvinar justo quam porta pede bibendum consectetur. Efficitur suspendisse cubilia nibh turpis egestas montes sed.'
     layout:
       type: string
       title: Layout
       description: Set hero layout
       enum: 
-        - media-first (default)
+        - media-first
         - media-last
-      examples: [media-first (default), media-last]
+      default: 'media-first'
+      examples: 
+        - 'media-first'
+        - 'media-last'
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark]
+      enum: 
+        - light
+        - dark
+      default: light
       examples: 
         - light

@@ -9,25 +9,30 @@ props:
     heading_text:
       type: string
       title: Heading Text
+      description: The heading text.
       default: 'Enter title'
       examples: 
         - One Giant Leap for Open Source
     level:
       type: number
       title: Heading Level
+      description: The heading level (h1-h6).
       enum: [1,2,3,4,5,6]
+      default: 2
       examples: 
-        - 1
+        - 2
     styles:
       type: string
       title: Heading Styles
+      description: The heading styles.
       enum: [default, alt]
+      default: default
       examples: 
         - default
-      default: default
     url:
       type: string
       title: Add optional url
+      description: The url for the heading.
+      default: 'No URL'
       examples: 
-        - ''
-      default: ''
+        - 'No URL'

@@ -1,5 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Testimonial
+description: A testimonial card component with quote, author information, and optional media.
 group: Components/Cards
 props:
   type: object
@@ -9,7 +10,7 @@ props:
       title: Blockquote text
       description: The blockquote text.
       examples:
-        - '“My career coach’s guidance was crucial in helping me understand the tech industry landscape and ultimately secure my role.”'
+        - "My career’s guidance was crucial in helping me understand the tech industry landscape and ultimately secure my role."
     cite_name:
       type: string
       title: Cite name
@@ -27,7 +28,7 @@ props:
       title: Cite URL
       description: The cite url.
       examples:
-        - ''
+        - 'https://www.example.com'
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Card Media
@@ -39,15 +40,20 @@ props:
     align:
       type: string
       title: Text alignment
-      description: Set alignment of text
-      enum: [center, left]
+      description: Set alignment of text.
+      enum: 
+        - center
+        - left
+      default: center
       examples: 
         - center
-      default: center
     color_mode:
       type: string
       title: Color Mode
-      enum: [light, dark]
+      description: Test component in light or dark mode.
+      enum: 
+        - light
+        - dark
+      default: light
       examples: 
         - light
-      default: light
