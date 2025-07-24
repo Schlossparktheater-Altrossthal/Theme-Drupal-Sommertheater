@@ -8,12 +8,23 @@ props:
     heading_text:
       type: string
       title: Heading Text
+      description: The heading text.
       default: 'Enter title'
       examples: 
         - One Giant Leap for Open Source
     link:
-      type: string
+      type: object
       title: The Link
+      description: The link for the heading.
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+        icon:
+          type: string
+        style:
+          type: string
       examples:
         - text: 'Testing'
           url: 'https://www.google.com'
@@ -22,5 +33,6 @@ props:
     description:
       type: string
       title: Description
+      description: The description of the search results.
       examples: 
         - 'Lorem ipsum dolor sit amet fringilla'
