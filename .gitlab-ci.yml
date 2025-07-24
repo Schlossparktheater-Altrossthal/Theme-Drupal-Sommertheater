@@ -62,7 +62,7 @@ push to bitbucket:
     # Update the `origin` remote to push to BitBucket.
     - git remote set-url origin git@bitbucket.org:mediacurrent/xb-drupal-theme.git
     - git remote -v
-    - git push --set-upstream origin $CI_COMMIT_BRANCH
+    - git checkout $CI_COMMIT_BRANCH && git push --set-upstream origin HEAD
   rules:
     # Deploy when we push to the release branch (not in a fork).
     - if: $CI_COMMIT_BRANCH == "1.x" && $CI_PIPELINE_SOURCE == "push" && $CI_PROJECT_ROOT_NAMESPACE == "project"
