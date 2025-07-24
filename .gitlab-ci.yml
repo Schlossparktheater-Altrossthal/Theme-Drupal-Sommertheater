@@ -45,6 +45,9 @@ push to bitbucket:
   # We don't need any artifacts from previous stages.
   # @see https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html#prevent-a-job-from-fetching-artifacts
   dependencies: []
+  before_script:
+    - apt-get update -y
+    - apt-get install -y openssh-client
   script:
     # We need to identify ourselves to Git in order to push.
     - git config --global user.name "Mediacurrent"
