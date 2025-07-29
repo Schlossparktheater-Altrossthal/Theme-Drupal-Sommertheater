@@ -19,3 +19,21 @@ function mercury_preprocess_image_widget(array &$variables): void {
     unset($data['preview']);
   }
 }
+
+/**
+ * Implements template_preprocess_html().
+ */
+function mercury_preprocess_html(array &$variables): void {
+  $variables['dark_mode'] = theme_get_setting('dark_mode');
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function mercury_form_system_theme_settings_alter(array &$form): void {
+  $form['dark_mode'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable dark mode'),
+    '#default_value' => theme_get_setting('dark_mode'),
+  ];
+}

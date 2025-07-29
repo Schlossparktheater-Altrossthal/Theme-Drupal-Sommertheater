@@ -1,0 +1,7 @@
+mercury.settings:
+  type: theme_settings
+  label: 'Mercury settings'
+  mapping:
+    dark_mode:
+      type: boolean
+      label: Enable dark mode
