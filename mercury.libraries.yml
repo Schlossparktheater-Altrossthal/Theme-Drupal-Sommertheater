@@ -3,6 +3,7 @@ global:
   css:
     base:
       build/css/main.min.css: {}
+      components/webform-newsletter/webform-newsletter.css: {}
     theme:
       src/overrides.css: {}
     component:

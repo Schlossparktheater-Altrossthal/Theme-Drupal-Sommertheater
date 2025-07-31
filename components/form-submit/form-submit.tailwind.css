@@ -1,7 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .form-submit {
-    @apply hg:bg-gray-900 hg:text-white hg:rounded-md hg:py-2 hg:px-4 hg:rounded hg:hover:bg-blue-600;
-  }
-}

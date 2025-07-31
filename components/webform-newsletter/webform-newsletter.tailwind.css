@@ -1,0 +1,48 @@
+@reference '../../src/main.css';
+
+.storybook-component--webform-newsletter {
+  @apply hg:p-3;
+
+  &:has(.dark) {
+    @apply hg:bg-black;
+  }
+}
+
+@layer components {
+
+  .dark {
+    @apply hg:text-white;
+
+    .webform-submission-newsletter-signup-form .form-email {
+      @apply hg:bg-black hg:text-white hg:placeholder:text-white hg:border-white;
+    }
+  }
+
+  .webform-submission-newsletter-signup-form {
+    @apply hg:max-w-[600px] hg:flex hg:flex-col hg:gap-3;
+
+    .visually-hidden {
+      @apply hg:hidden;
+    }
+
+    .webform-type-fieldset .fieldset-wrapper {
+      @apply hg:flex hg:items-center hg:gap-2;
+    }
+
+    .form-item {
+      @apply hg:my-0!;
+    }
+  
+    .form-email {
+      @apply hg:px-2 hg:lg:px-3 hg:py-0 hg:border hg:leading-[28px] hg:lg:leading-[42px] hg:rounded-sm hg:w-full hg:text-sm! hg:lg:text-lg!;
+    }
+  
+    .form-item label {
+      @apply hg:sr-only;
+    }
+    
+    .form-submit.button {
+      @apply hg:cursor-pointer hg:px-2 hg:lg:px-4 hg:py-1! hg:lg:py-2! hg:font-medium hg:text-sm! hg:lg:text-lg! hg:w-fit hg:border  hg:no-underline hg:hover:no-underline hg:border-brand hg:bg-brand hg:text-white hg:hover:bg-brand-dark hg:hover:border-brand-dark hg:hover:text-white hg:rounded-sm;
+    }
+  }
+}

@@ -1,7 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .form-element.form-element--type-text {
-    @apply hg:px-3 hg:pt-6 hg:pb-2;
-  }
-}
