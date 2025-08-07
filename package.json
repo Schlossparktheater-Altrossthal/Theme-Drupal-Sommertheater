@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "pre-build-storybook": "node ./scripts/custom-storybook-build.js",
-    "build-storybook": "npm run pre-build-storybook && storybook build"
+    "build-storybook": "npm run pre-build-storybook && storybook build",
+    "postinstall": "cp -R ./node_modules/@phosphor-icons/core/assets/regular ./icons"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -67,9 +68,11 @@
   },
   "dependencies": {
     "@drupal/once": "^1.0.1",
+    "@phosphor-icons/core": "2.1.1",
     "@rollup/plugin-yaml": "^4.1.2",
     "@tailwindcss/cli": "^4.1.8",
     "@tailwindcss/vite": "^4.0.13",
+    "core:2.1.1": "link:@phosphor-icons/core:2.1.1",
     "glob": "^11.0.1",
     "js-yaml": "^4.1.0"
   }
