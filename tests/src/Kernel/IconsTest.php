@@ -9,6 +9,7 @@ use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\Icon\Plugin\IconPackManagerInterface;
 use Drupal\KernelTests\KernelTestBase;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\TestWith;
 
 /**
  * Tests that all of Mercury's icons are discoverable.
@@ -24,7 +25,9 @@ final class IconsTest extends KernelTestBase {
   /**
    * Tests that all Mercury icons are discoverable.
    */
-  public function testIconsAreDiscoverable(): void {
+  #[TestWith(['social'])]
+  #[TestWith(['phosphor'])]
+  public function testIconsAreDiscoverable(string $group): void {
     $this->container->get(ThemeInstallerInterface::class)->install(['mercury']);
 
     $icons = $this->container->get(IconPackManagerInterface::class)
@@ -33,7 +36,7 @@ final class IconsTest extends KernelTestBase {
     $icon_dir = implode('/', [
       $this->getDrupalRoot(),
       $this->container->get(ThemeExtensionList::class)->getPath('mercury'),
-      'icons',
+      'icons/' . $group,
     ]);
     $dir = opendir($icon_dir);
     $this->assertIsResource($dir);
@@ -43,7 +46,7 @@ final class IconsTest extends KernelTestBase {
         continue;
       }
       $this->assertStringEndsWith('.svg', $item);
-      $id = 'phosphor:' . substr($item, 0, -4);
+      $id = "$group:" . substr($item, 0, -4);
       $this->assertSame($icon_dir . '/' . $item, $icons[$id]['absolute_path']);
     }
     closedir($dir);
