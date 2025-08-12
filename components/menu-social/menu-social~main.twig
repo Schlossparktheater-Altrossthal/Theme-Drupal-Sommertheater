@@ -4,10 +4,11 @@
 ])|filter(v => v is not empty) %}
 
 <ul class="{{ menu_classes|join(' ') }}">
-  {% for item in items %}
+  {% for item in items|default(storybook.items) %}
     <li class="social-menu--item">
       <a href="{{ item.url }}" aria-label="Follow us on {{ item.title|striptags|trim }}" target="_blank" rel="noopener noreferrer" class="social-menu--icon hg:flex hg:align-center hg:w-[24px] hg:aspect-square">
-        {{ item.title }}
+        {{ item.icon }}
+        <span class="ui-icons-menu-text">{{ item.title }}</span>
       </a>
     </li>
   {% endfor %}

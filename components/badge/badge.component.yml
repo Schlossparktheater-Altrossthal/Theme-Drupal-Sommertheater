@@ -21,7 +21,7 @@ props:
       type: string
       title: Icon
       description: 'Select an Icon.'
-      enum: [close, bolt, '']
+      enum: [close, bolt, none]
       examples: 
         - close
       default: close

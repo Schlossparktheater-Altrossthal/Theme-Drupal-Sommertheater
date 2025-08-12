@@ -7,6 +7,7 @@ props:
   properties:
     items:
       type: array
+      title: Menu Items
       description: List of menu items to display
       items:
         type: object
@@ -17,18 +18,7 @@ props:
           url:
             type: string
             description: The URL the menu item links to
-      examples:
-        - title: Sign In
-          url: '#'
-        - title: Contact Us
-          url: '#'
-        - title: Help
-          url: '#'
-    menu_level:
-      type: integer
-      title: Menu Level
-      examples:
-        - 0
+      examples: []
     align:
       type: boolean
       title: Display links in row?

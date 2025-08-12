@@ -1,0 +1,21 @@
+hide_main: true
+breadcrumb:
+  - text: Home
+    url: /
+  - text: Section
+    url: /section
+  - text: News
+    url: /news
+  - text: Events
+    url: /events
+  - text: Museum
+    url: /museum
+  - text: Current Page
+    url: /current
+color_mode:
+  type: string
+  title: Color Mode
+  enum: [light, dark]
+  examples: 
+    - light
+  default: light

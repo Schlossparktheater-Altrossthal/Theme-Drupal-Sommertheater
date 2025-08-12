@@ -2,7 +2,7 @@
 
 @layer components {
 
-  /* .social-menu {
-    @apply ;
-  } */
+  .social-menu--item .ui-icons-menu-text {
+    @apply hg:hidden;
+  }
 }

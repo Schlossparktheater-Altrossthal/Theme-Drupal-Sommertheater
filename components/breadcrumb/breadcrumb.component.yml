@@ -7,7 +7,7 @@ props:
   properties:
     breadcrumb:
       type: array
-      title: breadcrumb
+      title: Breadcrumb
       description: Breadcrumb items.
       items:
         type: object
@@ -21,23 +21,4 @@ props:
             type: string
         required:
           - text
-      examples:
-        - text: Home
-          url: /
-        - text: Section
-          url: /section
-        - text: News
-          url: /news
-        - text: Events
-          url: /events
-        - text: Museum
-          url: /museum
-        - text: Current Page
-          url: /current
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
+      examples: []

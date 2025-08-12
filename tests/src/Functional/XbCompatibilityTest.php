@@ -6,7 +6,7 @@ namespace Drupal\Tests\mercury\Functional;
 
 use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\ComponentPluginManager;
-use Drupal\experience_builder\Entity\Component;
+use Drupal\experience_builder\ComponentIncompatibilityReasonRepository;
 use Drupal\Tests\BrowserTestBase;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -50,14 +50,36 @@ class XbCompatibilityTest extends BrowserTestBase {
     // Make XB update all component entities. If there are any invalid SDCs,
     // this should fail hard.
     $component_manager->clearCachedDefinitions();
-    $component_manager->getDefinitions();
-
-    // Confirm that components for Mercury SDCs were generated.
-    $mercury_component_entities = array_filter(
-      array_keys(Component::loadMultiple()),
-      fn (string $id): bool => str_starts_with($id, 'sdc.mercury.'),
+    // Only consider SDCs from Mercury.
+    $definitions = array_filter(
+      $component_manager->getDefinitions(),
+      fn (array $definition): bool => $definition['provider'] === 'mercury',
     );
-    $this->assertNotEmpty($mercury_component_entities);
+
+    ['sdc' => $why_not] = $this->container->get(ComponentIncompatibilityReasonRepository::class)
+      ->getReasons();
+
+    // Ignore components that we know are broken.
+    // @todo These components need to either be deleted from Mercury, or
+    //   permanently ignored with a comment.
+    unset(
+      // These three components are used by the `menu-footer` Twig template, and
+      // aren't meant to be used directly in XB.
+      $definitions['mercury:menu-footer'],
+      $definitions['mercury:menu-social'],
+      $definitions['mercury:menu-utility'],
+      // The `breadcrumb` component is used for styling core's breadcrumb, but
+      // isn't meant to be used directly in XB.
+      $definitions['mercury:breadcrumb'],
+      // This is used to render views via templates, but is not meant to be
+      // used directly in XB.
+      $definitions['mercury:pager'],
+    );
+
+    foreach ($definitions as ['machineName' => $id]) {
+      $key = "sdc.mercury.$id";
+      $this->assertArrayNotHasKey($key, $why_not, implode(', ', $why_not[$key] ?? []));
+    }
   }
 
 }

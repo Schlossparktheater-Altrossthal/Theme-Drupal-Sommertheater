@@ -1,7 +1,0 @@
-{% embed 'mercury:search-results' with storybook %}
-  {% block thumbnail %}
-    <div class="search-results--image hg:aspect-5/4">
-      <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:object-fit hg:w-full hg:h-full" />
-    </div>
-  {% endblock %}
-{% endembed %}

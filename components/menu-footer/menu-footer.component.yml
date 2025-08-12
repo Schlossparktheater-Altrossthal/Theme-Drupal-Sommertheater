@@ -29,62 +29,7 @@ props:
                 url:
                   type: string
                   description: The URL the sub-menu item links to
-      examples:
-        - title: Company
-          url: "#"
-          below:
-            - title: About
-              url: "#"
-            - title: Careers & Culture
-              url: "#"
-            - title: Press Releases
-              url: "#"
-            - title: Sustainability Initiatives
-              url: "#"
-            - title: Investor Relations Portal
-              url: "#"
-
-        - title: Resources & Documentation
-          url: "#"
-          below:
-            - title: API Reference
-              url: "#"
-            - title: Quick-Start Guides
-              url: "#"
-            - title: Full Developer Handbook
-              url: "#"
-            - title: Release Notes & Changelogs
-              url: "#"
-            - title: Component Library
-              url: "#"
-
-        - title: Customer Support Zone
-          url: "#"
-          below:
-            - title: Submit a Ticket
-              url: "#"
-            - title: 24×7 Live Chat Help Desk
-              url: "#"
-            - title: Knowledge Base Articles
-              url: "#"
-            - title: Video Tutorials & Webinars Archive
-              url: "#"
-            - title: Service-Status Dashboard
-              url: "#"
-
-        - title: Stay Connected with Us Today
-          url: "#"
-          below:
-            - title: Newsletter Signup
-              url: "#"
-            - title: Community Forum Discussions
-              url: "#"
-            - title: Upcoming Events & Meet-ups Calendar
-              url: "#"
-            - title: Follow Us on Social Media Platforms
-              url: "#"
-            - title: Feedback & Feature Requests Form
-              url: "#"
+      examples: []
       menu_level:
         type: integer
         title: Menu Level

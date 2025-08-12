@@ -1,10 +1,10 @@
 {% block pager %}
-    {{ include('mercury:pager', { 
-        items: storybook.items,
-        ellipses: storybook.ellipses,
-        heading_id: storybook.heading_id,
-        pagination_heading_level: storybook.pagination_heading_level,
-        current: storybook.current,
-        color_mode: storybook.color_mode
-    } ) }}
+  {{ include('mercury:pager', { 
+    items: storybook.items,
+    ellipses: storybook.ellipses,
+    heading_id: storybook.heading_id,
+    pagination_heading_level: storybook.pagination_heading_level,
+    current: storybook.current,
+    color_mode: storybook.color_mode
+  } ) }}
 {% endblock %}

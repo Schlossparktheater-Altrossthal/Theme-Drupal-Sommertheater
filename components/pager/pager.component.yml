@@ -2,3 +2,6 @@ $schema: 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sd
 name: 'Pager'
 description: 'A pagination component for navigating through multiple pages of content'
 group: 'Navigation'
+props:
+  type: object
+  properties: {}
