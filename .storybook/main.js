@@ -2,7 +2,7 @@
 
 const config = {
   stories: [
-    "../src/**/*.mdx", 
+    "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   staticDirs: [
@@ -10,8 +10,7 @@ const config = {
   ],
   addons: [
     "@storybook/addon-a11y",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -20,11 +19,11 @@ const config = {
   core: {
     builder: '@storybook/builder-vite',
   },
-  
+
   // Configure Vite for Storybook
   viteFinal: (config, { configType }) => {
     console.log(`[storybook] Configuring Vite for Storybook (${configType})`);
-  
+
     return config;
   },
 };

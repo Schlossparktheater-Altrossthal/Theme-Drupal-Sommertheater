@@ -1,0 +1,39 @@
+hide_main: true
+menu:
+  items:
+    - title: Childless link
+      url: https://google.com
+    - title: Parent link
+      url: https://yahoo.com
+      in_active_trail: true
+      below:
+        - text: Link > Childless link
+          url: https://apple.com
+        - text: Link > Parent link
+          url: https://amazon.com
+          below:
+            - text: Link > link > link
+              url: https://facebook.com
+        - text: Link > nolink
+          below:
+            - text: Link > nolink > link
+              url: https://netflix.com
+    - title: Nolink
+      below:
+        - text: Nolink > Childless link
+          url: https://google.com
+        - text: Nolink > Parent link
+          url: https://instagram.com
+          below:
+            - text: Nolink > link > link
+              url: https://tiktok.com
+        - text: Link > nolink
+          below:
+            - text: Nolink > nolink > link
+              url: https://disney.com
+branding:
+  site_name:
+    - Starshot Design System
+  site_logo:
+    src: assets/starshot_ds.svg
+    alt: Site logo

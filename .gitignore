@@ -28,3 +28,5 @@ build/*
 storybook-static/
 src/stories/sdc-stories
 public/components
+CLAUDE.md
+.claude/*

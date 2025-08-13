@@ -1,0 +1,39 @@
+<div class="navbar hg:flex hg:justify-between">
+  <div class="navbar--logo hg:flex hg:justify-start hg:items-center hg:grow-0 hg:shrink-0">
+    {% block branding %}
+    {% endblock %}
+  </div>
+
+  {% set class_from_menu_align = {
+    left: 'hg:sm:justify-start',
+    center: 'hg:sm:justify-center',
+    right: 'hg:sm:justify-end',
+  } %}
+  <div class="navbar--menu hg:hidden hg:sm:flex hg:fixed hg:top-0 hg:left-0 hg:w-full hg:overflow-y-auto hg:sm:overflow-visible hg:sm:static hg:flex-col hg:sm:flex-row hg:justify-start hg:items-stretch {{ class_from_menu_align[menu_align] }} hg:sm:items-center hg:grow-1 hg:shrink-1">
+    <button class="navbar--hide-menu hg:sm:hidden hg:w-[44px] hg:h-[44px] hg:self-end hg:flex hg:justify-center hg:items-center" aria-label="{{ 'Hide menu'|t }}">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="navbar--menu-contents hg:px-8">
+      {% block navigation %}
+      {% endblock %}
+    </div>
+  </div>
+
+  <div class="navbar--links hg:ml-auto hg:flex hg:justify-end hg:grow-0 hg:shrink-0">
+    {% block links %}
+      {{ include('mercury:button', {
+        variant: 'fill',
+        label: 'Button'|t,
+        icon: 'arrow_forward',
+        href: 'https://example.com',
+      }) }}
+    {% endblock %}
+  </div>
+
+  <div class="navbar--hamburger-container hg:min-w-[44px] hg:min-h-[44px] hg:flex hg:justify-center hg:items-center hg:sm:hidden hg:grow-0 hg:shrink-0">
+    <button class="navbar--hamburger hg:flex hg:justify-center hg:items-center" aria-label="{{ 'Show menu'|t }}">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</div>

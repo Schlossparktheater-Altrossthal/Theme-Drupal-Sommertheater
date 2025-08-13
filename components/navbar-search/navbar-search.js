@@ -39,7 +39,7 @@ class NavbarSearch extends ComponentInstance {
   }
 
   isInputHidden() {
-    return this.searchInput?.classList.contains('hidden');
+    return this.searchInput?.classList.contains('hg:hidden');
   }
 
   isInputVisible() {
@@ -49,27 +49,27 @@ class NavbarSearch extends ComponentInstance {
   isInputEmpty() {
     return (
       this.searchInput?.value.trim() === '' &&
-      this.searchInput?.classList.contains('block')
+      this.searchInput?.classList.contains('hg:block')
     );
   }
 
   showInput(event) {
     event.preventDefault();
-    this.searchInput.classList.remove('hidden');
-    this.searchInput.classList.add('block');
+    this.searchInput.classList.remove('hg:hidden');
+    this.searchInput.classList.add('hg:block');
     this.searchInput.focus();
   }
 
   hideInput(event) {
     event.preventDefault();
-    this.searchInput.classList.add('hidden');
-    this.searchInput.classList.remove('block');
+    this.searchInput.classList.add('hg:hidden');
+    this.searchInput.classList.remove('hg:block');
   }
 
   clearAndHideInput() {
     this.searchInput.value = '';
-    this.searchInput.classList.add('hidden');
-    this.searchInput.classList.remove('block');
+    this.searchInput.classList.add('hg:hidden');
+    this.searchInput.classList.remove('hg:block');
   }
 
   remove() {
