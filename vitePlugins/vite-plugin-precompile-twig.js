@@ -373,7 +373,7 @@ function generateModuleContent(key, templateSources, resolvedNamespaces, cwd) {
       cwd,
       resolve(__dirname, './twingCustoms/filters.js')
     )}';
-    
+
     // Include all templates, including namespaced ones.
     const allSources = {
       ${allSourcesString}
@@ -382,20 +382,20 @@ function generateModuleContent(key, templateSources, resolvedNamespaces, cwd) {
     const twingNamespaces = {
       ${twingNamespacesString}
     };
-    
+
     // Create a loader and environment.
     const loader = createSDCLoader(allSources, twingNamespaces);
     const env = createEnvironment(loader);
-    
+
     // Add functions and filters directly.
     for (const func of functions) {
       env.addFunction(func);
     }
-    
+
     for (const filter of filters) {
       env.addFilter(filter);
     }
-    
+
     /**
      * Renders the preloaded Twig template.
      * @param {Object} context - the Twig context
@@ -519,12 +519,6 @@ export default function precompileTwigPlugin(options = {}) {
     resolvedNamespaces
   );
 
-  console.log(
-    `[Twig] Loaded ${
-      Object.keys(templateSources).length
-    } templates (including namespaces)`
-  );
-
   // Create resolver and HMR helpers
   const resolveTemplate = createTemplateResolver(
     templateDirPaths,
@@ -550,7 +544,6 @@ export default function precompileTwigPlugin(options = {}) {
       const clean = id.split('?')[0];
       if (!include.test(clean)) return null;
 
-      console.log(`[Twig] Resolving template: ${clean}`);
       const resolved = resolveTemplate(clean);
 
       if (!resolved) {
@@ -584,8 +577,6 @@ export default function precompileTwigPlugin(options = {}) {
         return;
       }
 
-      console.log(`[HMR] Processing Twig file change: ${file}`);
-
       try {
         const templatesToUpdate = hmrHelpers.getTemplatesForUpdate(file);
 
@@ -601,8 +592,6 @@ export default function precompileTwigPlugin(options = {}) {
           server,
           templateKeys
         );
-
-        console.log(`[HMR] Found ${affectedModules.length} affected modules`);
 
         return affectedModules;
       } catch (error) {

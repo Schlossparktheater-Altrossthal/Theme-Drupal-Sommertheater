@@ -110,7 +110,7 @@ const valueGenerators = {
     if (property.examples && property.examples.length > 0) {
       return property.examples[0];
     }
-    
+
     // If the object has properties defined, recursively generate values for them
     if (property.properties) {
       const result = {};
@@ -119,7 +119,7 @@ const valueGenerators = {
       });
       return result;
     }
-    
+
     // Fallback to empty object
     return {};
   },
@@ -190,12 +190,12 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMe
   };
 
   // Validate metadata
-  if (!parsedMetadata.props || !parsedMetadata.props.properties) {
-    console.error('YAML metadata is missing the "props.properties" field.', parsedMetadata);
+  if (!parsedMetadata?.props?.properties && !storybookMetadata?.props?.properties) {
+    console.error('YAML metadata is missing the "props.properties" field.', parsedMetadata, storybookMetadata);
     return { argTypes, args };
   }
 
-  const properties = parsedMetadata.props.properties;
+  const properties = parsedMetadata?.props?.properties || storybookMetadata?.props?.properties;
 
   // Process each property
   Object.keys(properties).forEach((key) => {

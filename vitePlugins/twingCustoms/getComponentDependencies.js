@@ -9,7 +9,7 @@ import path from 'path';
  */
 export default function getComponentDependencies(namespaces, componentFiles) {
   const findFileInNamespaces = (filePath) => {
-    // Handle namespaced paths (e.g., @mercury/heading/heading.twig)
+    // Handle namespaced paths (e.g., @mercury/components/heading/heading.twig)
     if (filePath.startsWith('@')) {
       const [namespace, ...rest] = filePath.slice(1).split('/');
       const namespacePaths = namespaces[namespace];
@@ -71,7 +71,7 @@ export default function getComponentDependencies(namespaces, componentFiles) {
         // Convert mercury: format to @mercury format
         if (dep.startsWith('mercury:')) {
           const componentName = dep.replace('mercury:', '');
-          matches.push(`@mercury/${componentName}/${componentName}.twig`);
+          matches.push(`@mercury/components/${componentName}/${componentName}.twig`);
         } else {
           matches.push(dep);
         }
@@ -102,7 +102,7 @@ export default function getComponentDependencies(namespaces, componentFiles) {
         // If it's a mercury: dependency, convert it to the proper format
         if (dep.startsWith('mercury:')) {
           const componentName = dep.replace('mercury:', '');
-          const twigPath = `@mercury/${componentName}/${componentName}.twig`;
+          const twigPath = `@mercury/components/${componentName}/${componentName}.twig`;
           return processFile(twigPath, processed);
         }
         return processFile(dep, processed);
@@ -110,9 +110,20 @@ export default function getComponentDependencies(namespaces, componentFiles) {
 
       // Get the JS file for the current component if it exists
       const jsPath = getJsPath(fileInfo.path);
+      
+      // Also check if the component has its own JS file (for components like accordion-container)
+      const componentDir = path.dirname(fileInfo.path);
+      const componentName = path.basename(componentDir);
+      const componentJsPath = path.join(componentDir, `${componentName}.js`);
+      const hasComponentJs = fs.existsSync(componentJsPath) && componentJsPath !== jsPath;
 
-      // Return all JS paths (current component + twig dependencies)
-      return jsPath ? [jsPath, ...twigDepResults] : twigDepResults;
+      // Return all JS paths (current component + component JS + twig dependencies)
+      const allJsPaths = [];
+      if (jsPath) allJsPaths.push(jsPath);
+      if (hasComponentJs) allJsPaths.push(componentJsPath);
+      allJsPaths.push(...twigDepResults);
+      
+      return allJsPaths;
     } catch (error) {
       console.warn(
         `Warning: Could not process file ${filePath}: ${error.message}`

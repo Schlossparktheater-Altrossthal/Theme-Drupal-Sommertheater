@@ -13,7 +13,6 @@ export default function sdcCssWatcher(options = {}) {
       execSync(`pnpm tailwindcss -i ${tailwindCssPath} -o ${outputPath}`, {
         stdio: "inherit",
       });
-      console.log(`[css-watcher] Compiled ${tailwindCssPath} to ${outputPath}`);
     } catch (error) {
       console.error(`[css-watcher] Error compiling ${tailwindCssPath}:`, error);
     }
@@ -35,13 +34,6 @@ export default function sdcCssWatcher(options = {}) {
       .map((file) => `@import '../../../${file}';`)
       .join("\n");
     fs.writeFileSync("./src/stories/sdc-stories/components.css", imports);
-    console.log(
-      `[css-watcher] Regenerated components.css${
-        componentPath
-          ? ` after change in ${componentPath}`
-          : " during initialization"
-      }`
-    );
   };
 
   return {
@@ -89,9 +81,6 @@ export default function sdcCssWatcher(options = {}) {
           // Remove the compiled CSS file if it exists
           if (fs.existsSync(outputPath)) {
             fs.unlinkSync(outputPath);
-            console.log(
-              `[css-watcher] Removed compiled CSS file: ${outputPath}`
-            );
           }
 
           regenerateComponentCSS(filePath);
@@ -101,9 +90,6 @@ export default function sdcCssWatcher(options = {}) {
             storyGeneratorPlugin &&
             storyGeneratorPlugin.generateStoryForComponent
           ) {
-            console.log(
-              `[css-watcher] CSS file removed, regenerating story for ${componentDir}`
-            );
             storyGeneratorPlugin.generateStoryForComponent(componentDir);
           }
         }

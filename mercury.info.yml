@@ -1,6 +1,6 @@
 name: mercury
 type: theme
-'base theme': false
+"base theme": false
 libraries:
   - mercury/global
   - mercury/messages
@@ -15,9 +15,12 @@ libraries-extend:
     - mercury/file
   core/drupal.progress:
     - mercury/progress
-description: 'Mercury is the first step toward a scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system.'
+description: "Mercury is the first step toward a scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system."
 core_version_requirement: ^11
-generator: 'starterkit_theme:11.1.1'
+generator: "starterkit_theme:11.1.1"
 dependencies:
   - twig_tweak:twig_tweak
   - twig_field_value:twig_field_value
+components:
+  namespaces:
+    mercury: components

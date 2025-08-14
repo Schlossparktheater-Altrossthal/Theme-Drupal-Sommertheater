@@ -59,8 +59,6 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
   const enhancedLoader = {
     // Critical method to get source directly - required by Twing internals
     getSource: (name) => {
-      console.log(`[SDC Loader] Getting source for: ${name}`);
-
       // If baseLoader has getSource method, use it
       if (typeof baseLoader.getSource === 'function' && !name.includes(':')) {
         return baseLoader.getSource(name);
@@ -80,7 +78,6 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
 
     // Forward other methods directly to the base loader
     getSourceContext: (name) => {
-      console.log(`[SDC Loader] Loading template: ${name}`);
       return baseLoader.getSourceContext(name);
     },
 
@@ -98,9 +95,6 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
 
     // Add the critical resolve method
     resolve: (name, from = null) => {
-      console.log(
-        `[SDC Loader] Resolving template: ${name} ${from ? `from ${from}` : ''}`
-      );
       // If baseLoader has resolve method, use it
       if (typeof baseLoader.resolve === 'function') {
         return baseLoader.resolve(name, from);

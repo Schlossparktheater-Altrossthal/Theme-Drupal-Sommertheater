@@ -17,15 +17,23 @@ export default function generateStoryForComponent(options, componentDir) {
   const name = nameFormatsFromSlug(path.basename(componentDir));
 
   // Check if the component has the required files.
-  const hasYaml = fs.existsSync(
+  const hasComponentYaml = fs.existsSync(
     path.join(componentDir, `${name.kebabCase}.component.yml`)
   );
+
+  const hasStorybookYaml = fs.existsSync(
+    path.join(componentDir, `${name.kebabCase}.storybook.yml`)
+  );
+
   const hasTwig = fs.existsSync(
     path.join(componentDir, `${name.kebabCase}.twig`)
   );
 
   // Skip if any required file is missing.
-  if (!hasYaml || !hasTwig) {
+  if (
+    (!hasComponentYaml && !hasStorybookYaml) ||
+    !hasTwig
+  ) {
     console.warn(
       `[storybook-generator] Skipping ${name.original}: missing required files (YAML or Twig)`
     );
@@ -54,9 +62,6 @@ export default function generateStoryForComponent(options, componentDir) {
 
     // Write the story file to the separate directory.
     fs.writeFileSync(storyFilePath, storyContent);
-    console.log(
-      `[storybook-generator] Generated story file for ${name.original} at ${storyFilePath}`
-    );
   } catch (error) {
     console.error(
       `[storybook-generator] Error generating story for ${name.original}:`,

@@ -14,7 +14,7 @@ export default defineConfig({
     precompileTwig({
       include: /\.twig(\?.*)?$/     ,      // match bare and query imports.
       namespaces: {
-        mercury: ['components', 'templates']
+        mercury: ['.']
       }
     }),
     tailwindcss(),
@@ -24,7 +24,7 @@ export default defineConfig({
       includeJs: true,
       storiesDir: './src/stories/sdc-stories',
       namespaces: {
-        mercury: ['components', 'templates']
+        mercury: ['.']
       }
     }),
     sdcCssWatcher(),

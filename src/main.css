@@ -10,20 +10,21 @@
   --color-gray-dark:     var(--hgc-color-gray-dark, #1f2937);
   --color-gray-darkest:  var(--hgc-color-gray-darkest, #030712);
 
-  --color-brand-light:   var(--hgc-color-brand-light, #eff6ff);
-  --color-brand:         var(--hgc-color-brand, #2563eb);
-  --color-brand-dark:    var(--hgc-color-brand-lightest, #1e3a8a);
+  --color-brand-light:   var(--hgc-color-brand-light, #dbeafe);
+  --color-brand:         var(--hgc-color-brand, #155dfc);
+  --color-brand-dark:    var(--hgc-color-brand-dark, #1c398e);
 
   --color-accent-light:  var(--hgc-color-accent-light, #fce7f3);
   --color-accent:        var(--hgc-color-accent, #ec4899);
-  --color-accent-dark:   var(--hgc-color-accent-lightest, #9d174d);
+  --color-accent-dark:   var(--hgc-color-accent-dark, #9d174d);
 
   --color-info:          var(--hgc-color-info, #01a8e4);
   --color-positive:      var(--hgc-color-positive, #00cc41);
   --color-warning: 	     var(--hgc-color-warning, #ffbf00);
   --color-negative: 	   var(--hgc-color-negative, #e60032);
 
-  --color-body:          var(--hgc-color-body, #ffffff);
+  --color-body-bg:       var(--hgc-color-body-bg, #ffffff);
+  --color-body-text:     var(--hgc-color-body-text, #000000);
 
   --menu-link-color: var(--hgc-menu-link-color, #030712);
   --menu-link-color-hover: var(--hgc-menu-link-color-hover, #2563eb);
@@ -101,6 +102,89 @@
   --spacing-14: 56px;
   --spacing-16: 64px;
   --spacing-px: 1px;
+
+  --animate-show-and-expand-vertically: show-and-expand-vertically 0ms ease-in-out forwards;
+  --animate-collapse-vertically-and-hide: collapse-vertically-and-hide 0ms ease-in-out forwards;
+  --animate-show-and-expand-horizontally: show-and-expand-horizontally 0ms ease-in-out forwards;
+  --animate-collapse-horizontally-and-hide: collapse-horizontally-and-hide 0ms ease-in-out forwards;
+
+  /* Second-level (desktop) menu expansion. */
+  @keyframes show-and-expand-vertically {
+
+    0% {
+      --hgc-display-mode: 'none';
+      visibility: visible;
+      scale: 1 0;
+      height: 0;
+    }
+
+    1% {
+      /*
+       * An invalid display value falls back to the second argument of `var()`.
+       * This way each element can have its own default display mode, whether
+       * block or flex or whatever.
+       */
+      --hgc-display-mode: invaliddisplay;
+      height: auto;
+    }
+
+    100% {
+      scale: 1 1;
+    }
+  }
+
+  /* Second-level (desktop) menu collapse. */
+  @keyframes collapse-vertically-and-hide {
+
+    0% {
+      --hgc-display-mode: invaliddisplay;
+      scale: 1;
+      visibility: visible;
+      height: auto;
+    }
+
+    99% {
+      --hgc-display-mode: invaliddisplay;
+      scale: 1 0;
+      height: auto;
+    }
+
+    100% {
+      --hgc-display-mode: 'none';
+      visibility: hidden;
+      height: 0;
+    }
+  }
+
+  /* Third-level and greater menu expansion (all levels on mobile). */
+  @keyframes show-and-expand-horizontally {
+
+    from {
+      visibility: visible;
+      scale: 0 1;
+    }
+
+    to {
+      scale: 1 1;
+    }
+  }
+
+  /* Third-level and greater menu collapse (all levels on mobile). */
+  @keyframes collapse-horizontally-and-hide {
+
+    0% {
+      scale: 1;
+      visibility: visible;
+    }
+
+    99% {
+      scale: 0 1;
+    }
+
+    100% {
+      visibility: hidden;
+    }
+  }
 }
 
 /* Custom theme classes */
@@ -111,7 +195,7 @@
   }
 
   body {
-    @apply hg:bg-body hg:font-(--hgc-font-weight-p) hg:text-gray-darkest;
+    @apply hg:bg-body-bg hg:font-(--hgc-font-weight-p) hg:text-body-text;
   }
 
   p {
@@ -250,7 +334,6 @@
 
 /* Classes for light/dark color modes. */
 @layer components {
-
   .color-mode--dark {
     --main-bg-color: var(--hg-color-gray-darkest);
     --main-heading-color: var(--hg-color-brand-light);

@@ -48,10 +48,6 @@ export default function storybookGenerator(options = {}) {
         ) {
           const componentDir = path.dirname(changedPath);
           if (fs.existsSync(componentDir)) {
-            console.log(
-              `[storybook-generator] Change detected in ${changedPath}, regenerating story`
-            );
-
             generateStoryForComponent(functionOptions, componentDir);
           }
         }

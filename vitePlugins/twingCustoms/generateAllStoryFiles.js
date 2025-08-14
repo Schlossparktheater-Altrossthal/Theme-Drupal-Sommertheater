@@ -24,21 +24,11 @@ export default function generateAllStoryFiles(options) {
     oldStoryFiles.forEach((file) => {
       fs.unlinkSync(file);
     });
-    console.log(
-      `[storybook-generator] Cleaned up ${oldStoryFiles.length} old story files`
-    );
   }
 
   const componentDirs = glob.sync(`${componentsDir}/*/`);
-  console.log(
-    `[storybook-generator] Found ${componentDirs.length} component directories`
-  );
 
   componentDirs.forEach((dir) => {
     generateStoryForComponent(options, dir);
   });
-
-  console.log(
-    `[storybook-generator] All stories generated in ${absoluteStoriesDir}`
-  );
 }

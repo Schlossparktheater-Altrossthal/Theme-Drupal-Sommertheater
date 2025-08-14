@@ -28,8 +28,9 @@ function generateFilePaths(componentPath, kebabCaseName) {
  * @param {Object} filePaths - Object containing file paths
  * @returns {Object} - Object indicating which files exist
  */
-function checkFileExistence(filePaths) {
+function fileExistenceFromFilePaths(filePaths) {
   return {
+    hasComponentYamlFile: fs.existsSync(filePaths.yamlFile),
     hasStorybookYamlFile: fs.existsSync(filePaths.storybookYamlFile),
     hasCssFile: fs.existsSync(filePaths.cssFile),
     hasJsFile: fs.existsSync(filePaths.jsFile),
@@ -38,25 +39,30 @@ function checkFileExistence(filePaths) {
 
 /**
  * Read and parse YAML metadata from component file
- * @param {string} yamlFilePath - Path to the YAML file
- * @param {string} componentName - Component name for error logging
+ * @param {Object} filePaths - Object containing file paths
+ * @param {Object} fileExistence - Object indicating which files exist
+ * @param {string} componentSlug - Component name for error logging
  * @returns {Object} - Parsed metadata with group and name properties
  */
-function readComponentMetadata(yamlFilePath, componentName) {
+function readComponentMetadata(filePaths, fileExistence, componentSlug) {
   const metadata = { group: null, name: null };
 
-  if (!fs.existsSync(yamlFilePath)) {
+  if (!fileExistence.hasComponentYamlFile && !fileExistence.hasStorybookYamlFile) {
     return metadata;
   }
 
   try {
-    const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
-    const parsedYaml = yaml.load(yamlContent);
-    metadata.group = parsedYaml?.group ?? null;
-    metadata.name = parsedYaml?.name ?? null;
+    let highestPriorityMetadata = null;
+    if (fileExistence.hasComponentYamlFile) {
+      highestPriorityMetadata = yaml.load(fs.readFileSync(filePaths.yamlFile, 'utf8'));
+    } else {
+      highestPriorityMetadata = yaml.load(fs.readFileSync(filePaths.storybookYamlFile, 'utf8'));
+    }
+    metadata.group = highestPriorityMetadata?.group ?? null;
+    metadata.name = highestPriorityMetadata?.name ?? null;
   } catch (error) {
     console.warn(
-      `[storybook-generator] Warning: Could not read SDC YAML for ${componentName}: ${error.message}`
+      `[storybook-generator] Warning: Could not read SDC YAML for ${componentSlug}: ${error.message}`
     );
   }
 
@@ -66,10 +72,10 @@ function readComponentMetadata(yamlFilePath, componentName) {
 /**
  * Read and parse Storybook YAML metadata
  * @param {string} storybookYamlFilePath - Path to the Storybook YAML file
- * @param {string} componentName - Component name for error logging
+ * @param {string} componentSlug - Component name for error logging
  * @returns {Object} - Parsed Storybook metadata
  */
-function readStorybookMetadata(storybookYamlFilePath, componentName) {
+function readStorybookMetadata(storybookYamlFilePath, componentSlug) {
   if (!fs.existsSync(storybookYamlFilePath)) {
     return {};
   }
@@ -78,7 +84,7 @@ function readStorybookMetadata(storybookYamlFilePath, componentName) {
     return yaml.load(fs.readFileSync(storybookYamlFilePath, 'utf8'));
   } catch (error) {
     console.warn(
-      `[storybook-generator] Warning: Could not read Storybook YAML for ${componentName}: ${error.message}`
+      `[storybook-generator] Warning: Could not read Storybook YAML for ${componentSlug}: ${error.message}`
     );
     return {};
   }
@@ -88,10 +94,10 @@ function readStorybookMetadata(storybookYamlFilePath, componentName) {
  * Find and process component variants
  * @param {string} componentPath - Path to the component directory
  * @param {string} kebabCaseName - Kebab case component name
- * @param {Object} name - Name formats object
+ * @param {Object} nameFormats - Name formats object
  * @returns {Array} - Array of variant objects
  */
-function processComponentVariants(componentPath, kebabCaseName, name) {
+function processComponentVariants(componentPath, kebabCaseName, nameFormats) {
   const variantRegExp = new RegExp(`^${kebabCaseName}~(.*)\.twig$`);
   const variantPaths = fs
     .readdirSync(componentPath)
@@ -102,14 +108,14 @@ function processComponentVariants(componentPath, kebabCaseName, name) {
 
     if (variantSlug.toLowerCase() === 'main') {
       return {
-        withComponent: name,
-        withoutComponent: name,
+        withComponent: nameFormats,
+        withoutComponent: nameFormats,
         path: variantPath,
       };
     }
 
     return {
-      withComponent: nameFormatsFromSlug(`${name.original}-${variantSlug}`),
+      withComponent: nameFormatsFromSlug(`${nameFormats.original}-${variantSlug}`),
       withoutComponent: nameFormatsFromSlug(`${variantSlug}`),
       path: variantPath,
     };
@@ -122,34 +128,36 @@ function processComponentVariants(componentPath, kebabCaseName, name) {
  * @returns {string} - Import statements
  */
 function generateImportStatements({
-  name,
+  nameFormats,
   componentRelativePath,
-  hasCssFile,
-  hasStorybookYamlFile,
+  fileExistence,
   variants,
-  componentDependencies,
 }) {
-  let imports = `// Import the YAML metadata and the Twig template
-import ${name.camelCase}Metadata from '../../../${componentRelativePath}/${name.kebabCase}.component.yml';`;
+  let imports = '';
+
+  if (fileExistence.hasComponentYamlFile) {
+    imports += `// Import the YAML metadata and the Twig template
+import ${nameFormats.camelCase}Metadata from '../../../${componentRelativePath}/${nameFormats.kebabCase}.component.yml';`;
+  }
 
   // Import the main Twig file only if none of the variants is supposed to take its place
   const shouldImportMainTemplate = !variants.some(
-    (variant) => variant.withComponent.original === name.original
+    (variant) => variant.withComponent.original === nameFormats.original
   );
 
   if (shouldImportMainTemplate) {
     imports += `
-import { render as ${name.camelCase}RenderTemplate } from './${componentRelativePath}/${name.original}.twig';`;
+import { render as ${nameFormats.camelCase}RenderTemplate } from './${componentRelativePath}/${nameFormats.original}.twig';`;
   }
 
-  if (hasCssFile) {
+  if (fileExistence.hasCssFile) {
     imports += `
-import '../../../${componentRelativePath}/${name.kebabCase}.tailwind.css';`;
+import '../../../${componentRelativePath}/${nameFormats.kebabCase}.tailwind.css';`;
   }
 
-  if (hasStorybookYamlFile) {
+  if (fileExistence.hasStorybookYamlFile) {
     imports += `
-import ${name.camelCase}StorybookMetadata from '../../../${componentRelativePath}/${name.kebabCase}.storybook.yml';`;
+import ${nameFormats.camelCase}StorybookMetadata from '../../../${componentRelativePath}/${nameFormats.kebabCase}.storybook.yml';`;
   }
 
   variants.forEach((variant) => {
@@ -166,12 +174,12 @@ import { render as ${variant.withComponent.camelCase}RenderTemplate } from './${
  * @returns {string} - Complete story template
  */
 function generateStoryTemplate({
-  name,
+  nameFormats,
   metadata,
   componentRelativePath,
   storybookMetadata,
   variants,
-  hasJsFile,
+  fileExistence,
   includeJs,
   jsPaths,
 }) {
@@ -180,31 +188,37 @@ function generateStoryTemplate({
     : `Components/${metadata.name}`;
 
   const mainStory = !storybookMetadata?.hide_main
-    ? storyTemplate(name, hasJsFile, includeJs, jsPaths)
+    ? storyTemplate(nameFormats, fileExistence.hasJsFile, includeJs, jsPaths)
     : '';
 
   const variantStories = variants
     .map((variant) =>
-      storyTemplate(variant.withComponent, hasJsFile, includeJs, jsPaths)
+      storyTemplate(variant.withComponent, fileExistence.hasJsFile, includeJs, jsPaths)
     )
     .join('\n');
+
+  let componentMetadataStub = '';
+
+  componentMetadataStub = fileExistence.hasComponentYamlFile ? '' : `const ${nameFormats.camelCase}Metadata = {};`;
 
   return `
 import generateArgTypesAndArgs from '/src/common/generateArgTypesAndArgs.js';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
+${componentMetadataStub}
+
 let storybookMetadata = {};
 
 try {
-  storybookMetadata = ${name.camelCase}StorybookMetadata
+  storybookMetadata = ${nameFormats.camelCase}StorybookMetadata
 } catch {}
 
 const { argTypes, args } = generateArgTypesAndArgs(${
-    name.camelCase
-  }Metadata, '../../../${componentRelativePath}', storybookMetadata);
+    nameFormats.camelCase
+  }Metadata, '${componentRelativePath}', storybookMetadata);
 
 /**
- * ${name.titleCase} component story.
+ * ${nameFormats.titleCase} component story.
  */
 export default {
   title: '${title}',
@@ -226,68 +240,47 @@ ${variantStories}
 }
 
 /**
- * Log component dependencies if found
- * @param {Array} componentDependencies - Array of component dependencies
- * @param {string} componentName - Component name for logging
- */
-function logComponentDependencies(componentDependencies, componentName) {
-  if (componentDependencies.length > 0) {
-    console.log(
-      `[storybook-generator] Found ${componentDependencies.length} JS dependencies for ${componentName}`
-    );
-    console.log(componentDependencies);
-  }
-}
-
-/**
  * Generate story content for a component
  * @param {Object} namespaces - Namespace configuration
  * @param {string} componentPath - Path to the component
- * @param {string} componentName - Name of the component
+ * @param {string} componentSlug - Name of the component
  * @param {boolean} includeJs - Whether to include JS imports
  * @returns {string} - Story content
  */
 export default function generateStoryContent(
   namespaces,
   componentPath,
-  componentName,
+  componentSlug,
   includeJs = true
 ) {
-  // Generate initial name formats
-  let name = nameFormatsFromSlug(componentName);
-
-  // Generate file paths
-  const filePaths = generateFilePaths(componentPath, name.kebabCase);
-
-  // Check file existence
-  const fileExistence = checkFileExistence(filePaths);
+  let nameFormats = nameFormatsFromSlug(componentSlug);
+  const filePaths = generateFilePaths(componentPath, nameFormats.kebabCase);
+  const fileExistence = fileExistenceFromFilePaths(filePaths);
 
   // Process variants and dependencies
   const variants = processComponentVariants(
     componentPath,
-    name.kebabCase,
-    name
+    nameFormats.kebabCase,
+    nameFormats
   );
-  const componentPaths = [`${name.kebabCase}.twig`].concat(
-    variants.map((v) => v.path)
+  const componentPaths = [`@mercury/components/${nameFormats.kebabCase}/${nameFormats.kebabCase}.twig`].concat(
+    variants.map((v) => `@mercury/components/${nameFormats.kebabCase}/${v.path}`)
   );
   const componentDependencies = getComponentDependencies(
     namespaces,
     componentPaths
   );
 
-  logComponentDependencies(componentDependencies, name.original);
-
   // Read metadata
-  const metadata = readComponentMetadata(filePaths.yamlFile, name.original);
+  const metadata = readComponentMetadata(filePaths, fileExistence, nameFormats.original);
 
   // Update name formats with friendly name from metadata
-  name = nameFormatsFromSlug(componentName, metadata.name);
+  nameFormats = nameFormatsFromSlug(componentSlug, metadata.name);
 
   // Read Storybook metadata
   const storybookMetadata = readStorybookMetadata(
     filePaths.storybookYamlFile,
-    name.original
+    nameFormats.original
   );
 
   // Generate paths for imports
@@ -300,22 +293,20 @@ export default function generateStoryContent(
 
   // Generate import statements
   const imports = generateImportStatements({
-    name,
+    nameFormats,
     componentRelativePath,
-    hasCssFile: fileExistence.hasCssFile,
-    hasStorybookYamlFile: fileExistence.hasStorybookYamlFile,
+    fileExistence,
     variants,
-    componentDependencies,
   });
 
   // Generate story template
   const storyContent = generateStoryTemplate({
-    name,
+    nameFormats,
     metadata,
     componentRelativePath,
     storybookMetadata,
     variants,
-    hasJsFile: fileExistence.hasJsFile,
+    fileExistence,
     includeJs,
     jsPaths,
   });

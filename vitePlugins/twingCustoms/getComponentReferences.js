@@ -38,11 +38,6 @@ export default function getComponentReferences(
 
   // Convert target files to their namespaced references
   const targetReferences = targetComponentFiles.map(getNamespacedReference);
-  console.log(
-    `[getComponentReferences] Looking for references to: ${targetReferences.join(
-      ', '
-    )}`
-  );
 
   // Function to walk through directory and collect all .twig files
   const walkDirectory = (dir, fileList = []) => {
@@ -96,7 +91,7 @@ export default function getComponentReferences(
         // Convert mercury: format to @mercury format
         if (ref.startsWith('mercury:')) {
           const componentName = ref.replace('mercury:', '');
-          matches.push(`@mercury/${componentName}/${componentName}.twig`);
+          matches.push(`@mercury/components/${componentName}/${componentName}.twig`);
         } else {
           matches.push(ref);
         }
@@ -110,10 +105,6 @@ export default function getComponentReferences(
   const findReferencingFiles = () => {
     const allTwigFiles = getAllTwigFiles();
     const referencingFiles = [];
-
-    console.log(
-      `[getComponentReferences] Scanning ${allTwigFiles.length} Twig files`
-    );
 
     allTwigFiles.forEach((filePath) => {
       try {
@@ -147,9 +138,6 @@ export default function getComponentReferences(
   };
 
   const results = findReferencingFiles();
-  console.log(
-    `[getComponentReferences] Found ${results.length} files referencing target components`
-  );
 
   // Return just the file paths (or you could return the full objects with more info)
   return results.map((result) => result.file);

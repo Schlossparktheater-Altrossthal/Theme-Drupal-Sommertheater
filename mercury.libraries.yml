@@ -39,6 +39,12 @@ dropbutton:
   css:
     component:
       css/components/dropbutton.css: {}
+dropdown-menu:
+  css:
+    component:
+      components/dropdown-menu/dropdown-menu.css: {}
+  js:
+    components/dropdown-menu/dropdown-menu.js: { attributes: { type: module } }
 file:
   version: VERSION
   css:
@@ -48,12 +54,12 @@ image-widget:
   version: VERSION
   css:
     component:
-      css/components/image-widget.css: {  }
+      css/components/image-widget.css: {}
 indented:
   version: VERSION
   css:
     component:
-      css/components/indented.css: {  }
+      css/components/indented.css: {}
 messages:
   version: VERSION
   css:
