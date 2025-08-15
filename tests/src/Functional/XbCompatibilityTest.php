@@ -60,8 +60,6 @@ class XbCompatibilityTest extends BrowserTestBase {
       ->getReasons();
 
     // Ignore components that we know are broken.
-    // @todo These components need to either be deleted from Mercury, or
-    //   permanently ignored with a comment.
     unset(
       // These three components are used by the `menu-footer` Twig template, and
       // aren't meant to be used directly in XB.

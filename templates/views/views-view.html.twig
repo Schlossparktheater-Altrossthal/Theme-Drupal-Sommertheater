@@ -26,8 +26,11 @@
  *   view content.
  * - dom_id: Unique id for every view being printed to give unique class for
  *   JavaScript.
+ * - snap: Whether the view's items should snap to a grid when the window is
+     resized.
  *
  * @see template_preprocess_views_view()
+ * @see mercury_preprocess_views_view()
  */
 #}
 {%
@@ -65,9 +68,13 @@
 
   {% block view_content %}
     {% if rows %}
-      <div class="view-content container mx-auto">
-        {{ rows }}
-      </div>
+      {% if snap %}
+        <div class="view-content view-snap hide-scrollbar-x hg:sm:container hg:grid hg:overflow-x-auto hg:snap-x hg:snap-mandatory hg:gap-6 hg:lg:gap-8 hg:grid-cols-[272px_248px_272px] hg:sm:grid-cols-3 hg:sm:overflow-x-visible hg:sm:snap-none hg:sm:mx-auto hg:sm:px-6">
+      {% else %}
+        <div class="view-content container mx-auto">
+      {% endif %}
+          {{ rows }}
+        </div>
     {% elseif empty %}
       <div class="view-empty container mx-auto">
         {{ empty }}

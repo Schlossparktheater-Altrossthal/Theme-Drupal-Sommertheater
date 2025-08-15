@@ -5,6 +5,8 @@
  * Functions to support theming.
  */
 
+use Drupal\views\ViewExecutable;
+
 /**
  * Implements hook_preprocess_image_widget().
  */
@@ -36,4 +38,21 @@ function mercury_form_system_theme_settings_alter(array &$form): void {
     '#title' => t('Enable dark mode'),
     '#default_value' => theme_get_setting('dark_mode'),
   ];
+}
+
+/**
+ * Implements template_preprocess_views_view_unformatted().
+ */
+function mercury_preprocess_views_view_unformatted(array &$variables): void {
+  mercury_preprocess_views_view($variables);
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function mercury_preprocess_views_view(array &$variables): void {
+  $view = $variables['view'];
+  assert($view instanceof ViewExecutable);
+  $view_tags = preg_split('/\s+/', $view->storage->get('tag'));
+  $variables['snap'] = in_array('mercury:snap', $view_tags, TRUE);
 }
