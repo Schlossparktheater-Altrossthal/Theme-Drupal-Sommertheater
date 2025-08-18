@@ -10,5 +10,5 @@ props:
       title: Background color mode.
       enum: [light, dark]
       default: dark
-      examples: 
+      examples:
         - dark

@@ -33,6 +33,8 @@ variables:
   # @see https://project.pages.drupalcode.org/gitlab_templates/jobs/cspell
   _CSPELL_DICTIONARY: 'dictionary.txt'
   _CSPELL_IGNORE_PATHS: 'build/css/*, pnpm-lock.yaml'
+  # Don't let any linting jobs fail.
+  _ALL_VALIDATE_ALLOW_FAILURE: 0
 
 stages:
   - build
