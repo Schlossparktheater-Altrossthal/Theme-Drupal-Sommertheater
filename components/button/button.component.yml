@@ -37,7 +37,13 @@ props:
       type: string
       title: Icon
       description: 'Select an Icon.'
-      enum: [arrow_forward, arrow_back, chevron_right, chevron_left, download, person_add]
+      enum:
+        - arrow_forward
+        - arrow_back
+        - chevron_right
+        - chevron_left
+        - download
+        - person_add
       examples:
         - arrow_forward
       default: arrow_forward
@@ -49,16 +55,21 @@ props:
         - false
       default: false
     href:
-      type: boolean
+      type: string
       title: URL
       description: 'The URL to link to. If provided, the button will be rendered as a link.'
       examples:
-        - false
+        - https://example.com
       default: false
     radius:
       type: string
       title: Corner radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      enum:
+        - rounded-none
+        - rounded-sm
+        - rounded-md
+        - rounded-lg
+        - rounded-full
       default: rounded-sm
       examples:
         - rounded-sm

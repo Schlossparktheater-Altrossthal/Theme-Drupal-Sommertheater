@@ -5,19 +5,19 @@
   align-items: center;
   border-style: var(--tw-border-style);
   border-width: 1px;
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+  background-color: var(--hg-color-body-bg);
+  color: var(--hg-color-body-text);
 }
 .badge.color-mode--dark:hover, .badge.color-mode--dark:focus {
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
+  background-color: var(--hg-color-body-text);
+  color: var(--hg-color-body-bg);
 }
 .badge.color-mode--light:hover, .badge.color-mode--light:focus {
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
+  background-color: var(--hg-color-body-text);
+  color: var(--hg-color-body-bg);
 }
 .badge .badge-label {
-  font-family: var(--hg-font-sans, 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif);
+  font-family: var(--hg-font-body, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
   font-size: var(--hg-text-sm, 0.875rem);
   line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
   --tw-leading: 1;
@@ -30,7 +30,7 @@
 }
 .badge .material-symbols-outlined {
   font-size: var(--hg-text-xl, 1.25rem);
-  line-height: calc(var(--hg-spacing, 0.25rem) * 2);
+  line-height: calc(var(--hg-spacing, 4px) * 2);
 }
 @property --tw-border-style {
   syntax: "*";

@@ -3,8 +3,8 @@
 @layer components {
   .pager {
     @apply hg:font-medium;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 
   .pager__list-item {

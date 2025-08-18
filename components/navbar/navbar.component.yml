@@ -25,4 +25,6 @@ slots:
 
 libraryOverrides:
   js:
-    navbar.js: { attributes: { type: module } }
+    navbar.js:
+      attributes:
+        type: module

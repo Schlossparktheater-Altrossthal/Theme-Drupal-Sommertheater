@@ -26,17 +26,23 @@ function mercury_preprocess_image_widget(array &$variables): void {
  * Implements template_preprocess_html().
  */
 function mercury_preprocess_html(array &$variables): void {
-  $variables['dark_mode'] = theme_get_setting('dark_mode');
+  $variables['scheme'] = theme_get_setting('scheme');
 }
 
 /**
  * Implements hook_form_system_theme_settings_alter().
  */
 function mercury_form_system_theme_settings_alter(array &$form): void {
-  $form['dark_mode'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Enable dark mode'),
-    '#default_value' => theme_get_setting('dark_mode'),
+  $form['scheme'] = [
+    '#type' => 'radios',
+    '#title' => t('Color scheme'),
+    '#default_value' => theme_get_setting('scheme'),
+    '#options' => [
+      'vanilla-light' => t('Vanilla Light'),
+      'vanilla-dark'  => t('Vanilla Dark'),
+      'byte-light'    => t('Byte Light'),
+      'byte-dark'     => t('Byte Dark'),
+    ],
   ];
 }
 

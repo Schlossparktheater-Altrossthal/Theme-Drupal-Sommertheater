@@ -10,8 +10,8 @@
 }
 @layer components {
   .hero-blog {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
     .heading.heading--size-default {
       --tw-leading: 1.2;
       line-height: 1.2;

@@ -7,9 +7,9 @@
 @layer components {
 
   .card-pricing {
-    background-color: var(--pricing-card-bg-color);
-    border-color: var(--pricing-card-border-color);
-    color: var(--main-text-color);
+    background-color: var(--hgc-pricing-card-bg-color);
+    border-color: var(--hgc-pricing-card-border-color);
+    color: var(--hg-color-body-text);
 
     .columns & {
       height: 100%;
@@ -17,7 +17,7 @@
 
     .card-title {
       @apply hg:font-light hg:text-[2.25rem] hg:leading-tight;
-      color: var(--main-heading-color);
+      color: var(--hgc-main-heading-color);
     }
 
     .card-price {
@@ -37,22 +37,14 @@
     }
 
     &.promote {
-      --main-heading-color: var(--hg-color-white);
-      --main-text-color: var(--hg-color-white);
-      --main-bg-color: var(--pricing-card-bg-color);
-      --pricing-card-bg-color: var(--hg-color-brand);
-      --pricing-card-border-color: var(--pricing-card-bg-color);
+      --hgc-main-heading-color: var(--hg-color-white);
+      --hg-color-body-text: var(--hg-color-white);
+      --hg-color-body-bg: var(--hgc-pricing-card-bg-color);
+      --hgc-pricing-card-bg-color: var(--hg-color-brand);
+      --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
 
       .card-price {
         @apply hg:text-white;
-      }
-
-      .rich-text.color-mode--light {
-        --main-text-color: var(--hg-color-white);
-      }
-
-      .rich-text.color-mode--dark {
-        --main-bg-color: var(--hg-color-brand);
       }
 
       .button--fill {
@@ -73,7 +65,7 @@
   }
 
   .card-pricing--features {
-    @apply hg:border-t hg:pt-4;
+    @apply hg:border-t hg:pt-4 hg:bg-(--hgc-card-bg);
 
     li {
       @apply hg:text-xl;

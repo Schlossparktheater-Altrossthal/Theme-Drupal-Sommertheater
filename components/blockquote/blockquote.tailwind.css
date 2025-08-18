@@ -9,8 +9,8 @@
 
   .blockquote {
     @apply hg:font-semibold;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 
   .blockquote .blockquote-text {

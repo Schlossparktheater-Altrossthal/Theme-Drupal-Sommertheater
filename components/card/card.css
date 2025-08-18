@@ -8,8 +8,8 @@
 }
 @layer components {
   .card {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .card .card--media {
     aspect-ratio: var(--hg-aspect-video, 16 / 9);
@@ -33,12 +33,12 @@
       flex: 0 1 50%;
     }
     @media (width >= 48rem) {
-      padding-block: var(--hg-spacing-4, 16px);
+      padding-block: calc(var(--hg-spacing, 4px) * 4);
     }
   }
   .card--content .heading {
-    --tw-font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
-    font-weight: var(--hg-font-weight-semibold, var(--hgc-font-weight-semibold, 600));
+    --tw-font-weight: var(--hg-font-weight-semibold, 600);
+    font-weight: var(--hg-font-weight-semibold, 600);
   }
   .card--content p {
     font-size: var(--hg-text-lg, 1.125rem);

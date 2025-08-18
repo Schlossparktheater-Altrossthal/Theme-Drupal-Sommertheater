@@ -1,10 +1,10 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 .sb-main-padded .storybook-component--grid-container {
-  padding-block: var(--hg-spacing-5, 20px);
+  padding-block: calc(var(--hg-spacing, 4px) * 5);
 }
 @layer components {
   .grid-container {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 }

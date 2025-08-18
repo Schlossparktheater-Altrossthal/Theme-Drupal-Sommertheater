@@ -25,7 +25,7 @@
 
 {% macro menu_links(items, level = 1) %}
   {% import _self as dropdown %}
-  <ul class="dropdown-menu__menu hg:flex hg:flex-col hg:w-full hg:sm:flex-row hg:sm:w-auto hg:p-0" data-level="{{ level }}">
+  <ul class="dropdown-menu__menu hg:flex hg:flex-col hg:w-full hg:md:flex-row hg:md:w-auto hg:p-0" data-level="{{ level }}">
     {% for item in items %}
       {% set title = item.title is not empty ? item.title : item.text %}
       {# Capture the rendered URL before testing it for emptiness,
@@ -35,7 +35,7 @@
       {% set item_classes = [
         'dropdown-menu__item',
         item.in_active_trail ? 'dropdown-menu__item--active-trail' : '',
-        'hg:flex', 'hg:flex-wrap', 'hg:justify-between', 'hg:sm:flex-nowrap', 'hg:w-full', 'hg:sm:w-auto', 'hg:sm:relative', 'hg:sm:max-w-[375px]',
+        'hg:flex', 'hg:flex-wrap', 'hg:justify-between', 'hg:md:flex-nowrap', 'hg:w-full', 'hg:md:w-auto', 'hg:md:relative', 'hg:md:max-w-[375px]',
       ]|filter(c => c is not empty) %}
 
       {% if item.attributes %}
@@ -45,17 +45,17 @@
 
       <li{{ item.attributes ?? " class=\"#{ item_classes|join(' ') }\" data-level=\"#{ level }\"" }}>
         {% if url is not empty %}
-          <a href="{{ url }}" class="dropdown-menu__link hg:flex hg:items-center hg:grow-1 hg:shrink-1 hg:basis-0 hg:min-h-[44px] hg:sm:min-h-auto" data-level="{{ level }}">{{ title }}</a>
+          <a href="{{ url }}" class="dropdown-menu__link hg:flex hg:items-center hg:grow-1 hg:shrink-1 hg:basis-0 hg:min-h-[44px] hg:md:min-h-auto" data-level="{{ level }}">{{ title }}</a>
         {% endif %}
 
         {% if item.below is not empty %}
-          <button value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:sm:min-h-auto" data-level="{{ level }}">
-            <div class="dropdown-menu__expand-button-contents hg:sm:w-auto hg:flex hg:justify-center hg:items-center" data-level="{{ level }}">
+          <button value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:md:min-h-auto" data-level="{{ level }}">
+            <div class="dropdown-menu__expand-button-contents hg:md:w-auto hg:flex hg:justify-center hg:items-center" data-level="{{ level }}">
               {% if url is empty %}
                 <div class="dropdown-menu__expand-button-no-link-title" data-level="{{ level }}">{{ title }}</div>
               {% endif %}
 
-              <div class="dropdown-menu__expand-button-icon hg:w-[44px] hg:sm:w-auto hg:flex hg:justify-center hg:items-center hg:h-full hg:sm:h-auto hg:z-1" data-level="{{ level }}">
+              <div class="dropdown-menu__expand-button-icon hg:w-[44px] hg:md:w-auto hg:flex hg:justify-center hg:items-center hg:h-full hg:md:h-auto hg:z-1" data-level="{{ level }}">
                 {{ include('@mercury/components/dropdown-menu/assets/arrow.svg.twig') }}
               </div>
             </div>

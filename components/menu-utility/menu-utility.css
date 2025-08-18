@@ -12,9 +12,9 @@
           text-decoration-line: underline;
         }
       }
-      color: var(--menu-link-color);
+      color: var(--hgc-menu-link-color);
       &:hover, &:focus {
-        color: var(--menu-link-color-hover);
+        color: var(--hgc-menu-link-color-hover);
       }
     }
   }

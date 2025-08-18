@@ -4,39 +4,32 @@
   --color-black:         #000000;
   --color-white:         #ffffff;
 
-  --color-gray-lightest: var(--hgc-color-gray-lightest, #f3f4f6);
-  --color-gray-light:    var(--hgc-color-gray-light, #d1d5db);
-  --color-gray:          var(--hgc-color-gray, #6b7280);
-  --color-gray-dark:     var(--hgc-color-gray-dark, #1f2937);
-  --color-gray-darkest:  var(--hgc-color-gray-darkest, #030712);
+  --color-gray-lightest: #f3f4f6;
+  --color-gray-light:    #d1d5db;
+  --color-gray:          #6b7280;
+  --color-gray-dark:     #1f2937;
+  --color-gray-darkest:  #030712;
 
-  --color-brand-light:   var(--hgc-color-brand-light, #dbeafe);
-  --color-brand:         var(--hgc-color-brand, #155dfc);
-  --color-brand-dark:    var(--hgc-color-brand-dark, #1c398e);
+  --color-brand-light:   #dbeafe;
+  --color-brand:         #155dfc;
+  --color-brand-dark:    #1c398e;
 
-  --color-accent-light:  var(--hgc-color-accent-light, #fce7f3);
-  --color-accent:        var(--hgc-color-accent, #ec4899);
-  --color-accent-dark:   var(--hgc-color-accent-dark, #9d174d);
+  --color-accent-light:  #fce7f3;
+  --color-accent:        #ec4899;
+  --color-accent-dark:   #9d174d;
 
-  --color-info:          var(--hgc-color-info, #01a8e4);
-  --color-positive:      var(--hgc-color-positive, #00cc41);
-  --color-warning: 	     var(--hgc-color-warning, #ffbf00);
-  --color-negative: 	   var(--hgc-color-negative, #e60032);
+  --color-info:          #01a8e4;
+  --color-positive:      #00cc41;
+  --color-warning: 	     #ffbf00;
+  --color-negative: 	   #e60032;
 
-  --color-body-bg:       var(--hgc-color-body-bg, #ffffff);
-  --color-body-text:     var(--hgc-color-body-text, #000000);
+  --color-body-bg:       #ffffff;
+  --color-body-text:     #000000;
 
-  --menu-link-color: var(--hgc-menu-link-color, #030712);
-  --menu-link-color-hover: var(--hgc-menu-link-color-hover, #2563eb);
-
-  --hyperlink-color: var(--hgc-hyperlink-color, #2563eb);
-  --hyperlink-color-hover: var(--hgc-hyperlink-color, #1e3a8a);
-
-  --font-sans: var(--hgc-font-sans), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --font-mono: var(--hgc-font-mono), 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --font-display: var(--hgc-font-display), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --font-body: var(--hgc-font-body), 'Georgia', 'Times New Roman', serif;
-  --font-ui: var(--hgc-font-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
@@ -80,28 +73,13 @@
   --text-xs: 0.75rem;                /* 12px */
   --text-xs--line-height: 1.5;       /* 18px */
 
-  --font-weight-light: var(--hgc-font-weight-light, 300);
-  --font-weight-normal: var(--hgc-font-weight-normal, 400);
-  --font-weight-medium: var(--hgc-font-weight-medium, 500);
-  --font-weight-semibold: var(--hgc-font-weight-semibold, 600);
-  --font-weight-bold: var(--hgc-font-weight-bold, 700);
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-  --spacing-0: 0px;
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-5: 20px;
-  --spacing-6: 24px;
-  --spacing-7: 28px;
-  --spacing-8: 32px;
-  --spacing-9: 36px;
-  --spacing-10: 40px;
-  --spacing-11: 44px;
-  --spacing-12: 48px;
-  --spacing-14: 56px;
-  --spacing-16: 64px;
-  --spacing-px: 1px;
+  --spacing: 4px;
 
   --animate-show-and-expand-vertically: show-and-expand-vertically 0ms ease-in-out forwards;
   --animate-collapse-vertically-and-hide: collapse-vertically-and-hide 0ms ease-in-out forwards;
@@ -189,13 +167,41 @@
 
 /* Custom theme classes */
 @layer base {
+  :root {
+    --hgc-font-weight-p:  400;
+    --hgc-font-weight-h1: 600;
+    --hgc-font-weight-h2: 600;
+    --hgc-font-weight-h3: 600;
+    --hgc-font-weight-h4: 500;
+    --hgc-font-weight-h5: 500;
+    --hgc-font-weight-h6: 500;
+
+    --hgc-main-heading-color: var(--hg-color-brand);
+
+    --hgc-menu-link-color: var(--hg-color-gray-darkest);
+    --hgc-menu-link-color-hover: var(--hg-color-brand);
+
+    --hgc-hyperlink-color: var(--hg-color-brand);
+    --hgc-hyperlink-color-hover: var(--hg-color-brand-dark);
+
+    --hgc-card-bg: var(--hg-color-gray-light);
+    --hgc-card-text-color: var(--hg-color-gray-darkest);
+
+    --hgc-pricing-card-bg-color: var(--hg-color-white);
+    --hgc-pricing-card-border-color: var(--hg-color-gray-darkest);
+
+    --hgc-tile-logo-bg: var(--hg-color-brand);
+
+    --hgc-collapsible-bg: var(--hg-color-gray-lightest);
+    --hgc-collapsible-border: var(--hg-color-gray-darkest);
+  }
 
   .material-symbols-outlined {
     font-size: unset;
   }
 
   body {
-    @apply hg:bg-body-bg hg:font-(--hgc-font-weight-p) hg:text-body-text;
+    @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-body-text;
   }
 
   p {
@@ -287,12 +293,12 @@
   /* These apply to rich-text blocks only. */
   .rich-text a {
     @apply hg:underline hg:underline-offset-2;
-    color: var(--hyperlink-color);
+    color: var(--hgc-hyperlink-color);
   }
 
   .rich-text a:hover,
   .rich-text a:focus {
-    color: var(--hyperlink-color-hover);
+    color: var(--hgc-hyperlink-color-hover);
   }
 
   .rich-text p {
@@ -332,63 +338,7 @@
   }
 }
 
-/* Classes for light/dark color modes. */
-@layer components {
-  .color-mode--dark {
-    --main-bg-color: var(--hg-color-gray-darkest);
-    --main-heading-color: var(--hg-color-brand-light);
-    --main-text-color: var(--hg-color-white);
-    --menu-link-color: var(--hg-color-white);
-    --menu-link-color-hover: var(--hg-color-brand-light);
-    --hyperlink-color: var(--hg-color-blue-100);
-    --hyperlink-color-hover: var(--hg-color-white);
-    --card-bg: var(--hg-color-gray-dark);
-    --card-text-color: var(--hg-color-white);
-    --pricing-card-bg-color: var(--hg-color-gray-darkest);
-    --pricing-card-border-color: var(--pricing-card-bg-color);
-  }
-
-  .color-mode--light {
-    --main-bg-color: transparent;
-    --main-heading-color: var(--hg-color-brand);
-    --main-text-color: var(--hg-color-gray-darkest);
-    --menu-link-color: var(--hg-color-gray-darkest);
-    --menu-link-color-hover: var(--hg-color-brand);
-    --hyperlink-color: var(--hg-color-brand);
-    --hyperlink-color-hover: var(--hg-color-brand-dark);
-    --card-bg: var(--hg-color-gray-light);
-    --card-text-color: var(--hg-color-gray-darkest);
-    --pricing-card-bg-color: var(--hg-color-white);
-    --pricing-card-border-color: var(--hg-color-gray-darkest);
-  }
-}
-
-@layer utilities {
-  .bg-gray-lightest { background-color: var(--hg-color-gray-lightest); }
-  .bg-gray-light { background-color: var(--hg-color-gray-light); }
-  .bg-gray-dark { background-color: var(--hg-color-gray-dark); }
-  .bg-gray-darkest { background-color: var(--hg-color-gray-darkest); }
-  .bg-brand-light { background-color: var(--hg-color-brand-light); }
-  .bg-brand-dark { background-color: var(--hg-color-brand-dark); }
-  .bg-accent-light { background-color: var(--hg-color-accent-light); }
-  .bg-accent-dark { background-color: var(--hg-color-accent-dark); }
-  .text-gray-lightest { color: var(--hg-color-gray-lightest); }
-  .text-gray-light { color: var(--hg-color-gray-light); }
-  .text-gray-dark { color: var(--hg-color-gray-dark); }
-  .text-gray-darkest { color: var(--hg-color-gray-darkest); }
-  .text-brand-light { color: var(--hg-color-brand-light); }
-  .text-brand-dark { color: var(--hg-color-brand-dark); }
-  .text-accent-light { color: var(--hg-color-accent-light); }
-  .text-accent-dark { color: var(--hg-color-accent-dark); }
-  .border-gray-lightest { border-color: var(--hg-color-gray-lightest); }
-  .border-gray-light { border-color: var(--hg-color-gray-light); }
-  .border-gray-dark { border-color: var(--hg-color-gray-dark); }
-  .border-gray-darkest { border-color: var(--hg-color-gray-darkest); }
-  .border-brand-light { border-color: var(--hg-color-brand-light); }
-  .border-brand-dark { border-color: var(--hg-color-brand-dark); }
-  .border-accent-light { border-color: var(--hg-color-accent-light)}
-  .border-accent-dark { border-color: var(--hg-color-accent-dark)}
-}
+@layer components {}
 
 /* Custom overrides placed outside @layer to ensure they load last and override external styles */
 .icon-5xl {

@@ -37,7 +37,7 @@
 
 .dropdown-menu__link,
 .dropdown-menu__expand-button {
-  @apply hg:text-(--hgc-nav-item-text-mobile) hg:sm:text-(--hgc-nav-item-text-desktop);
+  @apply hg:text-(--hgc-nav-item-text-mobile) hg:md:text-(--hgc-nav-item-text-desktop);
   &:hover,
   &:active,
   &:focus {
@@ -51,7 +51,7 @@
   }
 }
 .dropdown-menu__menu:not([data-level='1']) {
-  @apply hg:pl-4 hg:sm:border-1 hg:sm:border-(--hgc-nav-submenu-border) hg:rounded-lg hg:sm:p-3 hg:sm:bg-(--hgc-nav-submenu-bg);
+  @apply hg:pl-4 hg:md:border-1 hg:md:border-(--hgc-nav-submenu-border) hg:rounded-lg hg:md:p-3 hg:md:bg-(--hgc-nav-submenu-bg);
 }
 
 .dropdown-menu__link:not([data-level='1']),
@@ -60,7 +60,7 @@
 }
 
 .dropdown-menu__link + .dropdown-menu__expand-button {
-  @apply hg:w-[44px] hg:flex hg:justify-center hg:items-center hg:sm:w-auto hg:grow-0 hg:shrink-0 hg:basis-auto;
+  @apply hg:w-[44px] hg:flex hg:justify-center hg:items-center hg:md:w-auto hg:grow-0 hg:shrink-0 hg:basis-auto;
 }
 
 .dropdown-menu__expand-button--expanded svg {
@@ -70,16 +70,24 @@
 .dropdown-menu__link[data-level='1'] {
   @apply hg:px-3 hg:py-2 hg:rounded-md;
 
-  :has(+ .dropdown-menu__expand-button) {
-    @apply hg:pr-1;
+  &:has(+ .dropdown-menu__expand-button) {
+    @apply hg:px-1;
+  }
+
+  + .dropdown-menu__expand-button {
+    @apply hg:px-1;
   }
 }
 .dropdown-menu__expand-button[data-level='1'] {
-  @apply hg:sm:px-1 hg:sm:py-1 hg:rounded-md;
+  @apply hg:md:px-1 hg:md:py-1 hg:rounded-md;
 }
 
 .dropdown-menu__item[data-level='1']:has([aria-expanded='true']) {
-  @apply hg:rounded-lg hg:bg-(--hgc-nav-item-hover-bg) hg:text-(--hgc-nav-item-hover-text);
+  @apply hg:rounded-md hg:bg-(--hgc-nav-item-hover-bg) hg:text-(--hgc-nav-item-hover-text);
+
+  > .dropdown-menu__link {
+    @apply hg:text-(--hgc-nav-item-hover-text);
+  }
 
   &,
   .dropdown-menu__item {
@@ -94,11 +102,11 @@
 
 /* Top level expand button icons. */
 .dropdown-menu__expand-button[data-level='1'] svg {
-  @apply hg:sm:rotate-none;
+  @apply hg:md:rotate-none;
 }
 
 .dropdown-menu__expand-button-icon:not([data-level='1']) {
-  @apply hg:sm:rotate-270;
+  @apply hg:md:rotate-270;
 }
 
 .dropdown-menu__expand-button-icon > svg {
@@ -106,7 +114,7 @@
 }
 
 .dropdown-menu__expand-button-no-link-title[data-level='1'] {
-  @apply hg:px-3 hg:sm:px-0;
+  @apply hg:px-3 hg:md:px-0;
 }
 
 .dropdown-menu__menu[data-level='1'] {
@@ -115,13 +123,13 @@
 
 /* All levels after the first. */
 .dropdown-menu__menu:not([data-level='1']) {
-  @apply hg:animate-collapse-vertically-and-hide hg:basis-full hg:z-3 hg:hidden hg:scale-y-0 hg:origin-top hg:transition-transform hg:duration-300 hg:list-none hg:sm:absolute hg:sm:left-0;
+  @apply hg:animate-collapse-vertically-and-hide hg:basis-full hg:z-3 hg:hidden hg:scale-y-0 hg:origin-top hg:transition-transform hg:duration-300 hg:list-none hg:md:absolute hg:md:left-0;
   display: var(--display-mode, block);
 }
 
 .dropdown-menu__link:not([data-level='1']),
 .dropdown-menu__expand-button:not([data-level='1']) {
-  @apply hg:sm:w-max hg:flex hg:justify-start hg:items-center;
+  @apply hg:md:w-max hg:flex hg:justify-start hg:items-center;
 }
 
 .dropdown-menu__expand-button-contents {
@@ -130,7 +138,7 @@
 
 /* All submenus. */
 .dropdown-menu__menu:not([data-level='1']) {
-  @apply hg:animate-collapse-vertically-and-hide hg:top-[calc(100%_+_var(--hg-spacing-3))] hg:scale-y-0 hg:origin-top;
+  @apply hg:animate-collapse-vertically-and-hide hg:top-[calc(100%_+_var(--hg-spacing)_*_3)] hg:scale-y-0 hg:origin-top;
   --hgc-display-mode: 'none';
   display: var(--display-mode, block);
 }
@@ -142,7 +150,7 @@
 
 /* Third-level and greater submenus on desktop. */
 .dropdown-menu__menu:not([data-level='1'], [data-level='2']) {
-  @apply hg:sm:animate-collapse-horizontally-and-hide hg:sm:top-[calc(var(--hg-spacing-3)_*_-1)] hg:sm:scale-y-100 hg:sm:scale-x-0 hg:sm:origin-left hg:sm:left-[calc(100%_+_var(--hg-spacing-6))] hg:sm:min-h-full;
+  @apply hg:md:animate-collapse-horizontally-and-hide hg:md:top-[calc(var(--hg-spacing)_*_3_*_-1)] hg:md:scale-y-100 hg:md:scale-x-0 hg:md:origin-left hg:md:left-[calc(100%_+_var(--hg-spacing)_*_6)] hg:md:min-h-full;
   --hgc-display-mode: none;
   display: var(--display-mode, block);
 
@@ -152,7 +160,7 @@
 }
 
 .dropdown-menu__expand-button--expanded + .dropdown-menu__menu:not([data-level='1'], [data-level='2']) {
-  @apply hg:sm:animate-show-and-expand-horizontally;
+  @apply hg:md:animate-show-and-expand-horizontally;
   --hgc-display-mode: invaliddisplay;
 }
 

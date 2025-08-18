@@ -4,8 +4,8 @@
 }
 @layer components {
   .card-testimonial {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .card-testimonial .testimonial-text {
     font-size: var(--hg-text-xl, 1.25rem);

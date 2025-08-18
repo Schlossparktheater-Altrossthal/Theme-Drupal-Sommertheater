@@ -7,8 +7,8 @@
 @layer components {
 
   .card-events {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 
   .card-events .heading {
@@ -30,7 +30,7 @@
 
   .color-mode--light .card-events,
   .color-mode--light.card-events {
-    --main-text-color: var(--hg-color-gray-dark);
+    --hg-color-body-text: var(--hg-color-gray-dark);
   }
 
   .color-mode--dark .card-events .heading,

@@ -7,8 +7,8 @@
   .blockquote {
     --tw-font-weight: var(--hg-font-weight-semibold, 600);
     font-weight: var(--hg-font-weight-semibold, 600);
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .blockquote .blockquote-text {
     font-size: var(--hg-text-xl, 1.25rem);

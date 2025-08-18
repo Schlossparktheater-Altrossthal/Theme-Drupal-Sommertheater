@@ -8,7 +8,7 @@
 /* Base styles before JS gets involved. */
 .collapsible-section {
   --animate-speed: 0s;
-  @apply hg:bg-gray-lightest hg:border-b-1 hg:border-gray-darkest;
+  @apply hg:bg-(--hgc-collapsible-bg) hg:border-b-1 hg:border-(--hgc-collapsible-border);
 }
 
 .collapsible-section--content {

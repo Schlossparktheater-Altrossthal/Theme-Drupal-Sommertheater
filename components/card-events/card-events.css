@@ -5,13 +5,13 @@
 }
 @layer components {
   .card-events {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .card-events .heading {
     --tw-font-weight: var(--hg-font-weight-bold, 700);
     font-weight: var(--hg-font-weight-bold, 700);
-    color: var(--hg-color-brand, #2563eb);
+    color: var(--hg-color-brand, #155dfc);
   }
   .card-events--date {
     font-size: var(--hg-text-2xl, 1.5rem);
@@ -30,7 +30,7 @@
     font-weight: var(--hg-font-weight-semibold, 600);
   }
   .color-mode--light .card-events, .color-mode--light.card-events {
-    --main-text-color: var(--hg-color-gray-dark);
+    --hg-color-body-text: var(--hg-color-gray-dark);
   }
   .color-mode--dark .card-events .heading, .color-mode--dark.card-events .heading {
     color: var(--hg-color-white, #ffffff);

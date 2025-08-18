@@ -5,7 +5,7 @@ global:
       build/css/main.min.css: {}
       components/webform-newsletter/webform-newsletter.css: {}
     theme:
-      src/overrides.css: {}
+      src/schemes.css: {}
     component:
       css/components/action-links.css: {}
       css/components/breadcrumb.css: {}
@@ -44,7 +44,9 @@ dropdown-menu:
     component:
       components/dropdown-menu/dropdown-menu.css: {}
   js:
-    components/dropdown-menu/dropdown-menu.js: { attributes: { type: module } }
+    components/dropdown-menu/dropdown-menu.js:
+      attributes:
+        type: module
 file:
   version: VERSION
   css:

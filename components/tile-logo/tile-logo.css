@@ -6,12 +6,9 @@
   max-width: 300px;
   padding: 1rem;
 }
-.storybook-component--tile-logo:has(.color-mode--dark) {
-  background-color: var(--hg-color-black, #000000);
-}
 @layer components {
   .logo-tile {
-    background-color: var(--hg-color-brand, #2563eb);
+    background-color: var(--hgc-tile-logo-bg);
   }
   .logo-tile img {
     max-height: 86px;

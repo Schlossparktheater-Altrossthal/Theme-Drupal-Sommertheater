@@ -2,24 +2,24 @@
 @layer properties;
 @layer components {
   .breadcrumb {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .breadcrumb .breadcrumb-item a {
-    color: var(--hyperlink-color);
+    color: var(--hgc-hyperlink-color);
   }
   .breadcrumb .breadcrumb-item a:hover, .breadcrumb .breadcrumb-item a:focus {
-    color: var(--hyperlink-color-hover);
+    color: var(--hgc-hyperlink-color-hover);
   }
   .breadcrumb.color-mode--light {
-    --main-text-color: var(--hg-color-gray-darkest);
-    --hyperlink-color: var(--hg-color-gray);
-    --hyperlink-color-hover: var(--hg-color-gray-dark);
+    --hg-color-body-text: var(--hg-color-gray-darkest);
+    --hgc-hyperlink-color: var(--hg-color-gray);
+    --hgc-hyperlink-color-hover: var(--hg-color-gray-dark);
   }
   .breadcrumb.color-mode--dark {
-    --main-text-color: var(--hg-color-white);
-    --hyperlink-color: var(--hg-color-gray-light);
-    --hyperlink-color-hover: var(--hg-color-white);
+    --hg-color-body-text: var(--hg-color-white);
+    --hgc-hyperlink-color: var(--hg-color-gray-light);
+    --hgc-hyperlink-color-hover: var(--hg-color-white);
   }
   .breadcrumb .breadcrumb-item {
     font-size: var(--hg-text-xl, 1.25rem);
@@ -40,13 +40,13 @@
     }
   }
   .breadcrumb .active {
-    color: var(--main-text-color);
+    color: var(--hg-color-body-text);
   }
   .breadcrumb .breadcrumb-icon {
-    color: var(--main-text-color);
+    color: var(--hg-color-body-text);
   }
   .breadcrumb .breadcrumb-icon-ellipses {
-    color: var(--hyperlink-color);
+    color: var(--hgc-hyperlink-color);
   }
 }
 @property --tw-leading {

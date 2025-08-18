@@ -11,12 +11,12 @@
 @layer components {
 
   .link {
-    @apply hg:font-sans hg:inline-block;
-    color: var(--hyperlink-color);
+    @apply hg:font-body hg:inline-block;
+    color: var(--hgc-hyperlink-color);
 
     &:hover,
     &:focus {
-      color: var(--hyperlink-color-hover);
+      color: var(--hgc-hyperlink-color-hover);
     }
   }
 

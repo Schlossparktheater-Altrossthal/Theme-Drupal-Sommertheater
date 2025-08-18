@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
-use Behat\Mink\Element\ElementInterface;
 use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Tests\BrowserTestBase;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\TestWith;
 
 /**
- * Tests that Mercury can be toggled into and out of dark mode.
+ * Tests that Mercury's color scheme can be changed by a setting.
  */
 #[Group('mercury')]
 #[CoversFunction('mercury_preprocess_html')]
 #[CoversFunction('mercury_form_system_theme_settings_alter')]
-class DarkModeTest extends BrowserTestBase {
+class SchemesTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
@@ -45,28 +45,26 @@ class DarkModeTest extends BrowserTestBase {
   }
 
   /**
-   * Tests toggling Mercury into and out of dark mode.
+   * Tests toggling Mercury into and out of a color scheme.
    */
-  public function testDarkMode(): void {
+  #[TestWith(['vanilla-light', 'Vanilla Light'])]
+  #[TestWith(['vanilla-dark', 'Vanilla Dark'])]
+  #[TestWith(['byte-light', 'Byte Light'])]
+  #[TestWith(['byte-dark', 'Byte Dark'])]
+  public function testColorScheme(string $scheme, string $label): void {
     $this->drupalGet('<front>');
     $assert_session = $this->assertSession();
     $assert_session->statusCodeEquals(200);
 
-    // Dark mode is the default.
-    $page = $this->getSession()->getPage();
-    $body = $page->find('css', 'body');
-    $this->assertInstanceOf(ElementInterface::class, $body);
-    $this->assertTrue($body->hasClass('dark'));
-
     $account = $this->drupalCreateUser(['administer themes']);
     $this->drupalLogin($account);
     $this->drupalGet('/admin/appearance/settings/mercury');
-    $page->uncheckField('Enable dark mode');
+    $page = $this->getSession()->getPage();
+    $page->findField($label)->selectOption($scheme);
     $page->pressButton('Save configuration');
     $assert_session->statusMessageContains('The configuration options have been saved.');
     $this->drupalGet('<front>');
-    $this->assertTrue($body->hasClass('light'));
-    $this->assertFalse($body->hasClass('dark'));
+    $assert_session->elementAttributeContains('css', 'html', 'class', "mercury-scheme--$scheme");
   }
 
 }

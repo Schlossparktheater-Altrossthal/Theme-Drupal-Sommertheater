@@ -6,11 +6,11 @@
 
     .utility-menu--item-text {
       @apply hg:text-base hg:leading-tight hg:hover:underline;
-      color: var(--menu-link-color);
+      color: var(--hgc-menu-link-color);
 
       &:hover,
       &:focus {
-        color: var(--menu-link-color-hover);
+        color: var(--hgc-menu-link-color-hover);
       }
     }
   }

@@ -2,7 +2,7 @@
 @layer properties;
 .storybook-component--hero-1 {
   height: 100vh;
-  padding: var(--hg-spacing-0, 0px);
+  padding: calc(var(--hg-spacing, 4px) * 0);
 }
 #storybook-root:has(.hero-overlay) {
   height: 100%;
@@ -27,8 +27,8 @@
       max-width: 96rem;
     }
     margin-inline: auto;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .hero-overlay .hero-region.content p {
     font-size: var(--hg-text-2xl, 1.5rem);

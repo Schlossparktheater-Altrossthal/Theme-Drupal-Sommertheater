@@ -9,8 +9,8 @@
 
   .hero-sidebyside {
     @apply hg:container hg:mx-auto hg:flex hg:gap-6 hg:px-6 hg:py-8 hg:md:px-10 hg:md:py-12 hg:xl:px-16 hg:xl:py-20;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 
   .hero-sidebyside .hero-description {

@@ -1,29 +1,29 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--link {
-  padding: var(--hg-spacing-5, 20px);
+  padding: calc(var(--hg-spacing, 4px) * 5);
   font-size: var(--hg-text-xl, 1.25rem);
   line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
-  --tw-font-weight: var(--hg-font-weight-normal, var(--hgc-font-weight-normal, 400));
-  font-weight: var(--hg-font-weight-normal, var(--hgc-font-weight-normal, 400));
+  --tw-font-weight: var(--hg-font-weight-normal, 400);
+  font-weight: var(--hg-font-weight-normal, 400);
 }
 .storybook-component--link:has(.color-mode--dark) {
-  background-color: var(--hg-color-gray-darkest, var(--hgc-color-gray-darkest, #030712));
+  background-color: var(--hg-color-gray-darkest, #030712);
 }
 @layer components {
   .link {
     display: inline-block;
-    font-family: var(--hg-font-sans, var(--hgc-font-sans), 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
-    color: var(--hyperlink-color);
+    font-family: var(--hg-font-body, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
+    color: var(--hgc-hyperlink-color);
     &:hover, &:focus {
-      color: var(--hyperlink-color-hover);
+      color: var(--hgc-hyperlink-color-hover);
     }
   }
   .link--button-light, .link--button-outline-light, .link--button-dark, .link--button-brand, .link--button-brand-dark, .link--button-outline-dark {
     border-radius: var(--hg-radius-sm, 0.25rem);
     border-style: var(--tw-border-style);
     border-width: 1px;
-    padding-inline: var(--hg-spacing-5, 20px);
+    padding-inline: calc(var(--hg-spacing, 4px) * 5);
     padding-top: 8px;
     padding-bottom: 9px;
     text-decoration-line: none;
@@ -36,7 +36,7 @@
   .link--button-light {
     border-color: var(--hg-color-white, #ffffff);
     background-color: var(--hg-color-white, #ffffff);
-    color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+    color: var(--hg-color-brand-dark, #1c398e);
     &:hover {
       @media (hover: hover) {
         border-color: var(--hg-color-white, #ffffff);
@@ -44,7 +44,7 @@
     }
     &:hover {
       @media (hover: hover) {
-        background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        background-color: var(--hg-color-brand-dark, #1c398e);
       }
     }
     &:hover {
@@ -54,8 +54,8 @@
     }
   }
   .link--button-dark {
-    border-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
-    background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+    border-color: var(--hg-color-brand-dark, #1c398e);
+    background-color: var(--hg-color-brand-dark, #1c398e);
     color: var(--hg-color-white, #ffffff);
     &:hover {
       @media (hover: hover) {
@@ -64,7 +64,7 @@
     }
     &:hover {
       @media (hover: hover) {
-        color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        color: var(--hg-color-brand-dark, #1c398e);
       }
     }
   }
@@ -73,7 +73,7 @@
     color: var(--hg-color-white, #ffffff);
     &:hover {
       @media (hover: hover) {
-        background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        background-color: var(--hg-color-brand-dark, #1c398e);
       }
     }
     &:hover {
@@ -83,11 +83,11 @@
     }
   }
   .link--button-outline-dark {
-    border-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
-    color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+    border-color: var(--hg-color-brand-dark, #1c398e);
+    color: var(--hg-color-brand-dark, #1c398e);
     &:hover {
       @media (hover: hover) {
-        background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        background-color: var(--hg-color-brand-dark, #1c398e);
       }
     }
     &:hover {
@@ -97,12 +97,12 @@
     }
   }
   .link--button-brand {
-    border-color: var(--hg-color-brand, var(--hgc-color-brand, #2563eb));
-    background-color: var(--hg-color-brand, var(--hgc-color-brand, #2563eb));
+    border-color: var(--hg-color-brand, #155dfc);
+    background-color: var(--hg-color-brand, #155dfc);
     color: var(--hg-color-white, #ffffff);
     &:hover {
       @media (hover: hover) {
-        background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        background-color: var(--hg-color-brand-dark, #1c398e);
       }
     }
     &:hover {
@@ -112,17 +112,17 @@
     }
   }
   .link--button-brand-dark {
-    border-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
-    background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
-    color: var(--hg-color-brand-light, var(--hgc-color-brand-light, #eff6ff));
+    border-color: var(--hg-color-brand-dark, #1c398e);
+    background-color: var(--hg-color-brand-dark, #1c398e);
+    color: var(--hg-color-brand-light, #dbeafe);
     &:hover {
       @media (hover: hover) {
-        background-color: var(--hg-color-brand-light, var(--hgc-color-brand-light, #eff6ff));
+        background-color: var(--hg-color-brand-light, #dbeafe);
       }
     }
     &:hover {
       @media (hover: hover) {
-        color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+        color: var(--hg-color-brand-dark, #1c398e);
       }
     }
   }

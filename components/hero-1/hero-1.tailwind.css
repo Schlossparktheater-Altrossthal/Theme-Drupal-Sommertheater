@@ -11,8 +11,8 @@
 @layer components {
   .hero-overlay {
     @apply hg:container hg:mx-auto hg:relative;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
 
   .hero-overlay .hero-region.content p {

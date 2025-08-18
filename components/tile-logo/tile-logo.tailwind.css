@@ -9,15 +9,10 @@
   padding: 1rem;
 }
 
-  .storybook-component--tile-logo:has(.color-mode--dark) {
-    @apply hg:bg-black;
-  }
-
-
 @layer components {
 
   .logo-tile {
-    @apply hg:bg-brand;
+    @apply hg:bg-(--hgc-tile-logo-bg);
   }
 
   .logo-tile img {

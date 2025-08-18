@@ -5,11 +5,11 @@
 }
 @layer components {
   .service-card {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+    background-color: var(--hg-color-body-bg);
+    color: var(--hg-color-body-text);
   }
   .service-card.color-mode--light {
-    --main-bg-color: var(--hg-color-gray-lightest);
+    --hg-color-body-bg: var(--hg-color-gray-lightest);
   }
   .service-card .heading > a {
     &::before {
@@ -18,7 +18,7 @@
     }
     &::before {
       content: var(--tw-content);
-      inset: var(--hg-spacing-0, 0px);
+      inset: calc(var(--hg-spacing, 4px) * 0);
     }
     &::before {
       content: var(--tw-content);

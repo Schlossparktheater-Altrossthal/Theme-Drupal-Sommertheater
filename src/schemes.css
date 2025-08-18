@@ -1,53 +1,50 @@
 @layer components;
 
-.mercury-scheme--vanilla-light {
-
-}
-
 .mercury-scheme--vanilla-dark {
+  --hg-color-body-bg: var(--hg-color-black);
+  --hg-color-body-text: var(--hg-color-white);
 
+  --hgc-main-heading-color: var(--hg-color-brand-light);
+  --hgc-menu-link-color: var(--hg-color-white);
+  --hgc-menu-link-color-hover: var(--hg-color-brand-light);
+  --hgc-hyperlink-color: var(--hg-color-blue-100);
+  --hgc-hyperlink-color-hover: var(--hg-color-white);
+  --hgc-card-bg: var(--hg-color-gray-dark);
+  --hgc-card-text-color: var(--hg-color-white);
+  --hgc-pricing-card-bg-color: var(--hg-color-gray-darkest);
+  --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
 }
 
 .mercury-scheme--byte-light {
 
+  --hgc-main-heading-color: var(--hg-color-brand);
+  --hgc-menu-link-color: var(--hg-color-gray-darkest);
+  --hgc-menu-link-color-hover: var(--hg-color-brand);
+  --hgc-hyperlink-color: var(--hg-color-brand);
+  --hgc-hyperlink-color-hover: var(--hg-color-brand-dark);
+  --hgc-card-bg: var(--hg-color-gray-light);
+  --hgc-card-text-color: var(--hg-color-gray-darkest);
+  --hgc-pricing-card-bg-color: var(--hg-color-white);
+  --hgc-pricing-card-border-color: var(--hg-color-gray-darkest);
+
 }
 
 .mercury-scheme--byte-dark {
-  --hgc-color-gray-lightest: #f3f4f6;
-  --hgc-color-gray-light:    #d1d5db;
-  --hgc-color-gray:          #6b7280;
-  --hgc-color-gray-dark:     #1f2937;
-  --hgc-color-gray-darkest:  #030712;
+  --hg-color-brand-light:   #cdfbf1;
+  --hg-color-brand:         #01d5be;
+  --hg-color-brand-dark:    #0c4f4a;
 
-  --hgc-color-brand-light:   #cdfbf1;
-  --hgc-color-brand:         #01d5be;
-  --hgc-color-brand-dark:    #0c4f4a;
+  --hg-color-accent-light:  #cad5e2;
+  --hg-color-accent:        #1d283d;
+  --hg-color-accent-dark:   #050819;
 
-  --hgc-color-accent-light:  #cad5e2;
-  --hgc-color-accent:        #1d283d;
-  --hgc-color-accent-dark:   #050819;
+  --hg-color-body-bg:       #1f2937;
+  --hg-color-body-text:     #ffffff;
 
-  --hgc-color-info:          #01a8e4;
-  --hgc-color-positive:      #00cc41;
-  --hgc-color-warning:       #ffbf00;
-  --hgc-color-negative:      #e60032;
+  --hgc-radius-sm: 0;
 
-  --hgc-color-body-bg:       #1f2937;
-  --hgc-color-body-text:     #ffffff;
-
-  --hgc-font-weight-light:    300;
-  --hgc-font-weight-normal:   400;
-  --hgc-font-weight-medium:   500;
-  --hgc-font-weight-semibold: 600;
-  --hgc-font-weight-bold:     700;
-
-  --hgc-font-weight-p:  400;
-  --hgc-font-weight-h1: 600;
-  --hgc-font-weight-h2: 600;
-  --hgc-font-weight-h3: 600;
-  --hgc-font-weight-h4: 500;
-  --hgc-font-weight-h5: 500;
-  --hgc-font-weight-h6: 500;
+  --hg-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hg-font-body:    'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
@@ -55,10 +52,24 @@
   --hgc-hyperlink-color:       #1d4ed8;
   --hgc-hyperlink-color-hover: #172554;
 
-  --hgc-radius-sm: 0;
+  --hgc-main-heading-color: var(--hg-color-brand-light);
 
-  --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-body:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hgc-menu-link-color: var(--hg-color-white);
+  --hgc-menu-link-color-hover: var(--hg-color-brand-light);
+
+  --hgc-hyperlink-color: var(--hg-color-blue-100);
+  --hgc-hyperlink-color-hover: var(--hg-color-white);
+
+  --hgc-card-bg: var(--hg-color-gray-dark);
+  --hgc-card-text-color: var(--hg-color-white);
+
+  --hgc-pricing-card-bg-color: var(--hg-color-gray-darkest);
+  --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
+
+  --hgc-tile-logo-bg: #536487;
+
+  --hgc-collapsible-bg: var(--hgc-card-bg);
+  --hgc-collapsible-border: var(--hg-color-brand-dark);
+
+
 }

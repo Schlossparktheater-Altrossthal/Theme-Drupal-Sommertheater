@@ -2,24 +2,24 @@
 
 .badge {
   @apply hg:border hg:inline-flex hg:items-center;
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+  background-color: var(--hg-color-body-bg);
+  color: var(--hg-color-body-text);
 }
 
 .badge.color-mode--dark:hover,
 .badge.color-mode--dark:focus {
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
+  background-color: var(--hg-color-body-text);
+  color: var(--hg-color-body-bg);
 }
 
 .badge.color-mode--light:hover,
 .badge.color-mode--light:focus {
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
+  background-color: var(--hg-color-body-text);
+  color: var(--hg-color-body-bg);
 }
 
 .badge .badge-label {
-  @apply hg:font-sans hg:font-normal hg:text-sm hg:leading-none hg:text-inherit hg:select-none;
+  @apply hg:font-body hg:font-normal hg:text-sm hg:leading-none hg:text-inherit hg:select-none;
 }
 
 .badge .material-symbols-outlined {
