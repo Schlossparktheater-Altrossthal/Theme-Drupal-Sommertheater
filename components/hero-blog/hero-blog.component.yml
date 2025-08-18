@@ -39,10 +39,15 @@ props:
       default: ''
       examples: []
 
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      default: light
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
       examples:
-        - light
+        - src: 'assets/starshot.png'
+          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
+
+slots:
+  blog_media:
+    title: 'Place Image'

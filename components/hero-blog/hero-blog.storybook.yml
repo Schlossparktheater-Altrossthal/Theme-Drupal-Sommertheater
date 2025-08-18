@@ -1,3 +1,6 @@
 hide_main: true
-author: 'Peter Parker'
+author: 'Buzz Aldrin'
 author_url: 'https://example.com'
+media:
+  src: 'assets/starshot.png'
+  alt: 'Placeholder image'

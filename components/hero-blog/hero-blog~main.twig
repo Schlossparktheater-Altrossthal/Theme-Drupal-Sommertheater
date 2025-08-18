@@ -1,8 +1,5 @@
 {# Overriding media_slot just for Storybook #}
 {% embed 'mercury:hero-blog' %}
-  {% block title %}
-  {{ include('mercury:heading') }}
-  {% endblock %}
   {% block author %}
     {% if storybook.author is not empty %}
       <p>By 
@@ -12,8 +9,13 @@
           text: storybook.author,
         }) }}
       {% else %}
-        {{ storybook.author }}</p>
+        {{ storybook.author }}
       {% endif %}
+      </p>
     {% endif %}
+  {% endblock %}
+
+  {% block blog_media %}
+    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ storybook.media.src }}" alt="{{ storybook.media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
   {% endblock %}
 {% endembed %}
