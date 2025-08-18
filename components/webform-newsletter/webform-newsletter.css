@@ -1,17 +1,14 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--webform-newsletter {
-  padding: var(--hg-spacing-3, 12px);
-  &:has(.dark) {
-    background-color: var(--hg-color-black, #000000);
-  }
+  padding: calc(var(--hg-spacing, 4px) * 4);
 }
 @layer components {
-  .dark {
+  [class$="-dark"] {
     color: var(--hg-color-white, #ffffff);
     .webform-submission-newsletter-signup-form .form-email {
       border-color: var(--hg-color-white, #ffffff);
-      background-color: var(--hg-color-black, #000000);
+      background-color: var(--hg-color-body-bg, #ffffff);
       color: var(--hg-color-white, #ffffff);
       &::placeholder {
         color: var(--hg-color-white, #ffffff);
@@ -22,31 +19,31 @@
     display: flex;
     max-width: 600px;
     flex-direction: column;
-    gap: var(--hg-spacing-3, 12px);
+    gap: calc(var(--hg-spacing, 4px) * 3);
     .visually-hidden {
       display: none;
     }
     .webform-type-fieldset .fieldset-wrapper {
       display: flex;
       align-items: center;
-      gap: var(--hg-spacing-2, 8px);
+      gap: calc(var(--hg-spacing, 4px) * 2);
     }
     .form-item {
-      margin-block: var(--hg-spacing-0, 0px) !important;
+      margin-block: calc(var(--hg-spacing, 4px) * 0) !important;
     }
     .form-email {
       width: 100%;
       border-radius: var(--hg-radius-sm, 0.25rem);
       border-style: var(--tw-border-style);
       border-width: 1px;
-      padding-inline: var(--hg-spacing-2, 8px);
-      padding-block: var(--hg-spacing-0, 0px);
+      padding-inline: calc(var(--hg-spacing, 4px) * 2);
+      padding-block: calc(var(--hg-spacing, 4px) * 0);
       font-size: var(--hg-text-sm, 0.875rem) !important;
       line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5)) !important;
       --tw-leading: 28px;
       line-height: 28px;
       @media (width >= 64rem) {
-        padding-inline: var(--hg-spacing-3, 12px);
+        padding-inline: calc(var(--hg-spacing, 4px) * 3);
       }
       @media (width >= 64rem) {
         font-size: var(--hg-text-lg, 1.125rem) !important;
@@ -74,24 +71,24 @@
       border-radius: var(--hg-radius-sm, 0.25rem);
       border-style: var(--tw-border-style);
       border-width: 1px;
-      border-color: var(--hg-color-brand, var(--hgc-color-brand, #2563eb));
-      background-color: var(--hg-color-brand, var(--hgc-color-brand, #2563eb));
-      padding-inline: var(--hg-spacing-2, 8px);
-      padding-block: var(--hg-spacing-1, 4px) !important;
+      border-color: var(--hg-color-brand, #155dfc);
+      background-color: var(--hg-color-brand, #155dfc);
+      padding-inline: calc(var(--hg-spacing, 4px) * 2);
+      padding-block: calc(var(--hg-spacing, 4px) * 1) !important;
       font-size: var(--hg-text-sm, 0.875rem) !important;
       line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5)) !important;
-      --tw-font-weight: var(--hg-font-weight-medium, var(--hgc-font-weight-medium, 500));
-      font-weight: var(--hg-font-weight-medium, var(--hgc-font-weight-medium, 500));
+      --tw-font-weight: var(--hg-font-weight-medium, 500);
+      font-weight: var(--hg-font-weight-medium, 500);
       color: var(--hg-color-white, #ffffff);
       text-decoration-line: none;
       &:hover {
         @media (hover: hover) {
-          border-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+          border-color: var(--hg-color-brand-dark, #1c398e);
         }
       }
       &:hover {
         @media (hover: hover) {
-          background-color: var(--hg-color-brand-dark, var(--hgc-color-brand-lightest, #1e3a8a));
+          background-color: var(--hg-color-brand-dark, #1c398e);
         }
       }
       &:hover {
@@ -105,10 +102,10 @@
         }
       }
       @media (width >= 64rem) {
-        padding-inline: var(--hg-spacing-4, 16px);
+        padding-inline: calc(var(--hg-spacing, 4px) * 4);
       }
       @media (width >= 64rem) {
-        padding-block: var(--hg-spacing-2, 8px) !important;
+        padding-block: calc(var(--hg-spacing, 4px) * 2) !important;
       }
       @media (width >= 64rem) {
         font-size: var(--hg-text-lg, 1.125rem) !important;

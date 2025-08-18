@@ -1,16 +1,15 @@
-{% set classes = [
+{% set classes = classes|default([])|merge([
     'card-pricing',
     'hg:flex',
     'hg:flex-col',
     'hg:gap-4',
     'hg:md:gap-6',
     'hg:border',
-    'hg:p-6',
-    'hg:lg:p-10',
-    'hg:2xl:p-12',
-    'color-mode--' ~ color_mode,
+    'hg:p-3',
+    'hg:md:p-4',
+    'hg:lg:p-6',
     promote ? 'promote',
-  ]
+  ])|filter(v => v is not empty)
 %}
 
 <article class="{{ classes|join(' ') }}">
@@ -18,8 +17,9 @@
   <header class="card-pricing--header hg:flex hg:flex-col hg:gap-2">
     {{ include('mercury:heading',
       {
-        level: 3,
         heading_classes: ['card-title'],
+        level: 3,
+        url: 'No URL',
       })
     }}
 
@@ -56,8 +56,8 @@
     {{ include('mercury:button', {
       url: button_url,
       label: button_label,
-      variant: promote ? 'fill-light' : color_mode == 'dark' ? 'fill-dark' : 'fill',
-      radius: 'rounded-sm',
+      variant: promote ? 'negative' : 'primary',
+      size: 'small',
     }) }}
   </footer>
 

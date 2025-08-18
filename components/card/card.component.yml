@@ -13,12 +13,17 @@ props:
     level:
       type: number
       title: Heading Level
-      enum: [2,3,4,5,6]
+      enum: 
+        - 2
+        - 3
+        - 4
+      default: 3
       examples:
         - 3
     url:
       type: string
       title: Add optional url
+      default: 'https://www.example.com'
       examples: 
         - 'https://www.example.com'
     media:
@@ -35,23 +40,23 @@ props:
       description: Teaser text
       examples:
         - 'Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis.'
-    radius:
+    style:
       type: string
-      title: Corner radius
-      enum: [rounded-none, rounded-sm, rounded-md, rounded-lg, rounded-full]
+      title: Card Style
+      enum: 
+        - "default"
+        - "framed"
+        - "featured"
+      default: "framed"
       examples: 
-        - rounded-sm
-      default: rounded-sm
+        - "framed"
     orientation:
       type: string
       title: Orientation
       description: "Set card to horz or vert."
-      enum: ['stacked', 'landscape']
+      enum: 
+        - "stacked"
+        - "landscape"
+      default: "stacked"
       examples:
-        - 'stacked'
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples: 
-        - light
+        - "stacked"

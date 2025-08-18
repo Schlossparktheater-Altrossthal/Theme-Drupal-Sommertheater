@@ -1,7 +1,6 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer components {
   .site-footer {
-    background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
   }
 }

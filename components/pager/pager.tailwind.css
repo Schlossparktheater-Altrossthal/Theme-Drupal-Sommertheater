@@ -1,37 +1,20 @@
 @reference '../../src/main.css';
 
+.storybook-component--pager {
+  @apply hg:p-4;
+}
+
 @layer components {
   .pager {
     @apply hg:font-medium;
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    color: var(--hgc-color-body-text);
   }
 
   .pager__list-item {
-    @apply hg:text-xl hg:whitespace-nowrap;
-  }
-
-  .color-mode--light .pager .pager__list__item,
-  .color-mode--light.pager .pager__list__item {
-    @apply hg:text-gray-dark;
-  }
-
-  .color-mode--dark .pager .pager__list__item,
-  .color-mode--dark.pager .pager__list__item {
-    @apply hg:text-gray-lightest;
+    @apply hg:text-sm hg:md:text-base hg:whitespace-nowrap;
   }
 
   .pager .pager__icon {
     @apply hg:w-6 hg:h-6 hg:shrink-0 hg:text-2xl hg:leading-none;
-  }
-
-  .color-mode--light .pager .pager__number__current,
-  .color-mode--light.pager .pager__number__current {
-    @apply hg:border-gray;
-  }
-
-  .color-mode--dark .pager .pager__number__current,
-  .color-mode--dark.pager .pager__number__current {
-    @apply hg:border-gray-lightest;
   }
 }

@@ -26,11 +26,6 @@
   --color-body-bg:       #ffffff;
   --color-body-text:     #000000;
 
-  --font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
 
@@ -85,6 +80,11 @@
   --animate-collapse-vertically-and-hide: collapse-vertically-and-hide 0ms ease-in-out forwards;
   --animate-show-and-expand-horizontally: show-and-expand-horizontally 0ms ease-in-out forwards;
   --animate-collapse-horizontally-and-hide: collapse-horizontally-and-hide 0ms ease-in-out forwards;
+
+  --font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   /* Second-level (desktop) menu expansion. */
   @keyframes show-and-expand-vertically {
@@ -175,25 +175,6 @@
     --hgc-font-weight-h4: 500;
     --hgc-font-weight-h5: 500;
     --hgc-font-weight-h6: 500;
-
-    --hgc-main-heading-color: var(--hg-color-brand);
-
-    --hgc-menu-link-color: var(--hg-color-gray-darkest);
-    --hgc-menu-link-color-hover: var(--hg-color-brand);
-
-    --hgc-hyperlink-color: var(--hg-color-brand);
-    --hgc-hyperlink-color-hover: var(--hg-color-brand-dark);
-
-    --hgc-card-bg: var(--hg-color-gray-light);
-    --hgc-card-text-color: var(--hg-color-gray-darkest);
-
-    --hgc-pricing-card-bg-color: var(--hg-color-white);
-    --hgc-pricing-card-border-color: var(--hg-color-gray-darkest);
-
-    --hgc-tile-logo-bg: var(--hg-color-brand);
-
-    --hgc-collapsible-bg: var(--hg-color-gray-lightest);
-    --hgc-collapsible-border: var(--hg-color-gray-darkest);
   }
 
   .material-symbols-outlined {
@@ -338,7 +319,16 @@
   }
 }
 
-@layer components {}
+@layer components {
+  /* For custom component styles (buttons, cards, etc.) */
+}
+
+@layer utilities {
+  /* For custom utility classes with highest precedence. */
+  .font-display {
+    font-family: var(--hg-font-display);
+  }
+}
 
 /* Custom overrides placed outside @layer to ensure they load last and override external styles */
 .icon-5xl {

@@ -26,19 +26,20 @@ props:
     level:
       type: number
       title: Heading Level
-      enum: [1,2,3,4,5,6]
+      enum: 
+        - 1
+        - 2
+        - 3
+      default: 1
       examples: 
         - 1
     background_position:
       type: string
       title: Hero background image position
-      enum: [center, top, bottom]
-      examples: 
+      enum: 
         - center
-      default: center
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
+        - top
+        - bottom
+      default: "center"
       examples: 
-        - dark
+        - "center"

@@ -1,85 +1,69 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.3.x/core/assets/schemas/v1/metadata.schema.json'
-name: Button
-group: Base
-description: 'A versatile button component that can be rendered as a button or link with various styles and sizes.'
-status: stable
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.3.x/core/assets/schemas/v1/metadata.schema.json"
+name: "Button"
+group: "Base"
+description: "A versatile button component that can be rendered as a button or link with various styles and sizes."
+status: "stable"
 props:
-  type: object
+  type: "object"
   properties:
     variant:
-      type: string
-      title: Variant
-      description: 'The style of button.'
+      type: "string"
+      title: "Variant"
+      description: "The style of button."
       enum:
-        - fill
-        - fill-accent
-        - fill-light
-        - fill-dark
-        - outline
-        - outline-accent
+        - "primary"
+        - "primary-accent"
+        - "secondary"
+        - "secondary-accent"
+        - "negative"
+      default: "primary"
       examples:
-        - fill
+        - "primary"
     disabled:
-      type: boolean
-      title: Disabled
-      description: 'Whether the button is disabled.'
+      type: "boolean"
+      title: "Disabled"
+      description: "Whether the button is disabled."
       default: false
       examples:
         - false
         - true
     label:
-      type: string
-      title: Button text
-      description: 'The text content of the button.'
+      type: "string"
+      title: "Button text"
+      description: "The text content of the button."
+      default: "Button Label"
       examples:
-        - 'Button Label'
-    icon:
-      type: string
-      title: Icon
-      description: 'Select an Icon.'
+        - "Button Label"
+    size:
+      type: "string"
+      title: "Size"
+      description: "Set Button Size."
       enum:
-        - arrow_forward
-        - arrow_back
-        - chevron_right
-        - chevron_left
-        - download
-        - person_add
+        - "small"
+        - "medium"
+        - "large"
+      default: "medium"
       examples:
-        - arrow_forward
-      default: arrow_forward
+        - "medium"
+    icon:
+      type: "string"
+      title: "Icon"
+      description: "Select an Icon."
+      enum: ["ph-arrow-right", "ph-arrow-left", "ph-carrot-right", "ph-carrot-left", "ph-download", "ph-user-plus"]
+      default: "ph-arrow-right"
+      examples:
+        - "ph-arrow-right"
     icon_first:
-      type: boolean
-      title: Icon First
-      description: 'Icon can display before or after label.'
+      type: "boolean"
+      title: "Icon First"
+      description: "Icon can display before or after label."
+      default: false
       examples:
         - false
-      default: false
     href:
-      type: string
-      title: URL
-      description: 'The URL to link to. If provided, the button will be rendered as a link.'
-      examples:
-        - https://example.com
+      type: "boolean"
+      title: "URL"
+      description: "The URL to link to. If provided, the button will be rendered as a link."
       default: false
-    radius:
-      type: string
-      title: Corner radius
-      enum:
-        - rounded-none
-        - rounded-sm
-        - rounded-md
-        - rounded-lg
-        - rounded-full
-      default: rounded-sm
       examples:
-        - rounded-sm
-    color_mode:
-      type: string
-      title: Color Mode
-      description: Color mode of component.
-      enum:
-        - light
-        - dark
-      examples:
-        - light
-      default: light
+        - false

@@ -1,51 +1,56 @@
 @reference '../../src/main.css';
 
+.storybook-component--breadcrumb {
+  @apply hg:p-3;
+}
 
 @layer components {
 
   .breadcrumb {
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    @apply hg:font-medium;
+    --hgc-color-breadcrumb: var(--hg-color-gray);
+    --hgc-color-breadcrumb-hover: var(--hg-color-black);
+    --hgc-color-breadcrumb-active: var(--hg-color-black);
+
+    .mercury-scheme--vanilla-dark & {
+      --hgc-color-breadcrumb: var(--hg-color-gray-light);
+      --hgc-color-breadcrumb-hover: var(--hg-color-white);
+      --hgc-color-breadcrumb-active: var(--hg-color-white);
+    }
+
+    .mercury-scheme--byte-light & {
+      --hgc-color-breadcrumb: var(--hg-color-gray);
+      --hgc-color-breadcrumb-hover: var(--hg-color-black);
+      --hgc-color-breadcrumb-active: var(--hg-color-black);
+    }
+
+    .mercury-scheme--byte-dark & {
+      --hgc-color-breadcrumb: var(--hg-color-white);
+      --hgc-color-breadcrumb-hover: var(--hg-color-white);
+      --hgc-color-breadcrumb-active: var(--hg-color-accent-light);
+    }
   }
 
-  .breadcrumb .breadcrumb-item a {
-    color: var(--hgc-hyperlink-color);
-  }
+  .breadcrumb-items,
+  .breadcrumb-item {
+    color: var(--hgc-color-breadcrumb);
 
-  .breadcrumb .breadcrumb-item a:hover,
-  .breadcrumb .breadcrumb-item a:focus {
-    color: var(--hgc-hyperlink-color-hover);
-  }
+    a {
+      @apply hg:hover:underline hg:focus:underline;
+      color: var(--hgc-color-breadcrumb);
+  
+      &:hover,
+      &:focus {
+        color: var(--hgc-color-breadcrumb-hover);
+      }
+    }
 
-  .breadcrumb.color-mode--light {
-    --hg-color-body-text: var(--hg-color-gray-darkest);
-    --hgc-hyperlink-color: var(--hg-color-gray);
-    --hgc-hyperlink-color-hover: var(--hg-color-gray-dark)
-  }
+    .ph {
+      color: currentColor;
+    }
 
-  .breadcrumb.color-mode--dark {
-    --hg-color-body-text: var(--hg-color-white);
-    --hgc-hyperlink-color: var(--hg-color-gray-light);
-    --hgc-hyperlink-color-hover: var(--hg-color-white)
-  }
-
-  .breadcrumb .breadcrumb-item {
-    @apply hg:font-medium hg:text-xl hg:leading-none;
-  }
-
-  .breadcrumb .breadcrumb-item a {
-    @apply hg:hover:underline hg:focus:underline;
-  }
-
-  .breadcrumb .active {
-    color: var(--hg-color-body-text);
-  }
-
-  .breadcrumb .breadcrumb-icon {
-    color: var(--hg-color-body-text);
-  }
-
-  .breadcrumb .breadcrumb-icon-ellipses {
-    color: var(--hgc-hyperlink-color);
+    .active {
+      color: var(--hgc-color-breadcrumb-active);
+    }
   }
 }

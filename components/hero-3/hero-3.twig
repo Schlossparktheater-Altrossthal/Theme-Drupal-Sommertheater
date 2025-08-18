@@ -13,7 +13,9 @@
   </div>
   <div class="hero-fullwidth--content">
   {% block hero_content %}
-    {{ include('mercury:heading') }}
+    {{ include('mercury:heading', {
+      url: 'No URL',
+    }) }}
   {% endblock %}
   </div>
 </section>

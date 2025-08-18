@@ -1,7 +1,6 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--hero-1 {
-  height: 100vh;
   padding: calc(var(--hg-spacing, 4px) * 0);
 }
 #storybook-root:has(.hero-overlay) {
@@ -10,25 +9,8 @@
 @layer components {
   .hero-overlay {
     position: relative;
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
     margin-inline: auto;
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    color: var(--hg-color-white);
   }
   .hero-overlay .hero-region.content p {
     font-size: var(--hg-text-2xl, 1.5rem);

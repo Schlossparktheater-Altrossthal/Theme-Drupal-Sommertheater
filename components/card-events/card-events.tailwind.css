@@ -9,14 +9,10 @@
   .card-events {
     background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
-  }
 
-  .card-events .heading {
-    @apply hg:font-bold hg:text-brand;
-  }
-
-  .card-events--date {
-    @apply hg:font-bold hg:text-2xl hg:leading-none;
+    .heading {
+      @apply hg:font-bold hg:text-brand;
+    }
   }
 
   .card-events--description,
@@ -26,15 +22,5 @@
 
   .card-events--place {
     @apply hg:font-semibold;
-  }
-
-  .color-mode--light .card-events,
-  .color-mode--light.card-events {
-    --hg-color-body-text: var(--hg-color-gray-dark);
-  }
-
-  .color-mode--dark .card-events .heading,
-  .color-mode--dark.card-events .heading {
-    @apply hg:text-white;
   }
 }

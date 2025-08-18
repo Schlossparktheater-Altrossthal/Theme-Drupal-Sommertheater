@@ -1,11 +1,11 @@
 {% set classes = classes|default([])|merge([
     'hero-overlay',
-    'hg:h-dvh hg:md:max-h-3/4 hg:min:min-h-3/4 hg:xl:max-h-[900px]',
-    'color-mode--' ~ color_mode,
+    'hg:relative',
+    'hg:h-dvh hg:md:max-h-3/4 hg:lg:max-h-[900px]',
   ])|filter(v => v is not empty)
 %}
 
-{% set img_position = 'object-' ~ background_position %}
+{% set img_position = 'hg:object-' ~ background_position %}
 
 <section class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
@@ -14,15 +14,21 @@
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/40"></div>
       {% endif %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover img_position"/>
     {% endblock %}
     </div>
   {% endif %}
-  <div class="hero-overlay--content hg:absolute hg:inset-0 hg:flex hg:flex-col hg:gap-6 {{ text ? 'hg:justify-center hg:pb-16' : 'hg:justify-end' }} hg:p-6 hg:md:p-10 hg:lg:max-w-3/5 hg:xl:p-20">
+  <div class="hero-overlay--content hg:container hg:px-4 hg:flex hg:flex-col  hg:gap-6 hg:justify-center hg:md:justify-end hg:absolute hg:inset-0 hg:py-6 hg:md:py-10 hg:xl:py-20 hg:mx-auto">
   {% block hero_content %}
-    {{ include('mercury:heading') }}
+    <div class="hg:lg:max-w-10/12">
+      {{ include('mercury:heading', {
+        url: 'No URL',
+      }) }}
+    </div>
     {% if text is not empty %}
-      <p>{{ text }}</p>
+      <div class="hg:lg:max-w-6/12">
+        <p>{{ text }}</p>
+      </div>
     {% endif %}
   {% endblock %}
   </div>

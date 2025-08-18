@@ -7,10 +7,9 @@
   .blockquote {
     --tw-font-weight: var(--hg-font-weight-semibold, 600);
     font-weight: var(--hg-font-weight-semibold, 600);
-    background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
   }
-  .blockquote .blockquote-text {
+  .blockquote-text {
     font-size: var(--hg-text-xl, 1.25rem);
     line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     --tw-leading: 1.5;
@@ -19,7 +18,7 @@
     font-weight: var(--hg-font-weight-semibold, 600);
     color: inherit;
   }
-  .blockquote .blockquote-name {
+  .blockquote-name {
     font-size: var(--hg-text-xl, 1.25rem);
     line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     --tw-leading: 1.2;
@@ -28,7 +27,7 @@
     font-weight: var(--hg-font-weight-bold, 700);
     font-style: normal;
   }
-  .blockquote .blockquote-cite--text {
+  .blockquote-cite--text {
     font-size: var(--hg-text-base, 1rem);
     line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     --tw-leading: 1.2;
@@ -36,20 +35,20 @@
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
     font-style: italic;
+    [class$="-light"] & {
+      color: var(--hg-color-gray, #6b7280);
+    }
+    [class$="-dark"] & {
+      color: var(--hg-color-gray-light, #d1d5db);
+    }
   }
-  .blockquote a.blockquote-cite--text {
+  a.blockquote-cite--text {
     text-decoration-line: underline;
     &:hover {
       @media (hover: hover) {
         text-decoration-line: underline;
       }
     }
-  }
-  .color-mode--light .blockquote .blockquote-cite--text, .color-mode--light.blockquote .blockquote-cite--text {
-    color: var(--hg-color-gray, #6b7280);
-  }
-  .color-mode--dark .blockquote .blockquote-cite--text, .color-mode--dark.blockquote .blockquote-cite--text {
-    color: var(--hg-color-gray-lightest, #f3f4f6);
   }
 }
 @property --tw-font-weight {

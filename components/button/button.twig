@@ -1,21 +1,30 @@
 {% set btn_classes = btn_classes|default([])|merge([
     'button',
     'button--' ~ variant,
-    'color-mode--' ~ color_mode,
-    'hg:' ~ radius,
-    icon ? 'hg:gap-1' : 'hg:px-5',
-    icon_first ? 'hg:flex hg:flex-row hg:ps-4 hg:pe-5' : 'hg:flex hg:flex-row-reverse hg:ps-5 hg:pe-4',
+    'hg:border',
+    'hg:flex',
+    icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
+    'hg:items-center',
+    size == 'small' ? 'hg:gap-1 hg:px-4 hg:py-[6px] hg:text-sm hg:rounded-md' : size =='large' ?  'hg:gap-3 hg:px-5 hg:py-3 hg:text-lg hg:rounded-xl' : 'hg:gap-2 hg:px-5 hg:py-[10px] hg:text- hg:rounded-lg',
 ])|filter(v => v is not empty) %}
+
+{% if size == 'small' %}
+  {% set icon_size = 'hg:text-lg' %}
+{% elseif size == 'large' %}
+  {% set icon_size = 'hg:text-2xl' %}
+{% else %}
+  {% set icon_size = 'hg:text-xl' %}
+{% endif %}
 
 {# If href is provided, present a link; otherwise render a button #}
 {% if href %}
   <a href="{{ href }}" class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}aria-disabled="true" {% endif %}>
-    {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+    {% if icon %}<i class="ph-bold {{ icon }} {{ icon_size}}"></i>{% endif %}
     {{ label }}
   </a>
 {% else %}
   <button class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}disabled{% endif %}>
-    {% if icon %}<span class="material-symbols-outlined">{{ icon }}</span>{% endif %}
+    {% if icon %}<i class="ph-bold {{ icon }} {{ icon_size}}"></i>{% endif %}
     {{ label }}
   </button>
 {% endif %}

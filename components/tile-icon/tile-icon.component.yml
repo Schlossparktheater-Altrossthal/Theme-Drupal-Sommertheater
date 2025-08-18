@@ -8,34 +8,25 @@ props:
     - background
     - text
   properties:
-    background:
-      title: Background color
-      type: string
-      enum:
-        - light
-        - medium
-        - dark
-      default: medium
-      examples:
-        - light
     text:
-      title: Text
       type: string
+      title: Text
       examples:
         - BRAND
     description:
-      title: Text
       type: string
+      title: Text
       examples:
         - Lorem ipsum dolor sit amet luctus rutrum
     icon:
-      title: Material Symbols icon slug
       type: string
+      title: Phosphor icon slug
+      default: "ph-rocket"
       examples:
-        - deblur
+        - "ph-rocket"
     icon_position:
-      title: Icon left/right
       type: string
+      title: Icon left/right
       enum:
         - left
         - right
@@ -43,14 +34,8 @@ props:
       examples:
         - right
     url:
-      title: Link URL
       type: string
+      title: Link URL
+      default: "https://drupal.org"
       examples:
         - https://drupal.org
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark, inherit]
-      examples:
-        - light
-      default: light

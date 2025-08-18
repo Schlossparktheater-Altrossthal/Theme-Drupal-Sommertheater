@@ -7,7 +7,7 @@
   <h{{ heading_level }}>
     <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title hg:px-2 hg:py-4 hg:w-full hg:text-left hg:flex hg:justify-between hg:items-center hg:cursor-pointer">
       {{ title }}
-      <span class="collapsible-section--icon material-symbols-outlined hg:transition-transform hg:duration-(--animate-speed)">expand_more</span>
+      <i class="collapsible-section--icon hg:transition-transform hg:duration-(--animate-speed) ph-bold ph-caret-down"></i>
     </button>
   </h{{ heading_level}}>
   <div class="collapsible-section--content hg:transition-[height, padding] hg:duration-(--animate-speed) hg:px-2" id="{{ content_id }}" aria-labelledby="{{ button_id }}">

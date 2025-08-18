@@ -4,24 +4,30 @@
   max-width: var(--hg-container-lg, 32rem);
 }
 .collapsible-section {
-  --animate-speed: 0s;
   border-bottom-style: var(--tw-border-style);
   border-bottom-width: 1px;
-  border-color: var(--hgc-collapsible-border);
-  background-color: var(--hgc-collapsible-bg);
-}
-.collapsible-section--content {
-  height: auto;
-  padding-bottom: calc(var(--hg-spacing, 4px) * 2);
+  border-color: var(--hg-color-gray-dark, #1f2937);
+  background-color: var(--hgc-collapsible-content-bg);
+  --animate-speed: 0s;
+  --hgc-collapsible-text: var(--hg-color-black);
 }
 .collapsible-section--title {
   font-size: var(--hg-text-2xl, 1.5rem);
   line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
+  background-color: var(--hgc-collapsible-title-bg);
+  &:hover, &:focus {
+    background-color: var(--hgc-collapsible-title-bg-hover);
+  }
+  .collapsible-section--open & {
+    background-color: var(--hgc-collapsible-title-bg-active);
+  }
 }
 .collapsible-section--content {
+  height: auto;
   padding-bottom: calc(var(--hg-spacing, 4px) * 2);
   font-size: var(--hg-text-base, 1rem);
   line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
+  color: var(--hgc-collapsible-text);
 }
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
   height: calc(var(--hg-spacing, 4px) * 0);

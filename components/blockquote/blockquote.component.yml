@@ -19,18 +19,13 @@ props:
       type: string
       title: Cite text
       description: The cite text.
+      default: "Engineer, Technical Services"
       examples:
-        - 'Engineer, Technical Services'
+        - "Engineer, Technical Services"
     cite_url:
       type: string
       title: Cite URL
       description: The cite url.
+      default: "No URL"
       examples:
-        - https://example.com
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
+        - "No URL"

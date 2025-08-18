@@ -1,16 +1,38 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
-.sb-main-padded:has(.storybook-component--tile-icon) {
-  padding: 0;
-}
 .storybook-component--tile-icon {
   max-width: 300px;
   padding: 1rem;
 }
-.storybook-component--tile-icon:has(.color-mode--dark) {
-  background-color: var(--hg-color-black, #000000);
-}
 @layer components {
+  .icon-tile {
+    background-color: var(--hg-page-bg);
+    border-color: var(--hg-color-gray-light);
+    color: var(--hg-page-text);
+    .mercury-scheme--vanilla-dark & {
+      border-color: var(--hg-color-gray-dark);
+    }
+    .mercury-scheme--byte-dark & {
+      border-color: var(--hg-color-gray);
+    }
+    .ph {
+      color: var(--hg-color-brand);
+    }
+  }
+  .icon-tile a {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--hg-color-brand, #155dfc);
+      }
+    }
+    .mercury-scheme--vanilla-dark &, .mercury-scheme--byte-dark & {
+      &:hover {
+        @media (hover: hover) {
+          color: var(--hg-color-brand-light, #dbeafe);
+        }
+      }
+    }
+  }
   .icon-tile * {
     --tw-leading: var(--hg-leading-tight, 1.25);
     line-height: var(--hg-leading-tight, 1.25);

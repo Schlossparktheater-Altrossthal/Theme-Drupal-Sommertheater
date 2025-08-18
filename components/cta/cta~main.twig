@@ -3,40 +3,22 @@
 
   {% block media %}
     {% if media.src is not empty %}
-    <div class="cta--media absolute inset-0">
-      <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
+    <div class="cta--media hg:absolute hg:inset-0">
+      <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
       <img class="hg:object-cover hg:w-full hg:h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
     </div>
     {% endif %}
   {% endblock %}
 
   {% block actions %}
-    {# <ul class="flex gap-4 list-none"> #}
-      {% for link in storybook.links %}
-        {% if color_mode == 'light' %}
-          {% if  loop.index == 1 %}
-            {% set link_style = 'fill' %}
-          {% else %}
-            {% set link_style = 'outline' %}
-          {% endif %}
-        {% else %}
-          {% if  loop.index == 1 %}
-            {% set link_style = 'button-light' %}
-          {% else %}
-            {% set link_style = 'button-outline-light' %}
-          {% endif %}
-        {% endif %}
-      {# <li> #}
-        {{ include('mercury:button', {
-            href: link.href,
-            label: link.label,
-            variant: link.variant,
-            radius: link.radius,
-          }
-        ) }}
-      {# </li> #}
-      {% endfor %}
-    {# </ul> #}
+    {% for link in storybook.links %}
+      {% if  loop.index == 1 %}
+        {% set link_style = 'primary' %}
+      {% else %}
+        {% set link_style = 'secondary' %}
+      {% endif %}
+      {{ include('mercury:button', link|merge({variant: link_style})) }}
+    {% endfor %}
   {% endblock %}
 
 {% endembed %}

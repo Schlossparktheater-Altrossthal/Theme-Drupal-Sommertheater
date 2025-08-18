@@ -72,15 +72,6 @@ props:
       type: boolean
       title: Promote card
       description: 'Visually feature card.'
+      default: false
       examples:
         - false
-      default:
-        - false
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples:
-        - light
-      default:
-        - light

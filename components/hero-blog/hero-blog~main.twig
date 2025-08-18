@@ -2,12 +2,9 @@
 {% embed 'mercury:hero-blog' %}
   {% block author %}
     {% if storybook.author is not empty %}
-      <p>By 
+      <p class="hero-blog--author">By 
       {% if storybook.author_url is not empty %}
-        {{ include('mercury:link', {
-          url: storybook.author_url,
-          text: storybook.author,
-        }) }}
+        <a class="hg:underline hg:decoration-1 hg:underline-offset-3" href="{{ storybook.author_url }}">{{ storybook.author }}</a>
       {% else %}
         {{ storybook.author }}
       {% endif %}

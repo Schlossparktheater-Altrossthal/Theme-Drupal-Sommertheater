@@ -1,19 +1,38 @@
 @reference '../../src/main.css';
 
-.sb-main-padded:has(.storybook-component--tile-icon) {
-  padding: 0;
-}
-
 .storybook-component--tile-icon {
   max-width: 300px;
   padding: 1rem;
 }
 
-.storybook-component--tile-icon:has(.color-mode--dark) {
-  @apply hg:bg-black;
-}
-
 @layer components {
+
+  .icon-tile {
+    background-color: var(--hg-page-bg);
+    border-color: var(--hg-color-gray-light);
+    color: var(--hg-page-text);
+
+    .mercury-scheme--vanilla-dark & {
+      border-color: var(--hg-color-gray-dark);
+    }
+
+    .mercury-scheme--byte-dark & {
+      border-color: var(--hg-color-gray);
+    }
+
+    .ph {
+      color: var(--hg-color-brand);
+    }
+  }
+
+  .icon-tile a {
+    @apply hg:hover:text-brand;
+
+    .mercury-scheme--vanilla-dark &,
+    .mercury-scheme--byte-dark & {
+      @apply hg:hover:text-brand-light;
+    }
+  }
 
   .icon-tile * {
     @apply hg:font-normal hg:leading-tight;

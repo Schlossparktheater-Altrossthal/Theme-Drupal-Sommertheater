@@ -20,18 +20,22 @@
 }
 @layer components {
   .hero-blog {
-    background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
     .heading.heading--size-default {
-      --text-8xl: 3.5rem;
-      --text-6xl: 3rem;
-      --text-5xl: 2.5rem;
+      --hg-text-8xl: 3.5rem;
+      --hg-text-6xl: 3rem;
+      --hg-text-5xl: 2.5rem;
     }
     img {
       overflow: hidden;
       border-radius: var(--hg-radius-md, 0.375rem);
     }
-    .link {
+  }
+  .hero-blog--author > a {
+    [class$="-light"] & {
+      color: var(--hg-color-gray, #6b7280);
+    }
+    [class$="-dark"] & {
       color: var(--hg-color-brand-light, #dbeafe);
     }
   }

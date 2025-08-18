@@ -13,14 +13,6 @@ props:
         - media-first (default)
         - media-last
       examples: [media-first (default), media-last]
-    media:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Media Image
-      description: Media image for the hero.
-      type: object
-      examples:
-        - src: 'assets/8474492.jpg'
-          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
     heading_text:
       type: string
       title: Heading Text
@@ -29,7 +21,11 @@ props:
     level:
       type: number
       title: Heading Level
-      enum: [1,2,3,4,5,6]
+      enum: 
+        - 1
+        - 2
+        - 3
+      default: 1
       examples:
         - 1
     text:
@@ -37,10 +33,11 @@ props:
       title: Heading Text
       examples:
         - 'Lorem ipsum dolor sit amet himenaeos letius praesent mollis tempor nunc aliquam pede si eros habitant eleifend ac gravida.'
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
       examples:
-        - light
-      default: light
+        - src: 'assets/8474492.jpg'
+          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'

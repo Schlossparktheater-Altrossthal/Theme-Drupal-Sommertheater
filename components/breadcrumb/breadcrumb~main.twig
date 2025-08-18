@@ -2,9 +2,9 @@
 {% if storybook.breadcrumb %}
 {% set needs_truncation = storybook.breadcrumb|length > 3 %}
 
-  <nav aria-label="breadcrumb" class="breadcrumb hg:relative hg:w-full {{'color-mode--' ~ storybook.color_mode }}">
+  <nav aria-label="breadcrumb" class="breadcrumb hg:relative hg:w-full">
     <h2 id="system-breadcrumb" class="hg:sr-only">{{ 'Breadcrumb' }}</h2>
-    <ol class="hg:list-none hg:flex hg:flex-row hg:gap-2 hg:items-center hg:p-0 hg:m-0">
+    <ol class="breadcrumb-items hg:flex hg:flex-row hg:items-center hg:gap-2 hg:p-0 hg:m-0 hg:list-none hg:text-sm hg:lg:text-base hg:leading-none">
 
       {% for item in storybook.breadcrumb %}
         {% set is_first = loop.first %}
@@ -13,30 +13,30 @@
 
         {# Insert ellipsis after first item if truncation is needed #}
         {% if needs_truncation and loop.index == 2 %}
-          <li aria-hidden="true" class="breadcrumb-icon-ellipses hg:grid hg:content-center hg:h-10">
-            <span class="material-symbols-outlined">more_horiz</span>
+          <li aria-hidden="true" class="breadcrumb-icon-ellipses hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+            <i class="ph ph-dots-three"></i>
           </li>
-          <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10">
-            <span class="material-symbols-outlined">chevron_right</span>
+          <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+            <i class="ph ph-caret-right"></i>
           </li>
         {% endif %}
 
         {# Render breadcrumb item #}
         {% if should_show %}
           {% if loop.last %}
-            <li class="breadcrumb-item active" aria-current="page">
+            <li class="breadcrumb-item hg:text-sm hg:lg:text-base hg:leading-none active" aria-current="page">
               {{ item.text }}
             </li>
           {% elseif item.url %}
-            <li class="breadcrumb-item">
+            <li class="breadcrumb-item hg:text-sm hg:lg:text-base hg:leading-none">
               <a href="{{ item.url }}" >{{ item.text }}</a>
             </li>
           {% endif %}
 
           {# Add chevron after item (except last) #}
           {% if not loop.last and (not needs_truncation or is_last_two or is_first) %}
-            <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10">
-              <span class="material-symbols-outlined">chevron_right</span>
+            <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+              <i class="ph ph-caret-right"></i>
             </li>
           {% endif %}
         {% endif %}

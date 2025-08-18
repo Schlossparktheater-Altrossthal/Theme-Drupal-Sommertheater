@@ -1,6 +1,6 @@
 {# Overriding media_slot just for Storybook #}
 {% embed 'mercury:hero-3' %}
   {% block hero_media %}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
   {% endblock %}
 {% endembed %}

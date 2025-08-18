@@ -7,24 +7,33 @@
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
+  @apply hg:border-b-1 hg:border-gray-dark;
+  background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
-  @apply hg:bg-(--hgc-collapsible-bg) hg:border-b-1 hg:border-(--hgc-collapsible-border);
-}
+  --hgc-collapsible-text: var(--hg-color-black);
 
-.collapsible-section--content {
-  @apply hg:pb-2 hg:h-auto;
 }
 
 .collapsible-section--title {
   @apply hg:text-2xl;
+  background-color: var(--hgc-collapsible-title-bg);
+
+  &:hover,
+  &:focus {
+    background-color: var(--hgc-collapsible-title-bg-hover);
+  }
+
+  .collapsible-section--open & {
+    background-color: var(--hgc-collapsible-title-bg-active);
+  }
 }
 
 .collapsible-section--content {
-  @apply hg:text-base hg:pb-2;
+  @apply hg:pb-2 hg:h-auto hg:text-base;
+  color: var(--hgc-collapsible-text);
 }
 
 /* Styles involving collapsing/expanding. */
-
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
   @apply hg:pb-0 hg:h-0;
 }

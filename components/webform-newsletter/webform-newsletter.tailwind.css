@@ -1,20 +1,16 @@
 @reference '../../src/main.css';
 
 .storybook-component--webform-newsletter {
-  @apply hg:p-3;
-
-  &:has(.dark) {
-    @apply hg:bg-black;
-  }
+  @apply hg:p-4;
 }
 
 @layer components {
 
-  .dark {
+  [class$="-dark"] {
     @apply hg:text-white;
 
     .webform-submission-newsletter-signup-form .form-email {
-      @apply hg:bg-black hg:text-white hg:placeholder:text-white hg:border-white;
+      @apply hg:text-white hg:placeholder:text-white hg:border-white hg:bg-body-bg;
     }
   }
 

@@ -2,7 +2,7 @@
 
 /* Storybook specific */
 .storybook-component--card {
-  @apply hg:max-w-md;
+  @apply hg:p-4 hg:max-w-md;
 }
 .storybook-component--card:has(.card.is-landscape) {
   @apply hg:max-w-2xl;
@@ -11,8 +11,27 @@
 @layer components {
 
   .card {
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    color: var(--hgc-card-text);
+    --hgc-card-bg: var(--hg-color-body-bg);
+    --hgc-card-text: var(--hg-color-body-text);
+
+    &.is-framed,
+    &.is-featured {
+      background-color: var(--hgc-card-bg);
+
+      .mercury-scheme--vanilla-light &,
+      .mercury-scheme--byte-light & {
+        @apply hg:shadow-lg;
+      }
+    }
+
+    .mercury-scheme--vanilla-dark & {
+      --hgc-card-bg: var(--hg-color-gray-dark);
+    }
+
+    .mercury-scheme--byte-dark & {
+      --hgc-card-bg: var(--hg-color-accent-dark);    
+    }
   }
 
   .card .card--media {

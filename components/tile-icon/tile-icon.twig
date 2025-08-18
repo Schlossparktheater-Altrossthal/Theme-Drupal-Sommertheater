@@ -1,14 +1,12 @@
 {% set tile_classes = tile_classes|default([])|merge([
     'icon-tile',
-    'color-mode--' ~ color_mode,
-    background == 'light' ? 'hg:bg-white hg:text-black' : background == 'medium' ? 'hg:bg-brand hg:text-white' : 'hg:bg-brand-dark hg:text-white',
-    color_mode == 'dark' ? 'hg:bg-brand' : 'hg:border',
+    'hg:border',
 ])|filter(v => v is not empty) %}
 
 <div class="{{ tile_classes|join(' ') }} hg:aspect-square hg:grid hg:grid-rows-2 hg:grid-columns-1 hg:p-6 hg:relative">
   <div class="hg:w-full hg:h-full hg:flex {{ icon_position == 'left' ? 'hg:justify-start' : 'hg:justify-end' }}">
     {% if icon %}
-      <span class="material-symbols-outlined icon-5xl">{{ icon }}</span>
+      <i class="hg:text-4xl ph {{ icon }} {{ icon_size}}"></i>
     {% endif %}
   </div>
 

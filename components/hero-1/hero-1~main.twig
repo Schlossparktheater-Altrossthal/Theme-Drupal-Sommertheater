@@ -2,8 +2,8 @@
 {% embed 'mercury:hero-1' %}
   {% block hero_media %}
     {% if media.src is not empty %}
-      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="hg:absolute hg:inset-0 hg:bg-black/40"></div>
     {% endif %}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="w-full h-full object-cover"/>
+    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover img_position"/>
   {% endblock %}
 {% endembed %}

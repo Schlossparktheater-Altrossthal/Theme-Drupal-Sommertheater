@@ -18,7 +18,6 @@ global:
       css/components/icons.css: {}
       css/components/inline-form.css: {}
       css/components/item-list.css: {}
-      css/components/link.css: {}
       css/components/links.css: {}
       css/components/menu.css: {}
       css/components/more-link.css: {}

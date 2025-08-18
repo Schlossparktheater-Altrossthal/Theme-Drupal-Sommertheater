@@ -1,32 +1,202 @@
 @layer components;
 
-.mercury-scheme--vanilla-dark {
-  --hg-color-body-bg: var(--hg-color-black);
-  --hg-color-body-text: var(--hg-color-white);
+.mercury-scheme--vanilla-light {
+  --hg-color-brand-light:   #dbeafe;
+  --hg-color-brand:         #155dfc;
+  --hg-color-brand-dark:    #1c398e;
 
-  --hgc-main-heading-color: var(--hg-color-brand-light);
-  --hgc-menu-link-color: var(--hg-color-white);
-  --hgc-menu-link-color-hover: var(--hg-color-brand-light);
-  --hgc-hyperlink-color: var(--hg-color-blue-100);
-  --hgc-hyperlink-color-hover: var(--hg-color-white);
-  --hgc-card-bg: var(--hg-color-gray-dark);
-  --hgc-card-text-color: var(--hg-color-white);
-  --hgc-pricing-card-bg-color: var(--hg-color-gray-darkest);
-  --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
+  --hg-color-accent-light:  #fce7f3;
+  --hg-color-accent:        #ec4899;
+  --hg-color-accent-dark:   #9d174d;
+
+  --hg-color-body-bg:       #fff;
+  --hg-color-body-text:     #262626;
+
+  --hgc-menu-link-color:       #1f2937;
+  --hgc-menu-link-color-hover: #1d4ed8;
+
+  --hgc-hyperlink-color:       #1d4ed8;
+  --hgc-hyperlink-color-hover: #172554;
+
+  --hg-color-body-bg:       #fff;
+  --hg-color-body-text:     #000;
+  --hgc-tile-logo-bg: var(--hg-color-brand);
+  /* Collapsible Section. */
+  --hgc-collapsible-content-bg: var(--hg-color-gray-lightest);
+  --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
+  --hgc-collapsible-title-bg-hover: var(--hg-color-gray-light);
+  --hgc-collapsible-title-bg-active: var(--hg-color-gray-light);
+  /* Style Plan Cards. */
+  --hgc-card-plan-bg: var(--hg-color-white);
+  --hgc-card-plan-border: var(--hg-color-gray-light);
+  --hgc-card-plan-text: var(--hg-color-body-text);
+  --hgc-card-plan-price: var(--hg-color-brand);
+  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
+  --hgc-card-plan-border-promoted: var(--hg-color-brand);
+  --hgc-card-plan-text-promoted: var(--hg-color-white);
+  --hgc-card-plan-price-promoted: var(--hg-color-white);
+  /* Style Buttons and Badges. */
+  /* Primary */
+  --hgc-btn-bg: var(--hg-color-brand);
+  --hgc-btn-border: var(--hg-color-brand);
+  --hgc-btn-label: var(--hg-color-white);
+  --hgc-btn-bg-hover: var(--hg-color-brand-dark);
+  --hgc-btn-border-hover: var(--hg-color-brand);
+  --hgc-btn-label-hover: var(--hg-color-white);
+  /* Secondary */
+  --hgc-btn-secondary-bg: transparent;
+  --hgc-btn-secondary-border: var(--hg-color-brand);
+  --hgc-btn-secondary-label: var(--hg-color-brand);
+  --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
+  --hgc-btn-secondary-border-hover: var(--hg-color-brand);
+  --hgc-btn-secondary-label-hover: var(--hg-color-gray-dark);
+  /* Style testimonial cards. */
+  --hgc-card-testimonial-bg: transparent;
+  --hgc-card-testimonial-text: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+
+  --hgc-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hgc-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+.mercury-scheme--vanilla-dark {
+  --hg-color-brand-light:   #dbeafe;
+  --hg-color-brand:         #155dfc;
+  --hg-color-brand-dark:    #1c398e;
+
+  --hg-color-accent-light:  #fce7f3;
+  --hg-color-accent:        #ec4899;
+  --hg-color-accent-dark:   #9d174d;
+
+  --hg-color-body-bg:       #000;
+  --hg-color-body-text:     #fff;
+  --hgc-tile-logo-bg: var(--hg-color-brand);
+  /* Collapsible Section. */
+  --hgc-collapsible-content-bg: var(--hg-color-brand-light);
+  --hgc-collapsible-title-bg: var(--hg-color-brand);
+  --hgc-collapsible-title-bg-hover: var(--hg-color-brand-dark);
+  --hgc-collapsible-title-bg-active: var(--hg-color-brand-dark);
+  /* Style Plan Cards. */
+  --hgc-card-plan-bg: var(--hg-color-gray-dark);
+  --hgc-card-plan-border: var(--hg-color-gray-dark);
+  --hgc-card-plan-text: var(--hg-color-body-text);
+  --hgc-card-plan-price: var(--hg-color-white);
+  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
+  --hgc-card-plan-border-promoted: var(--hg-color-brand);
+  --hgc-card-plan-text-promoted: var(--hg-color-white);
+  --hgc-card-plan-price-promoted: var(--hg-color-white);
+  /* Style Buttons and Badges. */
+  /* Primary */
+  --hgc-btn-bg: var(--hg-color-brand);
+  --hgc-btn-border: var(--hg-color-brand);
+  --hgc-btn-label: var(--hg-color-white);
+  --hgc-btn-bg-hover: var(--hg-color-brand-dark);
+  --hgc-btn-border-hover: var(--hg-color-brand);
+  --hgc-btn-label-hover: var(--hg-color-white);
+  /* Secondary */
+  --hgc-btn-secondary-bg: transparent;
+  --hgc-btn-secondary-border: var(--hg-color-gray);
+  --hgc-btn-secondary-label: var(--hg-color-gray-light);
+  --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
+  --hgc-btn-secondary-border-hover: var(--hg-color-brand-light);
+  --hgc-btn-secondary-label-hover: var(--hg-color-brand);
+  /* Style testimonial cards. */
+  --hgc-card-testimonial-bg: transparent;
+  --hgc-card-testimonial-text: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+
+  --hgc-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hgc-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 .mercury-scheme--byte-light {
+  --hg-color-gray-lightest: #f3f4f6;
+  --hg-color-gray-light:    #d1d5db;
+  --hg-color-gray:          #6b7280;
+  --hg-color-gray-dark:     #1f2937;
+  --hg-color-gray-darkest:  #030712;
 
-  --hgc-main-heading-color: var(--hg-color-brand);
-  --hgc-menu-link-color: var(--hg-color-gray-darkest);
-  --hgc-menu-link-color-hover: var(--hg-color-brand);
-  --hgc-hyperlink-color: var(--hg-color-brand);
-  --hgc-hyperlink-color-hover: var(--hg-color-brand-dark);
-  --hgc-card-bg: var(--hg-color-gray-light);
-  --hgc-card-text-color: var(--hg-color-gray-darkest);
-  --hgc-pricing-card-bg-color: var(--hg-color-white);
-  --hgc-pricing-card-border-color: var(--hg-color-gray-darkest);
+  --hg-color-brand-light:   #cdfbf1;
+  --hg-color-brand:         #01d5be;
+  --hg-color-brand-dark:    #0c4f4a;
 
+  --hg-color-accent-light:  #cad5e2;
+  --hg-color-accent:        #1d283d;
+  --hg-color-accent-dark:   #050819;
+
+  --hg-color-info:          #01a8e4;
+  --hg-color-positive:      #00cc41;
+  --hg-color-warning:       #ffbf00;
+  --hg-color-negative:      #e60032;
+
+  --hgc-color-body-bg:       #ffffff;
+  --hgc-color-body-text:     #1f2937;
+
+  --hgc-font-weight-light:    300;
+  --hgc-font-weight-normal:   400;
+  --hgc-font-weight-medium:   500;
+  --hgc-font-weight-semibold: 600;
+  --hgc-font-weight-bold:     700;
+
+  --hgc-font-weight-p:  400;
+  --hgc-font-weight-h1: 600;
+  --hgc-font-weight-h2: 600;
+  --hgc-font-weight-h3: 600;
+  --hgc-font-weight-h4: 500;
+  --hgc-font-weight-h5: 500;
+  --hgc-font-weight-h6: 500;
+
+  --hgc-menu-link-color:       #1f2937;
+  --hgc-menu-link-color-hover: #1d4ed8;
+
+  --hgc-hyperlink-color:       #1d4ed8;
+  --hgc-hyperlink-color-hover: #172554;
+
+  --hgc-radius-sm: 0;
+  --hgc-tile-logo-bg: var(--hg-color-brand);
+  /* Collapsible Section. */
+  --hgc-collapsible-content-bg: var(--hg-color-gray-lightest);
+  --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
+  --hgc-collapsible-title-bg-hover: var(--hg-color-gray-light);
+  --hgc-collapsible-title-bg-active: var(--hg-color-gray-light);
+  /* Style Plan Cards. */
+  --hgc-card-plan-bg: var(--hg-color-white);
+  --hgc-card-plan-border: var(--hg-color-gray-light);
+  --hgc-card-plan-text: var(--hg-color-body-text);
+  --hgc-card-plan-price: var(--hg-color-brand);
+  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
+  --hgc-card-plan-border-promoted: var(--hg-color-brand);
+  --hgc-card-plan-text-promoted: var(--hg-color-black);
+  --hgc-card-plan-price-promoted: var(--hg-color-black);
+  /* Used for both buttons and badges. */
+  --hgc-btn-bg: var(--hg-color-brand);
+  --hgc-btn-border: var(--hg-color-brand);
+  --hgc-btn-bg-hover: var(--hg-color-brand-dark);
+  --hgc-btn-border-hover: var(--hg-color-brand);
+  --hgc-btn-label-hover: var(--hg-color-white);
+  /* Secondary */
+  --hgc-btn-secondary-bg: transparent;
+  --hgc-btn-secondary-border: var(--hg-color-brand);
+  --hgc-btn-secondary-label: var(--hg-color-brand-dark);
+  --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
+  --hgc-btn-secondary-border-hover: var(--hg-color-gray-dark);
+  --hgc-btn-secondary-label-hover: var(--hg-color-gray-dark);
+  /* Style testimonial cards. */
+  --hgc-card-testimonial-bg: var(--hg-color-brand);
+  --hgc-card-testimonial-text: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+  /* Fonts */
+  --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .mercury-scheme--byte-dark {
@@ -38,13 +208,10 @@
   --hg-color-accent:        #1d283d;
   --hg-color-accent-dark:   #050819;
 
-  --hg-color-body-bg:       #1f2937;
+  --hg-color-body-bg:       #1d283d;
   --hg-color-body-text:     #ffffff;
 
   --hgc-radius-sm: 0;
-
-  --hg-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hg-font-body:    'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
@@ -60,16 +227,44 @@
   --hgc-hyperlink-color: var(--hg-color-blue-100);
   --hgc-hyperlink-color-hover: var(--hg-color-white);
 
-  --hgc-card-bg: var(--hg-color-gray-dark);
-  --hgc-card-text-color: var(--hg-color-white);
-
-  --hgc-pricing-card-bg-color: var(--hg-color-gray-darkest);
-  --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
-
+  --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-tile-logo-bg: #536487;
-
-  --hgc-collapsible-bg: var(--hgc-card-bg);
-  --hgc-collapsible-border: var(--hg-color-brand-dark);
-
-
+  /* Collapsible Section. */
+  --hgc-collapsible-content-bg: var(--hg-color-brand-light);
+  --hgc-collapsible-title-bg: var(--hg-color-brand);
+  --hgc-collapsible-title-bg-hover: var(--hg-color-brand-dark);
+  --hgc-collapsible-title-bg-active: var(--hg-color-brand-dark);
+  /* Style Plan Cards. */
+  --hgc-card-plan-bg: var(--hg-color-accent-dark);
+  --hgc-card-plan-border: var(--hg-color-accent-dark);
+  --hgc-card-plan-text: var(--hg-color-body-text);
+  --hgc-card-plan-price: var(--hg-color-brand);
+  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
+  --hgc-card-plan-border-promoted: var(--hg-color-brand);
+  --hgc-card-plan-text-promoted: var(--hg-color-accent);
+  --hgc-card-plan-price-promoted: var(--hg-color-accent);
+  /* Used for both buttons and badges. */
+  --hgc-btn-bg: var(--hg-color-brand);
+  --hgc-btn-border: var(--hg-color-brand);
+  --hgc-btn-label: var(--hg-color-accent);
+  --hgc-btn-bg-hover: var(--hg-color-brand-dark);
+  --hgc-btn-border-hover: var(--hg-color-brand);
+  --hgc-btn-label-hover: var(--hg-color-white);
+  /* Secondary */
+  --hgc-btn-secondary-bg: transparent;
+  --hgc-btn-secondary-border: var(--hg-color-brand);
+  --hgc-btn-secondary-label: var(--hg-color-brand);
+  --hgc-btn-secondary-bg-hover: var(--hg-color-brand);
+  --hgc-btn-secondary-border-hover: var(--hg-color-brand);
+  --hgc-btn-secondary-label-hover: var(--hg-color-accent-dark);
+  /* Style testimonial cards. */
+  --hgc-card-testimonial-bg: var(--hg-color-accent-dark);
+  --hgc-card-testimonial-text: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite: var(--hg-color-body-text);
+  --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+  /* Fonts */
+  --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }

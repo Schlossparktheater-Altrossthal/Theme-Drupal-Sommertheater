@@ -12,10 +12,3 @@ breadcrumb:
     url: /museum
   - text: Current Page
     url: /current
-color_mode:
-  type: string
-  title: Color Mode
-  enum: [light, dark]
-  examples: 
-    - light
-  default: light

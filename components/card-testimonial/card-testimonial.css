@@ -4,23 +4,17 @@
 }
 @layer components {
   .card-testimonial {
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    background-color: var(--hgc-card-testimonial-bg);
+    color: var(--hgc-card-testimonial-text);
   }
-  .card-testimonial .testimonial-text {
+  .testimonial-text {
     font-size: var(--hg-text-xl, 1.25rem);
     line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+    color: inherit;
   }
-  .card-testimonial .testimonial-cite--text, .card-testimonial .testimonial-name {
+  .testimonial-cite--text, .testimonial-name {
     font-size: var(--hg-text-base, 1rem);
     line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
-  }
-  .card-testimonial a.testimonial-cite--text {
-    text-decoration-line: underline;
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
-      }
-    }
+    color: inherit;
   }
 }

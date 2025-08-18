@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Event
 description: Event card with date, heading, description
 group: Components/Cards
@@ -8,34 +8,25 @@ props:
     title:
       type: string
       title: Heading Text
-      default: 'Enter name of event'
+      default: "Enter name of event"
       examples:
-        - 'Transition'
+        - "Transition"
     event_date:
       type: string
       title: Event Date
-      default: '2026-01-01'
+      default: "2026-01-01"
       examples:
-        - '2026-02-12'
+        - "2026-02-12"
     description:
       type: string
       title: Description
+      default: "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
       examples:
-        - 'Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit.'
+        - "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
     place:
       title: Place
       description: Place of the event
       type: string
-      default: 'Add location'
+      default: "Add location"
       examples:
-        - '29013 Bednar Spurs'
-    color_mode:
-      type: string
-      title: Color Mode
-      description: Color mode of component.
-      enum: 
-        - light
-        - dark
-      default: light
-      examples: 
-        - light
+        - "29013 Bednar Spurs"

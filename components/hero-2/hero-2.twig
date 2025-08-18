@@ -1,8 +1,7 @@
-{% set classes = [
+{% set classes = classes|default([])|merge([
     'hero-sidebyside hg:h-full',
     'media-last' in layout ? 'hg:flex-col hg:md:flex-row-reverse' : 'hg:flex-col hg:md:flex-row',
-    'color-mode--' ~ color_mode,
-  ]
+  ])|filter(v => v is not empty)
 %}
 
 <section class="{{ classes|join(' ') }}">
@@ -13,7 +12,9 @@
   </div>
   <div class="hero-sidebyside--content hg:flex-1 hg:flex hg:flex-col  hg:gap-4 hg:lg:gap-6 {{ text ? 'hg:md:justify-center' : 'hg:md:justify-end hg:md:mb-[-10px]' }}">
   {% block hero_content %}
-    {{ include('mercury:heading') }}
+    {{ include('mercury:heading', {
+      url: 'No URL',
+    }) }}
     {% if text is not empty %}
       <p class="hero-description">{{ text }}</p>
     {% endif %}

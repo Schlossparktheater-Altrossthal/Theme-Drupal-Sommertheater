@@ -3,7 +3,6 @@
 @layer components {
 
   .footer-menu {
-    background-color: var(--hg-color-body-bg);
 
     .parent-link,
     .below-link {
@@ -15,13 +14,13 @@
         color: var(--hgc-menu-link-color-hover);
       }
     }
-  }
 
-  .footer-menu .parent-link {
-    @apply hg:text-2xl;
-  }
+    .parent-link {
+      @apply hg:text-2xl;
+    }
 
-  .footer-menu .below-link {
-    @apply hg:text-xl;
+    .below-link {
+      @apply hg:text-xl;
+    }
   }
 }

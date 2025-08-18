@@ -10,17 +10,9 @@ props:
       title: Layout
       description: Set hero layout
       enum: 
-        - media-first (default)
-        - media-last
-      examples: [media-first (default), media-last]
-    media:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Media Image
-      description: Media image for the hero.
-      type: object
-      examples:
-        - src: 'assets/8474492.jpg'
-          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
+        - "media-first (default)"
+        - "media-last"
+      examples: ["media-first (default)", "media-last"]
     heading_text:
       type: string
       title: Heading Text
@@ -29,20 +21,27 @@ props:
     level:
       type: number
       title: Heading Level
-      enum: [1,2,3,4,5,6]
+      enum: 
+        - 1
+        - 2
+        - 3
+      default: 1
       examples: 
         - 1
     styles:
       type: string
       title: Heading Styles
-      enum: [default, alt]
+      enum: 
+        - "default"
+        - "alt"
+      default: alt
       examples: 
         - alt
-      default: alt
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Media Image
+      description: Media image for the hero.
+      type: object
+      examples:
+        - src: 'assets/8474492.jpg'
+          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'

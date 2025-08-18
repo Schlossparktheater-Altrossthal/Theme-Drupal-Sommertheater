@@ -27,16 +27,9 @@ props:
       type: string
       title: Cite URL
       description: The cite url.
+      default: 'No URL'
       examples:
-        - 'https://www.example.com'
-    media:
-      $ref: json-schema-definitions://experience_builder.module/image
-      title: Card Media
-      description: Media and Alt for the card.
-      type: object
-      examples:
-        - src: 'assets/portrait.png'
-          alt: 'Placeholder'
+        - 'No URL'
     align:
       type: string
       title: Text alignment
@@ -47,13 +40,11 @@ props:
       default: center
       examples: 
         - center
-    color_mode:
-      type: string
-      title: Color Mode
-      description: Test component in light or dark mode.
-      enum: 
-        - light
-        - dark
-      default: light
-      examples: 
-        - light
+    media:
+      $ref: json-schema-definitions://experience_builder.module/image
+      title: Card Media
+      description: Media and Alt for the card.
+      type: object
+      examples:
+        - src: 'assets/portrait.png'
+          alt: 'Placeholder'

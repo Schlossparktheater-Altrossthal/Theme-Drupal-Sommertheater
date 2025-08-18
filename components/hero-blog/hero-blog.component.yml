@@ -47,7 +47,6 @@ props:
       examples:
         - src: 'assets/starshot.png'
           alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
-
 slots:
   blog_media:
     title: 'Place Image'

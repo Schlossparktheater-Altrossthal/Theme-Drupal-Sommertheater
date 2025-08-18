@@ -2,29 +2,39 @@
 @layer properties;
 .storybook-component--card-pricing {
   max-width: 300px;
+  padding: calc(var(--hg-spacing, 4px) * 4);
 }
 @layer components {
   .card-pricing {
-    background-color: var(--hgc-pricing-card-bg-color);
-    border-color: var(--hgc-pricing-card-border-color);
-    color: var(--hg-color-body-text);
-    .columns & {
-      height: 100%;
+    background-color: var(--hgc-card-plan-bg);
+    border-color: var(--hgc-card-plan-border);
+    color: var(--hgc-card-plan-text);
+    &.promote {
+      background-color: var(--hgc-card-plan-bg-promoted);
+      border-color: var(--hgc-card-plan-border-promoted);
+      color: var(--hgc-card-plan-text-promoted);
+      --hgc-card-plan-price: var(--hgc-card-plan-price-promoted);
+      --hgc-card-plan-bg: var(--hgc-card-plan-bg-promoted);
     }
     .card-title {
-      font-size: 2.25rem;
+      font-size: 1.375rem;
       --tw-leading: var(--hg-leading-tight, 1.25);
       line-height: var(--hg-leading-tight, 1.25);
-      --tw-font-weight: var(--hg-font-weight-light, 300);
-      font-weight: var(--hg-font-weight-light, 300);
-      color: var(--hgc-main-heading-color);
+      --tw-font-weight: var(--hg-font-weight-bold, 700);
+      font-weight: var(--hg-font-weight-bold, 700);
+    }
+    .card-description {
+      font-size: var(--hg-text-lg, 1.125rem);
+      line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
+      --tw-leading: 1.2;
+      line-height: 1.2;
     }
     .card-price {
       font-size: var(--hg-text-4xl, 2.5rem);
       line-height: var(--tw-leading, var(--hg-text-4xl--line-height, 1.2));
       --tw-leading: 1;
       line-height: 1;
-      color: var(--hg-color-brand, #155dfc);
+      color: --hgc-card-plan-price;
       @media (width >= 64rem) {
         font-size: var(--hg-text-5xl, 3rem);
         line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
@@ -32,76 +42,24 @@
       @media (width >= 96rem) {
         font-size: 3.15rem;
       }
+      font-family: var(--hgc-font-display);
       sup {
         font-size: 60% !important;
       }
     }
-    .card-description {
-      font-size: var(--hg-text-xl, 1.25rem);
-      line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
-      --tw-leading: 1.2;
-      line-height: 1.2;
-    }
-    .button {
-      font-size: var(--hg-text-sm, 0.875rem) !important;
-      line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5)) !important;
-    }
-    &.promote {
-      --hgc-main-heading-color: var(--hg-color-white);
-      --hg-color-body-text: var(--hg-color-white);
-      --hg-color-body-bg: var(--hgc-pricing-card-bg-color);
-      --hgc-pricing-card-bg-color: var(--hg-color-brand);
-      --hgc-pricing-card-border-color: var(--hgc-pricing-card-bg-color);
-      .card-price {
-        color: var(--hg-color-white, #ffffff);
-      }
-      .button--fill {
-        border-color: var(--hg-color-brand-light, #dbeafe) !important;
-        background-color: var(--hg-color-brand-light, #dbeafe) !important;
-        color: var(--hg-color-brand-dark, #1c398e) !important;
-        &:hover {
-          @media (hover: hover) {
-            border-color: var(--hg-color-brand-dark, #1c398e) !important;
-          }
-        }
-        &:hover {
-          @media (hover: hover) {
-            background-color: var(--hg-color-brand-dark, #1c398e) !important;
-          }
-        }
-        &:hover {
-          @media (hover: hover) {
-            color: var(--hg-color-white, #ffffff) !important;
-          }
-        }
+    .card-pricing--features {
+      border-top-style: var(--tw-border-style);
+      border-top-width: 1px;
+      background-color: var(--hgc-card-plan-bg);
+      padding-top: calc(var(--hg-spacing, 4px) * 4);
+      color: inherit;
+      li {
+        font-size: var(--hg-text-base, 1rem);
+        line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
       }
     }
-    &.color-mode--dark {
-      .card-price {
-        color: var(--hg-color-white, #ffffff);
-      }
-      .link--button-outline-light {
-        &:hover {
-          @media (hover: hover) {
-            background-color: var(--hg-color-white, #ffffff);
-          }
-        }
-        &:hover {
-          @media (hover: hover) {
-            color: var(--hg-color-brand-dark, #1c398e);
-          }
-        }
-      }
-    }
-  }
-  .card-pricing--features {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 1px;
-    background-color: var(--hgc-card-bg);
-    padding-top: calc(var(--hg-spacing, 4px) * 4);
-    li {
-      font-size: var(--hg-text-xl, 1.25rem);
-      line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+    .columns & {
+      height: 100%;
     }
   }
 }
