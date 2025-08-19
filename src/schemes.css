@@ -20,6 +20,12 @@
 
   --hg-color-body-bg:       #fff;
   --hg-color-body-text:     #000;
+
+  --hg-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hg-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
   --hgc-tile-logo-bg: var(--hg-color-brand);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-gray-lightest);
@@ -55,11 +61,6 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
-
-  --hgc-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --hgc-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 .mercury-scheme--vanilla-dark {
@@ -73,6 +74,12 @@
 
   --hg-color-body-bg:       #000;
   --hg-color-body-text:     #fff;
+
+  --hg-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hg-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
   --hgc-tile-logo-bg: var(--hg-color-brand);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
@@ -108,11 +115,6 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
-
-  --hgc-font-display: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-mono: 'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --hgc-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 .mercury-scheme--byte-light {
@@ -134,6 +136,12 @@
   --hg-color-positive:      #00cc41;
   --hg-color-warning:       #ffbf00;
   --hg-color-negative:      #e60032;
+
+   /* Fonts */
+  --hg-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hg-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hg-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   --hgc-color-body-bg:       #ffffff;
   --hgc-color-body-text:     #1f2937;
@@ -192,11 +200,6 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
-  /* Fonts */
-  --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .mercury-scheme--byte-dark {
@@ -210,6 +213,11 @@
 
   --hg-color-body-bg:       #1d283d;
   --hg-color-body-text:     #ffffff;
+
+  --hg-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --hg-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --hg-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  --hg-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   --hgc-radius-sm: 0;
 
@@ -263,8 +271,5 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Fonts */
-  --hgc-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  --hgc-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
-  --hgc-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
-  --hgc-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
 }
