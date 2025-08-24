@@ -29,6 +29,17 @@ props:
       default: default
       examples: 
         - default
+    align:
+      type: string
+      title: Text Alignment
+      description: The heading alignment.
+      enum:
+        - left
+        - center
+        - right
+      default: left
+      examples: 
+        - left
     url:
       type: string
       title: Add optional url

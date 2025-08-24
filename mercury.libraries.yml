@@ -71,6 +71,11 @@ node:
   css:
     component:
       css/components/node.css: {}
+phosphor-icons:
+  css:
+    theme:
+      //cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css: { type: external }
+      //cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css: { type: external }
 progress:
   version: VERSION
   css:

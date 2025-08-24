@@ -15,7 +15,7 @@
     </div>
   {% endif %}
 
-  <div class="card--content hg:flex hg:flex-col hg:gap-4 hg:items-baseline">
+  <div class="card--content hg:w-full hg:flex hg:flex-col hg:gap-4 hg:items-baseline">
   {% if style != 'featured' %}
     {% if block('badges') is defined %}
       {% block badges %}
@@ -35,7 +35,7 @@
       {% endblock %}
     {% endif %}
   {% endif %}
-    <div class="hg:flex hg:flex-col hg:gap-6">
+    <div class="hg:w-full hg:flex hg:flex-col hg:gap-6">
       {{ include('mercury:heading',
         {
           level: 3,
@@ -43,7 +43,9 @@
           url: url,
         } )
       }}
-      <p>{{ text }}</p>
+      {% if text is not empty %}
+        <p>{{ text }}</p>
+      {% endif %}
     </div>
   </div>
 </div>

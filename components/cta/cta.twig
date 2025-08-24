@@ -26,7 +26,7 @@
       {% endif %}
     {% endblock %}
   {% endif %}
-  <div class="cta--content hg:relative hg:min-h-80 hg:flex hg:flex-col hg:justify-center hg:gap-6 hg:lg:gap-8 hg:px-6 hg:py-[90px] hg:lg:px-12 hg:lg:py-[115px] hg:xl:px-16 hg:xl:py-[140px] {{ text_align == 'center' ? 'hg:items-center' }}">
+  <div class="cta--content hg:container hg:relative hg:min-h-80 hg:flex hg:flex-col hg:justify-center hg:gap-6 hg:lg:gap-8 hg:px-6 hg:py-[90px] hg:lg:px-12 hg:lg:py-[115px] hg:xl:px-16 hg:xl:py-[140px] hg:mx-auto {{ text_align == 'center' ? 'hg:items-center' }}">
     {{ include('mercury:heading', {
         heading_classes: (heading_classes|default([]))|merge([ alignment ])
     }) }}

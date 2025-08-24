@@ -2,6 +2,7 @@
     'heading',
     url != 'No URL' ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4',
     styles == 'alt' ? 'heading--size-alt' : 'heading--size-default',
+    'hg:text-' ~ align,
 ])|filter(v => v is not empty) %}
 
 {% set level = level|default(2) %}
