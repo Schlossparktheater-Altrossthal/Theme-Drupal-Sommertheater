@@ -1,4 +1,4 @@
-name: mercury
+name: Mercury
 type: theme
 "base theme": false
 libraries:
@@ -16,7 +16,7 @@ libraries-extend:
     - mercury/file
   core/drupal.progress:
     - mercury/progress
-description: "Mercury is the first step toward a scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system."
+description: "A scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system."
 core_version_requirement: ^11
 generator: "starterkit_theme:11.1.1"
 dependencies:
