@@ -27,7 +27,6 @@ class XbCompatibilityTest extends BrowserTestBase {
   protected static $modules = [
     'experience_builder',
     // Mercury module dependencies.
-    'twig_field_value',
     'twig_tweak',
   ];
 

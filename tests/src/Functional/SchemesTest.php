@@ -28,7 +28,6 @@ class SchemesTest extends BrowserTestBase {
    */
   protected static $modules = [
     // Mercury module dependencies.
-    'twig_field_value',
     'twig_tweak',
   ];
 

@@ -14,8 +14,7 @@
         }
     ],
     "require": {
-        "drupal/twig_tweak": "^3",
-        "drupal/twig_field_value": "^2.0"
+        "drupal/twig_tweak": "^3"
     },
     "require-dev": {
         "drupal/experience_builder": "^0.7.1-alpha1"

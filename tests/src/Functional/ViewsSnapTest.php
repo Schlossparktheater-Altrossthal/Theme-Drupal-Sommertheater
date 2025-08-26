@@ -31,7 +31,6 @@ final class ViewsSnapTest extends BrowserTestBase {
     'node',
     'views',
     // Mercury module dependencies.
-    'twig_field_value',
     'twig_tweak',
   ];
 

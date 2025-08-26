@@ -20,7 +20,7 @@ final class IconsTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['twig_field_value', 'twig_tweak'];
+  protected static $modules = ['twig_tweak'];
 
   /**
    * Tests that all Mercury icons are discoverable.
