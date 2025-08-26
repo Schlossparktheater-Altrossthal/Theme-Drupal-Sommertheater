@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Drupal\Tests\mercury\Functional;
 
 use Drupal\Component\Serialization\Yaml;
-use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Tests\BrowserTestBase;
 use Drupal\views\Entity\View;
 use PHPUnit\Framework\Attributes\CoversFunction;
@@ -22,7 +21,7 @@ final class ViewsSnapTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
+  protected $defaultTheme = 'mercury';
 
   /**
    * {@inheritdoc}
@@ -30,17 +29,12 @@ final class ViewsSnapTest extends BrowserTestBase {
   protected static $modules = [
     'node',
     'views',
-    // Mercury module dependencies.
-    'twig_tweak',
   ];
 
   /**
    * Tests that Mercury adds snapping classes to certain views.
    */
   public function testSnapClassesAreAdded(): void {
-    $this->container->get(ThemeInstallerInterface::class)->install(['mercury']);
-    $this->config('system.theme')->set('default', 'mercury')->save();
-
     $view = file_get_contents(__DIR__ . '/../../fixtures/views.view.snap_test.yml');
     $view = Yaml::decode($view);
     $view = View::create($view);

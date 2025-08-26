@@ -14,11 +14,9 @@
  */
 #}
 {% block content %}
-  {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
-
   {{ include('@mercury/components/branding/branding.twig', {
     site_logo: {
-      src: site_logo_url,
+      src: site_logo,
       alt: 'Home'|t ~ ' ' ~ site_name
     },
     url: path('<front>'),

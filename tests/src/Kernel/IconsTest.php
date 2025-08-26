@@ -18,11 +18,6 @@ use PHPUnit\Framework\Attributes\TestWith;
 final class IconsTest extends KernelTestBase {
 
   /**
-   * {@inheritdoc}
-   */
-  protected static $modules = ['twig_tweak'];
-
-  /**
    * Tests that all Mercury icons are discoverable.
    */
   #[TestWith(['social'])]

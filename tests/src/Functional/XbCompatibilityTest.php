@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
-use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\experience_builder\ComponentIncompatibilityReasonRepository;
 use Drupal\Tests\BrowserTestBase;
@@ -19,26 +18,12 @@ class XbCompatibilityTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
+  protected $defaultTheme = 'mercury';
 
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
-    'experience_builder',
-    // Mercury module dependencies.
-    'twig_tweak',
-  ];
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-    $theme_installer = $this->container->get(ThemeInstallerInterface::class);
-    assert($theme_installer instanceof ThemeInstallerInterface);
-    $theme_installer->install(['mercury']);
-  }
+  protected static $modules = ['experience_builder'];
 
   /**
    * Tests that all Mercury SDCs are compatible with Experience Builder.

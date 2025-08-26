@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
-use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Tests\BrowserTestBase;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Group;
@@ -21,27 +20,7 @@ class SchemesTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
-
-  /**
-   * {@inheritdoc}
-   */
-  protected static $modules = [
-    // Mercury module dependencies.
-    'twig_tweak',
-  ];
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-    $theme_installer = $this->container->get(ThemeInstallerInterface::class);
-    assert($theme_installer instanceof ThemeInstallerInterface);
-    $theme_installer->install(['mercury']);
-
-    $this->config('system.theme')->set('default', 'mercury')->save();
-  }
+  protected $defaultTheme = 'mercury';
 
   /**
    * Tests toggling Mercury into and out of a color scheme.
