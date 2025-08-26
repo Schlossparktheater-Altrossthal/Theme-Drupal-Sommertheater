@@ -13,12 +13,17 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
+
+
+
 {% block content %}
-  {{ include('@mercury/components/branding/branding.twig', {
-    site_logo: {
-      src: site_logo,
-      alt: 'Home'|t ~ ' ' ~ site_name
-    },
-    url: path('<front>'),
-  }) }}
+  {% set home_url = url('<front>') %}
+  {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
+  {% if site_logo is empty %}
+    {{ include('@mercury/components/branding/branding.twig', { url: home_url }) }}
+  {% else %}
+    <a href="{{ home_url }}">
+      <img class="hg:block hg:max-h-25" src="{{ site_logo_url }}" alt="{{ site_name }}">
+    </a>
+  {% endif %}
 {% endblock %}

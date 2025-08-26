@@ -1,5 +1,5 @@
-<a href="{{ url }}" rel="home" class="branding hg:w-40 hg:block">
+<a href="{{ url|default('/') }}" rel="home" class="branding hg:w-40 hg:block">
   {% block branding %}
-    <img class="hg:object-cover hg:w-full hg:h-full" src="/{{ componentMetadata.path }}/assets/starshot_ds.svg" alt="Starshot Design System" fetchpriority="high" />
+    {{ source('@mercury/components/branding/assets/starshot_ds.svg.twig') }}
   {% endblock %}
 </a>

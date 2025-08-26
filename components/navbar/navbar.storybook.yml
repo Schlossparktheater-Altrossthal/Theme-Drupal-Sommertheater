@@ -31,9 +31,3 @@ menu:
           below:
             - text: Nolink > nolink > link
               url: https://disney.com
-branding:
-  site_name:
-    - Starshot Design System
-  site_logo:
-    src: assets/starshot_ds.svg
-    alt: Site logo

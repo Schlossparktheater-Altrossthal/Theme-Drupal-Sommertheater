@@ -1,10 +1,6 @@
 {% embed 'mercury:navbar' %}
   {% block branding %}
-    {% embed 'mercury:branding' with storybook.branding %}
-      {% block branding %}
-        <img class="hg:object-cover hg:w-full hg:h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ site_logo.src }}" alt="{{ site_logo.alt }}" />
-      {% endblock %}
-    {% endembed %}
+    {{ include('@mercury/components/branding/branding.twig') }}
   {% endblock %}
 
   {% block navigation %}

@@ -1,13 +1,7 @@
-<div class="navbar hg:flex hg:justify-between hg:relative hg:z-[500]">
-  <div class="navbar--logo hg:min-w-12 hg:flex hg:justify-start hg:items-center hg:grow-0 hg:shrink-0">
+<div class="navbar hg:flex hg:justify-between hg:relative hg:z-[500] hg:px-6 hg:py-4">
+  <div class="navbar--logo hg:max-h-25 hg:flex hg:justify-start hg:items-center hg:grow-0 hg:shrink-0">
     {% block logo %}
-      {{ include('mercury:branding', {
-        site_name: 'Starshot Design System'|t,
-        site_logo: {
-          src: '/' ~ componentMetadata.path ~ '/assets/starshot_ds.svg',
-          alt: ''
-        }
-      }) }}
+      {{ include('@mercury/components/branding/branding.twig') }}
     {% endblock %}
   </div>
 
@@ -27,7 +21,7 @@
     </div>
   </div>
 
-  <div class="navbar--links hg:min-w-12 hg:ml-auto hg:flex hg:justify-end hg:grow-0 hg:shrink-0">
+  <div class="navbar--links hg:ml-auto hg:flex hg:justify-end hg:grow-0 hg:shrink-0">
     {% block links %}
       {{ include('mercury:button', {
         variant: 'fill',

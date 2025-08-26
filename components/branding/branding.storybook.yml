@@ -1,6 +1,4 @@
-hide_main: true
-site_name:
-  - 'Starshot Design System'
-site_logo:
-  src: 'assets/starshot_ds.svg'
-  alt: 'Site logo'
+name: Branding
+props:
+  type: object
+  properties: {}

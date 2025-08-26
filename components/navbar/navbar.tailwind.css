@@ -5,3 +5,10 @@
 .navbar--menu {
   @apply hg:bg-body-bg;
 }
+
+body.path-xb {
+  .navbar--logo,
+  .navbar--links {
+    @apply hg:min-w-12;
+  }
+}
