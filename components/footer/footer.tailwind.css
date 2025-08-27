@@ -1,12 +1,16 @@
 @reference '../../src/main.css';
 
 .storybook-component--footer {
-  /* @apply max-w-md; */
+  @apply hg:p-6;
 }
 
 @layer components {
 
-  .site-footer {
-    color: var(--hg-color-body-text);
+  .site-footer--bottom {
+
+    .utility-menu--item-text,
+    .rich-text p {
+      @apply hg:text-xs hg:my-0;
+    }
   }
 }

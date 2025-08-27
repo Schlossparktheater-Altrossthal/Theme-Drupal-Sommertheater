@@ -1,30 +1,44 @@
 {% set footer_classes = footer_classes|default([])|merge([
     'hg:container',
+    'hg:px-4',
     'hg:flex',
     'hg:flex-col',
     'hg:mx-auto',
 ])|filter(v => v is not empty) %}
 
-<section class="site-footer color-mode--{{ color_mode }}">
+<section class="site-footer">
   <div class="{{ footer_classes|join(' ') }}">
-    <div class="site-footer--menu hg:px-4 hg:py-6 hg:xl:px-16 hg:xl:py-20">
-      {% block footer_menu %}
-        {# Slot for components. #}
-      {% endblock %}
+    <div class="site-footer--top hg:flex hg:flex-col hg:md:flex-row hg:w-full hg:gap-6 hg:md:gap-6 hg:py-8 hg:justify-between hg:border-t hg:border-gray">
+      
+      {% if block("footer_first") is defined %}
+        <div class="site-footer--first-col hg:flex hg:flex-col hg:gap-6">
+        {% block footer_first %}
+          {# Slot for components. #}
+        {% endblock %}
+        </div>
+      {% endif %}
+
+      {% if block("footer_last") is defined %}
+        <div class="site-footer--last-col hg:max-w-96">
+        {% block footer_last %}
+          {# Slot for components. #}
+        {% endblock %}
+        </div>
+      {% endif %}
     </div>
 
-    <div class="site-footer--bottom hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:gap-4 hg:w-full hg:px-4 hg:py-4 hg:xl:px-16 hg:xl:py-6 hg:border-t">
-      {% if block("footer_bottom_first") is defined %}
+    <div class="site-footer--bottom hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:gap-2 hg:w-full hg:pt-3 hg:md:pt-4 hg:border-t hg:border-gray">
+      {% if block("footer_utility_first") is defined %}
         <div class="site-footer--bottom-col">
-          {% block footer_bottom_first %}
+          {% block footer_utility_first %}
             {# Slot for components. #}
           {% endblock %}
         </div>
       {% endif %}
 
-      {% if block("footer_bottom_last") is defined %}
+      {% if block("footer_utility_last") is defined %}
         <div class="site-footer--bottom-col hg:md:flex hg:md:justify-end">
-          {% block footer_bottom_last %}
+          {% block footer_utility_last %}
             {# Slot for components. #}
           {% endblock %}
         </div>

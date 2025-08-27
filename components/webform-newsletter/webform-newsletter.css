@@ -7,12 +7,26 @@
   [class$="-dark"] {
     color: var(--hg-color-white, #ffffff);
     .webform-submission-newsletter-signup-form .form-email {
-      border-color: var(--hg-color-white, #ffffff);
+      border-color: var(--hg-color-accent-light, #fce7f3);
       background-color: var(--hg-color-body-bg, #ffffff);
       color: var(--hg-color-white, #ffffff);
       &::placeholder {
-        color: var(--hg-color-white, #ffffff);
+        color: var(--hg-color-accent-light, #fce7f3);
       }
+    }
+  }
+  .form-type-webform-markup {
+    p {
+      margin-block: calc(var(--hg-spacing, 4px) * 0);
+      font-size: var(--hg-text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
+    }
+    h2 {
+      margin-bottom: calc(var(--hg-spacing, 4px) * 2);
+      font-size: var(--hg-text-lg, 1.125rem);
+      line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
+      --tw-font-weight: var(--hg-font-weight-normal, 400);
+      font-weight: var(--hg-font-weight-normal, 400);
     }
   }
   .webform-submission-newsletter-signup-form {
@@ -33,26 +47,15 @@
     }
     .form-email {
       width: 100%;
-      border-radius: var(--hg-radius-sm, 0.25rem);
+      border-radius: var(--hg-radius-md, 0.375rem);
       border-style: var(--tw-border-style);
       border-width: 1px;
-      padding-inline: calc(var(--hg-spacing, 4px) * 2);
+      padding-inline: calc(var(--hg-spacing, 4px) * 3);
       padding-block: calc(var(--hg-spacing, 4px) * 0);
       font-size: var(--hg-text-sm, 0.875rem) !important;
       line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5)) !important;
-      --tw-leading: 28px;
-      line-height: 28px;
-      @media (width >= 64rem) {
-        padding-inline: calc(var(--hg-spacing, 4px) * 3);
-      }
-      @media (width >= 64rem) {
-        font-size: var(--hg-text-lg, 1.125rem) !important;
-        line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5)) !important;
-      }
-      @media (width >= 64rem) {
-        --tw-leading: 42px;
-        line-height: 42px;
-      }
+      --tw-leading: 30px;
+      line-height: 30px;
     }
     .form-item label {
       position: absolute;
@@ -66,53 +69,21 @@
       border-width: 0;
     }
     .form-submit.button {
-      width: fit-content;
-      cursor: pointer;
-      border-radius: var(--hg-radius-sm, 0.25rem);
-      border-style: var(--tw-border-style);
-      border-width: 1px;
-      border-color: var(--hg-color-brand, #155dfc);
-      background-color: var(--hg-color-brand, #155dfc);
-      padding-inline: calc(var(--hg-spacing, 4px) * 2);
-      padding-block: calc(var(--hg-spacing, 4px) * 1) !important;
-      font-size: var(--hg-text-sm, 0.875rem) !important;
-      line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5)) !important;
-      --tw-font-weight: var(--hg-font-weight-medium, 500);
-      font-weight: var(--hg-font-weight-medium, 500);
-      color: var(--hg-color-white, #ffffff);
-      text-decoration-line: none;
-      &:hover {
-        @media (hover: hover) {
-          border-color: var(--hg-color-brand-dark, #1c398e);
-        }
-      }
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--hg-color-brand-dark, #1c398e);
-        }
-      }
-      &:hover {
-        @media (hover: hover) {
-          color: var(--hg-color-white, #ffffff);
-        }
-      }
-      &:hover {
-        @media (hover: hover) {
-          text-decoration-line: none;
-        }
-      }
-      @media (width >= 64rem) {
-        padding-inline: calc(var(--hg-spacing, 4px) * 4);
-      }
-      @media (width >= 64rem) {
-        padding-block: calc(var(--hg-spacing, 4px) * 2) !important;
-      }
-      @media (width >= 64rem) {
-        font-size: var(--hg-text-lg, 1.125rem) !important;
-        line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5)) !important;
-      }
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: calc(var(--hg-spacing, 4px) * 1);
+      border-radius: var(--hg-radius-md, 0.375rem);
+      padding-inline: calc(var(--hg-spacing, 4px) * 4);
+      padding-block: 6px;
+      font-size: var(--hg-text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
     }
   }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -123,16 +94,12 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
       --tw-border-style: solid;
       --tw-leading: initial;
-      --tw-font-weight: initial;
     }
   }
 }

@@ -1,6 +1,13 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+.storybook-component--footer {
+  padding: calc(var(--hg-spacing, 4px) * 6);
+}
 @layer components {
-  .site-footer {
-    color: var(--hg-color-body-text);
+  .site-footer--bottom {
+    .utility-menu--item-text, .rich-text p {
+      margin-block: calc(var(--hg-spacing, 4px) * 0);
+      font-size: var(--hg-text-xs, 0.75rem);
+      line-height: var(--tw-leading, var(--hg-text-xs--line-height, 1.5));
+    }
   }
 }

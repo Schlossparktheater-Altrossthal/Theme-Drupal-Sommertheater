@@ -5,7 +5,7 @@
   .utility-menu {
 
     .utility-menu--item-text {
-      @apply hg:text-base hg:leading-tight hg:hover:underline;
+      @apply hg:text-sm hg:leading-tight hg:hover:underline;
       color: var(--hgc-menu-link-color);
 
       &:hover,

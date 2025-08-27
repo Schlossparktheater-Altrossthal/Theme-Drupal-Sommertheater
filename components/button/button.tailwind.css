@@ -9,16 +9,16 @@ button.button {
 }
 
 .button {
-  @apply hg:font-medium hg:w-fit hg:no-underline hg:hover:no-underline;
+  @apply hg:font-medium hg:w-fit hg:no-underline hg:hover:no-underline hg:cursor-pointer hg:leading-tight hg:border;
   background-color: var(--hgc-btn-bg);
-  border-color: var(--hgc-btn-border);
   color: var(--hgc-btn-label);
+  border-color: var(--hgc-btn-border);
 
   &:hover,
   &:focus {
     background-color: var(--hgc-btn-bg-hover);
-    border-color: var(--hgc-btn-border-hover);
     color: var(--hgc-btn-label-hover);
+    border-color: var(--hgc-btn-border-hover);
   }
 
   &.small .ph-bold {

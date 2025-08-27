@@ -11,19 +11,16 @@ props:
       description: Align links in row or stack
       examples:
         - true
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples:
-        - light
 slots:
-  footer_menu:
-    title: Footer menu
-    description: Place footer menu
-  footer_bottom_first:
-    title: Footer bottom first
-    description: First bottom section
-  footer_bottom_last:
-    title: Footer bottom last
-    description: Last bottom section
+  footer_first:
+    title: Branding & Social
+    description: Stack branding and social links
+  footer_last:
+    title: Call to action
+    description: Add subscription webform
+  footer_utility_first:
+    title: Utility links
+    description: Utility links or similar
+  footer_utility_last:
+    title: Copyright text
+    description: For legal/copyright text.
