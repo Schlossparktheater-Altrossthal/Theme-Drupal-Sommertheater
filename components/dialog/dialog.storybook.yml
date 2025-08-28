@@ -1,0 +1,8 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Dialog
+group: UI
+status: stable
+description: Global dialog styling for Drupal dialogs with Tailwind CSS support
+props:
+  type: object
+  properties: {}

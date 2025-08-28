@@ -1,0 +1,34 @@
+@reference '../../src/main.css';
+
+.storybook-component--dialog-webform {
+  @apply hg:p-3;
+}
+
+@layer components {
+  /* Webform confirmation modal content styling */
+  .webform-confirmation-modal--content {
+    @apply hg:p-4 hg:text-base hg:leading-relaxed hg:text-gray-800;
+  }
+
+  /* Webform confirmation modal specific dialog styling */
+  .webform-confirmation-modal .ui-dialog,
+  .ui-dialog[aria-describedby*="webform"],
+  .ui-dialog[aria-labelledby*="webform"] {
+    /* Inherit global dialog styles, but can override if needed */
+  }
+
+  /* Webform confirmation modal title styling */
+  .webform-confirmation-modal .ui-dialog .ui-dialog-title,
+  .ui-dialog[aria-describedby*="webform"] .ui-dialog-title,
+  .ui-dialog[aria-labelledby*="webform"] .ui-dialog-title {
+    @apply hg:text-xl hg:font-semibold hg:text-gray-900;
+  }
+
+  /* Webform confirmation modal content area */
+  .webform-confirmation-modal .ui-dialog .ui-dialog-content,
+  .ui-dialog[aria-describedby*="webform"] .ui-dialog-content,
+  .ui-dialog[aria-labelledby*="webform"] .ui-dialog-content {
+    @apply hg:p-6 hg:bg-white;
+  }
+
+}

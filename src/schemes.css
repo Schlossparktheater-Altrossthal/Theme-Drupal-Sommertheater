@@ -61,6 +61,32 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+  /* Style basic webform. */
+  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label-focus: var(--hg-color-brand-dark);
+  --hgc-webform-radio-label: var(--hg-color-black);
+  --hgc-webform-placeholder: var(--hg-color-gray-light);
+  --hgc-webform-text: var(--hg-color-black);
+  --hgc-webform-border: var(--hg-color-gray);
+  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-error-text: var(--hg-color-negative);
+  --hgc-webform-button-fill: var(--hg-color-brand);
+  --hgc-webform-button-border: var(--hg-color-brand);
+  --hgc-webform-button-fill-hover: var(--hg-color-brand-dark);
+  --hgc-webform-button-border-hover: var(--hg-color-brand);
+  --hgc-webform-button-text: var(--hg-color-white);
+  --hgc-webform-button-text-hover: var(--hg-color-white);
+  --hgc-webform-button-radius: 6px;
+  --hgc-webform-radio-checkbox-bg: var(--hg-color-white);
+  --hgc-webform-radio-checkbox-border: var(--hg-color-gray);
+  --hgc-webform-radio-checkbox-bg-checked: var(--hg-color-white);
+  --hgc-webform-radio-checkbox-border-checked: var(--hg-color-brand);
+  --hgc-webform-radio-checkbox-bg-center: var(--hg-color-brand);
+  /* Dialogs. */
+  --hgc-dialog-background: var(--hg-color-white);
+  --hgc-dialog-border: var(--hg-color-brand);
+  --hgc-dialog-text: var(--hg-color-body-text);
+  --hgc-dialog-close: var(--hg-color-brand);
 }
 
 .mercury-scheme--vanilla-dark {
@@ -115,6 +141,32 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+  /* Style basic webform. */
+  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label-focus: var(--hg-color-gray-light);
+  --hgc-webform-radio-label: var(--hg-color-gray);
+  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-text: var(--hg-color-gray-lightest);
+  --hgc-webform-border: var(--hg-color-gray);
+  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-error-text: var(--hg-color-negative);
+  --hgc-webform-button-fill: var(--hg-color-brand);
+  --hgc-webform-button-border: var(--hg-color-brand);
+  --hgc-webform-button-fill-hover: var(--hg-color-brand-dark);
+  --hgc-webform-button-border-hover: var(--hg-color-brand);
+  --hgc-webform-button-text: var(--hg-color-white);
+  --hgc-webform-button-text-hover: var(--hg-color-white);
+  --hgc-webform-button-radius: 6px;
+  --hgc-webform-radio-checkbox-bg: var(--hg-color-body-bg);
+  --hgc-webform-radio-checkbox-border: var(--hg-color-gray);
+  --hgc-webform-radio-checkbox-bg-checked: var(--hg-color-body-bg);
+  --hgc-webform-radio-checkbox-border-checked: var(--hg-color-brand);
+  --hgc-webform-radio-checkbox-bg-center: var(--hg-color-white);
+  /* Dialogs. */
+  --hgc-dialog-background: var(--hg-color-gray-darkest);
+  --hgc-dialog-border: var(--hg-color-brand-light);
+  --hgc-dialog-text: var(--hg-color-body-text);
+  --hgc-dialog-close: var(--hg-color-brand-light);
 }
 
 .mercury-scheme--byte-light {
@@ -200,6 +252,32 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
+  /* Style basic webform. */
+  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label-focus: var(--hg-color-brand-dark);
+  --hgc-webform-radio-label: var(--hg-color-black);
+  --hgc-webform-placeholder: var(--hg-color-gray-light);
+  --hgc-webform-text: var(--hg-color-black);
+  --hgc-webform-border: var(--hg-color-gray);
+  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-error-text: var(--hg-color-negative);
+  --hgc-webform-button-fill: var(--hg-color-brand);
+  --hgc-webform-button-border: var(--hg-color-brand);
+  --hgc-webform-button-fill-hover: var(--hg-color-brand-dark);
+  --hgc-webform-button-border-hover: var(--hg-color-brand);
+  --hgc-webform-button-text: var(--hg-color-white);
+  --hgc-webform-button-text-hover: var(--hg-color-white);
+  --hgc-webform-button-radius: 6px;
+  --hgc-webform-radio-checkbox-bg: var(--hg-color-white);
+  --hgc-webform-radio-checkbox-border: var(--hg-color-gray);
+  --hgc-webform-radio-checkbox-bg-checked: var(--hg-color-white);
+  --hgc-webform-radio-checkbox-border-checked: var(--hg-color-brand);
+  --hgc-webform-radio-checkbox-bg-center: var(--hg-color-brand);
+    /* Dialogs. */
+  --hgc-dialog-background: var(--hg-color-brand);
+  --hgc-dialog-border: var(--hg-color-brand-light);
+  --hgc-dialog-text: var(--hg-color-body-text);
+  --hgc-dialog-close: var(--hg-color-brand-light);
 }
 
 .mercury-scheme--byte-dark {
@@ -270,6 +348,30 @@
   --hgc-card-testimonial-text: var(--hg-color-body-text);
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
-  /* Fonts */
-
+  /* Style basic webform. */
+  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label-focus: var(--hg-color-gray-light);
+  --hgc-webform-radio-label: var(--hg-color-gray);
+  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-text: var(--hg-color-gray-lightest);
+  --hgc-webform-border: var(--hg-color-gray);
+  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-error-text: var(--hg-color-negative);
+  --hgc-webform-button-fill: var(--hg-color-brand);
+  --hgc-webform-button-border: var(--hg-color-brand);
+  --hgc-webform-button-fill-hover: var(--hg-color-brand-dark);
+  --hgc-webform-button-border-hover: var(--hg-color-brand);
+  --hgc-webform-button-text: var(--hg-color-white);
+  --hgc-webform-button-text-hover: var(--hg-color-white);
+  --hgc-webform-button-radius: 6px;
+  --hgc-webform-radio-checkbox-bg: var(--hg-color-body-bg);
+  --hgc-webform-radio-checkbox-border: var(--hg-color-gray);
+  --hgc-webform-radio-checkbox-bg-checked: var(--hg-color-body-bg);
+  --hgc-webform-radio-checkbox-border-checked: var(--hg-color-brand);
+  --hgc-webform-radio-checkbox-bg-center: var(--hg-color-white);
+  /* Dialogs. */
+  --hgc-dialog-background: var(--hg-color-accent-dark);
+  --hgc-dialog-border: var(--hg-color-gray);
+  --hgc-dialog-text: var(--hg-color-body-text);
+  --hgc-dialog-close: var(--hg-color-accent-light);
 }

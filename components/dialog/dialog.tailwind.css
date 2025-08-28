@@ -1,0 +1,96 @@
+@reference '../../src/main.css';
+
+.storybook-component--dialog {
+  @apply hg:p-3;
+}
+
+@layer components {
+  /* Global dialog container - applies to all Drupal dialogs */
+  .ui-dialog {
+    @apply hg:absolute hg:z-[1260] hg:p-0 hg:border hg:rounded-lg hg:overflow-hidden;
+    background-color: var(--hgc-dialog-background);
+    border-color: var(--hgc-dialog-border);
+    color: var(--hgc-dialog-text);
+  }
+
+  /* Responsive width for mobile - applies to all dialogs */
+  @media all and (max-width: 48em) {
+    .ui-dialog {
+      @apply hg:w-[92%];
+    }
+  }
+
+  /* Dialog titlebar - applies to all dialogs */
+  .ui-dialog .ui-dialog-titlebar {
+    @apply hg:border-0 hg:border-b hg:border-solid hg:rounded-none hg:bg-transparent hg:font-bold  hg:p-4;
+    border-color: var(--hgc-dialog-border);
+  }
+
+  /* Close button - applies to all dialogs */
+  .ui-dialog .ui-dialog-titlebar-close {
+    @apply hg:absolute hg:right-2 hg:top-2 hg:border-0 hg:bg-none hg:w-5 hg:h-5 hg:text-transparent;
+  }
+
+  /* Keep the icon visible */
+  .ui-dialog .ui-dialog-titlebar-close .ui-button-icon {
+    @apply hg:text-transparent;
+  }
+
+  /* Button pane - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane {
+    @apply hg:mt-0 hg:pt-[0.3em] hg:pr-[1em] hg:pb-[0.3em] hg:pl-[1em] hg:border-t hg:border-solid hg:border-gray hg:bg-[#f3f4ee];
+  }
+
+  /* Button set - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    @apply hg:m-0 hg:p-0;
+  }
+
+  /* Button text - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
+    @apply hg:p-0;
+  }
+
+  /* Form actions in dialogs - applies to all dialogs */
+  .ui-dialog .ui-dialog-content {
+    @apply hg:p-4;
+  }
+
+  /* Form actions in dialogs - applies to all dialogs */
+  .ui-dialog .ui-dialog-content .form-actions {
+    @apply hg:m-0 hg:p-0;
+  }
+
+  /* AJAX progress throbber - applies to all dialogs */
+  .ui-dialog .ajax-progress-throbber {
+    @apply hg:fixed hg:z-[1000] hg:top-[48.5%] hg:left-[49%] hg:w-6 hg:h-6 hg:p-1 hg:opacity-90 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat;
+    background-image: url(../../images/icons/loading-small.svg);
+  }
+
+  /* Hide throbber elements - applies to all dialogs */
+  .ui-dialog .ajax-progress-throbber .throbber,
+  .ui-dialog .ajax-progress-throbber .message {
+    @apply hg:hidden;
+  }
+
+  /* Dialog title styling - applies to all dialogs */
+  .ui-dialog .ui-dialog-title {
+    @apply hg:text-lg hg:font-bold hg:m-0;
+  }
+
+  /* Close button icon styling - applies to all dialogs */
+  .ui-dialog .ui-button-icon {
+    @apply hg:inline-block hg:w-5 hg:h-5 hg:bg-none hg:p-2 hg:cursor-pointer;
+  }
+
+  .ui-dialog .ui-button-icon::before {
+    @apply hg:absolute hg:inset-0 hg:block hg:text-sm hg:font-bold hg:w-5 hg:h-5;
+    content: '✕';
+    color: var(--hgc-dialog-close);
+  }
+
+  /* Close button text spacing - applies to all dialogs */
+  .ui-dialog .ui-button-icon-space {
+    @apply hg:inline-block hg:w-1;
+  }
+}

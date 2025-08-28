@@ -33,6 +33,8 @@ dialog:
   css:
     component:
       css/components/dialog.css: {}
+      components/dialog/dialog.css: {}
+      components/dialog-webform/dialog-webform.css: {}
 dropbutton:
   version: VERSION
   css:
@@ -91,3 +93,8 @@ user:
   css:
     component:
       css/components/user.css: {}
+webform:
+  version: VERSION
+  css:
+    component:
+      components/webform/webform.css: {}
