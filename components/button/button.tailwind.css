@@ -21,6 +21,13 @@ button.button {
     border-color: var(--hgc-btn-border-hover);
   }
 
+  &:disabled {
+    @apply hg:cursor-default;
+    background-color: var(--hgc-btn-bg-disabled);
+    border-color: var(--hgc-btn-border-disabled);
+    color: var(--hgc-btn-label-disabled);
+  }
+
   &.small .ph-bold {
     @apply hg:w-4 hg:h-4;
   }
@@ -50,6 +57,33 @@ button.button {
   --hgc-btn-bg-hover:  var(--hgc-btn-secondary-bg-hover);
   --hgc-btn-border-hover: var(--hgc-btn-secondary-border-hover);
   --hgc-btn-label-hover: var(--hgc-btn-secondary-label-hover);
+
+  &:disabled {
+    --hgc-btn-bg-disabled: var(--hgc-btn-secondary-bg-disabled);
+    --hgc-btn-border-disabled: var(--hgc-btn-secondary-border-disabled);
+    --hgc-btn-label-disabled: var(--hgc-btn-secondary-label-disabled);
+    --hgc-btn-bg-hover: var(--hgc-btn-secondary-bg-disabled);
+    --hgc-btn-border-hover: var(--hgc-btn-secondary-border-disabled);
+    --hgc-btn-label-hover: var(--hgc-btn-secondary-label-disabled);
+  }
+}
+
+.button--negative {
+  --hgc-btn-bg: var(--hgc-btn-negative-bg);
+  --hgc-btn-border: var(--hgc-btn-negative-border);
+  --hgc-btn-label: var(--hgc-btn-negative-label);
+  --hgc-btn-bg-hover:  var(--hgc-btn-negative-bg-hover);
+  --hgc-btn-border-hover: var(--hgc-btn-negative-border-hover);
+  --hgc-btn-label-hover: var(--hgc-btn-negative-label-hover);
+
+  &:disabled {
+    --hgc-btn-bg-disabled: var(--hgc-btn-negative-bg-disabled);
+    --hgc-btn-border-disabled: var(--hgc-btn-negative-border-disabled);
+    --hgc-btn-label-disabled: var(--hgc-btn-negative-label-disabled);
+    --hgc-btn-bg-hover: var(--hgc-btn-negative-bg-disabled);
+    --hgc-btn-border-hover: var(--hgc-btn-negative-border-disabled);
+    --hgc-btn-label-hover: var(--hgc-btn-negative-label-disabled);
+  }
 }
 
 .button--secondary-accent {
@@ -60,27 +94,3 @@ button.button {
   --hgc-btn-border-hover: var(--hg-color-accent);
   --hgc-btn-label-hover: var(--hg-color-accent-dark);
 }
-
-.button--negative {
-  --hgc-btn-bg: var(--hg-color-white);
-  --hgc-btn-border: var(--hg-color-brand-light);
-  --hgc-btn-label: var(--hg-color-gray-dark);
-}
-
-/* 
-@todo - revise to match new schemes.
-.button--fill[aria-disabled="true"],
-.button--fill-accent[aria-disabled="true"],
-.button--fill[disabled],
-.button--fill-accent[disabled] {
-  @apply hg:border-gray-light hg:bg-gray-light hg:text-white hg:hover:bg-gray-light hg:hover:border-gray-light hg:hover:text-white;
-  cursor: default;
-}
-
-.button--outline[aria-disabled="true"],
-.button--outline-accent[aria-disabled="true"],
-.button--outline[disabled],
-.button--outline-accent[disabled] {
-  @apply hg:border-gray-light hg:bg-white hg:text-gray-light hg:hover:bg-white hg:hover:border-gray-light hg:hover:text-gray-light;
-  cursor: default;
-} */

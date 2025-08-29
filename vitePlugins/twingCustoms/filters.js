@@ -20,14 +20,15 @@ export default [
   createFilter(
     't',
     async function (_executionContext, text, replacements) {
+      console.log(replacements);
       if (replacements && typeof replacements === 'object') {
         let result = text;
-        Object.keys(replacements).forEach((key) => {
+        replacements.forEach((replacement, stringToReplace) => {
           // Escape special regex characters in the key for safe replacement
-          const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const escapedStringToReplace = stringToReplace.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           result = result.replace(
-            new RegExp(escapedKey, 'g'),
-            replacements[key]
+            new RegExp(escapedStringToReplace, 'g'),
+            replacement
           );
         });
         return result;

@@ -9,34 +9,50 @@ import '../src/stories/sdc-stories/components.css';
 // Make the `once` function globally available in Storybook.
 window.once = once;
 
-const wrapperClasses = [
+const schemes = [
   {
-    key: 'mercury-scheme--vanilla-light',
+    key: 'vanilla-light',
     title: 'Vanilla Light',
   },
   {
-    key: 'mercury-scheme--vanilla-dark',
+    key: 'vanilla-dark',
     title: 'Vanilla Dark',
   },
   {
-    key: 'mercury-scheme--byte-light',
+    key: 'byte-light',
     title: 'Byte Light',
   },
   {
-    key: 'mercury-scheme--byte-dark',
+    key: 'byte-dark',
     title: 'Byte Dark',
   }
 ];
 
-const WithTheme = (Story, context) => {
+const wrapperClasses = schemes.map(s => `mercury-scheme--${s.key}`);
+
+const wrapperClassesByScheme = schemes.reduce(
+  (cumu, cur) => {
+    cumu[cur.key] = `mercury-scheme--${cur.key}`
+    return cumu;
+  },
+  {}
+);
+
+const WithScheme = (Story, context) => {
   let { scheme } = context.globals;
   scheme = scheme || wrapperClasses[0].key;
 
   React.useLayoutEffect(() => {
     const rootEl = document.documentElement;
 
-    rootEl.classList.remove(...wrapperClasses.map(c => c.key));
-    rootEl.classList.add(scheme);
+    rootEl.classList.remove(...wrapperClasses);
+    rootEl.classList.add(wrapperClassesByScheme[scheme]);
+
+    document.querySelectorAll(`img[data-${scheme}-src]`).forEach(
+      el => {
+        el.src = el.getAttribute(`data-${scheme}-src`);
+      }
+    )
   });
 
   return <Story />;
@@ -60,7 +76,7 @@ const preview = {
       },
     },
   },
-  decorators: [WithTheme],
+  decorators: [WithScheme],
   globalTypes: {
     scheme: {
       description: 'Mercury Scheme',
@@ -68,7 +84,7 @@ const preview = {
       toolbar: {
         title: 'Scheme',
         icon: 'circlehollow',
-        items: wrapperClasses.map(c => ({
+        items: schemes.map(c => ({
           value: c.key,
           title: c.title,
           icon: 'circle',

@@ -4,6 +4,7 @@
 }
 @layer components {
   .card-testimonial {
+    border-radius: var(--hg-radius-md, 0.375rem);
     background-color: var(--hgc-card-testimonial-bg);
     color: var(--hgc-card-testimonial-text);
   }

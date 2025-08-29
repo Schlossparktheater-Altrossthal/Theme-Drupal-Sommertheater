@@ -7,10 +7,14 @@
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
-  @apply hg:border-b-1 hg:border-gray-dark;
+  @apply hg:border-b-2 hg:border-transparent hg:bg-clip-padding;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
   --hgc-collapsible-text: var(--hg-color-black);
+
+  &:has(button[aria-expanded='true']) .collapsible-section--content {
+    @apply hg:py-4;
+  }
 
 }
 
@@ -18,13 +22,13 @@
   @apply hg:text-2xl;
   background-color: var(--hgc-collapsible-title-bg);
 
+  .collapsible-section--open & {
+    background-color: var(--hgc-collapsible-title-bg-active);
+  }
+
   &:hover,
   &:focus {
     background-color: var(--hgc-collapsible-title-bg-hover);
-  }
-
-  .collapsible-section--open & {
-    background-color: var(--hgc-collapsible-title-bg-active);
   }
 }
 

@@ -5,21 +5,25 @@
 }
 .collapsible-section {
   border-bottom-style: var(--tw-border-style);
-  border-bottom-width: 1px;
-  border-color: var(--hg-color-gray-dark, #1f2937);
+  border-bottom-width: 2px;
+  border-color: transparent;
+  background-clip: padding-box;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
   --hgc-collapsible-text: var(--hg-color-black);
+  &:has(button[aria-expanded='true']) .collapsible-section--content {
+    padding-block: calc(var(--hg-spacing, 4px) * 4);
+  }
 }
 .collapsible-section--title {
   font-size: var(--hg-text-2xl, 1.5rem);
   line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
   background-color: var(--hgc-collapsible-title-bg);
-  &:hover, &:focus {
-    background-color: var(--hgc-collapsible-title-bg-hover);
-  }
   .collapsible-section--open & {
     background-color: var(--hgc-collapsible-title-bg-active);
+  }
+  &:hover, &:focus {
+    background-color: var(--hgc-collapsible-title-bg-hover);
   }
 }
 .collapsible-section--content {

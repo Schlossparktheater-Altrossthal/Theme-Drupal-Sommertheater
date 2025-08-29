@@ -8,6 +8,7 @@
 @layer components {
 
   .card-testimonial {
+    @apply hg:rounded-md;
     background-color: var(--hgc-card-testimonial-bg);
     color: var(--hgc-card-testimonial-text);
   }

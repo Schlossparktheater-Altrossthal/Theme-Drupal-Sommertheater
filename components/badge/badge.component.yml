@@ -1,44 +1,50 @@
-"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: "Badge"
-group: "Base"
-status: "stable"
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Badge
+group: Base
+status: stable
 props:
-  type: "object"
+  type: object
   properties:
     label:
-      type: "string"
-      title: "Link Text"
-      description: "The text for the link."
-      default: "New Release"
+      type: string
+      title: Link Text
+      description: The text for the link.
+      default: New Release
       examples:
-        - "New Release"
+        - New Release
     url:
-      type: "string"
-      title: "URL"
-      description: "The URL to link to. If provided, the badge will be rendered as a link."
-      default: "https://www.drupal.org"
+      type: string
+      title: URL
+      description: The URL to link to. If provided, the badge will be rendered as a link.
+      default: https://www.drupal.org
       examples:
-        - "https://www.drupal.org"
+        - https://www.drupal.org
     style:
-      type: "string"
-      title: "Style"
-      description: "Define badge style."
-      enum: ["primary", "secondary", "negative"]
-      default: "primary"
-      examples: 
-        - "primary"
+      type: string
+      title: Style
+      description: Define badge style.
+      enum:
+        - primary
+        - secondary
+      default: primary
+      examples:
+        - primary
     icon:
-      type: "string"
-      title: "Icon"
-      description: "Select an Icon."
-      enum: ["ph-newspaper-clipping", "ph-alien", "ph-robot", "ph-rocket"]
-      default: "ph-newspaper-clipping"
-      examples: 
-        - "ph-newspaper-clipping"
+      type: string
+      title: Icon
+      description: Select an Icon.
+      enum:
+        - ph-newspaper-clipping
+        - ph-alien
+        - ph-robot
+        - ph-rocket
+      default: ph-newspaper-clipping
+      examples:
+        - ph-newspaper-clipping
     icon_first:
-      type: "boolean"
-      title: "Icon First"
-      description: "Icon can display before or after label."
+      type: boolean
+      title: Icon First
+      description: Icon can display before or after label.
       default: true
       examples:
         - true
@@ -46,5 +52,5 @@ props:
 slots:
   # Content to display in the badge.
   badge_content:
-    title: "Content"
-    description: "Content of the badge"
+    title: Content
+    description: Content of the badge

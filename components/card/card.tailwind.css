@@ -25,6 +25,11 @@
       }
     }
 
+    .mercury-scheme--vanilla-light &:hover,
+    .mercury-scheme--vanilla-light &:focus {
+      @apply hg:shadow-lg hg:shadow-black/40;
+    }
+
     .mercury-scheme--vanilla-dark & {
       --hgc-card-bg: var(--hg-color-gray-dark);
     }

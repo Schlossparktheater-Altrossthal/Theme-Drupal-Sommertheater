@@ -19,6 +19,14 @@
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
+    .mercury-scheme--vanilla-light &:hover, .mercury-scheme--vanilla-light &:focus {
+      --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      --tw-shadow-color: var(--hg-color-black, #000000);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--hg-color-black, #000000) 40%, transparent) var(--tw-shadow-alpha), transparent);
+      }
+    }
     .mercury-scheme--vanilla-dark & {
       --hgc-card-bg: var(--hg-color-gray-dark);
     }

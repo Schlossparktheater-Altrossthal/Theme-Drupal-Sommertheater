@@ -4,8 +4,7 @@
   padding: calc(var(--hg-spacing, 4px) * 4);
 }
 @layer components {
-  [class$="-dark"] {
-    color: var(--hg-color-white, #ffffff);
+  .mercury-scheme--vanilla-dark {
     .webform-submission-newsletter-signup-form .form-email {
       border-color: var(--hg-color-accent-light, #fce7f3);
       background-color: var(--hg-color-body-bg, #ffffff);
@@ -27,6 +26,13 @@
       line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
       --tw-font-weight: var(--hg-font-weight-normal, 400);
       font-weight: var(--hg-font-weight-normal, 400);
+    }
+  }
+  .mercury-scheme--byte-dark {
+    .webform-submission-newsletter-signup-form .form-email {
+      &::placeholder {
+        color: var(--hg-color-accent-light, #fce7f3);
+      }
     }
   }
   .webform-submission-newsletter-signup-form {

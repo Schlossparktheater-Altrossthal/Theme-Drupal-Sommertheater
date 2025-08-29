@@ -12,7 +12,8 @@
 
 {% set btn_classes = btn_classes|default([])|merge([
     'button',
-    'button--' ~ variant,
+    'button--' ~ variant|default('primary'),
+    'hg:border',
     'hg:flex',
     'hg:items-center',
     icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',

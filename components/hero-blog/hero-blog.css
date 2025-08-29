@@ -32,11 +32,6 @@
     }
   }
   .hero-blog--author > a {
-    [class$="-light"] & {
-      color: var(--hg-color-gray, #6b7280);
-    }
-    [class$="-dark"] & {
-      color: var(--hg-color-brand-light, #dbeafe);
-    }
+    color: var(--hg-color-body-text, #000000);
   }
 }

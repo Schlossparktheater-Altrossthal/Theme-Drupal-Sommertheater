@@ -21,13 +21,6 @@
   }
 
   .hero-blog--author > a {
-
-    [class$="-light"] & {
-      @apply hg:text-gray;
-    }
-
-    [class$="-dark"] & {
-      @apply hg:text-brand-light;
-    }
+    @apply hg:text-body-text;
   }
 }

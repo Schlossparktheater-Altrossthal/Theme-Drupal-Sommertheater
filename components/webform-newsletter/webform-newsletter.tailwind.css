@@ -5,10 +5,7 @@
 }
 
 @layer components {
-
-  [class$="-dark"] {
-    @apply hg:text-white;
-
+  .mercury-scheme--vanilla-dark {
     .webform-submission-newsletter-signup-form .form-email {
       @apply hg:text-white hg:placeholder:text-accent-light hg:border-accent-light hg:bg-body-bg;
     }
@@ -26,6 +23,12 @@
     }
   }
 
+  .mercury-scheme--byte-dark {
+    .webform-submission-newsletter-signup-form .form-email {
+      @apply hg:placeholder:text-accent-light;
+    }
+  }
+
   .webform-submission-newsletter-signup-form {
     @apply hg:max-w-[600px] hg:flex hg:flex-col hg:gap-3;
 
@@ -40,15 +43,15 @@
     .form-item {
       @apply hg:my-0!;
     }
-  
+
     .form-email {
       @apply hg:px-3 hg:py-0 hg:border hg:leading-[30px] hg:w-full hg:text-sm! hg:rounded-md;
     }
-  
+
     .form-item label {
       @apply hg:sr-only;
     }
-    
+
     .form-submit.button {
       @apply hg:flex hg:flex-row-reverse hg:items-center hg:gap-1 hg:px-4 hg:py-[6px] hg:text-sm hg:rounded-md;
     }

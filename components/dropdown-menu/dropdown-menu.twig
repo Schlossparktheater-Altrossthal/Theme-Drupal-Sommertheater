@@ -49,7 +49,7 @@
         {% endif %}
 
         {% if item.below is not empty %}
-          <button value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:md:min-h-auto" data-level="{{ level }}">
+          <button aria-label="{{ 'Expand @link'|t({'@link': title }) }}" value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:md:min-h-auto hg:cursor-pointer" data-level="{{ level }}">
             <div class="dropdown-menu__expand-button-contents hg:md:w-auto hg:flex hg:justify-center hg:items-center" data-level="{{ level }}">
               {% if url is empty %}
                 <div class="dropdown-menu__expand-button-no-link-title" data-level="{{ level }}">{{ title }}</div>

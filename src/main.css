@@ -7,8 +7,8 @@
   --color-gray-lightest: #f3f4f6;
   --color-gray-light:    #d1d5db;
   --color-gray:          #6b7280;
-  --color-gray-dark:     #1f2937;
-  --color-gray-darkest:  #030712;
+  --color-gray-dark:     #374151;
+  --color-gray-darkest:  #111827;
 
   --color-brand-light:   #dbeafe;
   --color-brand:         #155dfc;
@@ -185,17 +185,13 @@
     @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-body-text;
   }
 
-  p {
+  p, ul, ol, li {
     @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
   }
 
   ul,
   ol {
-    @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit hg:list-disc hg:ps-5;
-  }
-
-  li {
-    @apply hg:font-(--hgc-font-weight-p) hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:text-inherit;
+    @apply hg:list-disc hg:ps-5;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -273,7 +269,7 @@
 
   /* These apply to rich-text blocks only. */
   .rich-text a {
-    @apply hg:underline hg:underline-offset-2;
+    @apply hg:underline hg:underline-offset-2 hg:decoration-1;
     color: var(--hgc-hyperlink-color);
   }
 

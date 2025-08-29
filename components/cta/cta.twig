@@ -28,9 +28,9 @@
   {% endif %}
   <div class="cta--content hg:container hg:relative hg:min-h-80 hg:flex hg:flex-col hg:justify-center hg:gap-6 hg:lg:gap-8 hg:px-6 hg:py-[90px] hg:lg:px-12 hg:lg:py-[115px] hg:xl:px-16 hg:xl:py-[140px] hg:mx-auto {{ text_align == 'center' ? 'hg:items-center' }}">
     {{ include('mercury:heading', {
-        heading_classes: (heading_classes|default([]))|merge([ alignment ])
+        heading_classes: ['hg:font-extrabold']|merge([ alignment ])
     }) }}
-    <p class="hg:font-normal hg:text-2xl hg:xl:text-3xl {{ alignment }}">{{ text }}</p>
+    <p class="hg:font-normal hg:text-md {{ alignment }}">{{ text }}</p>
     {% if block('actions') is defined %}
     <div class="cta--links hg:w-full hg:flex hg:flex-col hg:sm:flex-row hg:gap-4 {{ list_extras }}">
       {% block actions %}

@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Grid Container
-group: Layouts/Grid Container
+group: Layouts
 status: stable
 description: A Column container
 props:
@@ -42,13 +42,13 @@ props:
     margin_before:
       type: string
       title: Space Before
-      enum: ['none','tight','normal','extra']
+      enum: ['none', 'tight', 'normal', 'extra']
       examples:
         - 'normal'
     margin_after:
       type: string
       title: Space After
-      enum: ['none','tight','normal','extra']
+      enum: ['none', 'tight', 'normal', 'extra']
       examples:
         - 'normal'
     width:

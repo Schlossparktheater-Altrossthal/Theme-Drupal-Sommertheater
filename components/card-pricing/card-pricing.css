@@ -15,6 +15,7 @@
       color: var(--hgc-card-plan-text-promoted);
       --hgc-card-plan-price: var(--hgc-card-plan-price-promoted);
       --hgc-card-plan-bg: var(--hgc-card-plan-bg-promoted);
+      --hgc-card-plan-title: var(--hgc-card-plan-title-promoted);
     }
     .card-title {
       font-size: 1.375rem;
@@ -22,6 +23,7 @@
       line-height: var(--hg-leading-tight, 1.25);
       --tw-font-weight: var(--hg-font-weight-bold, 700);
       font-weight: var(--hg-font-weight-bold, 700);
+      color: var(--hgc-card-plan-title);
     }
     .card-description {
       font-size: var(--hg-text-lg, 1.125rem);
@@ -34,7 +36,7 @@
       line-height: var(--tw-leading, var(--hg-text-4xl--line-height, 1.2));
       --tw-leading: 1;
       line-height: 1;
-      color: --hgc-card-plan-price;
+      color: var(--hgc-card-plan-price);
       @media (width >= 64rem) {
         font-size: var(--hg-text-5xl, 3rem);
         line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));

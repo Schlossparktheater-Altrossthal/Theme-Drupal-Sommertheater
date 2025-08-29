@@ -1,5 +1,0 @@
-@reference '../../src/main.css';
-
-#storybook-root:has(.page) {
-  @apply hg:container hg:mx-auto hg:relative;
-}

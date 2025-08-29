@@ -29,6 +29,12 @@ button.button {
     color: var(--hgc-btn-label-hover);
     border-color: var(--hgc-btn-border-hover);
   }
+  &:disabled {
+    cursor: default;
+    background-color: var(--hgc-btn-bg-disabled);
+    border-color: var(--hgc-btn-border-disabled);
+    color: var(--hgc-btn-label-disabled);
+  }
   &.small .ph-bold {
     height: calc(var(--hg-spacing, 4px) * 4);
     width: calc(var(--hg-spacing, 4px) * 4);
@@ -57,6 +63,30 @@ button.button {
   --hgc-btn-bg-hover: var(--hgc-btn-secondary-bg-hover);
   --hgc-btn-border-hover: var(--hgc-btn-secondary-border-hover);
   --hgc-btn-label-hover: var(--hgc-btn-secondary-label-hover);
+  &:disabled {
+    --hgc-btn-bg-disabled: var(--hgc-btn-secondary-bg-disabled);
+    --hgc-btn-border-disabled: var(--hgc-btn-secondary-border-disabled);
+    --hgc-btn-label-disabled: var(--hgc-btn-secondary-label-disabled);
+    --hgc-btn-bg-hover: var(--hgc-btn-secondary-bg-disabled);
+    --hgc-btn-border-hover: var(--hgc-btn-secondary-border-disabled);
+    --hgc-btn-label-hover: var(--hgc-btn-secondary-label-disabled);
+  }
+}
+.button--negative {
+  --hgc-btn-bg: var(--hgc-btn-negative-bg);
+  --hgc-btn-border: var(--hgc-btn-negative-border);
+  --hgc-btn-label: var(--hgc-btn-negative-label);
+  --hgc-btn-bg-hover: var(--hgc-btn-negative-bg-hover);
+  --hgc-btn-border-hover: var(--hgc-btn-negative-border-hover);
+  --hgc-btn-label-hover: var(--hgc-btn-negative-label-hover);
+  &:disabled {
+    --hgc-btn-bg-disabled: var(--hgc-btn-negative-bg-disabled);
+    --hgc-btn-border-disabled: var(--hgc-btn-negative-border-disabled);
+    --hgc-btn-label-disabled: var(--hgc-btn-negative-label-disabled);
+    --hgc-btn-bg-hover: var(--hgc-btn-negative-bg-disabled);
+    --hgc-btn-border-hover: var(--hgc-btn-negative-border-disabled);
+    --hgc-btn-label-hover: var(--hgc-btn-negative-label-disabled);
+  }
 }
 .button--secondary-accent {
   --hgc-btn-bg: var(--hg-color-body-bg);
@@ -65,11 +95,6 @@ button.button {
   --hgc-btn-bg-hover: var(--hg-color-accent-light);
   --hgc-btn-border-hover: var(--hg-color-accent);
   --hgc-btn-label-hover: var(--hg-color-accent-dark);
-}
-.button--negative {
-  --hgc-btn-bg: var(--hg-color-white);
-  --hgc-btn-border: var(--hg-color-brand-light);
-  --hgc-btn-label: var(--hg-color-gray-dark);
 }
 @property --tw-border-style {
   syntax: "*";
