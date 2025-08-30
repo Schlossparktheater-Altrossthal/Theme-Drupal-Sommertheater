@@ -2,6 +2,7 @@ global:
   version: VERSION
   css:
     base:
+      src/fonts.css: {}
       build/css/main.min.css: {}
       components/webform-newsletter/webform-newsletter.css: {}
     theme:
@@ -28,6 +29,7 @@ global:
       css/components/tabs.css: {}
       css/components/textarea.css: {}
       css/components/ui-dialog.css: {}
+
 dialog:
   version: VERSION
   css:
@@ -76,8 +78,7 @@ node:
 phosphor-icons:
   css:
     theme:
-      //cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css: { type: external }
-      //cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css: { type: external }
+      src/phosphor-icons.css: {}
 progress:
   version: VERSION
   css:

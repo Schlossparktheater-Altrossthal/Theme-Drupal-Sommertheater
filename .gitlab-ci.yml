@@ -32,7 +32,7 @@ variables:
   _COMPOSER_YARN_INSTALL: '0'
   # @see https://project.pages.drupalcode.org/gitlab_templates/jobs/cspell
   _CSPELL_DICTIONARY: 'dictionary.txt'
-  _CSPELL_IGNORE_PATHS: 'build/css/*, pnpm-lock.yaml'
+  _CSPELL_IGNORE_PATHS: 'build/css/*, pnpm-lock.yaml, src/phosphor-icons.css'
   # Don't let any linting jobs fail.
   _ALL_VALIDATE_ALLOW_FAILURE: 0
 
