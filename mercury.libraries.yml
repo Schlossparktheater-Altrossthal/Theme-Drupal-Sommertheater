@@ -6,6 +6,7 @@ global:
       build/css/main.min.css: {}
       components/webform-newsletter/webform-newsletter.css: {}
     theme:
+      src/globals.css: {}
       src/schemes.css: {}
     component:
       css/components/action-links.css: {}
