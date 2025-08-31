@@ -10,6 +10,7 @@
   --hgc-hyperlink-color-hover: #124dd0;
 
   --hgc-tile-logo-bg: var(--hg-color-brand-light);
+  --hgc-footer-border: var(--hg-color-gray-light);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: #eeeeee;
   --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
@@ -68,7 +69,7 @@
   --hgc-webform-placeholder: var(--hg-color-gray-light);
   --hgc-webform-text: var(--hg-color-black);
   --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-focus-border: var(--hg-color-brand);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
@@ -96,6 +97,7 @@
   --hgc-hyperlink-color-hover: #bfd3ff;
 
   --hgc-tile-logo-bg: var(--hg-color-brand);
+  --hgc-footer-border: var(--hg-color-gray-dark);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
@@ -153,7 +155,7 @@
   --hgc-webform-placeholder: var(--hg-color-gray);
   --hgc-webform-text: var(--hg-color-gray-lightest);
   --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-focus-border: var(--hg-color-brand);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
@@ -225,6 +227,7 @@
 
   --hgc-radius-sm: 0;
   --hgc-tile-logo-bg: var(--hg-color-brand);
+  --hgc-footer-border: var(--hg-color-gray-light);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
@@ -281,8 +284,8 @@
   --hgc-webform-radio-label: var(--hg-color-black);
   --hgc-webform-placeholder: var(--hg-color-gray-light);
   --hgc-webform-text: var(--hg-color-black);
-  --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-border: var(--hg-color-gray-light);
+  --hgc-webform-focus-border: var(--hg-color-brand);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
@@ -337,6 +340,7 @@
 
 
   --hgc-tile-logo-bg: #536487;
+  --hgc-footer-border: #536487;
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
@@ -393,7 +397,7 @@
   --hgc-webform-placeholder: var(--hg-color-gray);
   --hgc-webform-text: var(--hg-color-gray-lightest);
   --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand-light);
+  --hgc-webform-focus-border: var(--hg-color-brand);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);

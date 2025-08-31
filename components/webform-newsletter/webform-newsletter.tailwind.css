@@ -5,32 +5,38 @@
 }
 
 @layer components {
-  .mercury-scheme--vanilla-dark {
-    .webform-submission-newsletter-signup-form .form-email {
-      @apply hg:text-white hg:placeholder:text-accent-light hg:border-accent-light hg:bg-body-bg;
+
+  .mercury-scheme--vanilla-light {
+    .webform-category--footer.webform-submission-form .form-email {
+      @apply hg:border-gray-light hg:focus:border-brand hg:bg-body-bg;
     }
   }
 
-
-  .form-type-webform-markup {
-
-    p {
-      @apply hg:text-sm hg:my-0;
-    }
-
-    h2 {
-      @apply hg:text-lg hg:font-normal hg:mb-2;
+  .mercury-scheme--vanilla-dark {
+    .webform-category--footer.webform-submission-form .form-email {
+      @apply hg:text-white hg:placeholder:text-accent-light hg:border-gray-dark hg:focus:border-brand hg:bg-body-bg;
     }
   }
 
   .mercury-scheme--byte-dark {
-    .webform-submission-newsletter-signup-form .form-email {
+    .webform-category--footer.webform-submission-form .form-email {
       @apply hg:placeholder:text-accent-light;
     }
   }
 
-  .webform-submission-newsletter-signup-form {
-    @apply hg:max-w-[600px] hg:flex hg:flex-col hg:gap-3;
+  .webform-category--footer.webform-submission-form {
+    @apply hg:flex hg:flex-col hg:gap-3 hg:px-0;
+
+    .form-type-webform-markup {
+
+      p {
+        @apply hg:text-sm hg:my-0;
+      }
+  
+      h2 {
+        @apply hg:text-lg hg:font-normal hg:mb-2;
+      }
+    }
 
     .visually-hidden {
       @apply hg:hidden;
@@ -45,7 +51,7 @@
     }
 
     .form-email {
-      @apply hg:px-3 hg:py-0 hg:border hg:leading-[30px] hg:w-full hg:text-sm! hg:rounded-md;
+      @apply hg:px-3 hg:py-0 hg:border! hg:leading-[30px] hg:w-full hg:text-sm! hg:rounded-md;
     }
 
     .form-item label {

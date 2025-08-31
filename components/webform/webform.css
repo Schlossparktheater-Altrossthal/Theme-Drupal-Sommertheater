@@ -66,11 +66,11 @@
     line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
     --tw-font-weight: var(--hg-font-weight-normal, 400);
     font-weight: var(--hg-font-weight-normal, 400);
+    color: var(--hgc-webform-label);
     @media (width >= 48rem) {
       font-size: var(--hg-text-base, 1rem);
       line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     }
-    color: var(--hgc-webform-label);
   }
   .webform-submission-form .form-item:focus-within, .webform-submission-form .fieldgroup:focus-within {
     >label, .fieldset-legend {
@@ -88,20 +88,20 @@
     border-width: 0px;
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
+    border-color: var(--hgc-webform-border);
     background-color: transparent;
     padding-inline: calc(var(--hg-spacing, 4px) * 0);
     padding-block: calc(var(--hg-spacing, 4px) * 2);
     font-size: var(--hg-text-base, 1rem);
     line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
+    color: var(--hgc-webform-text);
     --tw-outline-style: none;
     outline-style: none;
-    border-color: var(--hgc-webform-border);
-    color: var(--hgc-webform-text);
   }
   .webform-submission-form input[type="text"]:focus, .webform-submission-form input[type="email"]:focus, .webform-submission-form input[type="tel"]:focus, .webform-submission-form input[type="url"]:focus, .webform-submission-form input[type="number"]:focus, .webform-submission-form input[type="password"]:focus, .webform-submission-form input[type="search"]:focus, .webform-submission-form input[type="date"]:focus, .webform-submission-form input[type="time"]:focus, .webform-submission-form input[type="datetime-local"]:focus, .webform-submission-form textarea:focus, .webform-submission-form select:focus {
+    border-color: var(--hgc-webform-focus-border);
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    border-color: var(--hgc-webform-focus-border);
   }
   .webform-submission-form select:focus {
     color: var(--hgc-webform-text);
@@ -118,18 +118,18 @@
     border-radius: var(--hg-radius-lg, 0.5rem);
     border-style: var(--tw-border-style);
     border-width: 1px;
+    border-color: var(--hgc-webform-button-border);
+    background-color: var(--hgc-webform-button-fill);
     padding-inline: calc(var(--hg-spacing, 4px) * 5);
     padding-block: 10px;
     font-size: var(--hg-text-base, 1rem);
     line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
-    background-color: var(--hgc-webform-button-fill);
-    border-color: var(--hgc-webform-button-border);
     color: var(--hgc-webform-button-text);
     border-radius: var(--hgc-webform-button-radius) !important;
   }
   .webform-submission-form .form-submit:hover, .webform-submission-form .webform-button--submit:hover {
+    border-color: var(--hgc-webform-button-border-hover);
     background-color: var(--hgc-webform-button-fill-hover);
-    border-color: var(--hgc-webform-button- border-hover);
     color: var(--hgc-webform-button-text-hover);
   }
   .webform-submission-form .webform-button--draft, .webform-submission-form .webform-button--previous {
@@ -188,7 +188,7 @@
     line-height: 14px;
     --tw-font-weight: var(--hg-font-weight-bold, 700);
     font-weight: var(--hg-font-weight-bold, 700);
-    color: var(--hg-color-gray-dark, #1f2937);
+    color: var(--hg-color-gray-dark, #374151);
   }
   .webform-submission-form .form-radios, .webform-submission-form .form-checkboxes {
     display: flex;
@@ -205,8 +205,8 @@
     label {
       margin-top: -0.25em;
       margin-bottom: calc(var(--hg-spacing, 4px) * 0);
-      opacity: 80%;
       color: var(--hgc-webform-label);
+      opacity: 80%;
     }
     &:has(.description) {
       flex-wrap: wrap;
@@ -225,13 +225,13 @@
     border-radius: calc(infinity * 1px);
     border-style: var(--tw-border-style);
     border-width: 2px;
-    background-color: transparent;
-    background-color: var(--hgc-webform-radio-checkbox-bg);
     border-color: var(--hgc-webform-radio-checkbox-border);
+    background-color: var(--hgc-webform-radio-checkbox-bg);
+    background-color: transparent;
   }
   .webform-submission-form input[type="radio"]:checked {
-    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
     border-color: var(--hgc-webform-radio-checkbox-border-checked);
+    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
   }
   .webform-submission-form input[type="radio"]:checked::after {
     position: absolute;
@@ -260,13 +260,13 @@
     border-radius: 0.25rem;
     border-style: var(--tw-border-style);
     border-width: 2px;
-    background-color: transparent;
-    background-color: var(--hgc-webform-radio-checkbox-bg);
     border-color: var(--hgc-webform-radio-checkbox-border);
+    background-color: var(--hgc-webform-radio-checkbox-bg);
+    background-color: transparent;
   }
   .webform-submission-form input[type="checkbox"]:checked {
-    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
     border-color: var(--hgc-webform-radio-checkbox-border-checked);
+    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
   }
   .webform-submission-form input[type="checkbox"]:checked::after {
     position: absolute;

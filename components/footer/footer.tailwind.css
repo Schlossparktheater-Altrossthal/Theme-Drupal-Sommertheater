@@ -6,6 +6,17 @@
 
 @layer components {
 
+  .site-footer--top {
+
+    .block-webform {
+      @apply hg:md:flex hg:w-full hg:justify-items-end;
+    }
+
+    .webform-category--footer.webform-submission-form {
+      @apply hg:md:w-sm hg:md:mx-0 hg:md:ms-auto;
+    }
+  }
+
   .site-footer--bottom {
 
     .utility-menu--item-text,

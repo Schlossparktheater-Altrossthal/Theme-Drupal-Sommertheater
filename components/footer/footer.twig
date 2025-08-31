@@ -8,7 +8,7 @@
 
 <section class="site-footer">
   <div class="{{ footer_classes|join(' ') }}">
-    <div class="site-footer--top hg:flex hg:flex-col hg:md:flex-row hg:w-full hg:gap-6 hg:md:gap-6 hg:py-8 hg:justify-between hg:border-t hg:border-gray">
+    <div class="site-footer--top hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:w-full hg:gap-6 hg:md:gap-6 hg:py-8 hg:justify-between hg:border-t hg:border-(--hgc-footer-border)">
       
       {% if block("footer_first") is defined %}
         <div class="site-footer--first-col hg:flex hg:flex-col hg:gap-6">
@@ -19,7 +19,7 @@
       {% endif %}
 
       {% if block("footer_last") is defined %}
-        <div class="site-footer--last-col hg:max-w-96">
+        <div class="site-footer--last-col hg:flex hg:flex-col hg:gap-6">
         {% block footer_last %}
           {# Slot for components. #}
         {% endblock %}
@@ -27,7 +27,7 @@
       {% endif %}
     </div>
 
-    <div class="site-footer--bottom hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:gap-2 hg:w-full hg:pt-3 hg:md:pt-4 hg:border-t hg:border-gray">
+    <div class="site-footer--bottom hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:w-full hg:gap-2 hg:md:gap-6 hg:pt-3 hg:md:pt-4 hg:border-t hg:border-(--hgc-footer-border)">
       {% if block("footer_utility_first") is defined %}
         <div class="site-footer--bottom-col">
           {% block footer_utility_first %}

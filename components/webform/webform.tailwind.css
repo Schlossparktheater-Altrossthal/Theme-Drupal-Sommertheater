@@ -32,15 +32,14 @@
   /* Labels - Drupal default styling */
   .webform-submission-form label,
   .webform-submission-form .fieldset-legend {
-    @apply hg:block hg:font-normal hg:mb-1 hg:text-sm hg:md:text-base;
-    color: var(--hgc-webform-label);
+    @apply hg:block hg:font-normal hg:mb-1 hg:text-sm hg:md:text-base hg:text-[var(--hgc-webform-label)];
   }
 
   .webform-submission-form .form-item:focus-within,
   .webform-submission-form .fieldgroup:focus-within {
     >label,
     .fieldset-legend {
-      color: var(--hgc-webform-label-focus);
+      @apply hg:text-[var(--hgc-webform-label-focus)];
     }
   }
 
@@ -63,9 +62,7 @@
   .webform-submission-form input[type="datetime-local"],
   .webform-submission-form textarea,
   .webform-submission-form select {
-    @apply hg:w-full hg:px-0 hg:py-2 hg:border-0 hg:border-b hg:text-base hg:bg-transparent hg:outline-none;
-    border-color: var(--hgc-webform-border);
-    color: var(--hgc-webform-text);
+    @apply hg:w-full hg:px-0 hg:py-2 hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:text-[var(--hgc-webform-text)] hg:text-base hg:bg-transparent hg:outline-none;
   }
 
   /* Focus states - Drupal default */
@@ -81,18 +78,17 @@
   .webform-submission-form input[type="datetime-local"]:focus,
   .webform-submission-form textarea:focus,
   .webform-submission-form select:focus {
-    @apply hg:shadow-sm;
-    border-color: var(--hgc-webform-focus-border);
+    @apply hg:shadow-sm hg:border-[var(--hgc-webform-focus-border)];
   }
 
   .webform-submission-form select:focus {
-    color: var(--hgc-webform-text);
+    @apply hg:text-[var(--hgc-webform-text)];
   }
 
   .webform-submission-form input::placeholder,
   .webform-submission-form textarea::placeholder,
   .webform-submission-form select {
-    color: var(--hgc-webform-placeholder);
+    @apply hg:text-[var(--hgc-webform-placeholder)];
   }
 
 
@@ -105,18 +101,13 @@
   /* Submit button - Drupal default */
   .webform-submission-form .form-submit,
   .webform-submission-form .webform-button--submit {
-    @apply hg:border hg:cursor-pointer hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg;
-    background-color: var(--hgc-webform-button-fill);
-    border-color: var(--hgc-webform-button-border);
-    color: var(--hgc-webform-button-text);
+    @apply hg:border hg:cursor-pointer hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg hg:bg-[var(--hgc-webform-button-fill)] hg:border-[var(--hgc-webform-button-border)] hg:text-[var(--hgc-webform-button-text)];
     border-radius: var(--hgc-webform-button-radius) !important;
   }
   
   .webform-submission-form .form-submit:hover,
   .webform-submission-form .webform-button--submit:hover {
-    background-color: var(--hgc-webform-button-fill-hover);
-    border-color: var(--hgc-webform-button- border-hover);
-    color: var(--hgc-webform-button-text-hover);
+    @apply hg:bg-[var(--hgc-webform-button-fill-hover)] hg:border-[var(--hgc-webform-button-border-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
   }
 
   /* Secondary buttons - Drupal default */
@@ -167,7 +158,7 @@
 
   .webform-submission-form input[type="radio"]:checked+label,
   .webform-submission-form input[type="checkbox"]:checked+label {
-    color: var(--hgc-webform-text);
+    @apply hg:text-[var(--hgc-webform-text)];
   }
 
   .webform-submission-form .form-type-radio,
@@ -175,8 +166,7 @@
     @apply hg:flex hg:items-start hg:gap-2;
 
     label {
-      @apply hg:mt-[-0.25em] hg:mb-0 hg:opacity-80;
-      color: var(--hgc-webform-label);
+      @apply hg:mt-[-0.25em] hg:mb-0 hg:opacity-80 hg:text-[var(--hgc-webform-label)];
     }
 
     &:has(.description) {
@@ -189,19 +179,15 @@
   }
 
   .webform-submission-form input[type="radio"] {
-    @apply hg:appearance-none hg:w-4 hg:h-4 hg:border-2 hg:rounded-full hg:bg-transparent hg:relative hg:cursor-pointer;
-    background-color: var(--hgc-webform-radio-checkbox-bg);
-    border-color: var(--hgc-webform-radio-checkbox-border);
+    @apply hg:appearance-none hg:bg-[var(--hgc-webform-radio-checkbox-bg)] hg:border-[var(--hgc-webform-radio-checkbox-border)] hg:w-4 hg:h-4 hg:border-2 hg:rounded-full hg:bg-transparent hg:relative hg:cursor-pointer;
   }
   
   .webform-submission-form input[type="radio"]:checked {
-    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
-    border-color: var(--hgc-webform-radio-checkbox-border-checked);
+    @apply hg:bg-[var(--hgc-webform-radio-checkbox-bg-checked)] hg:border-[var(--hgc-webform-radio-checkbox-border-checked)];
   }
   
   .webform-submission-form input[type="radio"]:checked::after {
-    @apply hg:absolute hg:w-2 hg:h-2 hg:rounded-full;
-    background-color: var(--hgc-webform-radio-checkbox-bg-center);
+    @apply hg:absolute hg:w-2 hg:h-2 hg:rounded-full hg:bg-[var(--hgc-webform-radio-checkbox-bg-center)];
     content: "";
     inset: 50%;
     transform: translate(-50%, -50%);
@@ -217,19 +203,15 @@
   }
 
   .webform-submission-form input[type="checkbox"] {
-    @apply hg:appearance-none hg:w-4 hg:h-4 hg:border-2 hg:rounded hg:bg-transparent hg:relative hg:cursor-pointer;
-    background-color: var(--hgc-webform-radio-checkbox-bg);
-    border-color: var(--hgc-webform-radio-checkbox-border);
+    @apply hg:appearance-none hg:w-4 hg:h-4 hg:border-2 hg:rounded hg:bg-transparent hg:relative hg:cursor-pointer hg:bg-[var(--hgc-webform-radio-checkbox-bg)] hg:border-[var(--hgc-webform-radio-checkbox-border)];
   }
   
   .webform-submission-form input[type="checkbox"]:checked {
-    background-color: var(--hgc-webform-radio-checkbox-bg-checked);
-    border-color: var(--hgc-webform-radio-checkbox-border-checked);
+    @apply hg:bg-[var(--hgc-webform-radio-checkbox-bg-checked)] hg:border-[var(--hgc-webform-radio-checkbox-border-checked)];
   }
   
   .webform-submission-form input[type="checkbox"]:checked::after {
-    @apply hg:absolute hg:w-2 hg:h-2;
-    background-color: var(--hgc-webform-radio-checkbox-bg-center);
+    @apply hg:absolute hg:w-2 hg:h-2 hg:bg-[var(--hgc-webform-radio-checkbox-bg-center)];
     content: "";
     inset: 50%;
     transform: translate(-50%, -50%);

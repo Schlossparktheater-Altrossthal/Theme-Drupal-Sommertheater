@@ -3,6 +3,26 @@
   padding: calc(var(--hg-spacing, 4px) * 6);
 }
 @layer components {
+  .site-footer--top {
+    .block-webform {
+      width: 100%;
+      justify-items: end;
+      @media (width >= 48rem) {
+        display: flex;
+      }
+    }
+    .webform-category--footer.webform-submission-form {
+      @media (width >= 48rem) {
+        margin-inline: calc(var(--hg-spacing, 4px) * 0);
+      }
+      @media (width >= 48rem) {
+        margin-inline-start: auto;
+      }
+      @media (width >= 48rem) {
+        width: var(--hg-container-sm, 24rem);
+      }
+    }
+  }
   .site-footer--bottom {
     .utility-menu--item-text, .rich-text p {
       margin-block: calc(var(--hg-spacing, 4px) * 0);
