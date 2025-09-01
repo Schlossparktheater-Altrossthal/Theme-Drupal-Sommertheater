@@ -76,8 +76,6 @@ final class ViewsSnapTest extends BrowserTestBase {
     $this->getSession()->reload();
     $assert_session->elementNotExists('css', '.view-snap');
     $assert_session->elementNotExists('css', '.snap-start');
-    // Confirm that the non-snapping wrapper is there.
-    $assert_session->elementsCount('css', '.view-content.container.mx-auto .views-row', 3);
   }
 
 }

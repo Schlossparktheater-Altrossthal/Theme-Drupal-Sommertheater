@@ -11,31 +11,46 @@
 @layer components {
 
   .card {
-    color: var(--hgc-card-text);
-    --hgc-card-bg: var(--hg-color-body-bg);
-    --hgc-card-text: var(--hg-color-body-text);
+    @apply hg:bg-(--hgc-card-bg);
 
-    &.is-framed,
-    &.is-featured {
-      background-color: var(--hgc-card-bg);
+    &:hover,
+    &:focus {
+      --hgc-card-bg: var(--hgc-card-bg-hover);
+    }
 
-      .mercury-scheme--vanilla-light &,
-      .mercury-scheme--byte-light & {
-        @apply hg:shadow-lg;
+    &.is-framed {
+      --hgc-card-bg: var(--hgc-card-framed-bg);
+
+      &:hover,
+      &:focus {
+        --hgc-card-bg: var(--hgc-card-framed-bg-hover);
       }
     }
 
-    .mercury-scheme--vanilla-light &:hover,
-    .mercury-scheme--vanilla-light &:focus {
-      @apply hg:shadow-lg hg:shadow-black/40;
+    &.is-featured {
+      --hgc-card-bg: var(--hgc-card-featured-bg);
+
+      &:hover,
+      &:focus {
+        --hgc-card-bg: var(--hgc-card-featured-bg-hover);
+      }
     }
 
-    .mercury-scheme--vanilla-dark & {
-      --hgc-card-bg: var(--hg-color-gray-dark);
+
+    .views-row & {
+      @apply hg:h-full;
     }
 
-    .mercury-scheme--byte-dark & {
-      --hgc-card-bg: var(--hg-color-accent-dark);    
+    .mercury-scheme--vanilla-light &.is-framed,
+    .mercury-scheme--byte-light &.is-framed,
+    .mercury-scheme--vanilla-light &.is-featured,
+    .mercury-scheme--byte-light &.is-featured {
+      @apply hg:shadow-lg;
+
+      &:hover,
+      &:focus {
+        @apply hg:shadow-black/40;
+      }
     }
   }
 

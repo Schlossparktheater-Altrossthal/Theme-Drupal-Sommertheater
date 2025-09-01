@@ -11,11 +11,19 @@
 
   --hgc-tile-logo-bg: var(--hg-color-brand-light);
   --hgc-footer-border: var(--hg-color-gray-light);
+
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: #eeeeee;
   --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
   --hgc-collapsible-title-bg-hover: var(--hg-color-gray-light);
   --hgc-collapsible-title-bg-active: var(--hg-color-gray-lightest);
+  /* Style Cards. */
+  --hgc-card-bg: transparent;
+  --hgc-card-bg-hover: transparent;
+  --hgc-card-framed-bg: transparent;
+  --hgc-card-framed-bg-hover: transparent;
+  --hgc-card-featured-bg: transparent;
+  --hgc-card-featured-bg-hover: transparent;
   /* Style Plan Cards. */
   --hgc-card-plan-bg: var(--hg-color-white);
   --hgc-card-plan-border: var(--hg-color-gray-light);
@@ -103,6 +111,13 @@
   --hgc-collapsible-title-bg: var(--hg-color-brand);
   --hgc-collapsible-title-bg-hover: var(--hg-color-brand-dark);
   --hgc-collapsible-title-bg-active: var(--hg-color-brand);
+  /* Style Cards. */
+  --hgc-card-bg: transparent;
+  --hgc-card-bg-hover: transparent;
+  --hgc-card-framed-bg: var(--hg-color-gray-darkest);
+  --hgc-card-framed-bg-hover: var(--hg-color-gray-dark);
+  --hgc-card-featured-bg: var(--hg-color-brand-dark);
+  --hgc-card-featured-bg-hover: var(--hg-color-brand);
   /* Style Plan Cards. */
   --hgc-card-plan-bg: var(--hg-color-white);
   --hgc-card-plan-border: var(--hg-color-white);
@@ -233,6 +248,13 @@
   --hgc-collapsible-title-bg: var(--hg-color-brand);
   --hgc-collapsible-title-bg-hover: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg-active: var(--hg-color-brand);
+  /* Style Cards. */
+  --hgc-card-bg: transparent;
+  --hgc-card-bg-hover: transparent;
+  --hgc-card-framed-bg: transparent;
+  --hgc-card-framed-bg-hover: transparent;
+  --hgc-card-featured-bg: transparent;
+  --hgc-card-featured-bg-hover: transparent;
   /* Style Plan Cards. */
   --hgc-card-plan-bg: var(--hg-color-white);
   --hgc-card-plan-border: var(--hg-color-gray-light);
@@ -336,16 +358,21 @@
   --hgc-menu-link-color: var(--hg-color-white);
   --hgc-menu-link-color-hover: var(--hg-color-brand-light);
 
-
-
-
   --hgc-tile-logo-bg: #536487;
   --hgc-footer-border: #536487;
+
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
   --hgc-collapsible-title-bg-hover: var(--hg-color-brand-dark);
   --hgc-collapsible-title-bg-active: var(--hg-color-brand-dark);
+  /* Style Cards. */
+  --hgc-card-bg: transparent;
+  --hgc-card-bg-hover: transparent;
+  --hgc-card-framed-bg: var(--hg-color-accent-dark);
+  --hgc-card-framed-bg-hover: var(--hg-color-brand-dark);
+  --hgc-card-featured-bg: var(--hg-color-brand-dark);
+  --hgc-card-featured-bg-hover: var(--hg-color-brand);
   /* Style Plan Cards. */
   --hgc-card-plan-bg: var(--hg-color-accent-dark);
   --hgc-card-plan-border: var(--hg-color-accent-dark);

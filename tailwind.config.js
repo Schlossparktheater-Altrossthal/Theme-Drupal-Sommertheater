@@ -36,6 +36,6 @@ export default {
       `hg:2xl:gap-y-${val}`,
     ]),
     // add any other classes you want to force to keep here
-  'hg:mx-auto',"hg:grid", "hg:grid-flow-col", "hg:auto-cols-[248px]", "hg:sm:auto-cols-[272px]", "hg:overflow-x-auto", "hg:snap-x", "hg:snap-mandatory", "hg:gap-4", "hg:px-4", "hg:lg:grid-cols-3", "hg:lg:auto-cols-auto", "hg:lg:overflow-x-visible", "hg:hg:lg:snap-none", "hg:snap-start", "hg:bg-gray-200", "hg:p-6", "hg:rounded", 'hg:lg:container','hg:ms-5','hg:me-5','hg:ps-6', 'hg:md:ps-8', 'hg:grid-cols-[272px_248px_272px]', 'hg:aspect-4/3', 'hg:aspect-16/9', 'hg:aspect-3/2', 'hg:aspect-2/1', 'hg:aspect-1/1', 'hg:aspect-16/9',
+  'hg:lg:max-w-3/4', 'hg:mx-auto',"hg:grid", "hg:grid-flow-col", "hg:auto-cols-[248px]", "hg:sm:auto-cols-[272px]", "hg:overflow-x-auto", "hg:snap-x", "hg:snap-mandatory", "hg:gap-4", "hg:px-4", "hg:lg:grid-cols-3", "hg:lg:auto-cols-auto", "hg:lg:overflow-x-visible", "hg:hg:lg:snap-none", "hg:snap-start", "hg:bg-gray-200", "hg:p-6", "hg:rounded", 'hg:lg:container','hg:ms-5','hg:me-5','hg:ps-6', 'hg:md:ps-8', 'hg:grid-cols-[272px_248px_272px]', 'hg:aspect-4/3', 'hg:aspect-16/9', 'hg:aspect-3/2', 'hg:aspect-2/1', 'hg:aspect-1/1', 'hg:aspect-16/9',
   ],
 }

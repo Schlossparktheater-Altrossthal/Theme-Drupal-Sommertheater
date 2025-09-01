@@ -40,8 +40,6 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    'px-6',
-    'md:px-8',
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
@@ -51,17 +49,17 @@
   {% endif %}
   {{ title_suffix }}
   {% if header %}
-    <div class="view-header container mx-auto">
+    <div class="view-header">
       {{ header }}
     </div>
   {% endif %}
   {% if exposed %}
-    <div class="view-filters container mx-auto">
+    <div class="view-filters">
       {{ exposed }}
     </div>
   {% endif %}
   {% if attachment_before %}
-    <div class="attachment attachment-before container mx-auto">
+    <div class="attachment attachment-before">
       {{ attachment_before }}
     </div>
   {% endif %}
@@ -69,14 +67,14 @@
   {% block view_content %}
     {% if rows %}
       {% if snap %}
-        <div class="view-content view-snap hide-scrollbar-x hg:sm:container hg:grid hg:overflow-x-auto hg:snap-x hg:snap-mandatory hg:gap-6 hg:lg:gap-8 hg:grid-cols-[272px_248px_272px] hg:sm:grid-cols-3 hg:sm:overflow-x-visible hg:sm:snap-none hg:sm:mx-auto hg:sm:px-6">
+        <div class="view-content view-snap hide-scrollbar-x hg:sm:container hg:grid hg:overflow-x-auto hg:snap-x hg:snap-mandatory hg:gap-6 hg:lg:gap-8 hg:grid-cols-[272px_248px_272px] hg:sm:grid-cols-3 hg:sm:overflow-x-visible hg:sm:snap-none hg:sm:mx-auto">
       {% else %}
-        <div class="view-content container mx-auto">
+        <div class="view-content">
       {% endif %}
           {{ rows }}
         </div>
     {% elseif empty %}
-      <div class="view-empty container mx-auto">
+      <div class="view-empty">
         {{ empty }}
       </div>
     {% endif %}

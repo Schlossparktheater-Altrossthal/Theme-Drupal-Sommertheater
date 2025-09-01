@@ -9,7 +9,7 @@
 
 <section class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
-    <div class="hero-overlay--media hg:relative hg:h-full">
+    <div class="hero-overlay--media hg:absolute hg:h-full hg:w-screen hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]">
     {% block hero_media %}
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/40"></div>
@@ -18,7 +18,7 @@
     {% endblock %}
     </div>
   {% endif %}
-  <div class="hero-overlay--content hg:container hg:px-4 hg:flex hg:flex-col  hg:gap-6 hg:justify-center hg:md:justify-end hg:absolute hg:inset-0 hg:py-6 hg:md:py-10 hg:xl:py-20 hg:mx-auto">
+  <div class="hero-overlay--content hg:relative hg:flex hg:flex-col hg:gap-6 hg:justify-center hg:md:justify-end hg:h-full hg:py-6 hg:md:py-10 hg:xl:py-20 hg:z-1">
   {% block hero_content %}
     <div class="hg:lg:max-w-10/12">
       {{ include('mercury:heading', {

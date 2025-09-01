@@ -22,6 +22,14 @@ props:
       title: Text
       examples:
         - Lorem ipsum dolor sit amet finibus aliquam pharetra mauris aenean pellentesque enim mus.
+    text_align:
+      type: string
+      title: Text alignment
+      description: Set alignment of text
+      enum: [center, left, right]
+      default: center
+      examples: 
+        - center
     media:
       $ref: json-schema-definitions://experience_builder.module/image
       title: Background Image
@@ -30,21 +38,12 @@ props:
       examples:
         - src: 'assets/256381.jpg'
           alt: 'Photo by pixabay'
-    text_align:
-      type: string
-      title: Text alignment
-      description: Set alignment of text
-      enum: [center, left, right]
-      examples: 
-        - center
-      default: center
-    color_mode:
-      type: string
-      title: CTA background color
-      enum: [light, dark, image]
-      examples: 
-        - light
-      default: light
+    has_background_image:
+      type: boolean
+      title: Show Background image
+      description: Set if the background image is used.
+      default: false
+
 slots:
   actions:
     title: Buttons

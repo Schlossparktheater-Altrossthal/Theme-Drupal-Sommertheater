@@ -4,7 +4,6 @@
 }
 @layer components {
   .rich-text {
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
+    color: var(--hg-color-body-text, #000000);
   }
 }

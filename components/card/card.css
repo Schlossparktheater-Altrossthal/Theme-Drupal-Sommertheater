@@ -9,29 +9,34 @@
 }
 @layer components {
   .card {
-    color: var(--hgc-card-text);
-    --hgc-card-bg: var(--hg-color-body-bg);
-    --hgc-card-text: var(--hg-color-body-text);
-    &.is-framed, &.is-featured {
-      background-color: var(--hgc-card-bg);
-      .mercury-scheme--vanilla-light &, .mercury-scheme--byte-light & {
-        --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    background-color: var(--hgc-card-bg);
+    &:hover, &:focus {
+      --hgc-card-bg: var(--hgc-card-bg-hover);
+    }
+    &.is-framed {
+      --hgc-card-bg: var(--hgc-card-framed-bg);
+      &:hover, &:focus {
+        --hgc-card-bg: var(--hgc-card-framed-bg-hover);
       }
     }
-    .mercury-scheme--vanilla-light &:hover, .mercury-scheme--vanilla-light &:focus {
+    &.is-featured {
+      --hgc-card-bg: var(--hgc-card-featured-bg);
+      &:hover, &:focus {
+        --hgc-card-bg: var(--hgc-card-featured-bg-hover);
+      }
+    }
+    .views-row & {
+      height: 100%;
+    }
+    .mercury-scheme--vanilla-light &.is-framed, .mercury-scheme--byte-light &.is-framed, .mercury-scheme--vanilla-light &.is-featured, .mercury-scheme--byte-light &.is-featured {
       --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      --tw-shadow-color: var(--hg-color-black, #000000);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--hg-color-black, #000000) 40%, transparent) var(--tw-shadow-alpha), transparent);
+      &:hover, &:focus {
+        --tw-shadow-color: var(--hg-color-black, #000000);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--hg-color-black, #000000) 40%, transparent) var(--tw-shadow-alpha), transparent);
+        }
       }
-    }
-    .mercury-scheme--vanilla-dark & {
-      --hgc-card-bg: var(--hg-color-gray-dark);
-    }
-    .mercury-scheme--byte-dark & {
-      --hgc-card-bg: var(--hg-color-accent-dark);
     }
   }
   .card .card--media {

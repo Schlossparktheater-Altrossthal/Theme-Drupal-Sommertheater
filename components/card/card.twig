@@ -1,6 +1,12 @@
 {% set card_classes = card_classes|default([])|merge([
     'card',
-    'hg:flex hg:flex-col hg:gap-3 hg:md:gap-4 hg:lg:gap-6',
+    'hg:flex',
+    'hg:flex-col',
+    'hg:gap-3',
+    'hg:md:gap-4',
+    'hg:lg:gap-6',
+    'hg:transition-colors',
+    'hg:duration-300',
     'stacked' in orientation ? 'is-stacked' : 'hg:md:flex-row is-landscape',
     style == 'framed' ? 'is-framed hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-md' : style == 'featured' ? 'is-featured hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-sm hg:text-center' : 'is-default',
     url is not empty and url != 'No URL' ? 'hg:group hg:cursor-pointer' : '',
@@ -17,7 +23,7 @@
   {% endif %}
 
   <div class="card--content hg:w-full hg:flex hg:flex-col hg:gap-4 hg:items-baseline">
-  {% if style != 'featured' %}
+  {% if style != 'featured' and badges is not empty %}
     {% if block('badges') is defined %}
       {% block badges %}
         <ul class="hg:list-none hg:ps-0 hg:flex hg:items-center hg:gap-2">

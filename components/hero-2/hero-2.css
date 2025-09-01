@@ -1,36 +1,37 @@
 /*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
 @layer properties;
+.storybook-component--hero-2 {
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+  margin-inline: auto;
+  border-inline-style: var(--tw-border-style);
+  border-inline-width: 1px;
+  --tw-border-style: dotted;
+  border-style: dotted;
+  border-color: var(--hg-color-gray-200, oklch(0.928 0.006 264.531));
+  padding-inline: calc(var(--hg-spacing, 4px) * 4);
+}
 @layer components {
   .hero-sidebyside {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
-    margin-inline: auto;
     display: flex;
     gap: calc(var(--hg-spacing, 4px) * 6);
-    padding-inline: calc(var(--hg-spacing, 4px) * 6);
     padding-block: calc(var(--hg-spacing, 4px) * 8);
     @media (width >= 48rem) {
-      padding-inline: calc(var(--hg-spacing, 4px) * 10);
-    }
-    @media (width >= 48rem) {
       padding-block: calc(var(--hg-spacing, 4px) * 12);
-    }
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--hg-spacing, 4px) * 16);
     }
     @media (width >= 80rem) {
       padding-block: calc(var(--hg-spacing, 4px) * 20);
@@ -50,6 +51,11 @@
     }
   }
 }
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-leading {
   syntax: "*";
   inherits: false;
@@ -61,6 +67,7 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
     }
