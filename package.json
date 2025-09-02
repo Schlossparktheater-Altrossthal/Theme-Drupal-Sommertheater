@@ -15,8 +15,8 @@
     "lint:report": "stylelint src/**/*.css --config stylelint-report.config.mjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "pre-build-storybook": "node ./scripts/custom-storybook-build.js",
-    "build-storybook": "npm run pre-build-storybook && storybook build",
+    "post-build-storybook": "node ./scripts/post-storybook-build.js",
+    "build-storybook": "storybook build && npm run post-build-storybook",
     "postinstall": "cp -R ./node_modules/@phosphor-icons/core/assets/regular ./icons"
   },
   "devDependencies": {

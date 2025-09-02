@@ -64,7 +64,11 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
       }
 
       // Initialize each JS dependency
-      const jsModules = [${jsPaths.map((path) => `'${path}'`).join(', ')}];
+      // For production: bundled files are in /assets/, so use ../components/ to reach components
+      // For development: use original relative paths
+      const jsModules = window.CONFIG_TYPE === 'PRODUCTION' 
+        ? [${jsPaths.map((path) => `'${path.replace(/^\.\.\/\.\.\/\.\.\//, '../')}'`).join(', ')}]
+        : [${jsPaths.map((path) => `'${path}'`).join(', ')}];
       
       for (const modulePath of jsModules) {
         try {

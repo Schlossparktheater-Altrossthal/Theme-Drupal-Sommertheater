@@ -4,6 +4,6 @@
     {% if media.src is not empty %}
       <div class="hg:absolute hg:inset-0 hg:bg-black/40"></div>
     {% endif %}
-    <img src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover img_position"/>
+    <img src="{{  componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover img_position"/>
   {% endblock %}
 {% endembed %}

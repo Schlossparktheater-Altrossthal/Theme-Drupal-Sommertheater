@@ -1,7 +1,7 @@
 {% embed 'mercury:footer' %}
   {% block footer_first %}
     <a href="/" rel="home" class="branding hg:w-40 hg:block">
-      <img class="hg:object-cover hg:w-full hg:h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ storybook.site_logo.src }}" alt="{{ storybook.site_logo.alt }}" />
+      <img class="hg:object-cover hg:w-full hg:h-full" src="{{ componentMetadata.path ~ '/' ~ storybook.site_logo.src }}" alt="{{ storybook.site_logo.alt }}" />
     </a>
     {{ include('mercury:menu-utility', { items: storybook.utility }) }}
     {{ include('mercury:menu-social~main', { items: storybook.social } ) }}

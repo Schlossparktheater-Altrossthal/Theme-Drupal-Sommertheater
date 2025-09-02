@@ -27,7 +27,7 @@
       } %}
         {% block media %}
           {% if item.src is not empty %}
-            <img class="object-cover w-full h-full" src="{{ '/' ~ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+            <img class="object-cover w-full h-full" src="{{  componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
           {% endif %}
         {% endblock %}
       {% endembed %}

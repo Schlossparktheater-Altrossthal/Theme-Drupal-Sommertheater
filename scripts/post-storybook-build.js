@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * Custom build step for Storybook
+ * Post-build step for Storybook
  *
- * This script runs before the Storybook build process and can perform
- * any pre-processing or additional build steps needed.
+ * This script runs after the Storybook build process and copies
+ * component assets and libraries directly to the storybook-static directory.
  */
 
-console.log('Starting custom Storybook build step...');
+console.log('Starting post-Storybook build step...');
 
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -15,13 +15,13 @@ import { glob } from 'glob';
 
 async function run() {
   try {
-    console.log('Copying component assets to public folder...');
+    console.log('Copying component assets to storybook-static folder...');
 
-    // Create public/components directory if it doesn't exist
-    const publicComponentsDir = path.resolve('./public/components');
-    await fs.mkdir(publicComponentsDir, { recursive: true });
+    // Create storybook-static/components directory if it doesn't exist
+    const staticComponentsDir = path.resolve('./storybook-static/components');
+    await fs.mkdir(staticComponentsDir, { recursive: true });
 
-    // Copy lib folder to public directory
+    // Copy lib folder to storybook-static directory
     await copyLibFolder();
 
     // Get all component directories
@@ -49,12 +49,12 @@ async function run() {
       }
 
       if (hasAssets) {
-        // Create destination directory in public folder
-        const destDir = path.join(publicComponentsDir, componentName, 'assets');
+        // Create destination directory in storybook-static folder
+        const destDir = path.join(staticComponentsDir, componentName, 'assets');
         await fs.mkdir(destDir, { recursive: true });
         componentDestDirCreated = true;
 
-        // Copy all files from assets directory to public folder
+        // Copy all files from assets directory to storybook-static folder
         const assetFiles = await glob(`${assetsDir}/**/*`, {
           nodir: true,
         });
@@ -81,13 +81,13 @@ async function run() {
         // Create component destination directory if not already created
         if (!componentDestDirCreated) {
           const componentDestDir = path.join(
-            publicComponentsDir,
+            staticComponentsDir,
             componentName
           );
           await fs.mkdir(componentDestDir, { recursive: true });
         }
 
-        const componentDestDir = path.join(publicComponentsDir, componentName);
+        const componentDestDir = path.join(staticComponentsDir, componentName);
 
         for (const jsFile of jsFiles) {
           const fileName = path.basename(jsFile);
@@ -100,20 +100,20 @@ async function run() {
       }
     }
 
-    console.log('Custom Storybook build step completed successfully!');
+    console.log('Post-Storybook build step completed successfully!');
   } catch (error) {
-    console.error('Error in custom Storybook build step:', error);
+    console.error('Error in post-Storybook build step:', error);
     process.exit(1);
   }
 }
 
 /**
- * Copy the lib folder to the public directory
+ * Copy the lib folder to the storybook-static directory
  */
 async function copyLibFolder() {
   try {
     const libDir = path.resolve('./lib');
-    const publicLibDir = path.resolve('./public/lib');
+    const staticLibDir = path.resolve('./storybook-static/lib');
 
     // Check if lib directory exists
     const libStat = await fs.stat(libDir);
@@ -122,10 +122,10 @@ async function copyLibFolder() {
       return;
     }
 
-    console.log('Copying lib folder to public directory...');
+    console.log('Copying lib folder to storybook-static directory...');
 
-    // Create public/lib directory
-    await fs.mkdir(publicLibDir, { recursive: true });
+    // Create storybook-static/lib directory
+    await fs.mkdir(staticLibDir, { recursive: true });
 
     // Get all files in lib directory recursively
     const libFiles = await glob(`${libDir}/**/*`, {
@@ -135,7 +135,7 @@ async function copyLibFolder() {
     // Copy each file
     for (const libFile of libFiles) {
       const relativePath = path.relative(libDir, libFile);
-      const destPath = path.join(publicLibDir, relativePath);
+      const destPath = path.join(staticLibDir, relativePath);
 
       // Ensure destination directory exists
       await fs.mkdir(path.dirname(destPath), { recursive: true });

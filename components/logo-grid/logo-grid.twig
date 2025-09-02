@@ -85,16 +85,16 @@
 <div class="{{ classes|join(' ') }}">
   {% block logos %}
     {% for i in 1..8 %}
-      {{ include(
-        'mercury:tile-logo',
-        {
+      {% block logos_media %}
+        {% embed 'mercury:tile-logo' with {
           background: 'light',
           media: {
             src: '/' ~ componentMetadata.path ~ '/assets/logo-' ~ i ~ '-vanilla-light.png',
             alt: 'Placeholder logo ' ~ i,
           }
-        }
-      ) }}
+        } %}
+        {% endembed %}
+      {% endblock %}
     {% endfor %}
   {% endblock %}
 </div>
