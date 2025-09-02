@@ -154,7 +154,7 @@ function generateDefaultValue(property) {
   // Handle image properties
   if (
     property.$ref ===
-    "json-schema-definitions://experience_builder.module/image"
+    "json-schema-definitions://canvas.module/image"
   ) {
     return valueGenerators.image(property);
   }

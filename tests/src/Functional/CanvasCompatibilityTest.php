@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
+use Drupal\canvas\ComponentIncompatibilityReasonRepository;
 use Drupal\Core\Theme\ComponentPluginManager;
-use Drupal\experience_builder\ComponentIncompatibilityReasonRepository;
 use Drupal\Tests\BrowserTestBase;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
- * Tests Mercury's compatibility with Experience Builder.
+ * Tests Mercury's compatibility with Canvas.
  */
 #[Group('mercury')]
-class XbCompatibilityTest extends BrowserTestBase {
+class CanvasCompatibilityTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
@@ -23,15 +23,15 @@ class XbCompatibilityTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['experience_builder'];
+  protected static $modules = ['canvas'];
 
   /**
-   * Tests that all Mercury SDCs are compatible with Experience Builder.
+   * Tests that all Mercury SDCs are compatible with Canvas.
    */
-  public function testMercuryComponentsAreCompatibleWithXb(): void {
+  public function testMercuryComponentsAreCompatibleWithCanvas(): void {
     $component_manager = $this->container->get(ComponentPluginManager::class);
     assert($component_manager instanceof ComponentPluginManager);
-    // Make XB update all component entities. If there are any invalid SDCs,
+    // Make Canvas update all component entities. If there are any invalid SDCs,
     // this should fail hard.
     $component_manager->clearCachedDefinitions();
     // Only consider SDCs from Mercury.
@@ -46,15 +46,15 @@ class XbCompatibilityTest extends BrowserTestBase {
     // Ignore components that we know are broken.
     unset(
       // These three components are used by the `menu-footer` Twig template, and
-      // aren't meant to be used directly in XB.
+      // aren't meant to be used directly in Canvas.
       $definitions['mercury:menu-footer'],
       $definitions['mercury:menu-social'],
       $definitions['mercury:menu-utility'],
       // The `breadcrumb` component is used for styling core's breadcrumb, but
-      // isn't meant to be used directly in XB.
+      // isn't meant to be used directly in Canvas.
       $definitions['mercury:breadcrumb'],
       // This is used to render views via templates, but is not meant to be
-      // used directly in XB.
+      // used directly in Canvas.
       $definitions['mercury:pager'],
     );
 

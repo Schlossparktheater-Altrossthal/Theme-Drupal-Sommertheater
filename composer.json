@@ -13,7 +13,10 @@
             "name": "Mediacurrent"
         }
     ],
+    "conflict": {
+        "drupal/experience_builder": "*"
+    },
     "require-dev": {
-        "drupal/experience_builder": "^0.7.1-alpha1"
+        "drupal/canvas": "^1"
     }
 }

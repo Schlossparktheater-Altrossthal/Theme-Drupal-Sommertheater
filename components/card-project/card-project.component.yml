@@ -26,7 +26,7 @@ props:
       examples:
         - 'https://www.example.com'
     media:
-      $ref: json-schema-definitions://experience_builder.module/image
+      $ref: json-schema-definitions://canvas.module/image
       title: Media Image
       description: Media image for the card.
       type: object

@@ -31,7 +31,7 @@ props:
       examples: 
         - center
     media:
-      $ref: json-schema-definitions://experience_builder.module/image
+      $ref: json-schema-definitions://canvas.module/image
       title: Background Image
       description: The background image for the cta.
       type: object
