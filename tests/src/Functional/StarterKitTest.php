@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Drupal\Tests\mercury\Functional;
+
+use Drupal\Core\Extension\ExtensionDiscovery;
+use Drupal\Core\Extension\ThemeInstallerInterface;
+use Drupal\Core\Theme\ComponentPluginManager;
+use Drupal\Tests\BrowserTestBase;
+use PHPUnit\Framework\Attributes\Group;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\Process\PhpExecutableFinder;
+use Symfony\Component\Process\Process;
+
+/**
+ * Tests that Mercury can be used as a starter kit.
+ */
+#[Group('mercury')]
+final class StarterKitTest extends BrowserTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * Tests using Mercury as a starter kit with the `generate-theme` command.
+   */
+  public function testGenerateThemeFromMercury(): void {
+    $path = uniqid($this->siteDirectory . '/themes/theme_');
+    $theme_name = basename($path);
+
+    $command = [
+      (new PhpExecutableFinder())->find(),
+      'core/scripts/drupal',
+      'generate-theme',
+      $theme_name,
+      '--starterkit=mercury',
+      '--path=' . dirname($path),
+      '--no-interaction',
+    ];
+    $process = new Process($command, $this->getDrupalRoot());
+    $process->mustRun();
+
+    // We just effectively added a new extension, so reset ExtensionDiscovery's
+    // internal static cache or the generated theme won't be found.
+    $reflector = new \ReflectionProperty(ExtensionDiscovery::class, 'files');
+    $reflector->setValue(NULL, []);
+
+    // We should be able to install the theme without errors.
+    $this->container->get(ThemeInstallerInterface::class)
+      ->install([$theme_name]);
+    // All of Mercury's SDCs should be available in the new theme, copied into
+    // its own namespace.
+    $component_manager = $this->container->get(ComponentPluginManager::class);
+    $component_manager->clearCachedDefinitions();
+    $component_definitions = $component_manager->getDefinitions();
+
+    $finder = Finder::create()
+      ->files()
+      ->name('*.component.yml')
+      ->in(__DIR__ . '/../../../components');
+
+    $this->assertGreaterThan(0, count($finder));
+
+    foreach ($finder as $file) {
+      assert($file instanceof SplFileInfo);
+      $name = $file->getBasename('.component.yml');
+      $this->assertArrayHasKey("$theme_name:$name", $component_definitions);
+    }
+  }
+
+}

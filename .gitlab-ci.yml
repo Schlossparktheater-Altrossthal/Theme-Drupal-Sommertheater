@@ -55,6 +55,34 @@ storybook:
     paths:
       - $STORYBOOK_OUTPUT_DIR
 
+# Ensure that Mercury is physically installed in the Drupal code base, rather
+# than symlinked, so that the theme generator can use Mercury as a starter kit.
+composer:
+  extends: .composer-base
+  variables:
+    DRUPAL_CORE: $CORE_STABLE
+    IGNORE_PROJECT_DRUPAL_CORE_VERSION: 1
+  before_script:
+    - rm .gitattributes
+    - composer archive --file=mercury --format=tar
+  after_script:
+    - THEME_DIR=web/themes/custom/mercury
+    - rm -r -f $THEME_DIR
+    - mkdir -p $THEME_DIR
+    - tar -x -f mercury.tar -C $THEME_DIR
+    - rm mercury.tar
+
+composer (next minor):
+  extends: .composer-base
+  variables:
+    DRUPAL_CORE: $CORE_NEXT_MINOR
+    IGNORE_PROJECT_DRUPAL_CORE_VERSION: 1
+    MINIMUM_STABILITY_OVERRIDE: 'dev'
+  before_script:
+    - !reference [composer, before_script]
+  after_script:
+    - !reference [composer, after_script]
+
 .pages-base:
   stage: deploy
   image: alpine:latest
