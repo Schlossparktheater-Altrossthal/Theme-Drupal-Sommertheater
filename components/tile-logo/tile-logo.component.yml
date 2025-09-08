@@ -10,7 +10,7 @@ props:
       type: object
       title: Logo
       examples:
-        - src: 'assets/logo.png'
+        - src: 'assets/dark.png'
           alt: 'Placeholder brand logo'
     color_mode:
       type: string
