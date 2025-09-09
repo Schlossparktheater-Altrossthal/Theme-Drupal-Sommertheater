@@ -17,6 +17,7 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+
 {% if title %}
   <h3>{{ title }}</h3>
 {% endif %}
@@ -24,9 +25,9 @@
   {%
     set row_classes = [
       default_row_class ? 'views-row',
-      snap ? 'snap-start',
-      snap and loop.first ? 'snap-first',
-      snap and loop.last ? 'snap-last',
+      snap ? 'hg:snap-start hg:min-w-[80vw] hg:sm:min-w-[50vw] hg:md:min-w-auto',
+      snap and loop.first ? 'hg:snap-first',
+      snap and loop.last ? 'hg:snap-last',
     ]
   %}
   <div{{ row.attributes.addClass(row_classes) }}>

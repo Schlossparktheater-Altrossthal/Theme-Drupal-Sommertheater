@@ -7,7 +7,7 @@ id: snap_test
 label: 'Snap test'
 module: views
 description: 'For testing that Mercury adds snap classes to views.'
-tag: 'mercury:snap test'
+tag: 'snap test'
 base_table: node_field_data
 base_field: nid
 display:

@@ -81,4 +81,8 @@
   .card--content p {
     @apply hg:font-(--hgc-font-weight-p) hg:text-lg hg:xl:text-xl;
   }
+
+  .card:not(:has(.badge)) .heading a {
+    @apply hg:after:absolute hg:after:inset-0 hg:after:content-[''];
+  }
 }
