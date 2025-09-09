@@ -7,20 +7,17 @@ props:
   properties:
     name:
       type: string
-      title: Person's name
+      title: Name
       examples:
         - 'Chloe Bennett'
     job_title:
       type: string
-      title: Text
-      description: The person's job title
+      title: Job title
       examples:
         - 'Operations Manager'
     url:
       type: string
-      title: Add optional url
-      examples:
-        - 'https://example.com'
+      title: Link
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Card Media

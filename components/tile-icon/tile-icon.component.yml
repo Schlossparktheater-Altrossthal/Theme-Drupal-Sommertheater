@@ -34,7 +34,4 @@ props:
         - right
     url:
       type: string
-      title: Link URL
-      default: 'https://drupal.org'
-      examples:
-        - https://drupal.org
+      title: Link

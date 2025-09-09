@@ -5,27 +5,20 @@ props:
   properties:
     text:
       type: string
-      title: Blockquote text
-      description: The blockquote text.
+      title: Quotation text
       examples:
         - '“To confine our attention to terrestrial matters would be to limit the human spirit.”'
     cite_name:
       type: string
-      title: Cite name
-      description: The cite name.
+      title: Citation name
       examples:
         - 'Isiah Julio'
     cite_text:
       type: string
-      title: Cite text
-      description: The cite text.
+      title: Citation text
       default: "Engineer, Technical Services"
       examples:
         - "Engineer, Technical Services"
     cite_url:
       type: string
-      title: Cite URL
-      description: The cite url.
-      default: "No URL"
-      examples:
-        - "No URL"
+      title: Citation link

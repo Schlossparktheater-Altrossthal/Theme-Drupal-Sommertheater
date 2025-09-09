@@ -7,7 +7,7 @@ props:
   properties:
     text:
       type: string
-      title: Rich Text
+      title: Rich text
       contentMediaType: text/html
       x-formatting-context: block
       description: The rich text.

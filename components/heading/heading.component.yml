@@ -42,8 +42,4 @@ props:
         - left
     url:
       type: string
-      title: Add optional url
-      description: The url for the heading.
-      default: 'No URL'
-      examples: 
-        - 'No URL'
+      title: Link

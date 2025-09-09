@@ -35,7 +35,7 @@ props:
 
     author_url:
       type: string
-      title: Author Link
+      title: Author link
       default: ''
       examples: []
 

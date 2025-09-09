@@ -7,18 +7,10 @@ props:
   properties:
     label:
       type: string
-      title: Link Text
-      description: The text for the link.
-      default: New Release
-      examples:
-        - New Release
+      title: Link text
     url:
       type: string
-      title: URL
-      description: The URL to link to. If provided, the badge will be rendered as a link.
-      default: https://www.drupal.org
-      examples:
-        - https://www.drupal.org
+      title: Link
     style:
       type: string
       title: Style

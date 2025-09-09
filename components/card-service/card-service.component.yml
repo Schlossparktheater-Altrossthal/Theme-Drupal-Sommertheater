@@ -18,9 +18,7 @@ props:
         - 3
     url:
       type: string
-      title: Add optional url
-      examples: 
-        - https://www.example.com
+      title: Link
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Card Media

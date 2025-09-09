@@ -68,8 +68,4 @@ props:
         - false
     href:
       type: string
-      title: href
-      description: "The URL to link to. If provided, the button will be rendered as a link."
-      default: "https://example.com"
-      examples:
-        - "https://example.com"
+      title: Link
