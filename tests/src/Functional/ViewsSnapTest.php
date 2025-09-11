@@ -63,7 +63,7 @@ final class ViewsSnapTest extends BrowserTestBase {
     // correct. Each item should have the correct classes too, relative to their
     // position in the list.
     $items = $assert_session->elementExists('css', '.view-content.view-snap')
-      ->findAll('css', '.views-row.hg\:snap-start');
+      ->findAll('css', '.views-row.hg\:snap-center');
     $this->assertCount(3, $items);
     $this->assertTrue($items[0]->hasClass('hg:snap-first'));
     $this->assertFalse($items[1]->hasClass('hg:snap-first'));
@@ -75,7 +75,7 @@ final class ViewsSnapTest extends BrowserTestBase {
     $view->set('tag', '')->save();
     $this->getSession()->reload();
     $assert_session->elementNotExists('css', '.view-snap');
-    $assert_session->elementNotExists('css', '.snap-start');
+    $assert_session->elementNotExists('css', '.views-row.hg\:snap-center');
   }
 
 }

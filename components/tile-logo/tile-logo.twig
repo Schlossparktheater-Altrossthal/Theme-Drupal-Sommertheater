@@ -1,7 +1,6 @@
 {% set tile_classes = tile_classes|default([])|merge([
     'logo-tile',
-    'hg:aspect-4/3 hg:rounded-sm',
-    'color-mode--' ~ color_mode,
+    'hg:aspect-4/3 hg:rounded-sm hg:snap-center hg:min-h-[150px] hg:max-w-full',
 ])|filter(v => v is not empty) %}
 
 <div class="{{ tile_classes|join(' ') }}">
