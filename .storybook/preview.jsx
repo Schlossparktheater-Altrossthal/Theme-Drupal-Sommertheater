@@ -3,6 +3,8 @@ import once from '@drupal/once';
 import React from 'react';
 import '../src/main.css';
 import '../src/schemes.css';
+import '../src/fonts.css';
+import '../src/phosphor-icons.css';
 import '../src/ui.css';
 import '../src/stories/sdc-stories/components.css';
 
