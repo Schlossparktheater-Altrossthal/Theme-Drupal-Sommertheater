@@ -23,6 +23,9 @@ props:
     url:
       type: string
       title: Link
+      default: 'https://www.example.com'
+      examples: 
+        - 'https://www.example.com'
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Card Media
