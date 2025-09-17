@@ -21,11 +21,12 @@ props:
         - 1
 
     date:
-      type: string
+      type: integer
       title: Published Date
-      default: '2026-02-12'
+      # 2026-02-12
+      default: 1770856866
       examples:
-        - '2026-02-12'
+        - 1770856866
 
     author:
       type: string
