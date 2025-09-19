@@ -418,8 +418,8 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Style basic webform. */
-  --hgc-webform-label: var(--hg-color-gray);
-  --hgc-webform-label-focus: var(--hg-color-gray-light);
+  --hgc-webform-label: var(--hg-color-gray-light);
+  --hgc-webform-label-focus: var(--hg-color-gray-lightest);
   --hgc-webform-radio-label: var(--hg-color-gray);
   --hgc-webform-placeholder: var(--hg-color-gray);
   --hgc-webform-text: var(--hg-color-gray-lightest);

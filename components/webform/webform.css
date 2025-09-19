@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer components {
   .hg-flex-fieldset-2col .fieldset-wrapper {
@@ -45,7 +45,7 @@
       padding: 0;
       margin: -1px;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
       white-space: nowrap;
       border-width: 0;
     }
@@ -64,8 +64,8 @@
     display: block;
     font-size: var(--hg-text-sm, 0.875rem);
     line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
-    --tw-font-weight: var(--hg-font-weight-normal, 400);
-    font-weight: var(--hg-font-weight-normal, 400);
+    --tw-font-weight: var(--hg-font-weight-semibold, 600);
+    font-weight: var(--hg-font-weight-semibold, 600);
     color: var(--hgc-webform-label);
     @media (width >= 48rem) {
       font-size: var(--hg-text-base, 1rem);
@@ -73,13 +73,13 @@
     }
   }
   .webform-submission-form .form-item:focus-within, .webform-submission-form .fieldgroup:focus-within {
-    >label, .fieldset-legend {
+    > label, .fieldset-legend {
       color: var(--hgc-webform-label-focus);
     }
   }
   .webform-submission-form .form-required::after {
     margin-left: calc(var(--hg-spacing, 4px) * 1);
-    color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
+    color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
     content: "*";
   }
   .webform-submission-form input[type="text"], .webform-submission-form input[type="email"], .webform-submission-form input[type="tel"], .webform-submission-form input[type="url"], .webform-submission-form input[type="number"], .webform-submission-form input[type="password"], .webform-submission-form input[type="search"], .webform-submission-form input[type="date"], .webform-submission-form input[type="time"], .webform-submission-form input[type="datetime-local"], .webform-submission-form textarea, .webform-submission-form select {
@@ -136,8 +136,8 @@
     cursor: pointer;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--hg-color-gray-400, oklch(0.707 0.022 261.325));
-    background-color: var(--hg-color-gray-300, oklch(0.872 0.01 258.338));
+    border-color: var(--hg-color-gray-400, oklch(70.7% 0.022 261.325));
+    background-color: var(--hg-color-gray-300, oklch(87.2% 0.01 258.338));
     padding-inline: calc(var(--hg-spacing, 4px) * 4);
     padding-block: calc(var(--hg-spacing, 4px) * 2);
     font-size: var(--hg-text-base, 1rem);
@@ -145,14 +145,14 @@
     color: var(--hg-color-black, #000000);
   }
   .webform-submission-form .webform-button--draft:hover, .webform-submission-form .webform-button--previous:hover {
-    border-color: var(--hg-color-gray-500, oklch(0.551 0.027 264.364));
-    background-color: var(--hg-color-gray-400, oklch(0.707 0.022 261.325));
+    border-color: var(--hg-color-gray-500, oklch(55.1% 0.027 264.364));
+    background-color: var(--hg-color-gray-400, oklch(70.7% 0.022 261.325));
   }
   .webform-submission-form .form-item--error input, .webform-submission-form .form-item--error textarea, .webform-submission-form .form-item--error select {
-    border-color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
+    border-color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
   }
   .webform-submission-form .form-item--error input:focus, .webform-submission-form .form-item--error textarea:focus, .webform-submission-form .form-item--error select:focus {
-    border-color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
+    border-color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
@@ -160,13 +160,13 @@
     margin-top: calc(var(--hg-spacing, 4px) * 1);
     font-size: var(--hg-text-sm, 0.875rem);
     line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
-    color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
+    color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
   }
   .webform-submission-form .description, .webform-submission-form .webform-element-description {
     margin-top: calc(var(--hg-spacing, 4px) * 1);
     font-size: var(--hg-text-xs, 0.75rem);
     line-height: var(--tw-leading, var(--hg-text-xs--line-height, 1.5));
-    color: var(--hg-color-gray-600, oklch(0.446 0.03 256.802));
+    color: var(--hg-color-gray-600, oklch(44.6% 0.03 256.802));
   }
   .webform-submission-form .webform-element-help {
     margin-inline: 0.3em;
@@ -296,8 +296,8 @@
     cursor: pointer;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--hg-color-green-600, oklch(0.627 0.194 149.214));
-    background-color: var(--hg-color-green-600, oklch(0.627 0.194 149.214));
+    border-color: var(--hg-color-green-600, oklch(62.7% 0.194 149.214));
+    background-color: var(--hg-color-green-600, oklch(62.7% 0.194 149.214));
     padding-inline: calc(var(--hg-spacing, 4px) * 3);
     padding-block: calc(var(--hg-spacing, 4px) * 1);
     font-size: var(--hg-text-sm, 0.875rem);
@@ -305,15 +305,15 @@
     color: var(--hg-color-white, #ffffff);
   }
   .webform-submission-form .webform-multiple-add:hover {
-    border-color: var(--hg-color-green-700, oklch(0.527 0.154 150.069));
-    background-color: var(--hg-color-green-700, oklch(0.527 0.154 150.069));
+    border-color: var(--hg-color-green-700, oklch(52.7% 0.154 150.069));
+    background-color: var(--hg-color-green-700, oklch(52.7% 0.154 150.069));
   }
   .webform-submission-form .webform-multiple-remove {
     cursor: pointer;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
-    background-color: var(--hg-color-red-600, oklch(0.577 0.245 27.325));
+    border-color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
+    background-color: var(--hg-color-red-600, oklch(57.7% 0.245 27.325));
     padding-inline: calc(var(--hg-spacing, 4px) * 2);
     padding-block: calc(var(--hg-spacing, 4px) * 1);
     font-size: var(--hg-text-sm, 0.875rem);
@@ -321,18 +321,18 @@
     color: var(--hg-color-white, #ffffff);
   }
   .webform-submission-form .webform-multiple-remove:hover {
-    border-color: var(--hg-color-red-700, oklch(0.505 0.213 27.518));
-    background-color: var(--hg-color-red-700, oklch(0.505 0.213 27.518));
+    border-color: var(--hg-color-red-700, oklch(50.5% 0.213 27.518));
+    background-color: var(--hg-color-red-700, oklch(50.5% 0.213 27.518));
   }
   .webform-submission-form .webform-progress-bar {
     margin-bottom: calc(var(--hg-spacing, 4px) * 4);
     height: calc(var(--hg-spacing, 4px) * 4);
     width: 100%;
-    background-color: var(--hg-color-gray-300, oklch(0.872 0.01 258.338));
+    background-color: var(--hg-color-gray-300, oklch(87.2% 0.01 258.338));
   }
   .webform-submission-form .webform-progress-bar__progress {
     height: calc(var(--hg-spacing, 4px) * 4);
-    background-color: var(--hg-color-blue-600, oklch(0.546 0.245 262.881));
+    background-color: var(--hg-color-blue-600, oklch(54.6% 0.245 262.881));
   }
   .webform-submission-form .form-file {
     display: block;
@@ -377,13 +377,13 @@
     cursor: pointer;
     font-size: var(--hg-text-2xl, 1.5rem);
     line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
-    color: var(--hg-color-gray-400, oklch(0.707 0.022 261.325));
+    color: var(--hg-color-gray-400, oklch(70.7% 0.022 261.325));
   }
   .webform-submission-form .webform-element-rating label:hover {
-    color: var(--hg-color-yellow-500, oklch(0.795 0.184 86.047));
+    color: var(--hg-color-yellow-500, oklch(79.5% 0.184 86.047));
   }
   .webform-submission-form .webform-element-rating input[type="radio"]:checked + label {
-    color: var(--hg-color-yellow-500, oklch(0.795 0.184 86.047));
+    color: var(--hg-color-yellow-500, oklch(79.5% 0.184 86.047));
   }
   .webform-submission-form .webform-element-range {
     width: 100%;
@@ -391,7 +391,7 @@
   .webform-submission-form .webform-element-range input[type="range"] {
     height: calc(var(--hg-spacing, 4px) * 2);
     width: 100%;
-    background-color: var(--hg-color-gray-300, oklch(0.872 0.01 258.338));
+    background-color: var(--hg-color-gray-300, oklch(87.2% 0.01 258.338));
   }
   .webform-submission-form .webform-element-toggle {
     display: flex;
@@ -405,10 +405,10 @@
     cursor: pointer;
     appearance: none;
     border-radius: calc(infinity * 1px);
-    background-color: var(--hg-color-gray-300, oklch(0.872 0.01 258.338));
+    background-color: var(--hg-color-gray-300, oklch(87.2% 0.01 258.338));
   }
   .webform-submission-form .webform-element-toggle input[type="checkbox"]:checked {
-    background-color: var(--hg-color-blue-600, oklch(0.546 0.245 262.881));
+    background-color: var(--hg-color-blue-600, oklch(54.6% 0.245 262.881));
   }
   .webform-submission-form .webform-element-toggle input[type="checkbox"]::before {
     position: absolute;
@@ -429,7 +429,7 @@
     overflow-y: auto;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--hg-color-gray-400, oklch(0.707 0.022 261.325));
+    border-color: var(--hg-color-gray-400, oklch(70.7% 0.022 261.325));
     padding: calc(var(--hg-spacing, 4px) * 4);
   }
   .webform-submission-form .webform-element-recaptcha {
