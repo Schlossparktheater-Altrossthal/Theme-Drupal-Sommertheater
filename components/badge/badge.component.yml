@@ -8,6 +8,8 @@ props:
     label:
       type: string
       title: Link text
+      examples:
+        - Badge text
     url:
       type: string
       title: Link
@@ -24,18 +26,18 @@ props:
     icon:
       type: string
       title: Icon
-      description: Select an Icon.
+      description: Select an icon.
       enum:
-        - ph-newspaper-clipping
-        - ph-alien
-        - ph-robot
-        - ph-rocket
-      default: ph-newspaper-clipping
+        - newspaper-clipping
+        - alien
+        - robot
+        - rocket
+      default: newspaper-clipping
       examples:
-        - ph-newspaper-clipping
+        - newspaper-clipping
     icon_first:
       type: boolean
-      title: Icon First
+      title: Icon first?
       description: Icon can display before or after label.
       default: true
       examples:

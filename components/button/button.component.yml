@@ -1,7 +1,7 @@
-$schema: "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Button
 group: Base
-description: "A versatile button component that can be rendered as a button or link with various styles and sizes."
+description: 'A versatile button component that can be rendered as a button or link with various styles and sizes.'
 status: stable
 props:
   type: object
@@ -9,7 +9,7 @@ props:
     variant:
       type: string
       title: Variant
-      description: "The style of button."
+      description: 'The style of button.'
       enum:
         - primary
         - primary-accent
@@ -22,22 +22,22 @@ props:
     disabled:
       type: boolean
       title: Disabled
-      description: "Whether the button is disabled."
+      description: 'Whether the button is disabled.'
       default: false
       examples:
         - false
         - true
     label:
       type: string
-      title: "Button text"
-      description: "The text content of the button."
-      default: "Button Label"
+      title: 'Button text'
+      description: 'The text content of the button.'
+      default: 'Button Label'
       examples:
-        - "Button Label"
+        - 'Button Label'
     size:
       type: string
       title: Size
-      description: "Set Button Size."
+      description: 'Set Button Size.'
       enum:
         - small
         - medium
@@ -48,21 +48,21 @@ props:
     icon:
       type: string
       title: Icon
-      description: "Select an Icon."
+      description: 'Select an Icon.'
       enum:
-        - ph-arrow-right
-        - ph-arrow-left
-        - ph-carrot-right
-        - ph-carrot-left
-        - ph-download
-        - ph-user-plus
-      default: ph-arrow-right
+        - arrow-right
+        - arrow-left
+        - caret-right
+        - caret-left
+        - download
+        - user-plus
+      default: arrow-right
       examples:
-        - ph-arrow-right
+        - arrow-right
     icon_first:
       type: boolean
-      title: "Display Icon First"
-      description: "By default, the icon is displayed after the label. If you want to display the icon first, set this to true."
+      title: 'Display Icon First'
+      description: 'By default, the icon is displayed after the label. If you want to display the icon first, set this to true.'
       default: false
       examples:
         - false

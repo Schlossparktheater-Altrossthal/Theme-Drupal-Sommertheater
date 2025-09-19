@@ -20,7 +20,6 @@ export default [
   createFilter(
     't',
     async function (_executionContext, text, replacements) {
-      console.log(replacements);
       if (replacements && typeof replacements === 'object') {
         let result = text;
         replacements.forEach((replacement, stringToReplace) => {

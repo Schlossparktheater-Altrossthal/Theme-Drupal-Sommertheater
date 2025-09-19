@@ -30,7 +30,7 @@
           {{ item.title }}
         </span>
         {% if align == false %}
-          <i class="ph-bold ph-caret-right"></i>
+          {{ include('@mercury/components/icon/icon.twig', { icon: 'caret-right', weight: 'bold' }) }}
         {% endif %}
       </a>
       {# {% if item.below %}

@@ -19,6 +19,6 @@
 %}
 
 <a href="{{ url }}" aria-label="{{ label }}" class="{{ classes|join(' ') }}">
-  {% if icon is not empty %}<i class="ph {{ icon }}"></i>{% endif %}
+  {% if icon is not empty %}{{ include('@mercury/components/icon/icon.twig') }}{% endif %}
   <span class="badge-label">{{ label }}</span>
 </a>

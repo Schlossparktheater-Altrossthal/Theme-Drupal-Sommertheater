@@ -16,6 +16,7 @@
     'hg:border',
     'hg:flex',
     'hg:items-center',
+    'hg:justify-center',
     icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
     size_classes_map[size|default('medium')]
 ])|filter(v => v is not empty) %}
@@ -25,12 +26,12 @@
 {# If href is provided, present a link; otherwise render a button #}
 {% if href %}
   <a href="{{ href }}" class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}aria-disabled="true" {% endif %}>
-    {% if icon %}<i class="ph-bold {{ icon }} {{ icon_size }}"></i>{% endif %}
+    {% if icon %}{{ include('@mercury/components/icon/icon.twig', { weight: 'bold' }) }}{% endif %}
     {{ label }}
   </a>
 {% else %}
   <button class="{{ btn_classes|join(' ') }}" {% if disabled|default(false) %}disabled{% endif %}>
-    {% if icon %}<i class="ph-bold {{ icon }} {{ icon_size }}"></i>{% endif %}
+    {% if icon %}{{ include('@mercury/components/icon/icon.twig', { weight: 'bold' }) }}{% endif %}
     {{ label }}
   </button>
 {% endif %}

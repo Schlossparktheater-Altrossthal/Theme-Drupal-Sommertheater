@@ -20,9 +20,9 @@ props:
     icon:
       type: string
       title: Phosphor icon slug
-      default: 'ph-rocket'
+      default: 'rocket'
       examples:
-        - 'ph-rocket'
+        - 'rocket'
     icon_position:
       type: string
       title: Icon left/right

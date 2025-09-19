@@ -12,3 +12,11 @@ body.path-xb {
     @apply hg:min-w-12;
   }
 }
+
+.navbar--links .button.button {
+  @apply hg:w-full hg:md:w-auto hg:mx-8 hg:my-3 hg:md:m-auto;
+}
+
+.navbar--menu-contents .dropdown-menu {
+  @apply hg:w-full hg:md:w-auto;
+}
