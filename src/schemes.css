@@ -6,8 +6,8 @@
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
 
-  --hgc-hyperlink-color:       var(--hg-color-brand);
-  --hgc-hyperlink-color-hover: #124dd0;
+  --hgc-hyperlink-color:       #155DFC;
+  --hgc-hyperlink-color-hover: #193CB8;
 
   --hgc-tile-logo-bg: var(--hg-color-brand-light);
   --hgc-footer-border: var(--hg-color-gray-light);
@@ -103,8 +103,8 @@
 .mercury-scheme--vanilla-dark {
   --hg-color-body-bg:       var(--hg-color-black);
   --hg-color-body-text:     var(--hg-color-white);
-  --hgc-hyperlink-color:       #76a1ff;
-  --hgc-hyperlink-color-hover: #bfd3ff;
+  --hgc-hyperlink-color:       #51A2FF;
+  --hgc-hyperlink-color-hover: #BEDBFF;
 
   --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-footer-border: var(--hg-color-gray-dark);
@@ -239,8 +239,8 @@
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
 
-  --hgc-hyperlink-color:       #00a392;
-  --hgc-hyperlink-color-hover: #017669;
+  --hgc-hyperlink-color:       #008577;
+  --hgc-hyperlink-color-hover: #0D6D63;
 
   --hgc-radius-sm: 0;
   --hgc-tile-logo-bg: var(--hg-color-brand);
@@ -352,8 +352,8 @@
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
 
-  --hgc-hyperlink-color:       var(--hg-color-brand-light);
-  --hgc-hyperlink-color-hover: var(--hg-color-white);
+  --hgc-hyperlink-color:       #51A2FF;
+  --hgc-hyperlink-color-hover: #BEDBFF;
 
   --hgc-main-heading-color: var(--hg-color-brand-light);
 
