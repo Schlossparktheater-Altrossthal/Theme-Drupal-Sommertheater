@@ -11,27 +11,57 @@ props:
       type: string
       title: Text
       examples:
-        - BRAND
+        - Heading
     description:
       type: string
       title: Text
       examples:
         - Lorem ipsum dolor sit amet luctus rutrum
+    border:
+      type: boolean
+      title: Border
+      description: Add a border to the tile.
+      default: true
+      examples:
+        - true
     icon:
       type: string
       title: Phosphor icon slug
       default: 'rocket'
       examples:
-        - 'rocket'
-    icon_position:
+        - 'ph-rocket'
+    icon_align:
       type: string
-      title: Icon left/right
+      title: Icon alignment
       enum:
-        - left
-        - right
-      default: right
+        - hg:justify-start
+        - hg:justify-end
+        - hg:justify-center
+      meta:enum:
+        hg:justify-start: Left
+        hg:justify-end: Right
+        hg:justify-center: Center
+      default:
+        - 'hg:justify-center'
       examples:
-        - right
+        - 'hg:justify-center'
+    tile_size:
+      type: string
+      title: Set tile size
+      enum:
+        - hg:aspect-none
+        - hg:aspect-square
+        - hg:aspect-4/3
+        - hg:aspect-16/9
+      meta:enum:
+        hg:aspect-none: None
+        hg:aspect-square: Square
+        hg:aspect-4/3: 4 × 3
+        hg:aspect-16/9: 16 × 9
+      default:
+        - 'hg:aspect-none'
+      examples:
+        - 'hg:aspect-none'
     url:
       type: string
       title: Link

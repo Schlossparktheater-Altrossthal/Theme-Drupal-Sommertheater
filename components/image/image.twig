@@ -1,10 +1,11 @@
 {% set classes = classes|default([])|merge([
     'media-image',
+    radius ? radius ~ ' hg:overflow-hidden' : '',
   ])|filter(v => v is not empty)
 %}
 
 <figure class="{{ classes|join(' ') }}">
-  <div class="hg:aspect-{{ size }}">
+  <div class="hg:w-full {{ size }}">
     {% block media %}
       <img class="hg:object-cover hg:w-full hg:h-full" src="{{ media.src }}" alt="{{ media.alt }}" ></img>
     {% endblock %}

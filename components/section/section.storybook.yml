@@ -1,0 +1,65 @@
+hide_main: true
+hide_pricing: true
+header_text: 'Example of a Section Heading'
+footer_text: '<p>Additional text below</p>'
+media:
+  src: 'assets/5255417.jpg'
+  alt: 'Photo by'
+
+pricing:
+  - heading_text: 'Silver'
+    description: 'Consectetur ridiculus dui libero gravida et tempus auctor mus malesuada ut.'
+    currency_code: 'USD'
+    price: '159.00'
+    currency_symbol: '$'
+    symbol_position: 'before'
+    text: '<ul>
+      <li>Enter rich text</li>
+      <li>Facilisis dictumst letius in</li>
+      <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+      </ul>'
+    button_url: https://example.com
+    button_label: Choose this plan
+    promote: false
+  - heading_text: 'Gold'
+    description: 'Orci id nibh interdum sodales rhoncus pellentesque vulputate venenatis.'
+    currency_code: 'USD'
+    price: '89.00'
+    currency_symbol: '$'
+    symbol_position: 'before'
+    text: '<ul>
+      <li>Enter rich text</li>
+      <li>Facilisis dictumst letius in</li>
+      <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+      </ul>'
+    button_url: https://example.com
+    button_label: Choose this plan
+    promote: true
+  - heading_text: 'Platinum'
+    description: 'Senectus vehicula rhoncus nunc auctor lobortis sollicitudin enim torquent.'
+    currency_code: 'USD'
+    price: '129.00'
+    currency_symbol: '$'
+    symbol_position: 'before'
+    text: '<ul>
+      <li>Enter rich text</li>
+      <li>Facilisis dictumst letius in</li>
+      <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+      </ul>'
+    button_url: https://example.com
+    button_label: Choose this plan
+    promote: false
+  - heading_text: 'Enterprise'
+    description: 'Est nisl tortor scelerisque lacus augue inceptos dignissim mollis mauris sit quis.'
+    currency_code: 'USD'
+    price: '340.00'
+    currency_symbol: '$'
+    symbol_position: 'before'
+    text: '<ul>
+      <li>Enter rich text</li>
+      <li>Facilisis dictumst letius in</li>
+      <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+      </ul>'
+    button_url: https://example.com
+    button_label: Choose this plan
+    promote: false

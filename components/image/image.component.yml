@@ -14,17 +14,45 @@ props:
         - src: 'assets/957040.jpg'
           alt: 'Placeholder text.'
     size:
-      title: Aspect-ratio
-      description: Set the aspect-ratio of the image container
+      title: Aspect ratio
+      description: Width:height proportions of the image. Listed from most horizontal to most vertical.
       type: string
-      enum: ['4/3', '3/2', '2/1', '1/1', '16/9']
-      default: '4/3'
+      enum:
+        - hg:aspect-2/1
+        - hg:aspect-16/9
+        - hg:aspect-3/2
+        - hg:aspect-4/3
+        - hg:aspect-1/1
+      meta:enum:
+        hg:aspect-2/1: 2 × 1
+        hg:aspect-16/9: 16 × 9
+        hg:aspect-3/2: 3 × 2
+        hg:aspect-4/3: 4 × 3
+        hg:aspect-1/1: Square
+      default: hg:aspect-4/3
       examples:
-        - '4/3'
+        - hg:aspect-4/3
+    radius:
+      type: string
+      title: Rounded
+      description: "The border radius of the image"
+      enum:
+        - hg:rounded-none
+        - hg:rounded-sm
+        - hg:rounded-md
+        - hg:rounded-lg
+        - hg:rounded-xl
+        - hg:rounded-full
+      meta:enum:
+        hg:rounded-none: None
+        hg:rounded-sm: Small
+        hg:rounded-md: Medium
+        hg:rounded-lg: Large
+        hg:rounded-xl: Extra-Large
+        hg:rounded-full: Full
+      examples:
+        - 'hg:rounded-none'
     caption:
       title: Caption
       description: Set optional caption
       type: string
-      default: 'This is a caption example'
-      examples:
-        - 'This is a caption example'

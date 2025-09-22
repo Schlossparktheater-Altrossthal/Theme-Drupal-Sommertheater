@@ -25,7 +25,7 @@ props:
       type: string
       title: Heading Styles
       description: The heading styles.
-      enum: [default, alt]
+      enum: ['default', 'alt']
       default: default
       examples: 
         - default

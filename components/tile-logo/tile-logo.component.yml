@@ -12,10 +12,3 @@ props:
       examples:
         - src: 'assets/dark.png'
           alt: 'Placeholder brand logo'
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark, inherit]
-      examples:
-        - light
-      default: light

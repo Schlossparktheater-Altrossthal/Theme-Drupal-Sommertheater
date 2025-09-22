@@ -61,6 +61,7 @@ function generateControlType(property) {
     return {
       control: {
         ...propertyHandlers.enum(property),
+        labels: property['meta:enum'],
       },
       options: property.enum,
     };
@@ -204,6 +205,12 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMe
     // Generate control type
     const control =
       generateControlType(property);
+
+    if (control.control.type === 'select') {
+      console.log(control);
+    }
+
+
 
     // Build argTypes entry
     argTypes[key] = {

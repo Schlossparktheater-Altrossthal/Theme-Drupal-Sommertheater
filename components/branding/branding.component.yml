@@ -4,11 +4,4 @@ description: Basic card with image, title, teaser, tags
 group: Base
 props:
   type: object
-  properties:
-    color_mode:
-      type: string
-      title: Color Mode
-      enum: [light, dark]
-      examples: 
-        - light
-      default: light
+  properties: {} 

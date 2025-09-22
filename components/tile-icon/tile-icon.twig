@@ -1,26 +1,29 @@
 {% set tile_classes = tile_classes|default([])|merge([
     'icon-tile',
-    'hg:border',
+    border ? 'hg:border hg:p-6' : '',
+    icon_align == 'hg:justify-center' ? 'hg:text-center' : '',
 ])|filter(v => v is not empty) %}
 
-<div class="{{ tile_classes|join(' ') }} hg:aspect-square hg:grid hg:grid-rows-2 hg:grid-columns-1 hg:p-6 hg:relative">
-  <div class="hg:w-full hg:h-full hg:flex {{ icon_position == 'left' ? 'hg:justify-start' : 'hg:justify-end' }}">
+<div class="{{ tile_classes|join(' ') }} {{ tile_size }} hg:grid hg:grid-columns-1 hg:relative">
+  <div class="hg:w-full hg:h-full hg:flex {{ icon_align }}">
     {% if icon %}
       {{ include('@mercury/components/icon/icon.twig', { icon_size: 'hg:text-4xl' }) }}
     {% endif %}
   </div>
 
-  <div class="hg:w-full hg:h-full hg:flex hg:justify-start hg:items-end">
-    {% if url is not empty %}
-      <a href="{{ url }}" class="hg:flex hg:flex-col hg:gap-[0.75em] hg:before:absolute hg:before:content-[''] hg:before:inset-0">
-        <h3>{{ text }}</h3>
-        <p>{{ description }}</p>
-      </a>
-    {% else %}
-      <span class="hg:flex hg:flex-col hg:gap-[0.75em] hg:before:absolute hg:before:content-[''] hg:before:inset-0">
-        <h3>{{ text }}</h3>
-        <p>{{ description }}</p>
-      </span>
+  <div class="hg:w-full hg:h-full hg:flex hg:justify-start hg:items-end hg:pt-2">
+    {% if text is not empty or description is not empty %}
+      {% if url is not empty %}
+        <a href="{{ url }}" class="hg:flex hg:flex-col hg:w-full hg:before:absolute hg:before:content-[''] hg:before:inset-0">
+          {% if text is not empty %}<h3>{{ text }}</h3>{% endif %}
+          {% if description is not empty %}<p>{{ description }}</p>{% endif %}
+        </a>
+      {% else %}
+        <span class="hg:flex hg:flex-col hg:w-full hg:before:absolute hg:before:content-[''] hg:before:inset-0">
+          {% if text is not empty %}<h3>{{ text }}</h3>{% endif %}
+          {% if description is not empty %}<p>{{ description }}</p>{% endif %}
+        </span>
+      {% endif %}
     {% endif %}
   </div>
 </div>
