@@ -1,6 +1,7 @@
 import parse from 'html-react-parser';
 import once from '@drupal/once';
 import React from 'react';
+import '../src/globals.css';
 import '../src/main.css';
 import '../src/schemes.css';
 import '../src/fonts.css';

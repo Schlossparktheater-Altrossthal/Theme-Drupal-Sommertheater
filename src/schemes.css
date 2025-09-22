@@ -17,6 +17,8 @@
   --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
   --hgc-collapsible-title-bg-hover: var(--hg-color-gray-light);
   --hgc-collapsible-title-bg-active: var(--hg-color-gray-lightest);
+  --hgc-collapsible-content-text: var(--hg-color-black);
+  --hgc-collapsible-border-color: var(--hg-color-black);
   /* Style Cards. */
   --hgc-card-bg: transparent;
   --hgc-card-bg-hover: transparent;
@@ -350,8 +352,8 @@
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
 
-  --hgc-hyperlink-color:       #4f86ff;
-  --hgc-hyperlink-color-hover: #b2caff;
+  --hgc-hyperlink-color:       var(--hg-color-brand-light);
+  --hgc-hyperlink-color-hover: var(--hg-color-white);
 
   --hgc-main-heading-color: var(--hg-color-brand-light);
 
@@ -362,10 +364,12 @@
   --hgc-footer-border: #536487;
 
   /* Collapsible Section. */
-  --hgc-collapsible-content-bg: var(--hg-color-brand-light);
-  --hgc-collapsible-title-bg: var(--hg-color-brand);
-  --hgc-collapsible-title-bg-hover: var(--hg-color-brand-dark);
-  --hgc-collapsible-title-bg-active: var(--hg-color-brand-dark);
+  --hgc-collapsible-content-bg: transparent;
+  --hgc-collapsible-title-bg: transparent;
+  --hgc-collapsible-title-bg-hover: var(--hg-color-accent-dark);
+  --hgc-collapsible-title-bg-active: transparent;
+  --hgc-collapsible-content-text: var(--hg-color-white);
+  --hgc-collapsible-border-color: var(--hg-color-gray);
   /* Style Cards. */
   --hgc-card-bg: transparent;
   --hgc-card-bg-hover: transparent;

@@ -7,34 +7,47 @@
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
-  @apply hg:border-b-2 hg:border-transparent hg:bg-clip-padding;
+  @apply hg:border-b-1 hg:border-(--hgc-collapsible-border-color) hg:bg-clip-padding;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
-  --hgc-collapsible-text: var(--hg-color-black);
 
   &:has(button[aria-expanded='true']) .collapsible-section--content {
     @apply hg:py-4;
   }
 
+  &:not(:has(+ .collapsible-section)) {
+    @apply hg:border-b-0;
+  }
 }
 
 .collapsible-section--title {
   @apply hg:text-2xl;
   background-color: var(--hgc-collapsible-title-bg);
 
+  &:focus {
+    background-color: var(--hgc-collapsible-title-bg-hover);
+  }
+
   .collapsible-section--open & {
     background-color: var(--hgc-collapsible-title-bg-active);
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: var(--hgc-collapsible-title-bg-hover);
   }
 }
 
 .collapsible-section--content {
   @apply hg:pb-2 hg:h-auto hg:text-base;
-  color: var(--hgc-collapsible-text);
+  color: var(--hgc-collapsible-content-text);
+
+  :first-child {
+    @apply hg:mt-0;
+  }
+
+  :last-child {
+    @apply hg:mb-0;
+  }
 }
 
 /* Styles involving collapsing/expanding. */

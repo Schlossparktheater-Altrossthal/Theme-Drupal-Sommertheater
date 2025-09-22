@@ -18,6 +18,14 @@ class CollapsibleSection extends ComponentInstance {
     this.contentContainer = this.el.querySelector(
       '.collapsible-section--content'
     );
+    this.focusableDescendants = this.contentContainer.querySelectorAll(':is(input, select, textarea, button, object):not(:disabled), a:is([href]), [tabindex]');
+
+    // Keep track of the starting tabindex for all focusable descendants, so we
+    // can restore them after nuking them when the collapsible is closed.
+    this.focusableDescendants.forEach(el => {
+      el.tabIndex = el.tabIndex || 0;
+      el.dataset.originalTabIndex = el.tabIndex;
+    });
 
     // With the `set isOpen()` below, merely setting this property does all the
     // stuff necessary to open or close the collapsible.
@@ -71,6 +79,9 @@ class CollapsibleSection extends ComponentInstance {
       // First do all the DOM manipulation needed to actually open the
       // collapsible.
       this.el.classList.add(CollapsibleSection.openClass);
+      this.focusableDescendants.forEach(el => {
+        el.tabIndex = el.dataset.originalTabIndex
+      });
       this.button.setAttribute('aria-expanded', 'true');
 
       // Then stash the current state in a simple private property with no
@@ -85,6 +96,9 @@ class CollapsibleSection extends ComponentInstance {
     } else {
       // DOM manipulation.
       this.el.classList.remove(CollapsibleSection.openClass);
+      this.focusableDescendants.forEach(el => {
+        el.tabIndex = -1;
+      });
       this.button.setAttribute('aria-expanded', 'false');
       // Stash current state.
       this.#savedAsOpen = false;
