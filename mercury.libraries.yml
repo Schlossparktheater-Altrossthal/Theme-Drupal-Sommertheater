@@ -10,7 +10,6 @@ global:
       src/schemes.css: {}
     component:
       css/components/action-links.css: {}
-      css/components/breadcrumb.css: {}
       css/components/button.css: {}
       css/components/container-inline.css: {}
       css/components/details.css: {}
@@ -24,10 +23,6 @@ global:
       css/components/menu.css: {}
       css/components/more-link.css: {}
       css/components/pager.css: {}
-      css/components/tabledrag.css: {}
-      css/components/tableselect.css: {}
-      css/components/tablesort.css: {}
-      css/components/tabs.css: {}
       css/components/textarea.css: {}
       css/components/ui-dialog.css: {}
 
@@ -38,11 +33,6 @@ dialog:
       css/components/dialog.css: {}
       components/dialog/dialog.css: {}
       components/dialog-webform/dialog-webform.css: {}
-dropbutton:
-  version: VERSION
-  css:
-    component:
-      css/components/dropbutton.css: {}
 dropdown-menu:
   css:
     component:
@@ -51,16 +41,6 @@ dropdown-menu:
     components/dropdown-menu/dropdown-menu.js:
       attributes:
         type: module
-file:
-  version: VERSION
-  css:
-    component:
-      css/components/file.css: {}
-image-widget:
-  version: VERSION
-  css:
-    component:
-      css/components/image-widget.css: {}
 indented:
   version: VERSION
   css:
@@ -71,30 +51,15 @@ messages:
   css:
     component:
       css/components/messages.css: {}
-node:
-  version: VERSION
-  css:
-    component:
-      css/components/node.css: {}
 phosphor-icons:
   css:
     theme:
       src/phosphor-icons.css: {}
-progress:
-  version: VERSION
-  css:
-    component:
-      css/components/progress.css: {}
 search-results:
   version: VERSION
   css:
     component:
       css/components/search-results.css: {}
-user:
-  version: VERSION
-  css:
-    component:
-      css/components/user.css: {}
 webform:
   version: VERSION
   css:
