@@ -1,13 +1,16 @@
 {% set classes = classes|default([])|merge([
     'card-pricing',
+    'hg:relative',
     'hg:flex',
     'hg:flex-col',
     'hg:gap-4',
     'hg:md:gap-6',
+    'hg:xl:gap-7',
     'hg:border',
-    'hg:p-3',
-    'hg:md:p-4',
-    'hg:lg:p-6',
+    'hg:p-5',
+    'hg:md:p-6',
+    'hg:xl:p-7',
+    'hg:2xl:p-8',
     'hg:rounded-md',
     promote ? 'promote',
   ])|filter(v => v is not empty)
@@ -42,7 +45,7 @@
   </div>
 
 {% if block('richtext') is defined and text is not empty %}
-  <div class="card-pricing--features rich-text">
+  <div class="card-pricing--features rich-text hg:border-t">
   {% block richtext %}
     {{ include('mercury:text',
       {
@@ -55,10 +58,11 @@
 
   <footer class="card-pricing--footer hg:mt-auto">
     {{ include('mercury:button', {
-      url: button_url,
+      href: button_url,
       label: button_label,
       variant: promote ? 'negative' : 'primary',
-      size: 'small',
+      size: 'medium',
+      btn_classes: ['hg:before:absolute', "hg:before:content-['']", 'hg:before:inset-0'],
     }) }}
   </footer>
 

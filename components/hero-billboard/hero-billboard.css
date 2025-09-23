@@ -1,6 +1,6 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--hero-1 {
+.storybook-component--hero-billboard {
   width: 100%;
   @media (width >= 40rem) {
     max-width: 40rem;
@@ -22,7 +22,7 @@
   border-inline-width: 1px;
   --tw-border-style: dotted;
   border-style: dotted;
-  border-color: var(--hg-color-gray-200, oklch(0.928 0.006 264.531));
+  border-color: var(--hg-color-gray-200, oklch(92.8% 0.006 264.531));
   padding-inline: calc(var(--hg-spacing, 4px) * 4);
 }
 #storybook-root:has(.hero-overlay) {

@@ -26,16 +26,20 @@
   --hgc-card-framed-bg-hover: transparent;
   --hgc-card-featured-bg: transparent;
   --hgc-card-featured-bg-hover: transparent;
-  /* Style Plan Cards. */
-  --hgc-card-plan-bg: var(--hg-color-white);
-  --hgc-card-plan-border: var(--hg-color-gray-light);
-  --hgc-card-plan-title: var(--hg-color-brand);
-  --hgc-card-plan-text: var(--hg-color-body-text);
-  --hgc-card-plan-price: var(--hg-color-brand);
-  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
-  --hgc-card-plan-border-promoted: var(--hg-color-brand);
-  --hgc-card-plan-text-promoted: var(--hg-color-white);
-  --hgc-card-plan-price-promoted: var(--hg-color-white);
+  /* Style Pricing Cards. */
+  --hgc-card-price-bg: var(--hg-color-white);
+  --hgc-card-price-border: var(--hg-color-slate-300);
+  --hgc-card-price-border-hover: var(--hg-color-blue-400);
+  --hgc-card-price-title: var(--hg-color-blue-600);
+  --hgc-card-price-text: var(--hg-color-body-text);
+  --hgc-card-price-divider: var(--hg-color-slate-300);
+  --hgc-card-price-price: var(--hg-color-blue-600);
+  --hgc-card-price-text-promoted: var(--hg-color-white);
+  --hgc-card-price-price-promoted: var(--hg-color-white);
+  --hgc-card-price-bg-promoted: var(--hg-color-blue-600);
+  --hgc-card-price-bg-promoted-hover: var(--hg-color-blue-800);
+  --hgc-card-price-border-promoted: var(--hg-color-blue-600);
+  --hgc-card-price-border-promoted-hover: var(--hg-color-blue-800);
   /* Style Buttons and Badges. */
   /* Primary */
   --hgc-btn-bg: var(--hg-color-brand);
@@ -120,21 +124,26 @@
   --hgc-card-framed-bg-hover: var(--hg-color-gray-dark);
   --hgc-card-featured-bg: var(--hg-color-brand-dark);
   --hgc-card-featured-bg-hover: var(--hg-color-brand);
-  /* Style Plan Cards. */
-  --hgc-card-plan-bg: var(--hg-color-white);
-  --hgc-card-plan-border: var(--hg-color-white);
-  --hgc-card-plan-title: var(--hg-color-brand);
-  --hgc-card-plan-text: var(--hg-color-black);
-  --hgc-card-plan-price: var(--hg-color-brand);
-  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
-  --hgc-card-plan-border-promoted: var(--hg-color-brand);
-  --hgc-card-plan-text-promoted: var(--hg-color-white);
-  --hgc-card-plan-price-promoted: var(--hg-color-white);
+  /* Style Pricing Cards. */
+  --hgc-card-price-bg: var(--hg-color-white);
+  --hgc-card-price-border: var(--hg-color-white);
+  --hgc-card-price-border-hover: var(--hg-color-blue-600);
+  --hgc-card-price-title: var(--hg-color-brand);
+  --hgc-card-price-text: var(--hg-color-black);
+  --hgc-card-price-divider: var(--hg-color-slate-300);
+  --hgc-card-price-price: var(--hg-color-brand);
+  --hgc-card-price-bg-promoted: var(--hg-color-brand);
+  --hgc-card-price-bg-promoted-hover: var(--hg-color-brand-dark);
+  --hgc-card-price-border-promoted: var(--hg-color-brand);
+  --hgc-card-price-border-promoted-hover: var(--hg-color-brand-dark);
+  --hgc-card-price-text-promoted: var(--hg-color-white);
+  --hgc-card-price-price-promoted: var(--hg-color-white);
   /* Style Buttons and Badges. */
   /* Primary */
   --hgc-btn-bg: var(--hg-color-brand);
   --hgc-btn-border: var(--hg-color-brand);
   --hgc-btn-label: var(--hg-color-white);
+  --hgc-btn-label-hover: var(--hg-color-white);
   --hgc-btn-bg-hover: var(--hg-color-brand-dark);
   --hgc-btn-border-hover: var(--hg-color-brand);
   --hgc-btn-bg-disabled: var(--hg-color-gray-darkest);
@@ -257,16 +266,20 @@
   --hgc-card-framed-bg-hover: transparent;
   --hgc-card-featured-bg: transparent;
   --hgc-card-featured-bg-hover: transparent;
-  /* Style Plan Cards. */
-  --hgc-card-plan-bg: var(--hg-color-white);
-  --hgc-card-plan-border: var(--hg-color-gray-light);
-  --hgc-card-plan-title: var(--hg-color-accent);
-  --hgc-card-plan-text: var(--hg-color-accent);
-  --hgc-card-plan-price: var(--hg-color-accent);
-  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
-  --hgc-card-plan-border-promoted: var(--hg-color-brand);
-  --hgc-card-plan-text-promoted: var(--hg-color-black);
-  --hgc-card-plan-price-promoted: var(--hg-color-black);
+  /* Style Pricing Cards. */
+  --hgc-card-price-bg: var(--hg-color-white);
+  --hgc-card-price-border: var(--hg-color-gray-light);
+  --hgc-card-price-border-hover: var(--hg-color-brand);
+  --hgc-card-price-title: var(--hg-color-brand);
+  --hgc-card-price-text: var(--hg-color-accent);
+  --hgc-card-price-price: var(--hg-color-brand);
+  --hgc-card-price-divider: var(--hg-color-gray-light);
+  --hgc-card-price-bg-promoted: var(--hg-color-brand);
+  --hgc-card-price-bg-promoted-hover: var(--hg-color-brand-light);
+  --hgc-card-price-border-promoted: var(--hg-color-brand);
+  --hgc-card-price-text-promoted: var(--hg-color-black);
+  --hgc-card-price-price-promoted: var(--hg-color-black);
+  --hgc-card-price-border-promoted-hover: var(--hg-color-brand);
   /* Used for both buttons and badges. */
   --hgc-btn-bg: var(--hg-color-brand);
   --hgc-btn-border: var(--hg-color-brand);
@@ -377,15 +390,19 @@
   --hgc-card-framed-bg-hover: var(--hg-color-brand-dark);
   --hgc-card-featured-bg: var(--hg-color-brand-dark);
   --hgc-card-featured-bg-hover: var(--hg-color-brand);
-  /* Style Plan Cards. */
-  --hgc-card-plan-bg: var(--hg-color-accent-dark);
-  --hgc-card-plan-border: var(--hg-color-accent-dark);
-  --hgc-card-plan-text: var(--hg-color-body-text);
-  --hgc-card-plan-price: var(--hg-color-white);
-  --hgc-card-plan-bg-promoted: var(--hg-color-brand);
-  --hgc-card-plan-border-promoted: var(--hg-color-brand);
-  --hgc-card-plan-text-promoted: var(--hg-color-body-text);
-  --hgc-card-plan-price-promoted: var(--hg-color-body-text);
+  /* Style Pricing Cards. */
+  --hgc-card-price-bg: var(--hg-color-accent-dark);
+  --hgc-card-price-border: var(--hg-color-accent-dark);
+  --hgc-card-price-border-hover: var(--hg-color-accent-light);
+  --hgc-card-price-text: var(--hg-color-body-text);
+  --hgc-card-price-price: var(--hg-color-white);
+  --hgc-card-price-divider: var(--hg-color-accent-light);
+  --hgc-card-price-bg-promoted: var(--hg-color-brand);
+  --hgc-card-price-bg-promoted-hover: var(--hg-color-brand-dark);
+  --hgc-card-price-border-promoted: var(--hg-color-brand);
+  --hgc-card-price-border-promoted-hover: var(--hg-color-brand-dark);
+  --hgc-card-price-text-promoted: var(--hg-color-body-text);
+  --hgc-card-price-price-promoted: var(--hg-color-body-text);
   /* Used for both buttons and badges. */
   --hgc-btn-bg: var(--hg-color-brand);
   --hgc-btn-border: var(--hg-color-brand);

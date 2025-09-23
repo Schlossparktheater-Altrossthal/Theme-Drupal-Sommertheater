@@ -34,24 +34,21 @@ props:
         - hg:aspect-4/3
     radius:
       type: string
-      title: Rounded
-      description: "The border radius of the image"
+      title: Image radius
+      description: Image corner radius
       enum:
         - hg:rounded-none
         - hg:rounded-sm
-        - hg:rounded-md
-        - hg:rounded-lg
-        - hg:rounded-xl
-        - hg:rounded-full
+        - hg:rounded-xl hg:md:rounded-2xl
+        - hg:rounded-[24px] hg:md:rounded-[32px]
       meta:enum:
         hg:rounded-none: None
         hg:rounded-sm: Small
-        hg:rounded-md: Medium
-        hg:rounded-lg: Large
-        hg:rounded-xl: Extra-Large
-        hg:rounded-full: Full
+        hg:rounded-xl hg:md:rounded-2xl: Large
+        hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
+      default: hg:rounded-sm
       examples:
-        - 'hg:rounded-none'
+        - 'hg:rounded-sm'
     caption:
       title: Caption
       description: Set optional caption

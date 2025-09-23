@@ -1,0 +1,5 @@
+hide_main: true
+media:
+  src: 'assets/8474492.jpg'
+  alt: 'Photo by pixabay'
+image_position: 'hg:md:flex-row'

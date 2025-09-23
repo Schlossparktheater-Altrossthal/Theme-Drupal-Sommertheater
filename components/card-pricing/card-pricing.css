@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
 .storybook-component--card-pricing {
   max-width: 300px;
@@ -9,6 +9,9 @@
     background-color: var(--hgc-card-plan-bg);
     border-color: var(--hgc-card-plan-border);
     color: var(--hgc-card-plan-text);
+    &:hover, &:focus {
+      border-color: var(--hgc-card-plan-border-hover);
+    }
     &.promote {
       background-color: var(--hgc-card-plan-bg-promoted);
       border-color: var(--hgc-card-plan-border-promoted);
@@ -16,6 +19,13 @@
       --hgc-card-plan-price: var(--hgc-card-plan-price-promoted);
       --hgc-card-plan-bg: var(--hgc-card-plan-bg-promoted);
       --hgc-card-plan-title: var(--hgc-card-plan-title-promoted);
+      &:hover, &:focus {
+        background-color: var(--hgc-card-plan-bg-promoted-hover);
+        border-color: var(--hgc-card-plan-border-promoted-hover);
+        .card-pricing--features {
+          background-color: var(--hgc-card-plan-bg-promoted-hover);
+        }
+      }
     }
     .card-title {
       font-size: 1.375rem;
@@ -50,11 +60,19 @@
       }
     }
     .card-pricing--features {
-      border-top-style: var(--tw-border-style);
-      border-top-width: 1px;
+      border-color: var(--hgc-card-plan-divider);
       background-color: var(--hgc-card-plan-bg);
       padding-top: calc(var(--hg-spacing, 4px) * 4);
       color: inherit;
+      @media (width >= 48rem) {
+        padding-top: calc(var(--hg-spacing, 4px) * 6);
+      }
+      @media (width >= 96rem) {
+        padding-top: calc(var(--hg-spacing, 4px) * 7);
+      }
+      ul {
+        margin-block: calc(var(--hg-spacing, 4px) * 0);
+      }
       li {
         font-size: var(--hg-text-base, 1rem);
         line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
@@ -73,17 +91,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-leading: initial;
       --tw-font-weight: initial;
-      --tw-border-style: solid;
     }
   }
 }

@@ -59,6 +59,9 @@ props:
     button_url:
       type: string
       title: Link
+      default: 'https://www.example.com'
+      examples:
+        - 'https://www.example.com'
     button_label:
       type: string
       title: Button Label

@@ -1,6 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--hero-1 {
+.storybook-component--hero-billboard {
   @apply hg:container hg:px-4 hg:mx-auto hg:border-x hg:border-dotted hg:border-gray-200;
 }
 
