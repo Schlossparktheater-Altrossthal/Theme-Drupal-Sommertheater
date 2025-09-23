@@ -4,7 +4,7 @@
 
   <nav aria-label="breadcrumb" class="breadcrumb hg:relative hg:w-full">
     <h2 id="system-breadcrumb" class="hg:sr-only">{{ 'Breadcrumb' }}</h2>
-    <ol class="breadcrumb-items hg:flex hg:flex-row hg:items-center hg:gap-2 hg:p-0 hg:m-0 hg:list-none hg:text-sm hg:lg:text-base hg:leading-none">
+    <ol class="breadcrumb-items hg:flex hg:flex-row hg:items-center hg:gap-2 hg:p-0 hg:m-0 hg:list-none hg:text-sm hg:leading-none">
 
       {% for item in storybook.breadcrumb %}
         {% set is_first = loop.first %}
@@ -13,29 +13,33 @@
 
         {# Insert ellipsis after first item if truncation is needed #}
         {% if needs_truncation and loop.index == 2 %}
-          <li aria-hidden="true" class="breadcrumb-icon-ellipses hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+          <li aria-hidden="true" class="breadcrumb-icon-ellipses hg:grid hg:content-center hg:h-10 hg:text-sm hg:leading-none">
             {{ include('@mercury/components/icon/icon.twig', { icon: 'dots-three' }) }}
           </li>
-          <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+          <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:leading-none">
             {{ include('@mercury/components/icon/icon.twig', { icon: 'caret-right' }) }}
           </li>
         {% endif %}
 
         {# Render breadcrumb item #}
         {% if should_show %}
-          {% if loop.last %}
-            <li class="breadcrumb-item hg:text-sm hg:lg:text-base hg:leading-none active" aria-current="page">
+          {% if loop.first %}
+            <li class="breadcrumb-item hg:text-inherit active" aria-current="page">
+              <a href="{{ item.url }}"aria-labelledby="{{ item.text }}" class="hg:hover:no-underline hg:focus:no-underline">{{ include('@mercury/components/icon/icon.twig', { weight: 'bold', icon: 'house' }) }}</a>
+            </li>
+          {% elseif loop.last %}
+            <li class="breadcrumb-item hg:text-sm hg:leading-none active" aria-current="page">
               {{ item.text }}
             </li>
-          {% elseif item.url %}
-            <li class="breadcrumb-item hg:text-sm hg:lg:text-base hg:leading-none">
+          {% elseif item.url and not loop.first %}
+            <li class="breadcrumb-item hg:text-sm hg:leading-none">
               <a href="{{ item.url }}" >{{ item.text }}</a>
             </li>
           {% endif %}
 
           {# Add chevron after item (except last) #}
           {% if not loop.last and (not needs_truncation or is_last_two or is_first) %}
-            <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:lg:text-base hg:leading-none">
+            <li aria-hidden="true" class="breadcrumb-icon hg:grid hg:content-center hg:h-10 hg:text-sm hg:leading-none">
               {{ include('@mercury/components/icon/icon.twig', { icon: 'caret-right' }) }}
             </li>
           {% endif %}

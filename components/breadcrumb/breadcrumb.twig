@@ -4,12 +4,17 @@
 
   <nav aria-label="breadcrumb" class="breadcrumb hg:relative hg:w-full">
     <h2 id="system-breadcrumb" class="hg:sr-only">{{ 'Breadcrumb' }}</h2>
-    <ol class="breadcrumb-items hg:flex hg:flex-row hg:items-center hg:gap-2 hg:p-0 hg:m-0 hg:list-none hg:text-sm hg:lg:text-base hg:leading-none">
+    <ol class="breadcrumb-items hg:flex hg:flex-row hg:items-center hg:gap-2 hg:p-0 hg:m-0 hg:list-none hg:text-sm hg:leading-none">
 
       {% for item in breadcrumb %}
         {% set is_first = loop.first %}
         {% set is_last_two = loop.revindex <= 2 %}
         {% set should_show = not needs_truncation or is_first or is_last_two %}
+              {% if loop.first %}
+            <li class="breadcrumb-item hg:text-inherit active" aria-current="page">
+              {{ include('@mercury/components/icon/icon.twig', { icon: 'house' }) }}{{ item.text }}
+            </li>
+          {% endif %}
 
         {# Insert ellipsis after first item if truncation is needed #}
         {% if needs_truncation and loop.index == 2 %}
@@ -23,7 +28,11 @@
 
         {# Render breadcrumb item #}
         {% if should_show %}
-          {% if loop.last %}
+          {% if loop.first %}
+            <li class="breadcrumb-item hg:text-inherit active" aria-current="page">
+              <a href="{{ item.url }}"aria-labelledby="{{ item.text }}" class="hg:hover:no-underline hg:focus:no-underline">{{ include('@mercury/components/icon/icon.twig', { weight: 'bold', icon: 'house' }) }}</a>
+            </li>
+          {% elseif loop.last %}
             <li class="breadcrumb-item hg:text-inherit active" aria-current="page">
               {{ item.text }}
             </li>
