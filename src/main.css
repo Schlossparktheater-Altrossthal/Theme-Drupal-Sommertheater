@@ -204,23 +204,23 @@
   }
 
   h2 {
-    @apply hg:font-(--hgc-font-weight-h2) hg:text-5xl hg:2xl:text-6xl;
+    @apply hg:font-(--hgc-font-weight-h2) hg:text-4xl hg:md:text-5xl hg:xl:text-6xl;
   }
 
   h3 {
-    @apply hg:font-(--hgc-font-weight-h3) hg:text-3xl;
+    @apply hg:font-(--hgc-font-weight-h3) hg:text-2xl hg:xl:text-3xl;
   }
 
   h4 {
-    @apply hg:font-(--hgc-font-weight-h4) hg:text-2xl;
+    @apply hg:font-(--hgc-font-weight-h4) hg:text-xl hg:md:text-2xl;
   }
 
   h5 {
-    @apply hg:font-(--hgc-font-weight-h5) hg:text-2xl;
+    @apply hg:font-(--hgc-font-weight-h5) hg:text-lg hg:md:text-xl;
   }
 
   h6 {
-    @apply hg:font-(--hgc-font-weight-h6) hg:text-[20px];
+    @apply hg:font-(--hgc-font-weight-h6) hg:text-base hg:md:text-lg;
   }
 
   code,
@@ -323,6 +323,75 @@
   /* For custom utility classes with highest precedence. */
   .font-display {
     font-family: var(--hg-font-display);
+  }
+  
+  /* Responsive text size utility */
+  .heading-responsive-8xl {
+    @apply hg:text-6xl hg:md:text-7xl hg:xl:text-8xl;
+  }
+  
+  .heading-responsive-7xl {
+    @apply hg:text-5xl hg:md:text-6xl hg:xl:text-7xl;
+  }
+  
+  .heading-responsive-6xl {
+    @apply hg:text-4xl hg:md:text-5xl hg:xl:text-6xl; /* H1 */
+  }
+
+  .heading-responsive-5xl {
+    @apply hg:text-3xl hg:md:text-4xl hg:xl:text-5xl;
+  }
+
+  .heading-responsive-4xl {
+    @apply hg:text-3xl hg:xl:text-4xl; /* H2 */
+  }
+
+  .heading-responsive-3xl {
+    @apply hg:text-2xl hg:xl:text-3xl; /* H3 */
+  }
+
+  .heading-responsive-2xl {
+    @apply hg:text-xl hg:md:text-2xl; /* H4 */
+  }
+
+  .heading-responsive-xl {
+    @apply hg:text-lg hg:md:text-xl; /* H5 */
+  }
+
+  /* Font size multiplier utilities */
+  .text-scale-75 {
+    font-size: 75%;
+    --container-font-scale: 0.75;
+  }
+
+  .text-scale-87 {
+    font-size: 87.5%;
+    --container-font-scale: 0.875;
+  }
+
+  .text-scale-100 {
+    font-size: 100%;
+    --container-font-scale: 1;
+  }
+
+  .text-scale-112 {
+    font-size: 112.5%;
+    --container-font-scale: 1.125;
+  }
+
+  .text-scale-125 {
+    font-size: 125%;
+    --container-font-scale: 1.25;
+  }
+
+  .text-scale-137 {
+    font-size: 137.5%;
+    --container-font-scale: 1.375;
+  }
+
+  .text-scale-150 {
+    font-size: 150%;
+    --container-font-scale: 1.5;
   }
 }
 

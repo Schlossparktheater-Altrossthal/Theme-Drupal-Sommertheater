@@ -11,20 +11,75 @@ props:
       contentMediaType: text/html
       x-formatting-context: block
       examples:
-        - '<p>
-            We offer a range of solutions to help your business grow. Learn more about our 
-            <a href="/consulting">consulting services</a> or explore our 
-            <a href="/case-studies">case studies</a> to see results in action.
+        - '<h2>This is a heading</h2><p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>
+          <h3>This is a subheading</h3>
+          <p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>
+          <h4>This is a subheading</h4>
+          <p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>
+          <h5>This is a subheading</h5>
+          <p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>
+          <h6>This is a subheading</h6>
+          <p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>
+          <p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
           </p>
           <ul>
-            <li>
-              Custom strategy planning with a 
-              <a href="/team">dedicated team</a>
-            </li>
-            <li>
-              Hands-on workshops to guide your implementation
-            </li>
-            <li>
-              Ongoing support and optimization recommendations
-            </li>
-          </ul>'
+            <li>This is a list item</li>
+            <li>This is a list item</li>
+            </ul>'
+    font_size_multiplier:
+      type: string
+      title: Font Size Multiplier
+      description: Scale all font sizes by a percentage
+      enum:
+        - text-scale-75
+        - text-scale-87
+        - normal
+        - text-scale-112
+        - text-scale-125
+        - text-scale-137
+        - text-scale-150
+      meta:enum:
+        text-scale-75: 75% (12px)
+        text-scale-87: 87.5% (14px)
+        normal: Normal
+        text-scale-112: 112.5% (18px)
+        text-scale-125: 125% (20px)
+        text-scale-137: 137.5% (22px)
+        text-scale-150: 150% (24px)
+      default: normal
+      examples: 
+        - normal
+    font_color:
+      type: string
+      title: Font Color
+      description: Select Font Color
+      enum:
+        - text-inherit
+        - hg:text-body-text 
+        - hg:text-white
+        - hg:text-brand
+        - hg:text-brand-light
+        - hg:text-accent
+        - hg:text-accent-light
+      meta:enum:
+        text-inherit: default
+        hg:text-body-text: dark
+        hg:text-white: light
+        hg:text-brand: brand
+        hg:text-brand-light: brand light
+        hg:text-accent: accent
+        hg:text-accent-light: accent light
+      default: text-inherit
+      examples: 
+        - text-inherit

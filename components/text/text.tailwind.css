@@ -1,12 +1,71 @@
 @reference '../../src/main.css';
 
 .storybook-component--text {
-  @apply hg:max-w-3xl;
+  @apply hg:p-4 hg:max-w-3xl;
 }
 
 @layer components {
 
   .rich-text {
-    @apply hg:text-body-text;
+
+    p,
+    ul,
+    ol,
+    li {
+      font-size: inherit;
+    }
+
+    /* Scale headings proportionally with container font-size */
+    h1 {
+      font-size: calc(var(--hg-text-5xl) * var(--container-font-scale, 1));
+    }
+
+    h2 {
+      font-size: calc(var(--hg-text-4xl) * var(--container-font-scale, 1));
+    }
+
+    h3 {
+      font-size: calc(var(--hg-text-2xl) * var(--container-font-scale, 1));
+    }
+
+    h4 {
+      font-size: calc(var(--hg-text-xl) * var(--container-font-scale, 1));
+    }
+
+    h5 {
+      font-size: calc(var(--hg-text-lg) * var(--container-font-scale, 1));
+    }
+
+    h6 {
+      font-size: calc(var(--hg-text-base) * var(--container-font-scale, 1));
+    }
+
+    @media (min-width: 768px) {
+      h2 {
+        font-size: calc(var(--hg-text-5xl) * var(--container-font-scale, 1));
+      }
+      h4 {
+        font-size: calc(var(--hg-text-2xl) * var(--container-font-scale, 1));
+      }
+      h5 {
+        font-size: calc(var(--hg-text-xl) * var(--container-font-scale, 1));
+      }
+      h6 {
+        font-size: calc(var(--hg-text-lg) * var(--container-font-scale, 1));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      h2 {
+        font-size: calc(var(--hg-text-6xl) * var(--container-font-scale, 1));
+      }
+      h3 {
+        font-size: calc(var(--hg-text-3xl) * var(--container-font-scale, 1));
+      }
+    }
+
+    * {
+      color: inherit;
+    }
   }
 }
