@@ -10,10 +10,8 @@ props:
       title: Rich text
       contentMediaType: text/html
       x-formatting-context: block
-      description: The rich text.
       examples:
-        - '<h3>Welcome to Our Services</h3>
-          <p>
+        - '<p>
             We offer a range of solutions to help your business grow. Learn more about our 
             <a href="/consulting">consulting services</a> or explore our 
             <a href="/case-studies">case studies</a> to see results in action.
@@ -29,7 +27,4 @@ props:
             <li>
               Ongoing support and optimization recommendations
             </li>
-          </ul>
-          <p>
-            Ready to get started? <a href="/contact">Contact us</a> today for a free consultation.
-          </p>'
+          </ul>'
