@@ -65,3 +65,7 @@ webform:
   css:
     component:
       components/webform/webform.css: {}
+breadcrumb:
+  css:
+    component:
+      components/breadcrumb/breadcrumb.css: {}

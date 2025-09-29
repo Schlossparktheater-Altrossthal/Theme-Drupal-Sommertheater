@@ -6,13 +6,21 @@
   --hgc-menu-link-color:       #1f2937;
   --hgc-menu-link-color-hover: #1d4ed8;
 
-  --color-body-text:     red;
+  --color-body-text:     var(--hg-color-gray-dark);
   --hgc-hyperlink-color:       #155DFC;
   --hgc-hyperlink-color-hover: #193CB8;
 
   --hgc-tile-logo-bg: var(--hg-color-brand-light);
   --hgc-footer-border: var(--hg-color-gray-light);
 
+  /* Breadcrumb. */
+  --hgc-color-breadcrumb-caret: var(--hg-color-gray);
+  --hgc-color-breadcrumb-dots: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home-hover: var(--hg-color-brand);
+  --hgc-color-breadcrumb: var(--hg-color-gray);
+  --hgc-color-breadcrumb-hover: var(--hg-color-brand);
+  --hgc-color-breadcrumb-active: var(--hg-color-gray-dark);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: #eeeeee;
   --hgc-collapsible-title-bg: var(--hg-color-gray-lightest);
@@ -113,6 +121,15 @@
 
   --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-footer-border: var(--hg-color-gray-dark);
+
+  /* Breadcrumb. */
+  --hgc-color-breadcrumb-caret: var(--hg-color-gray);
+  --hgc-color-breadcrumb-dots: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home-hover: var(--hg-color-white);
+  --hgc-color-breadcrumb: var(--hg-color-gray-light);
+  --hgc-color-breadcrumb-hover: var(--hg-color-white);
+  --hgc-color-breadcrumb-active: var(--hg-color-white);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
@@ -255,6 +272,15 @@
   --hgc-radius-sm: 0;
   --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-footer-border: var(--hg-color-gray-light);
+
+  /* Breadcrumb. */ 
+  --hgc-color-breadcrumb-caret: var(--hg-color-gray);
+  --hgc-color-breadcrumb-dots: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home: var(--hg-color-gray);
+  --hgc-color-breadcrumb-home-hover: var(--hg-color-brand);
+  --hgc-color-breadcrumb: var(--hg-color-gray);
+  --hgc-color-breadcrumb-hover: var(--hg-color-brand);
+  --hgc-color-breadcrumb-active: var(--hg-color-gray-dark);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: var(--hg-color-brand-light);
   --hgc-collapsible-title-bg: var(--hg-color-brand);
@@ -377,6 +403,14 @@
   --hgc-tile-logo-bg: #536487;
   --hgc-footer-border: #536487;
 
+  /* Breadcrumb. */ 
+  --hgc-color-breadcrumb-caret: var(--hg-color-accent-light);
+  --hgc-color-breadcrumb-dots: var(--hg-color-accent-light);
+  --hgc-color-breadcrumb-home: var(--hg-color-accent-light);
+  --hgc-color-breadcrumb-home-hover: var(--hg-color-white);
+  --hgc-color-breadcrumb: var(--hg-color-accent-light);
+  --hgc-color-breadcrumb-hover: var(--hg-color-white);
+  --hgc-color-breadcrumb-active: var(--hg-color-white);
   /* Collapsible Section. */
   --hgc-collapsible-content-bg: transparent;
   --hgc-collapsible-title-bg: transparent;

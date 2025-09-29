@@ -7,6 +7,7 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
+{{ attach_library('mercury/breadcrumb') }}
 {% if breadcrumb %}
   {{ include('@mercury/components/breadcrumb/breadcrumb.twig') }}
 {% endif %}

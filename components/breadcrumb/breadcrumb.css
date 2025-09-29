@@ -1,63 +1,35 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-@layer properties;
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 .storybook-component--breadcrumb {
   padding: calc(var(--hg-spacing, 4px) * 3);
 }
 @layer components {
-  .breadcrumb {
-    --tw-font-weight: var(--hg-font-weight-medium, 500);
-    font-weight: var(--hg-font-weight-medium, 500);
-    --hgc-color-breadcrumb: var(--hg-color-gray);
-    --hgc-color-breadcrumb-hover: var(--hg-color-black);
-    --hgc-color-breadcrumb-active: var(--hg-color-black);
-    .mercury-scheme--vanilla-dark & {
-      --hgc-color-breadcrumb: var(--hg-color-gray-light);
-      --hgc-color-breadcrumb-hover: var(--hg-color-white);
-      --hgc-color-breadcrumb-active: var(--hg-color-white);
-    }
-    .mercury-scheme--byte-light & {
-      --hgc-color-breadcrumb: var(--hg-color-gray);
-      --hgc-color-breadcrumb-hover: var(--hg-color-black);
-      --hgc-color-breadcrumb-active: var(--hg-color-black);
-    }
-    .mercury-scheme--byte-dark & {
-      --hgc-color-breadcrumb: var(--hg-color-white);
-      --hgc-color-breadcrumb-hover: var(--hg-color-white);
-      --hgc-color-breadcrumb-active: var(--hg-color-accent-light);
+  .breadcrumb-home i {
+    color: var(--hgc-color-breadcrumb-home);
+    &:hover, &:focus {
+      color: var(--hgc-color-breadcrumb-home-hover);
     }
   }
-  .breadcrumb-items, .breadcrumb-item {
+  .breadcrumb-caret {
+    color: var(--hgc-color-breadcrumb-caret);
+  }
+  .breadcrumb-dots {
+    color: var(--hgc-color-breadcrumb-dots);
+  }
+  .breadcrumb-item {
     color: var(--hgc-color-breadcrumb);
+    &.active {
+      --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-active);
+    }
+    .breadcrumb-home {
+      &:hover, &:focus {
+        --hgc-color-breadcrumb-icon: var(--hgc-color-breadcrumb-icon-hover);
+      }
+    }
     a {
-      &:hover {
-        @media (hover: hover) {
-          text-decoration-line: underline;
-        }
-      }
-      &:focus {
-        text-decoration-line: underline;
-      }
       color: var(--hgc-color-breadcrumb);
       &:hover, &:focus {
-        color: var(--hgc-color-breadcrumb-hover);
+        --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-hover);
       }
-    }
-    .ph {
-      color: currentColor;
-    }
-    .active {
-      color: var(--hgc-color-breadcrumb-active);
-    }
-  }
-}
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-font-weight: initial;
     }
   }
 }
