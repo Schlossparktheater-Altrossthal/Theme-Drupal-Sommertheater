@@ -1,5 +1,4 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
-@layer properties;
 .storybook-component--hero-billboard {
   width: 100%;
   @media (width >= 40rem) {
@@ -18,54 +17,9 @@
     max-width: 96rem;
   }
   margin-inline: auto;
-  border-inline-style: var(--tw-border-style);
-  border-inline-width: 1px;
-  --tw-border-style: dotted;
-  border-style: dotted;
-  border-color: var(--hg-color-gray-200, oklch(92.8% 0.006 264.531));
   padding-inline: calc(var(--hg-spacing, 4px) * 4);
 }
 #storybook-root:has(.hero-overlay) {
   height: 100%;
 }
-@layer components {
-  .hero-overlay {
-    position: relative;
-    margin-inline: auto;
-    color: var(--hg-color-white);
-  }
-  .hero-overlay .hero-region.content p {
-    font-size: var(--hg-text-2xl, 1.5rem);
-    line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
-    --tw-leading: 1.5;
-    line-height: 1.5;
-    --tw-font-weight: var(--hg-font-weight-normal, 400);
-    font-weight: var(--hg-font-weight-normal, 400);
-    @media (width >= 80rem) {
-      font-size: var(--hg-text-3xl, 2rem);
-      line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
-    }
-  }
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
-      --tw-leading: initial;
-      --tw-font-weight: initial;
-    }
-  }
-}
+@layer components;

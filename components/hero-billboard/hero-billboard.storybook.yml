@@ -1,1 +1,6 @@
 hide_main: true
+heading_text: 'One Giant Leap for Drupal'
+text: '<p>
+            This is placeholder text. Lorem ipsum dolor sit amet tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.
+          </p>'
+level: 1

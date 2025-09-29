@@ -1,20 +1,11 @@
 @reference '../../src/main.css';
 
 .storybook-component--hero-billboard {
-  @apply hg:container hg:px-4 hg:mx-auto hg:border-x hg:border-dotted hg:border-gray-200;
+  @apply hg:container hg:px-4 hg:mx-auto;
 }
 
 #storybook-root:has(.hero-overlay) {
   @apply hg:h-full;
 }
 
-@layer components {
-  .hero-overlay {
-    @apply hg:mx-auto hg:relative;
-    color: var(--hg-color-white);
-  }
-
-  .hero-overlay .hero-region.content p {
-    @apply hg:font-normal hg:text-2xl hg:xl:text-3xl hg:leading-[1.5];
-  }
-}
+@layer components {}
