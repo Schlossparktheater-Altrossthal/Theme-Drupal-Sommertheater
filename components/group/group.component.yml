@@ -43,15 +43,16 @@ props:
       type: string
       title: Alignment within parent component
       enum:
-        - hg:self-start
-        - hg:self-center
-        - hg:self-end
+        - start
+        - center
+        - end
       meta:enum:
-        hg:self-start: Start
-        hg:self-center: Center
-        hg:self-end: End
+        start: Start
+        center: Center
+        end: End
+      default: 'center'
       examples:
-        - 'hg:self-center'
+        - 'center'
     radius:
       type: string
       title: Rounded corners
