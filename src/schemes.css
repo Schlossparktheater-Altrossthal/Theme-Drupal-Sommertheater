@@ -4,9 +4,13 @@
   /* Vanilla Light takes its main Tailwind variables (--hg- prefix) from the
   default values in main.css. */
   --hgc-menu-link-color:       #1f2937;
-  --hgc-menu-link-color-hover: #1d4ed8;
+  --hgc-menu-link-color-hover: #1d4ed8;  
 
-  --color-body-text:     var(--hg-color-gray-dark);
+  --hg-color-body-bg:       var(--hg-color-white);
+  --hg-color-body-text:     var(--hg-color-black);
+  --hg-color-body-text-dark:     var(--hg-color-body-text);
+  --hg-color-body-text-light:     var(--hg-color-white);
+
   --hgc-hyperlink-color:       #155DFC;
   --hgc-hyperlink-color-hover: #193CB8;
 
@@ -114,13 +118,16 @@
 }
 
 .mercury-scheme--vanilla-dark {
-  --hg-color-body-bg:       var(--hg-color-black);
-  --hg-color-body-text:     var(--hg-color-white);
   --hgc-hyperlink-color:       #51A2FF;
   --hgc-hyperlink-color-hover: #BEDBFF;
 
   --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-footer-border: var(--hg-color-gray-dark);
+
+  --hg-color-body-bg:       var(--hg-color-black);
+  --hg-color-body-text:     var(--hg-color-white);
+  --hg-color-body-text-dark:     var(--hg-color-body-text);
+  --hg-color-body-text-light:     var(--hg-color-white);
 
   /* Breadcrumb. */
   --hgc-color-breadcrumb-caret: var(--hg-color-gray);
@@ -246,8 +253,10 @@
   --hg-font-mono:    'Fira Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
   --hg-font-display: 'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-  --hgc-color-body-bg:       #ffffff;
-  --hgc-color-body-text:     #1f2937;
+  --hg-color-body-bg:       #ffffff;
+  --hg-color-body-text:     #1f2937;
+  --hg-color-body-text-dark:     var(--hgc-color-body-text);
+  --hg-color-body-text-light:     #ffffff;
 
   --hgc-font-weight-light:    300;
   --hgc-font-weight-normal:   400;
@@ -380,7 +389,9 @@
   --hg-color-accent-dark:   #020618;
 
   --hg-color-body-bg:       #1d283d;
-  --hg-color-body-text:     #ffffff;
+  --hg-color-body-text:     var(--hg-color-white);
+  --hg-color-body-text-dark:     #1d283d;
+  --hg-color-body-text-light:     #ffffff;
 
   --hg-font-sans:    'Outfit', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --hg-font-body:  'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;

@@ -4,6 +4,7 @@
     'heading',
     has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
     'hg:text-' ~ align,
+    font_color,
 ])|filter(v => v is not empty) %}
 
 {% set level = level|default(2) %}

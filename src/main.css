@@ -25,6 +25,8 @@
 
   --color-body-bg:       #ffffff;
   --color-body-text:     #000000;
+  --color-body-text-dark:     #000000;
+  --color-body-text-light:     #ffffff;
 
   --text-9xl: 7.5rem;               /* 120px */
   --text-9xl--line-height: 1;       /* 120px */
@@ -182,7 +184,7 @@
   }
 
   body {
-    @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-body-text;
+    @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-(--hg-color-body-text);
   }
 
   p, ul, ol, li {

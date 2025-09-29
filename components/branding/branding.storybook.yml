@@ -1,4 +1,5 @@
 name: Branding
+group: Base
 props:
   type: object
   properties: {}

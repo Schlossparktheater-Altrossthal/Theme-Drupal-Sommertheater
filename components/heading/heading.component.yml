@@ -48,6 +48,23 @@ props:
       default: default
       examples: 
         - default
+    font_color:
+      type: string
+      title: Font Color
+      description: Select Font Color
+      enum:
+        - text-inherit
+        - hg:text-body-text-dark 
+        - hg:text-white
+        - hg:text-brand
+      meta:enum:
+        text-inherit: Default
+        hg:text-body-text-dark: Dark
+        hg:text-white: Light
+        hg:text-brand: Brand
+      default: text-inherit
+      examples: 
+        - text-inherit
     align:
       type: string
       title: Text Alignment
