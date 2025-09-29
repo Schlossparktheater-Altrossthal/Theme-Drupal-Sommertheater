@@ -11,6 +11,7 @@
   --hg-color-body-text-dark:     var(--hg-color-body-text);
   --hg-color-body-text-light:     var(--hg-color-white);
 
+  --hgc-color-body-text:     var(--hg-color-gray-dark);
   --hgc-hyperlink-color:       #155DFC;
   --hgc-hyperlink-color-hover: #193CB8;
 
@@ -115,6 +116,14 @@
   --hgc-dialog-border: var(--hg-color-brand);
   --hgc-dialog-text: var(--hg-color-body-text);
   --hgc-dialog-close: var(--hg-color-brand);
+  /* Tile Icon. */
+  --hgc-tile-border: var(--hg-color-gray-light);
+  --hgc-tile-border-hover: var(--hg-color-brand);
+  --hgc-tile-bg: var(--hg-color-gray-lightest);
+  --hgc-tile-bg-hover: var(--hg-color-brand-light);
+  --hgc-tile-icon-color: var(--hg-color-brand);
+  --hgc-tile-icon-color-hover: var(--hg-color-brand-dark);
+  --hgc-tile-icon-text-color: var(--hgc-color-body-text);
 }
 
 .mercury-scheme--vanilla-dark {
@@ -225,6 +234,14 @@
   --hgc-dialog-border: var(--hg-color-brand-light);
   --hgc-dialog-text: var(--hg-color-body-text);
   --hgc-dialog-close: var(--hg-color-brand-light);
+  /* Tile Icon. */
+  --hgc-tile-border: var(--hg-color-gray);
+  --hgc-tile-border-hover: var(--hg-color-gray-light);
+  --hgc-tile-bg: var(--hg-color-gray-darkest);
+  --hgc-tile-bg-hover: var(--hg-color-gray-dark);
+  --hgc-tile-icon-color: var(--hg-color-brand);
+  --hgc-tile-icon-color-hover: var(--hg-color-brand-light);
+  --hgc-tile-icon-text-color: var(--hg-color-body-text);
 }
 
 .mercury-scheme--byte-light {
@@ -377,6 +394,14 @@
   --hgc-dialog-border: var(--hg-color-brand-light);
   --hgc-dialog-text: var(--hg-color-body-text);
   --hgc-dialog-close: var(--hg-color-brand-light);
+  /* Tile Icon. */
+  --hgc-tile-border: var(--hg-color-gray-light);
+  --hgc-tile-border-hover: var(--hg-color-brand);
+  --hgc-tile-bg: var(--hg-color-gray-lightest);
+  --hgc-tile-bg-hover: var(--hg-color-brand-light);
+  --hgc-tile-icon-color: var(--hg-color-brand);
+  --hgc-tile-icon-color-hover: var(--hg-color-brand-dark);
+  --hgc-tile-icon-text-color: var(--hg-color-body-text);
 }
 
 .mercury-scheme--byte-dark {
@@ -510,4 +535,12 @@
   --hgc-dialog-border: var(--hg-color-gray);
   --hgc-dialog-text: var(--hg-color-body-text);
   --hgc-dialog-close: var(--hg-color-accent-light);
+  /* Tile Icon. */
+  --hgc-tile-border: var(--hg-color-accent-light);
+  --hgc-tile-border-hover: var(--hg-color-brand-light);
+  --hgc-tile-bg: #343e50;
+  --hgc-tile-bg-hover: var(--hg-color-accent-dark);
+  --hgc-tile-icon-color: var(--hg-color-brand);
+  --hgc-tile-icon-color-hover: var(--hg-color-brand-light);
+  --hgc-tile-icon-text-color: var(--hg-color-body-text);
 }

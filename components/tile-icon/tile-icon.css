@@ -7,45 +7,42 @@
 @layer components {
   .icon-tile {
     background-color: var(--hg-page-bg);
-    border-color: var(--hg-color-gray-light);
+    border-color: var(--hgc-tile-border);
     color: var(--hg-page-text);
-    .mercury-scheme--vanilla-dark & {
-      border-color: var(--hg-color-gray-dark);
-    }
-    .mercury-scheme--byte-dark & {
-      border-color: var(--hg-color-gray);
+    * {
+      --tw-leading: var(--hg-leading-tight, 1.25);
+      line-height: var(--hg-leading-tight, 1.25);
+      --tw-font-weight: var(--hg-font-weight-normal, 400);
+      font-weight: var(--hg-font-weight-normal, 400);
     }
     .ph {
-      color: var(--hg-color-brand);
+      color: var(--hgc-tile-icon-color);
     }
-  }
-  .icon-tile a {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--hg-color-brand, #155dfc);
+    &.has-link {
+      .tile-icon--title {
+        color: var(--hgc-tile-icon-text-color);
       }
-    }
-    .mercury-scheme--vanilla-dark &, .mercury-scheme--byte-dark & {
-      &:hover {
-        @media (hover: hover) {
-          color: var(--hg-color-brand-light, #dbeafe);
+      &:hover, &:focus {
+        border-color: var(--hgc-tile-border-hover);
+        --hgc-tile-icon-text-color: var(--hgc-tile-icon-text-color-hover);
+        --hgc-tile-bg: var(--hgc-tile-bg-hover);
+        .icon-tile--link--text {
+          opacity: 100%;
+        }
+        .ph {
+          --hgc-tile-icon-color: var(--hgc-tile-icon-color-hover);
         }
       }
     }
+    &.has-bg {
+      background-color: var(--hgc-tile-bg);
+    }
   }
-  .icon-tile * {
-    --tw-leading: var(--hg-leading-tight, 1.25);
-    line-height: var(--hg-leading-tight, 1.25);
-    --tw-font-weight: var(--hg-font-weight-normal, 400);
-    font-weight: var(--hg-font-weight-normal, 400);
+  .icon-tile--title, .icon-tile--text .icon-tile--link-title, .icon-tile--link--text {
+    color: var(--hgc-tile-icon-text-color);
   }
-  .icon-tile h3 {
-    font-size: var(--hg-text-3xl, 2rem);
-    line-height: var(--tw-leading, var(--hg-text-3xl--line-height, 1.3125));
-  }
-  .icon-tile p {
-    font-size: var(--hg-text-xl, 1.25rem);
-    line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
+  .icon-tile--text, .icon-tile--link--text {
+    opacity: 75%;
   }
 }
 @property --tw-leading {

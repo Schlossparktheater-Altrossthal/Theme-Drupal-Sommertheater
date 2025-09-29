@@ -9,40 +9,53 @@
 
   .icon-tile {
     background-color: var(--hg-page-bg);
-    border-color: var(--hg-color-gray-light);
+    border-color: var(--hgc-tile-border);
     color: var(--hg-page-text);
 
-    .mercury-scheme--vanilla-dark & {
-      border-color: var(--hg-color-gray-dark);
-    }
-
-    .mercury-scheme--byte-dark & {
-      border-color: var(--hg-color-gray);
+    * {
+      @apply hg:font-normal hg:leading-tight;
     }
 
     .ph {
-      color: var(--hg-color-brand);
+      color: var(--hgc-tile-icon-color);
+    }
+
+    &.has-link {
+
+      .tile-icon--title {
+        color: var(--hgc-tile-icon-text-color);
+      }
+
+      &:hover,
+      &:focus {
+        @apply hg:border-(--hgc-tile-border-hover);
+        --hgc-tile-icon-text-color: var(--hgc-tile-icon-text-color-hover);
+        --hgc-tile-bg: var(--hgc-tile-bg-hover);
+
+        .icon-tile--link--text {
+          @apply hg:opacity-100;
+        }
+
+        .ph {
+          --hgc-tile-icon-color: var(--hgc-tile-icon-color-hover);
+        }
+      }
+    }
+
+    &.has-bg {
+      background-color: var(--hgc-tile-bg);
     }
   }
 
-  .icon-tile a {
-    @apply hg:hover:text-brand;
-
-    .mercury-scheme--vanilla-dark &,
-    .mercury-scheme--byte-dark & {
-      @apply hg:hover:text-brand-light;
-    }
+  .icon-tile--title,
+  .icon-tile--text
+  .icon-tile--link-title,
+  .icon-tile--link--text {
+    color: var(--hgc-tile-icon-text-color);
   }
 
-  .icon-tile * {
-    @apply hg:font-normal hg:leading-tight;
-  }
-
-  .icon-tile h3 {
-    @apply hg:text-3xl;
-  }
-
-  .icon-tile p {
-    @apply hg:text-xl;
+  .icon-tile--text,
+  .icon-tile--link--text {
+    @apply hg:opacity-75;
   }
 }

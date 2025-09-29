@@ -1,7 +1,7 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: Icon
+name: Icon Tile
 description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
-group: Components/Tiles
+group: Components
 props:
   type: object
   required:
@@ -9,30 +9,21 @@ props:
   properties:
     text:
       type: string
-      title: Text
+      title: Tile heading
       examples:
         - Heading
     description:
       type: string
-      title: Text
+      title: Tile description
+      contentMediaType: text/html
+      x-formatting-context: block
       examples:
-        - Lorem ipsum dolor sit amet luctus rutrum
-    border:
-      type: boolean
-      title: Border
-      description: Add a border to the tile.
-      default: true
-      examples:
-        - true
-    icon:
-      type: string
-      title: Phosphor icon slug
-      default: 'rocket'
-      examples:
-        - 'ph-rocket'
+        - '<p>
+            This is placeholder text.
+          </p>'
     icon_align:
       type: string
-      title: Icon alignment
+      title: Tile alignment
       enum:
         - hg:justify-start
         - hg:justify-end
@@ -47,7 +38,7 @@ props:
         - 'hg:justify-center'
     tile_size:
       type: string
-      title: Set tile size
+      title: Tile size
       enum:
         - hg:aspect-none
         - hg:aspect-square
@@ -64,4 +55,56 @@ props:
         - 'hg:aspect-none'
     url:
       type: string
-      title: Link
+      title: Tile Link (optional)
+    icon:
+      type: string
+      title: Icon name (exclude prefix)
+      default: 'rocket'
+      examples:
+        - 'rocket'
+    icon_size:
+      type: string
+      title: Icon size
+      enum:
+        - hg:text-2xl
+        - hg:text-4xl
+        - hg:text-6xl
+      meta:enum:
+        hg:text-2xl: Small
+        hg:text-4xl: Regular
+        hg:text-6xl: Large
+      default:
+        - 'hg:text-4xl'
+      examples:
+        - 'hg:text-4xl'
+    border:
+      type: boolean
+      title: Show border
+      description: Add a border to the tile.
+      default: TRUE
+      examples:
+        - TRUE
+    border_radius:
+      type: string
+      title: Rounded Corners
+      description: Set rounded corner radius
+      enum:
+        - hg:rounded-none
+        - hg:rounded-sm
+        - hg:rounded-xl hg:md:rounded-2xl
+        - hg:rounded-[24px] hg:md:rounded-[32px]
+      meta:enum:
+        hg:rounded-none: None
+        hg:rounded-sm: Small
+        hg:rounded-xl hg:md:rounded-2xl: Large
+        hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
+      default: hg:rounded-sm
+      examples:
+        - 'hg:rounded-sm'
+    background:
+      type: boolean
+      title: Show background
+      description: Add a background to the tile.
+      default: FALSE
+      examples:
+        -  FALSE
