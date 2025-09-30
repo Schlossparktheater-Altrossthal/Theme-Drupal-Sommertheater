@@ -43,13 +43,11 @@
     {% endif %}
   {% endif %}
     <div class="hg:w-full hg:flex hg:flex-col hg:gap-6">
-      {{ include('mercury:heading',
-        {
-          level: 3,
-          heading_text: heading_text,
-          url: url,
-        } )
-      }}
+      <h3 class="heading hg:font-(--hgc-font-weight-h3)">
+        <a href="{{ url }}">
+          {{ heading_text }}
+        </a>
+      </h3>
       {% if text is not empty %}
         <p>{{ text }}</p>
       {% endif %}

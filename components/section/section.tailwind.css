@@ -5,4 +5,8 @@
 }
 
 @layer components {
+  /* Ensure grid items respect column widths */
+  .section--main > * {
+    @apply hg:w-full hg:min-w-0 hg:overflow-hidden;
+  }
 }

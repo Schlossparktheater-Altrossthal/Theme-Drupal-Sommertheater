@@ -40,6 +40,8 @@
   --hgc-card-framed-bg-hover: transparent;
   --hgc-card-featured-bg: transparent;
   --hgc-card-featured-bg-hover: transparent;
+  --hgc-card-shadow-color: rgb(0 0 0 / 0.1);
+  --hgc-card-shadow-color-hover: rgb(0 0 0 / 0.4);
   /* Style Pricing Cards. */
   --hgc-card-price-bg: var(--hg-color-white);
   --hgc-card-price-border: var(--hg-color-slate-300);
@@ -156,8 +158,10 @@
   --hgc-card-bg-hover: transparent;
   --hgc-card-framed-bg: var(--hg-color-gray-darkest);
   --hgc-card-framed-bg-hover: var(--hg-color-gray-dark);
-  --hgc-card-featured-bg: var(--hg-color-brand-dark);
-  --hgc-card-featured-bg-hover: var(--hg-color-brand);
+  --hgc-card-featured-bg: var(--hg-color-gray-darkest);
+  --hgc-card-featured-bg-hover: var(--hg-color-gray-dark);
+  --hgc-card-shadow-color: transparent;
+  --hgc-card-shadow-color-hover: transparent;
   /* Style Pricing Cards. */
   --hgc-card-price-bg: var(--hg-color-white);
   --hgc-card-price-border: var(--hg-color-white);
@@ -319,6 +323,8 @@
   --hgc-card-framed-bg-hover: transparent;
   --hgc-card-featured-bg: transparent;
   --hgc-card-featured-bg-hover: transparent;
+  --hgc-card-shadow-color: rgb(0 0 0 / 0.1);
+  --hgc-card-shadow-color-hover: rgb(0 0 0 / 0.4);
   /* Style Pricing Cards. */
   --hgc-card-price-bg: var(--hg-color-white);
   --hgc-card-price-border: var(--hg-color-gray-light);
@@ -458,9 +464,11 @@
   --hgc-card-bg: transparent;
   --hgc-card-bg-hover: transparent;
   --hgc-card-framed-bg: var(--hg-color-accent-dark);
-  --hgc-card-framed-bg-hover: var(--hg-color-brand-dark);
-  --hgc-card-featured-bg: var(--hg-color-brand-dark);
-  --hgc-card-featured-bg-hover: var(--hg-color-brand);
+  --hgc-card-framed-bg-hover: #162034;
+  --hgc-card-featured-bg: var(--hg-color-accent-dark);
+  --hgc-card-featured-bg-hover: #162034;
+  --hgc-card-shadow-color: transparent;
+  --hgc-card-shadow-color-hover: transparent;
   /* Style Pricing Cards. */
   --hgc-card-price-bg: var(--hg-color-accent-dark);
   --hgc-card-price-border: var(--hg-color-accent-dark);

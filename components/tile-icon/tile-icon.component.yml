@@ -4,8 +4,6 @@ description: A component showing its children in a grid on desktop and in a hori
 group: Components
 props:
   type: object
-  required:
-    - text
   properties:
     text:
       type: string

@@ -13,7 +13,7 @@
     color: var(--hg-page-text);
 
     * {
-      @apply hg:font-normal hg:leading-tight;
+      @apply hg:leading-tight;
     }
 
     .ph {

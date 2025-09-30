@@ -2,4 +2,10 @@
 .storybook-component--section {
   padding: calc(var(--hg-spacing, 4px) * 5);
 }
-@layer components;
+@layer components {
+  .section--main > * {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+}

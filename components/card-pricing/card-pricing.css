@@ -6,24 +6,24 @@
 }
 @layer components {
   .card-pricing {
-    background-color: var(--hgc-card-plan-bg);
-    border-color: var(--hgc-card-plan-border);
-    color: var(--hgc-card-plan-text);
+    background-color: var(--hgc-card-price-bg);
+    border-color: var(--hgc-card-price-border);
+    color: var(--hgc-card-price-text);
     &:hover, &:focus {
-      border-color: var(--hgc-card-plan-border-hover);
+      border-color: var(--hgc-card-price-border-hover);
     }
     &.promote {
-      background-color: var(--hgc-card-plan-bg-promoted);
-      border-color: var(--hgc-card-plan-border-promoted);
-      color: var(--hgc-card-plan-text-promoted);
-      --hgc-card-plan-price: var(--hgc-card-plan-price-promoted);
-      --hgc-card-plan-bg: var(--hgc-card-plan-bg-promoted);
-      --hgc-card-plan-title: var(--hgc-card-plan-title-promoted);
+      background-color: var(--hgc-card-price-bg-promoted);
+      border-color: var(--hgc-card-price-border-promoted);
+      color: var(--hgc-card-price-text-promoted);
+      --hgc-card-price-price: var(--hgc-card-price-price-promoted);
+      --hgc-card-price-bg: var(--hgc-card-price-bg-promoted);
+      --hgc-card-price-title: var(--hgc-card-price-title-promoted);
       &:hover, &:focus {
-        background-color: var(--hgc-card-plan-bg-promoted-hover);
-        border-color: var(--hgc-card-plan-border-promoted-hover);
+        background-color: var(--hgc-card-price-bg-promoted-hover);
+        border-color: var(--hgc-card-price-border-promoted-hover);
         .card-pricing--features {
-          background-color: var(--hgc-card-plan-bg-promoted-hover);
+          background-color: var(--hgc-card-price-bg-promoted-hover);
         }
       }
     }
@@ -33,7 +33,7 @@
       line-height: var(--hg-leading-tight, 1.25);
       --tw-font-weight: var(--hg-font-weight-bold, 700);
       font-weight: var(--hg-font-weight-bold, 700);
-      color: var(--hgc-card-plan-title);
+      color: var(--hgc-card-price-title);
     }
     .card-description {
       font-size: var(--hg-text-lg, 1.125rem);
@@ -46,7 +46,7 @@
       line-height: var(--tw-leading, var(--hg-text-4xl--line-height, 1.2));
       --tw-leading: 1;
       line-height: 1;
-      color: var(--hgc-card-plan-price);
+      color: var(--hgc-card-price-price);
       @media (width >= 64rem) {
         font-size: var(--hg-text-5xl, 3rem);
         line-height: var(--tw-leading, var(--hg-text-5xl--line-height, 1.083333));
@@ -60,8 +60,8 @@
       }
     }
     .card-pricing--features {
-      border-color: var(--hgc-card-plan-divider);
-      background-color: var(--hgc-card-plan-bg);
+      border-color: var(--hgc-card-price-divider);
+      background-color: var(--hgc-card-price-bg);
       padding-top: calc(var(--hg-spacing, 4px) * 4);
       color: inherit;
       @media (width >= 48rem) {

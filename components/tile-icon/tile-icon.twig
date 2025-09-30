@@ -20,12 +20,12 @@
       {% if url is not empty %}
         <a href="{{ url }}" class="hg:flex hg:flex-col hg:w-full hg:before:absolute hg:before:content-[''] hg:before:inset-0">
           {% if text is not empty %}<h3 class="icon-tile--link-title">{{ text }}</h3>{% endif %}
-          {% if description is not empty %}<span class="icon-tile--link--text hg:mt-1">{{ description }}</span>{% endif %}
+          {% if description is not empty %}<span class="icon-tile--link--text hg:mt-1">{{ description|raw }}</span>{% endif %}
         </a>
       {% else %}
         <span class="hg:flex hg:flex-col hg:w-full hg:before:absolute hg:before:content-[''] hg:before:inset-0">
           {% if text is not empty %}<h3 class="icon-tile--title">{{ text }}</h3>{% endif %}
-          {% if description is not empty %}<span class="icon-tile--text hg:mt-1">{{ description }}</span>{% endif %}
+          {% if description is not empty %}<span class="icon-tile--text hg:mt-1">{{ description|raw }}</span>{% endif %}
         </span>
       {% endif %}
     {% endif %}

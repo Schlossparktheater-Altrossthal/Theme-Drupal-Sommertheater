@@ -1,11 +1,16 @@
-{# DEBUG: This is section~main.twig #}
-{% embed 'mercury:components/section/section' %}
+{# Main variant for Storybook #}
+{% embed 'mercury:components/section/section' with { 
+  background_media: {
+    src: componentMetadata.path ~ '/' ~ storybook.main.background_media.src,
+    alt: storybook.main.background_media.alt
+  }
+} %}
 
   {% block header_slot %}
     {{ include('mercury:heading',
       {
         level: 2,
-        heading_text: storybook.header_text,
+        heading_text: storybook.main.header_text,
         url: '',
       } )
     }}
@@ -48,14 +53,14 @@
       caption: '',
     } %}
       {% block media %}
-        <img class="hg:object-cover hg:w-full hg:h-full" src="{{  componentMetadata.path ~ '/' ~ storybook.media.src }}" alt="{{ storybook.media.alt }}" />
+        <img class="hg:object-cover hg:w-full hg:h-full" src="{{  componentMetadata.path ~ '/' ~ storybook.main.media.src }}" alt="{{ storybook.main.media.alt }}" />
       {% endblock %}
     {% endembed %}
 
   {% endblock %}
 
   {% block footer_slot %}
-    {{ storybook.footer_text }}
+    {{ storybook.main.footer_text }}
   {% endblock %}
 
 

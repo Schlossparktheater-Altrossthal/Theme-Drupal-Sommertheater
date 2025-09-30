@@ -12,8 +12,6 @@
     * {
       --tw-leading: var(--hg-leading-tight, 1.25);
       line-height: var(--hg-leading-tight, 1.25);
-      --tw-font-weight: var(--hg-font-weight-normal, 400);
-      font-weight: var(--hg-font-weight-normal, 400);
     }
     .ph {
       color: var(--hgc-tile-icon-color);
@@ -49,15 +47,10 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-leading: initial;
-      --tw-font-weight: initial;
     }
   }
 }

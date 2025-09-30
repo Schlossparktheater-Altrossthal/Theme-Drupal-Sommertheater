@@ -8,7 +8,7 @@ props:
   properties:
     columns:
       type: string
-      title: Column layout
+      title: Content layout
       enum:
         - '100'
         - '50-50'
@@ -24,20 +24,23 @@ props:
         - '50-50'
       default:
         - '50-50'
-    section_header:
-      type: boolean
-      title: Show Header Region
+    width:
+      type: string
+      title: Section width
+      enum:
+        - hg:lg:max-w-full
+        - hg:lg:max-w-9/10
+        - hg:lg:max-w-8/10
+        - hg:lg:max-w-3/4
+        - hg:lg:max-w-1/2
+      meta:enum:
+        hg:lg:max-w-full: 100%
+        hg:lg:max-w-9/10: 90%
+        hg:lg:max-w-8/10: 80%
+        hg:lg:max-w-3/4: 75%
+        hg:lg:max-w-1/2: 50%
       examples:
-        - true
-      default:
-        - true
-    section_footer:
-      type: boolean
-      title: Show Footer Region
-      examples:
-        - true
-      default:
-        - true
+        - 'hg:lg:max-w-full'
     margin_block_start:
       type: string
       title: Margin top
@@ -86,28 +89,12 @@ props:
         - '64'
       examples:
         - '0'
-    width:
-      type: string
-      title: Container width
-      enum:
-        - hg:lg:max-w-full
-        - hg:lg:max-w-9/10
-        - hg:lg:max-w-8/10
-        - hg:lg:max-w-3/4
-        - hg:lg:max-w-1/2
-      meta:enum:
-        hg:lg:max-w-full: 100%
-        hg:lg:max-w-9/10: 90%
-        hg:lg:max-w-8/10: 80%
-        hg:lg:max-w-3/4: 75%
-        hg:lg:max-w-1/2: 50%
-      examples:
-        - 'hg:lg:max-w-full'
-    background:
+    background_color:
       type: string
       title: Background color
       enum:
         - hg:bg-none
+        - hg:bg-black/50
         - hg:bg-brand
         - hg:bg-brand-light
         - hg:bg-brand-dark
@@ -116,6 +103,7 @@ props:
         - hg:bg-accent-dark
       meta:enum:
         hg:bg-none: None
+        hg:bg-black/50: Overlay tint
         hg:bg-brand: Brand
         hg:bg-brand-light: Brand Light
         hg:bg-brand-dark: Brand Dark
@@ -126,11 +114,30 @@ props:
         - 'hg:bg-none'
       examples:
         - 'hg:bg-none'
+    background_media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Background image
+      description: The background image for section.
+      type: object
+    section_header:
+      type: boolean
+      title: Show header region
+      examples:
+        - true
+      default:
+        - true
+    section_footer:
+      type: boolean
+      title: Show footer region
+      examples:
+        - true
+      default:
+        - true
 
 slots:
   header_slot:
-    title: 'Section: Header'
+    title: 'Header'
   main_slot:
-    title: 'Section: Main'
+    title: 'Grid'
   footer_slot:
-    title: 'Section: Footer'
+    title: 'Footer'

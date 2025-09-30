@@ -19,7 +19,7 @@
   '33-67':       'hg:md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]',
   '50-25-25':    'hg:md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]',
   '25-25-50':    'hg:md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]',
-  '25-25-25-25': 'hg:md:grid-cols-2 hg:lg:grid-cols-4',
+  '25-25-25-25': 'hg:grid-cols-1 hg:sm:grid-cols-2 hg:lg:grid-cols-4',
 }[columns] ?? 'hg:grid-cols-1' %}
 
 {# Top margin spacing options with responsive breakpoints #}
@@ -35,7 +35,7 @@
 } %}
 
 {# Bottom margin spacing options with responsive breakpoints #}
-{% set margin_bock_end_map = {
+{% set margin_block_end_map = {
   '0': 'hg:mb-0',
   '8': 'hg:mb-2',
   '20': 'hg:mb-5',
@@ -64,21 +64,38 @@
 
 {# Apply spacing classes based on component variables #}
 {% set margin_block_start = margin_block_map[margin_block_start] ?? '' %}
-{% set margin_bock_end = margin_bock_end_map[margin_bock_end] ?? '' %}
+{% set margin_block_end = margin_block_end_map[margin_block_end] ?? '' %}
 {% set padding_block_start = padding_block_start_map[padding_block_start] ?? '' %}
 {% set padding_block_end = padding_block_end_map[padding_block_end] ?? '' %}
 {# Background classes for full-width background positioning #}
-{% set bgd_class = background ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]' %}
+{% set bgd_class = background_color ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]' %}
 
-<section class="{{ classes|join(' ') }} {{ margin_block_start }} {{ margin_bock_end }} {{ padding_block_start }} {{ padding_block_end }} hg:mx-auto {{ width }}">
+<section class="{{ classes|join(' ') }} {{ margin_block_start }} {{ margin_block_end }} {{ padding_block_start }} {{ padding_block_end }} hg:mx-auto {{ width }}">
 
-  {% if background is not empty and background != 'None' %}<div class="{{ bgd_class }}"></div>{% endif %}
+  {# if there is background media #}
+  {% if background_media is not empty and background_media.src is not empty %}
+    {% block background_media_block %}
+      <div class="section--background-media hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]">
+        <img src="{{ background_media.src }}" alt="{{ background_media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
+      </div>
+    {% endblock %}
+  {% endif %}
+
+  {# if there is background color (can work with or without background media) #}
+  {% if background_color is not empty and background_color != 'hg:bg-none' %}
+    <div class="{{ bgd_class }}"></div>
+  {% endif %}
 
   {% if section_header %}
-    <header class="section--header hg:mb-4">
-    {% block header_slot %}
-    {% endblock %}
-    </header>
+    {% set header_content %}
+      {% block header_slot %}
+      {% endblock %}
+    {% endset %}
+    {% if header_content|trim is not empty %}
+      <header class="section--header hg:mb-6 hg:md:mb-8 hg:xl:mb-10">
+        {{ header_content }}
+      </header>
+    {% endif %}
   {% endif %}
 
   <div class="section--main hg:grid hg:gap-4 hg:md:gap-6 hg:xl:gap-8 hg:w-full {{ grid_class }}">
@@ -87,9 +104,14 @@
   </div>
 
   {% if section_footer %}
-    <footer class="section--footer hg:mt-4">
-    {% block footer_slot %}
-    {% endblock %}
-    </footer>
+    {% set footer_content %}
+      {% block footer_slot %}
+      {% endblock %}
+    {% endset %}
+    {% if footer_content|trim is not empty %}
+      <footer class="section--footer hg:mt-6 hg:md:mt-8 hg:xl:mt-10">
+        {{ footer_content }}
+      </footer>
+    {% endif %}
   {% endif %}
 </section>
