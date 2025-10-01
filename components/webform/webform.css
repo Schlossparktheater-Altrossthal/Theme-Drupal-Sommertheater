@@ -53,7 +53,7 @@
   .webform-submission-form {
     display: flex;
     flex-direction: column;
-    gap: calc(var(--hg-spacing, 4px) * 8);
+    gap: var(--hg-spacing, 4px);
     .form-item, .form-wrapper {
       margin: calc(var(--hg-spacing, 4px) * 0);
       padding: calc(var(--hg-spacing, 4px) * 0);
@@ -62,14 +62,14 @@
   .webform-submission-form label, .webform-submission-form .fieldset-legend {
     margin-bottom: calc(var(--hg-spacing, 4px) * 1);
     display: block;
-    font-size: var(--hg-text-sm, 0.875rem);
-    line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
+    font-size: var(--hg-text-base, 1rem);
+    line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     --tw-font-weight: var(--hg-font-weight-semibold, 600);
     font-weight: var(--hg-font-weight-semibold, 600);
     color: var(--hgc-webform-label);
     @media (width >= 48rem) {
-      font-size: var(--hg-text-base, 1rem);
-      line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
+      font-size: var(--hg-text-lg, 1.125rem);
+      line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
     }
   }
   .webform-submission-form .form-item:focus-within, .webform-submission-form .fieldgroup:focus-within {
@@ -164,9 +164,9 @@
   }
   .webform-submission-form .description, .webform-submission-form .webform-element-description {
     margin-top: calc(var(--hg-spacing, 4px) * 1);
-    font-size: var(--hg-text-xs, 0.75rem);
-    line-height: var(--tw-leading, var(--hg-text-xs--line-height, 1.5));
-    color: var(--hg-color-gray-600, oklch(44.6% 0.03 256.802));
+    font-size: var(--hg-text-sm, 0.875rem);
+    line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
+    color: var(--hgc-webform-description, oklch(44.6% 0.03 256.802));
   }
   .webform-submission-form .webform-element-help {
     margin-inline: 0.3em;

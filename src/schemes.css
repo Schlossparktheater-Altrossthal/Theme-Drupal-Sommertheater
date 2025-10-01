@@ -4,7 +4,7 @@
   /* Vanilla Light takes its main Tailwind variables (--hg- prefix) from the
   default values in main.css. */
   --hgc-menu-link-color:       #1f2937;
-  --hgc-menu-link-color-hover: #1d4ed8;  
+  --hgc-menu-link-color-hover: #1d4ed8;
 
   --hg-color-body-bg:       var(--hg-color-white);
   --hg-color-body-text:     var(--hg-color-black);
@@ -93,10 +93,11 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Style basic webform. */
-  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label: var(--hg-color-gray-dark);
   --hgc-webform-label-focus: var(--hg-color-brand-dark);
   --hgc-webform-radio-label: var(--hg-color-black);
-  --hgc-webform-placeholder: var(--hg-color-gray-light);
+  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-description: var(--hg-color-gray);
   --hgc-webform-text: var(--hg-color-black);
   --hgc-webform-border: var(--hg-color-gray);
   --hgc-webform-focus-border: var(--hg-color-brand);
@@ -213,13 +214,14 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Style basic webform. */
-  --hgc-webform-label: var(--hg-color-gray);
-  --hgc-webform-label-focus: var(--hg-color-gray-light);
-  --hgc-webform-radio-label: var(--hg-color-gray);
-  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-label: var(--hg-color-white);
+  --hgc-webform-label-focus: var(--hg-color-gray-lightest);
+  --hgc-webform-radio-label: var(--hg-color-gray-lightest);
+  --hgc-webform-placeholder: var(--hg-color-accent-light);
+  --hgc-webform-description: var(--hg-color-accent-light);
   --hgc-webform-text: var(--hg-color-gray-lightest);
-  --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand);
+  --hgc-webform-border: var(--hg-color-gray-lightest);
+  --hgc-webform-focus-border: var(--hg-color-accent-light);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
@@ -303,7 +305,7 @@
   --hgc-tile-logo-bg: var(--hg-color-brand);
   --hgc-footer-border: var(--hg-color-gray-light);
 
-  /* Breadcrumb. */ 
+  /* Breadcrumb. */
   --hgc-color-breadcrumb-caret: var(--hg-color-gray);
   --hgc-color-breadcrumb-dots: var(--hg-color-gray);
   --hgc-color-breadcrumb-home: var(--hg-color-gray);
@@ -375,13 +377,14 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Style basic webform. */
-  --hgc-webform-label: var(--hg-color-gray);
+  --hgc-webform-label: var(--hg-color-gray-dark);
   --hgc-webform-label-focus: var(--hg-color-brand-dark);
-  --hgc-webform-radio-label: var(--hg-color-black);
-  --hgc-webform-placeholder: var(--hg-color-gray-light);
-  --hgc-webform-text: var(--hg-color-black);
-  --hgc-webform-border: var(--hg-color-gray-light);
-  --hgc-webform-focus-border: var(--hg-color-brand);
+  --hgc-webform-radio-label: var(--hg-color-white);
+  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-description: var(--hg-color-gray);
+  --hgc-webform-text: var(--hg-color-white);
+  --hgc-webform-border: var(--hg-color-white);
+  --hgc-webform-focus-border: var(--hg-color-white);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
@@ -445,7 +448,7 @@
   --hgc-tile-logo-bg: #536487;
   --hgc-footer-border: #536487;
 
-  /* Breadcrumb. */ 
+  /* Breadcrumb. */
   --hgc-color-breadcrumb-caret: var(--hg-color-accent-light);
   --hgc-color-breadcrumb-dots: var(--hg-color-accent-light);
   --hgc-color-breadcrumb-home: var(--hg-color-accent-light);
@@ -518,13 +521,14 @@
   --hgc-card-testimonial-cite: var(--hg-color-body-text);
   --hgc-card-testimonial-cite-url: var(--hg-color-body-text);
   /* Style basic webform. */
-  --hgc-webform-label: var(--hg-color-gray-light);
+  --hgc-webform-label: var(--hg-color-white);
   --hgc-webform-label-focus: var(--hg-color-gray-lightest);
-  --hgc-webform-radio-label: var(--hg-color-gray);
-  --hgc-webform-placeholder: var(--hg-color-gray);
+  --hgc-webform-radio-label: var(--hg-color-gray-lightest);
+  --hgc-webform-placeholder: var(--hg-color-accent-light);
+  --hgc-webform-description: var(--hg-color-accent-light);
   --hgc-webform-text: var(--hg-color-gray-lightest);
-  --hgc-webform-border: var(--hg-color-gray);
-  --hgc-webform-focus-border: var(--hg-color-brand);
+  --hgc-webform-border: var(--hg-color-gray-lightest);
+  --hgc-webform-focus-border: var(--hg-color-accent-light);
   --hgc-webform-error-text: var(--hg-color-negative);
   --hgc-webform-button-fill: var(--hg-color-brand);
   --hgc-webform-button-border: var(--hg-color-brand);
