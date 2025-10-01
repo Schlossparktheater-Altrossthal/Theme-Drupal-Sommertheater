@@ -1,0 +1,13 @@
+@reference '../../src/main.css';
+
+.anchor--visible {
+  @apply hg:flex hg:min-h-10 hg:border-1 hg:border-body-text hg:border-dotted hg:opacity-50 hg:p-1 hg:flex hg:justify-center hg:items-center hg:text-sm;
+
+  &:is(span, a) {
+    @apply hg:inline-flex;
+  }
+
+  .anchor--help-text {
+    @apply hg:inline;
+  }
+}

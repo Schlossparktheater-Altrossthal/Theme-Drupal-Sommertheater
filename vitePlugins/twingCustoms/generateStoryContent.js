@@ -283,6 +283,10 @@ export default function generateStoryContent(
     nameFormats.original
   );
 
+  if (storybookMetadata.hide_from_storybook) {
+    return false;
+  }
+
   // Generate paths for imports
   const componentRelativePath = path
     .relative(process.cwd(), componentPath)

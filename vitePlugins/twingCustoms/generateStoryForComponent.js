@@ -49,6 +49,10 @@ export default function generateStoryForComponent(options, componentDir) {
       includeJs
     );
 
+    if (!storyContent) {
+      return;
+    }
+
     // Create story file path in the separate directory.
     const absoluteStoriesDir = path.resolve(storiesDir);
     if (!fs.existsSync(absoluteStoriesDir)) {
