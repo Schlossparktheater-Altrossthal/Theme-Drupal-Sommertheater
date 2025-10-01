@@ -1,4 +1,6 @@
 import { ComponentType, ComponentInstance } from '../../lib/component.js';
+import currentlyInCanvasEditor from '../../lib/currentlyInCanvasEditor.js';
+
 class CollapsibleSection extends ComponentInstance {
   // An internal private property to keep up with the current state of the
   // accordion. The hash makes it so you can't get or set this property outside
@@ -13,6 +15,10 @@ class CollapsibleSection extends ComponentInstance {
   shouldDispatchEvents = true;
 
   init() {
+    if (currentlyInCanvasEditor()) {
+      return;
+    }
+
     // Save our togglable classes for easy reference.
     this.button = this.el.querySelector('.collapsible-section--title');
     this.contentContainer = this.el.querySelector(

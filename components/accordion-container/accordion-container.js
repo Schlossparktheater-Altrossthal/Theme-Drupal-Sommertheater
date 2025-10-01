@@ -1,6 +1,12 @@
 import { ComponentType, ComponentInstance } from '../../lib/component.js';
+import currentlyInCanvasEditor from '../../lib/currentlyInCanvasEditor.js';
+
 class AccordionContainer extends ComponentInstance {
   init() {
+    if (currentlyInCanvasEditor()) {
+      return;
+    }
+
     // Listen for `collapsibleopen` events bubbling up from descendant
     // collapsibles.
     this.el.addEventListener('collapsibleopen', (e) => {
