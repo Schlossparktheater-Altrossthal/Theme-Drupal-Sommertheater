@@ -548,7 +548,7 @@
   --hgc-tile-border-hover: var(--hg-color-brand-light);
   --hgc-tile-bg: #343e50;
   --hgc-tile-bg-hover: var(--hg-color-accent-dark);
-  --hgc-tile-icon-color: var(--hg-color-brand);
-  --hgc-tile-icon-color-hover: var(--hg-color-brand-light);
+  --hgc-tile-icon-color: var(--hg-color-brand-light);
+  --hgc-tile-icon-color-hover: var(--hg-color-accent-light);
   --hgc-tile-icon-text-color: var(--hg-color-body-text);
 }
