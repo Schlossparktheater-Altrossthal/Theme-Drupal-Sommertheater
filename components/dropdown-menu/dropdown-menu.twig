@@ -45,14 +45,14 @@
 
       <li{{ item.attributes ?? " class=\"#{ item_classes|join(' ') }\" data-level=\"#{ level }\"" }}>
         {% if url is not empty %}
-          <a href="{{ url }}" class="dropdown-menu__link hg:flex hg:items-center hg:grow-1 hg:shrink-1 hg:basis-0 hg:min-h-[44px] hg:md:min-h-auto" data-level="{{ level }}">{{ title }}</a>
+          <a href="{{ url }}" class="dropdown-menu__link hg:flex hg:gap-1 hg:items-center hg:grow-1 hg:shrink-1 hg:basis-0 hg:min-h-[44px] hg:md:min-h-auto" data-level="{{ level }}">{{ title }}</a>
         {% endif %}
 
         {% if item.below is not empty %}
-          <button aria-label="{{ 'Expand @link'|t({'@link': title }) }}" value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:md:min-h-auto hg:cursor-pointer" data-level="{{ level }}">
+          <button aria-label="{{ 'Expand @link'|t({'@link': title|striptags|trim }) }}" value="{{ menu_level }}" class="dropdown-menu__expand-button hg:flex hg:justify-center hg:items-center hg:grow-1 hg:shrink-0 hg:basis-0 hg:border-0 hg:bg-transparent hg:text-center hg:appearance-none hg:h-auto hg:min-h-[44px] hg:md:min-h-auto hg:cursor-pointer" data-level="{{ level }}">
             <div class="dropdown-menu__expand-button-contents hg:md:w-auto hg:flex hg:justify-center hg:items-center" data-level="{{ level }}">
               {% if url is empty %}
-                <div class="dropdown-menu__expand-button-no-link-title" data-level="{{ level }}">{{ title }}</div>
+                <div class="dropdown-menu__expand-button-no-link-title hg:flex hg:items-center hg:gap-1" data-level="{{ level }}">{{ title }}</div>
               {% endif %}
 
               <div class="dropdown-menu__expand-button-icon hg:w-[44px] hg:md:w-auto hg:flex hg:justify-center hg:items-center hg:h-full hg:md:h-auto hg:z-1" data-level="{{ level }}">
