@@ -182,7 +182,14 @@ function generateDefaultValue(property) {
  * Generate argTypes and args for a component
  */
 function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMetadata = {}) {
-  const argTypes = {};
+  const argTypes = {
+    componentMetadata: {
+      table: { disable: true },
+    },
+    storybook: {
+      table: { disable: true },
+    },
+  };
   const args = {
     componentMetadata: {
       path: componentPath,
@@ -219,6 +226,7 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMe
       name: property.title,
       table: {
         type: { summary: property.type },
+        category: property.group || property.category || 'General',
       },
     };
 

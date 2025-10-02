@@ -5,87 +5,50 @@ group: Components
 props:
   type: object
   properties:
-    text:
-      type: string
-      title: Tile heading
-      examples:
-        - Heading
-    description:
-      type: string
-      title: Tile description
-      contentMediaType: text/html
-      x-formatting-context: block
-      examples:
-        - '<p>
-            This is placeholder text.
-          </p>'
-    icon_align:
-      type: string
-      title: Tile alignment
-      enum:
-        - hg:justify-start
-        - hg:justify-end
-        - hg:justify-center
-      meta:enum:
-        hg:justify-start: Left
-        hg:justify-end: Right
-        hg:justify-center: Center
-      default:
-        - 'hg:justify-center'
-      examples:
-        - 'hg:justify-center'
     tile_size:
       type: string
-      title: Tile size
+      title: Tile aspect ratio
+      group: Appearance
       enum:
         - hg:aspect-none
         - hg:aspect-square
         - hg:aspect-4/3
         - hg:aspect-16/9
       meta:enum:
-        hg:aspect-none: None
+        hg:aspect-none: Fit content
         hg:aspect-square: Square
-        hg:aspect-4/3: 4 × 3
-        hg:aspect-16/9: 16 × 9
+        hg:aspect-4/3: Rectangle 4 × 3
+        hg:aspect-16/9: Rectangle 16 × 9
       default:
         - 'hg:aspect-none'
       examples:
         - 'hg:aspect-none'
-    url:
+    flex_align:
       type: string
-      title: Tile Link (optional)
-    icon:
-      type: string
-      title: Icon name (exclude prefix)
-      default: 'rocket'
-      examples:
-        - 'rocket'
-    icon_size:
-      type: string
-      title: Icon size
+      title: Alignment
+      group: Appearance
       enum:
-        - hg:text-2xl
-        - hg:text-4xl
-        - hg:text-6xl
-      meta:enum:
-        hg:text-2xl: Small
-        hg:text-4xl: Regular
-        hg:text-6xl: Large
+        - start
+        - center
+        - end
+        - between
       default:
-        - 'hg:text-4xl'
+        - 'center'
       examples:
-        - 'hg:text-4xl'
+        - 'center'
     border:
       type: boolean
-      title: Show border
+      title: Border
       description: Add a border to the tile.
+      group: Appearance
       default: TRUE
       examples:
         - TRUE
     border_radius:
       type: string
-      title: Rounded Corners
+      title: Border radius
       description: Set rounded corner radius
+      group: Appearance
       enum:
         - hg:rounded-none
         - hg:rounded-sm
@@ -101,8 +64,84 @@ props:
         - 'hg:rounded-sm'
     background:
       type: boolean
-      title: Show background
+      title: Background
       description: Add a background to the tile.
+      group: Appearance
       default: FALSE
       examples:
         -  FALSE
+    text:
+      type: string
+      title: Heading text
+      description: Add heading text to the tile.
+      group: Content
+      examples:
+        - Heading
+    description:
+      type: string
+      title: Paragraph text
+      description: Add paragraph text to the tile.
+      group: Content
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>This is placeholder text.</p>'
+    text_align:
+      type: string
+      title: Text alignment
+      group: Content
+      enum:
+        - hg:text-start
+        - hg:text-center
+        - hg:text-end
+      meta:enum:
+        hg:text-start: Left
+        hg:text-center: Center
+        hg:text-end: Right
+      default:
+        - 'hg:text-center'
+      examples:
+        - 'hg:text-center'
+    url:
+      type: string
+      title: Link tile
+      group: Content
+    icon:
+      type: string
+      title: Icon name (exclude prefix)
+      group: Icon
+      default: 'rocket'
+      examples:
+        - 'rocket'
+    icon_size:
+      type: string
+      title: Icon size
+      group: Icon
+      enum:
+        - hg:text-2xl
+        - hg:text-4xl
+        - hg:text-6xl
+      meta:enum:
+        hg:text-2xl: Small
+        hg:text-4xl: Regular
+        hg:text-6xl: Large
+      default:
+        - 'hg:text-4xl'
+      examples:
+        - 'hg:text-4xl'
+    icon_align:
+      type: string
+      title: Icon alignment
+      group: Icon
+      enum:
+        - hg:justify-start
+        - hg:justify-end
+        - hg:justify-center
+      meta:enum:
+        hg:justify-start: Left
+        hg:justify-end: Right
+        hg:justify-center: Center
+      default:
+        - 'hg:justify-center'
+      examples:
+        - 'hg:justify-center'

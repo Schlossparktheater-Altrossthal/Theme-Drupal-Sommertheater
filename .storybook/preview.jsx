@@ -67,6 +67,7 @@ const preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     backgrounds: {},
     controls: {
+      expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,

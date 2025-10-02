@@ -1,4 +1,13 @@
 hide_main: true
+main:
+  header_text: 'Example of a Section Heading'
+  footer_text: '<p>Additional text below</p>'
+  media:
+    src: 'assets/5255417.jpg'
+    alt: 'Photo by'
+  background_media:
+    src: 'assets/957040.jpg'
+    alt: 'Decorative image'
 price:
   header_text: 'Headline about pricing plans'
   footer_text: '<p>Additional text below alt</p>'
@@ -60,12 +69,61 @@ price:
       button_url: https://example.com
       button_label: Choose this plan
       promote: false
-main:
-  header_text: 'Example of a Section Heading'
-  footer_text: '<p>Additional text below</p>'
-  media:
-    src: 'assets/5255417.jpg'
-    alt: 'Photo by'
+alt:
+  header_text: 'This shows creative usage of tiles'
+  footer_text: '<p>Additional text below alt</p>'
   background_media:
     src: 'assets/957040.jpg'
     alt: 'Decorative image'
+  tiles:
+    - text: 'Heading'
+      description: '<ul>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        </ul>'
+      icon: 'rocket'
+      icon_size: 'hg:text-4xl'
+      tile_size: 'hg:fit-content'
+      border: true
+      background: false
+      border_radius: 'hg:rounded-xl hg:md:rounded-2xl'
+      text_align: 'hg:text-left'
+      icon_align: 'hg:justify-end'
+    - text: 'Heading'
+      description: '<ul>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        </ul>'
+      icon: 'rocket'
+      icon_size: 'hg:text-4xl'
+      tile_size: 'hg:fit-content'
+      border: true
+      background: false
+      border_radius: 'hg:rounded-xl hg:md:rounded-2xl'
+      text_align: 'hg:text-left'
+      icon_align: 'hg:justify-end'
+    - text: 'Heading'
+      description: '<ul>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        </ul>'
+      icon: 'rocket'
+      icon_size: 'hg:text-4xl'
+      tile_size: 'hg:fit-content'
+      border: true
+      background: false
+      border_radius: 'hg:rounded-xl hg:md:rounded-2xl'
+      text_align: 'hg:text-left'
+      icon_align: 'hg:justify-end'

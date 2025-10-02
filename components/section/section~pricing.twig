@@ -1,5 +1,8 @@
 {# Pricing variant for Storybook #}
-{% embed 'mercury:components/section/section' with { background_media: null } %}
+{% embed 'mercury:components/section/section' with { 
+  background_media: null,
+  columns: '25-25-25-25'
+} %}
 
   {% block header_slot %}
     {{ include('mercury:heading',
