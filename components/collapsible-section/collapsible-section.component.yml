@@ -18,7 +18,7 @@ props:
         - 3
     open_by_default:
       type: boolean
-      title: Open by default?
+      title: Open by default
       examples:
         - false
 
@@ -29,4 +29,4 @@ slots:
 
 libraryOverrides:
   js:
-    collapsible-section.js: { attributes: { type: module }}
+    collapsible-section.js: { attributes: { type: module } }

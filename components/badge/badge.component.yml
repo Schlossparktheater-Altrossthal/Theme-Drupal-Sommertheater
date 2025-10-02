@@ -37,7 +37,7 @@ props:
         - newspaper-clipping
     icon_first:
       type: boolean
-      title: Icon first?
+      title: Icon first
       description: Icon can display before or after label.
       default: true
       examples:

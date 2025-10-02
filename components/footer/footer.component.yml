@@ -7,7 +7,7 @@ props:
   properties:
     align:
       type: boolean
-      title: Display links in row?
+      title: Display links horizontally
       description: Align links in row or stack
       examples:
         - true
