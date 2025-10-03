@@ -8,7 +8,7 @@ props:
     tile_size:
       type: string
       title: Tile aspect ratio
-      group: Appearance
+      description: Set aspect ratio of the tile.
       enum:
         - hg:aspect-none
         - hg:aspect-square
@@ -26,7 +26,7 @@ props:
     flex_align:
       type: string
       title: Alignment
-      group: Appearance
+      description: Set alignment of the tile.
       enum:
         - start
         - center
@@ -40,7 +40,6 @@ props:
       type: boolean
       title: Border
       description: Add a border to the tile.
-      group: Appearance
       default: TRUE
       examples:
         - TRUE
@@ -48,7 +47,6 @@ props:
       type: string
       title: Border radius
       description: Set rounded corner radius
-      group: Appearance
       enum:
         - hg:rounded-none
         - hg:rounded-sm
@@ -66,7 +64,6 @@ props:
       type: boolean
       title: Background
       description: Add a background to the tile.
-      group: Appearance
       default: FALSE
       examples:
         -  FALSE
@@ -74,14 +71,12 @@ props:
       type: string
       title: Heading text
       description: Add heading text to the tile.
-      group: Content
       examples:
         - Heading
     description:
       type: string
       title: Paragraph text
       description: Add paragraph text to the tile.
-      group: Content
       contentMediaType: text/html
       x-formatting-context: block
       examples:
@@ -89,7 +84,7 @@ props:
     text_align:
       type: string
       title: Text alignment
-      group: Content
+      description: Set text alignment of the tile.
       enum:
         - hg:text-start
         - hg:text-center
@@ -104,19 +99,18 @@ props:
         - 'hg:text-center'
     url:
       type: string
-      title: Link tile
-      group: Content
+      title: Link
     icon:
       type: string
       title: Icon name (exclude prefix)
-      group: Icon
+      description: Set icon name (exclude prefix).
       default: 'rocket'
       examples:
         - 'rocket'
     icon_size:
       type: string
       title: Icon size
-      group: Icon
+      description: Set icon size.
       enum:
         - hg:text-2xl
         - hg:text-4xl
@@ -132,7 +126,7 @@ props:
     icon_align:
       type: string
       title: Icon alignment
-      group: Icon
+      description: Set icon alignment.
       enum:
         - hg:justify-start
         - hg:justify-end
