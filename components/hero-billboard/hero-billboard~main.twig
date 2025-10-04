@@ -4,7 +4,7 @@
     {% if media.src is not empty %}
       <div class="hg:absolute hg:inset-0 {{ overlay_opacity }}"></div>
     {% endif %}
-    <img src="{{  componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover {{ object_position }}"/>
+    <img src="{{  componentMetadata.path ~ '/' ~ storybook.media.src }}" alt="{{ storybook.media.alt }}" class="hg:w-full hg:h-full hg:object-cover {{ object_position }}"/>
   {% endblock %}
   {% block hero_content %}
 

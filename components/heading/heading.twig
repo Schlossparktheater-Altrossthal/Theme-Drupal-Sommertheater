@@ -2,8 +2,8 @@
 
 {% set heading_classes = heading_classes|default([])|merge([
     'heading',
-    has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
     'hg:text-' ~ align,
+    has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
     font_color,
 ])|filter(v => v is not empty) %}
 

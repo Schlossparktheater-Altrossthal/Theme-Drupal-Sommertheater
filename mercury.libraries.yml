@@ -8,23 +8,6 @@ global:
     theme:
       src/globals.css: {}
       src/schemes.css: {}
-    component:
-      css/components/action-links.css: {}
-      css/components/button.css: {}
-      css/components/container-inline.css: {}
-      css/components/details.css: {}
-      css/components/exposed-filters.css: {}
-      css/components/field.css: {}
-      css/components/form.css: {}
-      css/components/icons.css: {}
-      css/components/inline-form.css: {}
-      css/components/item-list.css: {}
-      css/components/links.css: {}
-      css/components/menu.css: {}
-      css/components/more-link.css: {}
-      css/components/pager.css: {}
-      css/components/textarea.css: {}
-      css/components/ui-dialog.css: {}
 
 dialog:
   version: VERSION

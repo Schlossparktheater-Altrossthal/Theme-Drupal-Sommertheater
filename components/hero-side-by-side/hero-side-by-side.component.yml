@@ -1,6 +1,6 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
-name: Hero
-description: Hero with side by side slots for media and content.
+name: Hero side-by-side
+description: Hero with side-by-side slots for media and content.
 group: Layout
 props:
   type: object
@@ -76,8 +76,8 @@ props:
         - '0'
     image_size:
       type: string
-      title: Hero image size
-      description: Set image aspect ratio
+      title: Image size
+      description: Set the image aspect ratio
       enum:
         - hg:aspect-2/1
         - hg:aspect-16/9
@@ -95,8 +95,8 @@ props:
         - hg:aspect-4/3
     image_position:
       type: string
-      title: Hero image position
-      description: Set image position
+      title: Image position
+      description: Set the image position
       enum:
         - hg:md:flex-row
         - hg:md:flex-row-reverse
@@ -108,8 +108,8 @@ props:
         - 'hg:md:flex-row'
     image_radius:
       type: string
-      title: Image radius
-      description: Image corner radius
+      title: Image border radius
+      description: Set the image border radius
       enum:
         - hg:rounded-none
         - hg:rounded-sm
@@ -171,8 +171,8 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: '8474492.jpg'
-          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
+        - src: 'assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg'
+          alt: 'Placeholder image'
 
 slots:
   hero_slot:

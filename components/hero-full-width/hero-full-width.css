@@ -1,6 +1,5 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-@layer properties;
-.storybook-component--hero-3 {
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+.storybook-component--hero-full-width {
   width: 100%;
   @media (width >= 40rem) {
     max-width: 40rem;
@@ -18,11 +17,6 @@
     max-width: 96rem;
   }
   margin-inline: auto;
-  border-inline-style: var(--tw-border-style);
-  border-inline-width: 1px;
-  --tw-border-style: dotted;
-  border-style: dotted;
-  border-color: var(--hg-color-gray-200, oklch(0.928 0.006 264.531));
   padding-inline: calc(var(--hg-spacing, 4px) * 4);
 }
 @layer components {
@@ -40,17 +34,5 @@
       padding-block: calc(var(--hg-spacing, 4px) * 20);
     }
     color: var(--hg-color-body-text);
-  }
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
-    }
   }
 }

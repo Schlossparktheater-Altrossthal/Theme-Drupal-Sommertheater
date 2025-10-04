@@ -74,9 +74,9 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/8474492.jpg'
-          alt: 'Photo by RDNE Stock project: https://www.pexels.com/photo/an-astronaut-standing-in-a-desolate-environment-8474492/'
+        - src: 'assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg'
+          alt: 'Placeholder image'
 
 slots:
   hero_slot:
-    title: 'Hero Content'
+    title: 'Hero content'

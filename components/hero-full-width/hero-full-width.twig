@@ -14,6 +14,7 @@
   {% block hero_content %}
     {{ include('mercury:heading', {
       url: 'No URL',
+      font_size: font_size|default('default'),
     }) }}
   {% endblock %}
   </div>
