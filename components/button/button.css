@@ -91,7 +91,7 @@ button.button {
 .button--secondary-accent {
   --hgc-btn-bg: var(--hg-color-body-bg);
   --hgc-btn-border: var(--hg-color-accent);
-  --hgc-btn-label: var(--hg-color-accent);
+  --hgc-btn-label: var(--hg-color-label);
   --hgc-btn-bg-hover: var(--hg-color-accent-light);
   --hgc-btn-border-hover: var(--hg-color-accent);
   --hgc-btn-label-hover: var(--hg-color-accent-dark);
