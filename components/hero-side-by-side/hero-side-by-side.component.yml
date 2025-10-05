@@ -11,11 +11,13 @@ props:
       enum:
         - hg:gap-0
         - hg:gap-4 hg:md:gap-6 hg:xl:gap-8
-        - hg:gap-16 hg:md:gap-24 hg:xl:gap-32
+        - hg:gap-8 hg:md:gap-12 hg:xl:gap-24
+        - hg:gap-12 hg:md:gap-16 hg:xl:gap-32
       meta:enum:
         hg:gap-0: None
-        hg:gap-4 hg:md:gap-6 hg:xl:gap-8: Large (default)
-        hg:gap-16 hg:md:gap-24 hg:xl:gap-32: Extra-Large
+        hg:gap-4 hg:md:gap-6 hg:xl:gap-8: Default
+        hg:gap-8 hg:md:gap-12 hg:xl:gap-24: Medium
+        hg:gap-12 hg:md:gap-16 hg:xl:gap-32: Large
       default: hg:gap-4 hg:md:gap-6 hg:xl:gap-8
       examples:
         - 'hg:gap-4 hg:md:gap-6 hg:xl:gap-8'
@@ -54,14 +56,47 @@ props:
         - 'hg:bg-none'
       examples:
         - 'hg:bg-none'
+    margin_block_start:
+      type: string
+      title: Margin top
+      enum:
+        - '0'
+        - '8'
+        - '20'
+        - '32'
+        - '48'
+        - '64'
+        - '96'
+        - '128'
+      examples:
+        - '48'
+    margin_block_end:
+      type: string
+      title: Margin bottom
+      enum:
+        - '0'
+        - '8'
+        - '20'
+        - '32'
+        - '48'
+        - '64'
+        - '96'
+        - '128'
+      examples:
+        - '48'
     padding_block_start:
       type: string
       title: Padding top
       enum:
         - '0'
-        - '16'
+        - '8'
+        - '20'
         - '32'
+        - '48'
         - '64'
+        - '96'
+        - '128'
+        - '160'
       examples:
         - '0'
     padding_block_end:
@@ -69,9 +104,14 @@ props:
       title: Padding bottom
       enum:
         - '0'
-        - '16'
+        - '8'
+        - '20'
         - '32'
+        - '48'
         - '64'
+        - '96'
+        - '128'
+        - '160'
       examples:
         - '0'
     image_size:

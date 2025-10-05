@@ -37,14 +37,14 @@ props:
         - heading-responsive-xl
       meta:enum:
         default: Default
-        heading-responsive-8xl: 8xl 72px
-        heading-responsive-7xl: 7xl 96px
-        heading-responsive-6xl: 6xl 60px
-        heading-responsive-5xl: 5xl 48px
-        heading-responsive-4xl: 4xl 40px
-        heading-responsive-3xl: 3xl 32px
-        heading-responsive-2xl: 2xl 24px
-        heading-responsive-xl: xl 20px
+        heading-responsive-8xl: 72px (8xl)
+        heading-responsive-7xl: 96px (7xl)
+        heading-responsive-6xl: 60px (6xl)
+        heading-responsive-5xl: 48px (5xl)
+        heading-responsive-4xl: 40px (4xl)
+        heading-responsive-3xl: 32px (3xl)
+        heading-responsive-2xl: 24px (2xl)
+        heading-responsive-xl: 20px (xl)
       default: default
       examples: 
         - default

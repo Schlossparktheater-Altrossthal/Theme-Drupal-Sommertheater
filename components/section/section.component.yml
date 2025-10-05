@@ -6,9 +6,67 @@ description: A section for nested components
 props:
   type: object
   properties:
+    section_header:
+      type: boolean
+      title: Header visibility
+      examples:
+        - true
+      default:
+        - true
+    top_width:
+      type: string
+      title: Header max-width
+      enum:
+        - hg:lg:max-w-full
+        - hg:lg:max-w-9/10
+        - hg:lg:max-w-8/10
+        - hg:lg:max-w-3/4
+        - hg:lg:max-w-1/2
+      meta:enum:
+        hg:lg:max-w-full: 100%
+        hg:lg:max-w-9/10: 90%
+        hg:lg:max-w-8/10: 80%
+        hg:lg:max-w-3/4: 75%
+        hg:lg:max-w-1/2: 50%
+      examples:
+        - 'hg:lg:max-w-full'
+    top_flex-align:
+      type: string
+      title: Header alignment
+      enum:
+        - hg:lg:justify-start
+        - hg:lg:justify-center
+        - hg:lg:justify-end
+        - hg:lg:justify-between hg:lg:items-end
+      meta:enum:
+        hg:lg:justify-start: Left
+        hg:lg:justify-center: Center
+        hg:lg:justify-end: Right
+        hg:lg:justify-between hg:lg:items-end: Between
+      default:
+        - 'hg:lg:justify-center'
+      examples:
+        - 'hg:lg:justify-center'
+    width:
+      type: string
+      title: Main width
+      enum:
+        - hg:lg:max-w-full
+        - hg:lg:max-w-9/10
+        - hg:lg:max-w-8/10
+        - hg:lg:max-w-3/4
+        - hg:lg:max-w-1/2
+      meta:enum:
+        hg:lg:max-w-full: 100%
+        hg:lg:max-w-9/10: 90%
+        hg:lg:max-w-8/10: 80%
+        hg:lg:max-w-3/4: 75%
+        hg:lg:max-w-1/2: 50%
+      examples:
+        - 'hg:lg:max-w-full'
     columns:
       type: string
-      title: Content layout
+      title: Main grid columns
       enum:
         - '100'
         - '50-50'
@@ -24,9 +82,31 @@ props:
         - '50-50'
       default:
         - '50-50'
-    width:
+    main_gap:
       type: string
-      title: Section width
+      title: Main gap
+      enum:
+        - hg:gap-4 hg:lg:gap-6 hg:xl:gap-8
+        - hg:gap-8
+        - hg:gap-8 hg:lg:gap-10 hg:xl:gap-12
+      meta:enum:
+        hg:gap-4 hg:lg:gap-6 hg:xl:gap-8: Default
+        hg:gap-8: Default (not responsive)
+        hg:gap-8 hg:lg:gap-10 hg:xl:gap-12: Large
+      default:
+        - 'hg:gap-4 hg:lg:gap-6 hg:xl:gap-8'
+      examples:
+        - 'hg:gap-4 hg:lg:gap-6 hg:xl:gap-8'
+    section_footer:
+      type: boolean
+      title: Footer visibility
+      examples:
+        - true
+      default:
+        - true
+    bottom_width:
+      type: string
+      title: Footer max-width
       enum:
         - hg:lg:max-w-full
         - hg:lg:max-w-9/10
@@ -41,6 +121,23 @@ props:
         hg:lg:max-w-1/2: 50%
       examples:
         - 'hg:lg:max-w-full'
+    bottom_flex-align:
+      type: string
+      title: Footer alignment
+      enum:
+        - hg:lg:justify-start
+        - hg:lg:justify-center
+        - hg:lg:justify-end
+        - hg:lg:justify-between hg:lg:items-end
+      meta:enum:
+        hg:lg:justify-start: Left
+        hg:lg:justify-center: Center
+        hg:lg:justify-end: Right
+        hg:lg:justify-between hg:lg:items-end: Between
+      default:
+        - 'hg:lg:justify-center'
+      examples:
+        - 'hg:lg:justify-center'
     margin_block_start:
       type: string
       title: Margin top
@@ -76,7 +173,11 @@ props:
         - '0'
         - '16'
         - '32'
+        - '48'
         - '64'
+        - '96'
+        - '128'
+        - '160'
       examples:
         - '0'
     padding_block_end:
@@ -86,7 +187,11 @@ props:
         - '0'
         - '16'
         - '32'
+        - '48'
         - '64'
+        - '96'
+        - '128'
+        - '160'
       examples:
         - '0'
     background_color:
@@ -119,25 +224,11 @@ props:
       title: Background image
       description: The background image for section.
       type: object
-    section_header:
-      type: boolean
-      title: Show header region
-      examples:
-        - true
-      default:
-        - true
-    section_footer:
-      type: boolean
-      title: Show footer region
-      examples:
-        - true
-      default:
-        - true
 
 slots:
   header_slot:
     title: 'Header'
   main_slot:
-    title: 'Grid'
+    title: 'Main'
   footer_slot:
     title: 'Footer'
