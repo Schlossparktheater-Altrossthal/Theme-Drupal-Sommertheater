@@ -9,23 +9,15 @@ button.button {
 }
 
 .button {
-  @apply hg:font-medium hg:w-fit hg:no-underline hg:hover:no-underline hg:cursor-pointer hg:leading-tight hg:border;
-  background-color: var(--hgc-btn-bg);
-  color: var(--hgc-btn-label);
-  border-color: var(--hgc-btn-border);
+  @apply hg:font-medium hg:leading-tight hg:bg-(--hgc-btn-bg) hg:text-(--hgc-btn-label) hg:border-(--hgc-btn-border);
 
   &:hover,
   &:focus {
-    background-color: var(--hgc-btn-bg-hover);
-    color: var(--hgc-btn-label-hover);
-    border-color: var(--hgc-btn-border-hover);
+    @apply hg:bg-(--hgc-btn-bg-hover) hg:text-(--hgc-btn-label-hover) hg:border-(--hgc-btn-border-hover);
   }
 
   &:disabled {
-    @apply hg:cursor-default;
-    background-color: var(--hgc-btn-bg-disabled);
-    border-color: var(--hgc-btn-border-disabled);
-    color: var(--hgc-btn-label-disabled);
+    @apply hg:cursor-default hg:bg-(--hgc-btn-bg-disabled) hg:text-(--hgc-btn-label-disabled) hg:border-(--hgc-btn-border-disabled);
   }
 
   &.small .ph-bold {

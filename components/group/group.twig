@@ -1,8 +1,20 @@
-{% set flex_direction_map = {
-  'column': 'hg:flex-col',
-  'row': 'hg:flex-row',
-  'column-reverse': 'hg:flex-col-reverse',
-  'row-reverse': 'hg:flex-row-reverse',
+{% set flex_align_map = {
+  'start': 'hg:self-start',
+  'center': 'hg:self-center',
+  'end': 'hg:self-end',
+} %}
+
+{% set flex_align_x_map = {
+  'start': 'hg:items-start hg:md:justify-start',
+  'center': 'hg:items-center hg:md:justify-center',
+  'end': 'hg:items-center hg:md:justify-end',
+  'between': 'hg:items-center hg:md:justify-between',
+} %}
+
+{% set flex_align_y_map = {
+  'start': 'hg:items-start',
+  'center': 'hg:items-center',
+  'end': 'hg:items-end',
 } %}
 
 {% set radius_map = {
@@ -13,14 +25,6 @@
   'xl': 'hg:rounded-xl',
 } %}
 
-{% set flex_gap_map = {
-  'none': '',
-  'sm': 'hg:gap-4',
-  'md': 'hg:gap-8',
-  'lg': 'hg:gap-16',
-  'xl': 'hg:gap-32',
-} %}
-
 {% set padding_map = {
   'none': '',
   'sm': 'hg:p-4',
@@ -29,18 +33,20 @@
   'xl': 'hg:p-32',
 } %}
 
-{% set flex_align_map = {
-  'start': 'hg:self-start',
-  'end': 'hg:self-end',
-  'center': 'hg:self-center',
-} %}
+{% set group_classes = [
+  'group',
+  border ? 'hg:border' : '',
+  background,
+  flex_direction,
+  flex_gap,
+  flex_align_map[flex_align],
+  flex_align_x_map[flex_align_x],
+  flex_align_y_map[flex_align_y],
+  padding_map[padding],
+  radius_map[radius],
+] %}
 
-{% set flex_direction = flex_direction_map[flex_direction] ?? '' %}
-{% set radius = radius_map[radius] ?? '' %}
-{% set flex_gap = flex_gap_map[flex_gap] ?? '' %}
-{% set padding = padding_map[padding] ?? '' %}
-{% set flex_align = flex_align_map[flex_align] ?? '' %}
-<div class="group{{ flex_direction ? ' ' ~ flex_direction }}{{ flex_gap ? ' ' ~ flex_gap }}{{ flex_align ? ' ' ~ flex_align }}{{ background ? ' ' ~ background }}{{ radius ? ' ' ~ radius }}{{ padding ? ' ' ~ padding }}">
+<div class="{{ group_classes|filter(v => v)|join(' ') }}">
   {% block group_slot %}
   {% endblock %}
 </div>

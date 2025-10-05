@@ -8,40 +8,56 @@ props:
   properties:
     flex_direction:
       type: string
-      title: Item direction
+      title: Flex direction
       enum:
-        - column
-        - row
-        - column-reverse
-        - row-reverse
+        - hg:flex-col
+        - hg:flex-row
+        - hg:flex-col hg:md:flex-row
+        - hg:flex-col-reverse
+        - hg:flex-row-reverse
       meta:enum:
-        column: Vertical
-        row: Horizontal
-        column-reverse: Vertical (reverse)
-        row-reverse: Horizontal (reverse)
-
+        hg:flex-col: Column
+        hg:flex-row: Row
+        hg:flex-col hg:md:flex-row: Row (stacked on mobile)
+        hg:flex-col-reverse: Column-reverse
+        hg:flex-row-reverse: Row-reverse
       examples:
-        - 'column'
+        - 'hg:flex-col'
     flex_gap:
       type: string
-      title: Extra space between items
+      title: Flex gap
       enum:
-        - none
-        - sm
-        - md
-        - lg
-        - xl
+        - hg:gap-0
+        - hg:gap-4 hg:md:gap-6 hg:xl:gap-8
+        - hg:gap-8 hg:lg:gap-10 hg:xl:gap-12
       meta:enum:
-        none: None
-        sm: Small
-        md: Medium
-        lg: Large
-        xl: Extra-Large
+        hg:gap-0: None
+        hg:gap-4 hg:md:gap-6 hg:xl:gap-8: Default
+        hg:gap-8 hg:lg:gap-10 hg:xl:gap-12: Large
+      default: hg:gap-4 hg:md:gap-6 hg:xl:gap-8
       examples:
-        - 'none'
-    flex_align:
+        - 'hg:gap-4 hg:md:gap-6 hg:xl:gap-8'
+    flex_align_x:
       type: string
-      title: Alignment within parent component
+      title: Content align-x
+      description: 'Adjust horizontal alignment of the content within the group.'
+      enum:
+        - start
+        - center
+        - end
+        - between
+      meta:enum:
+        start: Start
+        center: Center
+        end: End
+        between: Between
+      default: 'center'
+      examples:
+        - 'center'
+    flex_align_y:
+      type: string
+      title: Content align-y
+      description: 'Adjust vertical alignment of the content within the group.'
       enum:
         - start
         - center
@@ -55,7 +71,7 @@ props:
         - 'center'
     radius:
       type: string
-      title: Rounded corners
+      title: Border radius
       enum:
         - none
         - sm
@@ -87,6 +103,12 @@ props:
         xl: Extra-Large
       examples:
         - 'none'
+    border:
+      type: boolean
+      title: Border
+      default: FALSE
+      examples:
+        - FALSE
     background:
       type: string
       title: Background color
@@ -108,6 +130,21 @@ props:
         hg:bg-accent-dark: Accent Dark
       examples:
         - 'hg:bg-none'
+    flex_align:
+      type: string
+      title: Vertical alignment
+      description: 'Adjust vertical alignment of the group when nested inside other components.'
+      enum:
+        - start
+        - center
+        - end
+      meta:enum:
+        start: Top
+        center: Middle
+        end: Bottom
+      default: 'center'
+      examples:
+        - 'center'
 
 slots:
   group_slot:

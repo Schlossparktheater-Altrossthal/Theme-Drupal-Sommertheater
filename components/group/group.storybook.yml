@@ -1,5 +1,23 @@
 hide_main: true
-background: 'hg:bg-brand'
-radius: 'sm'
-flex_direction: 'column'
-flex_gap: 'lg'
+main:
+  heading_text: 'Group Heading'
+  text: 'Nulla purus suscipit nostra sagittis lectus sapien gravida ultrices. Euismod condimentum volutpat natoque feugiat consequat rutrum duis tellus vestibulum cubilia.'
+  button_label: 'Click Me'
+  button_url: 'https://example.com'
+  variant: 'primary'
+  background: 'hg:bg-brand'
+  radius: 'sm'
+  flex_direction: 'column'
+  flex_gap: 'lg'
+buttons:
+  flex_direction: 'row'
+  items:
+    - label: 'Primary button'
+      url: 'https://example.com'
+      variant: 'primary'
+    - label: 'Secondary button'
+      url: 'https://example.com'
+      variant: 'secondary'
+    - label: 'Secondary button'
+      url: 'https://example.com'
+      variant: 'secondary'

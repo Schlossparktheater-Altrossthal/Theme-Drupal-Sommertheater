@@ -5,6 +5,7 @@
 @layer components {
   .group {
     display: flex;
-    min-height: calc(var(--hg-spacing, 4px) * 20);
+    min-height: calc(var(--hg-spacing, 4px) * 4);
+    min-width: calc(var(--hg-spacing, 4px) * 4);
   }
 }

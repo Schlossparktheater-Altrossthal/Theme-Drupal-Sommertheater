@@ -7,6 +7,6 @@
 @layer components {
 
   .group {
-    @apply hg:flex hg:min-h-20;
+    @apply hg:flex hg:min-w-4 hg:min-h-4;
   }
 }
