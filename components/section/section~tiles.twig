@@ -9,9 +9,6 @@
   width: 'hg:lg:max-w-3/4',
   padding_block_start: '64',
   padding_block_end: '64',
-  top_width: 'hg:lg:max-w-3/4',
-  top_flex_align: 'hg:lg:justify-between hg:lg:items-end',
-  main_gap: 'hg:gap-8 hg:lg:gap-10 hg:xl:gap-12',
 } %}
 
   {% block header_slot %}
@@ -22,14 +19,12 @@
         url: '',
       } )
     }}
-    button thing
   {% endblock %}
 
   {% block main_slot %}
     {% for tile in storybook.alt.tiles %}
       {{ include('mercury:tile-icon', tile) }}
     {% endfor %}
-
   {% endblock %}
 
   {% block footer_slot %}

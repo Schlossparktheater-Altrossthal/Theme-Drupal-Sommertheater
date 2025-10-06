@@ -17,33 +17,6 @@ props:
       enum: [1,2,3,4,5,6]
       examples: 
         - 2
-    font_size:
-      type: string
-      title: Font Size
-      description: Select Font Size
-      enum:
-        - default
-        - heading-responsive-8xl
-        - heading-responsive-7xl
-        - heading-responsive-6xl
-        - heading-responsive-5xl
-        - heading-responsive-4xl
-        - heading-responsive-3xl
-        - heading-responsive-2xl
-        - heading-responsive-xl
-      meta:enum:
-        default: Default
-        heading-responsive-8xl: 72px (8xl)
-        heading-responsive-7xl: 96px (7xl)
-        heading-responsive-6xl: 60px (6xl)
-        heading-responsive-5xl: 48px (5xl)
-        heading-responsive-4xl: 40px (4xl)
-        heading-responsive-3xl: 32px (3xl)
-        heading-responsive-2xl: 24px (2xl)
-        heading-responsive-xl: 20px (xl)
-      default: default
-      examples: 
-        - default
     text:
       type: string
       title: Text
@@ -57,72 +30,14 @@ props:
       default: center
       examples: 
         - center
-    margin_block_start:
-      type: string
-      title: Margin top
-      enum:
-        - '0'
-        - '8'
-        - '20'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
-      default: '0'
-      examples:
-        - '0'
-    margin_block_end:
-      type: string
-      title: Margin bottom
-      enum:
-        - '0'
-        - '8'
-        - '20'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
-      default: '0'
-      examples:
-        - '0'
-    padding_block_start:
-      type: string
-      title: Padding top
-      enum:
-        - '0'
-        - '16'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
-        - '160'
-      examples:
-        - '96'
-    padding_block_end:
-      type: string
-      title: Padding bottom
-      enum:
-        - '0'
-        - '16'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
-        - '160'
-      examples:
-        - '96'
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background Image
       description: The background image for the cta.
       type: object
       examples:
-        - src: 'assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg'
-          alt: 'Placeholder image'
+        - src: 'assets/256381.jpg'
+          alt: 'Photo by pixabay'
     has_background_image:
       type: boolean
       title: Show Background image
