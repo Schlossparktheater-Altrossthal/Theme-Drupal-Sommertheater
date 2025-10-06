@@ -19,19 +19,25 @@ props:
       default: primary
       examples:
         - primary
+    disabled:
+      type: boolean
+      title: Disabled
+      description: 'Whether the button is disabled.'
+      default: false
+      examples:
+        - false
+        - true
     label:
       type: string
-      title: Label
+      title: 'Button text'
       description: 'The text content of the button.'
       default: 'Button Label'
       examples:
         - 'Button Label'
-    href:
-      type: string
-      title: Link
     size:
       type: string
-      title: Button size
+      title: Size
+      description: 'Set Button Size.'
       enum:
         - small
         - medium
@@ -39,17 +45,10 @@ props:
       default: medium
       examples:
         - medium
-    mobile_width:
-      type: boolean
-      title:  Full width on mobile
-      default: false
-      examples:
-        - false
-        - true
     icon:
       type: string
       title: Icon
-      description: "Enter icon name without the 'ph-' prefix (e.g., 'user', 'heart', 'settings')."
+      description: 'Select an Icon.'
       enum:
         - arrow-right
         - arrow-left
@@ -62,16 +61,11 @@ props:
         - arrow-right
     icon_first:
       type: boolean
-      title: Display icon first
+      title: 'Display Icon First'
       description: 'By default, the icon is displayed after the label. If you want to display the icon first, set this to true.'
       default: false
       examples:
         - false
-    disabled:
-      type: boolean
-      title: Disabled
-      description: 'Style button as disabled (rarely used).'
-      default: false
-      examples:
-        - false
-        - true
+    href:
+      type: string
+      title: Link
