@@ -210,14 +210,7 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMe
     const property = properties[key];
 
     // Generate control type
-    const control =
-      generateControlType(property);
-
-    if (control.control.type === 'select') {
-      console.log(control);
-    }
-
-
+    const control = generateControlType(property);
 
     // Build argTypes entry
     argTypes[key] = {

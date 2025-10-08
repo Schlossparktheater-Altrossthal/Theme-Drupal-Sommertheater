@@ -91,15 +91,7 @@
 }
 
 .dropdown-menu__link[data-level='1'] {
-  @apply hg:px-3 hg:py-2 hg:rounded-md;
-
-  &:has(+ .dropdown-menu__expand-button) {
-    @apply hg:md:px-1;
-  }
-
-  + .dropdown-menu__expand-button {
-    @apply hg:px-1;
-  }
+  @apply hg:px-3 hg:md:px-1 hg:py-2 hg:rounded-md;
 }
 
 .dropdown-menu__expand-button[data-level='1'] {
@@ -135,7 +127,7 @@
 }
 
 .dropdown-menu__expand-button-icon > svg {
-  @apply hg:w-[18px] hg:max-h-[18px] hg:transition-transform hg:duration-[300ms];
+  @apply hg:max-h-[18px] hg:transition-transform hg:duration-[300ms];
 }
 
 .dropdown-menu__expand-button-no-link-title[data-level='1'] {

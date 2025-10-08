@@ -2,8 +2,19 @@
 
 @layer components;
 
+
+:root.navbar-modal-open {
+  &, body {
+    overflow: hidden;
+  }
+}
+
 .navbar--menu {
-  @apply hg:bg-body-bg;
+  @apply hg:bg-body-bg hg:grid hg:md:flex;
+}
+
+.navbar--menu:not(.navbar--menu--open) {
+  @apply hg:hidden hg:md:flex;
 }
 
 body.path-xb {
@@ -14,9 +25,23 @@ body.path-xb {
 }
 
 .navbar--links .button.button {
-  @apply hg:w-full hg:md:w-auto hg:mx-8 hg:my-3 hg:md:m-auto;
+  @apply hg:w-[calc(100%-var(--hg-spacing)*16)] hg:md:w-auto hg:mx-8 hg:md:m-auto;
 }
 
-.navbar--menu-contents .dropdown-menu {
+.navbar--dropdown-menu .dropdown-menu {
   @apply hg:w-full hg:md:w-auto;
+}
+
+.navbar--dropdown-menu-wrapper > :last-child {
+  @apply hg:pb-24 hg:md:pb-0;
+}
+
+.region-header {
+  .navbar {
+    @apply hg:px-0;
+  }
+
+  .navbar--modal-top {
+    @apply hg:px-4;
+  }
 }
