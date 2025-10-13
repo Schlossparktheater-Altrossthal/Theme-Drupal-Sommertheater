@@ -7,3 +7,8 @@
   position: relative;
   z-index: 1;
 }
+
+/* Override the moderation form block background */
+.entity-moderation-form {
+  background: inherit;
+}
