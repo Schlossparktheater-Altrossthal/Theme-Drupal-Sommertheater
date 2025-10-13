@@ -13,10 +13,14 @@
 {% set btn_classes = btn_classes|default([])|merge([
     'button',
     'button--' ~ variant|default('primary'),
+    'hg:no-underline',
+    'hg:hover:no-underline',
+    'hg:cursor-pointer',
     'hg:border',
     'hg:flex',
     'hg:items-center',
     'hg:justify-center',
+    mobile_width ? 'hg:w-full hg:sm:size-fit' : 'hg:size-fit',
     icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
     size_classes_map[size|default('medium')]
 ])|filter(v => v is not empty) %}
