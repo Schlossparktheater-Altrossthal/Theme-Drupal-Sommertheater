@@ -3,7 +3,22 @@
     <a href="/" rel="home" class="branding hg:w-40 hg:block">
       <img class="hg:object-cover hg:w-full hg:h-full" src="{{ componentMetadata.path ~ '/' ~ storybook.site_logo.src }}" alt="{{ storybook.site_logo.alt }}" />
     </a>
-    {{ include('mercury:menu-utility', { items: storybook.utility }) }}
+    
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="/path/to/page">About Us</a>
+      </li>
+      <li class="menu-item menu-item--expanded">
+        <a href="/another/path">Leadership</a>
+      </li>
+      <li class="menu-item menu-item--active-trail">
+        <a href="/current/page">Careers</a>
+      </li>
+      <li class="menu-item menu-item--active-trail">
+        <a href="/current/page">Newsroom</a>
+      </li>
+    </ul>
+
     {{ include('mercury:menu-social~main', { items: storybook.social } ) }}
   {% endblock %}
 
@@ -33,7 +48,17 @@
   {% endblock %}
 
   {% block footer_utility_first %}
-    {{ include('mercury:menu-utility', { items: storybook.utility_meta }) }}
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="/path/to/page">Privacy Policy</a>
+      </li>
+      <li class="menu-item menu-item--expanded">
+        <a href="/another/path">Terms of Service</a>
+      </li>
+      <li class="menu-item menu-item--active-trail">
+        <a href="/current/page">Contact Us</a>
+      </li>
+    </ul>
   {% endblock %}
 
   {% block footer_utility_last %}
