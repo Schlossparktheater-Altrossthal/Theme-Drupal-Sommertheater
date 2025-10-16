@@ -6,25 +6,13 @@ props:
   type: object
   required:
     - id
-    - tag
   properties:
     id:
       type: string
-      title: Anchor ID
+      title: ID for in-page link
       description: String to use in the URL. Should begin with a letter and contain only lowercase letters, numerals, and hyphens.
       examples:
         - anchor-id
-    tag:
-      type: string
-      title: HTML tag
-      description: Element type to use for the anchor.
-      enum:
-        - span
-        - div
-        - a
-      default: span
-      examples:
-        - span
 
 libraryOverrides:
   js:
