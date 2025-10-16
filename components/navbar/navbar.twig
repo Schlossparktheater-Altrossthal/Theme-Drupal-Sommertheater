@@ -1,5 +1,5 @@
-<div class="navbar hg:flex hg:justify-between hg:relative hg:z-[500] hg:p-2 hg:md:px-0 {{ storybook is not empty ? 'hg:container hg:mx-auto' : ''}}">
-  <div class="navbar--logo hg:max-h-25 hg:flex hg:justify-start hg:items-center hg:flex-[1_1_auto]">
+<div class="navbar hg:flex hg:justify-between hg:relative hg:z-[500] hg:p-2 hg:md:py-4 hg:md:px-0 {{ storybook is not empty ? 'hg:container hg:mx-auto' : ''}}">
+  <div class="navbar--logo hg:self-center">
     {% block logo %}
       {{ include('@mercury/components/branding/branding.twig') }}
     {% endblock %}
@@ -12,7 +12,7 @@
   } %}
   <div class="navbar--menu hg:grid-cols-[1fr] hg:grid-rows-[auto_1fr_auto] hg:pb-8 hg:md:pb-0 hg:md:h-auto hg:fixed hg:inset-0 hg:top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px)-var(--navbar-scroll-top,0px))] hg:md:static hg:flex-col hg:md:flex-row hg:justify-start hg:items-stretch hg:md:items-center hg:grow-1 hg:shrink-1">
     <div class="navbar--modal-top hg:container hg:mx-auto hg:w-full hg:flex hg:md:hidden hg:justify-between hg:relative hg:z-[500] hg:p-2 hg:col-start-1 hg:col-span-1 hg:row-start-1 hg:row-span-1">
-      <div class="navbar--modal-logo hg:flex-1 hg:min-h-[44px] hg:md:hidden hg:flex hg:flex-col hg:justify-center hg:items-stretch">
+      <div class="navbar--modal-logo hg:flex-1 hg:min-h-[44px] hg:md:hidden hg:flex hg:flex-col hg:justify-center hg:items-start">
         {{ block('logo') }}
       </div>
 

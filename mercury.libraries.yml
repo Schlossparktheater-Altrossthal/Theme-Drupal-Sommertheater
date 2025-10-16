@@ -9,6 +9,11 @@ global:
       src/globals.css: {}
       src/schemes.css: {}
 
+branding:
+  css:
+    component:
+      components/branding/branding.css: {}
+
 dialog:
   version: VERSION
   css:

@@ -2,4 +2,13 @@
 
 @layer components {
 
+  .branding {
+    /* Uncomment if you need to have better control over the logo size. */
+    /* 
+      svg,
+      img[src$=".svg"] {
+        @apply hg:h-auto! hg:max-h-full;
+      } 
+    */
+  }
 }

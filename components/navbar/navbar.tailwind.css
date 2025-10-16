@@ -2,7 +2,6 @@
 
 @layer components;
 
-
 :root.navbar-modal-open {
   &, body {
     overflow: hidden;
@@ -44,4 +43,27 @@ body.path-xb {
   .navbar--modal-top {
     @apply hg:px-4;
   }
+}
+
+.navbar--logo,
+.navbar--modal-logo {
+
+  .branding {
+    @apply hg:h-6 hg:md:h-7;
+    svg,
+    img[src$=".svg"] {
+      @apply hg:h-auto! hg:max-h-full;
+    }
+  }
+
+
+}
+
+
+.navbar--logo > div {
+  @apply hg:flex hg:flex-col hg:justify-center;
+}
+
+.navbar--modal-logo > div {
+  @apply hg:flex hg:flex-col hg:justify-center;
 }

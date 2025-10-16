@@ -33,6 +33,13 @@
     }
   }
   .site-footer--top {
+    .branding {
+      height: calc(var(--hg-spacing, 4px) * 5);
+      svg, img[src$=".svg"] {
+        height: auto !important;
+        max-height: 100%;
+      }
+    }
     .block-webform {
       width: 100%;
       justify-items: end;

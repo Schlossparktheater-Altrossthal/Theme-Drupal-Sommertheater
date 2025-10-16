@@ -29,6 +29,15 @@
 
   .site-footer--top {
 
+    .branding {
+      @apply hg:h-5;
+
+      svg,
+      img[src$=".svg"] {
+        @apply hg:h-auto! hg:max-h-full;
+      }
+    }
+
     .block-webform {
       @apply hg:md:flex hg:w-full hg:justify-items-end;
     }

@@ -53,3 +53,25 @@ body.path-xb {
     padding-inline: calc(var(--hg-spacing, 4px) * 4);
   }
 }
+.navbar--logo, .navbar--modal-logo {
+  .branding {
+    height: calc(var(--hg-spacing, 4px) * 6);
+    @media (width >= 48rem) {
+      height: calc(var(--hg-spacing, 4px) * 7);
+    }
+    svg, img[src$=".svg"] {
+      height: auto !important;
+      max-height: 100%;
+    }
+  }
+}
+.navbar--logo > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.navbar--modal-logo > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
