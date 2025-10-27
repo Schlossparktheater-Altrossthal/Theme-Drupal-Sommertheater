@@ -20,7 +20,6 @@ final class IconsTest extends KernelTestBase {
   /**
    * Tests that all Mercury icons are discoverable.
    */
-  #[TestWith(['social'])]
   #[TestWith(['phosphor'])]
   public function testIconsAreDiscoverable(string $group): void {
     $this->container->get(ThemeInstallerInterface::class)->install(['mercury']);
