@@ -5,6 +5,7 @@
  * Functions to support theming.
  */
 
+use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\mercury\RenderCallbacks;
 use Drupal\views\ViewExecutable;
 
@@ -34,7 +35,12 @@ function mercury_preprocess_image_widget(array &$variables): void {
  * Implements template_preprocess_html().
  */
 function mercury_preprocess_html(array &$variables): void {
-  $variables['scheme'] = theme_get_setting('scheme');
+  $variables['scheme'] = DeprecationHelper::backwardsCompatibleCall(
+    Drupal::VERSION,
+    '11.3',
+    fn () => Drupal::service('Drupal\Core\Extension\ThemeSettingsProvider')->getSetting('scheme'),
+    fn () => theme_get_setting('scheme'),
+  );
 }
 
 /**
@@ -44,7 +50,12 @@ function mercury_form_system_theme_settings_alter(array &$form): void {
   $form['scheme'] = [
     '#type' => 'radios',
     '#title' => t('Color scheme'),
-    '#default_value' => theme_get_setting('scheme'),
+    '#default_value' => DeprecationHelper::backwardsCompatibleCall(
+      Drupal::VERSION,
+      '11.3',
+      fn () => Drupal::service('Drupal\Core\Extension\ThemeSettingsProvider')->getSetting('scheme'),
+      fn () => theme_get_setting('scheme'),
+    ),
     '#options' => [
       'vanilla-light' => t('Vanilla Light'),
       'vanilla-dark'  => t('Vanilla Dark'),
