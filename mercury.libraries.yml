@@ -11,19 +11,6 @@ global:
     theme:
       src/globals.css: {}
       src/schemes.css: {}
-
-branding:
-  css:
-    component:
-      components/branding/branding.css: {}
-
-dialog:
-  version: VERSION
-  css:
-    component:
-      css/components/dialog.css: {}
-      components/dialog/dialog.css: {}
-      components/dialog-webform/dialog-webform.css: {}
 dropdown-menu:
   css:
     component:
@@ -32,31 +19,12 @@ dropdown-menu:
     components/dropdown-menu/dropdown-menu.js:
       attributes:
         type: module
-indented:
-  version: VERSION
-  css:
-    component:
-      css/components/indented.css: {}
-messages:
-  version: VERSION
-  css:
-    component:
-      css/components/messages.css: {}
 phosphor-icons:
   css:
     theme:
       src/phosphor-icons.css: {}
-search-results:
-  version: VERSION
-  css:
-    component:
-      css/components/search-results.css: {}
 webform:
   version: VERSION
   css:
     component:
       components/webform/webform.css: {}
-breadcrumb:
-  css:
-    component:
-      components/breadcrumb/breadcrumb.css: {}
