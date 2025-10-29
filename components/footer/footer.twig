@@ -6,7 +6,7 @@
 <section class="site-footer">
   <div class="{{ footer_classes|join(' ') }}">
     <div class="site-footer--top hg:flex hg:flex-col hg:md:grid hg:md:grid-cols-2 hg:w-full hg:gap-6 hg:md:gap-6 hg:py-8 hg:justify-between hg:border-t hg:border-(--hgc-footer-border)">
-      
+
       {% if block("footer_first") is defined %}
         <div class="site-footer--first-col hg:flex hg:flex-col hg:gap-6">
         {% block footer_first %}
@@ -16,10 +16,10 @@
       {% endif %}
 
       {% if block("footer_last") is defined %}
-        <div class="site-footer--last-col hg:flex hg:flex-col hg:gap-6">
-        {% block footer_last %}
-          {# Slot for components. #}
-        {% endblock %}
+        <div class="site-footer--last-col hg:flex hg:flex-col hg:gap-6 hg:md:w-md hg:md:mx-0 hg:md:ms-auto hg:[&_form]:flex hg:[&_form]:gap-2 hg:[&_form]:items-end hg:[&_.fieldset-wrapper]:flex hg:[&_.fieldset-wrapper]:gap-2">
+          {% block footer_last %}
+            {# Slot for components. #}
+          {% endblock %}
         </div>
       {% endif %}
     </div>

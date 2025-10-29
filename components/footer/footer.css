@@ -54,9 +54,6 @@
       @media (width >= 48rem) {
         margin-inline-start: auto;
       }
-      @media (width >= 48rem) {
-        width: var(--hg-container-sm, 24rem);
-      }
     }
     .menu {
       .menu-item {

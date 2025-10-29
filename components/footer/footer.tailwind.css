@@ -42,10 +42,6 @@
       @apply hg:md:flex hg:w-full hg:justify-items-end;
     }
 
-    .webform-category--footer.webform-submission-form {
-      @apply hg:md:w-sm hg:md:mx-0 hg:md:ms-auto;
-    }
-
     .menu {
 
       .menu-item {
