@@ -41,6 +41,8 @@ function mercury_preprocess_html(array &$variables): void {
     fn () => Drupal::service('Drupal\Core\Extension\ThemeSettingsProvider')->getSetting('scheme'),
     fn () => theme_get_setting('scheme'),
   );
+  // Get the theme base path for font preloading.
+  $variables['mercury_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('mercury');
 }
 
 /**
