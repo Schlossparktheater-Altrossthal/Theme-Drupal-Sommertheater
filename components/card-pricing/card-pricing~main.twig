@@ -1,6 +1,6 @@
 {# Overriding media_slot just for Storybook #}
 {% embed 'mercury:card-pricing' %}
   {% block richtext %}
-    {{ storybook.text|raw }}
+    {{ storybook.text }}
   {% endblock %}
 {% endembed %}

@@ -32,7 +32,7 @@
               <h3 class="icon-tile--link-title">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--link--text hg:mt-1">{{ description|raw }}</span>
+              <span class="icon-tile--link--text hg:mt-1">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}
@@ -41,7 +41,7 @@
               <h3 class="icon-tile--title">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--text hg:mt-1">{{ description|raw }}</span>
+              <span class="icon-tile--text hg:mt-1">{{ description }}</span>
             {% endif %}
           </span>
         {% endif %}
