@@ -2,375 +2,130 @@
 
 @layer components {
 
-  .hg-flex-fieldset-2col .fieldset-wrapper {
-    @apply hg:flex hg:flex-col hg:md:flex-row hg:gap-4;
-
-    .form-item {
-      @apply hg:w-full hg:md:w-1/2;
-    }
-  }
-
-  /* Main webform container - minimal styling like Drupal default */
   .webform-submission-form {
-    @apply hg:container hg:max-w-4xl hg:mx-auto hg:px-4 hg:lg:p-0;
+    @apply hg:container hg:max-w-4xl hg:mx-auto hg:p-0;
 
     .visually-hidden {
       @apply hg:sr-only;
     }
   }
 
-  /* Form items and wrappers - Drupal default spacing */
-  .webform-submission-form {
+  .webform-submission-form,
+  .fieldset-wrapper,
+  *[id^='edit-page-'] {
     @apply hg:flex hg:flex-col hg:gap-8;
-
-    .form-item,
-    .form-wrapper {
-      @apply hg:m-0 hg:p-0;
-    }
   }
 
-  /* Labels - Drupal default styling */
-  .webform-submission-form label,
-  .webform-submission-form .fieldset-legend {
+  fieldset:not(.webform-type-fieldset) .fieldset-wrapper {
+    @apply hg:gap-1;
+  }
+
+  label,
+  .fieldset-legend {
     @apply hg:block hg:font-semibold hg:mb-1 hg:text-sm hg:md:text-base hg:text-[var(--hgc-webform-label)];
   }
 
-  .webform-submission-form .form-item:focus-within,
-  .webform-submission-form .fieldgroup:focus-within {
+  .form-item:focus-within,
+  .fieldgroup:focus-within {
     >label,
     .fieldset-legend {
       @apply hg:text-[var(--hgc-webform-label-focus)];
     }
   }
 
-  /* Required field indicator - Drupal default */
-  .webform-submission-form .form-required::after {
-    @apply hg:text-red-600 hg:ml-1;
+  .webform-element-description {
+    @apply hg:text-xs hg:mt-2;
+  }
+
+  .form-required::after {
+    @apply hg:text-red-500 hg:ml-1;
     content: "*";
   }
 
-  /* Basic input fields - Drupal default appearance */
-  .webform-submission-form input[type="text"],
-  .webform-submission-form input[type="email"],
-  .webform-submission-form input[type="tel"],
-  .webform-submission-form input[type="url"],
-  .webform-submission-form input[type="number"],
-  .webform-submission-form input[type="password"],
-  .webform-submission-form input[type="search"],
-  .webform-submission-form input[type="date"],
-  .webform-submission-form input[type="time"],
-  .webform-submission-form input[type="datetime-local"],
-  .webform-submission-form textarea,
-  .webform-submission-form select {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
     @apply hg:w-full hg:px-0 hg:py-2 hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:text-[var(--hgc-webform-text)] hg:text-base hg:bg-transparent hg:outline-none;
   }
 
-  /* Focus states - Drupal default */
-  .webform-submission-form input[type="text"]:focus,
-  .webform-submission-form input[type="email"]:focus,
-  .webform-submission-form input[type="tel"]:focus,
-  .webform-submission-form input[type="url"]:focus,
-  .webform-submission-form input[type="number"]:focus,
-  .webform-submission-form input[type="password"]:focus,
-  .webform-submission-form input[type="search"]:focus,
-  .webform-submission-form input[type="date"]:focus,
-  .webform-submission-form input[type="time"]:focus,
-  .webform-submission-form input[type="datetime-local"]:focus,
-  .webform-submission-form textarea:focus,
-  .webform-submission-form select:focus {
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus,
+  textarea:focus,
+  select:focus {
     @apply hg:shadow-sm hg:border-[var(--hgc-webform-focus-border)];
   }
 
-  .webform-submission-form select:focus {
+  select:focus {
     @apply hg:text-[var(--hgc-webform-text)];
   }
 
-  .webform-submission-form input::placeholder,
-  .webform-submission-form textarea::placeholder,
-  .webform-submission-form select {
+  input::placeholder,
+  textarea::placeholder,
+  select {
     @apply hg:text-[var(--hgc-webform-placeholder)];
   }
 
-
-  /* Textarea specific styling */
-  .webform-submission-form textarea {
+  textarea {
     @apply hg:min-h-[80px];
     resize: vertical;
   }
 
-  /* Submit button - Drupal default */
-  .webform-submission-form .form-submit,
-  .webform-submission-form .webform-button--submit {
+  .form-submit,
+  input.button {
     @apply hg:border hg:cursor-pointer hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg hg:bg-[var(--hgc-webform-button-fill)] hg:border-[var(--hgc-webform-button-border)] hg:text-[var(--hgc-webform-button-text)];
     border-radius: var(--hgc-webform-button-radius) !important;
   }
 
-  .webform-submission-form .form-submit:hover,
-  .webform-submission-form .webform-button--submit:hover {
+  .form-submit:hover,
+  input.button:hover {
     @apply hg:bg-[var(--hgc-webform-button-fill-hover)] hg:border-[var(--hgc-webform-button-border-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
   }
 
-  /* Secondary buttons - Drupal default */
-  .webform-submission-form .webform-button--draft,
-  .webform-submission-form .webform-button--previous {
-    @apply hg:bg-gray-300 hg:text-black hg:px-4 hg:py-2 hg:border hg:border-gray-400 hg:cursor-pointer hg:text-base;
+  .form-item--error input,
+  .form-item--error textarea,
+  .form-item--error select {
+    @apply hg:border-red-500;
   }
 
-  .webform-submission-form .webform-button--draft:hover,
-  .webform-submission-form .webform-button--previous:hover {
-    @apply hg:bg-gray-400 hg:border-gray-500;
+  .form-item--error input:focus,
+  .form-item--error textarea:focus,
+  .form-item--error select:focus {
+    @apply hg:border-red-500 hg:shadow-sm;
   }
 
-  /* Error states - Drupal default */
-  .webform-submission-form .form-item--error input,
-  .webform-submission-form .form-item--error textarea,
-  .webform-submission-form .form-item--error select {
-    @apply hg:border-red-600;
+  .form-item--error-message {
+    @apply hg:text-red-500 hg:text-sm hg:mt-1 hg:mb-3 hg:basis-full;
   }
 
-  .webform-submission-form .form-item--error input:focus,
-  .webform-submission-form .form-item--error textarea:focus,
-  .webform-submission-form .form-item--error select:focus {
-    @apply hg:border-red-600 hg:shadow-sm;
-  }
-
-  /* Error messages - Drupal default */
-  .webform-submission-form .form-item--error-message {
-    @apply hg:text-red-600 hg:text-sm hg:mt-1;
-  }
-
-  /* Field descriptions - Drupal default */
-  .webform-submission-form .description,
-  .webform-submission-form .webform-element-description {
-    @apply hg:text-xs hg:text-gray-600 hg:mt-1;
-  }
-
-  /* Help text - Drupal default */
-  .webform-submission-form .webform-element-help {
-    @apply hg:text-gray-dark hg:bg-gray hg:mt-1 hg:inline-block hg:box-content hg:w-[14px] hg:h-[14px] hg:mx-[0.3em] hg:text-center hg:align-baseline hg:border-2 hg:border-gray hg:rounded-full hg:text-xs hg:font-bold hg:leading-[14px];
-  }
-
-  /* Radio buttons and checkboxes - Drupal default */
-  .webform-submission-form .form-radios,
-  .webform-submission-form .form-checkboxes {
+  .webform-options-display-one-column {
     @apply hg:flex hg:flex-col hg:gap-2;
   }
 
-  .webform-submission-form input[type="radio"]:checked+label,
-  .webform-submission-form input[type="checkbox"]:checked+label {
-    @apply hg:text-[var(--hgc-webform-text)];
-  }
-
-  .webform-submission-form .form-type-radio,
-  .webform-submission-form .form-type-checkbox {
-    @apply hg:flex hg:items-start hg:gap-2;
+  .webform-type-checkbox.form-item,
+  .webform-type-radio.form-item {
+    @apply hg:flex hg:gap-2 hg:flex-wrap;
 
     label {
-      @apply hg:mt-[-0.25em] hg:mb-0 hg:opacity-80 hg:text-[var(--hgc-webform-label)];
-    }
-
-    &:has(.description) {
-      @apply hg:flex-wrap hg:gap-y-0;
-    }
-
-    .description {
-      @apply hg:w-full;
+      @apply hg:m-0 hg:font-normal;
     }
   }
 
-  .webform-submission-form input[type="radio"] {
-    @apply hg:appearance-none hg:bg-[var(--hgc-webform-radio-checkbox-bg)] hg:border-[var(--hgc-webform-radio-checkbox-border)] hg:w-4 hg:h-4 hg:border-2 hg:rounded-full hg:bg-transparent hg:relative hg:cursor-pointer;
-  }
-
-  .webform-submission-form input[type="radio"]:checked {
-    @apply hg:bg-[var(--hgc-webform-radio-checkbox-bg-checked)] hg:border-[var(--hgc-webform-radio-checkbox-border-checked)];
-  }
-
-  .webform-submission-form input[type="radio"]:checked::after {
-    @apply hg:absolute hg:w-2 hg:h-2 hg:rounded-full hg:bg-[var(--hgc-webform-radio-checkbox-bg-center)];
-    content: "";
-    inset: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .webform-submission-form .radios--wrapper,
-  .webform-submission-form .checkboxes--wrapper {
-    @apply hg:flex hg:flex-col hg:gap-2;
-
-    .fieldset-legend {
-      @apply hg:mb-2;
-    }
-  }
-
-  .webform-submission-form input[type="checkbox"] {
-    @apply hg:appearance-none hg:w-4 hg:h-4 hg:border-2 hg:rounded hg:bg-transparent hg:relative hg:cursor-pointer hg:bg-[var(--hgc-webform-radio-checkbox-bg)] hg:border-[var(--hgc-webform-radio-checkbox-border)];
-  }
-
-  .webform-submission-form input[type="checkbox"]:checked {
-    @apply hg:bg-[var(--hgc-webform-radio-checkbox-bg-checked)] hg:border-[var(--hgc-webform-radio-checkbox-border-checked)];
-  }
-
-  .webform-submission-form input[type="checkbox"]:checked::after {
-    @apply hg:absolute hg:w-2 hg:h-2 hg:bg-[var(--hgc-webform-radio-checkbox-bg-center)];
-    content: "";
-    inset: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Fieldsets - Drupal default */
-  .webform-submission-form {
-
-    fieldset {
-      @apply hg:border-0 hg:p-0 hg:m-0;
-    }
-  }
-
-  /* Multiple value elements - Drupal default */
-  .webform-submission-form .webform-element-multiple {
-    @apply hg:space-y-2;
-  }
-
-  .webform-submission-form .webform-multiple-add {
-    @apply hg:bg-green-600 hg:text-white hg:px-3 hg:py-1 hg:border hg:border-green-600 hg:text-sm hg:cursor-pointer;
-  }
-
-  .webform-submission-form .webform-multiple-add:hover {
-    @apply hg:bg-green-700 hg:border-green-700;
-  }
-
-  .webform-submission-form .webform-multiple-remove {
-    @apply hg:bg-red-600 hg:text-white hg:px-2 hg:py-1 hg:border hg:border-red-600 hg:text-sm hg:cursor-pointer;
-  }
-
-  .webform-submission-form .webform-multiple-remove:hover {
-    @apply hg:bg-red-700 hg:border-red-700;
-  }
-
-  /* Progress bar - Drupal default */
-  .webform-submission-form .webform-progress-bar {
-    @apply hg:w-full hg:bg-gray-300 hg:h-4 hg:mb-4;
-  }
-
-  .webform-submission-form .webform-progress-bar__progress {
-    @apply hg:bg-blue-600 hg:h-4;
-  }
-
-  /* File upload - Drupal default */
-  .webform-submission-form .form-file {
-    @apply hg:block hg:w-full hg:text-sm hg:text-black;
-  }
-
-  /* Address composite elements - Drupal default */
-  .webform-submission-form .webform-element-address {
-    @apply hg:grid hg:grid-cols-1 hg:gap-4;
-  }
-
-  @media (min-width: 768px) {
-    .webform-submission-form .webform-element-address {
-      @apply hg:grid-cols-2;
-    }
-  }
-
-  /* Telephone composite elements - Drupal default */
-  .webform-submission-form .webform-element-telephone {
-    @apply hg:flex hg:gap-2;
-  }
-
-  .webform-submission-form .webform-element-telephone select {
-    @apply hg:w-24;
-  }
-
-  /* Date/time elements - Drupal default */
-  .webform-submission-form .webform-element-date {
-    @apply hg:flex hg:gap-2;
-    align-items: end;
-  }
-
-  .webform-submission-form .webform-element-date select {
-    @apply hg:w-auto;
-  }
-
-  /* Rating elements - Drupal default */
-  .webform-submission-form .webform-element-rating {
-    @apply hg:flex hg:gap-1;
-  }
-
-  .webform-submission-form .webform-element-rating input[type="radio"] {
-    @apply hg:hidden;
-  }
-
-  .webform-submission-form .webform-element-rating label {
-    @apply hg:cursor-pointer hg:text-2xl hg:text-gray-400;
-  }
-
-  .webform-submission-form .webform-element-rating label:hover {
-    @apply hg:text-yellow-500;
-  }
-
-  .webform-submission-form .webform-element-rating input[type="radio"]:checked + label {
-    @apply hg:text-yellow-500;
-  }
-
-  /* Range slider - Drupal default */
-  .webform-submission-form .webform-element-range {
-    @apply hg:w-full;
-  }
-
-  .webform-submission-form .webform-element-range input[type="range"] {
-    @apply hg:w-full hg:h-2 hg:bg-gray-300;
-  }
-
-  /* Toggle switch - Drupal default */
-  .webform-submission-form .webform-element-toggle {
-    @apply hg:flex hg:items-center hg:gap-3;
-  }
-
-  .webform-submission-form .webform-element-toggle input[type="checkbox"] {
-    @apply hg:appearance-none hg:w-10 hg:h-6 hg:bg-gray-300 hg:rounded-full hg:relative hg:cursor-pointer;
-  }
-
-  .webform-submission-form .webform-element-toggle input[type="checkbox"]:checked {
-    @apply hg:bg-blue-600;
-  }
-
-  .webform-submission-form .webform-element-toggle input[type="checkbox"]::before {
-    @apply hg:absolute hg:top-0.5 hg:left-0.5 hg:w-5 hg:h-5 hg:bg-white hg:rounded-full;
-    content: "";
-  }
-
-  .webform-submission-form .webform-element-toggle input[type="checkbox"]:checked::before {
-    @apply hg:translate-x-4;
-  }
-
-  /* Terms and conditions - Drupal default */
-  .webform-submission-form .webform-element-terms {
-    @apply hg:border hg:border-gray-400 hg:p-4 hg:max-h-32 hg:overflow-y-auto;
-  }
-
-  /* reCAPTCHA - Drupal default */
-  .webform-submission-form .webform-element-recaptcha {
-    @apply hg:flex hg:justify-center hg:my-4;
-  }
-
-  /* Honeypot (hidden) - Drupal default */
-  .webform-submission-form .webform-element-honeypot {
-    @apply hg:hidden hg:absolute;
-    left: -9999px;
-  }
-
-  /* Responsive adjustments - Drupal default approach */
-  @media (max-width: 768px) {
-    .webform-submission-form .webform-element-address {
-      @apply hg:grid-cols-1;
-    }
-
-    .webform-submission-form .webform-element-telephone {
-      @apply hg:flex-col;
-      align-items: stretch;
-    }
-
-    .webform-submission-form .webform-element-telephone select {
-      @apply hg:w-full;
-    }
+  .progress-text {
+    @apply hg:text-inherit!;
   }
 }
