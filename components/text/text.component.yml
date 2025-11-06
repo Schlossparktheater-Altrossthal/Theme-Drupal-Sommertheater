@@ -11,11 +11,10 @@ props:
       contentMediaType: text/html
       x-formatting-context: block
       examples:
-        - <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique pretium pellentesque semper enim aliquam. Vestibulum elit facilisi ridiculus netus blandit diam turpis tempor eleifend vehicula ligula. Elit neque nam morbi viverra congue maximus.</p>
+        - <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique pretium pellentesque semper enim aliquam.</p>
     font_size_multiplier:
       type: string
-      title: Font Size Multiplier
-      description: Scale all font sizes by a percentage
+      title: Text size
       enum:
         - text-scale-75
         - text-scale-87
@@ -25,20 +24,19 @@ props:
         - text-scale-137
         - text-scale-150
       meta:enum:
-        text-scale-75: 75% (12px)
-        text-scale-87: 87.5% (14px)
-        normal: Normal
-        text-scale-112: 112.5% (18px)
-        text-scale-125: 125% (20px)
-        text-scale-137: 137.5% (22px)
-        text-scale-150: 150% (24px)
+        text-scale-75: 12px
+        text-scale-87: 14px
+        normal: 16px (default)
+        text-scale-112: 18px
+        text-scale-125: 20px
+        text-scale-137: 22px
+        text-scale-150: 24px
       default: normal
       examples:
         - normal
     font_color:
       type: string
-      title: Font Color
-      description: Select Font Color
+      title: Text color
       enum:
         - text-inherit
         - hg:text-body-text-dark

@@ -1,9 +1,13 @@
+{# For an explanation of the [&>*:] syntax @see https://medium.com/@replynamanjain/tailwind-css-targeting-child-elements-b60c0ca11652 #}
 {% set classes = [
-    'rich-text',
+  'rich-text',
+  'hg:text-base', 'hg:lg:text-lg', 'hg:2xl:text-xl',
+  'hg:[&_ul]:my-4', 'hg:[&_ol]:my-4', 'hg:[&_li]:hg:mb-1',
+  'hg:[&_ol]:list-decimal',
+  'hg:[&>*:first-child]:mt-0', 'hg:[&>*:last-child]:mb-0'
   ]
 %}
 
-{# For an explanation of the [&>*:] syntax @see https://medium.com/@replynamanjain/tailwind-css-targeting-child-elements-b60c0ca11652 #}
-<div class="hg:text-base hg:lg:text-lg hg:2xl:text-xl hg:[&_ul]:my-4 hg:[&_ol]:my-4 hg:[&_ol]:list-decimal hg:[&_li]:hg:mb-1 hg:[&>*:first-child]:mt-0 hg:[&>*:last-child]:mb-0 {{ classes|join(' ') }}{{ font_color ? ' ' ~ font_color }}{{ font_size_multiplier == 'default' ? '' : ' ' ~ font_size_multiplier }}">
+<div class="{{ classes|join(' ') }}{{ font_color ? ' ' ~ font_color }}{{ font_size_multiplier == 'default' ? '' : ' ' ~ font_size_multiplier }}">
     {{ text }}
 </div>
