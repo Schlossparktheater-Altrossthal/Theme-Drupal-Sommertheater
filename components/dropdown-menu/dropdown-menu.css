@@ -1,9 +1,6 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer components;
-:has(.storybook-component--dropdown-menu), .storybook-component--dropdown-menu {
-  height: 100%;
-}
 .dropdown-menu {
   --hgc-nav-bg: var(--hg-color-white);
   --hgc-nav-item-text-desktop: var(--hg-color-brand);

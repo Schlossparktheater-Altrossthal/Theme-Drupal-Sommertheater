@@ -10,10 +10,14 @@
     color: inherit;
   }
   h1.heading {
+    --tw-leading: 1;
+    line-height: 1;
     --tw-font-weight: var(--hgc-font-weight-h1);
     font-weight: var(--hgc-font-weight-h1);
   }
   h2.heading {
+    --tw-leading: 1;
+    line-height: 1;
     --tw-font-weight: var(--hgc-font-weight-h2);
     font-weight: var(--hgc-font-weight-h2);
   }

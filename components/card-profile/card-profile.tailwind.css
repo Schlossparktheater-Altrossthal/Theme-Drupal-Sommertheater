@@ -1,12 +1,6 @@
 @reference '../../src/main.css';
 
-/* Storybook specific */
-.storybook-component--card-profile {
-  @apply hg:max-w-xs;
-}
-
 @layer components {
-
   .card-profile {
     @apply hg:aspect-[2/3];
   }

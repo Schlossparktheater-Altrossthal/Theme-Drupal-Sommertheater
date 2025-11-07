@@ -1,9 +1,5 @@
 @reference '../../src/main.css';
 
-.storybook-component--dialog {
-  @apply hg:p-3;
-}
-
 @layer components {
   /* Global dialog container - applies to all Drupal dialogs */
   .ui-dialog {

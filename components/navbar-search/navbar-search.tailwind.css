@@ -1,9 +1,5 @@
 @reference '../../src/main.css';
 
-.storybook-component--navbar-search {
-  @apply hg:max-w-3xl;
-}
-
 @layer components {
   .navbar-search .input-search {
     @apply hg:border hg:border-gray hg:bg-white hg:py-2.5 hg:pl-4 hg:pr-12 hg:text-gray hg:placeholder-gray hg:font-medium hg:text-xl hg:focus:border-gray-dark hg:transition;

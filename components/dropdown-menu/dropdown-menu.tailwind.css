@@ -2,12 +2,6 @@
 
 @layer components;
 
-/* Storybook styles. */
-:has(.storybook-component--dropdown-menu),
-.storybook-component--dropdown-menu {
-  height: 100%;
-}
-
 /* Colors, typography, sizes. */
 
 .dropdown-menu {

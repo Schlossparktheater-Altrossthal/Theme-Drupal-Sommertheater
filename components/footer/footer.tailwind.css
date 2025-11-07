@@ -1,13 +1,7 @@
 @reference '../../src/main.css';
 
-.storybook-component--footer {
-  @apply hg:p-6;
-}
-
 @layer components {
-
   .site-footer {
-
     .menu {
       @apply hg:list-none hg:gap-x-4 hg:gap-y-1 hg:flex hg:flex-row hg:flex-wrap hg:p-0;
 
@@ -28,7 +22,6 @@
   }
 
   .site-footer--top {
-
     .branding {
       @apply hg:h-5;
 
@@ -61,7 +54,6 @@
   }
 
   .site-footer--bottom {
-
     .menu .menu-item a,
     .rich-text p {
       @apply hg:text-xs hg:my-0;

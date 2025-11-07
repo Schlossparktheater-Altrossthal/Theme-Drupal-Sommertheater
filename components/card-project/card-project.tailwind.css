@@ -1,11 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--card-project {
-  @apply hg:max-w-md hg:md:max-w-5xl;
-}
-
 @layer components {
-
   .card-project {
     background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);

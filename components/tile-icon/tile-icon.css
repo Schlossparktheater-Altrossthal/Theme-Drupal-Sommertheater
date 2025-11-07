@@ -1,9 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--tile-icon {
-  max-width: 300px;
-  padding: 1rem;
-}
 @layer components {
   .icon-tile {
     background-color: var(--hg-page-bg);

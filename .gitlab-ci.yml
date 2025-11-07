@@ -55,6 +55,16 @@ storybook:
     paths:
       - $STORYBOOK_OUTPUT_DIR
 
+lint:
+  stage: validate
+  script:
+    # Confirm that there are no mentions of Storybook in the components' CSS. If there are,
+    # helpfully print the offending line numbers. The leading ! inverts the exit code from
+    # grep, so that it returns 0 if it DOES NOT find a match.
+    - '! grep --ignore-case --recursive --line-number storybook components/*/*.css'
+  rules:
+    - when: always
+
 # Ensure that Mercury is physically installed in the Drupal code base, rather
 # than symlinked, so that the theme generator can use Mercury as a starter kit.
 composer:

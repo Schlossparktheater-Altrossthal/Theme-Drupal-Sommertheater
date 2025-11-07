@@ -1,8 +1,5 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--badge {
-  padding: calc(var(--hg-spacing, 4px) * 2);
-}
 .badge {
   background-color: var(--hgc-btn-bg);
   border-color: var(--hgc-btn-border);

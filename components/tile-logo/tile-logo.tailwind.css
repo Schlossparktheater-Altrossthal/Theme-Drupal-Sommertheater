@@ -1,16 +1,6 @@
 @reference '../../src/main.css';
 
-.sb-main-padded:has(.storybook-component--tile-logo) {
-  padding: 0;
-}
-
-.storybook-component--tile-logo {
-  max-width: 300px;
-  padding: 1rem;
-}
-
 @layer components {
-
   .logo-tile {
     @apply hg:bg-(--hgc-tile-logo-bg);
   }

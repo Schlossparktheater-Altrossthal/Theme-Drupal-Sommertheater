@@ -1,11 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--card-pricing {
-  @apply hg:max-w-[300px] hg:p-4;
-}
-
 @layer components {
-
   .card-pricing {
     background-color: var(--hgc-card-price-bg);
     border-color: var(--hgc-card-price-border);
@@ -54,7 +49,7 @@
 
     .card-pricing--features {
       @apply hg:pt-4 hg:md:pt-6 hg:2xl:pt-7 hg:text-inherit hg:bg-(--hgc-card-price-bg) hg:border-(--hgc-card-price-divider);
-      
+
       ul {
         @apply hg:my-0;
       }

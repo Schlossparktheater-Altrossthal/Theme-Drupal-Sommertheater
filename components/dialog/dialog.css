@@ -1,8 +1,5 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--dialog {
-  padding: calc(var(--hg-spacing, 4px) * 3);
-}
 @layer components {
   .ui-dialog {
     position: absolute;

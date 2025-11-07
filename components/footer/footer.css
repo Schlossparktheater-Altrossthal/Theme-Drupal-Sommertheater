@@ -1,8 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--footer {
-  padding: calc(var(--hg-spacing, 4px) * 6);
-}
 @layer components {
   .site-footer {
     .menu {
@@ -45,14 +42,6 @@
       justify-items: end;
       @media (width >= 48rem) {
         display: flex;
-      }
-    }
-    .webform-category--footer.webform-submission-form {
-      @media (width >= 48rem) {
-        margin-inline: calc(var(--hg-spacing, 4px) * 0);
-      }
-      @media (width >= 48rem) {
-        margin-inline-start: auto;
       }
     }
     .menu {

@@ -6,7 +6,7 @@ import '../src/main.css';
 import '../src/schemes.css';
 import '../src/fonts.css';
 import '../src/phosphor-icons.css';
-import '../src/ui.css';
+import './storybook.css';
 import '../src/stories/sdc-stories/components.css';
 
 // Make the `once` function globally available in Storybook.

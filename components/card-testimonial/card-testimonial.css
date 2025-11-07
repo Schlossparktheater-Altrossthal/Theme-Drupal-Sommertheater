@@ -1,7 +1,4 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-.storybook-component--card-testimonial {
-  max-width: var(--hg-container-md, 28rem);
-}
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components {
   .card-testimonial {
     border-radius: var(--hg-radius-md, 0.375rem);

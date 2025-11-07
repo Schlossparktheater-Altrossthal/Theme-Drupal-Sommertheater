@@ -1,12 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--card {
-  max-width: var(--hg-container-md, 28rem);
-  padding: calc(var(--hg-spacing, 4px) * 4);
-}
-.storybook-component--card:has(.card.is-landscape) {
-  max-width: var(--hg-container-2xl, 42rem);
-}
 @layer components {
   .card {
     background-color: var(--hgc-card-bg);

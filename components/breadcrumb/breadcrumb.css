@@ -1,7 +1,4 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
-.storybook-component--breadcrumb {
-  padding: calc(var(--hg-spacing, 4px) * 3);
-}
 @layer components {
   .breadcrumb-home i {
     color: var(--hgc-color-breadcrumb-home);

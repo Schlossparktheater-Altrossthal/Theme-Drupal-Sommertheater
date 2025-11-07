@@ -1,12 +1,6 @@
 @reference '../../src/main.css';
 
-/* Storybook specific */
-.storybook-component--card-testimonial {
-  @apply hg:max-w-md;
-}
-
 @layer components {
-
   .card-testimonial {
     @apply hg:rounded-md;
     background-color: var(--hgc-card-testimonial-bg);

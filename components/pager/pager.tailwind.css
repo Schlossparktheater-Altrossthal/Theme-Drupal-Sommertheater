@@ -1,9 +1,5 @@
 @reference '../../src/main.css';
 
-.storybook-component--pager {
-  @apply hg:p-4;
-}
-
 @layer components {
   .pager {
     @apply hg:font-medium;

@@ -1,8 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--button {
-  padding: 1rem;
-}
 button.button {
   cursor: pointer;
 }

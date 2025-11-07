@@ -1,8 +1,5 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--card-profile {
-  max-width: var(--hg-container-xs, 20rem);
-}
 @layer components {
   .card-profile {
     aspect-ratio: 2/3;

@@ -1,11 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--hero-full-width {
-  @apply hg:container hg:px-4 hg:mx-auto;
-}
-
 @layer components {
-
   .hero-fullwidth {
     @apply hg:flex hg:gap-6 hg:py-8 hg:md:gap-8 hg:md:py-12 hg:xl:py-20;
     color: var(--hg-color-body-text);

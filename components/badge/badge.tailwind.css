@@ -1,9 +1,5 @@
 @reference '../../src/main.css';
 
-.storybook-component--badge {
-  @apply hg:p-2;
-}
-
 .badge {
   background-color: var(--hgc-btn-bg);
   border-color: var(--hgc-btn-border);

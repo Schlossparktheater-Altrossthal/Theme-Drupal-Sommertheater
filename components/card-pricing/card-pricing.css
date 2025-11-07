@@ -1,9 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-.storybook-component--card-pricing {
-  max-width: 300px;
-  padding: calc(var(--hg-spacing, 4px) * 4);
-}
 @layer components {
   .card-pricing {
     background-color: var(--hgc-card-price-bg);

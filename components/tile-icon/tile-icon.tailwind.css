@@ -1,12 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--tile-icon {
-  max-width: 300px;
-  padding: 1rem;
-}
-
 @layer components {
-
   .icon-tile {
     background-color: var(--hg-page-bg);
     border-color: var(--hgc-tile-border);

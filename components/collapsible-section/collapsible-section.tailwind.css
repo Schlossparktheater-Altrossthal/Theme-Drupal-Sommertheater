@@ -1,10 +1,5 @@
 @reference '../../src/main.css';
 
-/* Storybook specific */
-#storybook-root:has(> .collapsible-section) {
-  @apply hg:max-w-lg;
-}
-
 /* Base styles before JS gets involved. */
 .collapsible-section {
   @apply hg:border-b-1 hg:border-(--hgc-collapsible-border-color) hg:bg-clip-padding;

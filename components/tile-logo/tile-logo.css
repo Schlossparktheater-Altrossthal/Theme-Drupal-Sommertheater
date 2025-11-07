@@ -1,11 +1,4 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
-.sb-main-padded:has(.storybook-component--tile-logo) {
-  padding: 0;
-}
-.storybook-component--tile-logo {
-  max-width: 300px;
-  padding: 1rem;
-}
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components {
   .logo-tile {
     background-color: var(--hgc-tile-logo-bg);

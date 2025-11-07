@@ -1,11 +1,6 @@
 @reference '../../src/main.css';
 
-.storybook-component--hero-blog {
-  @apply hg:container hg:mx-auto;
-}
-
 @layer components {
-
   .hero-blog {
     color: var(--hg-color-body-text);
 

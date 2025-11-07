@@ -1,15 +1,6 @@
 @reference '../../src/main.css';
 
-/* Storybook specific */
-.storybook-component--card {
-  @apply hg:p-4 hg:max-w-md;
-}
-.storybook-component--card:has(.card.is-landscape) {
-  @apply hg:max-w-2xl;
-}
-
 @layer components {
-
   .card {
     @apply hg:bg-(--hgc-card-bg);
 
