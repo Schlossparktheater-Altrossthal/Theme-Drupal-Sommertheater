@@ -1,8 +1,4 @@
-{% set classes = [
-    'card-profile',
-    'hg:relative',
-  ]
-%}
+{% set classes = ['card-profile', 'hg:relative'] %}
 
 <div class="{{ classes|join(' ') }}">
   <div class="card--media hg:relative hg:z-1 hg:overflow-hidden">
@@ -10,19 +6,22 @@
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
       {% endif %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:object-cover hg:w-full hg:h-full"/>
+      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
     {% endblock %}
   </div>
-  <div class="card--content hg:absolute hg:z-2 hg:inset-0">
+  <div class="card--content hg:absolute hg:inset-0 hg:z-2">
     {% if url is not empty %}
-      <a href="{{ url }}" class="hg:before:absolute hg:before:content-[''] hg:before:inset-0">
-    {% endif %}
-      <p class="hg:absolute hg:top-1/2 hg:inset-0">
-        <strong class="person-name">{{ name }}</strong><br>
+      <a href="{{ url }}" class="hg:before:absolute hg:before:inset-0 hg:before:content-['']">
+        <p class="hg:absolute hg:inset-0 hg:top-1/2">
+          <strong class="person-name">{{ name }}</strong><br />
+          <span class="person-title">{{ job_title }}</span>
+        </p>
+      </a>
+    {% else %}
+      <p class="hg:absolute hg:inset-0 hg:top-1/2">
+        <strong class="person-name">{{ name }}</strong><br />
         <span class="person-title">{{ job_title }}</span>
       </p>
-    {% if url %}
-      </a>
     {% endif %}
   </div>
 </div>

@@ -3,21 +3,16 @@
  * This plugin generates physical story files in a separate directory (not in component directories).
  */
 
-import path from 'path';
-import generateStoryForComponent from './twingCustoms/generateStoryForComponent.js';
-import generateAllStoryFiles from './twingCustoms/generateAllStoryFiles.js';
-import fs from 'fs';
+import path from "path";
+import generateStoryForComponent from "./twingCustoms/generateStoryForComponent.js";
+import generateAllStoryFiles from "./twingCustoms/generateAllStoryFiles.js";
+import fs from "fs";
 
 /**
  * Vite plugin for generating Storybook stories in a separate directory.
  */
 export default function storybookGenerator(options = {}) {
-  const {
-    componentsDir = 'components',
-    includeJs = true,
-    storiesDir = './src/stories/sdc-stories',
-    namespaces = {},
-  } = options;
+  const { componentsDir = "components", includeJs = true, storiesDir = "./src/stories/sdc-stories", namespaces = {} } = options;
 
   // Create options object that will be passed to extracted functions
   const functionOptions = {
@@ -28,7 +23,7 @@ export default function storybookGenerator(options = {}) {
   };
 
   const plugin = {
-    name: 'vite-plugin-storybook-generator',
+    name: "vite-plugin-storybook-generator",
 
     generateAllStoryFiles() {
       return generateAllStoryFiles(functionOptions);
@@ -41,11 +36,8 @@ export default function storybookGenerator(options = {}) {
     configureServer({ watcher }) {
       plugin.generateAllStoryFiles();
       watcher.add(`${componentsDir}/**/*`);
-      watcher.on('change', (changedPath) => {
-        if (
-          changedPath.includes(componentsDir) &&
-          !changedPath.endsWith('.tailwind.css')
-        ) {
+      watcher.on("change", (changedPath) => {
+        if (changedPath.includes(componentsDir) && !changedPath.endsWith(".tailwind.css")) {
           const componentDir = path.dirname(changedPath);
           if (fs.existsSync(componentDir)) {
             generateStoryForComponent(functionOptions, componentDir);

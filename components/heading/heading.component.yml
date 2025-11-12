@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Heading
 group: Base
 status: stable
@@ -10,16 +10,16 @@ props:
       type: string
       title: Heading Text
       description: The heading text.
-      default: 'Enter title'
-      examples: 
+      default: "Enter title"
+      examples:
         - One Giant Leap for Open Source
     level:
       type: number
       title: Heading Level
       description: The heading level (h1-h6).
-      enum: [1,2,3,4,5,6]
+      enum: [1, 2, 3, 4, 5, 6]
       default: 2
-      examples: 
+      examples:
         - 2
     font_size:
       type: string
@@ -46,7 +46,7 @@ props:
         heading-responsive-2xl: 2xl 24px
         heading-responsive-xl: xl 20px
       default: default
-      examples: 
+      examples:
         - default
     font_color:
       type: string
@@ -54,7 +54,7 @@ props:
       description: Select Font Color
       enum:
         - text-inherit
-        - hg:text-body-text-dark 
+        - hg:text-body-text-dark
         - hg:text-white
         - hg:text-brand
       meta:enum:
@@ -63,7 +63,7 @@ props:
         hg:text-white: Light
         hg:text-brand: Brand
       default: text-inherit
-      examples: 
+      examples:
         - text-inherit
     align:
       type: string
@@ -74,7 +74,7 @@ props:
         - center
         - right
       default: left
-      examples: 
+      examples:
         - left
     url:
       type: string

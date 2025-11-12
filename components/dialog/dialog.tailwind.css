@@ -3,7 +3,7 @@
 @layer components {
   /* Global dialog container - applies to all Drupal dialogs */
   .ui-dialog {
-    @apply hg:absolute hg:z-[1260] hg:p-0 hg:border hg:rounded-lg hg:overflow-hidden;
+    @apply hg:absolute hg:z-[1260] hg:overflow-hidden hg:rounded-lg hg:border hg:p-0;
     background-color: var(--hgc-dialog-background);
     border-color: var(--hgc-dialog-border);
     color: var(--hgc-dialog-text);
@@ -18,13 +18,13 @@
 
   /* Dialog titlebar - applies to all dialogs */
   .ui-dialog .ui-dialog-titlebar {
-    @apply hg:border-0 hg:border-b hg:border-solid hg:rounded-none hg:bg-transparent hg:font-bold  hg:p-4;
+    @apply hg:rounded-none hg:border-0 hg:border-b hg:border-solid hg:bg-transparent hg:p-4 hg:font-bold;
     border-color: var(--hgc-dialog-border);
   }
 
   /* Close button - applies to all dialogs */
   .ui-dialog .ui-dialog-titlebar-close {
-    @apply hg:absolute hg:right-2 hg:top-2 hg:border-0 hg:bg-none hg:w-5 hg:h-5 hg:text-transparent;
+    @apply hg:absolute hg:top-2 hg:right-2 hg:h-5 hg:w-5 hg:border-0 hg:bg-none hg:text-transparent;
   }
 
   /* Keep the icon visible */
@@ -34,7 +34,7 @@
 
   /* Button pane - applies to all dialogs */
   .ui-dialog .ui-dialog-buttonpane {
-    @apply hg:mt-0 hg:pt-[0.3em] hg:pr-[1em] hg:pb-[0.3em] hg:pl-[1em] hg:border-t hg:border-solid hg:border-gray hg:bg-[#f3f4ee];
+    @apply hg:mt-0 hg:border-t hg:border-solid hg:border-gray hg:bg-[#f3f4ee] hg:pt-[0.3em] hg:pr-[1em] hg:pb-[0.3em] hg:pl-[1em];
   }
 
   /* Button set - applies to all dialogs */
@@ -59,7 +59,7 @@
 
   /* AJAX progress throbber - applies to all dialogs */
   .ui-dialog .ajax-progress-throbber {
-    @apply hg:fixed hg:z-[1000] hg:top-[48.5%] hg:left-[49%] hg:w-6 hg:h-6 hg:p-1 hg:opacity-90 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat;
+    @apply hg:fixed hg:top-[48.5%] hg:left-[49%] hg:z-[1000] hg:h-6 hg:w-6 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat hg:p-1 hg:opacity-90;
     background-image: url(../../images/icons/loading-small.svg);
   }
 
@@ -71,17 +71,17 @@
 
   /* Dialog title styling - applies to all dialogs */
   .ui-dialog .ui-dialog-title {
-    @apply hg:text-lg hg:font-bold hg:m-0;
+    @apply hg:m-0 hg:text-lg hg:font-bold;
   }
 
   /* Close button icon styling - applies to all dialogs */
   .ui-dialog .ui-button-icon {
-    @apply hg:inline-block hg:w-5 hg:h-5 hg:bg-none hg:p-2 hg:cursor-pointer;
+    @apply hg:inline-block hg:h-5 hg:w-5 hg:cursor-pointer hg:bg-none hg:p-2;
   }
 
   .ui-dialog .ui-button-icon::before {
-    @apply hg:absolute hg:inset-0 hg:block hg:text-sm hg:font-bold hg:w-5 hg:h-5;
-    content: '✕';
+    @apply hg:absolute hg:inset-0 hg:block hg:h-5 hg:w-5 hg:text-sm hg:font-bold;
+    content: "✕";
     color: var(--hgc-dialog-close);
   }
 

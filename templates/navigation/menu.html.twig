@@ -28,9 +28,12 @@
 
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
-  {{ include('@mercury/components/menu-utility/menu-utility.twig',
-    {
-      align: true,
-    }
-  ) }}
+  {{
+    include(
+      '@mercury/components/menu-utility/menu-utility.twig',
+      {
+        align: true
+      }
+    )
+  }}
 {% endmacro %}

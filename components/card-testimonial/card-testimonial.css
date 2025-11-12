@@ -10,7 +10,8 @@
     line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
     color: inherit;
   }
-  .testimonial-cite--text, .testimonial-name {
+  .testimonial-cite--text,
+  .testimonial-name {
     font-size: var(--hg-text-base, 1rem);
     line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     color: inherit;

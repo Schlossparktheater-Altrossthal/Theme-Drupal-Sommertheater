@@ -2,20 +2,24 @@
 {% embed 'mercury:card' %}
   {% block media %}
     {% if media.src is not empty %}
-      <img class="hg:object-cover hg:w-full hg:h-full" src="{{  componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
+      <img class="hg:h-full hg:w-full hg:object-cover" src="{{ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
     {% endif %}
   {% endblock %}
   {% block badges %}
-    <ul class="hg:list-none hg:ps-0 hg:flex hg:items-center hg:gap-2">
+    <ul class="hg:flex hg:list-none hg:items-center hg:gap-2 hg:ps-0">
       {% for badge in storybook.badges %}
-      <li>
-        {{ include('mercury:badge', {
-          url: badge.url,
-          label: badge.label,
-          style: 'secondary',
-          })
-        }}
-      </li>
+        <li>
+          {{
+            include(
+              'mercury:badge',
+              {
+                url: badge.url,
+                label: badge.label,
+                style: 'secondary'
+              }
+            )
+          }}
+        </li>
       {% endfor %}
     </ul>
   {% endblock %}

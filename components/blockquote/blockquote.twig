@@ -1,17 +1,24 @@
-{% set classes = [
-  'blockquote',
-  'hg:flex hg:flex-col hg:gap-4',
-]
-%}
+{% set classes = ['blockquote', 'hg:flex hg:flex-col hg:gap-4'] %}
 
-<blockquote class="{{ classes|join(' ') }} hg:font-semibold hg:text-body-text" {% if cite_url and cite_url != 'No URL' %}cite="{{ cite_url }}{% endif %}">
-  <p class="blockquote-text hg:font-semibold hg:text-xl hg:leading-[1.5] hg:text-inherit">{{ text }}</p>
-  <footer class="blockquote-name hg:text-left hg:font-bold hg:text-xl hg:leading-[1.2] hg:not-italic">{{ cite_name }}<br>
+{% set cite_attr = cite_url and cite_url != 'No URL' ? 'cite="' ~ cite_url ~ '"' : '' %}
+
+<blockquote class="{{ classes|join(' ') }} hg:font-semibold hg:text-body-text" {{ cite_attr }}>
+  <p class="blockquote-text hg:text-xl hg:leading-[1.5] hg:font-semibold hg:text-inherit">
+    {{ text }}
+  </p>
+  <footer class="blockquote-name hg:text-left hg:text-xl hg:leading-[1.2] hg:font-bold hg:not-italic">
+    {{ cite_name }}<br />
     <cite class="blockquote-cite">
       {% if cite_url and cite_url != 'No URL' %}
-        <a href="{{ cite_url}}" target="_blank" class="blockquote-cite--text hg:underline hg:hover:underline hg:hover:opacity-80 hg:duration-300 hg:font-normal hg:text-base hg:leading-[1.2] hg:italic">{{ cite_text }}</a>
+        <a
+          href="{{ cite_url }}"
+          target="_blank"
+          class="blockquote-cite--text hg:text-base hg:leading-[1.2] hg:font-normal hg:italic hg:underline hg:duration-300 hg:hover:underline hg:hover:opacity-80"
+        >
+          {{ cite_text }}
+        </a>
       {% else %}
-        <span class="blockquote-cite--text hg:font-normal hg:text-base hg:leading-[1.2] hg:italic">{{ cite_text }}</span>
+        <span class="blockquote-cite--text hg:text-base hg:leading-[1.2] hg:font-normal hg:italic">{{ cite_text }}</span>
       {% endif %}
     </cite>
   </footer>

@@ -2,7 +2,7 @@
 
 @layer components {
   .navbar-search .input-search {
-    @apply hg:border hg:border-gray hg:bg-white hg:py-2.5 hg:pl-4 hg:pr-12 hg:text-gray hg:placeholder-gray hg:font-medium hg:text-xl hg:focus:border-gray-dark hg:transition;
+    @apply hg:border hg:border-gray hg:bg-white hg:py-2.5 hg:pr-12 hg:pl-4 hg:text-xl hg:font-medium hg:text-gray hg:placeholder-gray hg:transition hg:focus:border-gray-dark;
   }
 
   .navbar-search .button-search {
@@ -10,6 +10,6 @@
   }
 
   .navbar-search .search-icon {
-    @apply hg:text-gray hg:text-xl hg:leading-none;
+    @apply hg:text-xl hg:leading-none hg:text-gray;
   }
 }

@@ -1,10 +1,10 @@
 hide_main: true
 badges:
-  - url: 'https://www.example.com'
-    label: 'badge one'
-    icon: ''
+  - url: "https://www.example.com"
+    label: "badge one"
+    icon: ""
     icon_first: true
-  - url: 'https://www.example.com'
-    label: 'badge two'
-    icon: ''
+  - url: "https://www.example.com"
+    label: "badge two"
+    icon: ""
     icon_first: true

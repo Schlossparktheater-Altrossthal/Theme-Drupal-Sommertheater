@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Section
 group: Layout
 status: stable
@@ -10,20 +10,20 @@ props:
       type: string
       title: Content layout
       enum:
-        - '100'
-        - '50-50'
-        - '33-33-33'
-        - '75-25'
-        - '25-75'
-        - '67-33'
-        - '33-67'
-        - '50-25-25'
-        - '25-25-50'
-        - '25-25-25-25'
+        - "100"
+        - "50-50"
+        - "33-33-33"
+        - "75-25"
+        - "25-75"
+        - "67-33"
+        - "33-67"
+        - "50-25-25"
+        - "25-25-50"
+        - "25-25-25-25"
       examples:
-        - '50-50'
+        - "50-50"
       default:
-        - '50-50'
+        - "50-50"
     width:
       type: string
       title: Section width
@@ -40,55 +40,55 @@ props:
         hg:lg:max-w-3/4: 75%
         hg:lg:max-w-1/2: 50%
       examples:
-        - 'hg:lg:max-w-full'
+        - "hg:lg:max-w-full"
     margin_block_start:
       type: string
       title: Margin top
       enum:
-        - '0'
-        - '8'
-        - '20'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
+        - "0"
+        - "8"
+        - "20"
+        - "32"
+        - "48"
+        - "64"
+        - "96"
+        - "128"
       examples:
-        - '48'
+        - "48"
     margin_block_end:
       type: string
       title: Margin bottom
       enum:
-        - '0'
-        - '8'
-        - '20'
-        - '32'
-        - '48'
-        - '64'
-        - '96'
-        - '128'
+        - "0"
+        - "8"
+        - "20"
+        - "32"
+        - "48"
+        - "64"
+        - "96"
+        - "128"
       examples:
-        - '48'
+        - "48"
     padding_block_start:
       type: string
       title: Padding top
       enum:
-        - '0'
-        - '16'
-        - '32'
-        - '64'
+        - "0"
+        - "16"
+        - "32"
+        - "64"
       examples:
-        - '0'
+        - "0"
     padding_block_end:
       type: string
       title: Padding bottom
       enum:
-        - '0'
-        - '16'
-        - '32'
-        - '64'
+        - "0"
+        - "16"
+        - "32"
+        - "64"
       examples:
-        - '0'
+        - "0"
     background_color:
       type: string
       title: Background color
@@ -111,9 +111,9 @@ props:
         hg:bg-accent-light: Accent Light
         hg:bg-accent-dark: Accent Dark
       default:
-        - 'hg:bg-none'
+        - "hg:bg-none"
       examples:
-        - 'hg:bg-none'
+        - "hg:bg-none"
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
@@ -136,8 +136,8 @@ props:
 
 slots:
   header_slot:
-    title: 'Header'
+    title: "Header"
   main_slot:
-    title: 'Grid'
+    title: "Grid"
   footer_slot:
-    title: 'Footer'
+    title: "Footer"

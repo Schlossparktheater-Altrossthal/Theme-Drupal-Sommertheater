@@ -4,13 +4,40 @@
 
 <div class="collapsible-section hg:overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
-  <h{{ heading_level }} class="hg:text-2xl">
-    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="collapsible-section--title hg:p-4 hg:w-full hg:text-left hg:flex hg:justify-between hg:items-center hg:cursor-pointer">
+  {% set heading_class = 'hg:text-2xl' %}
+  {% set button_content %}
+    <button
+      id="{{ button_id }}"
+      aria-controls="{{ content_id }}"
+      class="collapsible-section--title hg:flex hg:w-full hg:cursor-pointer hg:items-center hg:justify-between hg:p-4 hg:text-left"
+    >
       {{ title }}
-      <i class="collapsible-section--icon hg:transition-transform hg:duration-(--animate-speed) ph-bold ph-caret-down"></i>
+      <i class="collapsible-section--icon ph-bold ph-caret-down hg:transition-transform hg:duration-(--animate-speed)"></i>
     </button>
-  </h{{ heading_level}}>
-  <div class="collapsible-section--content hg:transition-[height, padding] hg:duration-(--animate-speed) hg:px-4" id="{{ content_id }}" role="region" aria-labelledby="{{ button_id }}">
+  {% endset %}
+
+  {% if heading_level == '1' %}
+    <h1 class="{{ heading_class }}">{{ button_content }}</h1>
+  {% elseif heading_level == '2' %}
+    <h2 class="{{ heading_class }}">{{ button_content }}</h2>
+  {% elseif heading_level == '3' %}
+    <h3 class="{{ heading_class }}">{{ button_content }}</h3>
+  {% elseif heading_level == '4' %}
+    <h4 class="{{ heading_class }}">{{ button_content }}</h4>
+  {% elseif heading_level == '5' %}
+    <h5 class="{{ heading_class }}">{{ button_content }}</h5>
+  {% elseif heading_level == '6' %}
+    <h6 class="{{ heading_class }}">{{ button_content }}</h6>
+  {% else %}
+    <h3 class="{{ heading_class }}">{{ button_content }}</h3>
+  {% endif %}
+
+  <div
+    class="collapsible-section--content hg:transition-[height, padding] hg:px-4 hg:duration-(--animate-speed)"
+    id="{{ content_id }}"
+    role="region"
+    aria-labelledby="{{ button_id }}"
+  >
     {% block collapsible_content %}
       {{ storybook.content }}
     {% endblock %}

@@ -8,9 +8,7 @@
  */
 export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
   return `/**
-   * Component template that renders the ${
-     name.original
-   } component with provided args.
+   * Component template that renders the ${name.original} component with provided args.
    */
   const ${name.pascalCase}Template = (args) => {
     // Component state
@@ -67,8 +65,8 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
       // For production: bundled files are in /assets/, so use ../components/ to reach components
       // For development: use original relative paths
       const jsModules = window.CONFIG_TYPE === 'PRODUCTION' 
-        ? [${jsPaths.map((path) => `'${path.replace(/^\.\.\/\.\.\/\.\.\//, '../')}'`).join(', ')}]
-        : [${jsPaths.map((path) => `'${path}'`).join(', ')}];
+        ? [${jsPaths.map((path) => `'${path.replace(/^\.\.\/\.\.\/\.\.\//, "../")}'`).join(", ")}]
+        : [${jsPaths.map((path) => `'${path}'`).join(", ")}];
       
       for (const modulePath of jsModules) {
         try {
@@ -142,7 +140,7 @@ export default function storyTemplate(name, hasJsFile, includeJs, jsPaths) {
         }
       };
     }, [initializeComponent]);`
-        : ''
+        : ""
     }
 
     // Early render states

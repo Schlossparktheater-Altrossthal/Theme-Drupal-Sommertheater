@@ -37,8 +37,8 @@
   align-items: center;
   display: flex;
   position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Component-specific Storybook styles. */
@@ -56,7 +56,7 @@
 }
 
 .storybook-component--card {
-  @apply hg:p-4 hg:max-w-md;
+  @apply hg:max-w-md hg:p-4;
 
   &:has(.card.is-landscape) {
     @apply hg:max-w-2xl;
@@ -84,7 +84,7 @@
 }
 
 .storybook-component--cta {
-  @apply hg:container hg:px-4 hg:mx-auto hg:border-x hg:border-solid hg:border-gray-200;
+  @apply hg:container hg:mx-auto hg:border-x hg:border-solid hg:border-gray-200 hg:px-4;
 }
 
 .storybook-component--dialog {
@@ -109,7 +109,7 @@
 }
 
 .storybook-component--hero-billboard {
-  @apply hg:container hg:px-4 hg:mx-auto;
+  @apply hg:container hg:mx-auto hg:px-4;
 }
 
 #storybook-root:has(.hero-overlay) {
@@ -121,7 +121,7 @@
 }
 
 .storybook-component--hero-full-width {
-  @apply hg:container hg:px-4 hg:mx-auto;
+  @apply hg:container hg:mx-auto hg:px-4;
 }
 
 .storybook-component--image {

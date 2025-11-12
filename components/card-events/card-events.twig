@@ -6,27 +6,26 @@
     description — e.g. "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
     place       — e.g. "29013 Bednar Spurs"
 #}
-{% set classes = [
-    'card-events',
-    'hg:p-6 hg:flex hg:flex-col hg:gap-6 hg:rounded-lg',
-  ]
-%}
+{% set classes = ['card-events', 'hg:p-6 hg:flex hg:flex-col hg:gap-6 hg:rounded-lg'] %}
 
 {% set event_date_formatted = event_date|date('l, M. j, Y') %}
 <div class="{{ classes|join(' ') }}">
   <p class="card-events--date">
-    <strong>
-      <time datetime="{{event_date_formatted }}">
-        {{ event_date_formatted }}
-      </time>
-    </strong>
+    <strong><time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time></strong>
   </p>
-  {{ include('mercury:heading',
-    {
-      level: 3,
-      heading_text: title,
-    } )
+  {{
+    include(
+      'mercury:heading',
+      {
+        level: 3,
+        heading_text: title
+      }
+    )
   }}
-  <p class="card-events--description">{{ description }}</p>
-  <p class="card-events--place">{{ place }}</p>
+  <p class="card-events--description">
+    {{ description }}
+  </p>
+  <p class="card-events--place">
+    {{ place }}
+  </p>
 </div>

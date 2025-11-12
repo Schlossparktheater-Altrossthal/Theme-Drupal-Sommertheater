@@ -1,67 +1,204 @@
-import { Meta, Title, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+import { Meta, Title, IconGallery, IconItem } from "@storybook/addon-docs/blocks";
 
 export const icons = {
   names: [
     // Navigation & UI
-    'align-top', 'x', 'magnifying-glass', 'house', 'sliders', 'user', 'heart', 'star', 'plus', 'minus',
-    
+    "align-top",
+    "x",
+    "magnifying-glass",
+    "house",
+    "sliders",
+    "user",
+    "heart",
+    "star",
+    "plus",
+    "minus",
+
     // Arrows & Direction
-    'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down',
-    
+    "arrow-left",
+    "arrow-right",
+    "arrow-up",
+    "arrow-down",
+
     // Actions & Controls
-    'play', 'pause', 'stop', 'skip-back', 'skip-forward', 'volume-high', 'volume-low', 'volume-x', 'mute',
-    
+    "play",
+    "pause",
+    "stop",
+    "skip-back",
+    "skip-forward",
+    "volume-high",
+    "volume-low",
+    "volume-x",
+    "mute",
+
     // Communication
-    'envelope', 'phone', 'chat-circle', 'chat-text', 'notification', 'bell', 'mail',
-    
+    "envelope",
+    "phone",
+    "chat-circle",
+    "chat-text",
+    "notification",
+    "bell",
+    "mail",
+
     // Social & Media
-    'facebook-logo', 'twitter-logo', 'instagram-logo', 'youtube-logo', 'linkedin-logo', 'github-logo',
-    
+    "facebook-logo",
+    "twitter-logo",
+    "instagram-logo",
+    "youtube-logo",
+    "linkedin-logo",
+    "github-logo",
+
     // Files & Data
-    'file', 'folder', 'download', 'upload', 'save', 'trash', 'copy', 'paste', 'cut',
-    
+    "file",
+    "folder",
+    "download",
+    "upload",
+    "save",
+    "trash",
+    "copy",
+    "paste",
+    "cut",
+
     // Status & Feedback
-    'check', 'check-circle', 'warning', 'warning-circle', 'error', 'info', 'question', 'exclamation',
-    
+    "check",
+    "check-circle",
+    "warning",
+    "warning-circle",
+    "error",
+    "info",
+    "question",
+    "exclamation",
+
     // Layout & Design
-    'grid', 'list', 'columns', 'rows', 'layout', 'sidebar', 'panel', 'window', 'browser',
-    
+    "grid",
+    "list",
+    "columns",
+    "rows",
+    "layout",
+    "sidebar",
+    "panel",
+    "window",
+    "browser",
+
     // Time & Date
-    'clock', 'calendar', 'timer', 'hourglass', 'stopwatch', 'calendar-blank',
-    
+    "clock",
+    "calendar",
+    "timer",
+    "hourglass",
+    "stopwatch",
+    "calendar-blank",
+
     // Business & Finance
-    'credit-card', 'wallet', 'bank', 'money', 'receipt', 'shopping-cart', 'bag', 'store',
-    
+    "credit-card",
+    "wallet",
+    "bank",
+    "money",
+    "receipt",
+    "shopping-cart",
+    "bag",
+    "store",
+
     // Technology
-    'wifi', 'bluetooth', 'battery', 'battery-charging', 'power', 'lightning', 'cpu', 'hard-drive',
-    
+    "wifi",
+    "bluetooth",
+    "battery",
+    "battery-charging",
+    "power",
+    "lightning",
+    "cpu",
+    "hard-drive",
+
     // Weather & Nature
-    'sun', 'moon', 'cloud', 'cloud-rain', 'cloud-snow', 'wind', 'thermometer', 'umbrella',
-    
+    "sun",
+    "moon",
+    "cloud",
+    "cloud-rain",
+    "cloud-snow",
+    "wind",
+    "thermometer",
+    "umbrella",
+
     // Transportation
-    'car', 'bicycle', 'airplane', 'train', 'bus', 'ship', 'rocket', 'motorcycle',
-    
+    "car",
+    "bicycle",
+    "airplane",
+    "train",
+    "bus",
+    "ship",
+    "rocket",
+    "motorcycle",
+
     // Food & Drink
-    'coffee', 'wine', 'beer', 'pizza', 'hamburger', 'apple-logo', 'leaf', 'tree',
-    
+    "coffee",
+    "wine",
+    "beer",
+    "pizza",
+    "hamburger",
+    "apple-logo",
+    "leaf",
+    "tree",
+
     // Sports & Activities
-    'basketball', 'football', 'tennis', 'golf', 'swimming', 'running', 'bicycle', 'game-controller',
-    
+    "basketball",
+    "football",
+    "tennis",
+    "golf",
+    "swimming",
+    "running",
+    "bicycle",
+    "game-controller",
+
     // Health & Medical
-    'heartbeat', 'pulse', 'stethoscope', 'pill', 'cross', 'ambulance', 'hospital', 'first-aid',
-    
+    "heartbeat",
+    "pulse",
+    "stethoscope",
+    "pill",
+    "cross",
+    "ambulance",
+    "hospital",
+    "first-aid",
+
     // Education & Learning
-    'book', 'graduation-cap', 'pencil', 'pen', 'highlighter', 'notebook', 'backpack', 'microscope',
-    
+    "book",
+    "graduation-cap",
+    "pencil",
+    "pen",
+    "highlighter",
+    "notebook",
+    "backpack",
+    "microscope",
+
     // Tools & Utilities
-    'wrench', 'screwdriver', 'hammer', 'drill', 'saw', 'ruler', 'calculator', 'compass',
-    
+    "wrench",
+    "screwdriver",
+    "hammer",
+    "drill",
+    "saw",
+    "ruler",
+    "calculator",
+    "compass",
+
     // Security & Privacy
-    'lock', 'unlock', 'shield', 'shield-check', 'eye', 'eye-slash', 'key', 'fingerprint',
-    
+    "lock",
+    "unlock",
+    "shield",
+    "shield-check",
+    "eye",
+    "eye-slash",
+    "key",
+    "fingerprint",
+
     // Entertainment
-    'music-note', 'headphones', 'speaker', 'microphone', 'camera', 'video-camera', 'game-controller', 'dice-six'
-  ],
+    "music-note",
+    "headphones",
+    "speaker",
+    "microphone",
+    "camera",
+    "video-camera",
+    "game-controller",
+    "dice-six",
+
+],
 };
 
 <Meta title="Icons" />
@@ -71,11 +208,9 @@ export const icons = {
 This page displays the icon set used throughout the design system, showcasing standardized symbols with consistent style and sizing, based on Phosphor Icons.
 
 <IconGallery>
-  {
-    icons.names.map(icon => (
-      <IconItem key={icon} name={icon}>
-        <i className={`ph ph-${icon}`} style={{ color: '#000', fontSize: '24px' }}></i>
-      </IconItem>
-    ))
-  }
+  {icons.names.map((icon) => (
+    <IconItem key={icon} name={icon}>
+      <i className={`ph ph-${icon}`} style={{ color: "#000", fontSize: "24px" }}></i>
+    </IconItem>
+  ))}
 </IconGallery>

@@ -52,7 +52,7 @@
   }
 
   .card.is-landscape .card--media {
-    @apply hg:aspect-video hg:md:aspect-auto hg:md:flex-[0_1_50%] hg:overflow-hidden;
+    @apply hg:aspect-video hg:overflow-hidden hg:md:aspect-auto hg:md:flex-[0_1_50%];
   }
 
   .card.is-landscape .card--content {
@@ -64,7 +64,7 @@
   }
 
   .card--content p {
-    @apply hg:font-(--hgc-font-weight-p) hg:text-lg hg:xl:text-xl;
+    @apply hg:text-lg hg:font-(--hgc-font-weight-p) hg:xl:text-xl;
   }
 
   .card:not(:has(.badge)) .heading a {

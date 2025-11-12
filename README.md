@@ -22,6 +22,26 @@ To install the theme in Drupal, run `drush theme:enable mercury`.
 
 If you modify classes in a Twig template, you may need to rebuild the CSS with `pnpm run build`.
 
+## Code Formatting
+
+The codebase uses [Prettier](https://prettier.io) to automatically format code for consistency. The project is configured with plugins for Tailwind CSS and Twig templates.
+
+For the best experience, it's recommended to [set up Prettier in your editor](https://prettier.io/docs/editors) to automatically format files on save.
+
+To format all files in the project:
+
+```bash
+pnpm format
+```
+
+To check if files are formatted correctly without making changes:
+
+```bash
+pnpm format:check
+```
+
+**Note**: Some files are excluded from formatting via `.prettierignore`, such as Drupal's `html.html.twig` template which contains placeholder tokens that break Prettier's HTML parsing.
+
 ## Component JavaScript
 
 `lib/component.js` has two classes you can use to nicely encapsulate your component JS without pasting all the `Drupal.behaviors.componentName` boilerplate into every file. The steps are:
@@ -32,7 +52,7 @@ If you modify classes in a Twig template, you may need to rebuild the CSS with `
 For example, here's a stub of `collapsible-section.js`:
 
 ```js
-import { ComponentType, ComponentInstance } from '../../lib/component.js';
+import { ComponentType, ComponentInstance } from "../../lib/component.js";
 
 // Make a new class with the code for our component.
 //
@@ -43,10 +63,8 @@ import { ComponentType, ComponentInstance } from '../../lib/component.js';
 class CollapsibleSection extends ComponentInstance {
   // Every subclass must have an `init` method to activate the component.
   init() {
-    this.el
-      .querySelector('.collapsible-section__content')
-      .classList.toggle('visible');
-    this.el.addClass('js');
+    this.el.querySelector(".collapsible-section__content").classList.toggle("visible");
+    this.el.addClass("js");
   }
 
   // You may also implement a `remove()` method to clean up when a component is
@@ -66,11 +84,11 @@ new ComponentType(
   CollapsibleSection,
   // Second argument: A camel-case unique ID for the behavior (and for `once()`
   // if applicable).
-  'collapsibleSection',
+  "collapsibleSection",
   // Third argument: A selector for `querySelectorAll()`. All matching elements
   // on the page get their own instance of the subclass you created, each of
   // which has `this.el` pointing to one of those matches.
-  '.collapsible-section'
+  ".collapsible-section",
 );
 ```
 

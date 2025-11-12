@@ -14,9 +14,9 @@ include:
   - project: $_GITLAB_TEMPLATES_REPO
     ref: $_GITLAB_TEMPLATES_REF
     file:
-      - '/includes/include.drupalci.main.yml'
-      - '/includes/include.drupalci.variables.yml'
-      - '/includes/include.drupalci.workflows.yml'
+      - "/includes/include.drupalci.main.yml"
+      - "/includes/include.drupalci.variables.yml"
+      - "/includes/include.drupalci.workflows.yml"
 #
 ################
 # Pipeline configuration variables are defined with default values and descriptions in the file
@@ -24,18 +24,18 @@ include:
 # Uncomment the lines below if you want to override any of the variables. The following is just an example.
 ################
 variables:
-  SKIP_ESLINT: '1'
-  SKIP_STYLELINT: '1'
-  OPT_IN_TEST_NEXT_MINOR: '1'
-  OPT_IN_TEST_NEXT_MAJOR: '1'
+  SKIP_ESLINT: "1"
+  SKIP_STYLELINT: "1"
+  OPT_IN_TEST_NEXT_MINOR: "1"
+  OPT_IN_TEST_NEXT_MAJOR: "1"
   # Don't install JavaScript dependencies; they're not used in this CI process right now.
-  _COMPOSER_YARN_INSTALL: '0'
+  _COMPOSER_YARN_INSTALL: "0"
   # @see https://project.pages.drupalcode.org/gitlab_templates/jobs/cspell
-  _CSPELL_DICTIONARY: 'dictionary.txt'
-  _CSPELL_IGNORE_PATHS: 'build/css/*, pnpm-lock.yaml, src/phosphor-icons.css'
+  _CSPELL_DICTIONARY: "dictionary.txt"
+  _CSPELL_IGNORE_PATHS: "build/css/*, pnpm-lock.yaml, src/phosphor-icons.css"
   # Don't let any linting jobs fail.
   _ALL_VALIDATE_ALLOW_FAILURE: 0
-  STORYBOOK_OUTPUT_DIR: 'storybook-static'
+  STORYBOOK_OUTPUT_DIR: "storybook-static"
 
 stages:
   - build
@@ -57,11 +57,17 @@ storybook:
 
 lint:
   stage: validate
+  image: node:latest
   script:
     # Confirm that there are no mentions of Storybook in the components' CSS. If there are,
     # helpfully print the offending line numbers. The leading ! inverts the exit code from
     # grep, so that it returns 0 if it DOES NOT find a match.
-    - '! grep --ignore-case --recursive --line-number storybook components/*/*.css'
+    - "! grep --ignore-case --recursive --line-number storybook components/*/*.css"
+    # Install pnpm and dependencies.
+    - npm install -g pnpm@latest-10
+    - pnpm install
+    # Run Prettier to check for formatting errors.
+    - pnpm format:check || (echo "Formatting errors found. Please run 'pnpm format' locally to fix them." && exit 1)
   rules:
     - when: always
 
@@ -87,7 +93,7 @@ composer (next minor):
   variables:
     DRUPAL_CORE: $CORE_NEXT_MINOR
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: 1
-    MINIMUM_STABILITY_OVERRIDE: 'dev'
+    MINIMUM_STABILITY_OVERRIDE: "dev"
   before_script:
     - !reference [composer, before_script]
   after_script:
@@ -107,7 +113,7 @@ composer (next minor):
 preview-pages:
   extends: .pages-base
   pages:
-    path_prefix: 'preview-$CI_MERGE_REQUEST_IID'
+    path_prefix: "preview-$CI_MERGE_REQUEST_IID"
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 

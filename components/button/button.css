@@ -11,7 +11,8 @@ button.button {
   --tw-font-weight: var(--hg-font-weight-medium, 500);
   font-weight: var(--hg-font-weight-medium, 500);
   color: var(--hgc-btn-label);
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: var(--hgc-btn-border-hover);
     background-color: var(--hgc-btn-bg-hover);
     color: var(--hgc-btn-label-hover);
@@ -92,8 +93,11 @@ button.button {
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-leading: initial;
       --tw-font-weight: initial;
     }

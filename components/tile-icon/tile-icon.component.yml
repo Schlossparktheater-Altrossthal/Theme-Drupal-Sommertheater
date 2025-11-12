@@ -20,9 +20,9 @@ props:
         hg:aspect-4/3: Rectangle 4 × 3
         hg:aspect-16/9: Rectangle 16 × 9
       default:
-        - 'hg:aspect-none'
+        - "hg:aspect-none"
       examples:
-        - 'hg:aspect-none'
+        - "hg:aspect-none"
     flex_align:
       type: string
       title: Alignment
@@ -33,9 +33,9 @@ props:
         - end
         - between
       default:
-        - 'center'
+        - "center"
       examples:
-        - 'center'
+        - "center"
     border:
       type: boolean
       title: Border
@@ -59,14 +59,14 @@ props:
         hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
       default: hg:rounded-sm
       examples:
-        - 'hg:rounded-sm'
+        - "hg:rounded-sm"
     background:
       type: boolean
       title: Background
       description: Add a background to the tile.
       default: FALSE
       examples:
-        -  FALSE
+        - FALSE
     text:
       type: string
       title: Heading text
@@ -80,7 +80,7 @@ props:
       contentMediaType: text/html
       x-formatting-context: block
       examples:
-        - '<p>This is placeholder text.</p>'
+        - "<p>This is placeholder text.</p>"
     text_align:
       type: string
       title: Text alignment
@@ -94,9 +94,9 @@ props:
         hg:text-center: Center
         hg:text-end: Right
       default:
-        - 'hg:text-center'
+        - "hg:text-center"
       examples:
-        - 'hg:text-center'
+        - "hg:text-center"
     url:
       type: string
       title: Link
@@ -104,9 +104,9 @@ props:
       type: string
       title: Icon name (exclude prefix)
       description: Set icon name (exclude prefix).
-      default: 'rocket'
+      default: "rocket"
       examples:
-        - 'rocket'
+        - "rocket"
     icon_size:
       type: string
       title: Icon size
@@ -120,9 +120,9 @@ props:
         hg:text-4xl: Regular
         hg:text-6xl: Large
       default:
-        - 'hg:text-4xl'
+        - "hg:text-4xl"
       examples:
-        - 'hg:text-4xl'
+        - "hg:text-4xl"
     icon_align:
       type: string
       title: Icon alignment
@@ -136,6 +136,6 @@ props:
         hg:justify-end: Right
         hg:justify-center: Center
       default:
-        - 'hg:justify-center'
+        - "hg:justify-center"
       examples:
-        - 'hg:justify-center'
+        - "hg:justify-center"

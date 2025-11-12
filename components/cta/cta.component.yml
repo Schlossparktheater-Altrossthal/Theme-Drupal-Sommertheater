@@ -14,8 +14,8 @@ props:
     level:
       type: number
       title: Heading Level
-      enum: [1,2,3,4,5,6]
-      examples: 
+      enum: [1, 2, 3, 4, 5, 6]
+      examples:
         - 2
     text:
       type: string
@@ -26,9 +26,9 @@ props:
       type: string
       title: Text alignment
       description: Set alignment of text
-      enum: ['center', 'left', 'right']
+      enum: ["center", "left", "right"]
       default: center
-      examples: 
+      examples:
         - center
     media:
       $ref: json-schema-definitions://canvas.module/image
@@ -36,8 +36,8 @@ props:
       description: The background image for the cta.
       type: object
       examples:
-        - src: 'assets/256381.jpg'
-          alt: 'Photo by pixabay'
+        - src: "assets/256381.jpg"
+          alt: "Photo by pixabay"
     has_background_image:
       type: boolean
       title: Show Background image

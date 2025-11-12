@@ -1,7 +1,6 @@
 @reference '../../src/main.css';
 
 @layer components {
-
   .snap-first > .card {
     @apply hg:ms-6 hg:sm:ms-0;
   }

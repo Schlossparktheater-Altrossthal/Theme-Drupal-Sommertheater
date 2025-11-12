@@ -13,8 +13,8 @@ This page outlines the core color palette used across the design system, includi
     title="Base Colors"
     subtitle="Primary background and text colors"
     colors={{
-      'Black': 'var(--hg-color-black)',
-      'White': 'var(--hg-color-white)',
+      Black: "var(--hg-color-black)",
+      White: "var(--hg-color-white)",
     }}
   />
 </ColorPalette>
@@ -28,16 +28,17 @@ For subtle backgrounds, borders, and accents.
     title="Gray Scale"
     subtitle="Neutral colors for UI elements"
     colors={{
-      'Gray Darkest': 'var(--hg-color-gray-darkest)',
-      'Gray Dark': 'var(--hg-color-gray-dark)',
-      'Gray': 'var(--hg-color-gray)',
-      'Gray Light': 'var(--hg-color-gray-light)',
-      'Gray Lightest': 'var(--hg-color-gray-lightest)',
+      "Gray Darkest": "var(--hg-color-gray-darkest)",
+      "Gray Dark": "var(--hg-color-gray-dark)",
+      Gray: "var(--hg-color-gray)",
+      "Gray Light": "var(--hg-color-gray-light)",
+      "Gray Lightest": "var(--hg-color-gray-lightest)",
     }}
   />
 </ColorPalette>
 
 ## Branding Colors
+
 Defined per project, used for primary visual identity.
 
 <ColorPalette>
@@ -67,6 +68,7 @@ Defined per project, used for primary visual identity.
 </ColorPalette>
 
 ## Feedback Colors
+
 For specific UI feedback: informative, positive, warning, and negative.
 
 <ColorPalette>
@@ -74,10 +76,10 @@ For specific UI feedback: informative, positive, warning, and negative.
     title="Feedback Colors"
     subtitle="Used for UI feedback elements"
     colors={{
-      'Informative': 'var(--hg-color-info)',
-      'Positive': 'var(--hg-color-positive)',
-      'Warning': 'var(--hg-color-warning)',
-      'Negative': 'var(--hg-color-negative)',
+      Informative: "var(--hg-color-info)",
+      Positive: "var(--hg-color-positive)",
+      Warning: "var(--hg-color-warning)",
+      Negative: "var(--hg-color-negative)",
     }}
   />
 </ColorPalette>
@@ -86,10 +88,6 @@ For specific UI feedback: informative, positive, warning, and negative.
 
 ```css
 .base-example {
-    @apply
-        bg-white
-        text-black
-        data-[state=checked]:bg-black
-        data-[state=checked]:text-white;
+  @apply bg-white text-black data-[state=checked]:bg-black data-[state=checked]:text-white;
 }
 ```

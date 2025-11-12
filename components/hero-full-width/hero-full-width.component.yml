@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero full-width
 description: Hero with stacked slots for media and content.
 group: Layout
@@ -10,14 +10,14 @@ props:
       title: Layout
       description: Set hero layout
       enum:
-        - 'media-first (default)'
-        - 'media-last'
-      examples: ['media-first (default)', 'media-last']
+        - "media-first (default)"
+        - "media-last"
+      examples: ["media-first (default)", "media-last"]
     heading_text:
       type: string
       title: Heading Text
       examples:
-        - 'This is the heading text'
+        - "This is the heading text"
     level:
       type: number
       title: Heading Level
@@ -53,7 +53,7 @@ props:
         heading-responsive-2xl: 2xl 24px
         heading-responsive-xl: xl 20px
       default: default
-      examples: 
+      examples:
         - default
     media:
       $ref: json-schema-definitions://canvas.module/image
@@ -61,14 +61,14 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg'
-          alt: 'Placeholder image'
+        - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"
+          alt: "Placeholder image"
     styles:
       type: string
       title: WILL DELETE (do not use)
       enum:
-        - 'default'
-        - 'alt'
+        - "default"
+        - "alt"
       default: alt
       examples:
         - alt

@@ -11,8 +11,8 @@ props:
       description: Media and Alt for the card.
       type: object
       examples:
-        - src: 'assets/957040.jpg'
-          alt: 'Placeholder text.'
+        - src: "assets/957040.jpg"
+          alt: "Placeholder text."
     size:
       title: Aspect ratio
       description: Width:height proportions of the image. Listed from most horizontal to most vertical.
@@ -48,7 +48,7 @@ props:
         hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
       default: hg:rounded-sm
       examples:
-        - 'hg:rounded-sm'
+        - "hg:rounded-sm"
     caption:
       title: Caption
       description: Set optional caption

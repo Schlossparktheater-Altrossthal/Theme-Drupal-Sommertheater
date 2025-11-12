@@ -1,55 +1,65 @@
-{% set card_classes = card_classes|default([])|merge([
-    'card',
-    'hg:flex',
-    'hg:flex-col',
-    'hg:gap-3',
-    'hg:md:gap-4',
-    'hg:lg:gap-6',
-    'hg:transition-colors',
-    'hg:duration-300',
-    'hg:relative',
-    'stacked' in orientation ? 'is-stacked' : 'hg:md:flex-row is-landscape',
-    style == 'framed' ? 'is-framed hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-md' : style == 'featured' ? 'is-featured hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-sm hg:text-center' : 'is-default',
-    url is not empty and url != 'No URL' ? 'hg:group hg:cursor-pointer' : '',
-  ])|filter(v => v is not empty)
+{% set card_classes =
+  card_classes
+    |default([])
+    |merge(
+      [
+        'card',
+        'hg:flex',
+        'hg:flex-col',
+        'hg:gap-3',
+        'hg:md:gap-4',
+        'hg:lg:gap-6',
+        'hg:transition-colors',
+        'hg:duration-300',
+        'hg:relative',
+        'stacked' in orientation ? 'is-stacked' : 'hg:md:flex-row is-landscape',
+        style == 'framed'
+          ? 'is-framed hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-md'
+          : style == 'featured' ? 'is-featured hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-sm hg:text-center' : 'is-default',
+        url is not empty and url != 'No URL' ? 'hg:group hg:cursor-pointer' : ''
+      ]
+    )
+    |filter(v => v is not empty)
 %}
 
 <div class="{{ card_classes|join(' ') }}">
   {% if media.src is not empty %}
     <div class="card--media hg:overflow-hidden">
       {% block media %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:w-full hg:h-full hg:object-cover"/>
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
       {% endblock %}
     </div>
   {% endif %}
 
-  <div class="card--content hg:w-full hg:flex hg:flex-col hg:gap-4 hg:items-baseline">
-  {% if style != 'featured' and badges is not empty %}
-    {% if block('badges') is defined %}
-      {% block badges %}
-        <ul class="hg:list-none hg:ps-0 hg:flex hg:items-center hg:gap-2">
-          {% for badge in badges %}
-            <li>
-              {{ include('mercury:badge', {
-                url: badge.url,
-                label: badge.label,
-                style: 'secondary',
-                })
-              }}
-            </li>
-          {% endfor %}
-        </ul>
-      {% endblock %}
+  <div class="card--content hg:flex hg:w-full hg:flex-col hg:items-baseline hg:gap-4">
+    {% if style != 'featured' and badges is not empty %}
+      {% if block('badges') is defined %}
+        {% block badges %}
+          <ul class="hg:flex hg:list-none hg:items-center hg:gap-2 hg:ps-0">
+            {% for badge in badges %}
+              <li>
+                {{
+                  include(
+                    'mercury:badge',
+                    {
+                      url: badge.url,
+                      label: badge.label,
+                      style: 'secondary'
+                    }
+                  )
+                }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endblock %}
+      {% endif %}
     {% endif %}
-  {% endif %}
-    <div class="hg:w-full hg:flex hg:flex-col hg:gap-6">
-      <h3 class="heading hg:font-(--hgc-font-weight-h3)">
-        <a href="{{ url }}">
-          {{ heading_text }}
-        </a>
-      </h3>
+    <div class="hg:flex hg:w-full hg:flex-col hg:gap-6">
+      <h3 class="heading hg:font-(--hgc-font-weight-h3)"><a href="{{ url }}">{{ heading_text }}</a></h3>
       {% if text is not empty %}
-        <p>{{ text }}</p>
+        <p>
+          {{ text }}
+        </p>
       {% endif %}
     </div>
   </div>

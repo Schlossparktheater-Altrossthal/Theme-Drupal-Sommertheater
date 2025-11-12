@@ -11,7 +11,7 @@
     }
 
     img {
-      @apply hg:rounded-md hg:overflow-hidden;
+      @apply hg:overflow-hidden hg:rounded-md;
     }
   }
 

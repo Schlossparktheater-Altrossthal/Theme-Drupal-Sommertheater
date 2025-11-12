@@ -7,7 +7,7 @@
   background-clip: padding-box;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
-  &:has(button[aria-expanded='true']) .collapsible-section--content {
+  &:has(button[aria-expanded="true"]) .collapsible-section--content {
     padding-block: calc(var(--hg-spacing, 4px) * 4);
   }
   &:not(:has(+ .collapsible-section)) {
@@ -67,8 +67,11 @@
   initial-value: solid;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-border-style: solid;
     }
   }

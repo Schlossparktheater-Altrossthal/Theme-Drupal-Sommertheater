@@ -2,7 +2,8 @@
 @layer components {
   .breadcrumb-home i {
     color: var(--hgc-color-breadcrumb-home);
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--hgc-color-breadcrumb-home-hover);
     }
   }
@@ -18,13 +19,15 @@
       --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-active);
     }
     .breadcrumb-home {
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         --hgc-color-breadcrumb-icon: var(--hgc-color-breadcrumb-icon-hover);
       }
     }
     a {
       color: var(--hgc-color-breadcrumb);
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-hover);
       }
     }

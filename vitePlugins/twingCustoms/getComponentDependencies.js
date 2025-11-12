@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 /**
  * Get JavaScript dependencies for component files by analyzing Twig template dependencies
@@ -10,15 +10,13 @@ import path from 'path';
 export default function getComponentDependencies(namespaces, componentFiles) {
   const findFileInNamespaces = (filePath) => {
     // Handle namespaced paths (e.g., @mercury/components/heading/heading.twig)
-    if (filePath.startsWith('@')) {
-      const [namespace, ...rest] = filePath.slice(1).split('/');
+    if (filePath.startsWith("@")) {
+      const [namespace, ...rest] = filePath.slice(1).split("/");
       const namespacePaths = namespaces[namespace];
 
       if (namespacePaths) {
-        const relativePath = rest.join('/');
-        for (const namespacePath of Array.isArray(namespacePaths)
-          ? namespacePaths
-          : [namespacePaths]) {
+        const relativePath = rest.join("/");
+        for (const namespacePath of Array.isArray(namespacePaths) ? namespacePaths : [namespacePaths]) {
           const fullPath = path.join(namespacePath, relativePath);
 
           if (fs.existsSync(fullPath)) {
@@ -29,8 +27,8 @@ export default function getComponentDependencies(namespaces, componentFiles) {
       return null;
     }
 
-    const filePathWithoutTwig = filePath.replace('.twig', '');
-    const [baseName, variant] = filePathWithoutTwig.split('~');
+    const filePathWithoutTwig = filePath.replace(".twig", "");
+    const [baseName, variant] = filePathWithoutTwig.split("~");
     const fileName = variant ? `${baseName}~${variant}` : baseName;
 
     for (const [namespace, paths] of Object.entries(namespaces)) {
@@ -49,7 +47,7 @@ export default function getComponentDependencies(namespaces, componentFiles) {
 
   const getJsPath = (twigPath) => {
     // Convert the Twig path to a potential JS path
-    const jsPath = twigPath.replace('.twig', '.js');
+    const jsPath = twigPath.replace(".twig", ".js");
     return fs.existsSync(jsPath) ? jsPath : null;
   };
 
@@ -69,8 +67,8 @@ export default function getComponentDependencies(namespaces, componentFiles) {
       while ((match = pattern.exec(content)) !== null) {
         const dep = match[1];
         // Convert mercury: format to @mercury format
-        if (dep.startsWith('mercury:')) {
-          const componentName = dep.replace('mercury:', '');
+        if (dep.startsWith("mercury:")) {
+          const componentName = dep.replace("mercury:", "");
           matches.push(`@mercury/components/${componentName}/${componentName}.twig`);
         } else {
           matches.push(dep);
@@ -93,15 +91,15 @@ export default function getComponentDependencies(namespaces, componentFiles) {
     }
 
     try {
-      const content = fs.readFileSync(fileInfo.path, 'utf8');
+      const content = fs.readFileSync(fileInfo.path, "utf8");
 
       // Get Twig dependencies from the content
       const twigDeps = extractDependencies(content);
       // Process each Twig dependency recursively and collect their JS files
       const twigDepResults = twigDeps.flatMap((dep) => {
         // If it's a mercury: dependency, convert it to the proper format
-        if (dep.startsWith('mercury:')) {
-          const componentName = dep.replace('mercury:', '');
+        if (dep.startsWith("mercury:")) {
+          const componentName = dep.replace("mercury:", "");
           const twigPath = `@mercury/components/${componentName}/${componentName}.twig`;
           return processFile(twigPath, processed);
         }
@@ -110,7 +108,7 @@ export default function getComponentDependencies(namespaces, componentFiles) {
 
       // Get the JS file for the current component if it exists
       const jsPath = getJsPath(fileInfo.path);
-      
+
       // Also check if the component has its own JS file (for components like accordion-container)
       const componentDir = path.dirname(fileInfo.path);
       const componentName = path.basename(componentDir);
@@ -122,20 +120,16 @@ export default function getComponentDependencies(namespaces, componentFiles) {
       if (jsPath) allJsPaths.push(jsPath);
       if (hasComponentJs) allJsPaths.push(componentJsPath);
       allJsPaths.push(...twigDepResults);
-      
+
       return allJsPaths;
     } catch (error) {
-      console.warn(
-        `Warning: Could not process file ${filePath}: ${error.message}`
-      );
+      console.warn(`Warning: Could not process file ${filePath}: ${error.message}`);
       return [];
     }
   };
 
   // Process all component files and get unique JS paths
-  const jsFiles = [
-    ...new Set(componentFiles.flatMap((file) => processFile(file))),
-  ];
+  const jsFiles = [...new Set(componentFiles.flatMap((file) => processFile(file)))];
 
   return jsFiles;
 }

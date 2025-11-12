@@ -1,12 +1,8 @@
-import { createFunction } from 'twing';
+import { createFunction } from "twing";
 const returnNull = [
   (_executionContext, q) => {
     return Promise.resolve(null);
   },
-  [
-    { name: 'q', defaultValue: '' }
-  ]
+  [{ name: "q", defaultValue: "" }],
 ];
-export default [
-  createFunction('attach_library', ...returnNull),
-];
+export default [createFunction("attach_library", ...returnNull)];

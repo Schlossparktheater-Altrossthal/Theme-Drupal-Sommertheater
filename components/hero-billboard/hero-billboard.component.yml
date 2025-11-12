@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero billboard
 description: Hero with stacked slots for media and content.
 group: Layout
@@ -74,9 +74,9 @@ props:
       description: Media image for the hero.
       type: object
       examples:
-        - src: 'assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg'
-          alt: 'Placeholder image'
+        - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"
+          alt: "Placeholder image"
 
 slots:
   hero_slot:
-    title: 'Hero content'
+    title: "Hero content"

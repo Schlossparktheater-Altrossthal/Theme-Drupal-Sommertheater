@@ -1,7 +1,7 @@
-$schema: 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+$schema: "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Button
 group: Base
-description: 'A versatile button component that can be rendered as a button or link with various styles and sizes.'
+description: "A versatile button component that can be rendered as a button or link with various styles and sizes."
 status: stable
 props:
   type: object
@@ -9,7 +9,7 @@ props:
     variant:
       type: string
       title: Variant
-      description: 'The style of button.'
+      description: "The style of button."
       enum:
         - primary
         - primary-accent
@@ -22,10 +22,10 @@ props:
     label:
       type: string
       title: Label
-      description: 'The text content of the button.'
-      default: 'Button Label'
+      description: "The text content of the button."
+      default: "Button Label"
       examples:
-        - 'Button Label'
+        - "Button Label"
     href:
       type: string
       title: Link
@@ -41,7 +41,7 @@ props:
         - medium
     mobile_width:
       type: boolean
-      title:  Full width on mobile
+      title: Full width on mobile
       default: false
     icon:
       type: string
@@ -60,14 +60,14 @@ props:
     icon_first:
       type: boolean
       title: Display icon first
-      description: 'By default, the icon is displayed after the label. If you want to display the icon first, set this to true.'
+      description: "By default, the icon is displayed after the label. If you want to display the icon first, set this to true."
       default: false
       examples:
         - false
     disabled:
       type: boolean
       title: Disabled
-      description: 'Style button as disabled (rarely used).'
+      description: "Style button as disabled (rarely used)."
       default: false
       examples:
         - false

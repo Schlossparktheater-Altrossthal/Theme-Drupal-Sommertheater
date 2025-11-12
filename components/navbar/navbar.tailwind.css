@@ -3,13 +3,14 @@
 @layer components;
 
 :root.navbar-modal-open {
-  &, body {
+  &,
+  body {
     overflow: hidden;
   }
 }
 
 .navbar--menu {
-  @apply hg:bg-body-bg hg:grid hg:md:flex;
+  @apply hg:grid hg:bg-body-bg hg:md:flex;
 }
 
 .navbar--menu:not(.navbar--menu--open) {
@@ -24,7 +25,7 @@ body.path-xb {
 }
 
 .navbar--links .button.button {
-  @apply hg:w-[calc(100%-var(--hg-spacing)*16)] hg:md:w-auto hg:mx-8 hg:md:m-auto;
+  @apply hg:mx-8 hg:w-[calc(100%-var(--hg-spacing)*16)] hg:md:m-auto hg:md:w-auto;
 }
 
 .navbar--dropdown-menu .dropdown-menu {
@@ -47,7 +48,6 @@ body.path-xb {
 
 .navbar--logo,
 .navbar--modal-logo {
-
   .branding {
     @apply hg:h-6 hg:md:h-7;
     svg,
@@ -55,10 +55,7 @@ body.path-xb {
       @apply hg:h-auto! hg:max-h-full;
     }
   }
-
-
 }
-
 
 .navbar--logo > div {
   @apply hg:flex hg:flex-col hg:justify-center;

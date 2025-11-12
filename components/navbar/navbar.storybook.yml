@@ -1,9 +1,8 @@
 hide_main: true
 media:
-  src: 'assets/logo-light.svg'
+  src: "assets/logo-light.svg"
   alt: Byte
 menu:
-
   items:
     - title: Childless link
       url: https://google.com

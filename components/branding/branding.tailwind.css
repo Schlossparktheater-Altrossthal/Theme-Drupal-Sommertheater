@@ -1,7 +1,6 @@
 @reference '../../src/main.css';
 
 @layer components {
-
   .branding {
     /* Uncomment if you need to have better control over the logo size. */
     /* 

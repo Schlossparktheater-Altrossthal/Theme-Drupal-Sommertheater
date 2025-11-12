@@ -1,7 +1,7 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .breadcrumb-home i  {
+  .breadcrumb-home i {
     color: var(--hgc-color-breadcrumb-home);
 
     &:hover,
@@ -26,7 +26,6 @@
     }
 
     .breadcrumb-home {
-
       &:hover,
       &:focus {
         --hgc-color-breadcrumb-icon: var(--hgc-color-breadcrumb-icon-hover);

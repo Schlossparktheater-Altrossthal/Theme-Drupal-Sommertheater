@@ -1,11 +1,11 @@
 hide_main: true
 items:
   - title: Sign In
-    url: '#'
+    url: "#"
   - title: Contact Us
-    url: '#'
+    url: "#"
   - title: Help
-    url: '#'
+    url: "#"
 align:
   type: boolean
   title: Display links in row?

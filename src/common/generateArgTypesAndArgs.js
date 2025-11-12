@@ -35,9 +35,7 @@ const propertyHandlers = {
    * Handle array of types (e.g. ['string', null])
    */
   arrayOfTypes: (property) => {
-    const nonNullTypes = property.type.filter(
-      (type) => type !== null && type !== "null"
-    );
+    const nonNullTypes = property.type.filter((type) => type !== null && type !== "null");
     if (nonNullTypes.length) {
       return generateControlType({ type: nonNullTypes[0] });
     }
@@ -61,7 +59,7 @@ function generateControlType(property) {
     return {
       control: {
         ...propertyHandlers.enum(property),
-        labels: property['meta:enum'],
+        labels: property["meta:enum"],
       },
       options: property.enum,
     };
@@ -115,7 +113,7 @@ const valueGenerators = {
     // If the object has properties defined, recursively generate values for them
     if (property.properties) {
       const result = {};
-      Object.keys(property.properties).forEach(key => {
+      Object.keys(property.properties).forEach((key) => {
         result[key] = generateDefaultValue(property.properties[key]);
       });
       return result;
@@ -136,15 +134,11 @@ const valueGenerators = {
    * Generate default value for primitive properties
    */
   primitive: (property) => {
-    return property.examples && property.examples.length > 0
-      ? property.examples[0]
-      : "";
+    return property.examples && property.examples.length > 0 ? property.examples[0] : "";
   },
 
   enum: (property) => {
-    return property.examples && property.examples.length > 0
-      ? property.examples[0]
-      : "";
+    return property.examples && property.examples.length > 0 ? property.examples[0] : "";
   },
 };
 
@@ -153,10 +147,7 @@ const valueGenerators = {
  */
 function generateDefaultValue(property) {
   // Handle image properties
-  if (
-    property.$ref ===
-    "json-schema-definitions://canvas.module/image"
-  ) {
+  if (property.$ref === "json-schema-definitions://canvas.module/image") {
     return valueGenerators.image(property);
   }
 
@@ -219,7 +210,7 @@ function generateArgTypesAndArgs(parsedMetadata, componentPath = "", storybookMe
       name: property.title,
       table: {
         type: { summary: property.type },
-        category: property.group || property.category || 'General',
+        category: property.group || property.category || "General",
       },
     };
 

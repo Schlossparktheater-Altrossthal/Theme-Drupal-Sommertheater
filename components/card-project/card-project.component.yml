@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Project
 description: Basic card with image, title, teaser, tags
 group: Components/Cards
@@ -9,7 +9,7 @@ props:
       type: string
       title: Heading Text
       examples:
-        - 'Stillhouse Spirits Co.'
+        - "Stillhouse Spirits Co."
     level:
       type: number
       title: Heading Level
@@ -29,14 +29,14 @@ props:
       description: Media image for the card.
       type: object
       examples:
-        - src: 'assets/stillhouse.png'
-          alt: 'A picture of the sea shore.'
+        - src: "assets/stillhouse.png"
+          alt: "A picture of the sea shore."
     text:
       type: string
       title: Text
       description: Teaser text
       examples:
-        - 'Lorem ipsum dolor sit amet suspendisse consectetur sociosqu dapibus ridiculus etiam malesuada. Luctus inceptos dictumst pede commodo donec bibendum blandit. Egestas molestie litora pulvinar justo quam porta pede bibendum consectetur. Efficitur suspendisse cubilia nibh turpis egestas montes sed.'
+        - "Lorem ipsum dolor sit amet suspendisse consectetur sociosqu dapibus ridiculus etiam malesuada. Luctus inceptos dictumst pede commodo donec bibendum blandit. Egestas molestie litora pulvinar justo quam porta pede bibendum consectetur. Efficitur suspendisse cubilia nibh turpis egestas montes sed."
     layout:
       type: string
       title: Layout
@@ -44,7 +44,7 @@ props:
       enum:
         - media-first
         - media-last
-      default: 'media-first'
+      default: "media-first"
       examples:
-        - 'media-first'
-        - 'media-last'
+        - "media-first"
+        - "media-last"

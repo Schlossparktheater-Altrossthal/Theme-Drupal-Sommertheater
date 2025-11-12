@@ -21,7 +21,7 @@ group: Navigation
 # Override components provided by other themes or modules. The format
 # is <module-or-theme-machineName>:<component-machineName>. Note that
 # only themes can override components. This will not work in modules.
-replaces: 'sdc_module_test:my-component'
+replaces: "sdc_module_test:my-component"
 
 # Schema for the props. We support JSON Schema. Learn more about the
 # syntax at https://json-schema.org
@@ -63,13 +63,13 @@ props:
       # Provide a default value. It isn't used in Twig template.
       default: success
     quaternary:
-      type: ['string', 'null']
+      type: ["string", "null"]
       title: Quaternary
       # Allow string or null.
       enum:
-        - 'One'
-        - 'Two'
-        - 'Three'
+        - "One"
+        - "Two"
+        - "Three"
         - null
 
 # Slots always hold arbitrary markup. We know that beforehand, so no need

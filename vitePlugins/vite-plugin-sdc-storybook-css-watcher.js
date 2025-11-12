@@ -30,9 +30,7 @@ export default function sdcCssWatcher(options = {}) {
 
   const regenerateComponentCSS = (componentPath) => {
     const cssFiles = glob.sync("components/**/*.tailwind.css");
-    const imports = cssFiles
-      .map((file) => `@import '../../../${file}';`)
-      .join("\n");
+    const imports = cssFiles.map((file) => `@import '../../../${file}';`).join("\n");
     fs.writeFileSync("./src/stories/sdc-stories/components.css", imports);
   };
 
@@ -42,9 +40,7 @@ export default function sdcCssWatcher(options = {}) {
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig;
       // Find the story generator plugin.
-      storyGeneratorPlugin = viteConfig.plugins.find(
-        (p) => p.name === "vite-plugin-storybook-generator"
-      );
+      storyGeneratorPlugin = viteConfig.plugins.find((p) => p.name === "vite-plugin-storybook-generator");
     },
 
     buildStart() {
@@ -86,10 +82,7 @@ export default function sdcCssWatcher(options = {}) {
           regenerateComponentCSS(filePath);
 
           // Trigger story regeneration for this component.
-          if (
-            storyGeneratorPlugin &&
-            storyGeneratorPlugin.generateStoryForComponent
-          ) {
+          if (storyGeneratorPlugin && storyGeneratorPlugin.generateStoryForComponent) {
             storyGeneratorPlugin.generateStoryForComponent(componentDir);
           }
         }

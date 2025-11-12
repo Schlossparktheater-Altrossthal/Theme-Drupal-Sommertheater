@@ -2,7 +2,7 @@
 @layer properties;
 @layer components {
   .heading {
-    font-family: var(--hg-font-display, 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif);
+    font-family: var(--hg-font-display, "Inter", -apple-system, "Segoe UI", Arial, sans-serif);
     --tw-leading: 1.2;
     line-height: 1.2;
     --tw-tracking: var(--hg-tracking-normal, 0em);
@@ -51,8 +51,11 @@
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-leading: initial;
       --tw-tracking: initial;
       --tw-font-weight: initial;

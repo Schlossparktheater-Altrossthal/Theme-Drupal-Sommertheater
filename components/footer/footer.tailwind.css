@@ -3,7 +3,7 @@
 @layer components {
   .site-footer {
     .menu {
-      @apply hg:list-none hg:gap-x-4 hg:gap-y-1 hg:flex hg:flex-row hg:flex-wrap hg:p-0;
+      @apply hg:flex hg:list-none hg:flex-row hg:flex-wrap hg:gap-x-4 hg:gap-y-1 hg:p-0;
 
       .menu-item {
         @apply hg:leading-tight;
@@ -32,17 +32,16 @@
     }
 
     .block-webform {
-      @apply hg:md:flex hg:w-full hg:justify-items-end;
+      @apply hg:w-full hg:justify-items-end hg:md:flex;
     }
 
     .menu {
-
       .menu-item {
-        @apply hg:text-xs hg:md:text-sm hg:leading-tight;
+        @apply hg:text-xs hg:leading-tight hg:md:text-sm;
       }
 
       .menu-item a {
-        @apply hg:text-xs hg:md:text-sm hg:leading-tight hg:hover:underline;
+        @apply hg:text-xs hg:leading-tight hg:hover:underline hg:md:text-sm;
         color: var(--hgc-menu-link-color);
 
         &:hover,
@@ -56,7 +55,7 @@
   .site-footer--bottom {
     .menu .menu-item a,
     .rich-text p {
-      @apply hg:text-xs hg:my-0;
+      @apply hg:my-0 hg:text-xs;
     }
   }
 }

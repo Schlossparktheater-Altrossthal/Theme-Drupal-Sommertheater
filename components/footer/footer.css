@@ -23,7 +23,8 @@
           }
         }
         color: var(--hgc-menu-link-color);
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           color: var(--hgc-menu-link-color-hover);
         }
       }
@@ -32,7 +33,8 @@
   .site-footer--top {
     .branding {
       height: calc(var(--hg-spacing, 4px) * 5);
-      svg, img[src$=".svg"] {
+      svg,
+      img[src$=".svg"] {
         height: auto !important;
         max-height: 100%;
       }
@@ -70,14 +72,16 @@
           line-height: var(--tw-leading, var(--hg-text-sm--line-height, 1.5));
         }
         color: var(--hgc-menu-link-color);
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           color: var(--hgc-menu-link-color-hover);
         }
       }
     }
   }
   .site-footer--bottom {
-    .menu .menu-item a, .rich-text p {
+    .menu .menu-item a,
+    .rich-text p {
       margin-block: calc(var(--hg-spacing, 4px) * 0);
       font-size: var(--hg-text-xs, 0.75rem);
       line-height: var(--tw-leading, var(--hg-text-xs--line-height, 1.5));
@@ -89,8 +93,11 @@
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-leading: initial;
     }
   }

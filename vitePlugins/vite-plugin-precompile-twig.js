@@ -1,8 +1,8 @@
 // plugins/vite-plugin-precompile-twig.js
-import { readdirSync, readFileSync, existsSync } from 'fs';
-import { resolve, relative, dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import getComponentReferences from './twingCustoms/getComponentReferences';
+import { readdirSync, readFileSync, existsSync } from "fs";
+import { resolve, relative, dirname, join } from "path";
+import { fileURLToPath } from "url";
+import getComponentReferences from "./twingCustoms/getComponentReferences";
 
 // Get current file directory.
 const __filename = fileURLToPath(import.meta.url);
@@ -19,9 +19,7 @@ function resolveNamespacePaths(namespaces, cwd) {
 
   Object.entries(namespaces).forEach(([namespace, paths]) => {
     const pathsArray = Array.isArray(paths) ? paths : [paths];
-    resolvedNamespaces[namespace] = pathsArray.map((path) =>
-      resolve(cwd, path)
-    );
+    resolvedNamespaces[namespace] = pathsArray.map((path) => resolve(cwd, path));
   });
 
   return resolvedNamespaces;
@@ -34,9 +32,7 @@ function resolveNamespacePaths(namespaces, cwd) {
  * @returns {Array} - Array of resolved template directory paths
  */
 function getTemplateDirPaths(namespaces, cwd) {
-  const templateDirs = Object.values(namespaces)?.flatMap((namespace) =>
-    Array.isArray(namespace) ? namespace : [namespace]
-  );
+  const templateDirs = Object.values(namespaces)?.flatMap((namespace) => (Array.isArray(namespace) ? namespace : [namespace]));
 
   return templateDirs.map((dir) => resolve(cwd, dir));
 }
@@ -48,7 +44,7 @@ function getTemplateDirPaths(namespaces, cwd) {
  * @param {string} prefix - Prefix for template paths
  * @returns {Object} - Map of template paths to content
  */
-function collectTemplatesFromDirectory(dir, filemap = {}, prefix = '') {
+function collectTemplatesFromDirectory(dir, filemap = {}, prefix = "") {
   try {
     const entries = readdirSync(dir, { withFileTypes: true });
 
@@ -56,14 +52,10 @@ function collectTemplatesFromDirectory(dir, filemap = {}, prefix = '') {
       const full = resolve(dir, entry.name);
 
       if (entry.isDirectory()) {
-        collectTemplatesFromDirectory(
-          full,
-          filemap,
-          prefix ? `${prefix}/${entry.name}` : entry.name
-        );
+        collectTemplatesFromDirectory(full, filemap, prefix ? `${prefix}/${entry.name}` : entry.name);
       } else if (entry.isFile() && /\.twig$/.test(entry.name)) {
         const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
-        filemap[relativePath] = readFileSync(full, 'utf8');
+        filemap[relativePath] = readFileSync(full, "utf8");
       }
     }
   } catch (err) {
@@ -88,9 +80,7 @@ function loadTemplatesFromDirectories(templateDirPaths) {
         templates[path] = content;
       });
     } catch (err) {
-      console.error(
-        `Error loading templates from directory "${dirPath}": ${err.message}`
-      );
+      console.error(`Error loading templates from directory "${dirPath}": ${err.message}`);
     }
   });
 
@@ -113,9 +103,7 @@ function loadTemplatesFromNamespaces(resolvedNamespaces) {
           templates[`@${namespace}/${path}`] = content;
         });
       } catch (err) {
-        console.error(
-          `Error loading templates from namespace "${namespace}" directory "${dir}": ${err.message}`
-        );
+        console.error(`Error loading templates from namespace "${namespace}" directory "${dir}": ${err.message}`);
       }
     });
   });
@@ -144,24 +132,24 @@ function loadAllTemplates(templateDirPaths, resolvedNamespaces) {
  * @returns {Object|null} - Resolved template or null
  */
 function resolveNamespacedTemplate(path, resolvedNamespaces, templateSources) {
-  if (!path.startsWith('@')) {
+  if (!path.startsWith("@")) {
     return null;
   }
 
-  const [, namespace, ...rest] = path.split('/');
+  const [, namespace, ...rest] = path.split("/");
   const namespacePaths = resolvedNamespaces[namespace];
 
   if (!namespacePaths) {
     return null;
   }
 
-  const relativePath = rest.join('/');
+  const relativePath = rest.join("/");
 
   for (const dir of namespacePaths) {
     const fullPath = resolve(dir, relativePath);
     if (existsSync(fullPath)) {
       const key = `@${namespace}/${relativePath}`;
-      const content = readFileSync(fullPath, 'utf8');
+      const content = readFileSync(fullPath, "utf8");
       templateSources[key] = content;
       return { key, content };
     }
@@ -182,7 +170,7 @@ function resolveFromTemplateDirs(path, templateDirPaths, templateSources) {
     const fullPath = resolve(dirPath, path);
     if (existsSync(fullPath)) {
       const key = path;
-      const content = readFileSync(fullPath, 'utf8');
+      const content = readFileSync(fullPath, "utf8");
       templateSources[key] = content;
       return { key, content };
     }
@@ -199,12 +187,7 @@ function resolveFromTemplateDirs(path, templateDirPaths, templateSources) {
  * @param {Object} templateSources - Template cache
  * @returns {Object|null} - Resolved template or null
  */
-function resolveAbsolutePath(
-  path,
-  templateDirPaths,
-  resolvedNamespaces,
-  templateSources
-) {
+function resolveAbsolutePath(path, templateDirPaths, resolvedNamespaces, templateSources) {
   if (!existsSync(path)) {
     return null;
   }
@@ -212,8 +195,8 @@ function resolveAbsolutePath(
   // Check template directories
   for (const dirPath of templateDirPaths) {
     if (path.startsWith(dirPath)) {
-      const relativePath = relative(dirPath, path).replace(/\\/g, '/');
-      const content = readFileSync(path, 'utf8');
+      const relativePath = relative(dirPath, path).replace(/\\/g, "/");
+      const content = readFileSync(path, "utf8");
       templateSources[relativePath] = content;
       return { key: relativePath, content };
     }
@@ -223,9 +206,9 @@ function resolveAbsolutePath(
   for (const [namespace, dirPaths] of Object.entries(resolvedNamespaces)) {
     for (const dir of dirPaths) {
       if (path.startsWith(dir)) {
-        const relativePath = relative(dir, path).replace(/\\/g, '/');
+        const relativePath = relative(dir, path).replace(/\\/g, "/");
         const key = `@${namespace}/${relativePath}`;
-        const content = readFileSync(path, 'utf8');
+        const content = readFileSync(path, "utf8");
         templateSources[key] = content;
         return { key, content };
       }
@@ -233,7 +216,7 @@ function resolveAbsolutePath(
   }
 
   // Use as is if not under any managed directory
-  const content = readFileSync(path, 'utf8');
+  const content = readFileSync(path, "utf8");
   templateSources[path] = content;
   return { key: path, content };
 }
@@ -245,9 +228,7 @@ function resolveAbsolutePath(
  * @returns {Object|null} - Resolved template or null
  */
 function resolveByTemplateKey(path, templateSources) {
-  const key = Object.keys(templateSources).find((k) =>
-    k.endsWith(path.replace(/\\/g, '/'))
-  );
+  const key = Object.keys(templateSources).find((k) => k.endsWith(path.replace(/\\/g, "/")));
 
   if (key) {
     return { key, content: templateSources[key] };
@@ -263,32 +244,20 @@ function resolveByTemplateKey(path, templateSources) {
  * @param {Object} templateSources - Template cache
  * @returns {Function} - Template resolver function
  */
-function createTemplateResolver(
-  templateDirPaths,
-  resolvedNamespaces,
-  templateSources
-) {
+function createTemplateResolver(templateDirPaths, resolvedNamespaces, templateSources) {
   return function resolveTemplate(path) {
     // Try namespaced path first
-    const namespacedResult = resolveNamespacedTemplate(
-      path,
-      resolvedNamespaces,
-      templateSources
-    );
+    const namespacedResult = resolveNamespacedTemplate(path, resolvedNamespaces, templateSources);
     if (namespacedResult) return namespacedResult;
 
     // Try template directories
-    const templateDirResult = resolveFromTemplateDirs(
-      path,
-      templateDirPaths,
-      templateSources
-    );
+    const templateDirResult = resolveFromTemplateDirs(path, templateDirPaths, templateSources);
     if (templateDirResult) return templateDirResult;
 
     // Try relative paths within template directories
     for (const dirPath of templateDirPaths) {
       if (path.startsWith(dirPath)) {
-        const relativePath = relative(dirPath, path).replace(/\\/g, '/');
+        const relativePath = relative(dirPath, path).replace(/\\/g, "/");
         if (templateSources[relativePath]) {
           return { key: relativePath, content: templateSources[relativePath] };
         }
@@ -296,26 +265,21 @@ function createTemplateResolver(
     }
 
     // Try absolute path
-    const absoluteResult = resolveAbsolutePath(
-      path,
-      templateDirPaths,
-      resolvedNamespaces,
-      templateSources
-    );
+    const absoluteResult = resolveAbsolutePath(path, templateDirPaths, resolvedNamespaces, templateSources);
     if (absoluteResult) return absoluteResult;
 
     // Try namespace directories with direct paths
     for (const [namespace, dirPaths] of Object.entries(resolvedNamespaces)) {
       for (const dir of dirPaths) {
         if (path.startsWith(dir)) {
-          const relativePath = relative(dir, path).replace(/\\/g, '/');
+          const relativePath = relative(dir, path).replace(/\\/g, "/");
           const key = `@${namespace}/${relativePath}`;
           if (templateSources[key]) {
             return { key, content: templateSources[key] };
           }
 
           if (existsSync(path)) {
-            const content = readFileSync(path, 'utf8');
+            const content = readFileSync(path, "utf8");
             templateSources[key] = content;
             return { key, content };
           }
@@ -323,7 +287,7 @@ function createTemplateResolver(
 
         const fullPath = resolve(dir, path);
         if (existsSync(fullPath)) {
-          const content = readFileSync(fullPath, 'utf8');
+          const content = readFileSync(fullPath, "utf8");
           const key = `@${namespace}/${path}`;
           templateSources[key] = content;
           return { key, content };
@@ -346,33 +310,18 @@ function createTemplateResolver(
  */
 function generateModuleContent(key, templateSources, resolvedNamespaces, cwd) {
   const allSourcesString = Object.entries(templateSources)
-    .map(
-      ([templateKey, templateContent]) =>
-        `'${templateKey}': ${JSON.stringify(templateContent)}`
-    )
-    .join(',\n    ');
+    .map(([templateKey, templateContent]) => `'${templateKey}': ${JSON.stringify(templateContent)}`)
+    .join(",\n    ");
 
   const twingNamespacesString = Object.keys(resolvedNamespaces)
-    .map(
-      (namespace) =>
-        `'${namespace}': ${JSON.stringify(resolvedNamespaces[namespace])}`
-    )
-    .join(',\n    ');
+    .map((namespace) => `'${namespace}': ${JSON.stringify(resolvedNamespaces[namespace])}`)
+    .join(",\n    ");
 
   return `
     import { createArrayLoader, createEnvironment } from 'twing';
-    import createSDCLoader from '/${relative(
-      cwd,
-      resolve(__dirname, './twingCustoms/createSDCLoader.js')
-    )}';
-    import functions from '/${relative(
-      cwd,
-      resolve(__dirname, './twingCustoms/functions.js')
-    )}';
-    import filters from '/${relative(
-      cwd,
-      resolve(__dirname, './twingCustoms/filters.js')
-    )}';
+    import createSDCLoader from '/${relative(cwd, resolve(__dirname, "./twingCustoms/createSDCLoader.js"))}';
+    import functions from '/${relative(cwd, resolve(__dirname, "./twingCustoms/functions.js"))}';
+    import filters from '/${relative(cwd, resolve(__dirname, "./twingCustoms/filters.js"))}';
 
     // Include all templates, including namespaced ones.
     const allSources = {
@@ -417,11 +366,7 @@ function generateModuleContent(key, templateSources, resolvedNamespaces, cwd) {
  * @param {Object} templateSources - Template cache
  * @returns {Object} - HMR helper functions
  */
-function createHMRHelpers(
-  resolveTemplate,
-  resolvedNamespaces,
-  templateSources
-) {
+function createHMRHelpers(resolveTemplate, resolvedNamespaces, templateSources) {
   function resolveTemplateWithErrorHandling(filePath) {
     try {
       const resolved = resolveTemplate(filePath);
@@ -431,9 +376,7 @@ function createHMRHelpers(
       }
       return resolved;
     } catch (error) {
-      console.error(
-        `[HMR] Error resolving template ${filePath}: ${error.message}`
-      );
+      console.error(`[HMR] Error resolving template ${filePath}: ${error.message}`);
       return null;
     }
   }
@@ -449,10 +392,8 @@ function createHMRHelpers(
 
   function updateTemplateCache(templates) {
     templates.forEach((template) => {
-      const componentUpdated = template.key.split('/').pop();
-      const templateSourcesAffected = Object.keys(templateSources).filter(
-        (key) => key.endsWith(componentUpdated)
-      );
+      const componentUpdated = template.key.split("/").pop();
+      const templateSourcesAffected = Object.keys(templateSources).filter((key) => key.endsWith(componentUpdated));
 
       templateSourcesAffected.forEach((key) => {
         templateSources[key] = template.content;
@@ -470,10 +411,7 @@ function createHMRHelpers(
     for (const moduleId of server.moduleGraph.idToModuleMap.keys()) {
       const module = server.moduleGraph.getModuleById(moduleId);
 
-      if (
-        isModuleAffectedByTemplates(module, templateKeys, referencingFiles) &&
-        !seenModuleIds.has(moduleId)
-      ) {
+      if (isModuleAffectedByTemplates(module, templateKeys, referencingFiles) && !seenModuleIds.has(moduleId)) {
         affectedModules.push(module);
         seenModuleIds.add(moduleId);
       }
@@ -482,11 +420,8 @@ function createHMRHelpers(
   }
 
   function isModuleAffectedByTemplates(module, templateKeys, referencingFiles) {
-    if (module && module.file && module.file.endsWith('.twig')) {
-      return (
-        referencingFiles.flat().some((file) => file.endsWith(module.file)) ||
-        templateKeys.some((key) => key.endsWith(module.file))
-      );
+    if (module && module.file && module.file.endsWith(".twig")) {
+      return referencingFiles.flat().some((file) => file.endsWith(module.file)) || templateKeys.some((key) => key.endsWith(module.file));
     }
 
     return false;
@@ -509,49 +444,36 @@ function createHMRHelpers(
 export default function precompileTwigPlugin(options = {}) {
   const { include = /\.twig(\?.*)?$/, namespaces = {} } = options;
 
-  const cwd = typeof process !== 'undefined' ? process.cwd() : '.';
+  const cwd = typeof process !== "undefined" ? process.cwd() : ".";
 
   // Initialize paths and templates
   const templateDirPaths = getTemplateDirPaths(namespaces, cwd);
   const resolvedNamespaces = resolveNamespacePaths(namespaces, cwd);
-  const templateSources = loadAllTemplates(
-    templateDirPaths,
-    resolvedNamespaces
-  );
+  const templateSources = loadAllTemplates(templateDirPaths, resolvedNamespaces);
 
   // Create resolver and HMR helpers
-  const resolveTemplate = createTemplateResolver(
-    templateDirPaths,
-    resolvedNamespaces,
-    templateSources
-  );
+  const resolveTemplate = createTemplateResolver(templateDirPaths, resolvedNamespaces, templateSources);
   const templateToModuleMap = new Map();
-  const hmrHelpers = createHMRHelpers(
-    resolveTemplate,
-    resolvedNamespaces,
-    templateSources
-  );
+  const hmrHelpers = createHMRHelpers(resolveTemplate, resolvedNamespaces, templateSources);
 
   return {
-    name: 'vite-plugin-precompile-twig',
-    enforce: 'pre',
+    name: "vite-plugin-precompile-twig",
+    enforce: "pre",
 
     resolveId(importee) {
       return include.test(importee) ? importee : null;
     },
 
     load(id) {
-      const clean = id.split('?')[0];
+      const clean = id.split("?")[0];
       if (!include.test(clean)) return null;
 
       const resolved = resolveTemplate(clean);
 
       if (!resolved) {
         console.error(`Cannot find template: ${clean}`);
-        console.error(
-          `Available templates: ${Object.keys(templateSources).join(', ')}`
-        );
-        console.error(`Template directories: ${templateDirPaths.join(', ')}`);
+        console.error(`Available templates: ${Object.keys(templateSources).join(", ")}`);
+        console.error(`Template directories: ${templateDirPaths.join(", ")}`);
         console.error(`Namespaces: ${JSON.stringify(resolvedNamespaces)}`);
         this.error(`Cannot find template: ${clean}`);
       }
@@ -564,16 +486,11 @@ export default function precompileTwigPlugin(options = {}) {
       }
       templateToModuleMap.get(key).add(id);
 
-      return generateModuleContent(
-        key,
-        templateSources,
-        resolvedNamespaces,
-        cwd
-      );
+      return generateModuleContent(key, templateSources, resolvedNamespaces, cwd);
     },
 
     handleHotUpdate({ file, server }) {
-      if (!file.endsWith('.twig')) {
+      if (!file.endsWith(".twig")) {
         return;
       }
 
@@ -588,16 +505,11 @@ export default function precompileTwigPlugin(options = {}) {
         hmrHelpers.updateTemplateCache(templatesToUpdate);
 
         const templateKeys = templatesToUpdate.map((template) => template.key);
-        const affectedModules = hmrHelpers.findAffectedModules(
-          server,
-          templateKeys
-        );
+        const affectedModules = hmrHelpers.findAffectedModules(server, templateKeys);
 
         return affectedModules;
       } catch (error) {
-        console.error(
-          `[HMR] Error processing template update for ${file}: ${error.message}`
-        );
+        console.error(`[HMR] Error processing template update for ${file}: ${error.message}`);
         return [];
       }
     },

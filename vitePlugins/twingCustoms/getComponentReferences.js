@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 /**
  * Get all components that reference the given component files (reverse dependency search)
@@ -7,10 +7,7 @@ import path from 'path';
  * @param {Array} targetComponentFiles - Array of component file paths to find references to
  * @returns {Array} Array of file paths that reference the target components
  */
-export default function getComponentReferences(
-  namespaces,
-  targetComponentFiles
-) {
+export default function getComponentReferences(namespaces, targetComponentFiles) {
   // Convert target files to their namespaced references
   const getNamespacedReference = (filePath) => {
     // Handle absolute paths by checking if they belong to any namespace
@@ -19,9 +16,7 @@ export default function getComponentReferences(
         for (const namespacePath of Array.isArray(paths) ? paths : [paths]) {
           // Check if the absolute path is within this namespace directory
           if (filePath.startsWith(namespacePath)) {
-            const relativePath = path
-              .relative(namespacePath, filePath)
-              .replace(/\\/g, '/');
+            const relativePath = path.relative(namespacePath, filePath).replace(/\\/g, "/");
             return `@${namespace}/${relativePath}`;
           }
         }
@@ -29,7 +24,7 @@ export default function getComponentReferences(
     }
 
     // If already namespaced, return as is
-    if (filePath.startsWith('@')) {
+    if (filePath.startsWith("@")) {
       return filePath;
     }
 
@@ -47,7 +42,7 @@ export default function getComponentReferences(
         const fullPath = path.join(dir, entry.name);
         if (entry.isDirectory()) {
           walkDirectory(fullPath, fileList);
-        } else if (entry.isFile() && entry.name.endsWith('.twig')) {
+        } else if (entry.isFile() && entry.name.endsWith(".twig")) {
           fileList.push(fullPath);
         }
       }
@@ -89,8 +84,8 @@ export default function getComponentReferences(
       while ((match = pattern.exec(content)) !== null) {
         const ref = match[1];
         // Convert mercury: format to @mercury format
-        if (ref.startsWith('mercury:')) {
-          const componentName = ref.replace('mercury:', '');
+        if (ref.startsWith("mercury:")) {
+          const componentName = ref.replace("mercury:", "");
           matches.push(`@mercury/components/${componentName}/${componentName}.twig`);
         } else {
           matches.push(ref);
@@ -108,13 +103,11 @@ export default function getComponentReferences(
 
     allTwigFiles.forEach((filePath) => {
       try {
-        const content = fs.readFileSync(filePath, 'utf8');
+        const content = fs.readFileSync(filePath, "utf8");
         const references = extractReferences(content);
 
         // Check if any of the references match our target components
-        const hasTargetReference = references.some((ref) =>
-          targetReferences.includes(ref)
-        );
+        const hasTargetReference = references.some((ref) => targetReferences.includes(ref));
 
         if (hasTargetReference) {
           // Convert absolute path back to namespaced reference for consistency
@@ -122,15 +115,11 @@ export default function getComponentReferences(
           referencingFiles.push({
             file: filePath,
             namespacedPath,
-            references: references.filter((ref) =>
-              targetReferences.includes(ref)
-            ),
+            references: references.filter((ref) => targetReferences.includes(ref)),
           });
         }
       } catch (error) {
-        console.warn(
-          `Warning: Could not process file ${filePath}: ${error.message}`
-        );
+        console.warn(`Warning: Could not process file ${filePath}: ${error.message}`);
       }
     });
 

@@ -7,26 +7,26 @@
  * component assets and libraries directly to the storybook-static directory.
  */
 
-console.log('Starting post-Storybook build step...');
+console.log("Starting post-Storybook build step...");
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import { glob } from 'glob';
+import { promises as fs } from "fs";
+import path from "path";
+import { glob } from "glob";
 
 async function run() {
   try {
-    console.log('Copying component assets to storybook-static folder...');
+    console.log("Copying component assets to storybook-static folder...");
 
     // Create storybook-static/components directory if it doesn't exist
-    const staticComponentsDir = path.resolve('./storybook-static/components');
+    const staticComponentsDir = path.resolve("./storybook-static/components");
     await fs.mkdir(staticComponentsDir, { recursive: true });
 
     // Copy lib folder to storybook-static directory
     await copyLibFolder();
 
     // Get all component directories
-    const componentDirs = await glob('./components/*/', {
-      ignore: ['node_modules/**'],
+    const componentDirs = await glob("./components/*/", {
+      ignore: ["node_modules/**"],
     });
 
     // Process each component directory
@@ -38,7 +38,7 @@ async function run() {
       let componentDestDirCreated = false;
 
       // Check if the component has an assets directory
-      const assetsDir = path.join(componentDir, 'assets');
+      const assetsDir = path.join(componentDir, "assets");
       let hasAssets = false;
 
       try {
@@ -50,7 +50,7 @@ async function run() {
 
       if (hasAssets) {
         // Create destination directory in storybook-static folder
-        const destDir = path.join(staticComponentsDir, componentName, 'assets');
+        const destDir = path.join(staticComponentsDir, componentName, "assets");
         await fs.mkdir(destDir, { recursive: true });
         componentDestDirCreated = true;
 
@@ -73,17 +73,14 @@ async function run() {
       }
 
       // Check for JavaScript files in component directory
-      const jsFiles = await glob(path.join(componentDir, '*.js'), {
+      const jsFiles = await glob(path.join(componentDir, "*.js"), {
         nodir: true,
       });
 
       if (jsFiles.length > 0) {
         // Create component destination directory if not already created
         if (!componentDestDirCreated) {
-          const componentDestDir = path.join(
-            staticComponentsDir,
-            componentName
-          );
+          const componentDestDir = path.join(staticComponentsDir, componentName);
           await fs.mkdir(componentDestDir, { recursive: true });
         }
 
@@ -100,9 +97,9 @@ async function run() {
       }
     }
 
-    console.log('Post-Storybook build step completed successfully!');
+    console.log("Post-Storybook build step completed successfully!");
   } catch (error) {
-    console.error('Error in post-Storybook build step:', error);
+    console.error("Error in post-Storybook build step:", error);
     process.exit(1);
   }
 }
@@ -112,17 +109,17 @@ async function run() {
  */
 async function copyLibFolder() {
   try {
-    const libDir = path.resolve('./lib');
-    const staticLibDir = path.resolve('./storybook-static/lib');
+    const libDir = path.resolve("./lib");
+    const staticLibDir = path.resolve("./storybook-static/lib");
 
     // Check if lib directory exists
     const libStat = await fs.stat(libDir);
     if (!libStat.isDirectory()) {
-      console.log('lib directory not found, skipping...');
+      console.log("lib directory not found, skipping...");
       return;
     }
 
-    console.log('Copying lib folder to storybook-static directory...');
+    console.log("Copying lib folder to storybook-static directory...");
 
     // Create storybook-static/lib directory
     await fs.mkdir(staticLibDir, { recursive: true });
@@ -145,12 +142,12 @@ async function copyLibFolder() {
       console.log(`Copied lib file: ${libFile} -> ${destPath}`);
     }
 
-    console.log('lib folder copied successfully!');
+    console.log("lib folder copied successfully!");
   } catch (error) {
-    if (error.code === 'ENOENT') {
-      console.log('lib directory not found, skipping...');
+    if (error.code === "ENOENT") {
+      console.log("lib directory not found, skipping...");
     } else {
-      console.error('Error copying lib folder:', error);
+      console.error("Error copying lib folder:", error);
       throw error;
     }
   }

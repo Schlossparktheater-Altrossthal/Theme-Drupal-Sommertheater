@@ -1,18 +1,36 @@
 {% set has_url = url is not empty and url != 'No URL' %}
 
-{% set heading_classes = heading_classes|default([])|merge([
-    'heading',
-    'hg:text-' ~ align,
-    has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
-    font_color,
-])|filter(v => v is not empty) %}
+{% set heading_classes =
+  heading_classes
+    |default([])
+    |merge(['heading', 'hg:text-' ~ align, has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '', font_color])
+    |filter(v => v is not empty)
+%}
 
 {% set level = level|default(2) %}
 
-<h{{ level }} class="{{ heading_classes|join(' ') }} {{ font_size == 'default' ? '' : font_size }}">
+{% set heading_content %}
   {% if has_url %}
     <a href="{{ url }}">{{ heading_text }}</a>
   {% else %}
     {{ heading_text }}
   {% endif %}
-</h{{ level }}>
+{% endset %}
+
+{% set heading_class_attr = (heading_classes|join(' ')) ~ ' ' ~ (font_size == 'default' ? '' : font_size) %}
+
+{% if level == 1 %}
+  <h1 class="{{ heading_class_attr }}">{{ heading_content }}</h1>
+{% elseif level == 2 %}
+  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+{% elseif level == 3 %}
+  <h3 class="{{ heading_class_attr }}">{{ heading_content }}</h3>
+{% elseif level == 4 %}
+  <h4 class="{{ heading_class_attr }}">{{ heading_content }}</h4>
+{% elseif level == 5 %}
+  <h5 class="{{ heading_class_attr }}">{{ heading_content }}</h5>
+{% elseif level == 6 %}
+  <h6 class="{{ heading_class_attr }}">{{ heading_content }}</h6>
+{% else %}
+  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+{% endif %}

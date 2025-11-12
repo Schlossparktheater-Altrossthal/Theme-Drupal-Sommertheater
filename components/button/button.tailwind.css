@@ -5,19 +5,19 @@ button.button {
 }
 
 .button {
-  @apply hg:font-medium hg:leading-tight hg:bg-(--hgc-btn-bg) hg:text-(--hgc-btn-label) hg:border-(--hgc-btn-border);
+  @apply hg:border-(--hgc-btn-border) hg:bg-(--hgc-btn-bg) hg:leading-tight hg:font-medium hg:text-(--hgc-btn-label);
 
   &:hover,
   &:focus {
-    @apply hg:bg-(--hgc-btn-bg-hover) hg:text-(--hgc-btn-label-hover) hg:border-(--hgc-btn-border-hover);
+    @apply hg:border-(--hgc-btn-border-hover) hg:bg-(--hgc-btn-bg-hover) hg:text-(--hgc-btn-label-hover);
   }
 
   &:disabled {
-    @apply hg:cursor-default hg:bg-(--hgc-btn-bg-disabled) hg:text-(--hgc-btn-label-disabled) hg:border-(--hgc-btn-border-disabled);
+    @apply hg:cursor-default hg:border-(--hgc-btn-border-disabled) hg:bg-(--hgc-btn-bg-disabled) hg:text-(--hgc-btn-label-disabled);
   }
 
   &.small .ph-bold {
-    @apply hg:w-4 hg:h-4;
+    @apply hg:h-4 hg:w-4;
   }
 
   &.medium .ph-bold {
@@ -42,7 +42,7 @@ button.button {
   --hgc-btn-bg: var(--hgc-btn-secondary-bg);
   --hgc-btn-border: var(--hgc-btn-secondary-border);
   --hgc-btn-label: var(--hgc-btn-secondary-label);
-  --hgc-btn-bg-hover:  var(--hgc-btn-secondary-bg-hover);
+  --hgc-btn-bg-hover: var(--hgc-btn-secondary-bg-hover);
   --hgc-btn-border-hover: var(--hgc-btn-secondary-border-hover);
   --hgc-btn-label-hover: var(--hgc-btn-secondary-label-hover);
 
@@ -60,7 +60,7 @@ button.button {
   --hgc-btn-bg: var(--hgc-btn-negative-bg);
   --hgc-btn-border: var(--hgc-btn-negative-border);
   --hgc-btn-label: var(--hgc-btn-negative-label);
-  --hgc-btn-bg-hover:  var(--hgc-btn-negative-bg-hover);
+  --hgc-btn-bg-hover: var(--hgc-btn-negative-bg-hover);
   --hgc-btn-border-hover: var(--hgc-btn-negative-border-hover);
   --hgc-btn-label-hover: var(--hgc-btn-negative-label-hover);
 

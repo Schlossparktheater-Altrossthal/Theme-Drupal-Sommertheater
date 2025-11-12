@@ -1,14 +1,16 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components {
   .footer-menu {
-    .parent-link, .below-link {
+    .parent-link,
+    .below-link {
       &:hover {
         @media (hover: hover) {
           text-decoration-line: underline;
         }
       }
       color: var(--hgc-menu-link-color);
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: var(--hgc-menu-link-color-hover);
       }
     }

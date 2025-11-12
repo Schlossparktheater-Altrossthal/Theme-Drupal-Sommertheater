@@ -4,13 +4,13 @@
 // 3) You can set the UI to use light or dark mode using the base value.
 // 4) Update the brandTitle, brandURL.
 // 5) Edit .storybook/manager.js to use your new file.
-import { create } from '@storybook/theming';
-import logo from '../static/images/logo-light.svg';
+import { create } from "@storybook/theming";
+import logo from "../static/images/logo-light.svg";
 
 export default create({
-  base: 'auto',
-  brandTitle: 'Mercury Drupal XB Design System',
-  brandUrl: '/',
+  base: "auto",
+  brandTitle: "Mercury Drupal XB Design System",
+  brandUrl: "/",
   brandImage: logo,
-  brandTarget: '_blank',
+  brandTarget: "_blank",
 });

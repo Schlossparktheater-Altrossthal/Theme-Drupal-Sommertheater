@@ -37,5 +37,5 @@
 }
 
 .badge-label {
-  @apply hg:font-sans hg:font-normal hg:text-sm hg:leading-none hg:text-inherit hg:select-none;
+  @apply hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none;
 }

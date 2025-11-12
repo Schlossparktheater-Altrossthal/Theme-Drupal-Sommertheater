@@ -3,14 +3,14 @@
  * Based on Twing's createArrayLoader with SDC-specific enhancements
  */
 
-import { createArrayLoader } from 'twing';
+import { createArrayLoader } from "twing";
 
 /**
  * Determines if a template name refers to an SDC component
  * @param {string} name - Template name to check
  * @returns {boolean} True if the template is an SDC component
  */
-const isSDC = (name) => name.includes('@') || name.includes('/');
+const isSDC = (name) => name.includes("@") || name.includes("/");
 
 /**
  * Resolves a template using namespace:template syntax
@@ -23,10 +23,7 @@ const getTemplateByColon = (templateParts, templates) => {
   const [namespace, templateName] = templateParts;
 
   // Find the first template that matches the namespace and template name pattern
-  const matchingEntry = Object.entries(templates).find(
-    ([key, _]) =>
-      key.startsWith(`@${namespace}`) && key.endsWith(`${templateName}.twig`)
-  );
+  const matchingEntry = Object.entries(templates).find(([key, _]) => key.startsWith(`@${namespace}`) && key.endsWith(`${templateName}.twig`));
 
   if (matchingEntry) {
     const [key, value] = matchingEntry;
@@ -37,9 +34,7 @@ const getTemplateByColon = (templateParts, templates) => {
     };
   }
 
-  throw new Error(
-    `Template "${templateName}" in namespace "${namespace}" does not exist.`
-  );
+  throw new Error(`Template "${templateName}" in namespace "${namespace}" does not exist.`);
 };
 
 /**
@@ -51,7 +46,7 @@ const getTemplateByColon = (templateParts, templates) => {
  * @returns {Object} A Twing loader with enhanced SDC functionality
  */
 
-export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
+export function createSDCLoader(templates, namespaces, name = "sdc-array") {
   // Get the base array loader
   const baseLoader = createArrayLoader(templates);
 
@@ -60,7 +55,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
     // Critical method to get source directly - required by Twing internals
     getSource: (name) => {
       // If baseLoader has getSource method, use it
-      if (typeof baseLoader.getSource === 'function' && !name.includes(':')) {
+      if (typeof baseLoader.getSource === "function" && !name.includes(":")) {
         return baseLoader.getSource(name);
       }
 
@@ -73,7 +68,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
         };
       }
 
-      return getTemplateByColon(name.split(':'), templates);
+      return getTemplateByColon(name.split(":"), templates);
     },
 
     // Forward other methods directly to the base loader
@@ -96,7 +91,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
     // Add the critical resolve method
     resolve: (name, from = null) => {
       // If baseLoader has resolve method, use it
-      if (typeof baseLoader.resolve === 'function') {
+      if (typeof baseLoader.resolve === "function") {
         return baseLoader.resolve(name, from);
       }
       // Otherwise provide basic resolution logic
@@ -113,9 +108,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
           throw new Error(`Template "${name}" does not exist.`);
         },
 
-    getPaths: baseLoader.getPaths
-      ? () => baseLoader.getPaths()
-      : () => Object.keys(templates),
+    getPaths: baseLoader.getPaths ? () => baseLoader.getPaths() : () => Object.keys(templates),
 
     // Add any methods from the original ArrayLoader that we might need
     addTemplates: (newTemplates) => {
@@ -123,7 +116,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
       Object.assign(templates, newTemplates);
 
       // If the base loader has this method, forward to it
-      if (typeof baseLoader.addTemplates === 'function') {
+      if (typeof baseLoader.addTemplates === "function") {
         baseLoader.addTemplates(newTemplates);
       }
     },
@@ -133,7 +126,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
       templates[name] = template;
 
       // If the base loader has this method, forward to it
-      if (typeof baseLoader.setTemplate === 'function') {
+      if (typeof baseLoader.setTemplate === "function") {
         baseLoader.setTemplate(name, template);
       }
     },
@@ -152,7 +145,7 @@ export function createSDCLoader(templates, namespaces, name = 'sdc-array') {
             const enhancedContext = {
               ...context,
               _sdc: {
-                componentName: name.split('/').pop().replace('.twig', ''),
+                componentName: name.split("/").pop().replace(".twig", ""),
                 isSDC: true,
                 loadedAt: new Date().toISOString(),
               },

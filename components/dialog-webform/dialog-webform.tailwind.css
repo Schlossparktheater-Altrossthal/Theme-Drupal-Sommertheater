@@ -24,7 +24,6 @@
   .webform-confirmation-modal .ui-dialog .ui-dialog-content,
   .ui-dialog[aria-describedby*="webform"] .ui-dialog-content,
   .ui-dialog[aria-labelledby*="webform"] .ui-dialog-content {
-    @apply hg:p-6 hg:bg-white;
+    @apply hg:bg-white hg:p-6;
   }
-
 }

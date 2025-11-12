@@ -3,15 +3,15 @@
 @layer components {
   /* Use Tailwind directive to set some baseline styles. */
   .heading {
-    @apply hg:font-display hg:tracking-normal hg:text-inherit hg:leading-[1.2];
+    @apply hg:font-display hg:leading-[1.2] hg:tracking-normal hg:text-inherit;
   }
 
   h1.heading {
-    @apply hg:font-(--hgc-font-weight-h1) hg:leading-none;
+    @apply hg:leading-none hg:font-(--hgc-font-weight-h1);
   }
 
   h2.heading {
-    @apply hg:font-(--hgc-font-weight-h2) hg:leading-none;
+    @apply hg:leading-none hg:font-(--hgc-font-weight-h2);
   }
 
   h3.heading {

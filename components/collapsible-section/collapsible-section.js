@@ -1,5 +1,5 @@
-import { ComponentType, ComponentInstance } from '../../lib/component.js';
-import currentlyInCanvasEditor from '../../lib/currentlyInCanvasEditor.js';
+import { ComponentType, ComponentInstance } from "../../lib/component.js";
+import currentlyInCanvasEditor from "../../lib/currentlyInCanvasEditor.js";
 
 class CollapsibleSection extends ComponentInstance {
   // An internal private property to keep up with the current state of the
@@ -7,8 +7,8 @@ class CollapsibleSection extends ComponentInstance {
   // of this file.
   #savedAsOpen;
 
-  static openClass = 'collapsible-section--open';
-  static animateClass = 'collapsible-section--animate';
+  static openClass = "collapsible-section--open";
+  static animateClass = "collapsible-section--animate";
 
   // Whether ancestor accordion containers should close other collapsibles when
   // this one is opened.
@@ -20,22 +20,22 @@ class CollapsibleSection extends ComponentInstance {
     }
 
     // Save our togglable classes for easy reference.
-    this.button = this.el.querySelector('.collapsible-section--title');
-    this.contentContainer = this.el.querySelector(
-      '.collapsible-section--content'
+    this.button = this.el.querySelector(".collapsible-section--title");
+    this.contentContainer = this.el.querySelector(".collapsible-section--content");
+    this.focusableDescendants = this.contentContainer.querySelectorAll(
+      ":is(input, select, textarea, button, object):not(:disabled), a:is([href]), [tabindex]",
     );
-    this.focusableDescendants = this.contentContainer.querySelectorAll(':is(input, select, textarea, button, object):not(:disabled), a:is([href]), [tabindex]');
 
     // Keep track of the starting tabindex for all focusable descendants, so we
     // can restore them after nuking them when the collapsible is closed.
-    this.focusableDescendants.forEach(el => {
+    this.focusableDescendants.forEach((el) => {
       el.tabIndex = el.tabIndex || 0;
       el.dataset.originalTabIndex = el.tabIndex;
     });
 
     // With the `set isOpen()` below, merely setting this property does all the
     // stuff necessary to open or close the collapsible.
-    this.isOpen = this.el.dataset.openByDefault === 'true';
+    this.isOpen = this.el.dataset.openByDefault === "true";
 
     // Figure out what height the content will be when open so we can smoothly
     // animate to it with CSS.
@@ -47,22 +47,22 @@ class CollapsibleSection extends ComponentInstance {
     // Remeasure the height on every (debounced) resize event.
     let timeout = 0;
 
-    window.addEventListener('resize', (e) => {
-      this.el.classList.add('collapsible-section--resizing');
+    window.addEventListener("resize", (e) => {
+      this.el.classList.add("collapsible-section--resizing");
       window.clearTimeout(timeout);
       timeout = window.setTimeout(() => {
         this.measureNaturalHeight();
-        this.el.classList.remove('collapsible-section--resizing');
+        this.el.classList.remove("collapsible-section--resizing");
       }, 350);
     });
 
     // Make the button work.
-    this.button.addEventListener('click', () => {
+    this.button.addEventListener("click", () => {
       // Toggle the collapsible.
       this.isOpen = !this.isOpen;
     });
 
-    this.el.classList.add('collapsible-section--js');
+    this.el.classList.add("collapsible-section--js");
     void this.el.offsetHeight;
     this.el.classList.add(CollapsibleSection.animateClass);
   }
@@ -85,10 +85,10 @@ class CollapsibleSection extends ComponentInstance {
       // First do all the DOM manipulation needed to actually open the
       // collapsible.
       this.el.classList.add(CollapsibleSection.openClass);
-      this.focusableDescendants.forEach(el => {
-        el.tabIndex = el.dataset.originalTabIndex
+      this.focusableDescendants.forEach((el) => {
+        el.tabIndex = el.dataset.originalTabIndex;
       });
-      this.button.setAttribute('aria-expanded', 'true');
+      this.button.setAttribute("aria-expanded", "true");
 
       // Then stash the current state in a simple private property with no
       // getters or setters involved.
@@ -97,15 +97,15 @@ class CollapsibleSection extends ComponentInstance {
       // Dispatch an event that any accordion container ancestors can use to
       // close other collapsibles.
       if (this.shouldDispatchEvents) {
-        this.el.dispatchEvent(new Event('collapsibleopen', { bubbles: true }));
+        this.el.dispatchEvent(new Event("collapsibleopen", { bubbles: true }));
       }
     } else {
       // DOM manipulation.
       this.el.classList.remove(CollapsibleSection.openClass);
-      this.focusableDescendants.forEach(el => {
+      this.focusableDescendants.forEach((el) => {
         el.tabIndex = -1;
       });
-      this.button.setAttribute('aria-expanded', 'false');
+      this.button.setAttribute("aria-expanded", "false");
       // Stash current state.
       this.#savedAsOpen = false;
     }
@@ -130,7 +130,7 @@ class CollapsibleSection extends ComponentInstance {
     // Measure the natural height and make it available to CSS as a custom
     // property.
     const height = this.contentContainer.getBoundingClientRect().height;
-    this.el.style.setProperty('--natural-height', `${height}px`);
+    this.el.style.setProperty("--natural-height", `${height}px`);
     // Restore the collapsible to the state it started in.
     this.isOpen = previousState;
     // Re-enable animations.
@@ -140,8 +140,4 @@ class CollapsibleSection extends ComponentInstance {
   }
 }
 
-new ComponentType(
-  CollapsibleSection,
-  'collapsibleSection',
-  '.collapsible-section'
-);
+new ComponentType(CollapsibleSection, "collapsibleSection", ".collapsible-section");

@@ -10,14 +10,14 @@
   }
 
   .card-profile .card--content {
-    @apply hg:text-white hg:text-center;
+    @apply hg:text-center hg:text-white;
   }
 
   .card-profile .person-name {
-    @apply hg:font-bold hg:text-2xl;
+    @apply hg:text-2xl hg:font-bold;
   }
 
   .card-profile .person-title {
-    @apply hg:italic hg:text-lg hg:xl:text-xl;
+    @apply hg:text-lg hg:italic hg:xl:text-xl;
   }
 }

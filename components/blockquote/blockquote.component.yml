@@ -7,12 +7,12 @@ props:
       type: string
       title: Quotation text
       examples:
-        - '“To confine our attention to terrestrial matters would be to limit the human spirit.”'
+        - "“To confine our attention to terrestrial matters would be to limit the human spirit.”"
     cite_name:
       type: string
       title: Citation name
       examples:
-        - 'Isiah Julio'
+        - "Isiah Julio"
     cite_text:
       type: string
       title: Citation text

@@ -31,4 +31,4 @@ props:
         - "Search"
 libraryOverrides:
   js:
-    navbar-search.js: { attributes: { type: module }}
+    navbar-search.js: { attributes: { type: module } }

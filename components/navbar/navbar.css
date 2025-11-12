@@ -1,7 +1,8 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components;
 :root.navbar-modal-open {
-  &, body {
+  &,
+  body {
     overflow: hidden;
   }
 }
@@ -19,7 +20,8 @@
   }
 }
 body.path-xb {
-  .navbar--logo, .navbar--links {
+  .navbar--logo,
+  .navbar--links {
     min-width: calc(var(--hg-spacing, 4px) * 12);
   }
 }
@@ -53,13 +55,15 @@ body.path-xb {
     padding-inline: calc(var(--hg-spacing, 4px) * 4);
   }
 }
-.navbar--logo, .navbar--modal-logo {
+.navbar--logo,
+.navbar--modal-logo {
   .branding {
     height: calc(var(--hg-spacing, 4px) * 6);
     @media (width >= 48rem) {
       height: calc(var(--hg-spacing, 4px) * 7);
     }
-    svg, img[src$=".svg"] {
+    svg,
+    img[src$=".svg"] {
       height: auto !important;
       max-height: 100%;
     }

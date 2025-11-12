@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Pricing
 description: Card with pricing information
 group: Components/Cards
@@ -20,7 +20,7 @@ props:
       description: Price
       type: string
       examples:
-        - '159.00'
+        - "159.00"
     currency_code:
       type: string
       title: Currency Code
@@ -30,11 +30,11 @@ props:
       type: string
       title: Currency Symbol
       examples:
-        - '$'
+        - "$"
     symbol_position:
       type: string
       title: Symbol Position
-      enum: ['before', 'after']
+      enum: ["before", "after"]
       examples:
         - before
       default:
@@ -45,23 +45,22 @@ props:
       type: string
       contentMediaType: text/html
       x-formatting-context: block
-      default:
-        '<ul>
-          <li>Enter rich text</li>
-          <li>Facilisis dictumst letius in</li>
-          <li>Diam mus est faucibus ornare ut consectetuer metus</li>
-        </ul>'
+      default: "<ul>
+        <li>Enter rich text</li>
+        <li>Facilisis dictumst letius in</li>
+        <li>Diam mus est faucibus ornare ut consectetuer metus</li>
+        </ul>"
       examples:
-        - '<ul>
-            <li>Example item 1</li>
-            <li>Example item 2</li>
-          </ul>'
+        - "<ul>
+          <li>Example item 1</li>
+          <li>Example item 2</li>
+          </ul>"
     button_url:
       type: string
       title: Link
-      default: 'https://www.example.com'
+      default: "https://www.example.com"
       examples:
-        - 'https://www.example.com'
+        - "https://www.example.com"
     button_label:
       type: string
       title: Button Label
@@ -71,7 +70,7 @@ props:
     promote:
       type: boolean
       title: Promote card
-      description: 'Visually feature card.'
+      description: "Visually feature card."
       default: false
       examples:
         - false

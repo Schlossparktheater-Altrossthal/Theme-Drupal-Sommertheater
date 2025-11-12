@@ -6,7 +6,7 @@
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
 
-  &:has(button[aria-expanded='true']) .collapsible-section--content {
+  &:has(button[aria-expanded="true"]) .collapsible-section--content {
     @apply hg:py-4;
   }
 
@@ -33,7 +33,7 @@
 }
 
 .collapsible-section--content {
-  @apply hg:pb-2 hg:h-auto hg:text-base;
+  @apply hg:h-auto hg:pb-2 hg:text-base;
   color: var(--hgc-collapsible-content-text);
 
   :first-child {
@@ -47,7 +47,7 @@
 
 /* Styles involving collapsing/expanding. */
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
-  @apply hg:pb-0 hg:h-0;
+  @apply hg:h-0 hg:pb-0;
 }
 
 .collapsible-section--animate {
@@ -60,7 +60,7 @@
   }
 
   .collapsible-section--content {
-    @apply hg:pb-2 hg:h-(--natural-height);
+    @apply hg:h-(--natural-height) hg:pb-2;
   }
 }
 

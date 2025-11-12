@@ -10,7 +10,8 @@
       color: var(--hg-color-brand, #155dfc);
     }
   }
-  .card-events--description, .card-events--place {
+  .card-events--description,
+  .card-events--place {
     font-size: var(--hg-text-xl, 1.25rem);
     line-height: var(--tw-leading, var(--hg-text-xl--line-height, 1.5));
   }
@@ -24,8 +25,11 @@
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-font-weight: initial;
     }
   }

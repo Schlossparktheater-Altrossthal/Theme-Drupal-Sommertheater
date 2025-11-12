@@ -1,11 +1,5 @@
-<form
-  action={{action}}
-  method={{method}}
-  id="navbarSearch"
-  accept-charset="UTF-8"
-  class="hg:w-full navbar-search"
->
-      <div class="hg:relative hg:w-full hg:flex hg:justify-end">
+<form action="{{ action }}" method="{{ method }}" id="navbarSearch" accept-charset="UTF-8" class="navbar-search hg:w-full">
+  <div class="hg:relative hg:flex hg:w-full hg:justify-end">
     <label for="edit-keys" class="hg:sr-only">{{ label }}</label>
     <input
       title="Enter the terms you wish to search for."
@@ -16,18 +10,18 @@
       value=""
       size="15"
       maxlength="128"
-      placeholder={{label}}
+      placeholder="{{ label }}"
       aria-label="Search"
-      class="hg:hidden hg:peer hg:w-full hg:rounded-lg input-search hg:h-11"
+      class="hg:peer input-search hg:hidden hg:h-11 hg:w-full hg:rounded-lg"
     />
     <button
       type="submit"
       data-drupal-selector="edit-submit"
       id="edit-submit"
-      aria-label="{{buttonLabel}}"
-      class="button-search hg:peer-[.hidden]:static hg:peer-[.hidden]:w-11 hg:peer-[.hidden]:h-11 hg:peer-[.hidden]:rounded-lg hg:absolute hg:right-0 hg:top-0 hg:bottom-0 hg:flex hg:items-center hg:justify-center hg:w-11 hg:h-11 hg:rounded-lg hg:border hg:cursor-pointer"
+      aria-label="{{ buttonLabel }}"
+      class="button-search hg:absolute hg:top-0 hg:right-0 hg:bottom-0 hg:flex hg:h-11 hg:w-11 hg:cursor-pointer hg:items-center hg:justify-center hg:rounded-lg hg:border hg:peer-[.hidden]:static hg:peer-[.hidden]:h-11 hg:peer-[.hidden]:w-11 hg:peer-[.hidden]:rounded-lg"
     >
-      <i class="search-icon hg:flex hg:items-center hg:justify-center ph-bold ph-magnifying-glass"></i>
+      <i class="search-icon ph-bold ph-magnifying-glass hg:flex hg:items-center hg:justify-center"></i>
     </button>
   </div>
 </form>

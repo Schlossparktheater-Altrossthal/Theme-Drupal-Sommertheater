@@ -1,9 +1,8 @@
 @reference '../../src/main.css';
 
 @layer components {
-
   .webform-submission-form {
-    @apply hg:container hg:max-w-4xl hg:mx-auto hg:p-0;
+    @apply hg:container hg:mx-auto hg:max-w-4xl hg:p-0;
 
     .visually-hidden {
       @apply hg:sr-only;
@@ -12,7 +11,7 @@
 
   .webform-submission-form,
   .fieldset-wrapper,
-  *[id^='edit-page-'] {
+  *[id^="edit-page-"] {
     @apply hg:flex hg:flex-col hg:gap-8;
   }
 
@@ -22,23 +21,23 @@
 
   label,
   .fieldset-legend {
-    @apply hg:block hg:font-semibold hg:mb-1 hg:text-sm hg:md:text-base hg:text-[var(--hgc-webform-label)];
+    @apply hg:mb-1 hg:block hg:text-sm hg:font-semibold hg:text-[var(--hgc-webform-label)] hg:md:text-base;
   }
 
   .form-item:focus-within,
   .fieldgroup:focus-within {
-    >label,
+    > label,
     .fieldset-legend {
       @apply hg:text-[var(--hgc-webform-label-focus)];
     }
   }
 
   .webform-element-description {
-    @apply hg:text-xs hg:mt-2;
+    @apply hg:mt-2 hg:text-xs;
   }
 
   .form-required::after {
-    @apply hg:text-red-500 hg:ml-1;
+    @apply hg:ml-1 hg:text-red-500;
     content: "*";
   }
 
@@ -53,7 +52,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply hg:w-full hg:px-0 hg:py-2 hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:text-[var(--hgc-webform-text)] hg:text-base hg:bg-transparent hg:outline-none;
+    @apply hg:w-full hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:bg-transparent hg:px-0 hg:py-2 hg:text-base hg:text-[var(--hgc-webform-text)] hg:outline-none;
   }
 
   input[type="text"]:focus,
@@ -67,7 +66,7 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply hg:shadow-sm hg:border-[var(--hgc-webform-focus-border)];
+    @apply hg:border-[var(--hgc-webform-focus-border)] hg:shadow-sm;
   }
 
   select:focus {
@@ -87,13 +86,13 @@
 
   .form-submit,
   input.button {
-    @apply hg:border hg:cursor-pointer hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg hg:bg-[var(--hgc-webform-button-fill)] hg:border-[var(--hgc-webform-button-border)] hg:text-[var(--hgc-webform-button-text)];
+    @apply hg:cursor-pointer hg:rounded-lg hg:border hg:border-[var(--hgc-webform-button-border)] hg:bg-[var(--hgc-webform-button-fill)] hg:px-5 hg:py-[10px] hg:text-base hg:text-[var(--hgc-webform-button-text)];
     border-radius: var(--hgc-webform-button-radius) !important;
   }
 
   .form-submit:hover,
   input.button:hover {
-    @apply hg:bg-[var(--hgc-webform-button-fill-hover)] hg:border-[var(--hgc-webform-button-border-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
+    @apply hg:border-[var(--hgc-webform-button-border-hover)] hg:bg-[var(--hgc-webform-button-fill-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
   }
 
   .form-item--error input,
@@ -109,7 +108,7 @@
   }
 
   .form-item--error-message {
-    @apply hg:text-red-500 hg:text-sm hg:mt-1 hg:mb-3 hg:basis-full;
+    @apply hg:mt-1 hg:mb-3 hg:basis-full hg:text-sm hg:text-red-500;
   }
 
   .webform-options-display-one-column {
@@ -118,7 +117,7 @@
 
   .webform-type-checkbox.form-item,
   .webform-type-radio.form-item {
-    @apply hg:flex hg:gap-2 hg:flex-wrap;
+    @apply hg:flex hg:flex-wrap hg:gap-2;
 
     label {
       @apply hg:m-0 hg:font-normal;

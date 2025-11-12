@@ -15,7 +15,6 @@
     }
 
     &.has-link {
-
       .tile-icon--title {
         color: var(--hgc-tile-icon-text-color);
       }
@@ -42,8 +41,7 @@
   }
 
   .icon-tile--title,
-  .icon-tile--text
-  .icon-tile--link-title,
+  .icon-tile--text .icon-tile--link-title,
   .icon-tile--link--text {
     color: var(--hgc-tile-icon-text-color);
   }

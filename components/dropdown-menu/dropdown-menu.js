@@ -1,22 +1,18 @@
-import { ComponentType, ComponentInstance } from '../../lib/component.js';
+import { ComponentType, ComponentInstance } from "../../lib/component.js";
 
 class DropdownMenu extends ComponentInstance {
-  static desktopMQ = window.matchMedia('(width >= 40rem)');
+  static desktopMQ = window.matchMedia("(width >= 40rem)");
 
   init() {
     this.resizeTimeout = 0;
     this.resizeFlag = true;
 
-    this.dropdownButtons = Array.from(this.el.querySelectorAll(
-      '.dropdown-menu__expand-button'
-    ));
+    this.dropdownButtons = Array.from(this.el.querySelectorAll(".dropdown-menu__expand-button"));
 
-    this.topLevelButtons = this.dropdownButtons.filter((button) =>
-      button.parentElement.dataset.level == 1
-    );
+    this.topLevelButtons = this.dropdownButtons.filter((button) => button.parentElement.dataset.level == 1);
 
     // Gather first items of second-level and deeper menus for inserting Back buttons.
-    this.secondLevelFirstItems = this.el.querySelectorAll('.dropdown-menu__item li:first-child');
+    this.secondLevelFirstItems = this.el.querySelectorAll(".dropdown-menu__item li:first-child");
 
     // The Twig file contains a template for our Back buttons, set to `display: none;`.
     this.backButtonTemplate = this.el.nextElementSibling;
@@ -24,14 +20,14 @@ class DropdownMenu extends ComponentInstance {
     this.setAllMostRoomClasses();
 
     // Add click listener to expand buttons.
-    this.dropdownButtons.forEach(button => {
-      button.addEventListener('click', this.toggleSubmenu.bind(this));
+    this.dropdownButtons.forEach((button) => {
+      button.addEventListener("click", this.toggleSubmenu.bind(this));
     });
 
-    window.addEventListener('resize', this.resizeTasks.bind(this));
+    window.addEventListener("resize", this.resizeTasks.bind(this));
 
     // Close all submenus if the user clicks outside them.
-    document.documentElement.addEventListener('click', (event) => {
+    document.documentElement.addEventListener("click", (event) => {
       if (this.el.contains(event.target)) {
         return;
       }
@@ -39,15 +35,15 @@ class DropdownMenu extends ComponentInstance {
       this.closeAllSubmenus();
     });
 
-    this.el.classList.add('dropdown-menu--js');
+    this.el.classList.add("dropdown-menu--js");
   }
   /**
    * Open a button's submenu.
    * @param {HTMLElement} button - The button whose submenu to open.
    */
   openSubmenu(button) {
-    button.classList.add('dropdown-menu__expand-button--expanded');
-    button.setAttribute('aria-expanded', 'true');
+    button.classList.add("dropdown-menu__expand-button--expanded");
+    button.setAttribute("aria-expanded", "true");
   }
 
   /**
@@ -56,8 +52,8 @@ class DropdownMenu extends ComponentInstance {
    * @return {undefined}
    */
   closeSubmenu(button) {
-    button.classList.remove('dropdown-menu__expand-button--expanded');
-    button.setAttribute('aria-expanded', 'false');
+    button.classList.remove("dropdown-menu__expand-button--expanded");
+    button.setAttribute("aria-expanded", "false");
   }
 
   /**
@@ -65,8 +61,8 @@ class DropdownMenu extends ComponentInstance {
    */
   closeAllSubmenus() {
     // Don't loop over all the dropdowns if none are expanded.
-    if (this.el.querySelector('.dropdown-menu__expand-button--expanded')) {
-      this.dropdownButtons.forEach(button => this.closeSubmenu(button));
+    if (this.el.querySelector(".dropdown-menu__expand-button--expanded")) {
+      this.dropdownButtons.forEach((button) => this.closeSubmenu(button));
     }
   }
 
@@ -79,15 +75,15 @@ class DropdownMenu extends ComponentInstance {
    * @returns {void}
    */
   setMostRoomClass(el, classPrefix) {
-    const submenu = el.querySelector(':scope > .dropdown-menu__menu');
+    const submenu = el.querySelector(":scope > .dropdown-menu__menu");
 
     if (!submenu) {
       return;
     }
 
     const rect = el.getBoundingClientRect();
-    const leftClass = classPrefix + 'left';
-    const rightClass = classPrefix + 'right';
+    const leftClass = classPrefix + "left";
+    const rightClass = classPrefix + "right";
     const viewportWidth = document.documentElement.clientWidth;
 
     // The chart at http://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
@@ -112,10 +108,10 @@ class DropdownMenu extends ComponentInstance {
    * @returns {void}
    */
   setAllMostRoomClasses() {
-    this.el.querySelectorAll('.dropdown-menu__item').forEach(el => {
-      this.setMostRoomClass(el, 'dropdown-menu__item--align-');
+    this.el.querySelectorAll(".dropdown-menu__item").forEach((el) => {
+      this.setMostRoomClass(el, "dropdown-menu__item--align-");
     });
-  };
+  }
 
   /**
    * Collect all resize event tasks for debouncing.
@@ -129,35 +125,30 @@ class DropdownMenu extends ComponentInstance {
 
     window.clearTimeout(this.resizeTimeout);
 
-    this.resizeTimeout = window.setTimeout(
-      () => {
-        // Debounce with delay.
-        this.setAllMostRoomClasses();
+    this.resizeTimeout = window.setTimeout(() => {
+      // Debounce with delay.
+      this.setAllMostRoomClasses();
 
-        // Reset the non-delayed debounce.
-        this.resizeFlag = true;
-      },
-      250
-    );
-  };
+      // Reset the non-delayed debounce.
+      this.resizeFlag = true;
+    }, 250);
+  }
 
   /**
    * Function to toggle submenus open and closed via classes on the buttons.
    * @param {Object} buttonClick - Event object
    */
   toggleSubmenu(buttonClick) {
-    const button = buttonClick.target.closest('button');
+    const button = buttonClick.target.closest("button");
 
-    const submenuWasOpen = button.classList.contains(
-      'dropdown-menu__expand-button--expanded'
-    );
+    const submenuWasOpen = button.classList.contains("dropdown-menu__expand-button--expanded");
 
-    button.classList.add('dropdown-menu__expand-button--has-been-opened');
+    button.classList.add("dropdown-menu__expand-button--has-been-opened");
 
     // On desktop only, allow only one submenu to be open at a time.
     if (DropdownMenu.desktopMQ.matches) {
       const allSameLevelButtons = this.el.querySelectorAll(`.dropdown-menu__expand-button[data-level='${button.dataset.level}']`);
-      allSameLevelButtons.forEach(sameLevelButton => this.closeSubmenu(sameLevelButton));
+      allSameLevelButtons.forEach((sameLevelButton) => this.closeSubmenu(sameLevelButton));
     }
 
     if (!submenuWasOpen) {
@@ -170,19 +161,14 @@ class DropdownMenu extends ComponentInstance {
   /**
    * Close a parent menu.
    *`
-    * @param {MouseEvent} buttonClick Click event.
-    */
+   * @param {MouseEvent} buttonClick Click event.
+   */
   closeParentMenu(buttonClick) {
-    const backButton = buttonClick.target.closest('button');
+    const backButton = buttonClick.target.closest("button");
 
     // Traverse from back button → li → ul → li → the previous button.
-    this.closeSubmenu(
-      backButton
-        .closest('ul')
-        .closest('li')
-        .querySelector('.dropdown-menu__expand-button')
-    );
+    this.closeSubmenu(backButton.closest("ul").closest("li").querySelector(".dropdown-menu__expand-button"));
   }
 }
 
-window.dropdownMenu = new ComponentType(DropdownMenu, 'dropdownMenu', '.dropdown-menu');
+window.dropdownMenu = new ComponentType(DropdownMenu, "dropdownMenu", ".dropdown-menu");

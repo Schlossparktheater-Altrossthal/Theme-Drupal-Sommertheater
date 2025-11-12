@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Group
 group: Layout
 status: stable
@@ -21,7 +21,7 @@ props:
         row-reverse: Horizontal (reverse)
 
       examples:
-        - 'column'
+        - "column"
     flex_gap:
       type: string
       title: Extra space between items
@@ -38,7 +38,7 @@ props:
         lg: Large
         xl: Extra-Large
       examples:
-        - 'none'
+        - "none"
     flex_align:
       type: string
       title: Alignment within parent component
@@ -50,9 +50,9 @@ props:
         start: Start
         center: Center
         end: End
-      default: 'center'
+      default: "center"
       examples:
-        - 'center'
+        - "center"
     radius:
       type: string
       title: Rounded corners
@@ -69,7 +69,7 @@ props:
         lg: Large
         xl: Extra-Large
       examples:
-        - 'none'
+        - "none"
     padding:
       type: string
       title: Padding
@@ -86,7 +86,7 @@ props:
         lg: Large
         xl: Extra-Large
       examples:
-        - 'none'
+        - "none"
     background:
       type: string
       title: Background color
@@ -107,8 +107,8 @@ props:
         hg:bg-accent-light: Accent Light
         hg:bg-accent-dark: Accent Dark
       examples:
-        - 'hg:bg-none'
+        - "hg:bg-none"
 
 slots:
   group_slot:
-    title: 'Group items'
+    title: "Group items"

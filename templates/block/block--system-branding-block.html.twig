@@ -1,4 +1,4 @@
-{% extends "block.html.twig" %}
+{% extends 'block.html.twig' %}
 {#
 /**
  * @file
@@ -16,5 +16,13 @@
 
 {% block content %}
   {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
-  {{ include('@mercury/components/branding/branding.twig', { logo: site_logo_url, url: home_url }) }}
+  {{
+    include(
+      '@mercury/components/branding/branding.twig',
+      {
+        logo: site_logo_url,
+        url: home_url
+      }
+    )
+  }}
 {% endblock %}
