@@ -12,4 +12,3 @@
 /dictionary.txt export-ignore
 /pnpm-lock.yaml export-ignore
 /*.config.js export-ignore
-/vercel.json export-ignore
