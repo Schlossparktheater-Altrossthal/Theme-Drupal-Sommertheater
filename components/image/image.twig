@@ -1,7 +1,26 @@
-{% set classes = classes|default([])|merge(['media-image', radius ? radius ~ ' hg:overflow-hidden' : ''])|filter(v => v is not empty) %}
+{% set class_map = {
+  size: {
+    '2:1': 'hg:aspect-2/1',
+    '16:9': 'hg:aspect-16/9',
+    '3:2': 'hg:aspect-3/2',
+    '4:3': 'hg:aspect-4/3',
+    '1:1': 'hg:aspect-1/1'
+  },
+  radius: {
+    small: 'hg:rounded-sm',
+    large: 'hg:rounded-xl hg:md:rounded-2xl',
+    'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]'
+  }
+} %}
+{% set classes =
+  classes
+    |default([])
+    |merge(['media-image', radius ? class_map['radius'][radius] ?? 'hg:rounded-none' ~ ' hg:overflow-hidden' : ''])
+    |filter(v => v is not empty)
+%}
 
 <figure class="{{ classes|join(' ') }}">
-  <div class="hg:w-full {{ size }}">
+  <div class="hg:w-full {{ class_map['size'][size] ?? '' }}">
     {% block media %}
       <img class="hg:h-full hg:w-full hg:object-cover" src="{{ media.src }}" alt="{{ media.alt }}" />
     {% endblock %}

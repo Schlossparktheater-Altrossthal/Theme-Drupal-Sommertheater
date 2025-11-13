@@ -1,40 +1,122 @@
-{% set classes = classes|default([])|merge(['hero', 'hg:relative', 'hg:h-full', 'hg:flex'])|filter(v => v is not empty) %}
-{# Top padding spacing options with responsive breakpoints #}
-{% set padding_block_start_map = {
-  '0': 'hg:pt-0',
-  '16': 'hg:pt-4',
-  '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
-  '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
+{% set class_map = {
+  hero_flex_gap: {
+    large: 'hg:gap-4 hg:md:gap-6 hg:xl:gap-8',
+    'extra-large': 'hg:gap-16 hg:md:gap-24 hg:xl:gap-32'
+  },
+  hero_flex_direction_mobile: {
+    vertical: 'hg:flex-col',
+    'vertical-reverse': 'hg:flex-col-reverse'
+  },
+  background: {
+    brand: 'hg:bg-brand',
+    'brand-light': 'hg:bg-brand-light',
+    'brand-dark': 'hg:bg-brand-dark',
+    accent: 'hg:bg-accent',
+    'accent-light': 'hg:bg-accent-light',
+    'accent-dark': 'hg:bg-accent-dark'
+  },
+  image_size: {
+    '2:1': 'hg:aspect-2/1',
+    '16:9': 'hg:aspect-16/9',
+    '3:2': 'hg:aspect-3/2',
+    '4:3': 'hg:aspect-4/3',
+    '1:1': 'hg:aspect-1/1'
+  },
+  image_position: {
+    left: 'hg:md:flex-row',
+    right: 'hg:md:flex-row-reverse'
+  },
+  image_radius: {
+    small: 'hg:rounded-sm',
+    large: 'hg:rounded-xl hg:md:rounded-2xl',
+    'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]'
+  },
+  padding_block_start: {
+    '0': 'hg:pt-0',
+    '16': 'hg:pt-4',
+    '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
+    '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
+  },
+  padding_block_end: {
+    '0': 'hg:pb-0',
+    '16': 'hg:pb-4',
+    '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
+    '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
+  },
+  slot_flex_align: {
+    start: 'hg:md:self-start',
+    center: 'hg:md:self-center',
+    end: 'hg:md:self-end'
+  },
+  slot_flex_direction: {
+    vertical: 'hg:flex-col',
+    'vertical-reverse': 'hg:flex-col-reverse'
+  },
+  slot_flex_gap: {
+    small: 'hg:gap-4',
+    medium: 'hg:gap-6 hg:md:gap-8',
+    large: 'hg:gap-12 hg:md:gap-16'
+  }
 } %}
 
-{# Bottom padding spacing options with responsive breakpoints #}
-{% set padding_block_end_map = {
-  '0': 'hg:pb-0',
-  '16': 'hg:pb-4',
-  '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
-  '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
-} %}
-{# Apply spacing classes based on component variables #}
-{% set padding_block_start = padding_block_start_map[padding_block_start] ?? '' %}
-{% set padding_block_end = padding_block_end_map[padding_block_end] ?? '' %}
+{% set classes =
+  classes
+    |default([])
+    |merge(
+      [
+        'hero',
+        'hg:relative',
+        'hg:h-full',
+        'hg:flex',
+        class_map['image_position'][image_position] ?? '',
+        class_map['hero_flex_gap'][hero_flex_gap] ?? 'hg:gap-0',
+        class_map['hero_flex_direction_mobile'][hero_flex_direction_mobile] ?? '',
+        class_map['padding_block_start'][padding_block_start] ?? '',
+        class_map['padding_block_end'][padding_block_end] ?? ''
+      ]
+    )
+    |filter(v => v is not empty)
+%}
+
 {# Background classes for full-width background positioning #}
-{% set bgd_class = background ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]' %}
+{% set bgd_classes =
+  [class_map['background'][background] ?? 'hg:bg-none', 'hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]']|filter(
+    c => c is not empty
+  )
+%}
 
-<section
-  class="{{ classes|join(' ') }} {{ image_position }} {{ hero_flex_gap }} {{ hero_flex_direction_mobile }} {{ padding_block_start }} {{
-  padding_block_end
-  }}"
->
+{% set hero_content_classes =
+  [
+    'hero--content',
+    'hg:flex',
+    'hg:flex-1',
+    class_map['slot_flex_direction'][slot_flex_direction] ?? '',
+    class_map['slot_flex_gap'][slot_flex_gap] ?? 'hg:gap-0',
+    class_map['slot_flex_align'][slot_flex_align] ?? ''
+  ]|filter(c => c is not empty)
+%}
+
+{% set image_classes =
+  [
+    'hero--media',
+    'hg:flex-1',
+    'hg:overflow-hidden',
+    class_map['image_size'][image_size] ?? '',
+    class_map['image_radius'][image_radius] ?? 'hg:rounded-none'
+  ]|filter(c => c is not empty)
+%}
+
+<section class="{{ classes|join(' ') }}">
   {% if background is not empty and background != 'None' %}
-    <div class="{{ bgd_class }}"></div>
+    <div class="{{ bgd_classes|join(' ') }}"></div>
   {% endif %}
 
-  <div class="hero--media hg:flex-1 hg:overflow-hidden {{ image_size }} {{ image_radius }}">
+  <div class="{{ image_classes|join(' ') }}">
     {% block hero_media %}
       <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
     {% endblock %}
   </div>
-  <div class="hero--content hg:flex hg:flex-1 {{ slot_flex_direction }} {{ slot_flex_gap }} {{ slot_flex_align }}">
+  <div class="{{ hero_content_classes|join(' ') }}">
     {% block hero_content %}
       {% block hero_slot %}
 

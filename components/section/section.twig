@@ -1,7 +1,52 @@
-{# Base section classes for layout and positioning #}
-{% set classes =
-  classes|default([])|merge(['section', 'hg:relative', 'hg:flex', 'hg:flex-col', 'hg:items-stretch', 'hg:mx-auto'])|filter(v => v is not empty)
-%}
+{% set class_map = {
+  background_color: {
+    overlay: 'hg:bg-black/50',
+    brand: 'hg:bg-brand',
+    'brand-light': 'hg:bg-brand-light',
+    'brand-dark': 'hg:bg-brand-dark',
+    accent: 'hg:bg-accent',
+    'accent-light': 'hg:bg-accent-light',
+    'accent-dark': 'hg:bg-accent-dark'
+  },
+  width: {
+    '90%': 'hg:lg:max-w-9/10',
+    '80%': 'hg:lg:max-w-8/10',
+    '75%': 'hg:lg:max-w-3/4',
+    '50%': 'hg:lg:max-w-1/2'
+  },
+  margin_block_start: {
+    '0': 'hg:mt-0',
+    '8': 'hg:mt-2',
+    '20': 'hg:mt-5',
+    '32': 'hg:mt-6 hg:md:mt-7 hg:xl:mt-8',
+    '48': 'hg:mt-8 hg:md:mt-10 hg:xl:mt-12',
+    '64': 'hg:mt-10 hg:md:mt-13 hg:xl:mt-16',
+    '96': 'hg:mt-16 hg:md:mt-20 hg:xl:mt-24',
+    '128': 'hg:mt-20 hg:md:mt-24 hg:xl:mt-32'
+  },
+  margin_block_end: {
+    '0': 'hg:mb-0',
+    '8': 'hg:mb-2',
+    '20': 'hg:mb-5',
+    '32': 'hg:mb-6 hg:md:mb-7 hg:xl:mb-8',
+    '48': 'hg:mb-8 hg:md:mb-10 hg:xl:mb-12',
+    '64': 'hg:mb-10 hg:md:mb-13 hg:xl:mb-16',
+    '96': 'hg:mb-16 hg:md:mb-20 hg:xl:mb-24',
+    '128': 'hg:mb-20 hg:md:mb-24 hg:xl:mb-32'
+  },
+  padding_block_start: {
+    '0': 'hg:pt-0',
+    '16': 'hg:pt-4',
+    '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
+    '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
+  },
+  padding_block_end: {
+    '0': 'hg:pb-0',
+    '16': 'hg:pb-4',
+    '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
+    '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
+  }
+} %}
 
 {# Grid column configurations for different layout ratios #}
 {% set grid_class = {
@@ -19,57 +64,34 @@
   ?? 'hg:grid-cols-1'
 %}
 
-{# Top margin spacing options with responsive breakpoints #}
-{% set margin_block_map = {
-  '0': 'hg:mt-0',
-  '8': 'hg:mt-2',
-  '20': 'hg:mt-5',
-  '32': 'hg:mt-6 hg:md:mt-7 hg:xl:mt-8',
-  '48': 'hg:mt-8 hg:md:mt-10 hg:xl:mt-12',
-  '64': 'hg:mt-10 hg:md:mt-13 hg:xl:mt-16',
-  '96': 'hg:mt-16 hg:md:mt-20 hg:xl:mt-24',
-  '128': 'hg:mt-20 hg:md:mt-24 hg:xl:mt-32'
-} %}
+{# Base section classes for layout and positioning #}
+{% set classes =
+  classes
+    |default([])
+    |merge(
+      [
+        'section',
+        'hg:relative',
+        'hg:flex',
+        'hg:flex-col',
+        'hg:items-stretch',
+        'hg:mx-auto',
+        class_map['margin_block_start'][margin_block_start] ?? '',
+        class_map['margin_block_end'][margin_block_end] ?? '',
+        class_map['padding_block_start'][padding_block_start] ?? '',
+        class_map['padding_block_end'][padding_block_end] ?? '',
+        class_map['width'][width] ?? 'hg:lg:max-w-full'
+      ]
+    )
+    |filter(v => v is not empty)
+%}
 
-{# Bottom margin spacing options with responsive breakpoints #}
-{% set margin_block_end_map = {
-  '0': 'hg:mb-0',
-  '8': 'hg:mb-2',
-  '20': 'hg:mb-5',
-  '32': 'hg:mb-6 hg:md:mb-7 hg:xl:mb-8',
-  '48': 'hg:mb-8 hg:md:mb-10 hg:xl:mb-12',
-  '64': 'hg:mb-10 hg:md:mb-13 hg:xl:mb-16',
-  '96': 'hg:mb-16 hg:md:mb-20 hg:xl:mb-24',
-  '128': 'hg:mb-20 hg:md:mb-24 hg:xl:mb-32'
-} %}
-
-{# Top padding spacing options with responsive breakpoints #}
-{% set padding_block_start_map = {
-  '0': 'hg:pt-0',
-  '16': 'hg:pt-4',
-  '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
-  '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
-} %}
-
-{# Bottom padding spacing options with responsive breakpoints #}
-{% set padding_block_end_map = {
-  '0': 'hg:pb-0',
-  '16': 'hg:pb-4',
-  '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
-  '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
-} %}
-
-{# Apply spacing classes based on component variables #}
-{% set margin_block_start = margin_block_map[margin_block_start] ?? '' %}
-{% set margin_block_end = margin_block_end_map[margin_block_end] ?? '' %}
-{% set padding_block_start = padding_block_start_map[padding_block_start] ?? '' %}
-{% set padding_block_end = padding_block_end_map[padding_block_end] ?? '' %}
 {# Background classes for full-width background positioning #}
-{% set bgd_class = background_color ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]' %}
+{% set bgd_class = class_map['background_color'][background_color] ?? 'hg:bg-none'
+  ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]'
+%}
 
-<section
-  class="{{ classes|join(' ') }} {{ margin_block_start }} {{ margin_block_end }} {{ padding_block_start }} {{ padding_block_end }} {{ width }}"
->
+<section class="{{ classes|join(' ') }}">
   {# if there is background media #}
   {% if background_media is not empty and background_media.src is not empty %}
     {% block background_media_block %}
@@ -80,7 +102,7 @@
   {% endif %}
 
   {# if there is background color (can work with or without background media) #}
-  {% if background_color is not empty and background_color != 'hg:bg-none' %}
+  {% if background_color is not empty and background_color != 'none' %}
     <div class="{{ bgd_class }}"></div>
   {% endif %}
 

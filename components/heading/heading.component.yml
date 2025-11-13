@@ -54,14 +54,14 @@ props:
       description: Select Font Color
       enum:
         - text-inherit
-        - hg:text-body-text-dark
-        - hg:text-white
-        - hg:text-brand
+        - dark
+        - light
+        - brand
       meta:enum:
         text-inherit: Default
-        hg:text-body-text-dark: Dark
-        hg:text-white: Light
-        hg:text-brand: Brand
+        dark: Dark
+        white: Light
+        brand: Brand
       default: text-inherit
       examples:
         - text-inherit

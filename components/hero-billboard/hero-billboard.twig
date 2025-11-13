@@ -1,15 +1,57 @@
-{% set classes = classes|default([])|merge(['hero-overlay', 'hg:relative', 'hg:flex', 'hg:flex-col', height])|filter(v => v is not empty) %}
+{% set class_map = {
+  height: {
+    full: 'hg:h-dvh',
+    large: 'hg:h-3/4 hg:min-h-[500px] hg:md:max-h-[600px] hg:xl:max-h-[800px]',
+    ribbon: 'hg:h-1/2 hg:md:min-h-[400px] hg:md:max-h-[450px] hg:xl:max-h-[600px]'
+  },
+  flex_position: {
+    'top-left': 'hg:justify-start',
+    'center-left': 'hg:justify-center-safe',
+    'bottom-left': 'hg:justify-end'
+  },
+  overlay_opacity: {
+    '0%': 'hg:bg-black/0',
+    '20%': 'hg:bg-black/20',
+    '40%': 'hg:bg-black/40',
+    '60%': 'hg:bg-black/60',
+    '75%': 'hg:bg-black/75'
+  },
+  object_position: {
+    top: 'hg:object-top',
+    center: 'hg:object-center',
+    bottom: 'hg:object-bottom'
+  }
+} %}
+{% set classes =
+  classes
+    |default([])
+    |merge(
+      [
+        'hero-overlay',
+        'hg:relative',
+        'hg:flex',
+        'hg:flex-col',
+        class_map['height'][height ?? 'full'],
+        class_map['flex_position'][flex_position] ?? 'hg:justify-center'
+      ]
+    )
+    |filter(v => v is not empty)
+%}
 
 {% set img_position = 'hg:object-' ~ background_position %}
 
-<section class="{{ classes|join(' ') }} {{ flex_position == 'hero-center' ? 'hg:justify-center' : flex_position }}">
+<section class="{{ classes|join(' ') }}">
   {% if media.src is not empty %}
     <div class="hero-overlay--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
       {% block hero_media %}
         {% if media.src is not empty %}
-          <div class="hg:absolute hg:inset-0 {{ overlay_opacity }}"></div>
+          <div class="hg:absolute hg:inset-0 {{ class_map['overlay_opacity'][overlay_opacity] }}"></div>
         {% endif %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover {{ object_position }}" />
+        <img
+          src="{{ media.src }}"
+          alt="{{ media.alt }}"
+          class="hg:h-full hg:w-full hg:object-cover {{ class_map['object_position'][object_position] }}"
+        />
       {% endblock %}
     </div>
   {% endif %}

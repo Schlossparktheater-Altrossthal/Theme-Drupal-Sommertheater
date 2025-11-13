@@ -39,20 +39,20 @@ props:
       title: Text color
       enum:
         - text-inherit
-        - hg:text-body-text-dark
-        - hg:text-white
-        - hg:text-brand
-        - hg:text-brand-light
-        - hg:text-accent
-        - hg:text-accent-light
+        - dark
+        - light
+        - brand
+        - brand-light
+        - accent
+        - accent-light
       meta:enum:
         text-inherit: Default
-        hg:text-body-text-dark: Dark
-        hg:text-white: Light
-        hg:text-brand: Brand
-        hg:text-brand-light: Brand Light
-        hg:text-accent: Accent
-        hg:text-accent-light: Accent Light
+        dark: Dark
+        white: Light
+        brand: Brand
+        brand-light: Brand light
+        accent: Accent
+        accent-light: Accent light
       default: text-inherit
       examples:
         - text-inherit

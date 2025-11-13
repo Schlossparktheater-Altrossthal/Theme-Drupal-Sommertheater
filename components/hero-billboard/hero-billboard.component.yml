@@ -9,65 +9,55 @@ props:
       type: string
       title: Hero height
       enum:
-        - hg:h-dvh
-        - hg:h-3/4 hg:min-h-[500px] hg:md:max-h-[600px] hg:xl:max-h-[800px]
-        - hg:h-1/2 hg:md:min-h-[400px] hg:md:max-h-[450px] hg:xl:max-h-[600px]
+        - full
+        - large
+        - ribbon
       meta:enum:
-        hg:h-dvh: Full screen
-        hg:h-3/4 hg:min-h-[500px] hg:md:max-h-[600px] hg:xl:max-h-[800px]: Large
-        hg:h-1/2 hg:md:min-h-[400px] hg:md:max-h-[450px] hg:xl:max-h-[600px]: Ribbon
-      default: hg:h-dvh
+        full: Full screen
+        large: Large
+        ribbon: Ribbon
+      default: full
       examples:
-        - hg:h-dvh
+        - full
     flex_position:
       type: string
       title: Content position
       enum:
-        - hg:justify-start
-        - hg:justify-center-safe
-        - hg:justify-end
+        - top-left
+        - center-left
+        - bottom-left
         - hero-center
       meta:enum:
-        hg:justify-start: Top/left
-        hg:justify-center-safe: Center/left
-        hg:justify-end: Bottom/left
+        top-left: Top/left
+        center-left: Center/left
+        bottom-left: Bottom/left
         hero-center: Center/Center
-      default: hg:justify-center-safe
+      default: center-left
       examples:
-        - hg:justify-center-safe
+        - center-left
     overlay_opacity:
       type: string
       title: Overlay opacity
       description: Set overlay opacity
       enum:
-        - hg:bg-black/0
-        - hg:bg-black/20
-        - hg:bg-black/40
-        - hg:bg-black/60
-        - hg:bg-black/75
-      meta:enum:
-        hg:bg-black/0: 0%
-        hg:bg-black/20: 20%
-        hg:bg-black/40: 40%
-        hg:bg-black/60: 60%
-        hg:bg-black/75: 75%
-      default: hg:bg-black/40
+        - "0%"
+        - "20%"
+        - "40%"
+        - "60%"
+        - "75%"
+      default: "40%"
       examples:
-        - hg:bg-black/40
+        - "40%"
     object_position:
       type: string
       title: Background image position
       enum:
-        - hg:object-top
-        - hg:object-center
-        - hg:object-bottom
-      meta:enum:
-        hg:object-top: Top
-        hg:object-center: Center
-        hg:object-bottom: Bottom
-      default: hg:object-center
+        - top
+        - center
+        - bottom
+      default: center
       examples:
-        - hg:object-center
+        - center
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image

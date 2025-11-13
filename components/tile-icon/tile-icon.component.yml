@@ -10,19 +10,18 @@ props:
       title: Tile aspect ratio
       description: Set aspect ratio of the tile.
       enum:
-        - hg:aspect-none
-        - hg:aspect-square
-        - hg:aspect-4/3
-        - hg:aspect-16/9
+        - none
+        - square
+        - "4:3"
+        - "16:9"
       meta:enum:
-        hg:aspect-none: Fit content
-        hg:aspect-square: Square
-        hg:aspect-4/3: Rectangle 4 × 3
-        hg:aspect-16/9: Rectangle 16 × 9
-      default:
-        - "hg:aspect-none"
+        none: Fit content
+        square: Square
+        "4:3": Rectangle 4 × 3
+        "16:9": Rectangle 16 × 9
+      default: none
       examples:
-        - "hg:aspect-none"
+        - none
     flex_align:
       type: string
       title: Alignment
@@ -48,18 +47,17 @@ props:
       title: Border radius
       description: Set rounded corner radius
       enum:
-        - hg:rounded-none
-        - hg:rounded-sm
-        - hg:rounded-xl hg:md:rounded-2xl
-        - hg:rounded-[24px] hg:md:rounded-[32px]
+        - none
+        - small
+        - large
+        - extra-large
       meta:enum:
-        hg:rounded-none: None
-        hg:rounded-sm: Small
-        hg:rounded-xl hg:md:rounded-2xl: Large
-        hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
-      default: hg:rounded-sm
+        small: Small
+        large: Large
+        extra-large: Extra large
+      default: small
       examples:
-        - "hg:rounded-sm"
+        - small
     background:
       type: boolean
       title: Background
@@ -86,17 +84,16 @@ props:
       title: Text alignment
       description: Set text alignment of the tile.
       enum:
-        - hg:text-start
-        - hg:text-center
-        - hg:text-end
+        - left
+        - center
+        - right
       meta:enum:
-        hg:text-start: Left
-        hg:text-center: Center
-        hg:text-end: Right
-      default:
-        - "hg:text-center"
+        left: Left
+        center: Center
+        right: Right
+      default: center
       examples:
-        - "hg:text-center"
+        - center
     url:
       type: string
       title: Link
@@ -112,30 +109,28 @@ props:
       title: Icon size
       description: Set icon size.
       enum:
-        - hg:text-2xl
-        - hg:text-4xl
-        - hg:text-6xl
+        - small
+        - regular
+        - large
       meta:enum:
-        hg:text-2xl: Small
-        hg:text-4xl: Regular
-        hg:text-6xl: Large
-      default:
-        - "hg:text-4xl"
+        small: Small
+        regular: Regular
+        large: Large
+      default: regular
       examples:
-        - "hg:text-4xl"
+        - regular
     icon_align:
       type: string
       title: Icon alignment
       description: Set icon alignment.
       enum:
-        - hg:justify-start
-        - hg:justify-end
-        - hg:justify-center
+        - left
+        - right
+        - center
       meta:enum:
-        hg:justify-start: Left
-        hg:justify-end: Right
-        hg:justify-center: Center
-      default:
-        - "hg:justify-center"
+        left: Left
+        center: Center
+        right: Right
+      default: center
       examples:
-        - "hg:justify-center"
+        - center

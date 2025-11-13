@@ -1,9 +1,19 @@
 {% set has_url = url is not empty and url != 'No URL' %}
 
+{% set class_map = {
+  font_color: {
+    dark: 'hg:text-body-text-dark',
+    light: 'hg:text-white',
+    brand: 'hg:text-brand'
+  }
+} %}
+
 {% set heading_classes =
   heading_classes
     |default([])
-    |merge(['heading', 'hg:text-' ~ align, has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '', font_color])
+    |merge(
+      ['heading', 'hg:text-' ~ align, has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '', class_map['font_color'][font_color]]
+    )
     |filter(v => v is not empty)
 %}
 

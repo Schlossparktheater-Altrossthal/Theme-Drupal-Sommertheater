@@ -1,48 +1,57 @@
-{% set flex_direction_map = {
-  column: 'hg:flex-col',
-  row: 'hg:flex-row',
-  'column-reverse': 'hg:flex-col-reverse',
-  'row-reverse': 'hg:flex-row-reverse'
+{% set class_map = {
+  background: {
+    brand: 'hg:bg-brand',
+    'brand-light': 'hg:bg-brand-light',
+    'brand-dark': 'hg:bg-brand-dark',
+    accent: 'hg:bg-accent',
+    'accent-light': 'hg:bg-accent-light',
+    'accent-dark': 'hg:bg-accent-dark'
+  },
+  flex_direction: {
+    column: 'hg:flex-col',
+    row: 'hg:flex-row',
+    'column-reverse': 'hg:flex-col-reverse',
+    'row-reverse': 'hg:flex-row-reverse'
+  },
+  radius: {
+    sm: 'hg:rounded-sm',
+    md: 'hg:rounded-md',
+    lg: 'hg:rounded-lg',
+    xl: 'hg:rounded-xl'
+  },
+  flex_gap: {
+    sm: 'hg:gap-4',
+    md: 'hg:gap-8',
+    lg: 'hg:gap-16',
+    xl: 'hg:gap-32'
+  },
+  padding: {
+    sm: 'hg:p-4',
+    md: 'hg:p-8',
+    lg: 'hg:p-16',
+    xl: 'hg:p-32'
+  },
+  flex_align: {
+    start: 'hg:self-start',
+    end: 'hg:self-end',
+    center: 'hg:self-center'
+  }
 } %}
 
-{% set radius_map = {
-  sm: 'hg:rounded-sm',
-  md: 'hg:rounded-md',
-  lg: 'hg:rounded-lg',
-  xl: 'hg:rounded-xl'
-} %}
-
-{% set flex_gap_map = {
-  sm: 'hg:gap-4',
-  md: 'hg:gap-8',
-  lg: 'hg:gap-16',
-  xl: 'hg:gap-32'
-} %}
-
-{% set padding_map = {
-  sm: 'hg:p-4',
-  md: 'hg:p-8',
-  lg: 'hg:p-16',
-  xl: 'hg:p-32'
-} %}
-
-{% set flex_align_map = {
-  start: 'hg:self-start',
-  end: 'hg:self-end',
-  center: 'hg:self-center'
-} %}
-
-{% set flex_direction = flex_direction_map[flex_direction] ?? '' %}
-{% set radius = radius_map[radius] ?? '' %}
-{% set flex_gap = flex_gap_map[flex_gap] ?? '' %}
-{% set padding = padding_map[padding] ?? '' %}
-{% set flex_align = flex_align_map[flex_align] ?? '' %}
-<div
-  class="group{{ flex_direction ? ' ' ~ flex_direction }}{{ flex_gap ? ' ' ~ flex_gap }}{{ flex_align ? ' ' ~ flex_align }}{{
-  background
-    ? ' ' ~ background
-  }}{{ radius ? ' ' ~ radius }}{{ padding ? ' ' ~ padding }}"
->
+{% set classes =
+  [
+    'group',
+    class_map['flex_direction'][flex_direction] ?? '',
+    class_map['flex_align'][flex_align] ?? '',
+    class_map['flex_gap'][flex_gap] ?? '',
+    class_map['radius'][radius] ?? '',
+    class_map['padding'][padding] ?? '',
+    class_map['background'][background] ?? 'hg:bg-none'
+  ]
+    |filter(c => c is not empty)
+    |join(' ')
+%}
+<div class="{{ classes }}">
   {% block group_slot %}
 
   {% endblock %}

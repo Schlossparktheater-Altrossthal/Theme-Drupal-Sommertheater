@@ -19,7 +19,6 @@ props:
         row: Horizontal
         column-reverse: Vertical (reverse)
         row-reverse: Horizontal (reverse)
-
       examples:
         - "column"
     flex_gap:
@@ -91,23 +90,21 @@ props:
       type: string
       title: Background color
       enum:
-        - hg:bg-none
-        - hg:bg-brand
-        - hg:bg-brand-light
-        - hg:bg-brand-dark
-        - hg:bg-accent
-        - hg:bg-accent-light
-        - hg:bg-accent-dark
+        - none
+        - brand
+        - brand-light
+        - brand-dark
+        - accent
+        - accent-light
+        - accent-dark
       meta:enum:
-        hg:bg-none: None
-        hg:bg-brand: Brand
-        hg:bg-brand-light: Brand Light
-        hg:bg-brand-dark: Brand Dark
-        hg:bg-accent: Accent
-        hg:bg-accent-light: Accent Light
-        hg:bg-accent-dark: Accent Dark
-      examples:
-        - "hg:bg-none"
+        none: None
+        brand: Brand
+        brand-light: Brand light
+        brand-dark: Brand dark
+        accent: Accent
+        accent-light: Accent light
+        accent-dark: Accent dark
 
 slots:
   group_slot:

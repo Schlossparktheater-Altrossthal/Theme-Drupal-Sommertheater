@@ -7,53 +7,53 @@ props:
   properties:
     hero_flex_gap:
       type: string
-      title: Hero flex gap
+      title: Flex gap
       enum:
-        - hg:gap-0
-        - hg:gap-4 hg:md:gap-6 hg:xl:gap-8
-        - hg:gap-16 hg:md:gap-24 hg:xl:gap-32
+        - none
+        - large
+        - extra-large
       meta:enum:
-        hg:gap-0: None
-        hg:gap-4 hg:md:gap-6 hg:xl:gap-8: Large (default)
-        hg:gap-16 hg:md:gap-24 hg:xl:gap-32: Extra-Large
-      default: hg:gap-4 hg:md:gap-6 hg:xl:gap-8
+        none: None
+        large: Large (default)
+        extra-large: Extra-Large
+      default: large
       examples:
-        - "hg:gap-4 hg:md:gap-6 hg:xl:gap-8"
+        - "large"
     hero_flex_direction_mobile:
       type: string
-      title: Hero flex direction (mobile)
+      title: Mobile flex direction
       enum:
-        - hg:flex-col
-        - hg:flex-col-reverse
+        - vertical
+        - vertical-reverse
       meta:enum:
-        hg:flex-col: Vertical
-        hg:flex-col-reverse: Vertical (reverse)
-      default: hg:flex-col
+        vertical: Vertical
+        vertical-reverse: Reverse vertical
+      default: vertical
       examples:
-        - "hg:flex-col"
+        - "vertical"
     background:
       type: string
       title: Background color
       enum:
-        - hg:bg-none
-        - hg:bg-brand
-        - hg:bg-brand-light
-        - hg:bg-brand-dark
-        - hg:bg-accent
-        - hg:bg-accent-light
-        - hg:bg-accent-dark
+        - none
+        - brand
+        - brand-light
+        - brand-dark
+        - accent
+        - accent-light
+        - accent-dark
       meta:enum:
-        hg:bg-none: None
-        hg:bg-brand: Brand
-        hg:bg-brand-light: Brand Light
-        hg:bg-brand-dark: Brand Dark
-        hg:bg-accent: Accent
-        hg:bg-accent-light: Accent Light
-        hg:bg-accent-dark: Accent Dark
+        none: None
+        brand: Brand
+        brand-light: Brand Light
+        brand-dark: Brand Dark
+        accent: Accent
+        accent-light: Accent Light
+        accent-dark: Accent Dark
       default:
-        - "hg:bg-none"
+        - "none"
       examples:
-        - "hg:bg-none"
+        - "none"
     padding_block_start:
       type: string
       title: Padding top
@@ -79,92 +79,92 @@ props:
       title: Image size
       description: Set the image aspect ratio
       enum:
-        - hg:aspect-2/1
-        - hg:aspect-16/9
-        - hg:aspect-3/2
-        - hg:aspect-4/3
-        - hg:aspect-1/1
+        - "2:1"
+        - "16:9"
+        - "3:2"
+        - "4:3"
+        - "1:1"
       meta:enum:
-        hg:aspect-2/1: 2 × 1
-        hg:aspect-16/9: 16 × 9
-        hg:aspect-3/2: 3 × 2
-        hg:aspect-4/3: 4 × 3
-        hg:aspect-1/1: Square
-      default: hg:aspect-4/3
+        "2:1": 2 × 1
+        "16:9": 16 × 9
+        "3:2": 3 × 2
+        "4:3": 4 × 3
+        "1:1": Square
+      default: "4:3"
       examples:
-        - hg:aspect-4/3
+        - "4:3"
     image_position:
       type: string
       title: Image position
       description: Set the image position
       enum:
-        - hg:md:flex-row
-        - hg:md:flex-row-reverse
+        - left
+        - right
       meta:enum:
-        hg:md:flex-row: Left
-        hg:md:flex-row-reverse: Right
-      default: hg:md:flex-row
+        left: Left
+        right: Right
+      default: left
       examples:
-        - "hg:md:flex-row"
+        - "left"
     image_radius:
       type: string
       title: Image border radius
       description: Set the image border radius
       enum:
-        - hg:rounded-none
-        - hg:rounded-sm
-        - hg:rounded-xl hg:md:rounded-2xl
-        - hg:rounded-[24px] hg:md:rounded-[32px]
+        - none
+        - small
+        - large
+        - extra-large
       meta:enum:
-        hg:rounded-none: None
-        hg:rounded-sm: Small
-        hg:rounded-xl hg:md:rounded-2xl: Large
-        hg:rounded-[24px] hg:md:rounded-[32px]: Extra-Large
-      default: hg:rounded-sm
+        none: None
+        small: Small
+        large: Large
+        extra-large: Extra-Large
+      default: small
       examples:
-        - "hg:rounded-sm"
+        - "small"
     slot_flex_align:
       type: string
       title: Slot align content
       enum:
-        - hg:md:self-start
-        - hg:md:self-center
-        - hg:md:self-end
+        - start
+        - center
+        - end
       meta:enum:
-        hg:md:self-start: Start
-        hg:md:self-center: Center
-        hg:md:self-end: End
-      default: hg:md:self-center
+        start: Start
+        center: Center
+        end: End
+      default: center
       examples:
-        - "hg:md:self-center"
+        - "center"
     slot_flex_direction:
       type: string
       title: Slot flex direction
       enum:
-        - hg:flex-col
-        - hg:flex-col-reverse
+        - vertical
+        - vertical-reverse
       meta:enum:
-        hg:flex-col: Vertical
-        hg:flex-col-reverse: Vertical (reverse)
-      default: hg:flex-col
+        vertical: Vertical
+        vertical-reverse: Vertical (reverse)
+      default: vertical
       examples:
-        - "hg:flex-col"
+        - "vertical"
     slot_flex_gap:
       type: string
       title: Slot flex gap
       enum:
-        - hg:gap-0
-        - hg:gap-4
-        - hg:gap-6 hg:md:gap-8
-        - hg:gap-12 hg:md:gap-16
+        - none
+        - small
+        - medium
+        - large
       meta:enum:
-        hg:gap-0: None
-        hg:gap-4: Small
-        hg:gap-6 hg:md:gap-8: Medium
-        hg:gap-12 hg:md:gap-16: Large
-      default: hg:gap-4
+        none: None
+        small: Small
+        medium: Medium
+        large: Large
+      default: small
       examples:
-        - "hg:gap-4"
+        - "small"
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Media Image

@@ -1,3 +1,30 @@
+{% set class_map = {
+  icon_align: {
+    left: 'hg:justify-start',
+    right: 'hg:justify-end',
+    center: 'hg:justify-center'
+  },
+  icon_size: {
+    small: 'hg:text-2xl',
+    medium: 'hg:text-4xl',
+    large: 'hg:text-6xl'
+  },
+  text_align: {
+    left: 'hg:text-start',
+    center: 'hg:text-center',
+    right: 'hg:text-end'
+  },
+  tile_size: {
+    square: 'hg:aspect-square',
+    '4:3': 'hg:aspect-4/3',
+    '16:9': 'hg:aspect-16/9'
+  },
+  border_radius: {
+    small: 'hg:rounded-sm',
+    large: 'hg:rounded-xl hg:md:rounded-2xl',
+    'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]'
+  }
+} %}
 {% set tile_classes =
   tile_classes
     |default([])
@@ -8,8 +35,8 @@
         border ? 'hg:border hg:p-6' : '',
         url ? 'has-link hg:transition-all hg:duration-300' : '',
         background ? 'has-bg hg:p-6' : '',
-        tile_size,
-        border_radius
+        class_map['tile_size'][tile_size] ?? 'hg:aspect-none',
+        class_map['border_radius'][border_radius] ?? 'hg:rounded-none'
       ]
     )
     |filter(v => v is not empty)
@@ -24,20 +51,20 @@
 
 <div class="{{ tile_classes|join(' ') }}">
   <div class="hg:flex hg:h-full hg:flex-col {{ flex_align_map[flex_align] }}">
-    <div class="hg:flex hg:w-full {{ icon_align }}">
+    <div class="hg:flex hg:w-full {{ class_map['icon_align'][icon_align] }}">
       {% if icon %}
         {{
           include(
             '@mercury/components/icon/icon.twig',
             {
-              icon_size: icon_size|default('hg:text-4xl')
+              icon_size: class_map['icon_size'][icon_size]|default('hg:text-4xl')
             }
           )
         }}
       {% endif %}
     </div>
 
-    <div class="hg:w-full hg:pt-2 {{ text_align }}">
+    <div class="hg:w-full hg:pt-2 {{ class_map['text_align'][text_align] }}">
       {% if text is not empty or description is not empty %}
         {% if url is not empty %}
           <a href="{{ url }}" class="hg:flex hg:w-full hg:flex-col hg:before:absolute hg:before:inset-0 hg:before:content-['']">

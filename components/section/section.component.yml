@@ -28,19 +28,14 @@ props:
       type: string
       title: Section width
       enum:
-        - hg:lg:max-w-full
-        - hg:lg:max-w-9/10
-        - hg:lg:max-w-8/10
-        - hg:lg:max-w-3/4
-        - hg:lg:max-w-1/2
-      meta:enum:
-        hg:lg:max-w-full: 100%
-        hg:lg:max-w-9/10: 90%
-        hg:lg:max-w-8/10: 80%
-        hg:lg:max-w-3/4: 75%
-        hg:lg:max-w-1/2: 50%
+        - "100%"
+        - "90%"
+        - "80%"
+        - "75%"
+        - "50%"
+      default: "100%"
       examples:
-        - "hg:lg:max-w-full"
+        - "100%"
     margin_block_start:
       type: string
       title: Margin top
@@ -93,27 +88,26 @@ props:
       type: string
       title: Background color
       enum:
-        - hg:bg-none
-        - hg:bg-black/50
-        - hg:bg-brand
-        - hg:bg-brand-light
-        - hg:bg-brand-dark
-        - hg:bg-accent
-        - hg:bg-accent-light
-        - hg:bg-accent-dark
+        - none
+        - overlay
+        - brand
+        - brand-light
+        - brand-dark
+        - accent
+        - accent-light
+        - accent-dark
       meta:enum:
-        hg:bg-none: None
-        hg:bg-black/50: Overlay tint
-        hg:bg-brand: Brand
-        hg:bg-brand-light: Brand Light
-        hg:bg-brand-dark: Brand Dark
-        hg:bg-accent: Accent
-        hg:bg-accent-light: Accent Light
-        hg:bg-accent-dark: Accent Dark
-      default:
-        - "hg:bg-none"
+        none: None
+        overlay: Overlay tint
+        brand: Brand
+        brand-light: Brand light
+        brand-dark: Brand dark
+        accent: Accent
+        accent-light: Accent light
+        accent-dark: Accent dark
+      default: none
       examples:
-        - "hg:bg-none"
+        - "none"
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
