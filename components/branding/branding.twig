@@ -1,7 +1,7 @@
 {# We attach the library in-case you need to style further. #}
 {{ attach_library('mercury/branding') }}
 
-<a href="{{ url|default('/') }}" class="branding hg:inline-block" rel="home">
+<a {{ attributes.setAttribute('href', url|default('/')).addClass(['branding', 'hg:inline-block']).setAttribute('rel', 'home') }}>
   {% block branding %}
     <img class="hg:h-full hg:w-full hg:object-contain" src="{{ site_logo_url }}" alt="{{ site_name }}" />
   {% endblock %}

@@ -1,4 +1,4 @@
-<div class="accordion-container">
+<div {{ attributes.addClass('accordion-container') }}>
   {% block accordion_content %}
     {% embed 'mercury:collapsible-section'
       with {

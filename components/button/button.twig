@@ -39,7 +39,7 @@
 {% set button_disabled_attr = disabled|default(false) ? 'disabled' : '' %}
 
 {% if href %}
-  <a href="{{ href }}" class="{{ btn_classes|join(' ') }}" {{ disabled_attr }}>
+  <a {{ attributes.setAttribute('href', href).addClass(btn_classes) }} {{ disabled_attr }}>
     {% if icon %}{{
       include(
         '@mercury/components/icon/icon.twig',
@@ -51,7 +51,7 @@
     {{ label }}
   </a>
 {% else %}
-  <button class="{{ btn_classes|join(' ') }}" {{ button_disabled_attr }}>
+  <button {{ attributes.addClass(btn_classes) }} {{ button_disabled_attr }}>
     {% if icon %}{{
       include(
         '@mercury/components/icon/icon.twig',
