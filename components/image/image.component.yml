@@ -37,7 +37,6 @@ props:
       title: Image radius
       description: Image corner radius
       enum:
-        - none
         - small
         - large
         - extra-large
@@ -45,7 +44,6 @@ props:
         small: Small
         large: Large
         extra-large: Extra large
-      default: small
       examples:
         - "small"
     caption:

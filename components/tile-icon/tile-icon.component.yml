@@ -10,18 +10,15 @@ props:
       title: Tile aspect ratio
       description: Set aspect ratio of the tile.
       enum:
-        - none
         - square
         - "4:3"
         - "16:9"
       meta:enum:
-        none: Fit content
         square: Square
         "4:3": Rectangle 4 × 3
         "16:9": Rectangle 16 × 9
-      default: none
       examples:
-        - none
+        - square
     flex_align:
       type: string
       title: Alignment
@@ -47,7 +44,6 @@ props:
       title: Border radius
       description: Set rounded corner radius
       enum:
-        - none
         - small
         - large
         - extra-large

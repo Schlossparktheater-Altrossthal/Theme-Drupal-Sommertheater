@@ -9,11 +9,9 @@ props:
       type: string
       title: Flex gap
       enum:
-        - none
         - large
         - extra-large
       meta:enum:
-        none: None
         large: Large (default)
         extra-large: Extra-Large
       default: large
@@ -35,7 +33,6 @@ props:
       type: string
       title: Background color
       enum:
-        - none
         - brand
         - brand-light
         - brand-dark
@@ -43,17 +40,12 @@ props:
         - accent-light
         - accent-dark
       meta:enum:
-        none: None
         brand: Brand
         brand-light: Brand Light
         brand-dark: Brand Dark
         accent: Accent
         accent-light: Accent Light
         accent-dark: Accent Dark
-      default:
-        - "none"
-      examples:
-        - "none"
     padding_block_start:
       type: string
       title: Padding top
@@ -111,12 +103,10 @@ props:
       title: Image border radius
       description: Set the image border radius
       enum:
-        - none
         - small
         - large
         - extra-large
       meta:enum:
-        none: None
         small: Small
         large: Large
         extra-large: Extra-Large
@@ -153,12 +143,10 @@ props:
       type: string
       title: Slot flex gap
       enum:
-        - none
         - small
         - medium
         - large
       meta:enum:
-        none: None
         small: Small
         medium: Medium
         large: Large

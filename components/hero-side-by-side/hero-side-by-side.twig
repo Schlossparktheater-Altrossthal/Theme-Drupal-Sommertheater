@@ -69,7 +69,7 @@
         'hg:h-full',
         'hg:flex',
         class_map['image_position'][image_position] ?? '',
-        class_map['hero_flex_gap'][hero_flex_gap] ?? 'hg:gap-0',
+        hero_flex_gap ? class_map['hero_flex_gap'][hero_flex_gap] : 'hg:gap-0',
         class_map['hero_flex_direction_mobile'][hero_flex_direction_mobile] ?? '',
         class_map['padding_block_start'][padding_block_start] ?? '',
         class_map['padding_block_end'][padding_block_end] ?? ''
@@ -80,9 +80,10 @@
 
 {# Background classes for full-width background positioning #}
 {% set bgd_classes =
-  [class_map['background'][background] ?? 'hg:bg-none', 'hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]']|filter(
-    c => c is not empty
-  )
+  [
+    background ? class_map['background'][background] : 'hg:bg-none',
+    'hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]'
+  ]|filter(c => c is not empty)
 %}
 
 {% set hero_content_classes =
@@ -91,7 +92,7 @@
     'hg:flex',
     'hg:flex-1',
     class_map['slot_flex_direction'][slot_flex_direction] ?? '',
-    class_map['slot_flex_gap'][slot_flex_gap] ?? 'hg:gap-0',
+    slot_flex_gap ? class_map['slot_flex_gap'][slot_flex_gap] : 'hg:gap-0',
     class_map['slot_flex_align'][slot_flex_align] ?? ''
   ]|filter(c => c is not empty)
 %}
@@ -102,7 +103,7 @@
     'hg:flex-1',
     'hg:overflow-hidden',
     class_map['image_size'][image_size] ?? '',
-    class_map['image_radius'][image_radius] ?? 'hg:rounded-none'
+    image_radius ? class_map['image_radius'][image_radius] : 'hg:rounded-none'
   ]|filter(c => c is not empty)
 %}
 

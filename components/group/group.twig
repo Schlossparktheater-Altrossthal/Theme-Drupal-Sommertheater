@@ -43,10 +43,10 @@
     'group',
     class_map['flex_direction'][flex_direction] ?? '',
     class_map['flex_align'][flex_align] ?? '',
-    class_map['flex_gap'][flex_gap] ?? '',
-    class_map['radius'][radius] ?? '',
-    class_map['padding'][padding] ?? '',
-    class_map['background'][background] ?? 'hg:bg-none'
+    flex_gap ? class_map['flex_gap'][flex_gap] : '',
+    radius ? class_map['radius'][radius] : '',
+    padding ? class_map['padding'][padding] : '',
+    background ? class_map['background'][background] : 'hg:bg-none'
   ]
     |filter(c => c is not empty)
     |join(' ')

@@ -35,8 +35,8 @@
         border ? 'hg:border hg:p-6' : '',
         url ? 'has-link hg:transition-all hg:duration-300' : '',
         background ? 'has-bg hg:p-6' : '',
-        class_map['tile_size'][tile_size] ?? 'hg:aspect-none',
-        class_map['border_radius'][border_radius] ?? 'hg:rounded-none'
+        tile_size ? class_map['tile_size'][tile_size] : 'hg:aspect-none',
+        border_radius ? class_map['border_radius'][border_radius] : 'hg:rounded-none'
       ]
     )
     |filter(v => v is not empty)

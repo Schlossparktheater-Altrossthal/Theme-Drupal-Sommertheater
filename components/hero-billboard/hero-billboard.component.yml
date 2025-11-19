@@ -4,6 +4,8 @@ description: Hero with stacked slots for media and content.
 group: Layout
 props:
   type: object
+  required:
+    - overlay_opacity
   properties:
     height:
       type: string
@@ -45,9 +47,9 @@ props:
         - "40%"
         - "60%"
         - "75%"
-      default: "40%"
+      default: "0%"
       examples:
-        - "40%"
+        - "0%"
     object_position:
       type: string
       title: Background image position

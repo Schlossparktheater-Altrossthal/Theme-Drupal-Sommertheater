@@ -15,7 +15,7 @@
 {% set classes =
   classes
     |default([])
-    |merge(['media-image', radius ? class_map['radius'][radius] ?? 'hg:rounded-none' ~ ' hg:overflow-hidden' : ''])
+    |merge(['media-image', 'media-image', radius ? class_map['radius'][radius] ~ ' hg:overflow-hidden' : 'hg:rounded-none'])
     |filter(v => v is not empty)
 %}
 

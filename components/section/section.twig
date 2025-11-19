@@ -87,9 +87,10 @@
 %}
 
 {# Background classes for full-width background positioning #}
-{% set bgd_class = class_map['background_color'][background_color] ?? 'hg:bg-none'
-  ~ ' hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]'
-%}
+{% set background_classes = [
+  background_color ? class_map['background_color'][background_color] : 'hg:bg-none',
+  'hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]'
+] %}
 
 <section class="{{ classes|join(' ') }}">
   {# if there is background media #}
@@ -102,8 +103,8 @@
   {% endif %}
 
   {# if there is background color (can work with or without background media) #}
-  {% if background_color is not empty and background_color != 'none' %}
-    <div class="{{ bgd_class }}"></div>
+  {% if background_color is not empty %}
+    <div class="{{ background_classes|join(' ') }}"></div>
   {% endif %}
 
   {% if section_header %}

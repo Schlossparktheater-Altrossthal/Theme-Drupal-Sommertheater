@@ -25,19 +25,17 @@ props:
       type: string
       title: Extra space between items
       enum:
-        - none
         - sm
         - md
         - lg
         - xl
       meta:enum:
-        none: None
         sm: Small
         md: Medium
         lg: Large
         xl: Extra-Large
       examples:
-        - "none"
+        - md
     flex_align:
       type: string
       title: Alignment within parent component
@@ -56,41 +54,36 @@ props:
       type: string
       title: Rounded corners
       enum:
-        - none
         - sm
         - md
         - lg
         - xl
       meta:enum:
-        none: None
         sm: Small
         md: Medium
         lg: Large
         xl: Extra-Large
       examples:
-        - "none"
+        - sm
     padding:
       type: string
       title: Padding
       enum:
-        - none
         - sm
         - md
         - lg
         - xl
       meta:enum:
-        none: None
         sm: Small
         md: Medium
         lg: Large
         xl: Extra-Large
       examples:
-        - "none"
+        - sm
     background:
       type: string
       title: Background color
       enum:
-        - none
         - brand
         - brand-light
         - brand-dark
@@ -98,7 +91,6 @@ props:
         - accent-light
         - accent-dark
       meta:enum:
-        none: None
         brand: Brand
         brand-light: Brand light
         brand-dark: Brand dark
