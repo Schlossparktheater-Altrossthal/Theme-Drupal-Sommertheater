@@ -29,8 +29,10 @@
     {% for item in items %}
       {% set title = item.title is not empty ? item.title : item.text %}
       {# Capture the rendered URL before testing it for emptiness, since it's a Drupal object under the hood.
-      This needs to be on a single line so that errant whitespace is not included in the `url` variable. #}
-      {% set url %}{{ item.url }}{% endset %}
+      The - prefix and suffix prevent errant whitespace in the resulting `url` variable. #}
+      {% set url %}
+        {{- item.url -}}
+      {% endset %}
 
       {% set item_classes =
         [
