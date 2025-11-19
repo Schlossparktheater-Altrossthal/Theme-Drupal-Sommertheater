@@ -7,25 +7,25 @@ props:
   properties:
     action:
       type: string
-      title: Form Action
+      title: Form action
       description: The form action URL.
       examples:
         - "/search/node"
     method:
       type: string
-      title: Form Method
+      title: Form method
       description: The form method.
       examples:
         - "get"
     label:
       type: string
-      title: Input Label
+      title: Input label
       description: The label for the search input.
       examples:
         - "Search"
     buttonLabel:
       type: string
-      title: Button Label
+      title: Button label
       description: The label for the submit button.
       examples:
         - "Search"

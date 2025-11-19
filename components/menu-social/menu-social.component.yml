@@ -7,7 +7,7 @@ props:
   properties:
     items:
       type: array
-      title: Menu Items
+      title: Menu items
       description: List of social platforms to display
       items:
         type: object

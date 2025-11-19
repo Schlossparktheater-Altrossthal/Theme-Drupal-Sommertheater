@@ -7,7 +7,7 @@ props:
   properties: {}
 slots:
   accordion_content:
-    title: Accordion Content
+    title: Accordion content
     description: Child content, only one of whose Collapsible Sections can be open at a time.
 libraryOverrides:
   js:

@@ -7,7 +7,7 @@ props:
   properties:
     items:
       type: array
-      title: Menu Items
+      title: Menu items
       description: List of menu items to display
       items:
         type: object

@@ -32,6 +32,6 @@ props:
       examples: []
       menu_level:
         type: integer
-        title: Menu Level
+        title: Menu level
         examples:
           - 0
