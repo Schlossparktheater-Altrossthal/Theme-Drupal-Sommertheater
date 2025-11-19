@@ -28,11 +28,9 @@
   <ul class="dropdown-menu__menu hg:flex hg:w-full hg:flex-col hg:p-0 hg:md:w-auto hg:md:flex-row" data-level="{{ level }}">
     {% for item in items %}
       {% set title = item.title is not empty ? item.title : item.text %}
-      {# Capture the rendered URL before testing it for emptiness,
-        since it's a Drupal object under the hood. #}
-      {% set url %}
-        {{ item.url }}
-      {% endset %}
+      {# Capture the rendered URL before testing it for emptiness, since it's a Drupal object under the hood.
+      This needs to be on a single line so that errant whitespace is not included in the `url` variable. #}
+      {% set url %}{{ item.url }}{% endset %}
 
       {% set item_classes =
         [
