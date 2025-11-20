@@ -18,8 +18,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "post-build-storybook": "node ./scripts/post-storybook-build.js",
-    "build-storybook": "storybook build && npm run post-build-storybook",
-    "postinstall": "cp -R ./node_modules/@phosphor-icons/core/assets/regular ./icons"
+    "build-storybook": "storybook build && npm run post-build-storybook"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
