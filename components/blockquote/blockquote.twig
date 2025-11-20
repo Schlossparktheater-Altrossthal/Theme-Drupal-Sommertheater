@@ -1,8 +1,8 @@
 {% set classes = ['blockquote', 'hg:flex hg:flex-col hg:gap-4'] %}
 
-{% set cite_attr = cite_url and cite_url != 'No URL' ? 'cite="' ~ cite_url ~ '"' : '' %}
+{% set attributes = cite_url and cite_url != 'No URL' ? attributes.setAttribute('cite', cite_url) : attributes %}
 
-<blockquote class="{{ classes|join(' ') }} hg:font-semibold hg:text-body-text" {{ cite_attr }}>
+<blockquote {{ attributes.addClass(classes).addClass(['hg:font-semibold', 'hg:text-body-text']) }}>
   <p class="blockquote-text hg:text-xl hg:leading-[1.5] hg:font-semibold hg:text-inherit">
     {{ text }}
   </p>

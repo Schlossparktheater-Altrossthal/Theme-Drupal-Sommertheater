@@ -1,8 +1,7 @@
 {# Breadcrumb Component - Tailwind CSS #}
 {% if breadcrumb %}
   {% set needs_truncation = (breadcrumb|length) > 3 %}
-
-  <nav aria-label="breadcrumb" class="breadcrumb hg:mb-2 hg:w-full hg:md:my-3 hg:2xl:my-4">
+  <nav {{ attributes.setAttribute('aria-label', 'breadcrumb').addClass(['breadcrumb', 'hg:mb-2', 'hg:w-full', 'hg:md:my-3', 'hg:2xl:my-4']) }}>
     <h2 id="system-breadcrumb" class="hg:sr-only">{{ 'Breadcrumb' }}</h2>
     <ol class="breadcrumb-items hg:m-0 hg:flex hg:list-none hg:flex-row hg:items-center hg:gap-1 hg:p-0 hg:leading-none hg:md:gap-2">
       {% for item in breadcrumb %}

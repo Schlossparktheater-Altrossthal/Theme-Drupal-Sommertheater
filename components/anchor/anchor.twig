@@ -1,4 +1,4 @@
-<span class="anchor" id="{{ id }}">
+<span {{ attributes.addClass('anchor').setAttribute('id', id) }}>
   <span class="anchor--help-text hg:hidden">
     {{
       include(

@@ -22,7 +22,7 @@
     |filter(v => v is not empty)
 %}
 
-<div class="{{ card_classes|join(' ') }}">
+<div {{ attributes.addClass(card_classes) }}>
   {% if media.src is not empty %}
     <div class="card--media hg:overflow-hidden">
       {% block media %}
