@@ -45,7 +45,8 @@
           'hg:w-full',
           'hg:md:w-auto',
           'hg:md:relative',
-          'hg:md:max-w-[375px]'
+          'hg:md:max-w-[375px]',
+          'hg:text-base hg:font-medium'
         ]|filter(c => c is not empty)
       %}
 
@@ -60,7 +61,7 @@
         {% if url is not empty %}
           <a
             href="{{ url }}"
-            class="dropdown-menu__link hg:flex hg:min-h-[44px] hg:shrink-1 hg:grow-1 hg:basis-0 hg:items-center hg:gap-1 hg:md:min-h-auto"
+            class="dropdown-menu__link hg:flex hg:min-h-[44px] hg:shrink-1 hg:grow-1 hg:basis-0 hg:items-center hg:gap-1 hg:text-(--hgc-nav-item-text-mobile) hg:md:min-h-auto hg:md:text-(--hgc-nav-item-text-desktop)"
             data-level="{{ level }}"
           >
             {{ title }}
@@ -73,7 +74,7 @@
               '@link': title|striptags|trim
             }) }}"
             value="{{ menu_level }}"
-            class="dropdown-menu__expand-button hg:flex hg:h-auto hg:min-h-[44px] hg:shrink-0 hg:grow-1 hg:basis-0 hg:cursor-pointer hg:appearance-none hg:items-center hg:justify-center hg:border-0 hg:bg-transparent hg:text-center hg:md:min-h-auto"
+            class="dropdown-menu__expand-button hg:flex hg:h-auto hg:min-h-[44px] hg:shrink-0 hg:grow-1 hg:basis-0 hg:cursor-pointer hg:appearance-none hg:items-center hg:justify-center hg:border-0 hg:bg-transparent hg:text-center hg:text-(--hgc-nav-item-text-mobile) hg:md:min-h-auto hg:md:text-(--hgc-nav-item-text-desktop)"
             data-level="{{ level }}"
           >
             <div

@@ -4,18 +4,5 @@
   .card-events {
     background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
-
-    .heading {
-      @apply hg:font-bold hg:text-brand;
-    }
-  }
-
-  .card-events--description,
-  .card-events--place {
-    @apply hg:text-xl;
-  }
-
-  .card-events--place {
-    @apply hg:font-semibold;
   }
 }

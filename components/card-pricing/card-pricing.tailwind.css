@@ -30,16 +30,7 @@
       }
     }
 
-    .card-title {
-      @apply hg:text-[1.375rem] hg:leading-tight hg:font-bold hg:text-(--hgc-card-price-title);
-    }
-
-    .card-description {
-      @apply hg:text-lg hg:leading-[1.2];
-    }
-
     .card-price {
-      @apply hg:text-4xl hg:leading-none hg:text-(--hgc-card-price-price) hg:lg:text-5xl hg:2xl:text-[3.15rem];
       font-family: var(--hgc-font-display);
 
       sup {
@@ -48,8 +39,6 @@
     }
 
     .card-pricing--features {
-      @apply hg:border-(--hgc-card-price-divider) hg:bg-(--hgc-card-price-bg) hg:pt-4 hg:text-inherit hg:md:pt-6 hg:2xl:pt-7;
-
       ul {
         @apply hg:my-0;
       }

@@ -2,14 +2,17 @@
 {% set content_id = 'collapsible-section--content'|clean_unique_id %}
 {% set heading_level = heading_level|default('3') %}
 
-<div class="collapsible-section hg:overflow-hidden" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
+<div
+  class="collapsible-section hg:overflow-hidden hg:border-b-1 hg:border-(--hgc-collapsible-border-color) hg:bg-clip-padding"
+  data-open-by-default="{{ open_by_default ? 'true' : 'false' }}"
+>
   {# The heading tag is necessary for accessibility reasons. #}
   {% set heading_class = 'hg:text-2xl' %}
   {% set button_content %}
     <button
       id="{{ button_id }}"
       aria-controls="{{ content_id }}"
-      class="collapsible-section--title hg:flex hg:w-full hg:cursor-pointer hg:items-center hg:justify-between hg:p-4 hg:text-left"
+      class="collapsible-section--title hg:flex hg:w-full hg:cursor-pointer hg:items-center hg:justify-between hg:p-4 hg:text-left hg:text-2xl"
     >
       {{ title }}
       <i class="collapsible-section--icon ph-bold ph-caret-down hg:transition-transform hg:duration-(--animate-speed)"></i>
@@ -33,7 +36,7 @@
   {% endif %}
 
   <div
-    class="collapsible-section--content hg:transition-[height, padding] hg:px-4 hg:duration-(--animate-speed)"
+    class="collapsible-section--content hg:transition-[height, padding] hg:h-auto hg:px-4 hg:pb-2 hg:text-base hg:duration-(--animate-speed)"
     id="{{ content_id }}"
     role="region"
     aria-labelledby="{{ button_id }}"

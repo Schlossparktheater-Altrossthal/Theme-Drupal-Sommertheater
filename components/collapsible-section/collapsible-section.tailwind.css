@@ -2,7 +2,6 @@
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
-  @apply hg:border-b-1 hg:border-(--hgc-collapsible-border-color) hg:bg-clip-padding;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
 
@@ -16,7 +15,6 @@
 }
 
 .collapsible-section--title {
-  @apply hg:text-2xl;
   background-color: var(--hgc-collapsible-title-bg);
 
   &:focus {
@@ -33,7 +31,6 @@
 }
 
 .collapsible-section--content {
-  @apply hg:h-auto hg:pb-2 hg:text-base;
   color: var(--hgc-collapsible-content-text);
 
   :first-child {

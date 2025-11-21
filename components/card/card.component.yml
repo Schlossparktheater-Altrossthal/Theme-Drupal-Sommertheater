@@ -7,12 +7,12 @@ props:
   properties:
     heading_text:
       type: string
-      title: Heading Text
+      title: Heading
       examples:
         - "This is my title eu torquent suscipit"
     level:
       type: number
-      title: Heading Level
+      title: Heading level
       enum:
         - 2
         - 3
@@ -28,7 +28,7 @@ props:
         - "https://www.example.com"
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Card Media
+      title: Image
       description: Media and Alt for the card.
       type: object
       examples:
@@ -36,13 +36,12 @@ props:
           alt: "Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/"
     text:
       type: string
-      title: Text
-      description: Teaser text
+      title: Description
       examples:
         - "Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis."
     style:
       type: string
-      title: Card Style
+      title: Card style
       enum:
         - "default"
         - "framed"
@@ -53,7 +52,6 @@ props:
     orientation:
       type: string
       title: Orientation
-      description: "Set card to horz or vert."
       enum:
         - "stacked"
         - "landscape"

@@ -1,7 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .group {
-    @apply hg:flex hg:min-h-20;
-  }
-}

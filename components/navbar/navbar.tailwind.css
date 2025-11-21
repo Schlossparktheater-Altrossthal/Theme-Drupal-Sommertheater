@@ -9,19 +9,8 @@
   }
 }
 
-.navbar--menu {
-  @apply hg:grid hg:bg-body-bg hg:md:flex;
-}
-
 .navbar--menu:not(.navbar--menu--open) {
   @apply hg:hidden hg:md:flex;
-}
-
-body.path-xb {
-  .navbar--logo,
-  .navbar--links {
-    @apply hg:min-w-12;
-  }
 }
 
 .navbar--links .button.button {

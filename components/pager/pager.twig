@@ -1,4 +1,4 @@
-{% set classes = ['pager', 'hg:my-4'] %}
+{% set classes = ['pager', 'hg:my-4', 'hg:font-medium'] %}
 
 {% set ellipsis_container_classes = ['hg:flex hg:items-center hg:justify-center hg:rounded hg:px-2 hg:py-1.5'] %}
 
@@ -25,7 +25,10 @@
         <li>
           <a href="{{ items.first.href }}" title="{{ 'Go to first page'|t }}" {{ items.first.attributes|without('href', 'title') }}>
             <span class="hg:sr-only">{{ 'First page'|t }}</span>
-            <span aria-hidden="true" class="pager__list-item hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3">
+            <span
+              aria-hidden="true"
+              class="pager__list-item hg:text-sm hg:whitespace-nowrap hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3 hg:md:text-base"
+            >
               {{ items.first.text|default('« First'|t) }}
             </span>
           </a>
@@ -42,8 +45,15 @@
             {{ items.previous.attributes|without('href', 'title', 'rel') }}
           >
             <span class="hg:sr-only">{{ 'Previous page'|t }}</span>
-            <i class="pager__icon ph ph-caret-left hg:flex hg:items-center hg:justify-center hg:px-2 hg:lg:px-4"></i>
-            <span class="pager__list-item hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3" aria-hidden="true">
+            <i
+              class="pager__icon ph ph-caret-left hg:flex hg:h-6 hg:w-6 hg:shrink-0 hg:items-center hg:justify-center hg:px-2 hg:text-2xl hg:leading-none hg:lg:px-4"
+            >
+
+            </i>
+            <span
+              class="pager__list-item hg:text-sm hg:whitespace-nowrap hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3 hg:md:text-base"
+              aria-hidden="true"
+            >
               {{ items.previous.text|default('Previous'|t) }}
             </span>
           </a>
@@ -52,7 +62,11 @@
       {# Add an ellipsis if there are further previous pages. #}
 
       {% if ellipses.previous %}
-        <li><span class="{{ ellipsis_container_classes|join(' ') }}" role="presentation"><i class="pager__icon ph ph-caret-left"></i></span></li>
+        <li>
+          <span class="{{ ellipsis_container_classes|join(' ') }}" role="presentation">
+            <i class="pager__icon ph ph-caret-left hg:h-6 hg:w-6 hg:shrink-0 hg:text-2xl hg:leading-none"></i>
+          </span>
+        </li>
       {% endif %}
       {# Now generate the actual pager piece. #}
       {% for key, item in items.pages %}
@@ -72,13 +86,17 @@
           {% endif %}
           <a href="{{ item.href }}" title="{{ title }}" class="{{ page_classes }}" {{ item.attributes|without('href', 'title') }}>
             <span class="hg:sr-only">{{ 'Page'|t }}</span>
-            <span class="pager__list-item">{{- key -}}</span>
+            <span class="pager__list-item hg:text-sm hg:whitespace-nowrap hg:md:text-base">{{- key -}}</span>
           </a>
         </li>
       {% endfor %}
       {# Add an ellipsis if there are further next pages. #}
       {% if ellipses.next %}
-        <li><span class="{{ ellipsis_container_classes|join(' ') }}" role="presentation"><i class="pager__icon ph ph-caret-right"></i></span></li>
+        <li>
+          <span class="{{ ellipsis_container_classes|join(' ') }}" role="presentation">
+            <i class="pager__icon ph ph-caret-right hg:h-6 hg:w-6 hg:shrink-0 hg:text-2xl hg:leading-none"></i>
+          </span>
+        </li>
       {% endif %}
       {# Print next item if we are not on the last page. #}
       {% if items.next %}
@@ -91,10 +109,17 @@
             {{ items.next.attributes|without('href', 'title', 'rel') }}
           >
             <span class="hg:sr-only">{{ 'Next page'|t }}</span>
-            <span class="pager__list-item hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3" aria-hidden="true">
+            <span
+              class="pager__list-item hg:text-sm hg:whitespace-nowrap hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3 hg:md:text-base"
+              aria-hidden="true"
+            >
               {{ items.next.text|default('Next'|t) }}
             </span>
-            <i class="pager__icon ph ph-caret-right hg:flex hg:items-center hg:justify-center hg:px-2 hg:lg:px-4"></i>
+            <i
+              class="pager__icon ph ph-caret-right hg:flex hg:h-6 hg:w-6 hg:shrink-0 hg:items-center hg:justify-center hg:px-2 hg:text-2xl hg:leading-none hg:lg:px-4"
+            >
+
+            </i>
           </a>
         </li>
       {% endif %}
@@ -103,7 +128,10 @@
         <li>
           <a href="{{ items.last.href }}" title="{{ 'Go to last page'|t }}" {{ items.last.attributes|without('href', 'title') }}>
             <span class="hg:sr-only">{{ 'Last page'|t }}</span>
-            <span aria-hidden="true" class="pager__list-item hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3">
+            <span
+              aria-hidden="true"
+              class="pager__list-item hg:text-sm hg:whitespace-nowrap hg:hover:underline hg:hover:decoration-1 hg:hover:underline-offset-3 hg:md:text-base"
+            >
               {{ items.last.text|default('Last »'|t) }}
             </span>
           </a>

@@ -1,73 +1,8 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .card {
-    @apply hg:bg-(--hgc-card-bg);
-
-    &:hover,
-    &:focus {
-      --hgc-card-bg: var(--hgc-card-bg-hover);
-    }
-
-    &.is-framed {
-      --hgc-card-bg: var(--hgc-card-framed-bg);
-
-      &:hover,
-      &:focus {
-        --hgc-card-bg: var(--hgc-card-framed-bg-hover);
-      }
-    }
-
-    &.is-featured {
-      --hgc-card-bg: var(--hgc-card-featured-bg);
-
-      &:hover,
-      &:focus {
-        --hgc-card-bg: var(--hgc-card-featured-bg-hover);
-      }
-    }
-
-    .views-row & {
-      @apply hg:h-full;
-    }
-
-    &.is-framed,
-    &.is-featured {
-      @apply hg:shadow-lg;
-      --tw-shadow-color: var(--hgc-card-shadow-color);
-
-      &:hover,
-      &:focus {
-        --tw-shadow-color: var(--hgc-card-shadow-color-hover);
-      }
-    }
-  }
-
-  .card .card--media {
-    @apply hg:aspect-video;
-  }
-
-  .card.is-stacked .card--media {
-    @apply hg:aspect-video hg:overflow-hidden;
-  }
-
-  .card.is-landscape .card--media {
-    @apply hg:aspect-video hg:overflow-hidden hg:md:aspect-auto hg:md:flex-[0_1_50%];
-  }
-
-  .card.is-landscape .card--content {
-    @apply hg:md:flex-[0_1_50%] hg:md:py-4;
-  }
-
-  .card--content .heading {
-    @apply hg:font-semibold;
-  }
-
-  .card--content p {
-    @apply hg:text-lg hg:font-(--hgc-font-weight-p) hg:xl:text-xl;
-  }
-
-  .card:not(:has(.badge)) .heading a {
-    @apply hg:after:absolute hg:after:inset-0 hg:after:content-[''];
+  /* Cards inside views rows should take full height */
+  .views-row .card {
+    height: 100%;
   }
 }

@@ -79,6 +79,7 @@
 
 {% set classes = [
   'logo-grid hg:gap-3 hg:min-w-[100%]',
+  'hg:min-w-[250px] hg:text-center',
   columns_mobile ? grid_classes_mobile : scroll_classes_mobile,
   columns_tablet ? grid_classes_tablet : scroll_classes_tablet,
   not columns_mobile != not columns_tablet ? columns_tablet ? cancel_scroll_classes_tablet : cancel_grid_classes_tablet : '',

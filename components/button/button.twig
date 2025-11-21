@@ -26,7 +26,11 @@
         'hg:justify-center',
         mobile_width ? 'hg:w-full hg:sm:size-fit' : 'hg:size-fit',
         icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
-        size_classes_map[size|default('medium')]
+        size_classes_map[size|default('medium')],
+        'hg:border-(--hgc-btn-border) hg:bg-(--hgc-btn-bg) hg:leading-tight hg:font-medium hg:text-(--hgc-btn-label)',
+        'hg:hover:border-(--hgc-btn-border-hover) hg:hover:bg-(--hgc-btn-bg-hover) hg:hover:text-(--hgc-btn-label-hover)',
+        'hg:focus:border-(--hgc-btn-border-hover) hg:focus:bg-(--hgc-btn-bg-hover) hg:focus:text-(--hgc-btn-label-hover)',
+        'hg:disabled:cursor-default hg:disabled:border-(--hgc-btn-border-disabled) hg:disabled:bg-(--hgc-btn-bg-disabled) hg:disabled:text-(--hgc-btn-label-disabled)'
       ]
     )
     |filter(v => v is not empty)

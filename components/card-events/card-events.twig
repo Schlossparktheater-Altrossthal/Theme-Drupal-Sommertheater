@@ -18,14 +18,15 @@
       'mercury:heading',
       {
         level: 3,
-        heading_text: title
+        heading_text: title,
+        heading_classes: 'hg:font-bold hg:text-brand'
       }
     )
   }}
-  <p class="card-events--description">
+  <p class="card-events--description hg:text-xl">
     {{ description }}
   </p>
-  <p class="card-events--place">
+  <p class="card-events--place hg:text-xl hg:font-semibold">
     {{ place }}
   </p>
 </div>

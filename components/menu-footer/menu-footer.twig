@@ -29,14 +29,16 @@
         item.in_active_trail ? 'menu-item--active-trail'
       ] %}
       <li class="hg:flex hg:flex-col hg:gap-3">
-        <a href="{{ item.url }}" class="parent-link hg:group hg:flex hg:items-center hg:justify-between hg:gap-x-1">{{ item.title }}</a>
+        <a href="{{ item.url }}" class="parent-link hg:group hg:flex hg:items-center hg:justify-between hg:gap-x-1 hg:text-2xl hg:hover:underline">
+          {{ item.title }}
+        </a>
 
         {# {{ menus.menu_links(item.below, attributes, menu_level + 1) }} #}
         {% if item.below %}
           <ul class="footer-menu-children hg:flex hg:list-none hg:flex-col hg:gap-2 hg:p-0 hg:md:gap-4">
             {% for child in item.below %}
               <li class="hg:group">
-                <a href="{{ child.url }}" class="below-link hg:block">{{ child.title }}</a>
+                <a href="{{ child.url }}" class="below-link hg:block hg:text-xl hg:hover:underline">{{ child.title }}</a>
 
                 {# Recursive call for deeper levels #}
                 {% if child.below %}

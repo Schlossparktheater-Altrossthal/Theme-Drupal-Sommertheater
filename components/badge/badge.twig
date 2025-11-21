@@ -26,5 +26,5 @@
 
 <a href="{{ url }}" aria-label="{{ label }}" class="{{ classes|join(' ') }}">
   {% if icon is not empty %}{{ include('@mercury/components/icon/icon.twig') }}{% endif %}
-  <span class="badge-label">{{ label }}</span>
+  <span class="badge-label hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
 </a>

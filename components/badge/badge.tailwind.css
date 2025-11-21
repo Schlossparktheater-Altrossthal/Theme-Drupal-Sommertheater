@@ -35,7 +35,3 @@
     color: var(--hgc-btn-label);
   }
 }
-
-.badge-label {
-  @apply hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none;
-}

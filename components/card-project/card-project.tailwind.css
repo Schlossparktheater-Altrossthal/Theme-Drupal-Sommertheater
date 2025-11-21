@@ -5,8 +5,4 @@
     background-color: var(--hg-color-body-bg);
     color: var(--hg-color-body-text);
   }
-
-  .card-project .card--media {
-    @apply hg:aspect-square;
-  }
 }

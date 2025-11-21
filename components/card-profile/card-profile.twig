@@ -1,7 +1,7 @@
-{% set classes = ['card-profile', 'hg:relative'] %}
+{% set classes = ['card-profile', 'hg:relative', 'hg:aspect-[2/3]'] %}
 
 <div class="{{ classes|join(' ') }}">
-  <div class="card--media hg:relative hg:z-1 hg:overflow-hidden">
+  <div class="card--media hg:relative hg:z-1 hg:aspect-[2/3] hg:overflow-hidden hg:rounded-sm">
     {% block card_media %}
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
@@ -9,18 +9,18 @@
       <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
     {% endblock %}
   </div>
-  <div class="card--content hg:absolute hg:inset-0 hg:z-2">
+  <div class="card--content hg:absolute hg:inset-0 hg:z-2 hg:text-center hg:text-white">
     {% if url is not empty %}
       <a href="{{ url }}" class="hg:before:absolute hg:before:inset-0 hg:before:content-['']">
         <p class="hg:absolute hg:inset-0 hg:top-1/2">
-          <strong class="person-name">{{ name }}</strong><br />
-          <span class="person-title">{{ job_title }}</span>
+          <strong class="person-name hg:text-2xl hg:font-bold">{{ name }}</strong><br />
+          <span class="person-title hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
         </p>
       </a>
     {% else %}
       <p class="hg:absolute hg:inset-0 hg:top-1/2">
-        <strong class="person-name">{{ name }}</strong><br />
-        <span class="person-title">{{ job_title }}</span>
+        <strong class="person-name hg:text-2xl hg:font-bold">{{ name }}</strong><br />
+        <span class="person-title hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
       </p>
     {% endif %}
   </div>

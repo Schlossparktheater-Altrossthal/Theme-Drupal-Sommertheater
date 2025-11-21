@@ -2,8 +2,6 @@
 
 @layer components {
   .webform-submission-form {
-    @apply hg:container hg:mx-auto hg:max-w-4xl hg:p-0;
-
     .visually-hidden {
       @apply hg:sr-only;
     }

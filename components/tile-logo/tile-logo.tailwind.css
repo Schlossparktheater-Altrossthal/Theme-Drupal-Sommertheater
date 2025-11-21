@@ -1,10 +1,6 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .logo-tile {
-    @apply hg:bg-(--hgc-tile-logo-bg);
-  }
-
   .logo-tile img {
     max-height: 86px;
   }

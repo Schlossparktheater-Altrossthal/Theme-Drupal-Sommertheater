@@ -2,13 +2,6 @@
 @layer properties;
 @layer components {
   .ui-dialog {
-    position: absolute;
-    z-index: 1260;
-    overflow: hidden;
-    border-radius: var(--hg-radius-lg, 0.5rem);
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    padding: calc(var(--hg-spacing, 4px) * 0);
     background-color: var(--hgc-dialog-background);
     border-color: var(--hgc-dialog-border);
     color: var(--hgc-dialog-text);
@@ -19,32 +12,7 @@
     }
   }
   .ui-dialog .ui-dialog-titlebar {
-    border-radius: 0;
-    border-style: var(--tw-border-style);
-    border-width: 0px;
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
-    --tw-border-style: solid;
-    border-style: solid;
-    background-color: transparent;
-    padding: calc(var(--hg-spacing, 4px) * 4);
-    --tw-font-weight: var(--hg-font-weight-bold, 700);
-    font-weight: var(--hg-font-weight-bold, 700);
     border-color: var(--hgc-dialog-border);
-  }
-  .ui-dialog .ui-dialog-titlebar-close {
-    position: absolute;
-    top: calc(var(--hg-spacing, 4px) * 2);
-    right: calc(var(--hg-spacing, 4px) * 2);
-    height: calc(var(--hg-spacing, 4px) * 5);
-    width: calc(var(--hg-spacing, 4px) * 5);
-    border-style: var(--tw-border-style);
-    border-width: 0px;
-    background-image: none;
-    color: transparent;
-  }
-  .ui-dialog .ui-dialog-titlebar-close .ui-button-icon {
-    color: transparent;
   }
   .ui-dialog .ui-dialog-buttonpane {
     margin-top: calc(var(--hg-spacing, 4px) * 0);
@@ -65,9 +33,6 @@
   }
   .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
     padding: calc(var(--hg-spacing, 4px) * 0);
-  }
-  .ui-dialog .ui-dialog-content {
-    padding: calc(var(--hg-spacing, 4px) * 4);
   }
   .ui-dialog .ui-dialog-content .form-actions {
     margin: calc(var(--hg-spacing, 4px) * 0);
@@ -92,21 +57,6 @@
   .ui-dialog .ajax-progress-throbber .message {
     display: none;
   }
-  .ui-dialog .ui-dialog-title {
-    margin: calc(var(--hg-spacing, 4px) * 0);
-    font-size: var(--hg-text-lg, 1.125rem);
-    line-height: var(--tw-leading, var(--hg-text-lg--line-height, 1.5));
-    --tw-font-weight: var(--hg-font-weight-bold, 700);
-    font-weight: var(--hg-font-weight-bold, 700);
-  }
-  .ui-dialog .ui-button-icon {
-    display: inline-block;
-    height: calc(var(--hg-spacing, 4px) * 5);
-    width: calc(var(--hg-spacing, 4px) * 5);
-    cursor: pointer;
-    background-image: none;
-    padding: calc(var(--hg-spacing, 4px) * 2);
-  }
   .ui-dialog .ui-button-icon::before {
     position: absolute;
     inset: calc(var(--hg-spacing, 4px) * 0);
@@ -119,10 +69,6 @@
     font-weight: var(--hg-font-weight-bold, 700);
     content: "✕";
     color: var(--hgc-dialog-close);
-  }
-  .ui-dialog .ui-button-icon-space {
-    display: inline-block;
-    width: calc(var(--hg-spacing, 4px) * 1);
   }
 }
 @property --tw-border-style {

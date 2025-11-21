@@ -1,8 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components {
-  .logo-tile {
-    background-color: var(--hgc-tile-logo-bg);
-  }
   .logo-tile img {
     max-height: 86px;
   }

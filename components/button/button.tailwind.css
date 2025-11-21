@@ -5,17 +5,6 @@ button.button {
 }
 
 .button {
-  @apply hg:border-(--hgc-btn-border) hg:bg-(--hgc-btn-bg) hg:leading-tight hg:font-medium hg:text-(--hgc-btn-label);
-
-  &:hover,
-  &:focus {
-    @apply hg:border-(--hgc-btn-border-hover) hg:bg-(--hgc-btn-bg-hover) hg:text-(--hgc-btn-label-hover);
-  }
-
-  &:disabled {
-    @apply hg:cursor-default hg:border-(--hgc-btn-border-disabled) hg:bg-(--hgc-btn-bg-disabled) hg:text-(--hgc-btn-label-disabled);
-  }
-
   &.small .ph-bold {
     @apply hg:h-4 hg:w-4;
   }

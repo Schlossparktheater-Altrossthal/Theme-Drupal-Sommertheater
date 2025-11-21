@@ -3,7 +3,6 @@
 @layer components {
   /* Global dialog container - applies to all Drupal dialogs */
   .ui-dialog {
-    @apply hg:absolute hg:z-[1260] hg:overflow-hidden hg:rounded-lg hg:border hg:p-0;
     background-color: var(--hgc-dialog-background);
     border-color: var(--hgc-dialog-border);
     color: var(--hgc-dialog-text);
@@ -18,18 +17,7 @@
 
   /* Dialog titlebar - applies to all dialogs */
   .ui-dialog .ui-dialog-titlebar {
-    @apply hg:rounded-none hg:border-0 hg:border-b hg:border-solid hg:bg-transparent hg:p-4 hg:font-bold;
     border-color: var(--hgc-dialog-border);
-  }
-
-  /* Close button - applies to all dialogs */
-  .ui-dialog .ui-dialog-titlebar-close {
-    @apply hg:absolute hg:top-2 hg:right-2 hg:h-5 hg:w-5 hg:border-0 hg:bg-none hg:text-transparent;
-  }
-
-  /* Keep the icon visible */
-  .ui-dialog .ui-dialog-titlebar-close .ui-button-icon {
-    @apply hg:text-transparent;
   }
 
   /* Button pane - applies to all dialogs */
@@ -45,11 +33,6 @@
   /* Button text - applies to all dialogs */
   .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
     @apply hg:p-0;
-  }
-
-  /* Form actions in dialogs - applies to all dialogs */
-  .ui-dialog .ui-dialog-content {
-    @apply hg:p-4;
   }
 
   /* Form actions in dialogs - applies to all dialogs */
@@ -69,24 +52,9 @@
     @apply hg:hidden;
   }
 
-  /* Dialog title styling - applies to all dialogs */
-  .ui-dialog .ui-dialog-title {
-    @apply hg:m-0 hg:text-lg hg:font-bold;
-  }
-
-  /* Close button icon styling - applies to all dialogs */
-  .ui-dialog .ui-button-icon {
-    @apply hg:inline-block hg:h-5 hg:w-5 hg:cursor-pointer hg:bg-none hg:p-2;
-  }
-
   .ui-dialog .ui-button-icon::before {
     @apply hg:absolute hg:inset-0 hg:block hg:h-5 hg:w-5 hg:text-sm hg:font-bold;
     content: "✕";
     color: var(--hgc-dialog-close);
-  }
-
-  /* Close button text spacing - applies to all dialogs */
-  .ui-dialog .ui-button-icon-space {
-    @apply hg:inline-block hg:w-1;
   }
 }

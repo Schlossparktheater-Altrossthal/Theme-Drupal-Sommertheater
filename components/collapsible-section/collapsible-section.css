@@ -1,10 +1,6 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
 .collapsible-section {
-  border-bottom-style: var(--tw-border-style);
-  border-bottom-width: 1px;
-  border-color: var(--hgc-collapsible-border-color);
-  background-clip: padding-box;
   background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
   &:has(button[aria-expanded="true"]) .collapsible-section--content {
@@ -16,8 +12,6 @@
   }
 }
 .collapsible-section--title {
-  font-size: var(--hg-text-2xl, 1.5rem);
-  line-height: var(--tw-leading, var(--hg-text-2xl--line-height, 1.3333));
   background-color: var(--hgc-collapsible-title-bg);
   &:focus {
     background-color: var(--hgc-collapsible-title-bg-hover);
@@ -30,10 +24,6 @@
   }
 }
 .collapsible-section--content {
-  height: auto;
-  padding-bottom: calc(var(--hg-spacing, 4px) * 2);
-  font-size: var(--hg-text-base, 1rem);
-  line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
   color: var(--hgc-collapsible-content-text);
   :first-child {
     margin-top: calc(var(--hg-spacing, 4px) * 0);

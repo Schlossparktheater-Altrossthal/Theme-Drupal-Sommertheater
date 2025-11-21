@@ -12,7 +12,13 @@
   heading_classes
     |default([])
     |merge(
-      ['heading', 'hg:text-' ~ align, has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '', class_map['font_color'][font_color]]
+      [
+        'heading',
+        'hg:text-' ~ align,
+        has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
+        class_map['font_color'][font_color],
+        'hg:font-display hg:leading-[1.2] hg:tracking-normal hg:text-inherit'
+      ]
     )
     |filter(v => v is not empty)
 %}
@@ -30,17 +36,17 @@
 {% set heading_class_attr = (heading_classes|join(' ')) ~ ' ' ~ (font_size == 'default' ? '' : font_size) %}
 
 {% if level == 1 %}
-  <h1 class="{{ heading_class_attr }}">{{ heading_content }}</h1>
+  <h1 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h1)">{{ heading_content }}</h1>
 {% elseif level == 2 %}
-  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+  <h2 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h2)">{{ heading_content }}</h2>
 {% elseif level == 3 %}
-  <h3 class="{{ heading_class_attr }}">{{ heading_content }}</h3>
+  <h3 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h3)">{{ heading_content }}</h3>
 {% elseif level == 4 %}
-  <h4 class="{{ heading_class_attr }}">{{ heading_content }}</h4>
+  <h4 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h4)">{{ heading_content }}</h4>
 {% elseif level == 5 %}
-  <h5 class="{{ heading_class_attr }}">{{ heading_content }}</h5>
+  <h5 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h5)">{{ heading_content }}</h5>
 {% elseif level == 6 %}
-  <h6 class="{{ heading_class_attr }}">{{ heading_content }}</h6>
+  <h6 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h6)">{{ heading_content }}</h6>
 {% else %}
-  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+  <h2 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h2)">{{ heading_content }}</h2>
 {% endif %}

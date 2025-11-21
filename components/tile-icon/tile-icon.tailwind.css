@@ -45,9 +45,4 @@
   .icon-tile--link--text {
     color: var(--hgc-tile-icon-text-color);
   }
-
-  .icon-tile--text,
-  .icon-tile--link--text {
-    @apply hg:opacity-75;
-  }
 }

@@ -43,13 +43,8 @@
   @apply hg:bg-body-bg;
 }
 
-.dropdown-menu__item {
-  @apply hg:text-base hg:font-medium;
-}
-
 .dropdown-menu__link,
 .dropdown-menu__expand-button {
-  @apply hg:text-(--hgc-nav-item-text-mobile) hg:md:text-(--hgc-nav-item-text-desktop);
   &:hover,
   &:active,
   &:focus {
@@ -141,10 +136,6 @@
 .dropdown-menu__link:not([data-level="1"]),
 .dropdown-menu__expand-button:not([data-level="1"]) {
   @apply hg:flex hg:items-center hg:justify-start hg:md:w-max;
-}
-
-.dropdown-menu__expand-button-contents {
-  @apply hg:flex hg:w-full hg:items-center hg:justify-between;
 }
 
 /* All submenus. */

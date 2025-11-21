@@ -4,21 +4,12 @@
   .footer-menu {
     .parent-link,
     .below-link {
-      @apply hg:hover:underline;
       color: var(--hgc-menu-link-color);
 
       &:hover,
       &:focus {
         color: var(--hgc-menu-link-color-hover);
       }
-    }
-
-    .parent-link {
-      @apply hg:text-2xl;
-    }
-
-    .below-link {
-      @apply hg:text-xl;
     }
   }
 }

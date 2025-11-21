@@ -3,7 +3,6 @@
 @layer components {
   .utility-menu {
     .utility-menu--item-text {
-      @apply hg:text-sm hg:leading-tight hg:hover:underline;
       color: var(--hgc-menu-link-color);
 
       &:hover,

@@ -2,15 +2,6 @@
 
 @layer components {
   .pager {
-    @apply hg:font-medium;
     color: var(--hgc-color-body-text);
-  }
-
-  .pager__list-item {
-    @apply hg:text-sm hg:whitespace-nowrap hg:md:text-base;
-  }
-
-  .pager .pager__icon {
-    @apply hg:h-6 hg:w-6 hg:shrink-0 hg:text-2xl hg:leading-none;
   }
 }

@@ -6,23 +6,10 @@
     overflow: hidden;
   }
 }
-.navbar--menu {
-  display: grid;
-  background-color: var(--hg-color-body-bg, #ffffff);
-  @media (width >= 48rem) {
-    display: flex;
-  }
-}
 .navbar--menu:not(.navbar--menu--open) {
   display: none;
   @media (width >= 48rem) {
     display: flex;
-  }
-}
-body.path-xb {
-  .navbar--logo,
-  .navbar--links {
-    min-width: calc(var(--hg-spacing, 4px) * 12);
   }
 }
 .navbar--links .button.button {
