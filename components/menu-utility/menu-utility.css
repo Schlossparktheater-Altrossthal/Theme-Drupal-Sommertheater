@@ -3,8 +3,7 @@
   .utility-menu {
     .utility-menu--item-text {
       color: var(--hgc-menu-link-color);
-      &:hover,
-      &:focus {
+      &:hover, &:focus {
         color: var(--hgc-menu-link-color-hover);
       }
     }

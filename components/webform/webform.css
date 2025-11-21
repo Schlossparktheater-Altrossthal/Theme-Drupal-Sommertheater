@@ -14,9 +14,7 @@
       border-width: 0;
     }
   }
-  .webform-submission-form,
-  .fieldset-wrapper,
-  *[id^="edit-page-"] {
+  .webform-submission-form, .fieldset-wrapper, *[id^="edit-page-"] {
     display: flex;
     flex-direction: column;
     gap: calc(var(--hg-spacing, 4px) * 8);
@@ -24,8 +22,7 @@
   fieldset:not(.webform-type-fieldset) .fieldset-wrapper {
     gap: calc(var(--hg-spacing, 4px) * 1);
   }
-  label,
-  .fieldset-legend {
+  label, .fieldset-legend {
     margin-bottom: calc(var(--hg-spacing, 4px) * 1);
     display: block;
     font-size: var(--hg-text-sm, 0.875rem);
@@ -38,10 +35,8 @@
       line-height: var(--tw-leading, var(--hg-text-base--line-height, 1.5));
     }
   }
-  .form-item:focus-within,
-  .fieldgroup:focus-within {
-    > label,
-    .fieldset-legend {
+  .form-item:focus-within, .fieldgroup:focus-within {
+    > label, .fieldset-legend {
       color: var(--hgc-webform-label-focus);
     }
   }
@@ -55,17 +50,7 @@
     color: var(--hg-color-red-500, oklch(63.7% 0.237 25.331));
     content: "*";
   }
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="url"],
-  input[type="number"],
-  input[type="password"],
-  input[type="search"],
-  input[type="date"],
-  input[type="time"],
-  textarea,
-  select {
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], input[type="password"], input[type="search"], input[type="date"], input[type="time"], textarea, select {
     width: 100%;
     border-style: var(--tw-border-style);
     border-width: 0px;
@@ -81,17 +66,7 @@
     --tw-outline-style: none;
     outline-style: none;
   }
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="tel"]:focus,
-  input[type="url"]:focus,
-  input[type="number"]:focus,
-  input[type="password"]:focus,
-  input[type="search"]:focus,
-  input[type="date"]:focus,
-  input[type="time"]:focus,
-  textarea:focus,
-  select:focus {
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="date"]:focus, input[type="time"]:focus, textarea:focus, select:focus {
     border-color: var(--hgc-webform-focus-border);
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -99,17 +74,14 @@
   select:focus {
     color: var(--hgc-webform-text);
   }
-  input::placeholder,
-  textarea::placeholder,
-  select {
+  input::placeholder, textarea::placeholder, select {
     color: var(--hgc-webform-placeholder);
   }
   textarea {
     min-height: 80px;
     resize: vertical;
   }
-  .form-submit,
-  input.button {
+  .form-submit, input.button {
     cursor: pointer;
     border-radius: var(--hg-radius-lg, 0.5rem);
     border-style: var(--tw-border-style);
@@ -123,20 +95,15 @@
     color: var(--hgc-webform-button-text);
     border-radius: var(--hgc-webform-button-radius) !important;
   }
-  .form-submit:hover,
-  input.button:hover {
+  .form-submit:hover, input.button:hover {
     border-color: var(--hgc-webform-button-border-hover);
     background-color: var(--hgc-webform-button-fill-hover);
     color: var(--hgc-webform-button-text-hover);
   }
-  .form-item--error input,
-  .form-item--error textarea,
-  .form-item--error select {
+  .form-item--error input, .form-item--error textarea, .form-item--error select {
     border-color: var(--hg-color-red-500, oklch(63.7% 0.237 25.331));
   }
-  .form-item--error input:focus,
-  .form-item--error textarea:focus,
-  .form-item--error select:focus {
+  .form-item--error input:focus, .form-item--error textarea:focus, .form-item--error select:focus {
     border-color: var(--hg-color-red-500, oklch(63.7% 0.237 25.331));
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -154,8 +121,7 @@
     flex-direction: column;
     gap: calc(var(--hg-spacing, 4px) * 2);
   }
-  .webform-type-checkbox.form-item,
-  .webform-type-radio.form-item {
+  .webform-type-checkbox.form-item, .webform-type-radio.form-item {
     display: flex;
     flex-wrap: wrap;
     gap: calc(var(--hg-spacing, 4px) * 2);
@@ -244,11 +210,8 @@
   initial-value: 0 0 #0000;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-    *,
-    ::before,
-    ::after,
-    ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
       --tw-font-weight: initial;
       --tw-border-style: solid;
       --tw-shadow: 0 0 #0000;

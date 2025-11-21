@@ -35,11 +35,8 @@
   }
   background-color: var(--hg-color-body-bg, #ffffff);
 }
-.dropdown-menu__link,
-.dropdown-menu__expand-button {
-  &:hover,
-  &:active,
-  &:focus {
+.dropdown-menu__link, .dropdown-menu__expand-button {
+  &:hover, &:active, &:focus {
     &:is(.a, :not(.a)) {
       @media (width >= 48rem) {
         background-color: var(--hgc-nav-item-hover-bg);
@@ -67,8 +64,7 @@
     padding: calc(var(--hg-spacing, 4px) * 3);
   }
 }
-.dropdown-menu__link:not([data-level="1"]),
-.dropdown-menu__expand-button:not([data-level="1"]) {
+.dropdown-menu__link:not([data-level="1"]), .dropdown-menu__expand-button:not([data-level="1"]) {
   border-radius: var(--hg-radius-sm, 0.25rem);
   color: var(--hgc-nav-submenu-text);
   &:hover {
@@ -184,8 +180,7 @@
   }
   display: var(--display-mode, block);
 }
-.dropdown-menu__link:not([data-level="1"]),
-.dropdown-menu__expand-button:not([data-level="1"]) {
+.dropdown-menu__link:not([data-level="1"]), .dropdown-menu__expand-button:not([data-level="1"]) {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -326,11 +321,8 @@
   }
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-    *,
-    ::before,
-    ::after,
-    ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-duration: initial;
       --tw-scale-x: 1;

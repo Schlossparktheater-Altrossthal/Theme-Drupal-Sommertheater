@@ -4,8 +4,7 @@
     background-color: var(--hgc-card-price-bg);
     border-color: var(--hgc-card-price-border);
     color: var(--hgc-card-price-text);
-    &:hover,
-    &:focus {
+    &:hover, &:focus {
       border-color: var(--hgc-card-price-border-hover);
     }
     &.promote {
@@ -15,8 +14,7 @@
       --hgc-card-price-price: var(--hgc-card-price-price-promoted);
       --hgc-card-price-bg: var(--hgc-card-price-bg-promoted);
       --hgc-card-price-title: var(--hgc-card-price-title-promoted);
-      &:hover,
-      &:focus {
+      &:hover, &:focus {
         background-color: var(--hgc-card-price-bg-promoted-hover);
         border-color: var(--hgc-card-price-border-promoted-hover);
         .card-pricing--features {

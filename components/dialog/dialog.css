@@ -53,8 +53,7 @@
     opacity: 90%;
     background-image: url(../../images/icons/loading-small.svg);
   }
-  .ui-dialog .ajax-progress-throbber .throbber,
-  .ui-dialog .ajax-progress-throbber .message {
+  .ui-dialog .ajax-progress-throbber .throbber, .ui-dialog .ajax-progress-throbber .message {
     display: none;
   }
   .ui-dialog .ui-button-icon::before {
@@ -81,11 +80,8 @@
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-    *,
-    ::before,
-    ::after,
-    ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
     }
