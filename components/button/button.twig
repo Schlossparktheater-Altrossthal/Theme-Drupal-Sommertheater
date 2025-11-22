@@ -1,8 +1,115 @@
-{% set size_classes_map = {
-  small: 'hg:gap-1 hg:px-4 hg:py-[6px] hg:text-sm hg:rounded-md',
-  medium: 'hg:gap-2 hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg',
-  large: 'hg:gap-3 hg:px-6 hg:py-3 hg:text-lg hg:rounded-xl hg:leading-[22px]!'
-} %}
+{% set button_variant = variant|default('primary') %}
+{% set button_size = size|default('medium') %}
+{% set is_disabled = disabled|default(false) %}
+{% set has_icon = icon is not empty %}
+
+{% set button_variants =
+  html_cva(
+    base: [
+      'hg:no-underline',
+      'hg:hover:no-underline',
+      'hg:cursor-pointer',
+      'hg:border',
+      'hg:flex',
+      'hg:items-center',
+      'hg:justify-center',
+      'hg:leading-tight',
+      'hg:font-medium'
+    ],
+    variants: {
+      size: {
+        small: 'hg:gap-1 hg:px-4 hg:py-[6px] hg:text-sm hg:rounded-md',
+        medium: 'hg:gap-2 hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg',
+        large: 'hg:gap-3 hg:px-6 hg:py-3 hg:text-lg hg:rounded-xl hg:leading-[22px]'
+      },
+      variant: {
+        primary: [
+          'hg:border-[var(--hgc-btn-border)]',
+          'hg:bg-[var(--hgc-btn-bg)]',
+          'hg:text-[var(--hgc-btn-label)]',
+          'hg:hover:border-[var(--hgc-btn-border-hover)]',
+          'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
+          'hg:hover:text-[var(--hgc-btn-label-hover)]',
+          'hg:focus:border-[var(--hgc-btn-border-hover)]',
+          'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
+          'hg:focus:text-[var(--hgc-btn-label-hover)]',
+          'hg:disabled:cursor-default',
+          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
+          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+        ],
+        'primary-accent': [
+          'hg:border-[var(--hg-color-accent)]',
+          'hg:bg-[var(--hg-color-accent)]',
+          'hg:text-[var(--hg-color-white)]',
+          'hg:hover:border-[var(--hg-color-accent)]',
+          'hg:hover:bg-[var(--hg-color-accent-dark)]',
+          'hg:hover:text-[var(--hg-color-white)]',
+          'hg:focus:border-[var(--hg-color-accent)]',
+          'hg:focus:bg-[var(--hg-color-accent-dark)]',
+          'hg:focus:text-[var(--hg-color-white)]',
+          'hg:disabled:cursor-default',
+          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
+          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+        ],
+        secondary: [
+          'hg:border-[var(--hgc-btn-secondary-border)]',
+          'hg:bg-[var(--hgc-btn-secondary-bg)]',
+          'hg:text-[var(--hgc-btn-secondary-label)]',
+          'hg:hover:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hg:hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hg:hover:text-[var(--hgc-btn-secondary-label-hover)]',
+          'hg:focus:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hg:focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hg:focus:text-[var(--hgc-btn-secondary-label-hover)]',
+          'hg:disabled:cursor-default',
+          'hg:disabled:border-[var(--hgc-btn-secondary-border-disabled)]',
+          'hg:disabled:bg-[var(--hgc-btn-secondary-bg-disabled)]',
+          'hg:disabled:text-[var(--hgc-btn-secondary-label-disabled)]'
+        ],
+        'secondary-accent': [
+          'hg:border-[var(--hg-color-accent)]',
+          'hg:bg-[var(--hg-color-body-bg)]',
+          'hg:text-[var(--hg-color-white)]',
+          'hg:hover:border-[var(--hg-color-accent)]',
+          'hg:hover:bg-[var(--hg-color-accent-light)]',
+          'hg:hover:text-[var(--hg-color-accent-dark)]',
+          'hg:focus:border-[var(--hg-color-accent)]',
+          'hg:focus:bg-[var(--hg-color-accent-light)]',
+          'hg:focus:text-[var(--hg-color-accent-dark)]',
+          'hg:disabled:cursor-default',
+          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
+          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+        ],
+        negative: [
+          'hg:border-[var(--hgc-btn-negative-border)]',
+          'hg:bg-[var(--hgc-btn-negative-bg)]',
+          'hg:text-[var(--hgc-btn-negative-label)]',
+          'hg:hover:border-[var(--hgc-btn-negative-border-hover)]',
+          'hg:hover:bg-[var(--hgc-btn-negative-bg-hover)]',
+          'hg:hover:text-[var(--hgc-btn-negative-label-hover)]',
+          'hg:focus:border-[var(--hgc-btn-negative-border-hover)]',
+          'hg:focus:bg-[var(--hgc-btn-negative-bg-hover)]',
+          'hg:focus:text-[var(--hgc-btn-negative-label-hover)]',
+          'hg:disabled:cursor-default',
+          'hg:disabled:border-[var(--hgc-btn-negative-border-disabled)]',
+          'hg:disabled:bg-[var(--hgc-btn-negative-bg-disabled)]',
+          'hg:disabled:text-[var(--hgc-btn-negative-label-disabled)]'
+        ]
+      },
+      width: {
+        full: 'hg:w-full hg:sm:w-fit',
+        fit: 'hg:w-fit'
+      },
+      iconPosition: {
+        first: 'hg:flex-row',
+        last: 'hg:flex-row-reverse'
+      }
+    }
+  )
+%}
 
 {% set icon_size_map = {
   small: 'hg:text-sm',
@@ -10,60 +117,78 @@
   large: 'hg:text-xl'
 } %}
 
-{% set btn_classes =
-  btn_classes
-    |default([])
-    |merge(
-      [
-        'button',
-        'button--' ~ (variant|default('primary')),
-        'hg:no-underline',
-        'hg:hover:no-underline',
-        'hg:cursor-pointer',
-        'hg:border',
-        'hg:flex',
-        'hg:items-center',
-        'hg:justify-center',
-        mobile_width ? 'hg:w-full hg:sm:size-fit' : 'hg:size-fit',
-        icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
-        size_classes_map[size|default('medium')],
-        'hg:border-(--hgc-btn-border) hg:bg-(--hgc-btn-bg) hg:leading-tight hg:font-medium hg:text-(--hgc-btn-label)',
-        'hg:hover:border-(--hgc-btn-border-hover) hg:hover:bg-(--hgc-btn-bg-hover) hg:hover:text-(--hgc-btn-label-hover)',
-        'hg:focus:border-(--hgc-btn-border-hover) hg:focus:bg-(--hgc-btn-bg-hover) hg:focus:text-(--hgc-btn-label-hover)',
-        'hg:disabled:cursor-default hg:disabled:border-(--hgc-btn-border-disabled) hg:disabled:bg-(--hgc-btn-bg-disabled) hg:disabled:text-(--hgc-btn-label-disabled)'
-      ]
-    )
-    |filter(v => v is not empty)
-%}
+{% set button_width = mobile_width|default(false) ? 'full' : 'fit' %}
+{% set icon_position = icon_first|default(false) ? 'first' : 'last' %}
 
-{% set icon_size = icon_size_map[size|default('medium')] %}
+{# Normalize btn_classes - handle both array and string formats #}
+{% set additional_classes = btn_classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
 
 {# If href is provided, present a link; otherwise render a button #}
-{% set disabled_attr = disabled|default(false) ? 'aria-disabled="true"' : '' %}
-{% set button_disabled_attr = disabled|default(false) ? 'disabled' : '' %}
+{% set disabled_attr = is_disabled ? 'aria-disabled="true"' : '' %}
+{% set button_disabled_attr = is_disabled ? 'disabled' : '' %}
 
 {% if href %}
-  <a href="{{ href }}" class="{{ btn_classes|join(' ') }}" {{ disabled_attr }}>
-    {% if icon %}{{
-      include(
-        '@mercury/components/icon/icon.twig',
-        {
-          weight: 'bold'
-        }
-      )
-    }}{% endif %}
+  <a
+    href="{{ href }}"
+    class="{{
+    button_variants.apply(
+      {
+        size: button_size,
+        variant: button_variant,
+        width: button_width,
+        iconPosition: has_icon ? icon_position : 'last'
+      },
+      additional_classes
+    )
+    }}"
+    {{ disabled_attr }}
+  >
+    {% if has_icon %}
+      {{
+        include(
+          '@mercury/components/icon/icon.twig',
+          {
+            weight: 'bold',
+            icon: icon,
+            icon_size: icon_size_map[button_size]
+          },
+          with_context: false
+        )
+      }}
+    {% endif %}
     {{ label }}
   </a>
 {% else %}
-  <button class="{{ btn_classes|join(' ') }}" {{ button_disabled_attr }}>
-    {% if icon %}{{
-      include(
-        '@mercury/components/icon/icon.twig',
-        {
-          weight: 'bold'
-        }
-      )
-    }}{% endif %}
+  <button
+    class="{{
+    button_variants.apply(
+      {
+        size: button_size,
+        variant: button_variant,
+        width: button_width,
+        iconPosition: has_icon ? icon_position : 'last'
+      },
+      additional_classes
+    )
+    }}"
+    {{ button_disabled_attr }}
+  >
+    {% if has_icon %}
+      {{
+        include(
+          '@mercury/components/icon/icon.twig',
+          {
+            weight: 'bold',
+            icon: icon,
+            icon_size: icon_size_map[button_size]
+          },
+          with_context: false
+        )
+      }}
+    {% endif %}
     {{ label }}
   </button>
 {% endif %}

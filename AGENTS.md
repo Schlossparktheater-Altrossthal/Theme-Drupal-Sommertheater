@@ -113,6 +113,89 @@ clickable: { yes: 'hg:group hg:cursor-pointer', no: '' }
 ></div>
 ```
 
+### Use Arrays for Long Class Strings
+
+**Rule**: When class strings become too long (typically over 80-100 characters), use arrays instead to improve readability. Each class should be on its own line in the array.
+
+**❌ Bad:**
+
+```twig
+variant: {
+  primary: 'hg:border-[var(--hgc-btn-border)] hg:bg-[var(--hgc-btn-bg)] hg:text-[var(--hgc-btn-label)] hg:hover:border-[var(--hgc-btn-border-hover)] hg:hover:bg-[var(--hgc-btn-bg-hover)] hg:hover:text-[var(--hgc-btn-label-hover)] hg:focus:border-[var(--hgc-btn-border-hover)] hg:focus:bg-[var(--hgc-btn-bg-hover)] hg:focus:text-[var(--hgc-btn-label-hover)] hg:disabled:cursor-default hg:disabled:border-[var(--hgc-btn-border-disabled)] hg:disabled:bg-[var(--hgc-btn-bg-disabled)] hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+}
+```
+
+**✅ Good:**
+
+```twig
+variant: {
+  primary: [
+    'hg:border-[var(--hgc-btn-border)]',
+    'hg:bg-[var(--hgc-btn-bg)]',
+    'hg:text-[var(--hgc-btn-label)]',
+    'hg:hover:border-[var(--hgc-btn-border-hover)]',
+    'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
+    'hg:hover:text-[var(--hgc-btn-label-hover)]',
+    'hg:focus:border-[var(--hgc-btn-border-hover)]',
+    'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
+    'hg:focus:text-[var(--hgc-btn-label-hover)]',
+    'hg:disabled:cursor-default',
+    'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
+    'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
+    'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+  ]
+}
+```
+
+**Note**: Arrays can be used directly in CVA variant definitions without needing to join them. CVA will handle the array format automatically. This makes long class strings much more readable and easier to maintain.
+
+### Normalize Array/String Inputs for CVA Apply
+
+**Rule**: When passing additional classes to `Cva::apply()` as the second argument, always normalize the input to handle both array and string formats. `Cva::apply()` expects a string (or null) for the second argument, but components may receive arrays from parent templates.
+
+**❌ Bad:**
+
+```twig
+{% set btn_classes = btn_classes|default('') %}
+<div
+  class="{{
+  button.apply(
+    {
+      size: button_size,
+      variant: button_variant
+    },
+    btn_classes
+  )
+  }}"
+></div>
+```
+
+**Note**: This will fail with a runtime error if `btn_classes` is passed as an array (e.g., `btn_classes: ['hg:before:absolute', 'hg:before:inset-0']`).
+
+**✅ Good:**
+
+```twig
+{# Normalize btn_classes - handle both array and string formats #}
+{% set additional_classes = btn_classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
+
+<div
+  class="{{
+  button.apply(
+    {
+      size: button_size,
+      variant: button_variant
+    },
+    additional_classes
+  )
+  }}"
+></div>
+```
+
+**Note**: This pattern ensures the component works whether additional classes are passed as an array or a string. Always normalize external inputs before passing them to `Cva::apply()`.
+
 ## HTML Tag Attributes
 
 ### No Conditionals in Class Attributes
@@ -287,13 +370,102 @@ Or use a wrapper approach:
 
 **Note**: While the variable approach works, the explicit conditional is preferred for better static analysis and readability.
 
+## Component Includes
+
+### Always Use `with_context: false` or `with only`
+
+**Rule**: When including components, always use `with_context: false` or `with only` to prevent context pollution. This ensures that only the explicitly passed variables are available to the included template, preventing accidental variable leakage from the parent context.
+
+**For `include()` function syntax:**
+
+**❌ Bad:**
+
+```twig
+{{
+  include(
+    '@mercury/components/icon/icon.twig',
+    {
+      weight: 'bold',
+      icon: icon
+    }
+  )
+}}
+```
+
+**✅ Good:**
+
+```twig
+{{
+  include(
+    '@mercury/components/icon/icon.twig',
+    {
+      weight: 'bold',
+      icon: icon
+    },
+    with_context: false
+  )
+}}
+```
+
+**For `{% include %}` tag syntax:**
+
+**❌ Bad:**
+
+```twig
+{% include '@mercury/components/icon/icon.twig' with {
+  weight: 'bold',
+  icon: icon
+} %}
+```
+
+**✅ Good:**
+
+```twig
+{% include '@mercury/components/icon/icon.twig' with {
+  weight: 'bold',
+  icon: icon
+} only %}
+```
+
+**Note**: 
+- Use `with_context: false` with the `include()` function syntax
+- Use `with only` with the `{% include %}` tag syntax
+- Both achieve the same result: preventing context pollution by only passing explicitly defined variables
+
+## Workflow
+
+### Run Format and Build After Changes
+
+**Rule**: After completing any changes to the Mercury theme, always run `pnpm format` and `pnpm build` to ensure code is properly formatted and the build artifacts are up to date.
+
+**Required Steps:**
+
+1. **Format code**: Run `pnpm format` to format all code according to the project's formatting rules
+2. **Build assets**: Run `pnpm build` to compile CSS, JavaScript, and other assets
+
+**Example:**
+
+```bash
+pnpm format
+pnpm build
+```
+
+**Note**: These commands should be run from the Mercury theme directory (`web/themes/custom/mercury/`). Running these commands ensures that:
+- Code follows consistent formatting standards
+- Build artifacts (compiled CSS, minified JS, etc.) are regenerated
+- The theme is ready for testing and deployment
+
 ## Summary
 
 1. **Always use CVA for conditional classes** - Never use inline conditionals in HTML attributes
 2. **Use yes/no strings for CVA variant keys** - `yes`/`no`, not `true`/`false` or `'true'`/`'false'`
 3. **Format CVA definitions and calls** - Use multi-line format for readability
-4. **Compute values before HTML** - All conditionals should be resolved before being used in HTML attributes
-5. **Attributes need space** - Always use `<div {{ attributes }}>` not `<div{{ attributes }}>`
-6. **No inline control structures in attributes** - Assign values to variables first
-7. **No split tags across conditionals** - Keep opening and closing tags together
-8. **No dynamic tag names** - Use explicit HTML tags or proper conditionals
+4. **Use arrays for long class strings** - When class strings exceed 80-100 characters, use arrays for better readability
+5. **Normalize array/string inputs for CVA apply** - Always normalize external class inputs before passing to `Cva::apply()`
+6. **Compute values before HTML** - All conditionals should be resolved before being used in HTML attributes
+7. **Attributes need space** - Always use `<div {{ attributes }}>` not `<div{{ attributes }}>`
+8. **No inline control structures in attributes** - Assign values to variables first
+9. **No split tags across conditionals** - Keep opening and closing tags together
+10. **No dynamic tag names** - Use explicit HTML tags or proper conditionals
+11. **Always use `with only` or `with_context: false`** - When including components, prevent context pollution
+12. **Run `pnpm format` and `pnpm build`** - After completing changes, format code and rebuild assets
