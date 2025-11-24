@@ -42,20 +42,6 @@
     '16': 'hg:pb-4',
     '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
     '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
-  },
-  slot_flex_align: {
-    start: 'hg:md:self-start',
-    center: 'hg:md:self-center',
-    end: 'hg:md:self-end'
-  },
-  slot_flex_direction: {
-    vertical: 'hg:flex-col',
-    'vertical-reverse': 'hg:flex-col-reverse'
-  },
-  slot_flex_gap: {
-    small: 'hg:gap-4',
-    medium: 'hg:gap-6 hg:md:gap-8',
-    large: 'hg:gap-12 hg:md:gap-16'
   }
 } %}
 
@@ -86,16 +72,7 @@
   ]|filter(c => c is not empty)
 %}
 
-{% set hero_content_classes =
-  [
-    'hero--content',
-    'hg:flex',
-    'hg:flex-1',
-    class_map['slot_flex_direction'][slot_flex_direction] ?? '',
-    slot_flex_gap ? class_map['slot_flex_gap'][slot_flex_gap] : 'hg:gap-0',
-    class_map['slot_flex_align'][slot_flex_align] ?? ''
-  ]|filter(c => c is not empty)
-%}
+{% set hero_content_classes = ['hero--content', 'hg:flex', 'hg:flex-1']|filter(c => c is not empty) %}
 
 {% set image_classes =
   [

@@ -4,6 +4,9 @@ description: Hero with side-by-side slots for media and content.
 group: Layout
 props:
   type: object
+  required:
+    - padding_block_start
+    - padding_block_end
   properties:
     hero_flex_gap:
       type: string
@@ -110,46 +113,6 @@ props:
         small: Small
         large: Large
         extra-large: Extra-Large
-      default: small
-      examples:
-        - "small"
-    slot_flex_align:
-      type: string
-      title: Slot align content
-      enum:
-        - start
-        - center
-        - end
-      meta:enum:
-        start: Start
-        center: Center
-        end: End
-      default: center
-      examples:
-        - "center"
-    slot_flex_direction:
-      type: string
-      title: Slot flex direction
-      enum:
-        - vertical
-        - vertical-reverse
-      meta:enum:
-        vertical: Vertical
-        vertical-reverse: Vertical (reverse)
-      default: vertical
-      examples:
-        - "vertical"
-    slot_flex_gap:
-      type: string
-      title: Slot flex gap
-      enum:
-        - small
-        - medium
-        - large
-      meta:enum:
-        small: Small
-        medium: Medium
-        large: Large
       default: small
       examples:
         - "small"
