@@ -1,52 +1,90 @@
-{% set has_url = url is not empty and url != 'No URL' %}
+{% set heading_level = level|default(2) %}
+{% set heading_align = align|default('left') %}
+{% set heading_font_color = font_color|default('text-inherit') %}
+{% set heading_font_size = font_size|default('default') %}
+{% set has_url = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
 
-{% set class_map = {
-  font_color: {
-    dark: 'hg:text-body-text-dark',
-    light: 'hg:text-white',
-    brand: 'hg:text-brand'
-  }
-} %}
-
-{% set heading_classes =
-  heading_classes
-    |default([])
-    |merge(
-      [
-        'heading',
-        'hg:text-' ~ align,
-        has_url ? 'hg:hover:underline hg:decoration-2 hg:underline-offset-4' : '',
-        class_map['font_color'][font_color],
-        'hg:font-display hg:leading-[1.2] hg:tracking-normal hg:text-inherit'
-      ]
-    )
-    |filter(v => v is not empty)
+{% set heading_variants =
+  html_cva(
+    base: ['heading', 'hg:font-display', 'hg:leading-[1.2]', 'hg:tracking-normal'],
+    variants: {
+      level: {
+        1: ['hg:leading-none', 'hg:font-[var(--hgc-font-weight-h1)]'],
+        2: ['hg:leading-none', 'hg:font-[var(--hgc-font-weight-h2)]'],
+        3: 'hg:font-[var(--hgc-font-weight-h3)]',
+        4: 'hg:font-[var(--hgc-font-weight-h4)]',
+        5: 'hg:font-[var(--hgc-font-weight-h5)]',
+        6: 'hg:font-[var(--hgc-font-weight-h6)]'
+      },
+      align: {
+        left: 'hg:text-left',
+        center: 'hg:text-center',
+        right: 'hg:text-right'
+      },
+      fontColor: {
+        'text-inherit': 'hg:text-inherit',
+        dark: 'hg:text-body-text-dark',
+        light: 'hg:text-white',
+        brand: 'hg:text-brand'
+      },
+      fontSize: {
+        default: '',
+        'heading-responsive-8xl': 'heading-responsive-8xl',
+        'heading-responsive-7xl': 'heading-responsive-7xl',
+        'heading-responsive-6xl': 'heading-responsive-6xl',
+        'heading-responsive-5xl': 'heading-responsive-5xl',
+        'heading-responsive-4xl': 'heading-responsive-4xl',
+        'heading-responsive-3xl': 'heading-responsive-3xl',
+        'heading-responsive-2xl': 'heading-responsive-2xl',
+        'heading-responsive-xl': 'heading-responsive-xl'
+      },
+      hasUrl: {
+        yes: ['hg:hover:underline', 'hg:decoration-2', 'hg:underline-offset-4'],
+        no: ''
+      }
+    }
+  )
 %}
 
-{% set level = level|default(2) %}
+{# Normalize heading_classes - handle both array and string formats #}
+{% set additional_classes = heading_classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
 
 {% set heading_content %}
-  {% if has_url %}
+  {% if has_url == 'yes' %}
     <a href="{{ url }}">{{ heading_text }}</a>
   {% else %}
     {{ heading_text }}
   {% endif %}
 {% endset %}
 
-{% set heading_class_attr = (heading_classes|join(' ')) ~ ' ' ~ (font_size == 'default' ? '' : font_size) %}
+{% set heading_class_attr =
+  heading_variants.apply(
+    {
+      level: heading_level,
+      align: heading_align,
+      fontColor: heading_font_color,
+      fontSize: heading_font_size,
+      hasUrl: has_url
+    },
+    additional_classes
+  )
+%}
 
-{% if level == 1 %}
-  <h1 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h1)">{{ heading_content }}</h1>
-{% elseif level == 2 %}
-  <h2 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h2)">{{ heading_content }}</h2>
-{% elseif level == 3 %}
-  <h3 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h3)">{{ heading_content }}</h3>
-{% elseif level == 4 %}
-  <h4 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h4)">{{ heading_content }}</h4>
-{% elseif level == 5 %}
-  <h5 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h5)">{{ heading_content }}</h5>
-{% elseif level == 6 %}
-  <h6 class="{{ heading_class_attr }} hg:font-(--hgc-font-weight-h6)">{{ heading_content }}</h6>
+{% if heading_level == 1 %}
+  <h1 class="{{ heading_class_attr }}">{{ heading_content }}</h1>
+{% elseif heading_level == 2 %}
+  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+{% elseif heading_level == 3 %}
+  <h3 class="{{ heading_class_attr }}">{{ heading_content }}</h3>
+{% elseif heading_level == 4 %}
+  <h4 class="{{ heading_class_attr }}">{{ heading_content }}</h4>
+{% elseif heading_level == 5 %}
+  <h5 class="{{ heading_class_attr }}">{{ heading_content }}</h5>
+{% elseif heading_level == 6 %}
+  <h6 class="{{ heading_class_attr }}">{{ heading_content }}</h6>
 {% else %}
-  <h2 class="{{ heading_class_attr }} hg:leading-none hg:font-(--hgc-font-weight-h2)">{{ heading_content }}</h2>
+  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
 {% endif %}

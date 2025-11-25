@@ -15,10 +15,11 @@
       include(
         'mercury:heading',
         {
-          heading_text: storybook.heading_text,
-          level: storybook.level,
+          heading_text: storybook.heading_text|default(''),
+          level: storybook.level|default(2),
           url: 'No URL'
-        }
+        },
+        with_context: false
       )
     }}
 

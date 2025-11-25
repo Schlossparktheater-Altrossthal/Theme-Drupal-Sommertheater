@@ -432,6 +432,71 @@ Or use a wrapper approach:
 - Use `with only` with the `{% include %}` tag syntax
 - Both achieve the same result: preventing context pollution by only passing explicitly defined variables
 
+### Only Pass Configurable Props
+
+**Rule**: When including components, only pass props that are actually configurable in the current component. Do not pass props with default values that are not configurable in the component's schema or template context.
+
+**❌ Bad:**
+
+```twig
+{{
+  include(
+    'mercury:heading',
+    {
+      heading_text: heading_text|default(''),
+      level: level|default(2),
+      align: align|default('left'),
+      font_color: font_color|default('text-inherit'),
+      font_size: font_size|default('default'),
+      heading_classes: heading_classes|default(''),
+      url: url|default('')
+    },
+    with_context: false
+  )
+}}
+```
+
+**Note**: This passes all possible props even though the component may only have `heading_text`, `level`, and `url` defined in its `component.yml` schema.
+
+**✅ Good:**
+
+```twig
+{{
+  include(
+    'mercury:heading',
+    {
+      heading_text: heading_text|default(''),
+      level: level|default(2),
+      url: url|default('')
+    },
+    with_context: false
+  )
+}}
+```
+
+**Note**: Only pass props that are:
+1. Defined in the component's `component.yml` schema as configurable properties
+2. Declared or computed in the current component's template
+
+**Example - Card with hardcoded level:**
+
+```twig
+{{
+  include(
+    'mercury:heading',
+    {
+      heading_text: heading_text|default(''),
+      level: 3,
+      heading_classes: ['card-title'],
+      url: 'No URL'
+    },
+    with_context: false
+  )
+}}
+```
+
+**Note**: Here, `level: 3` and `url: 'No URL'` are hardcoded values specific to this card component, so they are passed explicitly. However, `align`, `font_color`, and `font_size` are not passed because they are not configurable in this component.
+
 ## Workflow
 
 ### Run Format and Build After Changes
@@ -468,4 +533,5 @@ pnpm build
 9. **No split tags across conditionals** - Keep opening and closing tags together
 10. **No dynamic tag names** - Use explicit HTML tags or proper conditionals
 11. **Always use `with only` or `with_context: false`** - When including components, prevent context pollution
-12. **Run `pnpm format` and `pnpm build`** - After completing changes, format code and rebuild assets
+12. **Only pass configurable props** - When including components, only pass props that are actually configurable in the current component's schema or template
+13. **Run `pnpm format` and `pnpm build`** - After completing changes, format code and rebuild assets

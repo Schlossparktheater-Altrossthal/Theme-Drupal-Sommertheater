@@ -10,7 +10,7 @@
       }
 
       .menu-item a {
-        @apply hg:leading-tight hg:hover:underline;
+        @apply hg:leading-tight hg:no-underline hg:hover:underline;
         color: var(--hgc-menu-link-color);
 
         &:hover,
@@ -41,7 +41,7 @@
       }
 
       .menu-item a {
-        @apply hg:text-xs hg:leading-tight hg:hover:underline hg:md:text-sm;
+        @apply hg:text-xs hg:leading-tight hg:no-underline hg:hover:underline hg:md:text-sm;
         color: var(--hgc-menu-link-color);
 
         &:hover,

@@ -1,23 +1,53 @@
-{% set classes = ['cta', 'hg:relative', 'hg:z-1'] %}
+{% set cta_text_align = text_align|default('center') %}
+{% set cta_has_background = has_background_image|default(false) ? 'yes' : 'no' %}
 
-{% if text_align == 'left' %}
-  {% set alignment = 'hg:text-left' %}
-  {% set list_extras = 'hg:md:justify-start' %}
-{% elseif text_align == 'right' %}
-  {% set alignment = 'hg:text-right' %}
-  {% set list_extras = 'hg:md:justify-end' %}
-{% else %}
-  {% set alignment = 'hg:text-center hg:lg:max-w-3/4 hg:mx-auto' %}
-  {% set list_extras = 'hg:justify-center hg:items-center' %}
-{% endif %}
+{% set cta_variants = html_cva(base: ['cta', 'hg:relative', 'hg:z-1', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]']) %}
 
-{% if has_background_image == true %}
-  {% set text_color = 'hg:text-white!' %}
-{% endif %}
+{% set cta_content_variants =
+  html_cva(
+    base: [
+      'cta--content',
+      'hg:relative',
+      'hg:flex',
+      'hg:min-h-80',
+      'hg:flex-col',
+      'hg:justify-center',
+      'hg:gap-6',
+      'hg:py-[90px]',
+      'hg:lg:gap-8',
+      'hg:lg:py-[115px]',
+      'hg:xl:py-[140px]'
+    ],
+    variants: {
+      textAlign: {
+        left: ['hg:text-left'],
+        right: ['hg:text-right'],
+        center: ['hg:text-center', 'hg:lg:max-w-3/4', 'hg:mx-auto', 'hg:items-center']
+      },
+      hasBackground: {
+        yes: 'hg:text-white!',
+        no: ''
+      }
+    }
+  )
+%}
 
-<section class="{{ classes|join(' ') }}">
+{% set cta_links_variants =
+  html_cva(
+    base: ['cta--links', 'hg:flex', 'hg:w-full', 'hg:flex-col', 'hg:gap-6', 'hg:sm:flex-row'],
+    variants: {
+      textAlign: {
+        left: 'hg:md:justify-start',
+        right: 'hg:md:justify-end',
+        center: ['hg:justify-center', 'hg:items-center']
+      }
+    }
+  )
+%}
+
+<section class="{{ cta_variants.apply({}) }}">
   {% block media %}
-    {% if media.src is not empty and has_background_image %}
+    {% if media.src is not empty and cta_has_background == 'yes' %}
       <div class="cta--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
         <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
         <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
@@ -25,24 +55,38 @@
     {% endif %}
   {% endblock %}
   <div
-    class="cta--content hg:relative hg:flex hg:min-h-80 hg:flex-col hg:justify-center hg:gap-6 hg:py-[90px] hg:lg:gap-8 hg:lg:py-[115px] hg:xl:py-[140px] {{
-    text_align == 'center'
-      ? 'hg:items-center'
-    }} {{ alignment }} {{ text_color }}"
+    class="{{
+    cta_content_variants.apply({
+      textAlign: cta_text_align,
+      hasBackground: cta_has_background
+    })
+    }}"
   >
     {{
       include(
         'mercury:heading',
         {
-          heading_classes: ['hg:font-extrabold']
-        }
+          heading_text: heading_text|default(''),
+          level: level|default(2),
+          align: cta_text_align,
+          font_color: cta_has_background == 'yes' ? 'light' : 'text-inherit',
+          heading_classes: ['hg:font-extrabold'],
+          url: ''
+        },
+        with_context: false
       )
     }}
     <p class="hg:text-md hg:font-normal">
       {{ text }}
     </p>
     {% if block('actions') is defined %}
-      <div class="cta--links hg:flex hg:w-full hg:flex-col hg:gap-6 hg:sm:flex-row {{ list_extras }}">
+      <div
+        class="{{
+        cta_links_variants.apply({
+          textAlign: cta_text_align
+        })
+        }}"
+      >
         {% block actions %}
 
         {% endblock %}

@@ -12,10 +12,11 @@
       include(
         'mercury:heading',
         {
+          heading_text: storybook.main.header_text|default(''),
           level: 2,
-          heading_text: storybook.main.header_text,
           url: ''
-        }
+        },
+        with_context: false
       )
     }}
   {% endblock %}
@@ -34,10 +35,11 @@
           include(
             'mercury:heading',
             {
-              level: 2,
               heading_text: 'Group Heading',
+              level: 2,
               url: ''
-            }
+            },
+            with_context: false
           )
         }}
         {{

@@ -13,10 +13,11 @@
         include(
           'mercury:heading',
           {
-            heading_text: heading_text,
-            level: 1,
+            heading_text: heading_text|default(''),
+            level: level|default(1),
             url: 'No URL'
-          }
+          },
+          with_context: false
         )
       }}
     {% endblock %}

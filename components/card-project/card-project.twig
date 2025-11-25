@@ -36,7 +36,17 @@
         </ul>
       {% endblock %}
     {% endif %}
-    {{ include('mercury:heading') }}
+    {{
+      include(
+        'mercury:heading',
+        {
+          heading_text: heading_text|default(''),
+          level: level|default(2),
+          url: url|default('')
+        },
+        with_context: false
+      )
+    }}
     <p class="hg:text-lg hg:font-extralight hg:xl:text-xl">
       {{ text }}
     </p>

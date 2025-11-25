@@ -17,6 +17,7 @@
       .menu-item a {
         --tw-leading: var(--hg-leading-tight, 1.25);
         line-height: var(--hg-leading-tight, 1.25);
+        text-decoration-line: none;
         &:hover {
           @media (hover: hover) {
             text-decoration-line: underline;
@@ -62,6 +63,7 @@
         line-height: var(--tw-leading, var(--hg-text-xs--line-height, 1.5));
         --tw-leading: var(--hg-leading-tight, 1.25);
         line-height: var(--hg-leading-tight, 1.25);
+        text-decoration-line: none;
         &:hover {
           @media (hover: hover) {
             text-decoration-line: underline;

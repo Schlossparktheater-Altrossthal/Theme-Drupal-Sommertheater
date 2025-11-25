@@ -17,10 +17,11 @@
     include(
       'mercury:heading',
       {
+        heading_text: title|default(''),
         level: 3,
-        heading_text: title,
         heading_classes: 'hg:font-bold hg:text-brand'
-      }
+      },
+      with_context: false
     )
   }}
   <p class="card-events--description hg:text-xl">

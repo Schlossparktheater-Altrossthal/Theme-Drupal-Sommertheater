@@ -1,66 +1,116 @@
-{% set class_map = {
-  height: {
-    full: 'hg:h-dvh',
-    large: 'hg:h-3/4 hg:min-h-[500px] hg:md:max-h-[600px] hg:xl:max-h-[800px]',
-    ribbon: 'hg:h-1/2 hg:md:min-h-[400px] hg:md:max-h-[450px] hg:xl:max-h-[600px]'
-  },
-  flex_position: {
-    'top-left': 'hg:justify-start',
-    'center-left': 'hg:justify-center-safe',
-    'bottom-left': 'hg:justify-end'
-  },
-  overlay_opacity: {
-    '0%': 'hg:bg-black/0',
-    '20%': 'hg:bg-black/20',
-    '40%': 'hg:bg-black/40',
-    '60%': 'hg:bg-black/60',
-    '75%': 'hg:bg-black/75'
-  },
-  object_position: {
-    top: 'hg:object-top',
-    center: 'hg:object-center',
-    bottom: 'hg:object-bottom'
-  }
-} %}
-{% set classes =
-  classes
-    |default([])
-    |merge(
-      [
-        'hero-overlay',
-        'hg:relative',
-        'hg:flex',
-        'hg:flex-col',
-        class_map['height'][height ?? 'full'],
-        class_map['flex_position'][flex_position] ?? 'hg:justify-center'
-      ]
-    )
-    |filter(v => v is not empty)
+{% set hero_height = height|default('full') %}
+{% set hero_flex_position = flex_position|default('center-left') %}
+{% set hero_overlay_opacity = overlay_opacity|default('40%') %}
+{% set hero_object_position = object_position|default('center') %}
+
+{# Normalize classes - handle both array and string formats #}
+{% set additional_classes = classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
+
+{% set hero_variants =
+  html_cva(
+    base: ['hero-overlay', 'hg:relative', 'hg:flex', 'hg:flex-col'],
+    variants: {
+      height: {
+        full: 'hg:h-dvh',
+        large: ['hg:h-3/4', 'hg:min-h-[500px]', 'hg:md:max-h-[600px]', 'hg:xl:max-h-[800px]'],
+        ribbon: ['hg:h-1/2', 'hg:md:min-h-[400px]', 'hg:md:max-h-[450px]', 'hg:xl:max-h-[600px]']
+      },
+      flexPosition: {
+        'top-left': 'hg:justify-start',
+        'center-left': 'hg:justify-center-safe',
+        'bottom-left': 'hg:justify-end',
+        'hero-center': 'hg:justify-center'
+      }
+    }
+  )
 %}
 
-{% set img_position = 'hg:object-' ~ background_position %}
+{% set overlay_variants =
+  html_cva(
+    base: ['hg:absolute', 'hg:inset-0'],
+    variants: {
+      opacity: {
+        '0%': 'hg:bg-black/0',
+        '20%': 'hg:bg-black/20',
+        '40%': 'hg:bg-black/40',
+        '60%': 'hg:bg-black/60',
+        '75%': 'hg:bg-black/75'
+      }
+    }
+  )
+%}
 
-<section class="{{ classes|join(' ') }}">
+{% set image_variants =
+  html_cva(
+    base: ['hg:h-full', 'hg:w-full', 'hg:object-cover'],
+    variants: {
+      position: {
+        top: 'hg:object-top',
+        center: 'hg:object-center',
+        bottom: 'hg:object-bottom'
+      }
+    }
+  )
+%}
+
+{% set content_variants =
+  html_cva(
+    base: ['hero-overlay--content', 'hg:relative', 'hg:z-1', 'hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:py-6', 'hg:md:py-10', 'hg:xl:py-20'],
+    variants: {
+      flexPosition: {
+        'top-left': 'hg:lg:max-w-2/3',
+        'center-left': 'hg:lg:max-w-2/3',
+        'bottom-left': 'hg:lg:max-w-2/3',
+        'hero-center': ['hg:text-center', 'hg:items-center', 'hg:lg:mx-auto', 'hg:lg:max-w-2/3']
+      }
+    }
+  )
+%}
+
+<section
+  class="{{
+  hero_variants.apply(
+    {
+      height: hero_height,
+      flexPosition: hero_flex_position
+    },
+    additional_classes
+  )
+  }}"
+>
   {% if media.src is not empty %}
     <div class="hero-overlay--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
       {% block hero_media %}
         {% if media.src is not empty %}
-          <div class="hg:absolute hg:inset-0 {{ class_map['overlay_opacity'][overlay_opacity] }}"></div>
+          <div
+            class="{{
+            overlay_variants.apply({
+              opacity: hero_overlay_opacity
+            })
+            }}"
+          ></div>
         {% endif %}
         <img
           src="{{ media.src }}"
           alt="{{ media.alt }}"
-          class="hg:h-full hg:w-full hg:object-cover {{ class_map['object_position'][object_position] }}"
+          class="{{
+          image_variants.apply({
+            position: hero_object_position
+          })
+          }}"
         />
       {% endblock %}
     </div>
   {% endif %}
   <div
-    class="hero-overlay--content {{
-    flex_position == 'hero-center'
-      ? 'hg:text-center hg:items-center hg:lg:mx-auto hg:lg:max-w-2/3'
-      : 'hg:lg:max-w-2/3'
-    }} hg:relative hg:z-1 hg:flex hg:flex-col hg:gap-6 hg:py-6 hg:md:py-10 hg:xl:py-20"
+    class="{{
+    content_variants.apply({
+      flexPosition: hero_flex_position
+    })
+    }}"
   >
     {% block hero_content %}
       {% block hero_slot %}

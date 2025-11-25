@@ -28,10 +28,12 @@
       include(
         'mercury:heading',
         {
-          heading_classes: ['card-title', 'hg:text-[1.375rem] hg:leading-tight hg:font-bold hg:text-(--hgc-card-price-title)'],
+          heading_text: heading_text|default(''),
           level: 3,
+          heading_classes: ['card-title', 'hg:text-[1.375rem]', 'hg:leading-tight', 'hg:font-bold', 'hg:text-(--hgc-card-price-title)'],
           url: 'No URL'
-        }
+        },
+        with_context: false
       )
     }}
 

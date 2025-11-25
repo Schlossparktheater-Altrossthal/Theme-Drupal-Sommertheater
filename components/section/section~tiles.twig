@@ -17,10 +17,11 @@
       include(
         'mercury:heading',
         {
+          heading_text: storybook.alt.header_text|default(''),
           level: 2,
-          heading_text: storybook.alt.header_text,
           url: ''
-        }
+        },
+        with_context: false
       )
     }}
   {% endblock %}
