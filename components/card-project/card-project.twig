@@ -4,7 +4,14 @@
   {% if media.src is not empty %}
     <div class="card--media hg:aspect-square hg:flex-1 hg:overflow-hidden">
       {% block media %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          class: 'hg:object-cover hg:w-full hg:h-full',
+          width: media.width,
+          height: media.height,
+          sizes: '50vw'
+        } only %}
       {% endblock %}
     </div>
   {% endif %}

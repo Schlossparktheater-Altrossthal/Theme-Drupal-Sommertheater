@@ -97,7 +97,13 @@
   {% if background_media is not empty and background_media.src is not empty %}
     {% block background_media_block %}
       <div class="section--background-media hg:absolute hg:inset-0 hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:w-screen">
-        <img src="{{ background_media.src }}" alt="{{ background_media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+        {% include 'canvas:image' ignore missing with {
+          src: background_media.src,
+          alt: background_media.alt,
+          class: 'hg:object-cover hg:w-full hg:h-full',
+          width: background_media.width,
+          height: background_media.height
+        } only %}
       </div>
     {% endblock %}
   {% endif %}

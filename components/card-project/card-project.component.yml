@@ -31,6 +31,8 @@ props:
       examples:
         - src: "assets/stillhouse.png"
           alt: "A picture of the sea shore."
+          width: 1200
+          height: 1200
     text:
       type: string
       title: Text

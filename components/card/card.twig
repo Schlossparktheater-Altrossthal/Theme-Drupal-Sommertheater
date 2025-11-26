@@ -93,7 +93,14 @@
       }}"
     >
       {% block media %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          class: 'hg:object-cover hg:w-full hg:h-full',
+          width: media.width,
+          height: media.height,
+          sizes: card_orientation == 'stacked' ? 'auto, 100vw' : '50vw'
+        } only %}
       {% endblock %}
     </div>
   {% endif %}

@@ -9,7 +9,12 @@
   <div class="hg:flex hg:h-[100%] hg:items-center hg:justify-center hg:p-[10%]">
     {% block logo %}
       {% if media.src is not empty %}
-        <img src="{{ media.src }}" alt="{{ media.alt }}" />
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          width: media.width,
+          height: media.height
+        } only %}
       {% endif %}
     {% endblock %}
   </div>

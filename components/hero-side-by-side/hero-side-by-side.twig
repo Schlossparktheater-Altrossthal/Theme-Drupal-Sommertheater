@@ -91,7 +91,14 @@
 
   <div class="{{ image_classes|join(' ') }}">
     {% block hero_media %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt,
+        class: 'hg:object-cover hg:w-full hg:h-full',
+        width: media.width,
+        height: media.height,
+        sizes: '50vw'
+      } only %}
     {% endblock %}
   </div>
   <div class="{{ hero_content_classes|join(' ') }}">

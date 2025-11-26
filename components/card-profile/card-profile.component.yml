@@ -26,3 +26,5 @@ props:
       examples:
         - src: "assets/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.jpg"
           alt: "Photo by Christina @ wocintechchat.com on Unsplash"
+          width: 640
+          height: 959

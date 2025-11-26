@@ -6,7 +6,13 @@
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
       {% endif %}
-      <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt,
+        class: 'hg:object-cover hg:w-full hg:h-full',
+        width: media.width,
+        height: media.height
+      } only %}
     {% endblock %}
   </div>
   <div class="card--content hg:absolute hg:inset-0 hg:z-2 hg:text-center hg:text-white">

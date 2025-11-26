@@ -50,7 +50,13 @@
     {% if media.src is not empty and cta_has_background == 'yes' %}
       <div class="cta--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
         <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
-        <img src="{{ media.src }}" alt="{{ media.alt }}" class="hg:h-full hg:w-full hg:object-cover" />
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          class: 'hg:object-cover hg:w-full hg:h-full',
+          width: media.width,
+          height: media.height
+        } only %}
       </div>
     {% endif %}
   {% endblock %}

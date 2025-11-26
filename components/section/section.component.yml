@@ -108,6 +108,11 @@ props:
       title: Background image
       description: The background image for section.
       type: object
+      examples:
+        - src: "assets/13227348.jpg"
+          alt: "Placeholder text."
+          width: 1280
+          height: 18671687
     section_header:
       type: boolean
       title: Show header region

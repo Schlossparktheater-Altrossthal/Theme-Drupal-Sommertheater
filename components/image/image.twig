@@ -22,7 +22,13 @@
 <figure class="{{ classes|join(' ') }}">
   <div class="hg:w-full {{ class_map['size'][size] ?? '' }}">
     {% block media %}
-      <img class="hg:h-full hg:w-full hg:object-cover" src="{{ media.src }}" alt="{{ media.alt }}" />
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt,
+        class: 'hg:object-cover hg:w-full hg:h-full',
+        width: media.width,
+        height: media.height
+      } only %}
     {% endblock %}
   </div>
   {% if caption %}

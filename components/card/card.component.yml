@@ -33,6 +33,8 @@ props:
       type: object
       examples:
         - src: "assets/277628-911758.jpg"
+          width: 640
+          height: 427
           alt: "Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/"
     text:
       type: string

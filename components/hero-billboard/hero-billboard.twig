@@ -93,15 +93,15 @@
             }}"
           ></div>
         {% endif %}
-        <img
-          src="{{ media.src }}"
-          alt="{{ media.alt }}"
-          class="{{
-          image_variants.apply({
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          width: media.width,
+          height: media.height,
+          class: image_variants.apply({
             position: hero_object_position
           })
-          }}"
-        />
+        } only %}
       {% endblock %}
     </div>
   {% endif %}

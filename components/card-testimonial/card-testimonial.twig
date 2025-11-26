@@ -11,7 +11,14 @@
 <div class="{{ classes|join(' ') }}">
   <div class="card-testimonial--media hg:aspect-square hg:w-[100px] hg:overflow-hidden hg:rounded-full">
     {% block media %}
-      <img class="hg:h-full hg:w-full hg:object-cover" src="{{ media.src }}" alt="{{ media.alt }}" />
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt,
+        class: 'hg:object-cover hg:w-full hg:h-full',
+        width: media.width,
+        height: media.height,
+        sizes: '100px'
+      } only %}
     {% endblock %}
   </div>
 

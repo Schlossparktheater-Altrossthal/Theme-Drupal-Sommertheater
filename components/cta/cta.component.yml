@@ -38,6 +38,8 @@ props:
       examples:
         - src: "assets/256381.jpg"
           alt: "Photo by pixabay"
+          width: 1280
+          height: 852
     has_background_image:
       type: boolean
       title: Show Background image

@@ -13,6 +13,8 @@ props:
       examples:
         - src: "assets/957040.jpg"
           alt: "Placeholder text."
+          width: 640
+          height: 427
     size:
       title: Aspect ratio
       description: Width:height proportions of the image. Listed from most horizontal to most vertical.

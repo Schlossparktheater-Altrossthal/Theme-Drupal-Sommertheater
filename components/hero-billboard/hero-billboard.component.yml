@@ -68,6 +68,8 @@ props:
       examples:
         - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"
           alt: "Placeholder image"
+          width: 1920
+          height: 1075
 
 slots:
   hero_slot:

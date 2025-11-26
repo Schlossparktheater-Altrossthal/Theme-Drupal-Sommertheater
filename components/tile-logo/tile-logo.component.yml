@@ -12,3 +12,5 @@ props:
       examples:
         - src: "assets/dark.png"
           alt: "Placeholder brand logo"
+          width: 188
+          height: 113
