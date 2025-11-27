@@ -82,7 +82,7 @@
   }}"
 >
   {% if media.src is not empty %}
-    <div class="hero-overlay--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
+    <div class="hero-overlay--media hg:absolute hg:z-[-1] hg:h-full hg:w-full">
       {% block hero_media %}
         {% if media.src is not empty %}
           <div
@@ -105,17 +105,19 @@
       {% endblock %}
     </div>
   {% endif %}
-  <div
-    class="{{
-    content_variants.apply({
-      flexPosition: hero_flex_position
-    })
-    }}"
-  >
-    {% block hero_content %}
-      {% block hero_slot %}
+  <div class="hg:container hg:mx-auto">
+    <div
+      class="{{
+      content_variants.apply({
+        flexPosition: hero_flex_position
+      })
+      }}"
+    >
+      {% block hero_content %}
+        {% block hero_slot %}
 
+        {% endblock %}
       {% endblock %}
-    {% endblock %}
+    </div>
   </div>
 </section>

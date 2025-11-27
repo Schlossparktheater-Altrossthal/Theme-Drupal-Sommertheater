@@ -92,56 +92,58 @@
   'hg:absolute hg:w-screen hg:inset-0 hg:z-[-1] hg:ms-[-50vw] hg:left-[50%]'
 ] %}
 
-<section class="{{ classes|join(' ') }}">
-  {# if there is background media #}
-  {% if background_media is not empty and background_media.src is not empty %}
-    {% block background_media_block %}
-      <div class="section--background-media hg:absolute hg:inset-0 hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:w-screen">
-        {% include 'canvas:image' ignore missing with {
-          src: background_media.src,
-          alt: background_media.alt,
-          class: 'hg:object-cover hg:w-full hg:h-full',
-          width: background_media.width,
-          height: background_media.height
-        } only %}
-      </div>
-    {% endblock %}
-  {% endif %}
+<div class="hg:container hg:mx-auto hg:px-4">
+  <section class="{{ classes|join(' ') }}">
+    {# if there is background media #}
+    {% if background_media is not empty and background_media.src is not empty %}
+      {% block background_media_block %}
+        <div class="section--background-media hg:absolute hg:inset-0 hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:w-screen">
+          {% include 'canvas:image' ignore missing with {
+            src: background_media.src,
+            alt: background_media.alt,
+            class: 'hg:object-cover hg:w-full hg:h-full',
+            width: background_media.width,
+            height: background_media.height
+          } only %}
+        </div>
+      {% endblock %}
+    {% endif %}
 
-  {# if there is background color (can work with or without background media) #}
-  {% if background_color is not empty %}
-    <div class="{{ background_classes|join(' ') }}"></div>
-  {% endif %}
+    {# if there is background color (can work with or without background media) #}
+    {% if background_color is not empty %}
+      <div class="{{ background_classes|join(' ') }}"></div>
+    {% endif %}
 
-  {% if section_header %}
-    {% set header_content %}
-      {% block header_slot %}
+    {% if section_header %}
+      {% set header_content %}
+        {% block header_slot %}
+
+        {% endblock %}
+      {% endset %}
+      {% if header_content|trim is not empty %}
+        <header class="section--header hg:mb-6 hg:md:mb-8 hg:xl:mb-10">
+          {{ header_content }}
+        </header>
+      {% endif %}
+    {% endif %}
+
+    <div class="section--main hg:grid hg:w-full hg:gap-4 hg:md:gap-6 hg:xl:gap-8 {{ grid_class }}">
+      {% block main_slot %}
 
       {% endblock %}
-    {% endset %}
-    {% if header_content|trim is not empty %}
-      <header class="section--header hg:mb-6 hg:md:mb-8 hg:xl:mb-10">
-        {{ header_content }}
-      </header>
+    </div>
+
+    {% if section_footer %}
+      {% set footer_content %}
+        {% block footer_slot %}
+
+        {% endblock %}
+      {% endset %}
+      {% if footer_content|trim is not empty %}
+        <footer class="section--footer hg:mt-6 hg:md:mt-8 hg:xl:mt-10">
+          {{ footer_content }}
+        </footer>
+      {% endif %}
     {% endif %}
-  {% endif %}
-
-  <div class="section--main hg:grid hg:w-full hg:gap-4 hg:md:gap-6 hg:xl:gap-8 {{ grid_class }}">
-    {% block main_slot %}
-
-    {% endblock %}
-  </div>
-
-  {% if section_footer %}
-    {% set footer_content %}
-      {% block footer_slot %}
-
-      {% endblock %}
-    {% endset %}
-    {% if footer_content|trim is not empty %}
-      <footer class="section--footer hg:mt-6 hg:md:mt-8 hg:xl:mt-10">
-        {{ footer_content }}
-      </footer>
-    {% endif %}
-  {% endif %}
-</section>
+  </section>
+</div>

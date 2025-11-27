@@ -12,7 +12,7 @@
  * @see template_preprocess_region()
  */
 #}
-{% set classes = ['region', 'region-' ~ (region|clean_class), 'hg:container', 'hg:mx-auto', 'hg:px-4'] %}
+{% set classes = ['region', 'region-' ~ (region|clean_class)] %}
 {% if content %}
   <div {{ attributes.addClass(classes) }}>
     {{ content }}
