@@ -34,9 +34,6 @@
   }
 }
 .region-header {
-  .navbar {
-    padding-inline: calc(var(--hg-spacing, 4px) * 0);
-  }
   .navbar--modal-top {
     padding-inline: calc(var(--hg-spacing, 4px) * 4);
   }

@@ -26,10 +26,6 @@
 }
 
 .region-header {
-  .navbar {
-    @apply hg:px-0;
-  }
-
   .navbar--modal-top {
     @apply hg:px-4;
   }
