@@ -60,9 +60,6 @@ class CanvasCompatibilityTest extends BrowserTestBase {
       // The `breadcrumb` component is used for styling core's breadcrumb, but
       // isn't meant to be used directly in Canvas.
       $definitions['mercury:breadcrumb'],
-      // This is used to render views via templates, but is not meant to be
-      // used directly in Canvas.
-      $definitions['mercury:pager'],
     );
 
     foreach ($definitions as ['machineName' => $id]) {
