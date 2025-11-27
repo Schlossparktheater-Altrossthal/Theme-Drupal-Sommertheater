@@ -87,6 +87,8 @@ composer:
     - mkdir -p $THEME_DIR
     - tar -x -f mercury.tar -C $THEME_DIR
     - rm mercury.tar
+    # The CVA dependency should be there.
+    - test -d web/modules/contrib/cva
 
 composer (next minor):
   extends: .composer-base

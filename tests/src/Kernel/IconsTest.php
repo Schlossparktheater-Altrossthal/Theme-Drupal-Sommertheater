@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Drupal\Tests\mercury\Kernel;
 
 use Drupal\Core\Extension\ThemeExtensionList;
-use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\Icon\Plugin\IconPackManagerInterface;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestWith;
 
@@ -17,12 +17,19 @@ use PHPUnit\Framework\Attributes\TestWith;
 #[Group('mercury')]
 final class IconsTest extends KernelTestBase {
 
+  use MercuryTestTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected static $modules = ['system'];
+
   /**
    * Tests that all Mercury icons are discoverable.
    */
   #[TestWith(['phosphor'])]
   public function testIconsAreDiscoverable(string $group): void {
-    $this->container->get(ThemeInstallerInterface::class)->install(['mercury']);
+    $this->setUpMercury();
 
     $icons = $this->container->get(IconPackManagerInterface::class)
       ->getIcons();
@@ -36,7 +43,7 @@ final class IconsTest extends KernelTestBase {
     $this->assertIsResource($dir);
 
     while ($item = readdir($dir)) {
-      if ($item === '.' || $item === '..') {
+      if (str_starts_with($item, '.')) {
         continue;
       }
       $this->assertStringEndsWith('.svg', $item);

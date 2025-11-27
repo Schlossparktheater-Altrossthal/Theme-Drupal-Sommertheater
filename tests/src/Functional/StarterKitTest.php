@@ -8,7 +8,9 @@ use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Process\PhpExecutableFinder;
@@ -18,7 +20,10 @@ use Symfony\Component\Process\Process;
  * Tests that Mercury can be used as a starter kit.
  */
 #[Group('mercury')]
+#[RunTestsInSeparateProcesses]
 final class StarterKitTest extends BrowserTestBase {
+
+  use MercuryTestTrait;
 
   /**
    * {@inheritdoc}
@@ -29,6 +34,8 @@ final class StarterKitTest extends BrowserTestBase {
    * Tests using Mercury as a starter kit with the `generate-theme` command.
    */
   public function testGenerateThemeFromMercury(): void {
+    $this->setUpMercury();
+
     $path = uniqid($this->siteDirectory . '/themes/theme_');
     $theme_name = basename($path);
 

@@ -6,9 +6,11 @@ namespace Drupal\Tests\mercury\Functional;
 
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use Drupal\views\Entity\View;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests that Mercury properly applies snapping classes to certain views.
@@ -16,25 +18,27 @@ use PHPUnit\Framework\Attributes\Group;
 #[Group('mercury')]
 #[CoversFunction('mercury_preprocess_views_view')]
 #[CoversFunction('mercury_preprocess_views_view_unformatted')]
+#[RunTestsInSeparateProcesses]
 final class ViewsSnapTest extends BrowserTestBase {
 
-  /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'mercury';
+  use MercuryTestTrait;
 
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
-    'node',
-    'views',
-  ];
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
+  protected static $modules = ['node', 'views'];
 
   /**
    * Tests that Mercury adds snapping classes to certain views.
    */
   public function testSnapClassesAreAdded(): void {
+    $this->setUpMercury();
+
     $view = file_get_contents(__DIR__ . '/../../fixtures/views.view.snap_test.yml');
     $view = Yaml::decode($view);
     $view = View::create($view);

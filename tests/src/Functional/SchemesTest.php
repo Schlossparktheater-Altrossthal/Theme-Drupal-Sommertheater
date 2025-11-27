@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Drupal\Tests\mercury\Functional;
 
 use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\TestWith;
 
 /**
@@ -15,12 +17,15 @@ use PHPUnit\Framework\Attributes\TestWith;
 #[Group('mercury')]
 #[CoversFunction('mercury_preprocess_html')]
 #[CoversFunction('mercury_form_system_theme_settings_alter')]
+#[RunTestsInSeparateProcesses]
 class SchemesTest extends BrowserTestBase {
+
+  use MercuryTestTrait;
 
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'mercury';
+  protected $defaultTheme = 'stark';
 
   /**
    * Tests toggling Mercury into and out of a color scheme.
@@ -30,6 +35,8 @@ class SchemesTest extends BrowserTestBase {
   #[TestWith(['byte-light', 'Byte Light'])]
   #[TestWith(['byte-dark', 'Byte Dark'])]
   public function testColorScheme(string $scheme, string $label): void {
+    $this->setUpMercury();
+
     $this->drupalGet('<front>');
     $assert_session = $this->assertSession();
     $assert_session->statusCodeEquals(200);

@@ -13,3 +13,5 @@ components:
   namespaces:
     mercury_theme: components
     drupalRoot: components
+dependencies:
+  - cva:cva
