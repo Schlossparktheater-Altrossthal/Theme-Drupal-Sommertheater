@@ -1,7 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .social-menu--item .ui-icons-menu-text {
-    @apply hg:hidden;
-  }
-}

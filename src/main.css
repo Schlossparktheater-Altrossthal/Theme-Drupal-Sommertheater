@@ -279,7 +279,266 @@
 }
 
 @layer components {
-  /* For custom component styles (buttons, cards, etc.) */
+  /* Global dialog container - applies to all Drupal dialogs */
+  .ui-dialog {
+    background-color: var(--hgc-dialog-background);
+    border-color: var(--hgc-dialog-border);
+    color: var(--hgc-dialog-text);
+  }
+
+  /* Responsive width for mobile - applies to all dialogs */
+  @media all and (max-width: 48em) {
+    .ui-dialog {
+      @apply hg:w-[92%];
+    }
+  }
+
+  /* Dialog titlebar - applies to all dialogs */
+  .ui-dialog .ui-dialog-titlebar {
+    border-color: var(--hgc-dialog-border);
+  }
+
+  /* Button pane - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane {
+    @apply hg:mt-0 hg:border-t hg:border-solid hg:border-gray hg:bg-[#f3f4ee] hg:pt-[0.3em] hg:pr-[1em] hg:pb-[0.3em] hg:pl-[1em];
+  }
+
+  /* Button set - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    @apply hg:m-0 hg:p-0;
+  }
+
+  /* Button text - applies to all dialogs */
+  .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
+    @apply hg:p-0;
+  }
+
+  /* Form actions in dialogs - applies to all dialogs */
+  .ui-dialog .ui-dialog-content .form-actions {
+    @apply hg:m-0 hg:p-0;
+  }
+
+  /* AJAX progress throbber - applies to all dialogs */
+  .ui-dialog .ajax-progress-throbber {
+    @apply hg:fixed hg:top-[48.5%] hg:left-[49%] hg:z-[1000] hg:h-6 hg:w-6 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat hg:p-1 hg:opacity-90;
+    background-image: url(../../images/icons/loading-small.svg);
+  }
+
+  /* Hide throbber elements - applies to all dialogs */
+  .ui-dialog .ajax-progress-throbber .throbber,
+  .ui-dialog .ajax-progress-throbber .message {
+    @apply hg:hidden;
+  }
+
+  .ui-dialog .ui-button-icon::before {
+    @apply hg:absolute hg:inset-0 hg:block hg:h-5 hg:w-5 hg:text-sm hg:font-bold;
+    content: "✕";
+    color: var(--hgc-dialog-close);
+  }
+
+  .pager {
+    color: var(--hgc-color-body-text);
+  }
+
+  .breadcrumb-home i {
+    color: var(--hgc-color-breadcrumb-home);
+
+    &:hover,
+    &:focus {
+      color: var(--hgc-color-breadcrumb-home-hover);
+    }
+  }
+
+  .breadcrumb-caret {
+    color: var(--hgc-color-breadcrumb-caret);
+  }
+
+  .breadcrumb-dots {
+    color: var(--hgc-color-breadcrumb-dots);
+  }
+
+  .breadcrumb-item {
+    color: var(--hgc-color-breadcrumb);
+
+    &.active {
+      --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-active);
+    }
+
+    .breadcrumb-home {
+      &:hover,
+      &:focus {
+        --hgc-color-breadcrumb-icon: var(--hgc-color-breadcrumb-icon-hover);
+      }
+    }
+
+    a {
+      color: var(--hgc-color-breadcrumb);
+
+      &:hover,
+      &:focus {
+        --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-hover);
+      }
+    }
+  }
+
+  .snap-first > .card {
+    @apply hg:ms-6 hg:sm:ms-0;
+  }
+
+  .snap-last > .card {
+    @apply hg:me-6 hg:sm:me-0;
+  }
+  .webform-submission-form {
+    .visually-hidden {
+      @apply hg:sr-only;
+    }
+  }
+
+  .webform-submission-form,
+  .fieldset-wrapper,
+  *[id^="edit-page-"] {
+    @apply hg:flex hg:flex-col hg:gap-8;
+  }
+
+  fieldset:not(.webform-type-fieldset) .fieldset-wrapper {
+    @apply hg:gap-1;
+  }
+
+  label,
+  .fieldset-legend {
+    @apply hg:mb-1 hg:block hg:text-sm hg:font-semibold hg:text-[var(--hgc-webform-label)] hg:md:text-base;
+  }
+
+  .form-item:focus-within,
+  .fieldgroup:focus-within {
+    > label,
+    .fieldset-legend {
+      @apply hg:text-[var(--hgc-webform-label-focus)];
+    }
+  }
+
+  .webform-element-description {
+    @apply hg:mt-2 hg:text-xs;
+  }
+
+  .form-required::after {
+    @apply hg:ml-1 hg:text-red-500;
+    content: "*";
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+    @apply hg:w-full hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:bg-transparent hg:px-0 hg:py-2 hg:text-base hg:text-[var(--hgc-webform-text)] hg:outline-none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus,
+  textarea:focus,
+  select:focus {
+    @apply hg:border-[var(--hgc-webform-focus-border)] hg:shadow-sm;
+  }
+
+  select:focus {
+    @apply hg:text-[var(--hgc-webform-text)];
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  select {
+    @apply hg:text-[var(--hgc-webform-placeholder)];
+  }
+
+  textarea {
+    @apply hg:min-h-[80px];
+    resize: vertical;
+  }
+
+  .form-submit,
+  input.button {
+    @apply hg:cursor-pointer hg:rounded-lg hg:border hg:border-[var(--hgc-webform-button-border)] hg:bg-[var(--hgc-webform-button-fill)] hg:px-5 hg:py-[10px] hg:text-base hg:text-[var(--hgc-webform-button-text)];
+    border-radius: var(--hgc-webform-button-radius) !important;
+  }
+
+  .form-submit:hover,
+  input.button:hover {
+    @apply hg:border-[var(--hgc-webform-button-border-hover)] hg:bg-[var(--hgc-webform-button-fill-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
+  }
+
+  .form-item--error input,
+  .form-item--error textarea,
+  .form-item--error select {
+    @apply hg:border-red-500;
+  }
+
+  .form-item--error input:focus,
+  .form-item--error textarea:focus,
+  .form-item--error select:focus {
+    @apply hg:border-red-500 hg:shadow-sm;
+  }
+
+  .form-item--error-message {
+    @apply hg:mt-1 hg:mb-3 hg:basis-full hg:text-sm hg:text-red-500;
+  }
+
+  .webform-options-display-one-column {
+    @apply hg:flex hg:flex-col hg:gap-2;
+  }
+
+  .webform-type-checkbox.form-item,
+  .webform-type-radio.form-item {
+    @apply hg:flex hg:flex-wrap hg:gap-2;
+
+    label {
+      @apply hg:m-0 hg:font-normal;
+    }
+  }
+
+  .progress-text {
+    @apply hg:text-inherit!;
+  }
+
+  .social-menu--item .ui-icons-menu-text {
+    @apply hg:hidden;
+  }
+
+  .utility-menu {
+    .utility-menu--item-text {
+      color: var(--hgc-menu-link-color);
+
+      &:hover,
+      &:focus {
+        color: var(--hgc-menu-link-color-hover);
+      }
+    }
+  }
+
+  .footer-menu {
+    .parent-link,
+    .below-link {
+      color: var(--hgc-menu-link-color);
+
+      &:hover,
+      &:focus {
+        color: var(--hgc-menu-link-color-hover);
+      }
+    }
+  }
 }
 
 @layer utilities {

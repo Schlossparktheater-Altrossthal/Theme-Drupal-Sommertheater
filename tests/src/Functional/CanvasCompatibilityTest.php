@@ -47,25 +47,9 @@ class CanvasCompatibilityTest extends BrowserTestBase {
       fn (array $definition): bool => $definition['provider'] === 'mercury',
     );
 
-    ['sdc' => $why_not] = $this->container->get(ComponentIncompatibilityReasonRepository::class)
+    $why_not = $this->container->get(ComponentIncompatibilityReasonRepository::class)
       ->getReasons();
-
-    // Ignore components that we know are broken.
-    unset(
-      // These three components are used by the `menu-footer` Twig template, and
-      // aren't meant to be used directly in Canvas.
-      $definitions['mercury:menu-footer'],
-      $definitions['mercury:menu-social'],
-      $definitions['mercury:menu-utility'],
-      // The `breadcrumb` component is used for styling core's breadcrumb, but
-      // isn't meant to be used directly in Canvas.
-      $definitions['mercury:breadcrumb'],
-    );
-
-    foreach ($definitions as ['machineName' => $id]) {
-      $key = "sdc.mercury.$id";
-      $this->assertArrayNotHasKey($key, $why_not, implode(', ', $why_not[$key] ?? []));
-    }
+    $this->assertArrayNotHasKey('sdc', $why_not);
   }
 
 }
