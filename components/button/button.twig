@@ -36,7 +36,8 @@
           'hg:disabled:cursor-default',
           'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
           'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
+          'hg:disabled:cursor-not-allowed'
         ],
         'primary-accent': [
           'hg:border-[var(--hg-color-accent)]',
@@ -51,7 +52,8 @@
           'hg:disabled:cursor-default',
           'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
           'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
+          'hg:disabled:cursor-not-allowed'
         ],
         secondary: [
           'hg:border-[var(--hgc-btn-secondary-border)]',
@@ -66,7 +68,8 @@
           'hg:disabled:cursor-default',
           'hg:disabled:border-[var(--hgc-btn-secondary-border-disabled)]',
           'hg:disabled:bg-[var(--hgc-btn-secondary-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-secondary-label-disabled)]'
+          'hg:disabled:text-[var(--hgc-btn-secondary-label-disabled)]',
+          'hg:disabled:cursor-not-allowed'
         ],
         'secondary-accent': [
           'hg:border-[var(--hg-color-accent)]',
@@ -81,7 +84,8 @@
           'hg:disabled:cursor-default',
           'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
           'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
+          'hg:disabled:cursor-not-allowed'
         ],
         negative: [
           'hg:border-[var(--hgc-btn-negative-border)]',
@@ -96,7 +100,8 @@
           'hg:disabled:cursor-default',
           'hg:disabled:border-[var(--hgc-btn-negative-border-disabled)]',
           'hg:disabled:bg-[var(--hgc-btn-negative-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-negative-label-disabled)]'
+          'hg:disabled:text-[var(--hgc-btn-negative-label-disabled)]',
+          'hg:disabled:cursor-not-allowed'
         ]
       },
       width: {
@@ -126,9 +131,10 @@
   {% set additional_classes = additional_classes|join(' ') %}
 {% endif %}
 
-{# If href is provided, present a link; otherwise render a button #}
+{# If href is provided and button is not disabled, present a link; otherwise render a button #}
 {% set disabled_attr = is_disabled ? 'aria-disabled="true"' : '' %}
 {% set button_disabled_attr = is_disabled ? 'disabled' : '' %}
+{% set href = disabled|default(false) ? null : href %}
 
 {% if href %}
   <a

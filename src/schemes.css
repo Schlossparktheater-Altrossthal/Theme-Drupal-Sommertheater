@@ -66,7 +66,7 @@
   --hgc-btn-label-hover: var(--hg-color-white);
   --hgc-btn-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-label-disabled: var(--hg-color-body-text-dark);
   /* Secondary */
   --hgc-btn-secondary-bg: transparent;
   --hgc-btn-secondary-border: var(--hg-color-brand);
@@ -74,9 +74,9 @@
   --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
   --hgc-btn-secondary-border-hover: var(--hg-color-brand);
   --hgc-btn-secondary-label-hover: var(--hg-color-gray-dark);
-  --hgc-btn-secondary-bg-disabled: transparent;
+  --hgc-btn-secondary-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-secondary-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-secondary-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-secondary-label-disabled: var(--hg-color-body-text-dark);
   /* Negative */
   --hgc-btn-negative-bg: var(--hg-color-white);
   --hgc-btn-negative-border: var(--hg-color-white);
@@ -86,7 +86,7 @@
   --hgc-btn-negative-label-hover: var(--hg-color-brand);
   --hgc-btn-negative-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-negative-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-negative-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-negative-label-disabled: var(--hg-color-body-text-dark);
   /* Style testimonial cards. */
   --hgc-card-testimonial-bg: transparent;
   --hgc-card-testimonial-text: var(--hg-color-body-text);
@@ -187,7 +187,7 @@
   --hgc-btn-border-hover: var(--hg-color-brand);
   --hgc-btn-bg-disabled: var(--hg-color-gray-darkest);
   --hgc-btn-border-disabled: var(--hg-color-gray-darkest);
-  --hgc-btn-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-label-disabled: var(--hg-color-body-text-dark);
   /* Secondary */
   --hgc-btn-secondary-bg: transparent;
   --hgc-btn-secondary-border: var(--hg-color-brand-light);
@@ -195,9 +195,9 @@
   --hgc-btn-secondary-bg-hover: var(--hg-color-brand-dark);
   --hgc-btn-secondary-border-hover: var(--hg-color-white);
   --hgc-btn-secondary-label-hover: var(--hg-color-brand-light);
-  --hgc-btn-secondary-bg-disabled: transparent;
+  --hgc-btn-secondary-bg-disabled: var(--hg-color-gray-darkest);
   --hgc-btn-secondary-border-disabled: var(--hg-color-gray-darkest);
-  --hgc-btn-secondary-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-secondary-label-disabled: var(--hg-color-body-text-dark);
   /* Negative */
   --hgc-btn-negative-bg: var(--hg-color-brand-light);
   --hgc-btn-negative-border: var(--hg-color-brand-light);
@@ -207,7 +207,7 @@
   --hgc-btn-negative-label-hover: var(--hg-color-brand-light);
   --hgc-btn-negative-bg-disabled: var(--hg-color-gray-darkest);
   --hgc-btn-negative-border-disabled: var(--hg-color-gray-darkest);
-  --hgc-btn-negative-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-negative-label-disabled: var(--hg-color-body-text-dark);
   /* Style testimonial cards. */
   --hgc-card-testimonial-bg: transparent;
   --hgc-card-testimonial-text: var(--hg-color-body-text);
@@ -350,7 +350,7 @@
   --hgc-btn-label-hover: var(--hg-color-brand-dark);
   --hgc-btn-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-label-disabled: var(--hg-color-body-text-dark);
   /* Secondary */
   --hgc-btn-secondary-bg: transparent;
   --hgc-btn-secondary-border: var(--hg-color-brand);
@@ -358,9 +358,9 @@
   --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
   --hgc-btn-secondary-border-hover: var(--hg-color-gray-dark);
   --hgc-btn-secondary-label-hover: var(--hg-color-gray-dark);
-  --hgc-btn-secondary-bg-disabled: transparent;
+  --hgc-btn-secondary-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-secondary-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-secondary-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-secondary-label-disabled: var(--hg-color-body-text-dark);
   /* Negative */
   --hgc-btn-negative-bg: var(--hg-color-white);
   --hgc-btn-negative-border: var(--hg-color-white);
@@ -370,7 +370,7 @@
   --hgc-btn-negative-label-hover: var(--hg-color-white);
   --hgc-btn-negative-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-negative-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-negative-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-negative-label-disabled: var(--hg-color-body-text-dark);
   /* Style testimonial cards. */
   --hgc-card-testimonial-bg: var(--hg-color-brand);
   --hgc-card-testimonial-text: var(--hg-color-body-text);
@@ -494,7 +494,7 @@
   --hgc-btn-label-hover: var(--hg-color-white);
   --hgc-btn-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-label-disabled: var(--hg-color-body-text-dark);
   /* Secondary */
   --hgc-btn-secondary-bg: transparent;
   --hgc-btn-secondary-border: var(--hg-color-brand-light);
@@ -502,9 +502,9 @@
   --hgc-btn-secondary-bg-hover: var(--hg-color-brand-light);
   --hgc-btn-secondary-border-hover: var(--hg-color-brand-light);
   --hgc-btn-secondary-label-hover: var(--hg-color-brand-dark);
-  --hgc-btn-secondary-bg-disabled: transparent;
+  --hgc-btn-secondary-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-secondary-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-secondary-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-secondary-label-disabled: var(--hg-color-body-text-dark);
   /* Negative */
   --hgc-btn-negative-bg: var(--hg-color-brand-light);
   --hgc-btn-negative-border: var(--hg-color-brand-light);
@@ -514,7 +514,7 @@
   --hgc-btn-negative-label-hover: var(--hg-color-brand-light);
   --hgc-btn-negative-bg-disabled: var(--hg-color-gray-light);
   --hgc-btn-negative-border-disabled: var(--hg-color-gray-light);
-  --hgc-btn-negative-label-disabled: rgb(from var(--hg-color-gray) r g b / 50%);
+  --hgc-btn-negative-label-disabled: var(--hg-color-body-text-dark);
   /* Style testimonial cards. */
   --hgc-card-testimonial-bg: var(--hg-color-accent-dark);
   --hgc-card-testimonial-text: var(--hg-color-body-text);
