@@ -1,14 +1,11 @@
 @reference '../../src/main.css';
 
 @layer components {
+  /* CSS variable-based styling that can't be moved to Twig */
   .icon-tile {
     background-color: var(--hg-page-bg);
     border-color: var(--hgc-tile-border);
     color: var(--hg-page-text);
-
-    * {
-      @apply hg:leading-tight;
-    }
 
     .ph {
       color: var(--hgc-tile-icon-color);

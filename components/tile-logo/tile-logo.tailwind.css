@@ -1,7 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .logo-tile img {
-    max-height: 86px;
-  }
-}

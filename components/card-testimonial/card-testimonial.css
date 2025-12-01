@@ -1,7 +1,0 @@
-/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
-@layer components {
-  .card-testimonial {
-    background-color: var(--hgc-card-testimonial-bg);
-    color: var(--hgc-card-testimonial-text);
-  }
-}

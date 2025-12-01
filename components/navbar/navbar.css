@@ -50,13 +50,3 @@
     }
   }
 }
-.navbar--logo > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.navbar--modal-logo > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}

@@ -4,6 +4,9 @@ description: A component for rich text.
 group: Base
 props:
   type: object
+  required:
+    - font_color
+    - font_size_multiplier
   properties:
     text:
       type: string

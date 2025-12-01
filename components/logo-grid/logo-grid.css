@@ -1,11 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer components {
-  .logo-grid {
-    > * {
-      scroll-snap-align: center;
-      flex: 1 1 250px;
-    }
-  }
   :where(.logo-grid:not(.logo-grid--grid-mobile)) {
     > :first-child {
       margin-left: 50vw;

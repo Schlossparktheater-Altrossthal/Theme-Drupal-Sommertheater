@@ -1,7 +1,6 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
 .collapsible-section {
-  background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
   &:has(button[aria-expanded="true"]) .collapsible-section--content {
     padding-block: calc(var(--hg-spacing, 4px) * 4);
@@ -12,24 +11,8 @@
   }
 }
 .collapsible-section--title {
-  background-color: var(--hgc-collapsible-title-bg);
-  &:focus {
-    background-color: var(--hgc-collapsible-title-bg-hover);
-  }
   .collapsible-section--open & {
     background-color: var(--hgc-collapsible-title-bg-active);
-  }
-  &:hover {
-    background-color: var(--hgc-collapsible-title-bg-hover);
-  }
-}
-.collapsible-section--content {
-  color: var(--hgc-collapsible-content-text);
-  :first-child {
-    margin-top: calc(var(--hg-spacing, 4px) * 0);
-  }
-  :last-child {
-    margin-bottom: calc(var(--hg-spacing, 4px) * 0);
   }
 }
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {

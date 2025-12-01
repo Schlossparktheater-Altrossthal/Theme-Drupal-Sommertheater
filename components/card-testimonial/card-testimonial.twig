@@ -1,15 +1,31 @@
-{% set classes = [
-  'card-testimonial',
-  'hg:flex',
-  'hg:flex-col',
-  'hg:p-6',
-  'hg:self-start',
-  align == 'center' ? 'hg:text-center hg:items-center hg:gap-6' : 'hg:text-left hg:items-start hg:gap-4',
-  'hg:rounded-md'
-] %}
+{% set card =
+  html_cva(
+    base: [
+      'hg:flex',
+      'hg:flex-col',
+      'hg:p-6',
+      'hg:self-start',
+      'hg:rounded-md',
+      'hg:bg-[var(--hgc-card-testimonial-bg)]',
+      'hg:text-[var(--hgc-card-testimonial-text)]'
+    ],
+    variants: {
+      align: {
+        center: 'hg:text-center hg:items-center hg:gap-6',
+        left: 'hg:text-left hg:items-start hg:gap-4'
+      }
+    }
+  )
+%}
 
-<div class="{{ classes|join(' ') }}">
-  <div class="card-testimonial--media hg:aspect-square hg:w-[100px] hg:overflow-hidden hg:rounded-full">
+{% set card_classes =
+  card.apply({
+    align: align|default('center')
+  })
+%}
+
+<div class="{{ card_classes }}">
+  <div class="hg:aspect-square hg:w-[100px] hg:overflow-hidden hg:rounded-full">
     {% block media %}
       {% include 'canvas:image' ignore missing with {
         src: media.src,
@@ -23,21 +39,21 @@
   </div>
 
   <blockquote class="hg:flex hg:flex-col hg:gap-4" cite="{{ cite_url }}">
-    <p class="testimonial-text hg:text-xl hg:text-inherit">
+    <p class="hg:text-xl hg:text-inherit">
       {{ text }}
     </p>
 
-    <footer class="testimonial-name hg:text-base hg:font-bold hg:text-inherit">
+    <footer class="hg:text-base hg:font-bold hg:text-inherit">
       {% set citation = cite_name %}
       {% if cite_name and cite_text %}
         {% set citation = cite_name ~ ', ' %}
       {% endif %}
       {{ citation }}
-      <cite class="testimonial-cite hg:font-normal">
+      <cite class="hg:font-normal">
         {% if cite_url and cite_url != 'No URL' %}
-          <a href="{{ cite_url }}" target="_blank" class="testimonial-cite--text hg:underline hg:hover:underline">{{ cite_text }}</a>
+          <a href="{{ cite_url }}" target="_blank" class="hg:underline hg:hover:underline">{{ cite_text }}</a>
         {% else %}
-          <span class="testimonial-cite--text hg:text-base hg:text-inherit">{{ cite_text }}</span>
+          <span class="hg:text-base hg:text-inherit">{{ cite_text }}</span>
         {% endif %}
       </cite>
     </footer>

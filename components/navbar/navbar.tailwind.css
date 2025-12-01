@@ -2,6 +2,7 @@
 
 @layer components;
 
+/* Modal state - prevents body scroll when mobile menu is open */
 :root.navbar-modal-open {
   &,
   body {
@@ -9,10 +10,12 @@
   }
 }
 
+/* Menu visibility toggle (controlled by JS) */
 .navbar--menu:not(.navbar--menu--open) {
   @apply hg:hidden hg:md:flex;
 }
 
+/* Child component styling that can't be moved to Twig */
 .navbar--links .button.button {
   @apply hg:mx-8 hg:w-[calc(100%-var(--hg-spacing)*16)] hg:md:m-auto hg:md:w-auto;
 }
@@ -25,12 +28,14 @@
   @apply hg:pb-24 hg:md:pb-0;
 }
 
+/* External region styling */
 .region-header {
   .navbar--modal-top {
     @apply hg:px-4;
   }
 }
 
+/* Branding component styling */
 .navbar--logo,
 .navbar--modal-logo {
   .branding {
@@ -40,12 +45,4 @@
       @apply hg:h-auto! hg:max-h-full;
     }
   }
-}
-
-.navbar--logo > div {
-  @apply hg:flex hg:flex-col hg:justify-center;
-}
-
-.navbar--modal-logo > div {
-  @apply hg:flex hg:flex-col hg:justify-center;
 }

@@ -1,14 +1,10 @@
 @reference '../../src/main.css';
 
 @layer components {
-  .logo-grid {
-    > * {
-      @apply hg:snap-center;
-      flex: 1 1 250px;
-    }
-  }
-
-  /* Using :where so everything has the same specificity. */
+  /* First/last child margin handling for scroll mode centering.
+     Using :where so everything has the same specificity.
+     These selectors need to stay in CSS since they depend on
+     :first-child/:last-child combined with mode-based BEM modifiers. */
   :where(.logo-grid:not(.logo-grid--grid-mobile)) {
     > :first-child {
       @apply hg:ml-[50vw];

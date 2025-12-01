@@ -1,30 +1,102 @@
-{% set classes =
-  classes
-    |default([])
-    |merge(
-      [
-        'badge',
-        style,
-        'hg:rounded-sm',
-        'hg:border',
-        'hg:flex',
-        icon_first ? 'hg:flex-row' : 'hg:flex-row-reverse',
-        'hg:inline-flex',
-        'hg:items-center',
-        'hg:gap-[2px]',
-        'hg:lg:gap-1',
-        'hg:px-[6px]',
-        'hg:lg:px-2',
-        'hg:2xl:px-3',
-        'hg:py-[5px]',
-        'hg:lg:py-[6px]',
-        'hg:2xl:py-2'
-      ]
-    )
-    |filter(v => v is not empty)
+{% set has_url = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
+{% set is_icon_first = icon_first is not empty ? 'yes' : 'no' %}
+
+{# Normalize badge_classes - handle both array and string formats #}
+{% set additional_classes = badge_classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
+
+{% set badge =
+  html_cva(
+    base: [
+      'hg:rounded-sm',
+      'hg:border',
+      'hg:flex',
+      'hg:inline-flex',
+      'hg:items-center',
+      'hg:gap-[2px]',
+      'hg:lg:gap-1',
+      'hg:px-[6px]',
+      'hg:lg:px-2',
+      'hg:2xl:px-3',
+      'hg:py-[5px]',
+      'hg:lg:py-[6px]',
+      'hg:2xl:py-2'
+    ],
+    variants: {
+      style: {
+        primary: [
+          'hg:bg-[var(--hgc-btn-bg)]',
+          'hg:border-[var(--hgc-btn-border)]',
+          'hg:text-[var(--hgc-btn-label)]',
+          'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
+          'hg:hover:border-[var(--hgc-btn-border-hover)]',
+          'hg:hover:text-[var(--hgc-btn-label-hover)]',
+          'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
+          'hg:focus:border-[var(--hgc-btn-border-hover)]',
+          'hg:focus:text-[var(--hgc-btn-label-hover)]'
+        ],
+        secondary: [
+          'hg:bg-[var(--hgc-btn-secondary-bg)]',
+          'hg:border-[var(--hgc-btn-secondary-border)]',
+          'hg:text-[var(--hgc-btn-secondary-label)]',
+          'hg:hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hg:hover:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hg:hover:text-[var(--hgc-btn-secondary-label-hover)]',
+          'hg:focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hg:focus:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hg:focus:text-[var(--hgc-btn-secondary-label-hover)]'
+        ]
+      },
+      iconFirst: {
+        yes: 'hg:flex-row',
+        no: 'hg:flex-row-reverse'
+      }
+    }
+  )
 %}
 
-<a href="{{ url }}" aria-label="{{ label }}" class="{{ classes|join(' ') }}">
-  {% if icon is not empty %}{{ include('@mercury/components/icon/icon.twig') }}{% endif %}
-  <span class="badge-label hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
-</a>
+{% set badge_classes =
+  badge.apply(
+    {
+      style: style|default('primary'),
+      iconFirst: is_icon_first
+    },
+    additional_classes
+  )
+%}
+
+{% if has_url == 'yes' %}
+  <a href="{{ url }}" aria-label="{{ label }}" class="{{ badge_classes }}">
+    {% if icon is not empty %}
+      {{
+        include(
+          '@mercury/components/icon/icon.twig',
+          {
+            icon: icon,
+            icon_size: 'hg:text-xl/2'
+          },
+          with_context: false
+        )
+      }}
+    {% endif %}
+    <span class="hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
+  </a>
+{% else %}
+  <span aria-label="{{ label }}" class="{{ badge_classes }}">
+    {% if icon is not empty %}
+      {{
+        include(
+          '@mercury/components/icon/icon.twig',
+          {
+            icon: icon,
+            icon_size: 'hg:text-xl/2'
+          },
+          with_context: false
+        )
+      }}
+    {% endif %}
+    <span class="hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
+  </span>
+{% endif %}

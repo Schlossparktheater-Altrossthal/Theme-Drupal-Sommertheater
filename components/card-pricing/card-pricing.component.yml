@@ -4,12 +4,14 @@ description: Card with pricing information
 group: Components/Cards
 props:
   type: object
+  required:
+    - symbol_position
   properties:
     heading_text:
       type: string
-      title: Heading Text
+      title: Heading
       examples:
-        - Gold Plan
+        - Premium
     description:
       type: string
       title: Description
@@ -20,28 +22,32 @@ props:
       description: Price
       type: string
       examples:
-        - "159.00"
+        - "159"
     currency_code:
       type: string
-      title: Currency Code
+      title: Currency code
       examples:
         - USD
     currency_symbol:
       type: string
-      title: Currency Symbol
+      title: Currency symbol
       examples:
         - "$"
     symbol_position:
       type: string
-      title: Symbol Position
-      enum: ["before", "after"]
+      title: Symbol position
+      enum:
+        - before
+        - after
+      meta:enum:
+        before: Before
+        after: After
       examples:
         - before
       default:
         - before
     text:
       title: Text
-      description: Rich Text
       type: string
       contentMediaType: text/html
       x-formatting-context: block
@@ -58,19 +64,14 @@ props:
     button_url:
       type: string
       title: Link
-      default: "https://www.example.com"
-      examples:
-        - "https://www.example.com"
     button_label:
       type: string
-      title: Button Label
-      description: CTA label for the card
+      title: Button label
       examples:
         - Choose this plan
     promote:
       type: boolean
-      title: Promote card
-      description: "Visually feature card."
+      title: Highlight card
       default: false
       examples:
         - false

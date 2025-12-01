@@ -1,7 +1,11 @@
-{% set classes = ['card-profile', 'hg:relative', 'hg:aspect-[2/3]'] %}
+{% set has_url = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
 
-<div class="{{ classes|join(' ') }}">
-  <div class="card--media hg:relative hg:z-1 hg:aspect-[2/3] hg:overflow-hidden hg:rounded-sm">
+{% set card = html_cva(base: ['hg:relative', 'hg:aspect-[2/3]']) %}
+
+{% set card_classes = card.apply({}) %}
+
+<div class="{{ card_classes }}">
+  <div class="hg:relative hg:z-1 hg:aspect-[2/3] hg:overflow-hidden hg:rounded-sm">
     {% block card_media %}
       {% if media.src is not empty %}
         <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
@@ -15,18 +19,18 @@
       } only %}
     {% endblock %}
   </div>
-  <div class="card--content hg:absolute hg:inset-0 hg:z-2 hg:text-center hg:text-white">
-    {% if url is not empty %}
+  <div class="hg:absolute hg:inset-0 hg:z-2 hg:text-center hg:text-white">
+    {% if has_url == 'yes' %}
       <a href="{{ url }}" class="hg:before:absolute hg:before:inset-0 hg:before:content-['']">
         <p class="hg:absolute hg:inset-0 hg:top-1/2">
-          <strong class="person-name hg:text-2xl hg:font-bold">{{ name }}</strong><br />
-          <span class="person-title hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
+          <strong class="hg:text-2xl hg:font-bold">{{ name }}</strong><br />
+          <span class="hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
         </p>
       </a>
     {% else %}
       <p class="hg:absolute hg:inset-0 hg:top-1/2">
-        <strong class="person-name hg:text-2xl hg:font-bold">{{ name }}</strong><br />
-        <span class="person-title hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
+        <strong class="hg:text-2xl hg:font-bold">{{ name }}</strong><br />
+        <span class="hg:text-lg hg:italic hg:xl:text-xl">{{ job_title }}</span>
       </p>
     {% endif %}
   </div>

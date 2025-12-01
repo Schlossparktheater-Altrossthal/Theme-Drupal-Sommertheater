@@ -1,8 +1,0 @@
-/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
-@layer components {
-  .section--main > * {
-    width: 100%;
-    min-width: calc(var(--hg-spacing, 4px) * 0);
-    overflow: hidden;
-  }
-}

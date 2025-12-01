@@ -183,6 +183,10 @@
     @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-(--hg-color-body-text);
   }
 
+  p {
+    @apply hg:mb-4;
+  }
+
   ul,
   ol {
     @apply hg:list-disc hg:ps-5;

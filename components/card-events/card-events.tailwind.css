@@ -1,8 +1,0 @@
-@reference '../../src/main.css';
-
-@layer components {
-  .card-events {
-    background-color: var(--hg-color-body-bg);
-    color: var(--hg-color-body-text);
-  }
-}

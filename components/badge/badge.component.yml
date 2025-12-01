@@ -16,7 +16,6 @@ props:
     style:
       type: string
       title: Style
-      description: Define badge style.
       enum:
         - primary
         - secondary
@@ -25,26 +24,13 @@ props:
         - primary
     icon:
       type: string
-      title: Icon
-      description: Select an icon.
-      enum:
-        - newspaper-clipping
-        - alien
-        - robot
-        - rocket
-      default: newspaper-clipping
+      title: Icon name (exclude prefix)
+      default: "rocket"
       examples:
-        - newspaper-clipping
+        - "rocket"
     icon_first:
       type: boolean
       title: Icon first
-      description: Icon can display before or after label.
       default: true
       examples:
         - true
-
-slots:
-  # Content to display in the badge.
-  badge_content:
-    title: Content
-    description: Content of the badge

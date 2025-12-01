@@ -2,47 +2,27 @@
 
 /* Base styles before JS gets involved. */
 .collapsible-section {
-  background-color: var(--hgc-collapsible-content-bg);
   --animate-speed: 0s;
 
+  /* Uses :has() pseudo-selector - cannot be done in Twig */
   &:has(button[aria-expanded="true"]) .collapsible-section--content {
     @apply hg:py-4;
   }
 
+  /* Uses adjacent sibling selector with :not(:has()) - cannot be done in Twig */
   &:not(:has(+ .collapsible-section)) {
     @apply hg:border-b-0;
   }
 }
 
+/* Active state when parent has .collapsible-section--open (JS-added class) */
 .collapsible-section--title {
-  background-color: var(--hgc-collapsible-title-bg);
-
-  &:focus {
-    background-color: var(--hgc-collapsible-title-bg-hover);
-  }
-
   .collapsible-section--open & {
     background-color: var(--hgc-collapsible-title-bg-active);
   }
-
-  &:hover {
-    background-color: var(--hgc-collapsible-title-bg-hover);
-  }
 }
 
-.collapsible-section--content {
-  color: var(--hgc-collapsible-content-text);
-
-  :first-child {
-    @apply hg:mt-0;
-  }
-
-  :last-child {
-    @apply hg:mb-0;
-  }
-}
-
-/* Styles involving collapsing/expanding. */
+/* Styles involving collapsing/expanding - all use JS-added classes */
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
   @apply hg:h-0 hg:pb-0;
 }

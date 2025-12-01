@@ -1,11 +1,10 @@
-{% set tile_classes =
-  tile_classes
-    |default([])
-    |merge(['logo-tile', 'hg:aspect-4/3 hg:rounded-sm hg:snap-center hg:min-h-[150px] hg:max-w-full', 'hg:bg-(--hgc-tile-logo-bg)'])
-    |filter(v => v is not empty)
+{% set tile =
+  html_cva(base: ['logo-tile', 'hg:aspect-4/3', 'hg:rounded-sm', 'hg:snap-center', 'hg:min-h-[150px]', 'hg:max-w-full', 'hg:bg-(--hgc-tile-logo-bg)'])
 %}
 
-<div class="{{ tile_classes|join(' ') }}">
+{% set tile_classes = tile.apply({}) %}
+
+<div class="{{ tile_classes }}">
   <div class="hg:flex hg:h-[100%] hg:items-center hg:justify-center hg:p-[10%]">
     {% block logo %}
       {% if media.src is not empty %}

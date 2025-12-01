@@ -1,70 +1,132 @@
-{% set class_map = {
-  icon_align: {
-    left: 'hg:justify-start',
-    right: 'hg:justify-end',
-    center: 'hg:justify-center'
-  },
-  icon_size: {
-    small: 'hg:text-2xl',
-    medium: 'hg:text-4xl',
-    large: 'hg:text-6xl'
-  },
-  text_align: {
-    left: 'hg:text-start',
-    center: 'hg:text-center',
-    right: 'hg:text-end'
-  },
-  tile_size: {
-    square: 'hg:aspect-square',
-    '4:3': 'hg:aspect-4/3',
-    '16:9': 'hg:aspect-16/9'
-  },
-  border_radius: {
-    small: 'hg:rounded-sm',
-    large: 'hg:rounded-xl hg:md:rounded-2xl',
-    'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]'
-  }
-} %}
-{% set tile_classes =
-  tile_classes
-    |default([])
-    |merge(
-      [
-        'icon-tile',
-        'hg:relative',
-        border ? 'hg:border hg:p-6' : '',
-        url ? 'has-link hg:transition-all hg:duration-300' : '',
-        background ? 'has-bg hg:p-6' : '',
-        tile_size ? class_map['tile_size'][tile_size] : 'hg:aspect-none',
-        border_radius ? class_map['border_radius'][border_radius] : 'hg:rounded-none'
-      ]
-    )
-    |filter(v => v is not empty)
+{% set has_border = border|default(false) ? 'yes' : 'no' %}
+{% set has_url = url is not empty ? 'yes' : 'no' %}
+{% set has_background = background|default(false) ? 'yes' : 'no' %}
+
+{% set tile =
+  html_cva(
+    base: ['icon-tile', 'hg:relative', '[&_*]:hg:leading-tight'],
+    variants: {
+      hasBorder: {
+        yes: 'hg:border hg:p-6',
+        no: ''
+      },
+      hasUrl: {
+        yes: 'has-link hg:transition-all hg:duration-300',
+        no: ''
+      },
+      hasBackground: {
+        yes: 'has-bg hg:p-6',
+        no: ''
+      },
+      tileSize: {
+        square: 'hg:aspect-square',
+        '4:3': 'hg:aspect-4/3',
+        '16:9': 'hg:aspect-16/9',
+        noSize: 'hg:aspect-none'
+      },
+      borderRadius: {
+        small: 'hg:rounded-sm',
+        large: 'hg:rounded-xl hg:md:rounded-2xl',
+        'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]',
+        noRadius: 'hg:rounded-none'
+      }
+    }
+  )
 %}
 
-{% set flex_align_map = {
-  start: 'hg:justify-start',
-  center: 'hg:justify-center',
-  end: 'hg:justify-end',
-  between: 'hg:justify-between'
+{% set tile_classes =
+  tile.apply({
+    hasBorder: has_border,
+    hasUrl: has_url,
+    hasBackground: has_background,
+    tileSize: tile_size|default('noSize'),
+    borderRadius: border_radius|default('noRadius')
+  })
+%}
+
+{% set inner_container =
+  html_cva(
+    base: ['hg:flex', 'hg:h-full', 'hg:flex-col'],
+    variants: {
+      flexAlign: {
+        start: 'hg:justify-start',
+        center: 'hg:justify-center',
+        end: 'hg:justify-end',
+        between: 'hg:justify-between'
+      }
+    }
+  )
+%}
+
+{% set inner_classes =
+  inner_container.apply({
+    flexAlign: flex_align|default('center')
+  })
+%}
+
+{% set icon_container =
+  html_cva(
+    base: ['hg:flex', 'hg:w-full'],
+    variants: {
+      iconAlign: {
+        left: 'hg:justify-start',
+        center: 'hg:justify-center',
+        right: 'hg:justify-end'
+      }
+    }
+  )
+%}
+
+{% set icon_container_classes =
+  icon_container.apply({
+    iconAlign: icon_align|default('center')
+  })
+%}
+
+{% set icon_size_map = {
+  small: 'hg:text-2xl',
+  medium: 'hg:text-4xl',
+  regular: 'hg:text-4xl',
+  large: 'hg:text-6xl'
 } %}
 
-<div class="{{ tile_classes|join(' ') }}">
-  <div class="hg:flex hg:h-full hg:flex-col {{ flex_align_map[flex_align] }}">
-    <div class="hg:flex hg:w-full {{ class_map['icon_align'][icon_align] }}">
+{% set text_container =
+  html_cva(
+    base: ['hg:w-full', 'hg:pt-2'],
+    variants: {
+      textAlign: {
+        left: 'hg:text-start',
+        center: 'hg:text-center',
+        right: 'hg:text-end'
+      }
+    }
+  )
+%}
+
+{% set text_container_classes =
+  text_container.apply({
+    textAlign: text_align|default('center')
+  })
+%}
+
+<div class="{{ tile_classes }}">
+  <div class="{{ inner_classes }}">
+    <div class="{{ icon_container_classes }}">
       {% if icon %}
         {{
           include(
             '@mercury/components/icon/icon.twig',
             {
-              icon_size: class_map['icon_size'][icon_size]|default('hg:text-4xl')
-            }
+              icon: icon,
+              icon_size: icon_size_map[icon_size]|default('hg:text-4xl')
+            },
+            with_context: false
           )
         }}
       {% endif %}
     </div>
 
-    <div class="hg:w-full hg:pt-2 {{ class_map['text_align'][text_align] }}">
+    <div class="{{ text_container_classes }}">
       {% if text is not empty or description is not empty %}
         {% if url is not empty %}
           <a href="{{ url }}" class="hg:flex hg:w-full hg:flex-col hg:before:absolute hg:before:inset-0 hg:before:content-['']">

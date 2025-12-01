@@ -15,7 +15,7 @@ props:
         - large
         - extra-large
       meta:enum:
-        large: Large (default)
+        large: Normal
         extra-large: Extra-Large
       default: large
       examples:

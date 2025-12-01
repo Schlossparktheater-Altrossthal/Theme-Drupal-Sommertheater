@@ -8,7 +8,6 @@ props:
     tile_size:
       type: string
       title: Tile aspect ratio
-      description: Set aspect ratio of the tile.
       enum:
         - square
         - "4:3"
@@ -22,7 +21,6 @@ props:
     flex_align:
       type: string
       title: Alignment
-      description: Set alignment of the tile.
       enum:
         - start
         - center
@@ -35,14 +33,12 @@ props:
     border:
       type: boolean
       title: Border
-      description: Add a border to the tile.
       default: TRUE
       examples:
         - TRUE
     border_radius:
       type: string
       title: Border radius
-      description: Set rounded corner radius
       enum:
         - small
         - large
@@ -57,20 +53,17 @@ props:
     background:
       type: boolean
       title: Background
-      description: Add a background to the tile.
       default: FALSE
       examples:
         - FALSE
     text:
       type: string
       title: Heading text
-      description: Add heading text to the tile.
       examples:
         - Heading
     description:
       type: string
       title: Paragraph text
-      description: Add paragraph text to the tile.
       contentMediaType: text/html
       x-formatting-context: block
       examples:
@@ -78,7 +71,6 @@ props:
     text_align:
       type: string
       title: Text alignment
-      description: Set text alignment of the tile.
       enum:
         - left
         - center
@@ -96,14 +88,12 @@ props:
     icon:
       type: string
       title: Icon name (exclude prefix)
-      description: Set icon name (exclude prefix).
       default: "rocket"
       examples:
         - "rocket"
     icon_size:
       type: string
       title: Icon size
-      description: Set icon size.
       enum:
         - small
         - regular
@@ -118,7 +108,6 @@ props:
     icon_align:
       type: string
       title: Icon alignment
-      description: Set icon alignment.
       enum:
         - left
         - right

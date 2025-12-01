@@ -5,10 +5,29 @@ status: stable
 description: A section for nested components
 props:
   type: object
+  required:
+    - columns
+    - width
+    - margin_block_start
+    - margin_block_end
+    - padding_block_start
+    - padding_block_end
   properties:
+    width:
+      type: string
+      title: Section width
+      enum:
+        - "100%"
+        - "90%"
+        - "80%"
+        - "75%"
+        - "50%"
+      default: "100%"
+      examples:
+        - "100%"
     columns:
       type: string
-      title: Content layout
+      title: Grid layout
       enum:
         - "100"
         - "50-50"
@@ -24,18 +43,6 @@ props:
         - "50-50"
       default:
         - "50-50"
-    width:
-      type: string
-      title: Section width
-      enum:
-        - "100%"
-        - "90%"
-        - "80%"
-        - "75%"
-        - "50%"
-      default: "100%"
-      examples:
-        - "100%"
     margin_block_start:
       type: string
       title: Margin top
@@ -106,13 +113,7 @@ props:
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
-      description: The background image for section.
       type: object
-      examples:
-        - src: "assets/13227348.jpg"
-          alt: "Placeholder text."
-          width: 1280
-          height: 18671687
     section_header:
       type: boolean
       title: Show header region

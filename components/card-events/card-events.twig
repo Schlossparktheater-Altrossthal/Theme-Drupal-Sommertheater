@@ -1,4 +1,3 @@
-{# event-card.twig #}
 {#
   Expected variables:
     date        — e.g. "Thursday, Feb. 12, 2026"
@@ -6,11 +5,18 @@
     description — e.g. "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
     place       — e.g. "29013 Bednar Spurs"
 #}
-{% set classes = ['card-events', 'hg:p-6 hg:flex hg:flex-col hg:gap-6 hg:rounded-lg'] %}
+{% set card =
+  html_cva(
+    base: ['hg:p-6', 'hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:rounded-lg', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]']
+  )
+%}
+
+{% set card_classes = card.apply({}) %}
 
 {% set event_date_formatted = event_date|date('l, M. j, Y') %}
-<div class="{{ classes|join(' ') }}">
-  <p class="card-events--date">
+
+<div class="{{ card_classes }}">
+  <p>
     <strong><time datetime="{{ event_date_formatted }}">{{ event_date_formatted }}</time></strong>
   </p>
   {{
@@ -24,10 +30,10 @@
       with_context: false
     )
   }}
-  <p class="card-events--description hg:text-xl">
+  <p class="hg:text-xl">
     {{ description }}
   </p>
-  <p class="card-events--place hg:text-xl hg:font-semibold">
+  <p class="hg:text-xl hg:font-semibold">
     {{ place }}
   </p>
 </div>

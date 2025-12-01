@@ -1,8 +1,44 @@
-{% set classes = ['card-project', 'hg:flex hg:flex-col hg:gap-6', 'media-last' in layout ? 'hg:md:flex-row-reverse' : 'hg:md:flex-row'] %}
+{% set card =
+  html_cva(
+    base: ['hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]'],
+    variants: {
+      layout: {
+        'media-first': 'hg:md:flex-row',
+        'media-last': 'hg:md:flex-row-reverse'
+      }
+    }
+  )
+%}
 
-<div class="{{ classes|join(' ') }}">
+{% set content =
+  html_cva(
+    base: ['hg:flex', 'hg:flex-1', 'hg:flex-col', 'hg:gap-2', 'hg:md:py-4'],
+    variants: {
+      layout: {
+        'media-first': 'hg:md:items-start',
+        'media-last': 'hg:md:items-end hg:md:text-right'
+      }
+    }
+  )
+%}
+
+{% set card_layout = layout|default('media-first') %}
+
+{% set card_classes =
+  card.apply({
+    layout: card_layout
+  })
+%}
+
+{% set content_classes =
+  content.apply({
+    layout: card_layout
+  })
+%}
+
+<div class="{{ card_classes }}">
   {% if media.src is not empty %}
-    <div class="card--media hg:aspect-square hg:flex-1 hg:overflow-hidden">
+    <div class="hg:aspect-square hg:flex-1 hg:overflow-hidden">
       {% block media %}
         {% include 'canvas:image' ignore missing with {
           src: media.src,
@@ -16,13 +52,7 @@
     </div>
   {% endif %}
 
-  <div
-    class="card--content hg:flex hg:flex-1 hg:flex-col hg:gap-2 hg:md:py-4 {{
-    'media-last' in layout
-      ? 'hg:md:items-end hg:md:text-right'
-      : 'hg:md:items-start'
-    }}"
-  >
+  <div class="{{ content_classes }}">
     {% if block('badges') is defined %}
       {% block badges %}
         <ul class="hg:flex hg:list-none hg:items-center hg:gap-2 hg:ps-0">
@@ -35,7 +65,8 @@
                     url: badge.url,
                     label: badge.label,
                     style: 'secondary'
-                  }
+                  },
+                  with_context: false
                 )
               }}
             </li>

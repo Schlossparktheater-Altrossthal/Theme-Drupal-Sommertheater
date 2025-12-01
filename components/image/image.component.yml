@@ -8,7 +8,6 @@ props:
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Image
-      description: Media and Alt for the card.
       type: object
       examples:
         - src: "assets/957040.jpg"
@@ -17,7 +16,6 @@ props:
           height: 427
     size:
       title: Aspect ratio
-      description: Width:height proportions of the image. Listed from most horizontal to most vertical.
       type: string
       enum:
         - "2:1"
@@ -36,8 +34,7 @@ props:
         - "4:3"
     radius:
       type: string
-      title: Image radius
-      description: Image corner radius
+      title: Corner radius
       enum:
         - small
         - large
@@ -50,5 +47,4 @@ props:
         - "small"
     caption:
       title: Caption
-      description: Set optional caption
       type: string

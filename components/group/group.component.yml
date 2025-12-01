@@ -5,6 +5,9 @@ status: stable
 description: A group for nested components
 props:
   type: object
+  required:
+    - flex_direction
+    - flex_align
   properties:
     flex_direction:
       type: string
@@ -12,18 +15,15 @@ props:
       enum:
         - column
         - row
-        - column-reverse
-        - row-reverse
       meta:enum:
         column: Vertical
         row: Horizontal
-        column-reverse: Vertical (reverse)
-        row-reverse: Horizontal (reverse)
+      default: "column"
       examples:
         - "column"
     flex_gap:
       type: string
-      title: Extra space between items
+      title: Space between items
       enum:
         - sm
         - md
@@ -38,7 +38,7 @@ props:
         - md
     flex_align:
       type: string
-      title: Alignment within parent component
+      title: Alignment within parent
       enum:
         - start
         - center
