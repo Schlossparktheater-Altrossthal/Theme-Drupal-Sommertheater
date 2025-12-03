@@ -35,25 +35,12 @@ variables:
   _CSPELL_IGNORE_PATHS: "build/css/*, pnpm-lock.yaml, src/phosphor-icons.css"
   # Don't let any linting jobs fail.
   _ALL_VALIDATE_ALLOW_FAILURE: 0
-  STORYBOOK_OUTPUT_DIR: "storybook-static"
 
 stages:
   - build
   - validate
   - test
   - deploy
-
-storybook:
-  stage: build
-  image: node:latest
-  script:
-    - npm install -g pnpm@latest-10
-    - pnpm install
-    - pnpm run build
-    - pnpm run build-storybook -- --output-dir=$STORYBOOK_OUTPUT_DIR
-  artifacts:
-    paths:
-      - $STORYBOOK_OUTPUT_DIR
 
 lint:
   stage: validate
@@ -100,28 +87,3 @@ composer (next minor):
     - !reference [composer, before_script]
   after_script:
     - !reference [composer, after_script]
-
-.pages-base:
-  stage: deploy
-  image: alpine:latest
-  script:
-    - echo "Pages accessible at ${CI_PAGES_URL}"
-  needs:
-    - job: storybook
-      artifacts: true
-  pages:
-    publish: $STORYBOOK_OUTPUT_DIR
-
-preview-pages:
-  extends: .pages-base
-  pages:
-    path_prefix: "preview-$CI_MERGE_REQUEST_IID"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
-deploy-pages:
-  extends: .pages-base
-  rules:
-    # Deploy when we push to the release branch (not in a fork).
-    - if: $CI_COMMIT_BRANCH == "1.x" && $CI_PIPELINE_SOURCE == "push" && $CI_PROJECT_ROOT_NAMESPACE == "project"
-      when: on_success

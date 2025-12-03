@@ -1,16 +1,13 @@
 global:
   version: VERSION
   css:
-    base:
-      src/fonts.css: {}
-      # Avoid attempting to re-minify main.min.css. Also ensure it's served in
-      # its own right so that browsers only download it once, instead of via
-      # aggregates where it may get duplicated across files.
-      build/css/main.min.css: { preprocess: false, minified: true }
-      components/webform-newsletter/webform-newsletter.css: {}
     theme:
-      src/globals.css: {}
-      src/schemes.css: {}
+      build/css/main.min.css:
+        # Avoid attempting to re-minify main.min.css. Also ensure it's served in
+        # its own right so that browsers only download it once, instead of via
+        # aggregates where it may get duplicated across files.
+        preprocess: false
+        minified: true
 dropdown-menu:
   css:
     component:
@@ -19,12 +16,3 @@ dropdown-menu:
     components/dropdown-menu/dropdown-menu.js:
       attributes:
         type: module
-phosphor-icons:
-  css:
-    theme:
-      src/phosphor-icons.css: {}
-webform:
-  version: VERSION
-  css:
-    component:
-      components/webform/webform.css: {}

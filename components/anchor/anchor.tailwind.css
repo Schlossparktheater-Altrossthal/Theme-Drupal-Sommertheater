@@ -1,5 +1,3 @@
-@reference '../../src/main.css';
-
 .anchor--visible {
   @apply hg:flex hg:min-h-10 hg:items-center hg:justify-center hg:border-1 hg:border-dotted hg:border-body-text hg:p-1 hg:text-sm hg:opacity-50;
 

@@ -1,5 +1,19 @@
 @import "tailwindcss" prefix(hg);
 
+@import "../components/hero-blog/hero-blog.tailwind.css";
+@import "../components/navbar/navbar.tailwind.css";
+@import "../components/footer/footer.tailwind.css";
+@import "../components/card/card.tailwind.css";
+@import "../components/collapsible-section/collapsible-section.tailwind.css";
+@import "../components/dropdown-menu/dropdown-menu.tailwind.css";
+@import "../components/tile-icon/tile-icon.tailwind.css";
+@import "../components/anchor/anchor.tailwind.css";
+@import "../components/logo-grid/logo-grid.tailwind.css";
+@import "./fonts.css";
+@import "./globals.css";
+@import "./phosphor-icons.css";
+@import "./schemes.css";
+
 @theme {
   --color-black: #000000;
   --color-white: #ffffff;

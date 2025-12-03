@@ -1,5 +1,3 @@
-@reference '../../src/main.css';
-
 @layer components;
 
 /* Modal state - prevents body scroll when mobile menu is open */

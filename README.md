@@ -20,7 +20,7 @@ To install the theme in Drupal, run `drush theme:enable mercury`.
 
 ## Generating Tailwind CSS
 
-If you modify classes in a Twig template, you may need to rebuild the CSS with `pnpm run build`.
+If you modify classes in a Twig template, you may need to rebuild the CSS with `pnpm run build:css`.
 
 ## Code Formatting
 
