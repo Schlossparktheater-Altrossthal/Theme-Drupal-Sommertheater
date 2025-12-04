@@ -46,10 +46,6 @@ lint:
   stage: validate
   image: node:latest
   script:
-    # Confirm that there are no mentions of Storybook in the components' CSS. If there are,
-    # helpfully print the offending line numbers. The leading ! inverts the exit code from
-    # grep, so that it returns 0 if it DOES NOT find a match.
-    - "! grep --ignore-case --recursive --line-number storybook components/*/*.css"
     # Install pnpm and dependencies.
     - npm install -g pnpm@latest-10
     - pnpm install

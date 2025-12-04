@@ -1,10 +1,7 @@
-/.storybook export-ignore
-/components/*/*.storybook.yml export-ignore
 /components/*/*.tailwind.css export-ignore
 /components/*/*~main.twig
 /docs export-ignore
 /src/common export-ignore
-/src/stories export-ignore
 /scripts export-ignore
 /tests export-ignore
 /vitePlugins export-ignore

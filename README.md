@@ -1,12 +1,11 @@
 # Mercury Theme
 
-A modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools such as Vite and Storybook to create a seamless development experience.
+A modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools to create a seamless development experience.
 
 ## Features
 
 - **Tailwind CSS**: Mercury uses [Tailwind CSS](https://tailwindcss.com) to simplify styling by using classes to compose designs directly in the markup. See [the relevant documentation](docs/tailwind.md) for more information about this.
 - **Vite**: A fast and modern build tool for web development, providing lightning-fast hot module replacement (HMR) and optimized production builds.
-- **Storybook**: Automatically generates stories for components, enabling UI development in isolation and ensuring consistency across components. See [the relevant documentation](docs/storybook.md) for more information about this.
 
 ## Installation
 
@@ -92,7 +91,7 @@ new ComponentType(
 );
 ```
 
-This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and either running them immediately in Storybook or adding them to `Drupal.behaviors`.
+This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and adding them to `Drupal.behaviors`.
 
 All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `mercuryComponents`, you would find the Collapsible Section's ComponentType instance at `window.mercuryComponents.collapsibleSection`.
 

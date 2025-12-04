@@ -12,3 +12,5 @@ build/
 # Only ignore .css files, not .tailwind.css source files.
 components/**/*.css
 !components/**/*.tailwind.css
+# We do not care about the lock file's formatting.
+pnpm-lock.yaml

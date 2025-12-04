@@ -24,9 +24,6 @@ dist-ssr
 *.sw?
 build/*
 !build/css/main.min.css
-*storybook.log
-storybook-static/
-src/stories/sdc-stories
 public/components
 CLAUDE.md
 .claude/*

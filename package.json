@@ -16,20 +16,11 @@
     "lint:report": "stylelint src/**/*.css --config stylelint-report.config.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "post-build-storybook": "node ./scripts/post-storybook-build.js",
-    "build-storybook": "storybook build && npm run post-build-storybook"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@nightlycommit/rollup-plugin-twig": "1.0.0-alpha.4",
-    "@storybook/addon-a11y": "^9.1.5",
-    "@storybook/addon-onboarding": "^9.1.5",
-    "@storybook/react": "^9.1.5",
-    "@storybook/react-vite": "^9.1.5",
-    "@storybook/test": "9.0.0-alpha.2",
-    "@storybook/theming": "9.0.0-alpha.1",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
@@ -40,7 +31,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
-    "eslint-plugin-storybook": "^0.11.6",
     "globals": "^15.15.0",
     "html-react-parser": "^5.2.6",
     "postcss": "^8.5.6",
@@ -49,17 +39,11 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "storybook": "^9.1.5",
     "stylelint": "^16.24.0",
     "tailwindcss": "^4.1.13",
     "twing": "7.1.0-beta.2",
     "vite": "^6.3.6",
     "vite-plugin-node-polyfills": "^0.23.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   },
   "overrides": {
     "vite-plugin-node-polyfills": {
@@ -70,8 +54,6 @@
     "@drupal/once": "^1.0.1",
     "@phosphor-icons/core": "2.1.1",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@storybook/addon-docs": "^9.1.5",
-    "@storybook/manager-api": "9.0.0-alpha.1",
     "@tailwindcss/cli": "^4.1.13",
     "@tailwindcss/vite": "^4.1.13",
     "core:2.1.1": "link:@phosphor-icons/core:2.1.1",

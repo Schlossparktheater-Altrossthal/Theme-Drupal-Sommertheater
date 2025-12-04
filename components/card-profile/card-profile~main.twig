@@ -1,9 +1,0 @@
-{# Overriding media_slot just for Storybook #}
-{% embed 'mercury:card-profile' %}
-  {% block card_media %}
-    {% if media.src is not empty %}
-      <div class="hg:absolute hg:inset-0 hg:bg-black/50"></div>
-    {% endif %}
-    <img class="hg:h-full hg:w-full hg:object-cover" src="{{ componentMetadata.path ~ '/' ~ media.src }}" alt="{{ media.alt }}" />
-  {% endblock %}
-{% endembed %}

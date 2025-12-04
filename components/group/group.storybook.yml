@@ -1,5 +1,0 @@
-hide_main: true
-background: "hg:bg-brand"
-radius: "sm"
-flex_direction: "column"
-flex_gap: "lg"
