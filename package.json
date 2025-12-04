@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite build --watch",
     "build:deprecated": "vite build",
-    "build:css": "npx @tailwindcss/cli --input ./src/main.css --minify --output ./build/css/main.min.css",
+    "build:css": "npx @tailwindcss/cli --input ./src/main.css --minify --output ./build/main.min.css",
     "lint": "npm run lint:css & npm run lint:js",
     "lint:fix": "npm run lint:css-fix & npm run lint:js-fix",
     "lint:js": "eslint .",

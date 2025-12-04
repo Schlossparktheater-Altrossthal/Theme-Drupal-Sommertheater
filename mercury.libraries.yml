@@ -2,7 +2,7 @@ global:
   version: VERSION
   css:
     theme:
-      build/css/main.min.css:
+      build/main.min.css:
         # Avoid attempting to re-minify main.min.css. Also ensure it's served in
         # its own right so that browsers only download it once, instead of via
         # aggregates where it may get duplicated across files.
