@@ -9,9 +9,6 @@ global:
         preprocess: false
         minified: true
 dropdown-menu:
-  css:
-    component:
-      components/dropdown-menu/dropdown-menu.css: {}
   js:
     components/dropdown-menu/dropdown-menu.js:
       attributes:
