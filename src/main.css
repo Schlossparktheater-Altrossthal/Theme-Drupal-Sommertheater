@@ -339,7 +339,7 @@
   /* AJAX progress throbber - applies to all dialogs */
   .ui-dialog .ajax-progress-throbber {
     @apply hg:fixed hg:top-[48.5%] hg:left-[49%] hg:z-[1000] hg:h-6 hg:w-6 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat hg:p-1 hg:opacity-90;
-    background-image: url(../../images/icons/loading-small.svg);
+    background-image: url(../../icons/loading-small.svg);
   }
 
   /* Hide throbber elements - applies to all dialogs */
