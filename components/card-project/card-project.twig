@@ -1,10 +1,10 @@
 {% set card =
   html_cva(
-    base: ['hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]'],
+    base: ['flex', 'flex-col', 'gap-6', 'bg-[var(--color-body-bg)]', 'text-[var(--color-body-text)]'],
     variants: {
       layout: {
-        'media-first': 'hg:md:flex-row',
-        'media-last': 'hg:md:flex-row-reverse'
+        'media-first': 'md:flex-row',
+        'media-last': 'md:flex-row-reverse'
       }
     }
   )
@@ -12,11 +12,11 @@
 
 {% set content =
   html_cva(
-    base: ['hg:flex', 'hg:flex-1', 'hg:flex-col', 'hg:gap-2', 'hg:md:py-4'],
+    base: ['flex', 'flex-1', 'flex-col', 'gap-2', 'md:py-4'],
     variants: {
       layout: {
-        'media-first': 'hg:md:items-start',
-        'media-last': 'hg:md:items-end hg:md:text-right'
+        'media-first': 'md:items-start',
+        'media-last': 'md:items-end md:text-right'
       }
     }
   )
@@ -38,12 +38,12 @@
 
 <div class="{{ card_classes }}">
   {% if media.src is not empty %}
-    <div class="hg:aspect-square hg:flex-1 hg:overflow-hidden">
+    <div class="aspect-square flex-1 overflow-hidden">
       {% block media %}
         {% include 'canvas:image' ignore missing with {
           src: media.src,
           alt: media.alt,
-          class: 'hg:object-cover hg:w-full hg:h-full',
+          class: 'object-cover w-full h-full',
           width: media.width,
           height: media.height,
           sizes: '50vw'
@@ -55,7 +55,7 @@
   <div class="{{ content_classes }}">
     {% if block('badges') is defined %}
       {% block badges %}
-        <ul class="hg:flex hg:list-none hg:items-center hg:gap-2 hg:ps-0">
+        <ul class="flex list-none items-center gap-2 ps-0">
           {% for badge in badges %}
             <li>
               {{
@@ -85,7 +85,7 @@
         with_context: false
       )
     }}
-    <p class="hg:text-lg hg:font-extralight hg:xl:text-xl">
+    <p class="text-lg font-extralight xl:text-xl">
       {{ text }}
     </p>
   </div>

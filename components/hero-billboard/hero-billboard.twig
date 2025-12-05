@@ -11,18 +11,18 @@
 
 {% set hero_variants =
   html_cva(
-    base: ['hero-overlay', 'hg:relative', 'hg:flex', 'hg:flex-col'],
+    base: ['hero-overlay', 'relative', 'flex', 'flex-col'],
     variants: {
       height: {
-        full: 'hg:h-dvh',
-        large: ['hg:h-3/4', 'hg:min-h-[500px]', 'hg:md:max-h-[600px]', 'hg:xl:max-h-[800px]'],
-        ribbon: ['hg:h-1/2', 'hg:md:min-h-[400px]', 'hg:md:max-h-[450px]', 'hg:xl:max-h-[600px]']
+        full: 'h-dvh',
+        large: ['h-3/4', 'min-h-[500px]', 'md:max-h-[600px]', 'xl:max-h-[800px]'],
+        ribbon: ['h-1/2', 'md:min-h-[400px]', 'md:max-h-[450px]', 'xl:max-h-[600px]']
       },
       flexPosition: {
-        'top-left': 'hg:justify-start',
-        'center-left': 'hg:justify-center-safe',
-        'bottom-left': 'hg:justify-end',
-        'hero-center': 'hg:justify-center'
+        'top-left': 'justify-start',
+        'center-left': 'justify-center-safe',
+        'bottom-left': 'justify-end',
+        'hero-center': 'justify-center'
       }
     }
   )
@@ -30,14 +30,14 @@
 
 {% set overlay_variants =
   html_cva(
-    base: ['hg:absolute', 'hg:inset-0'],
+    base: ['absolute', 'inset-0'],
     variants: {
       opacity: {
-        '0%': 'hg:bg-black/0',
-        '20%': 'hg:bg-black/20',
-        '40%': 'hg:bg-black/40',
-        '60%': 'hg:bg-black/60',
-        '75%': 'hg:bg-black/75'
+        '0%': 'bg-black/0',
+        '20%': 'bg-black/20',
+        '40%': 'bg-black/40',
+        '60%': 'bg-black/60',
+        '75%': 'bg-black/75'
       }
     }
   )
@@ -45,12 +45,12 @@
 
 {% set image_variants =
   html_cva(
-    base: ['hg:h-full', 'hg:w-full', 'hg:object-cover'],
+    base: ['h-full', 'w-full', 'object-cover'],
     variants: {
       position: {
-        top: 'hg:object-top',
-        center: 'hg:object-center',
-        bottom: 'hg:object-bottom'
+        top: 'object-top',
+        center: 'object-center',
+        bottom: 'object-bottom'
       }
     }
   )
@@ -58,13 +58,13 @@
 
 {% set content_variants =
   html_cva(
-    base: ['hero-overlay--content', 'hg:relative', 'hg:z-1', 'hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:py-6', 'hg:md:py-10', 'hg:xl:py-20'],
+    base: ['hero-overlay--content', 'relative', 'z-1', 'flex', 'flex-col', 'gap-6', 'py-6', 'md:py-10', 'xl:py-20'],
     variants: {
       flexPosition: {
-        'top-left': 'hg:lg:max-w-2/3',
-        'center-left': 'hg:lg:max-w-2/3',
-        'bottom-left': 'hg:lg:max-w-2/3',
-        'hero-center': ['hg:text-center', 'hg:items-center', 'hg:lg:mx-auto', 'hg:lg:max-w-2/3']
+        'top-left': 'lg:max-w-2/3',
+        'center-left': 'lg:max-w-2/3',
+        'bottom-left': 'lg:max-w-2/3',
+        'hero-center': ['text-center', 'items-center', 'lg:mx-auto', 'lg:max-w-2/3']
       }
     }
   )
@@ -82,7 +82,7 @@
   }}"
 >
   {% if media.src is not empty %}
-    <div class="hero-overlay--media hg:absolute hg:z-[-1] hg:h-full hg:w-full">
+    <div class="hero-overlay--media absolute z-[-1] h-full w-full">
       {% block hero_media %}
         {% if media.src is not empty %}
           <div
@@ -105,7 +105,7 @@
       {% endblock %}
     </div>
   {% endif %}
-  <div class="hg:container hg:mx-auto hg:px-4">
+  <div class="container mx-auto px-4">
     <div
       class="{{
       content_variants.apply({

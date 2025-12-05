@@ -4,31 +4,31 @@
 
 {% set tile =
   html_cva(
-    base: ['icon-tile', 'hg:relative', '[&_*]:hg:leading-tight'],
+    base: ['icon-tile', 'relative', '[&_*]:leading-tight'],
     variants: {
       hasBorder: {
-        yes: 'hg:border hg:p-6',
+        yes: 'border p-6',
         no: ''
       },
       hasUrl: {
-        yes: 'has-link hg:transition-all hg:duration-300',
+        yes: 'has-link transition-all duration-300',
         no: ''
       },
       hasBackground: {
-        yes: 'has-bg hg:p-6',
+        yes: 'has-bg p-6',
         no: ''
       },
       tileSize: {
-        square: 'hg:aspect-square',
-        '4:3': 'hg:aspect-4/3',
-        '16:9': 'hg:aspect-16/9',
-        noSize: 'hg:aspect-none'
+        square: 'aspect-square',
+        '4:3': 'aspect-4/3',
+        '16:9': 'aspect-16/9',
+        noSize: 'aspect-none'
       },
       borderRadius: {
-        small: 'hg:rounded-sm',
-        large: 'hg:rounded-xl hg:md:rounded-2xl',
-        'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]',
-        noRadius: 'hg:rounded-none'
+        small: 'rounded-sm',
+        large: 'rounded-xl md:rounded-2xl',
+        'extra-large': 'rounded-[24px] md:rounded-[32px]',
+        noRadius: 'rounded-none'
       }
     }
   )
@@ -46,13 +46,13 @@
 
 {% set inner_container =
   html_cva(
-    base: ['hg:flex', 'hg:h-full', 'hg:flex-col'],
+    base: ['flex', 'h-full', 'flex-col'],
     variants: {
       flexAlign: {
-        start: 'hg:justify-start',
-        center: 'hg:justify-center',
-        end: 'hg:justify-end',
-        between: 'hg:justify-between'
+        start: 'justify-start',
+        center: 'justify-center',
+        end: 'justify-end',
+        between: 'justify-between'
       }
     }
   )
@@ -66,12 +66,12 @@
 
 {% set icon_container =
   html_cva(
-    base: ['hg:flex', 'hg:w-full'],
+    base: ['flex', 'w-full'],
     variants: {
       iconAlign: {
-        left: 'hg:justify-start',
-        center: 'hg:justify-center',
-        right: 'hg:justify-end'
+        left: 'justify-start',
+        center: 'justify-center',
+        right: 'justify-end'
       }
     }
   )
@@ -84,20 +84,20 @@
 %}
 
 {% set icon_size_map = {
-  small: 'hg:text-2xl',
-  medium: 'hg:text-4xl',
-  regular: 'hg:text-4xl',
-  large: 'hg:text-6xl'
+  small: 'text-2xl',
+  medium: 'text-4xl',
+  regular: 'text-4xl',
+  large: 'text-6xl'
 } %}
 
 {% set text_container =
   html_cva(
-    base: ['hg:w-full', 'hg:pt-2'],
+    base: ['w-full', 'pt-2'],
     variants: {
       textAlign: {
-        left: 'hg:text-start',
-        center: 'hg:text-center',
-        right: 'hg:text-end'
+        left: 'text-start',
+        center: 'text-center',
+        right: 'text-end'
       }
     }
   )
@@ -118,7 +118,7 @@
             '@mercury/components/icon/icon.twig',
             {
               icon: icon,
-              icon_size: icon_size_map[icon_size]|default('hg:text-4xl')
+              icon_size: icon_size_map[icon_size]|default('text-4xl')
             },
             with_context: false
           )
@@ -129,21 +129,21 @@
     <div class="{{ text_container_classes }}">
       {% if text is not empty or description is not empty %}
         {% if url is not empty %}
-          <a href="{{ url }}" class="hg:flex hg:w-full hg:flex-col hg:before:absolute hg:before:inset-0 hg:before:content-['']">
+          <a href="{{ url }}" class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
               <h3 class="icon-tile--link-title">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--link--text hg:mt-1">{{ description }}</span>
+              <span class="icon-tile--link--text mt-1">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}
-          <span class="hg:flex hg:w-full hg:flex-col hg:before:absolute hg:before:inset-0 hg:before:content-['']">
+          <span class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
               <h3 class="icon-tile--title">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--text hg:mt-1 hg:opacity-75">{{ description }}</span>
+              <span class="icon-tile--text mt-1 opacity-75">{{ description }}</span>
             {% endif %}
           </span>
         {% endif %}

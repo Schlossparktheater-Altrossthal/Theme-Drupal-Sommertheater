@@ -10,26 +10,26 @@
 
 /* Menu visibility toggle (controlled by JS) */
 .navbar--menu:not(.navbar--menu--open) {
-  @apply hg:hidden hg:md:flex;
+  @apply hidden md:flex;
 }
 
 /* Child component styling that can't be moved to Twig */
 .navbar--links .button.button {
-  @apply hg:mx-8 hg:w-[calc(100%-var(--hg-spacing)*16)] hg:md:m-auto hg:md:w-auto;
+  @apply mx-8 w-[calc(100%-var(--spacing)*16)] md:m-auto md:w-auto;
 }
 
 .navbar--dropdown-menu .dropdown-menu {
-  @apply hg:w-full hg:md:w-auto;
+  @apply w-full md:w-auto;
 }
 
 .navbar--dropdown-menu-wrapper > :last-child {
-  @apply hg:pb-24 hg:md:pb-0;
+  @apply pb-24 md:pb-0;
 }
 
 /* External region styling */
 .region-header {
   .navbar--modal-top {
-    @apply hg:px-4;
+    @apply px-4;
   }
 }
 
@@ -37,10 +37,10 @@
 .navbar--logo,
 .navbar--modal-logo {
   .branding {
-    @apply hg:h-6 hg:md:h-7;
+    @apply h-6 md:h-7;
     svg,
     img[src$=".svg"] {
-      @apply hg:h-auto! hg:max-h-full;
+      @apply h-auto! max-h-full;
     }
   }
 }

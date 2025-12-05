@@ -1,31 +1,31 @@
 {% set cta_text_align = text_align|default('center') %}
 {% set cta_has_background = has_background_image|default(false) ? 'yes' : 'no' %}
 
-{% set cta_variants = html_cva(base: ['cta', 'hg:relative', 'hg:z-1', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]']) %}
+{% set cta_variants = html_cva(base: ['cta', 'relative', 'z-1', 'bg-[var(--color-body-bg)]', 'text-[var(--color-body-text)]']) %}
 
 {% set cta_content_variants =
   html_cva(
     base: [
       'cta--content',
-      'hg:relative',
-      'hg:flex',
-      'hg:min-h-80',
-      'hg:flex-col',
-      'hg:justify-center',
-      'hg:gap-6',
-      'hg:py-[90px]',
-      'hg:lg:gap-8',
-      'hg:lg:py-[115px]',
-      'hg:xl:py-[140px]'
+      'relative',
+      'flex',
+      'min-h-80',
+      'flex-col',
+      'justify-center',
+      'gap-6',
+      'py-[90px]',
+      'lg:gap-8',
+      'lg:py-[115px]',
+      'xl:py-[140px]'
     ],
     variants: {
       textAlign: {
-        left: ['hg:text-left'],
-        right: ['hg:text-right'],
-        center: ['hg:text-center', 'hg:lg:max-w-3/4', 'hg:mx-auto', 'hg:items-center']
+        left: ['text-left'],
+        right: ['text-right'],
+        center: ['text-center', 'lg:max-w-3/4', 'mx-auto', 'items-center']
       },
       hasBackground: {
-        yes: 'hg:text-white!',
+        yes: 'text-white!',
         no: ''
       }
     }
@@ -34,12 +34,12 @@
 
 {% set cta_links_variants =
   html_cva(
-    base: ['cta--links', 'hg:flex', 'hg:w-full', 'hg:flex-col', 'hg:gap-6', 'hg:sm:flex-row'],
+    base: ['cta--links', 'flex', 'w-full', 'flex-col', 'gap-6', 'sm:flex-row'],
     variants: {
       textAlign: {
-        left: 'hg:md:justify-start',
-        right: 'hg:md:justify-end',
-        center: ['hg:justify-center', 'hg:items-center']
+        left: 'md:justify-start',
+        right: 'md:justify-end',
+        center: ['justify-center', 'items-center']
       }
     }
   )
@@ -48,12 +48,12 @@
 <section class="{{ cta_variants.apply({}) }}">
   {% block media %}
     {% if media.src is not empty and cta_has_background == 'yes' %}
-      <div class="cta--media hg:absolute hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:h-full hg:w-screen">
-        <div class="hg:absolute hg:inset-0 hg:bg-black/30"></div>
+      <div class="cta--media absolute left-[50%] z-[-1] ms-[-50vw] h-full w-screen">
+        <div class="absolute inset-0 bg-black/30"></div>
         {% include 'canvas:image' ignore missing with {
           src: media.src,
           alt: media.alt,
-          class: 'hg:object-cover hg:w-full hg:h-full',
+          class: 'object-cover w-full h-full',
           width: media.width,
           height: media.height
         } only %}
@@ -66,7 +66,7 @@
       textAlign: cta_text_align,
       hasBackground: cta_has_background
     })
-    }} hg:px-4"
+    }} px-4"
   >
     {{
       include(
@@ -76,13 +76,13 @@
           level: level|default(2),
           align: cta_text_align,
           font_color: cta_has_background == 'yes' ? 'light' : 'text-inherit',
-          heading_classes: ['hg:font-extrabold'],
+          heading_classes: ['font-extrabold'],
           url: ''
         },
         with_context: false
       )
     }}
-    <p class="hg:text-md hg:font-normal">
+    <p class="text-md font-normal">
       {{ text }}
     </p>
     {% if block('actions') is defined %}

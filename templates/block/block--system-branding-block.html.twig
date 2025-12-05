@@ -16,9 +16,9 @@
 
 {% block content %}
   {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
-  <a href="{{ home_url|default('/') }}" class="branding hg:inline-block" rel="home">
+  <a href="{{ home_url|default('/') }}" class="branding inline-block" rel="home">
     {% block branding %}
-      <img class="hg:h-full hg:w-full hg:object-contain" src="{{ site_logo_url }}" alt="{{ site_name }}" />
+      <img class="h-full w-full object-contain" src="{{ site_logo_url }}" alt="{{ site_name }}" />
     {% endblock %}
   </a>
 {% endblock %}

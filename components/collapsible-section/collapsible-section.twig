@@ -6,11 +6,11 @@
   html_cva(
     base: [
       'collapsible-section',
-      'hg:overflow-hidden',
-      'hg:border-b-1',
-      'hg:border-(--hgc-collapsible-border-color)',
-      'hg:bg-clip-padding',
-      'hg:bg-[var(--hgc-collapsible-content-bg)]'
+      'overflow-hidden',
+      'border-b-1',
+      'border-(--hgc-collapsible-border-color)',
+      'bg-clip-padding',
+      'bg-[var(--hgc-collapsible-content-bg)]'
     ]
   )
 %}
@@ -21,17 +21,17 @@
   html_cva(
     base: [
       'collapsible-section--title',
-      'hg:flex',
-      'hg:w-full',
-      'hg:cursor-pointer',
-      'hg:items-center',
-      'hg:justify-between',
-      'hg:p-4',
-      'hg:text-left',
-      'hg:text-2xl',
-      'hg:bg-[var(--hgc-collapsible-title-bg)]',
-      'hg:hover:bg-[var(--hgc-collapsible-title-bg-hover)]',
-      'hg:focus:bg-[var(--hgc-collapsible-title-bg-hover)]'
+      'flex',
+      'w-full',
+      'cursor-pointer',
+      'items-center',
+      'justify-between',
+      'p-4',
+      'text-left',
+      'text-2xl',
+      'bg-[var(--hgc-collapsible-title-bg)]',
+      'hover:bg-[var(--hgc-collapsible-title-bg-hover)]',
+      'focus:bg-[var(--hgc-collapsible-title-bg-hover)]'
     ]
   )
 %}
@@ -42,15 +42,15 @@
   html_cva(
     base: [
       'collapsible-section--content',
-      'hg:transition-[height,padding]',
-      'hg:h-auto',
-      'hg:px-4',
-      'hg:pb-2',
-      'hg:text-base',
-      'hg:duration-(--animate-speed)',
-      'hg:text-[var(--hgc-collapsible-content-text)]',
-      '[&>:first-child]:hg:mt-0',
-      '[&>:last-child]:hg:mb-0'
+      'transition-[height,padding]',
+      'h-auto',
+      'px-4',
+      'pb-2',
+      'text-base',
+      'duration-(--animate-speed)',
+      'text-[var(--hgc-collapsible-content-text)]',
+      '[&>:first-child]:mt-0',
+      '[&>:last-child]:mb-0'
     ]
   )
 %}
@@ -59,11 +59,11 @@
 
 <div class="{{ section_classes }}" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
-  {% set heading_class = 'hg:text-2xl' %}
+  {% set heading_class = 'text-2xl' %}
   {% set button_content %}
     <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="{{ title_button_classes }}">
       {{ title }}
-      <i class="collapsible-section--icon ph-bold ph-caret-down hg:transition-transform hg:duration-(--animate-speed)"></i>
+      <i class="collapsible-section--icon ph-bold ph-caret-down transition-transform duration-(--animate-speed)"></i>
     </button>
   {% endset %}
 

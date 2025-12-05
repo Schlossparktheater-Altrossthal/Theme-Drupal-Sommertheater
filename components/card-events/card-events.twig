@@ -5,11 +5,7 @@
     description — e.g. "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
     place       — e.g. "29013 Bednar Spurs"
 #}
-{% set card =
-  html_cva(
-    base: ['hg:p-6', 'hg:flex', 'hg:flex-col', 'hg:gap-6', 'hg:rounded-lg', 'hg:bg-[var(--hg-color-body-bg)]', 'hg:text-[var(--hg-color-body-text)]']
-  )
-%}
+{% set card = html_cva(base: ['p-6', 'flex', 'flex-col', 'gap-6', 'rounded-lg', 'bg-[var(--color-body-bg)]', 'text-[var(--color-body-text)]']) %}
 
 {% set card_classes = card.apply({}) %}
 
@@ -25,15 +21,15 @@
       {
         heading_text: title|default(''),
         level: 3,
-        heading_classes: 'hg:font-bold hg:text-brand'
+        heading_classes: 'font-bold text-brand'
       },
       with_context: false
     )
   }}
-  <p class="hg:text-xl">
+  <p class="text-xl">
     {{ description }}
   </p>
-  <p class="hg:text-xl hg:font-semibold">
+  <p class="text-xl font-semibold">
     {{ place }}
   </p>
 </div>

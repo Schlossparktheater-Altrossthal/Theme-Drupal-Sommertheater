@@ -1,19 +1,19 @@
 @layer components {
   .hero-blog {
-    color: var(--hg-color-body-text);
+    color: var(--color-body-text);
 
     .heading.heading--size-default {
-      --hg-text-8xl: 3.5rem;
-      --hg-text-6xl: 3rem;
-      --hg-text-5xl: 2.5rem;
+      --text-8xl: 3.5rem;
+      --text-6xl: 3rem;
+      --text-5xl: 2.5rem;
     }
 
     img {
-      @apply hg:overflow-hidden hg:rounded-md;
+      @apply overflow-hidden rounded-md;
     }
   }
 
   .hero-blog--author > a {
-    @apply hg:text-body-text;
+    @apply text-body-text;
   }
 }

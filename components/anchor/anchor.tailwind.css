@@ -1,11 +1,11 @@
 .anchor--visible {
-  @apply hg:flex hg:min-h-10 hg:items-center hg:justify-center hg:border-1 hg:border-dotted hg:border-body-text hg:p-1 hg:text-sm hg:opacity-50;
+  @apply flex min-h-10 items-center justify-center border-1 border-dotted border-body-text p-1 text-sm opacity-50;
 
   &:is(span, a) {
-    @apply hg:inline-flex;
+    @apply inline-flex;
   }
 
   .anchor--help-text {
-    @apply hg:inline;
+    @apply inline;
   }
 }

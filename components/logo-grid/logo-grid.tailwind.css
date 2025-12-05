@@ -5,51 +5,51 @@
      :first-child/:last-child combined with mode-based BEM modifiers. */
   :where(.logo-grid:not(.logo-grid--grid-mobile)) {
     > :first-child {
-      @apply hg:ml-[50vw];
+      @apply ml-[50vw];
     }
 
     > :last-child {
-      @apply hg:mr-[50vw];
+      @apply mr-[50vw];
     }
   }
 
   :where(.logo-grid:not(.logo-grid--grid-tablet)) {
     > :first-child {
-      @apply hg:md:ml-[50vw];
+      @apply md:ml-[50vw];
     }
 
     > :last-child {
-      @apply hg:md:mr-[50vw];
+      @apply md:mr-[50vw];
     }
   }
 
   :where(.logo-grid:not(.logo-grid--grid-mobile).logo-grid--grid-tablet) {
     > :first-child {
-      @apply hg:md:ml-auto;
+      @apply md:ml-auto;
     }
 
     > :last-child {
-      @apply hg:md:mr-auto;
+      @apply md:mr-auto;
     }
   }
 
   :where(.logo-grid:not(.logo-grid--grid-desktop)) {
     > :first-child {
-      @apply hg:xl:ml-[50vw];
+      @apply xl:ml-[50vw];
     }
 
     > :last-child {
-      @apply hg:xl:mr-[50vw];
+      @apply xl:mr-[50vw];
     }
   }
 
   :where(.logo-grid:not(.logo-grid--grid-tablet).logo-grid--grid-desktop) {
     > :first-child {
-      @apply hg:xl:ml-auto;
+      @apply xl:ml-auto;
     }
 
     > :last-child {
-      @apply hg:xl:mr-auto;
+      @apply xl:mr-auto;
     }
   }
 }

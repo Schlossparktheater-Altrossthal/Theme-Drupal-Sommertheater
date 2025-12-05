@@ -29,28 +29,22 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% set menu_classes =
-    menu_classes
-      |default([])
-      |merge(['utility-menu', 'hg:list-none', 'hg:gap-4', 'hg:flex', 'hg:flex-wrap', 'hg:p-0', 'hg:flex-row'])
-      |filter(v => v is not empty)
+    menu_classes|default([])|merge(['utility-menu', 'list-none', 'gap-4', 'flex', 'flex-wrap', 'p-0', 'flex-row'])|filter(v => v is not empty)
   %}
 
   {% if items %}
     {% set menu_items %}
       {% for item in items %}
         {% set classes = [
-          'hg:flex hg:flex-col hg:gap-y-4 hg:max-w-fit',
+          'flex flex-col gap-y-4 max-w-fit',
           'menu-item',
           item.is_expanded ? 'menu-item--expanded',
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'menu-item--active-trail'
         ] %}
         <li {{ item.attributes.addClass(classes) }}>
-          <a
-            href="{{ item.url }}"
-            class="hg:group hg:flex hg:items-center hg:justify-between hg:gap-x-1 hg:hover:underline hg:hover:underline-offset-2"
-          >
-            <span class="utility-menu--item-text hg:leading-tight hg:hover:underline">{{ item.title }}</span>
+          <a href="{{ item.url }}" class="group flex items-center justify-between gap-x-1 hover:underline hover:underline-offset-2">
+            <span class="utility-menu--item-text leading-tight hover:underline">{{ item.title }}</span>
           </a>
         </li>
       {% endfor %}

@@ -11,8 +11,8 @@ This document contains coding rules and conventions for the Mercury theme that A
 **❌ Bad:**
 
 ```twig
-<h3 class="hg:font-semibold{% if badges is empty %} hg:relative{% endif %}">
-  <a href="{{ url }}"{% if badges is empty %} class="hg:after:absolute hg:after:inset-0 hg:after:content-['']"{% endif %}>
+<h3 class="font-semibold{% if badges is empty %} relative{% endif %}">
+  <a href="{{ url }}"{% if badges is empty %} class="after:absolute after:inset-0 after:content-['']"{% endif %}>
 ```
 
 **✅ Good:**
@@ -20,11 +20,11 @@ This document contains coding rules and conventions for the Mercury theme that A
 ```twig
 {% set heading_variants =
   html_cva(
-    base: 'hg:font-semibold',
+    base: 'font-semibold',
     variants: {
       hasBadges: {
         yes: '',
-        no: 'hg:relative'
+        no: 'relative'
       }
     }
   )
@@ -57,13 +57,13 @@ This document contains coding rules and conventions for the Mercury theme that A
 **❌ Bad:**
 
 ```twig
-clickable: { true: 'hg:group hg:cursor-pointer', false: '' } clickable: { 'true': 'hg:group hg:cursor-pointer', 'false': '' }
+clickable: { true: 'group cursor-pointer', false: '' } clickable: { 'true': 'group cursor-pointer', 'false': '' }
 ```
 
 **✅ Good:**
 
 ```twig
-clickable: { yes: 'hg:group hg:cursor-pointer', no: '' }
+clickable: { yes: 'group cursor-pointer', no: '' }
 ```
 
 **Note**: When setting variables for CVA, convert boolean conditions to `'yes'`/`'no'` strings:
@@ -83,11 +83,11 @@ clickable: { yes: 'hg:group hg:cursor-pointer', no: '' }
 ```twig
 {% set card =
   html_cva(
-    base: 'card hg:flex hg:flex-col',
+    base: 'card flex flex-col',
     variants: {
       orientation: {
         stacked: '',
-        landscape: 'hg:md:flex-row'
+        landscape: 'md:flex-row'
       }
     }
   )
@@ -121,7 +121,7 @@ clickable: { yes: 'hg:group hg:cursor-pointer', no: '' }
 
 ```twig
 variant: {
-  primary: 'hg:border-[var(--hgc-btn-border)] hg:bg-[var(--hgc-btn-bg)] hg:text-[var(--hgc-btn-label)] hg:hover:border-[var(--hgc-btn-border-hover)] hg:hover:bg-[var(--hgc-btn-bg-hover)] hg:hover:text-[var(--hgc-btn-label-hover)] hg:focus:border-[var(--hgc-btn-border-hover)] hg:focus:bg-[var(--hgc-btn-bg-hover)] hg:focus:text-[var(--hgc-btn-label-hover)] hg:disabled:cursor-default hg:disabled:border-[var(--hgc-btn-border-disabled)] hg:disabled:bg-[var(--hgc-btn-bg-disabled)] hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+  primary: 'border-[var(--hgc-btn-border)] bg-[var(--hgc-btn-bg)] text-[var(--hgc-btn-label)] hover:border-[var(--hgc-btn-border-hover)] hover:bg-[var(--hgc-btn-bg-hover)] hover:text-[var(--hgc-btn-label-hover)] focus:border-[var(--hgc-btn-border-hover)] focus:bg-[var(--hgc-btn-bg-hover)] focus:text-[var(--hgc-btn-label-hover)] disabled:cursor-default disabled:border-[var(--hgc-btn-border-disabled)] disabled:bg-[var(--hgc-btn-bg-disabled)] disabled:text-[var(--hgc-btn-label-disabled)]'
 }
 ```
 
@@ -130,19 +130,19 @@ variant: {
 ```twig
 variant: {
   primary: [
-    'hg:border-[var(--hgc-btn-border)]',
-    'hg:bg-[var(--hgc-btn-bg)]',
-    'hg:text-[var(--hgc-btn-label)]',
-    'hg:hover:border-[var(--hgc-btn-border-hover)]',
-    'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
-    'hg:hover:text-[var(--hgc-btn-label-hover)]',
-    'hg:focus:border-[var(--hgc-btn-border-hover)]',
-    'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
-    'hg:focus:text-[var(--hgc-btn-label-hover)]',
-    'hg:disabled:cursor-default',
-    'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
-    'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-    'hg:disabled:text-[var(--hgc-btn-label-disabled)]'
+    'border-[var(--hgc-btn-border)]',
+    'bg-[var(--hgc-btn-bg)]',
+    'text-[var(--hgc-btn-label)]',
+    'hover:border-[var(--hgc-btn-border-hover)]',
+    'hover:bg-[var(--hgc-btn-bg-hover)]',
+    'hover:text-[var(--hgc-btn-label-hover)]',
+    'focus:border-[var(--hgc-btn-border-hover)]',
+    'focus:bg-[var(--hgc-btn-bg-hover)]',
+    'focus:text-[var(--hgc-btn-label-hover)]',
+    'disabled:cursor-default',
+    'disabled:border-[var(--hgc-btn-border-disabled)]',
+    'disabled:bg-[var(--hgc-btn-bg-disabled)]',
+    'disabled:text-[var(--hgc-btn-label-disabled)]'
   ]
 }
 ```
@@ -170,7 +170,7 @@ variant: {
 ></div>
 ```
 
-**Note**: This will fail with a runtime error if `btn_classes` is passed as an array (e.g., `btn_classes: ['hg:before:absolute', 'hg:before:inset-0']`).
+**Note**: This will fail with a runtime error if `btn_classes` is passed as an array (e.g., `btn_classes: ['before:absolute', 'before:inset-0']`).
 
 **✅ Good:**
 

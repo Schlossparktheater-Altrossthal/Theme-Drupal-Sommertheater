@@ -4,12 +4,12 @@
 
   /* Uses :has() pseudo-selector - cannot be done in Twig */
   &:has(button[aria-expanded="true"]) .collapsible-section--content {
-    @apply hg:py-4;
+    @apply py-4;
   }
 
   /* Uses adjacent sibling selector with :not(:has()) - cannot be done in Twig */
   &:not(:has(+ .collapsible-section)) {
-    @apply hg:border-b-0;
+    @apply border-b-0;
   }
 }
 
@@ -22,7 +22,7 @@
 
 /* Styles involving collapsing/expanding - all use JS-added classes */
 .collapsible-section--js:not(.collapsible-section--open) .collapsible-section--content {
-  @apply hg:h-0 hg:pb-0;
+  @apply h-0 pb-0;
 }
 
 .collapsible-section--animate {
@@ -35,7 +35,7 @@
   }
 
   .collapsible-section--content {
-    @apply hg:h-(--natural-height) hg:pb-2;
+    @apply h-(--natural-height) pb-2;
   }
 }
 

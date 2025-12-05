@@ -6,120 +6,120 @@
 {% set button_variants =
   html_cva(
     base: [
-      'hg:no-underline',
-      'hg:hover:no-underline',
-      'hg:cursor-pointer',
-      'hg:border',
-      'hg:flex',
-      'hg:items-center',
-      'hg:justify-center',
-      'hg:leading-tight',
-      'hg:font-medium'
+      'no-underline',
+      'hover:no-underline',
+      'cursor-pointer',
+      'border',
+      'flex',
+      'items-center',
+      'justify-center',
+      'leading-tight',
+      'font-medium'
     ],
     variants: {
       size: {
-        small: 'hg:gap-1 hg:px-4 hg:py-[6px] hg:text-sm hg:rounded-md',
-        medium: 'hg:gap-2 hg:px-5 hg:py-[10px] hg:text-base hg:rounded-lg',
-        large: 'hg:gap-3 hg:px-6 hg:py-3 hg:text-lg hg:rounded-xl hg:leading-[22px]'
+        small: 'gap-1 px-4 py-[6px] text-sm rounded-md',
+        medium: 'gap-2 px-5 py-[10px] text-base rounded-lg',
+        large: 'gap-3 px-6 py-3 text-lg rounded-xl leading-[22px]'
       },
       variant: {
         primary: [
-          'hg:border-[var(--hgc-btn-border)]',
-          'hg:bg-[var(--hgc-btn-bg)]',
-          'hg:text-[var(--hgc-btn-label)]',
-          'hg:hover:border-[var(--hgc-btn-border-hover)]',
-          'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
-          'hg:hover:text-[var(--hgc-btn-label-hover)]',
-          'hg:focus:border-[var(--hgc-btn-border-hover)]',
-          'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
-          'hg:focus:text-[var(--hgc-btn-label-hover)]',
-          'hg:disabled:cursor-default',
-          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
-          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
-          'hg:disabled:cursor-not-allowed'
+          'border-[var(--hgc-btn-border)]',
+          'bg-[var(--hgc-btn-bg)]',
+          'text-[var(--hgc-btn-label)]',
+          'hover:border-[var(--hgc-btn-border-hover)]',
+          'hover:bg-[var(--hgc-btn-bg-hover)]',
+          'hover:text-[var(--hgc-btn-label-hover)]',
+          'focus:border-[var(--hgc-btn-border-hover)]',
+          'focus:bg-[var(--hgc-btn-bg-hover)]',
+          'focus:text-[var(--hgc-btn-label-hover)]',
+          'disabled:cursor-default',
+          'disabled:border-[var(--hgc-btn-border-disabled)]',
+          'disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'disabled:text-[var(--hgc-btn-label-disabled)]',
+          'disabled:cursor-not-allowed'
         ],
         'primary-accent': [
-          'hg:border-[var(--hg-color-accent)]',
-          'hg:bg-[var(--hg-color-accent)]',
-          'hg:text-[var(--hg-color-white)]',
-          'hg:hover:border-[var(--hg-color-accent)]',
-          'hg:hover:bg-[var(--hg-color-accent-dark)]',
-          'hg:hover:text-[var(--hg-color-white)]',
-          'hg:focus:border-[var(--hg-color-accent)]',
-          'hg:focus:bg-[var(--hg-color-accent-dark)]',
-          'hg:focus:text-[var(--hg-color-white)]',
-          'hg:disabled:cursor-default',
-          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
-          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
-          'hg:disabled:cursor-not-allowed'
+          'border-[var(--color-accent)]',
+          'bg-[var(--color-accent)]',
+          'text-[var(--color-white)]',
+          'hover:border-[var(--color-accent)]',
+          'hover:bg-[var(--color-accent-dark)]',
+          'hover:text-[var(--color-white)]',
+          'focus:border-[var(--color-accent)]',
+          'focus:bg-[var(--color-accent-dark)]',
+          'focus:text-[var(--color-white)]',
+          'disabled:cursor-default',
+          'disabled:border-[var(--hgc-btn-border-disabled)]',
+          'disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'disabled:text-[var(--hgc-btn-label-disabled)]',
+          'disabled:cursor-not-allowed'
         ],
         secondary: [
-          'hg:border-[var(--hgc-btn-secondary-border)]',
-          'hg:bg-[var(--hgc-btn-secondary-bg)]',
-          'hg:text-[var(--hgc-btn-secondary-label)]',
-          'hg:hover:border-[var(--hgc-btn-secondary-border-hover)]',
-          'hg:hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'hg:hover:text-[var(--hgc-btn-secondary-label-hover)]',
-          'hg:focus:border-[var(--hgc-btn-secondary-border-hover)]',
-          'hg:focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'hg:focus:text-[var(--hgc-btn-secondary-label-hover)]',
-          'hg:disabled:cursor-default',
-          'hg:disabled:border-[var(--hgc-btn-secondary-border-disabled)]',
-          'hg:disabled:bg-[var(--hgc-btn-secondary-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-secondary-label-disabled)]',
-          'hg:disabled:cursor-not-allowed'
+          'border-[var(--hgc-btn-secondary-border)]',
+          'bg-[var(--hgc-btn-secondary-bg)]',
+          'text-[var(--hgc-btn-secondary-label)]',
+          'hover:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hover:text-[var(--hgc-btn-secondary-label-hover)]',
+          'focus:border-[var(--hgc-btn-secondary-border-hover)]',
+          'focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'focus:text-[var(--hgc-btn-secondary-label-hover)]',
+          'disabled:cursor-default',
+          'disabled:border-[var(--hgc-btn-secondary-border-disabled)]',
+          'disabled:bg-[var(--hgc-btn-secondary-bg-disabled)]',
+          'disabled:text-[var(--hgc-btn-secondary-label-disabled)]',
+          'disabled:cursor-not-allowed'
         ],
         'secondary-accent': [
-          'hg:border-[var(--hg-color-accent)]',
-          'hg:bg-[var(--hg-color-body-bg)]',
-          'hg:text-[var(--hg-color-white)]',
-          'hg:hover:border-[var(--hg-color-accent)]',
-          'hg:hover:bg-[var(--hg-color-accent-light)]',
-          'hg:hover:text-[var(--hg-color-accent-dark)]',
-          'hg:focus:border-[var(--hg-color-accent)]',
-          'hg:focus:bg-[var(--hg-color-accent-light)]',
-          'hg:focus:text-[var(--hg-color-accent-dark)]',
-          'hg:disabled:cursor-default',
-          'hg:disabled:border-[var(--hgc-btn-border-disabled)]',
-          'hg:disabled:bg-[var(--hgc-btn-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-label-disabled)]',
-          'hg:disabled:cursor-not-allowed'
+          'border-[var(--color-accent)]',
+          'bg-[var(--color-body-bg)]',
+          'text-[var(--color-white)]',
+          'hover:border-[var(--color-accent)]',
+          'hover:bg-[var(--color-accent-light)]',
+          'hover:text-[var(--color-accent-dark)]',
+          'focus:border-[var(--color-accent)]',
+          'focus:bg-[var(--color-accent-light)]',
+          'focus:text-[var(--color-accent-dark)]',
+          'disabled:cursor-default',
+          'disabled:border-[var(--hgc-btn-border-disabled)]',
+          'disabled:bg-[var(--hgc-btn-bg-disabled)]',
+          'disabled:text-[var(--hgc-btn-label-disabled)]',
+          'disabled:cursor-not-allowed'
         ],
         negative: [
-          'hg:border-[var(--hgc-btn-negative-border)]',
-          'hg:bg-[var(--hgc-btn-negative-bg)]',
-          'hg:text-[var(--hgc-btn-negative-label)]',
-          'hg:hover:border-[var(--hgc-btn-negative-border-hover)]',
-          'hg:hover:bg-[var(--hgc-btn-negative-bg-hover)]',
-          'hg:hover:text-[var(--hgc-btn-negative-label-hover)]',
-          'hg:focus:border-[var(--hgc-btn-negative-border-hover)]',
-          'hg:focus:bg-[var(--hgc-btn-negative-bg-hover)]',
-          'hg:focus:text-[var(--hgc-btn-negative-label-hover)]',
-          'hg:disabled:cursor-default',
-          'hg:disabled:border-[var(--hgc-btn-negative-border-disabled)]',
-          'hg:disabled:bg-[var(--hgc-btn-negative-bg-disabled)]',
-          'hg:disabled:text-[var(--hgc-btn-negative-label-disabled)]',
-          'hg:disabled:cursor-not-allowed'
+          'border-[var(--hgc-btn-negative-border)]',
+          'bg-[var(--hgc-btn-negative-bg)]',
+          'text-[var(--hgc-btn-negative-label)]',
+          'hover:border-[var(--hgc-btn-negative-border-hover)]',
+          'hover:bg-[var(--hgc-btn-negative-bg-hover)]',
+          'hover:text-[var(--hgc-btn-negative-label-hover)]',
+          'focus:border-[var(--hgc-btn-negative-border-hover)]',
+          'focus:bg-[var(--hgc-btn-negative-bg-hover)]',
+          'focus:text-[var(--hgc-btn-negative-label-hover)]',
+          'disabled:cursor-default',
+          'disabled:border-[var(--hgc-btn-negative-border-disabled)]',
+          'disabled:bg-[var(--hgc-btn-negative-bg-disabled)]',
+          'disabled:text-[var(--hgc-btn-negative-label-disabled)]',
+          'disabled:cursor-not-allowed'
         ]
       },
       width: {
-        full: 'hg:w-full hg:sm:w-fit',
-        fit: 'hg:w-fit'
+        full: 'w-full sm:w-fit',
+        fit: 'w-fit'
       },
       iconPosition: {
-        first: 'hg:flex-row',
-        last: 'hg:flex-row-reverse'
+        first: 'flex-row',
+        last: 'flex-row-reverse'
       }
     }
   )
 %}
 
 {% set icon_size_map = {
-  small: 'hg:text-sm',
-  medium: 'hg:text-base',
-  large: 'hg:text-xl'
+  small: 'text-sm',
+  medium: 'text-base',
+  large: 'text-xl'
 } %}
 
 {% set button_width = mobile_width|default(false) ? 'full' : 'fit' %}

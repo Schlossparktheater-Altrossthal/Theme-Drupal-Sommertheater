@@ -13,84 +13,78 @@
 
 {% set logo_grid =
   html_cva(
-    base: ['logo-grid', 'hg:gap-3', 'hg:min-w-[100%]', 'hg:min-w-[250px]', 'hg:text-center', '[&>*]:hg:snap-center', '[&>*]:hg:flex-[1_1_250px]'],
+    base: ['logo-grid', 'gap-3', 'min-w-[100%]', 'min-w-[250px]', 'text-center', '[&>*]:snap-center', '[&>*]:flex-[1_1_250px]'],
     variants: {
       mobileMode: {
         scroll: [
-          'hg:snap-x',
-          'hg:snap-mandatory',
-          'hg:overflow-x-auto',
-          'hg:flex',
-          'hg:flex-nowrap',
-          'hg:justify-start',
-          'hg:relative',
-          'hg:left-1/2',
-          'hg:-translate-x-1/2',
-          'hg:w-screen'
+          'snap-x',
+          'snap-mandatory',
+          'overflow-x-auto',
+          'flex',
+          'flex-nowrap',
+          'justify-start',
+          'relative',
+          'left-1/2',
+          '-translate-x-1/2',
+          'w-screen'
         ],
-        grid: [
-          'logo-grid--grid-mobile',
-          'hg:grid',
-          'hg:justify-stretch',
-          'hg:items-stretch',
-          'hg:grid-cols-[repeat(var(--hgc-columns-mobile),minmax(0,1fr))]'
-        ]
+        grid: ['logo-grid--grid-mobile', 'grid', 'justify-stretch', 'items-stretch', 'grid-cols-[repeat(var(--hgc-columns-mobile),minmax(0,1fr))]']
       },
       tabletMode: {
         scroll: [
-          'hg:md:snap-x',
-          'hg:md:snap-mandatory',
-          'hg:md:overflow-x-auto',
-          'hg:md:flex',
-          'hg:md:flex-nowrap',
-          'hg:md:justify-start',
-          'hg:md:relative',
-          'hg:md:left-1/2',
-          'hg:md:-translate-x-1/2',
-          'hg:md:w-screen'
+          'md:snap-x',
+          'md:snap-mandatory',
+          'md:overflow-x-auto',
+          'md:flex',
+          'md:flex-nowrap',
+          'md:justify-start',
+          'md:relative',
+          'md:left-1/2',
+          'md:-translate-x-1/2',
+          'md:w-screen'
         ],
         grid: [
           'logo-grid--grid-tablet',
-          'hg:md:container',
-          'hg:md:mx-auto',
-          'hg:md:grid',
-          'hg:md:justify-stretch',
-          'hg:md:items-stretch',
-          'hg:md:grid-cols-[repeat(var(--hgc-columns-tablet),minmax(0,1fr))]'
+          'md:container',
+          'md:mx-auto',
+          'md:grid',
+          'md:justify-stretch',
+          'md:items-stretch',
+          'md:grid-cols-[repeat(var(--hgc-columns-tablet),minmax(0,1fr))]'
         ]
       },
       tabletCancel: {
-        cancelScroll: ['hg:md:overflow-x-visible', 'hg:md:static', 'hg:md:left-0', 'hg:md:-translate-x-0', 'hg:md:w-auto'],
-        cancelGrid: ['hg:md:max-w-[none]', 'hg:md:mx-0', 'hg:md:justify-[initial]', 'hg:md:items-[initial]'],
+        cancelScroll: ['md:overflow-x-visible', 'md:static', 'md:left-0', 'md:-translate-x-0', 'md:w-auto'],
+        cancelGrid: ['md:max-w-[none]', 'md:mx-0', 'md:justify-[initial]', 'md:items-[initial]'],
         noCancel: ''
       },
       desktopMode: {
         scroll: [
-          'hg:xl:snap-x',
-          'hg:xl:snap-mandatory',
-          'hg:xl:overflow-x-auto',
-          'hg:xl:flex',
-          'hg:xl:flex-nowrap',
-          'hg:xl:justify-start',
-          'hg:xl:max-w-[none]',
-          'hg:xl:relative',
-          'hg:xl:left-1/2',
-          'hg:xl:-translate-x-1/2',
-          'hg:xl:w-screen'
+          'xl:snap-x',
+          'xl:snap-mandatory',
+          'xl:overflow-x-auto',
+          'xl:flex',
+          'xl:flex-nowrap',
+          'xl:justify-start',
+          'xl:max-w-[none]',
+          'xl:relative',
+          'xl:left-1/2',
+          'xl:-translate-x-1/2',
+          'xl:w-screen'
         ],
         grid: [
           'logo-grid--grid-desktop',
-          'hg:xl:container',
-          'hg:xl:mx-auto',
-          'hg:xl:grid',
-          'hg:xl:justify-stretch',
-          'hg:xl:items-stretch',
-          'hg:xl:grid-cols-[repeat(var(--hgc-columns-desktop),minmax(0,1fr))]'
+          'xl:container',
+          'xl:mx-auto',
+          'xl:grid',
+          'xl:justify-stretch',
+          'xl:items-stretch',
+          'xl:grid-cols-[repeat(var(--hgc-columns-desktop),minmax(0,1fr))]'
         ]
       },
       desktopCancel: {
-        cancelScroll: ['hg:xl:overflow-x-visible', 'hg:xl:static', 'hg:xl:left-0', 'hg:xl:-translate-x-0', 'hg:xl:w-auto'],
-        cancelGrid: ['hg:xl:max-w-[none]', 'hg:xl:mx-0', 'hg:xl:justify-[initial]', 'hg:xl:items-[initial]'],
+        cancelScroll: ['xl:overflow-x-visible', 'xl:static', 'xl:left-0', 'xl:-translate-x-0', 'xl:w-auto'],
+        cancelGrid: ['xl:max-w-[none]', 'xl:mx-0', 'xl:justify-[initial]', 'xl:items-[initial]'],
         noCancel: ''
       }
     }

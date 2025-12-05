@@ -2,23 +2,23 @@
   html_cva(
     base: [
       'navbar--dropdown-menu',
-      'hg:flex',
-      'hg:max-h-full',
-      'hg:flex-col',
-      'hg:items-stretch',
-      'hg:justify-start',
-      'hg:gap-2',
-      'hg:overflow-auto',
-      'hg:pr-[calc((var(--hg-spacing)_*_8)_-_var(--element-scrollbar-width,_0px))]',
-      'hg:pl-8',
-      'hg:md:flex-row',
-      'hg:md:overflow-visible'
+      'flex',
+      'max-h-full',
+      'flex-col',
+      'items-stretch',
+      'justify-start',
+      'gap-2',
+      'overflow-auto',
+      'pr-[calc((var(--spacing)_*_8)_-_var(--element-scrollbar-width,_0px))]',
+      'pl-8',
+      'md:flex-row',
+      'md:overflow-visible'
     ],
     variants: {
       menuAlign: {
-        left: 'hg:md:justify-start',
-        center: 'hg:md:justify-center',
-        right: 'hg:md:justify-end'
+        left: 'md:justify-start',
+        center: 'md:justify-center',
+        right: 'md:justify-end'
       }
     }
   )
@@ -30,27 +30,27 @@
   })
 %}
 
-<div class="navbar hg:relative hg:z-[500] hg:container hg:mx-auto hg:flex hg:justify-between hg:p-2 hg:px-4 hg:md:py-4">
-  <div class="navbar--logo [&>div]:hg:flex [&>div]:hg:flex-col [&>div]:hg:justify-center hg:self-center">
+<div class="navbar relative z-[500] container mx-auto flex justify-between p-2 px-4 md:py-4">
+  <div class="navbar--logo self-center [&>div]:flex [&>div]:flex-col [&>div]:justify-center">
     {% block logo %}
       {{ include('@mercury/components/branding/branding.twig') }}
     {% endblock %}
   </div>
 
   <div
-    class="navbar--menu hg:fixed hg:inset-0 hg:top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px)-var(--navbar-scroll-top,0px))] hg:grid hg:shrink-1 hg:grow-1 hg:grid-cols-[1fr] hg:grid-rows-[auto_1fr_auto] hg:flex-col hg:items-stretch hg:justify-start hg:bg-body-bg hg:pb-8 hg:md:static hg:md:flex hg:md:h-auto hg:md:flex-row hg:md:items-center hg:md:pb-0"
+    class="navbar--menu fixed inset-0 top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px)-var(--navbar-scroll-top,0px))] grid shrink-1 grow-1 grid-cols-[1fr] grid-rows-[auto_1fr_auto] flex-col items-stretch justify-start bg-body-bg pb-8 md:static md:flex md:h-auto md:flex-row md:items-center md:pb-0"
   >
     <div
-      class="navbar--modal-top hg:relative hg:z-[500] hg:col-span-1 hg:col-start-1 hg:row-span-1 hg:row-start-1 hg:container hg:mx-auto hg:flex hg:w-full hg:justify-between hg:p-2 hg:md:hidden"
+      class="navbar--modal-top relative z-[500] col-span-1 col-start-1 row-span-1 row-start-1 container mx-auto flex w-full justify-between p-2 md:hidden"
     >
       <div
-        class="navbar--modal-logo [&>div]:hg:flex [&>div]:hg:flex-col [&>div]:hg:justify-center hg:flex hg:min-h-[44px] hg:flex-1 hg:flex-col hg:items-start hg:justify-center hg:md:hidden"
+        class="navbar--modal-logo flex min-h-[44px] flex-1 flex-col items-start justify-center md:hidden [&>div]:flex [&>div]:flex-col [&>div]:justify-center"
       >
         {{ block('logo') }}
       </div>
 
       <button
-        class="navbar--hide-menu hg:flex hg:h-[44px] hg:w-[44px] hg:flex-0 hg:cursor-pointer hg:items-center hg:justify-center hg:p-2 hg:md:hidden"
+        class="navbar--hide-menu flex h-[44px] w-[44px] flex-0 cursor-pointer items-center justify-center p-2 md:hidden"
         aria-label="{{ 'Hide menu'|t }}"
       >
         {{
@@ -58,7 +58,7 @@
             '@mercury/components/icon/icon.twig',
             {
               icon: 'x',
-              icon_size: 'hg:text-3xl'
+              icon_size: 'text-3xl'
             }
           )
         }}
@@ -66,7 +66,7 @@
     </div>
 
     <div
-      class="navbar--dropdown-menu-wrapper hg:relative hg:col-span-1 hg:col-start-1 hg:row-span-1 hg:row-start-2 hg:min-h-0 hg:w-full hg:flex-1 hg:after:pointer-events-none hg:after:absolute hg:after:bottom-0 hg:after:z-3 hg:after:h-24 hg:after:w-full hg:after:bg-linear-to-b hg:after:from-transparent hg:after:to-body-bg hg:after:content-[''] hg:md:after:content-none"
+      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 min-h-0 w-full flex-1 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-body-bg after:content-[''] md:after:content-none"
     >
       <div class="{{ dropdown_menu_classes }}">
         {% block navigation %}
@@ -76,7 +76,7 @@
     </div>
 
     <div
-      class="navbar--links hg:col-span-1 hg:col-start-1 hg:row-span-1 hg:row-start-3 hg:ml-auto hg:flex hg:w-full hg:flex-initial hg:shrink-0 hg:grow-0 hg:flex-col hg:justify-end hg:gap-2 hg:md:w-auto hg:md:flex-row"
+      class="navbar--links col-span-1 col-start-1 row-span-1 row-start-3 ml-auto flex w-full flex-initial shrink-0 grow-0 flex-col justify-end gap-2 md:w-auto md:flex-row"
     >
       {% block links %}
         {{
@@ -106,16 +106,14 @@
     </div>
   </div>
 
-  <div
-    class="navbar--hamburger-container hg:flex hg:min-h-[44px] hg:min-w-[44px] hg:shrink-0 hg:grow-0 hg:items-center hg:justify-center hg:md:hidden"
-  >
-    <button class="navbar--hamburger hg:flex hg:items-center hg:justify-center" aria-label="{{ 'Show menu'|t }}">
+  <div class="navbar--hamburger-container flex min-h-[44px] min-w-[44px] shrink-0 grow-0 items-center justify-center md:hidden">
+    <button class="navbar--hamburger flex items-center justify-center" aria-label="{{ 'Show menu'|t }}">
       {{
         include(
           '@mercury/components/icon/icon.twig',
           {
             icon: 'list',
-            icon_size: 'hg:text-3xl'
+            icon_size: 'text-3xl'
           }
         )
       }}

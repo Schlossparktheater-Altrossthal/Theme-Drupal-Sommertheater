@@ -18,9 +18,7 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
-{% set menu_classes =
-  menu_classes|default([])|merge(['social-menu', 'hg:flex', 'hg:flex-row', 'hg:gap-4', 'hg:list-none', 'hg:p-0'])|filter(v => v is not empty)
-%}
+{% set menu_classes = menu_classes|default([])|merge(['social-menu', 'flex', 'flex-row', 'gap-4', 'list-none', 'p-0'])|filter(v => v is not empty) %}
 
 <ul class="{{ menu_classes|join(' ') }}">
   {% for item in items %}
@@ -30,7 +28,7 @@
         aria-label="Follow us on {{ item.title|striptags|trim }}"
         target="_blank"
         rel="noopener noreferrer"
-        class="social-menu--icon hg:align-center hg:flex hg:aspect-square hg:text-3xl hg:opacity-60 hg:hover:opacity-100"
+        class="social-menu--icon align-center flex aspect-square text-3xl opacity-60 hover:opacity-100"
       >
         {{ item.title }}
       </a>

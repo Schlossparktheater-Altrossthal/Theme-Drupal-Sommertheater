@@ -1,18 +1,10 @@
 {% set card =
   html_cva(
-    base: [
-      'hg:flex',
-      'hg:flex-col',
-      'hg:p-6',
-      'hg:self-start',
-      'hg:rounded-md',
-      'hg:bg-[var(--hgc-card-testimonial-bg)]',
-      'hg:text-[var(--hgc-card-testimonial-text)]'
-    ],
+    base: ['flex', 'flex-col', 'p-6', 'self-start', 'rounded-md', 'bg-[var(--hgc-card-testimonial-bg)]', 'text-[var(--hgc-card-testimonial-text)]'],
     variants: {
       align: {
-        center: 'hg:text-center hg:items-center hg:gap-6',
-        left: 'hg:text-left hg:items-start hg:gap-4'
+        center: 'text-center items-center gap-6',
+        left: 'text-left items-start gap-4'
       }
     }
   )
@@ -25,12 +17,12 @@
 %}
 
 <div class="{{ card_classes }}">
-  <div class="hg:aspect-square hg:w-[100px] hg:overflow-hidden hg:rounded-full">
+  <div class="aspect-square w-[100px] overflow-hidden rounded-full">
     {% block media %}
       {% include 'canvas:image' ignore missing with {
         src: media.src,
         alt: media.alt,
-        class: 'hg:object-cover hg:w-full hg:h-full',
+        class: 'object-cover w-full h-full',
         width: media.width,
         height: media.height,
         sizes: '100px'
@@ -38,22 +30,22 @@
     {% endblock %}
   </div>
 
-  <blockquote class="hg:flex hg:flex-col hg:gap-4" cite="{{ cite_url }}">
-    <p class="hg:text-xl hg:text-inherit">
+  <blockquote class="flex flex-col gap-4" cite="{{ cite_url }}">
+    <p class="text-xl text-inherit">
       {{ text }}
     </p>
 
-    <footer class="hg:text-base hg:font-bold hg:text-inherit">
+    <footer class="text-base font-bold text-inherit">
       {% set citation = cite_name %}
       {% if cite_name and cite_text %}
         {% set citation = cite_name ~ ', ' %}
       {% endif %}
       {{ citation }}
-      <cite class="hg:font-normal">
+      <cite class="font-normal">
         {% if cite_url and cite_url != 'No URL' %}
-          <a href="{{ cite_url }}" target="_blank" class="hg:underline hg:hover:underline">{{ cite_text }}</a>
+          <a href="{{ cite_url }}" target="_blank" class="underline hover:underline">{{ cite_text }}</a>
         {% else %}
-          <span class="hg:text-base hg:text-inherit">{{ cite_text }}</span>
+          <span class="text-base text-inherit">{{ cite_text }}</span>
         {% endif %}
       </cite>
     </footer>

@@ -1,9 +1,9 @@
 @layer components {
   /* CSS variable-based styling that can't be moved to Twig */
   .icon-tile {
-    background-color: var(--hg-page-bg);
+    background-color: var(--color-body-bg);
     border-color: var(--hgc-tile-border);
-    color: var(--hg-page-text);
+    color: var(--color-body-text);
 
     .ph {
       color: var(--hgc-tile-icon-color);
@@ -16,12 +16,12 @@
 
       &:hover,
       &:focus {
-        @apply hg:border-(--hgc-tile-border-hover);
+        @apply border-(--hgc-tile-border-hover);
         --hgc-tile-icon-text-color: var(--hgc-tile-icon-text-color-hover);
         --hgc-tile-bg: var(--hgc-tile-bg-hover);
 
         .icon-tile--link--text {
-          @apply hg:opacity-100;
+          @apply opacity-100;
         }
 
         .ph {

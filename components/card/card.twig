@@ -1,18 +1,18 @@
 {% set card =
   html_cva(
-    base: 'card hg:flex hg:flex-col hg:gap-3 hg:md:gap-4 hg:lg:gap-6 hg:transition-colors hg:duration-300 hg:relative',
+    base: 'card flex flex-col gap-3 md:gap-4 lg:gap-6 transition-colors duration-300 relative',
     variants: {
       orientation: {
         stacked: '',
-        landscape: 'hg:md:flex-row'
+        landscape: 'md:flex-row'
       },
       style: {
-        default: 'hg:bg-[var(--hgc-card-bg)] hg:hover:bg-[var(--hgc-card-bg-hover)]',
-        framed: 'hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-md hg:shadow-lg hg:shadow-[color:var(--hgc-card-shadow-color)] hg:hover:shadow-[color:var(--hgc-card-shadow-color-hover)] hg:bg-[var(--hgc-card-framed-bg)] hg:hover:bg-[var(--hgc-card-framed-bg-hover)]',
-        featured: 'hg:p-3 hg:md:p-4 hg:lg:p-6 hg:rounded-sm hg:text-center hg:shadow-lg hg:shadow-[color:var(--hgc-card-shadow-color)] hg:hover:shadow-[color:var(--hgc-card-shadow-color-hover)] hg:bg-[var(--hgc-card-featured-bg)] hg:hover:bg-[var(--hgc-card-featured-bg-hover)]'
+        default: 'bg-[var(--hgc-card-bg)] hover:bg-[var(--hgc-card-bg-hover)]',
+        framed: 'p-3 md:p-4 lg:p-6 rounded-md shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] bg-[var(--hgc-card-framed-bg)] hover:bg-[var(--hgc-card-framed-bg-hover)]',
+        featured: 'p-3 md:p-4 lg:p-6 rounded-sm text-center shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] bg-[var(--hgc-card-featured-bg)] hover:bg-[var(--hgc-card-featured-bg-hover)]'
       },
       clickable: {
-        yes: 'hg:group hg:cursor-pointer',
+        yes: 'group cursor-pointer',
         no: ''
       }
     }
@@ -26,11 +26,11 @@
 
 {% set heading_variants =
   html_cva(
-    base: 'hg:font-semibold',
+    base: 'font-semibold',
     variants: {
       hasBadges: {
         yes: '',
-        no: 'hg:relative'
+        no: 'relative'
       }
     }
   )
@@ -42,7 +42,7 @@
     variants: {
       hasBadges: {
         yes: '',
-        no: "hg:after:absolute hg:after:inset-0 hg:after:content-['']"
+        no: "after:absolute after:inset-0 after:content-['']"
       }
     }
   )
@@ -50,11 +50,11 @@
 
 {% set card_media =
   html_cva(
-    base: 'hg:aspect-video hg:overflow-hidden',
+    base: 'aspect-video overflow-hidden',
     variants: {
       orientation: {
         stacked: '',
-        landscape: 'hg:md:aspect-auto hg:md:flex-[0_1_50%]'
+        landscape: 'md:aspect-auto md:flex-[0_1_50%]'
       }
     }
   )
@@ -62,11 +62,11 @@
 
 {% set card_content =
   html_cva(
-    base: 'hg:flex hg:w-full hg:flex-col hg:items-baseline hg:gap-4',
+    base: 'flex w-full flex-col items-baseline gap-4',
     variants: {
       orientation: {
         stacked: '',
-        landscape: 'hg:md:flex-[0_1_50%] hg:md:py-4'
+        landscape: 'md:flex-[0_1_50%] md:py-4'
       }
     }
   )
@@ -96,7 +96,7 @@
         {% include 'canvas:image' ignore missing with {
           src: media.src,
           alt: media.alt,
-          class: 'hg:object-cover hg:w-full hg:h-full',
+          class: 'object-cover w-full h-full',
           width: media.width,
           height: media.height,
           sizes: card_orientation == 'stacked' ? 'auto, 100vw' : '50vw'
@@ -115,7 +115,7 @@
     {% if card_style != 'featured' and badges is not empty %}
       {% if block('badges') is defined %}
         {% block badges %}
-          <ul class="hg:flex hg:list-none hg:items-center hg:gap-2 hg:ps-0">
+          <ul class="flex list-none items-center gap-2 ps-0">
             {% for badge in badges %}
               <li>
                 {{
@@ -134,7 +134,7 @@
         {% endblock %}
       {% endif %}
     {% endif %}
-    <div class="hg:flex hg:w-full hg:flex-col hg:gap-6">
+    <div class="flex w-full flex-col gap-6">
       <h3
         class="{{
         heading_variants.apply({
@@ -154,7 +154,7 @@
         </a>
       </h3>
       {% if text is not empty %}
-        <p class="hg:text-lg hg:font-[var(--hgc-font-weight-p)] hg:xl:text-xl">
+        <p class="text-lg font-[var(--hgc-font-weight-p)] xl:text-xl">
           {{ text }}
         </p>
       {% endif %}

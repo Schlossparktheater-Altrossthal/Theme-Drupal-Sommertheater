@@ -1,11 +1,9 @@
-{% set tile =
-  html_cva(base: ['logo-tile', 'hg:aspect-4/3', 'hg:rounded-sm', 'hg:snap-center', 'hg:min-h-[150px]', 'hg:max-w-full', 'hg:bg-(--hgc-tile-logo-bg)'])
-%}
+{% set tile = html_cva(base: ['logo-tile', 'aspect-4/3', 'rounded-sm', 'snap-center', 'min-h-[150px]', 'max-w-full', 'bg-(--hgc-tile-logo-bg)']) %}
 
 {% set tile_classes = tile.apply({}) %}
 
 <div class="{{ tile_classes }}">
-  <div class="hg:flex hg:h-[100%] hg:items-center hg:justify-center hg:p-[10%]">
+  <div class="flex h-[100%] items-center justify-center p-[10%]">
     {% block logo %}
       {% if media.src is not empty %}
         {% include 'canvas:image' ignore missing with {

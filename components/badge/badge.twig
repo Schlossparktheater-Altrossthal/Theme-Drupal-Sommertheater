@@ -10,48 +10,48 @@
 {% set badge =
   html_cva(
     base: [
-      'hg:rounded-sm',
-      'hg:border',
-      'hg:flex',
-      'hg:inline-flex',
-      'hg:items-center',
-      'hg:gap-[2px]',
-      'hg:lg:gap-1',
-      'hg:px-[6px]',
-      'hg:lg:px-2',
-      'hg:2xl:px-3',
-      'hg:py-[5px]',
-      'hg:lg:py-[6px]',
-      'hg:2xl:py-2'
+      'rounded-sm',
+      'border',
+      'flex',
+      'inline-flex',
+      'items-center',
+      'gap-[2px]',
+      'lg:gap-1',
+      'px-[6px]',
+      'lg:px-2',
+      '2xl:px-3',
+      'py-[5px]',
+      'lg:py-[6px]',
+      '2xl:py-2'
     ],
     variants: {
       style: {
         primary: [
-          'hg:bg-[var(--hgc-btn-bg)]',
-          'hg:border-[var(--hgc-btn-border)]',
-          'hg:text-[var(--hgc-btn-label)]',
-          'hg:hover:bg-[var(--hgc-btn-bg-hover)]',
-          'hg:hover:border-[var(--hgc-btn-border-hover)]',
-          'hg:hover:text-[var(--hgc-btn-label-hover)]',
-          'hg:focus:bg-[var(--hgc-btn-bg-hover)]',
-          'hg:focus:border-[var(--hgc-btn-border-hover)]',
-          'hg:focus:text-[var(--hgc-btn-label-hover)]'
+          'bg-[var(--hgc-btn-bg)]',
+          'border-[var(--hgc-btn-border)]',
+          'text-[var(--hgc-btn-label)]',
+          'hover:bg-[var(--hgc-btn-bg-hover)]',
+          'hover:border-[var(--hgc-btn-border-hover)]',
+          'hover:text-[var(--hgc-btn-label-hover)]',
+          'focus:bg-[var(--hgc-btn-bg-hover)]',
+          'focus:border-[var(--hgc-btn-border-hover)]',
+          'focus:text-[var(--hgc-btn-label-hover)]'
         ],
         secondary: [
-          'hg:bg-[var(--hgc-btn-secondary-bg)]',
-          'hg:border-[var(--hgc-btn-secondary-border)]',
-          'hg:text-[var(--hgc-btn-secondary-label)]',
-          'hg:hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'hg:hover:border-[var(--hgc-btn-secondary-border-hover)]',
-          'hg:hover:text-[var(--hgc-btn-secondary-label-hover)]',
-          'hg:focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'hg:focus:border-[var(--hgc-btn-secondary-border-hover)]',
-          'hg:focus:text-[var(--hgc-btn-secondary-label-hover)]'
+          'bg-[var(--hgc-btn-secondary-bg)]',
+          'border-[var(--hgc-btn-secondary-border)]',
+          'text-[var(--hgc-btn-secondary-label)]',
+          'hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'hover:border-[var(--hgc-btn-secondary-border-hover)]',
+          'hover:text-[var(--hgc-btn-secondary-label-hover)]',
+          'focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
+          'focus:border-[var(--hgc-btn-secondary-border-hover)]',
+          'focus:text-[var(--hgc-btn-secondary-label-hover)]'
         ]
       },
       iconFirst: {
-        yes: 'hg:flex-row',
-        no: 'hg:flex-row-reverse'
+        yes: 'flex-row',
+        no: 'flex-row-reverse'
       }
     }
   )
@@ -75,13 +75,13 @@
           '@mercury/components/icon/icon.twig',
           {
             icon: icon,
-            icon_size: 'hg:text-xl/2'
+            icon_size: 'text-xl/2'
           },
           with_context: false
         )
       }}
     {% endif %}
-    <span class="hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
+    <span class="font-sans text-sm leading-none font-normal text-inherit select-none">{{ label }}</span>
   </a>
 {% else %}
   <span aria-label="{{ label }}" class="{{ badge_classes }}">
@@ -91,12 +91,12 @@
           '@mercury/components/icon/icon.twig',
           {
             icon: icon,
-            icon_size: 'hg:text-xl/2'
+            icon_size: 'text-xl/2'
           },
           with_context: false
         )
       }}
     {% endif %}
-    <span class="hg:font-sans hg:text-sm hg:leading-none hg:font-normal hg:text-inherit hg:select-none">{{ label }}</span>
+    <span class="font-sans text-sm leading-none font-normal text-inherit select-none">{{ label }}</span>
   </span>
 {% endif %}

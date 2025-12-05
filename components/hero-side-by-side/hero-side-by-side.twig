@@ -1,30 +1,30 @@
 {% set hero =
   html_cva(
-    base: ['hg:relative', 'hg:h-full', 'hg:flex'],
+    base: ['relative', 'h-full', 'flex'],
     variants: {
       imagePosition: {
-        left: 'hg:md:flex-row',
-        right: 'hg:md:flex-row-reverse'
+        left: 'md:flex-row',
+        right: 'md:flex-row-reverse'
       },
       heroFlexGap: {
-        large: 'hg:gap-4 hg:md:gap-6 hg:xl:gap-8',
-        'extra-large': 'hg:gap-16 hg:md:gap-24 hg:xl:gap-32'
+        large: 'gap-4 md:gap-6 xl:gap-8',
+        'extra-large': 'gap-16 md:gap-24 xl:gap-32'
       },
       heroFlexDirectionMobile: {
-        vertical: 'hg:flex-col',
-        'vertical-reverse': 'hg:flex-col-reverse'
+        vertical: 'flex-col',
+        'vertical-reverse': 'flex-col-reverse'
       },
       paddingBlockStart: {
-        '0': 'hg:pt-0',
-        '16': 'hg:pt-4',
-        '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
-        '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
+        '0': 'pt-0',
+        '16': 'pt-4',
+        '32': 'pt-6 md:pt-7 xl:pt-8',
+        '64': 'pt-10 md:pt-13 xl:pt-16'
       },
       paddingBlockEnd: {
-        '0': 'hg:pb-0',
-        '16': 'hg:pb-4',
-        '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
-        '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
+        '0': 'pb-0',
+        '16': 'pb-4',
+        '32': 'pb-6 md:pb-7 xl:pb-8',
+        '64': 'pb-10 md:pb-13 xl:pb-16'
       }
     }
   )
@@ -32,15 +32,15 @@
 
 {% set bgd =
   html_cva(
-    base: ['hg:absolute', 'hg:w-screen', 'hg:inset-0', 'hg:z-[-1]', 'hg:ms-[-50vw]', 'hg:left-[50%]'],
+    base: ['absolute', 'w-screen', 'inset-0', 'z-[-1]', 'ms-[-50vw]', 'left-[50%]'],
     variants: {
       background: {
-        brand: 'hg:bg-brand',
-        'brand-light': 'hg:bg-brand-light',
-        'brand-dark': 'hg:bg-brand-dark',
-        accent: 'hg:bg-accent',
-        'accent-light': 'hg:bg-accent-light',
-        'accent-dark': 'hg:bg-accent-dark'
+        brand: 'bg-brand',
+        'brand-light': 'bg-brand-light',
+        'brand-dark': 'bg-brand-dark',
+        accent: 'bg-accent',
+        'accent-light': 'bg-accent-light',
+        'accent-dark': 'bg-accent-dark'
       }
     }
   )
@@ -48,19 +48,19 @@
 
 {% set image =
   html_cva(
-    base: ['hg:flex-1', 'hg:overflow-hidden', 'hg:rounded-none'],
+    base: ['flex-1', 'overflow-hidden', 'rounded-none'],
     variants: {
       imageSize: {
-        '2:1': 'hg:aspect-2/1',
-        '16:9': 'hg:aspect-16/9',
-        '3:2': 'hg:aspect-3/2',
-        '4:3': 'hg:aspect-4/3',
-        '1:1': 'hg:aspect-1/1'
+        '2:1': 'aspect-2/1',
+        '16:9': 'aspect-16/9',
+        '3:2': 'aspect-3/2',
+        '4:3': 'aspect-4/3',
+        '1:1': 'aspect-1/1'
       },
       imageRadius: {
-        small: 'hg:rounded-sm',
-        large: 'hg:rounded-xl hg:md:rounded-2xl',
-        'extra-large': 'hg:rounded-[24px] hg:md:rounded-[32px]'
+        small: 'rounded-sm',
+        large: 'rounded-xl md:rounded-2xl',
+        'extra-large': 'rounded-[24px] md:rounded-[32px]'
       }
     }
   )
@@ -99,14 +99,14 @@
       {% include 'canvas:image' ignore missing with {
         src: media.src,
         alt: media.alt,
-        class: 'hg:object-cover hg:w-full hg:h-full',
+        class: 'object-cover w-full h-full',
         width: media.width,
         height: media.height,
         sizes: '50vw'
       } only %}
     {% endblock %}
   </div>
-  <div class="hg:flex hg:flex-1 hg:flex-col hg:gap-6">
+  <div class="flex flex-1 flex-col gap-6">
     {% block hero_content %}
       {% block hero_slot %}
 

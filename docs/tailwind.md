@@ -34,7 +34,7 @@ It's easier to discover and edit these styles in a CSS file, and reduces the cha
 ```scss
 @layer components {
   .heading {
-    @apply font-sans tracking-normal text-inherit leading-[1.2];
+    @apply font-sans leading-[1.2] tracking-normal text-inherit;
   }
 
   .button {
@@ -42,11 +42,11 @@ It's easier to discover and edit these styles in a CSS file, and reduces the cha
   }
 
   .badge {
-    @apply border inline-flex items-center;
+    @apply inline-flex items-center border;
   }
 
   .badge-label {
-    @apply font-sans font-normal text-md leading-none text-inherit select-none;
+    @apply font-sans text-md leading-none font-normal text-inherit select-none;
   }
 }
 ```
@@ -78,16 +78,16 @@ Example:
   }
 
   p {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+    @apply text-base text-inherit lg:text-lg 2xl:text-xl;
   }
 
   ul,
   ol {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit list-disc ps-5;
+    @apply list-disc ps-5 text-base text-inherit lg:text-lg 2xl:text-xl;
   }
 
   li {
-    @apply text-base lg:text-lg 2xl:text-xl text-inherit;
+    @apply text-base text-inherit lg:text-lg 2xl:text-xl;
   }
 
   strong,
@@ -97,7 +97,7 @@ Example:
 
   em,
   i {
-    @apply italic text-inherit;
+    @apply text-inherit italic;
   }
 }
 

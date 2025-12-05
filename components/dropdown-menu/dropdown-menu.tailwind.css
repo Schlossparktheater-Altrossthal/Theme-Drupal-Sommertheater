@@ -3,42 +3,42 @@
 /* Colors, typography, sizes. */
 
 .dropdown-menu {
-  --hgc-nav-bg: var(--hg-color-white);
-  --hgc-nav-item-text-desktop: var(--hg-color-brand);
-  --hgc-nav-item-text-mobile: var(--hg-color-black);
-  --hgc-nav-item-hover-text: var(--hg-color-white);
-  --hgc-nav-item-hover-bg: var(--hg-color-brand);
-  --hgc-nav-current-item-bg: var(--hg-color-brand-light);
-  --hgc-nav-current-item-text: var(--hg-color-black);
-  --hgc-nav-submenu-bg: var(--hg-color-brand-light);
+  --hgc-nav-bg: var(--color-white);
+  --hgc-nav-item-text-desktop: var(--color-brand);
+  --hgc-nav-item-text-mobile: var(--color-black);
+  --hgc-nav-item-hover-text: var(--color-white);
+  --hgc-nav-item-hover-bg: var(--color-brand);
+  --hgc-nav-current-item-bg: var(--color-brand-light);
+  --hgc-nav-current-item-text: var(--color-black);
+  --hgc-nav-submenu-bg: var(--color-brand-light);
   --hgc-nav-submenu-border: var(--hgc-nav-submenu-bg);
-  --hgc-nav-submenu-text: var(--hg-color-black);
+  --hgc-nav-submenu-text: var(--color-black);
 
   .mercury-scheme--vanilla-dark & {
-    --hgc-nav-item-text-desktop: var(--hg-color-white);
-    --hgc-nav-item-text-mobile: var(--hg-color-white);
-    --hgc-nav-item-hover-bg: var(--hg-color-brand);
+    --hgc-nav-item-text-desktop: var(--color-white);
+    --hgc-nav-item-text-mobile: var(--color-white);
+    --hgc-nav-item-hover-bg: var(--color-brand);
     --hgc-nav-item-hover-text: var(--color-white);
-    --hgc-nav-submenu-bg: var(--hg-color-brand);
-    --hgc-nav-submenu-text: var(--hg-color-white);
-    --hgc-nav-current-item-bg: var(--hg-color-brand-dark);
-    --hgc-nav-current-item-text: var(--hg-color-white);
+    --hgc-nav-submenu-bg: var(--color-brand);
+    --hgc-nav-submenu-text: var(--color-white);
+    --hgc-nav-current-item-bg: var(--color-brand-dark);
+    --hgc-nav-current-item-text: var(--color-white);
   }
 
   .mercury-scheme--byte-light & {
-    --hgc-nav-item-text-desktop: var(--hg-color-brand-dark);
-    --hgc-nav-current-item-text: var(--hg-color-brand-dark);
+    --hgc-nav-item-text-desktop: var(--color-brand-dark);
+    --hgc-nav-current-item-text: var(--color-brand-dark);
   }
 
   .mercury-scheme--byte-dark & {
-    --hgc-nav-current-item-text: var(--hg-color-black);
+    --hgc-nav-current-item-text: var(--color-black);
     --hgc-nav-item-text-desktop: var(--color-white);
-    --hgc-nav-item-text-mobile: var(--hg-color-white);
-    --hgc-nav-submenu-bg: var(--hg-color-brand-light);
-    --hgc-nav-submenu-text: var(--hg-color-brand);
+    --hgc-nav-item-text-mobile: var(--color-white);
+    --hgc-nav-submenu-bg: var(--color-brand-light);
+    --hgc-nav-submenu-text: var(--color-brand);
   }
 
-  @apply hg:bg-body-bg;
+  @apply bg-body-bg;
 }
 
 .dropdown-menu__link,
@@ -47,7 +47,7 @@
   &:active,
   &:focus {
     &:is(.a, :not(.a)) {
-      @apply hg:md:bg-(--hgc-nav-item-hover-bg) hg:md:text-(--hgc-nav-item-hover-text);
+      @apply md:bg-(--hgc-nav-item-hover-bg) md:text-(--hgc-nav-item-hover-text);
     }
   }
 }
@@ -56,111 +56,111 @@
 /*
 .dropdown-menu__item--active-trail:not(:has(.dropdown-menu__item--active-trail)) {
   > .dropdown-menu__link {
-    @apply hg:bg-(--hgc-nav-current-item-bg) hg:text-(--hgc-nav-current-item-text);
+    @apply bg-(--hgc-nav-current-item-bg) text-(--hgc-nav-current-item-text);
   }
 }
 */
 .dropdown-menu__menu:not([data-level="1"]) {
-  @apply hg:rounded-lg hg:pl-4 hg:md:border-1 hg:md:border-(--hgc-nav-submenu-border) hg:md:bg-(--hgc-nav-submenu-bg) hg:md:p-3;
+  @apply rounded-lg pl-4 md:border-1 md:border-(--hgc-nav-submenu-border) md:bg-(--hgc-nav-submenu-bg) md:p-3;
 }
 
 .dropdown-menu__link:not([data-level="1"]),
 .dropdown-menu__expand-button:not([data-level="1"]) {
-  @apply hg:rounded-sm hg:text-(--hgc-nav-submenu-text) hg:hover:text-(--hgc-nav-submenu-hover-text) hg:md:p-2;
+  @apply rounded-sm text-(--hgc-nav-submenu-text) hover:text-(--hgc-nav-submenu-hover-text) md:p-2;
 }
 
 .dropdown-menu__link + .dropdown-menu__expand-button {
-  @apply hg:flex hg:w-[44px] hg:shrink-0 hg:grow-0 hg:basis-auto hg:items-center hg:justify-center hg:md:w-auto;
+  @apply flex w-[44px] shrink-0 grow-0 basis-auto items-center justify-center md:w-auto;
 }
 
 .dropdown-menu__expand-button--expanded svg {
-  @apply hg:rotate-180;
+  @apply rotate-180;
 }
 
 .dropdown-menu__link[data-level="1"] {
-  @apply hg:rounded-md hg:px-3 hg:py-2 hg:md:px-1;
+  @apply rounded-md px-3 py-2 md:px-1;
 }
 
 .dropdown-menu__expand-button[data-level="1"] {
-  @apply hg:rounded-md hg:md:px-1 hg:md:py-1;
+  @apply rounded-md md:px-1 md:py-1;
 }
 
 .dropdown-menu__expand-button[aria-expanded="true"] {
-  @apply hg:text-(--hgc-nav-submenu-text) hg:md:text-(--hgc-nav-item-hover-text);
+  @apply text-(--hgc-nav-submenu-text) md:text-(--hgc-nav-item-hover-text);
 }
 
 .dropdown-menu__item[data-level="1"]:has([aria-expanded="true"]) {
-  @apply hg:rounded-md hg:bg-(--hgc-nav-submenu-bg) hg:text-(--hgc-nav-submenu-text) hg:md:bg-(--hgc-nav-item-hover-bg) hg:md:text-(--hgc-nav-item-hover-text);
+  @apply rounded-md bg-(--hgc-nav-submenu-bg) text-(--hgc-nav-submenu-text) md:bg-(--hgc-nav-item-hover-bg) md:text-(--hgc-nav-item-hover-text);
 
   > .dropdown-menu__link {
-    @apply hg:text-(--hgc-nav-submenu-text) hg:md:text-(--hgc-nav-item-hover-text);
+    @apply text-(--hgc-nav-submenu-text) md:text-(--hgc-nav-item-hover-text);
   }
 
   /* Active Trail styling temporarily disabled due to Figma color confusion. */
   /*
     &.dropdown-menu__item--active-trail > .dropdown-menu__link {
-      @apply hg:text-(--hgc-nav-current-item-text);
+      @apply text-(--hgc-nav-current-item-text);
     }
   */
 }
 
 /* Top level expand button icons. */
 .dropdown-menu__expand-button[data-level="1"] svg {
-  @apply hg:md:rotate-none;
+  @apply md:rotate-none;
 }
 
 .dropdown-menu__expand-button-icon:not([data-level="1"]) {
-  @apply hg:md:rotate-270;
+  @apply md:rotate-270;
 }
 
 .dropdown-menu__expand-button-icon > svg {
-  @apply hg:max-h-[18px] hg:transition-transform hg:duration-[300ms];
+  @apply max-h-[18px] transition-transform duration-[300ms];
 }
 
 .dropdown-menu__expand-button-no-link-title[data-level="1"] {
-  @apply hg:px-3 hg:md:px-0;
+  @apply px-3 md:px-0;
 }
 
 .dropdown-menu__menu[data-level="1"] {
-  @apply hg:gap-2;
+  @apply gap-2;
 }
 
 /* All levels after the first. */
 .dropdown-menu__menu:not([data-level="1"]) {
-  @apply hg:z-3 hg:hidden hg:basis-full hg:origin-top hg:scale-y-0 hg:animate-collapse-vertically-and-hide hg:list-none hg:transition-transform hg:duration-300 hg:md:absolute hg:md:left-0;
+  @apply z-3 hidden basis-full origin-top scale-y-0 animate-collapse-vertically-and-hide list-none transition-transform duration-300 md:absolute md:left-0;
   display: var(--display-mode, block);
 }
 
 .dropdown-menu__link:not([data-level="1"]),
 .dropdown-menu__expand-button:not([data-level="1"]) {
-  @apply hg:flex hg:items-center hg:justify-start hg:md:w-max;
+  @apply flex items-center justify-start md:w-max;
 }
 
 /* All submenus. */
 .dropdown-menu__menu:not([data-level="1"]) {
-  @apply hg:top-[calc(100%_+_var(--hg-spacing)_*_3)] hg:origin-top hg:scale-y-0 hg:animate-collapse-vertically-and-hide;
+  @apply top-[calc(100%_+_var(--spacing)_*_3)] origin-top scale-y-0 animate-collapse-vertically-and-hide;
   --hgc-display-mode: "none";
   display: var(--display-mode, block);
 }
 
 .dropdown-menu__expand-button--expanded + .dropdown-menu__menu {
-  @apply hg:animate-show-and-expand-vertically;
+  @apply animate-show-and-expand-vertically;
   --hgc-display-mode: invaliddisplay;
 }
 
 /* Third-level and greater submenus on desktop. */
 .dropdown-menu__menu:not([data-level="1"], [data-level="2"]) {
-  @apply hg:md:top-[calc(var(--hg-spacing)_*_3_*_-1)] hg:md:left-[calc(100%_+_var(--hg-spacing)_*_6)] hg:md:min-h-full hg:md:origin-left hg:md:scale-x-0 hg:md:scale-y-100 hg:md:animate-collapse-horizontally-and-hide;
+  @apply md:top-[calc(var(--spacing)_*_3_*_-1)] md:left-[calc(100%_+_var(--spacing)_*_6)] md:min-h-full md:origin-left md:scale-x-0 md:scale-y-100 md:animate-collapse-horizontally-and-hide;
   --hgc-display-mode: none;
   display: var(--display-mode, block);
 
   &.dropdown-menu__menu--align-right {
-    @apply hg:right-full hg:left-auto hg:origin-right;
+    @apply right-full left-auto origin-right;
   }
 }
 
 .dropdown-menu__expand-button--expanded + .dropdown-menu__menu:not([data-level="1"], [data-level="2"]) {
-  @apply hg:md:animate-show-and-expand-horizontally;
+  @apply md:animate-show-and-expand-horizontally;
   --hgc-display-mode: invaliddisplay;
 }
 

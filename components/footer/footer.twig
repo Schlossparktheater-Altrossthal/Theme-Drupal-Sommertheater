@@ -4,44 +4,44 @@
   {% set additional_classes = additional_classes|join(' ') %}
 {% endif %}
 
-{% set footer_variants = html_cva(base: ['hg:flex', 'hg:flex-col']) %}
+{% set footer_variants = html_cva(base: ['flex', 'flex-col']) %}
 
 {% set footer_top_variants =
   html_cva(
     base: [
       'site-footer--top',
-      'hg:flex',
-      'hg:w-full',
-      'hg:flex-col',
-      'hg:justify-between',
-      'hg:gap-6',
-      'hg:border-t',
-      'hg:border-[var(--hgc-footer-border)]',
-      'hg:py-8',
-      'hg:md:grid',
-      'hg:md:grid-cols-2',
-      'hg:md:gap-6'
+      'flex',
+      'w-full',
+      'flex-col',
+      'justify-between',
+      'gap-6',
+      'border-t',
+      'border-[var(--hgc-footer-border)]',
+      'py-8',
+      'md:grid',
+      'md:grid-cols-2',
+      'md:gap-6'
     ]
   )
 %}
 
-{% set footer_first_col_variants = html_cva(base: ['site-footer--first-col', 'hg:flex', 'hg:flex-col', 'hg:gap-6']) %}
+{% set footer_first_col_variants = html_cva(base: ['site-footer--first-col', 'flex', 'flex-col', 'gap-6']) %}
 
 {% set footer_last_col_variants =
   html_cva(
     base: [
       'site-footer--last-col',
-      'hg:flex',
-      'hg:flex-col',
-      'hg:gap-2',
-      'hg:md:mx-0',
-      'hg:md:ms-auto',
-      'hg:md:w-xs',
-      'hg:lg:w-md',
-      'hg:[&_form]:flex',
-      'hg:[&_form]:flex-row',
-      'hg:[&_form]:gap-2',
-      'hg:md:[&_form]:items-end'
+      'flex',
+      'flex-col',
+      'gap-2',
+      'md:mx-0',
+      'md:ms-auto',
+      'md:w-xs',
+      'lg:w-md',
+      '[&_form]:flex',
+      '[&_form]:flex-row',
+      '[&_form]:gap-2',
+      'md:[&_form]:items-end'
     ]
   )
 %}
@@ -50,18 +50,18 @@
   html_cva(
     base: [
       'site-footer--bottom',
-      'hg:flex',
-      'hg:w-full',
-      'hg:flex-col',
-      'hg:gap-2',
-      'hg:border-t',
-      'hg:border-[var(--hgc-footer-border)]',
-      'hg:py-3',
-      'hg:text-xs',
-      'hg:md:grid',
-      'hg:md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]',
-      'hg:md:gap-6',
-      'hg:md:py-4'
+      'flex',
+      'w-full',
+      'flex-col',
+      'gap-2',
+      'border-t',
+      'border-[var(--hgc-footer-border)]',
+      'py-3',
+      'text-xs',
+      'md:grid',
+      'md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]',
+      'md:gap-6',
+      'md:py-4'
     ]
   )
 %}
@@ -72,13 +72,13 @@
     variants: {
       align: {
         left: '',
-        right: ['hg:md:flex', 'hg:md:justify-end']
+        right: ['md:flex', 'md:justify-end']
       }
     }
   )
 %}
 
-<section class="site-footer hg:container hg:mx-auto hg:px-4">
+<section class="site-footer container mx-auto px-4">
   <div class="{{ footer_variants.apply({}, additional_classes) }}">
     <div class="{{ footer_top_variants.apply({}) }}">
       {% if block('footer_first') is defined %}

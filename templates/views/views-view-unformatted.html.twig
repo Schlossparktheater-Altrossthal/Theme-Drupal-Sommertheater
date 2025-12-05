@@ -24,9 +24,9 @@
 {% for row in rows %}
   {% set row_classes = [
     default_row_class ? 'views-row',
-    snap ? 'hg:snap-center hg:min-w-[80vw] hg:sm:min-w-[50vw] hg:md:min-w-auto',
-    snap and loop.first ? 'hg:snap-first hg:ml-[50vw] hg:md:ml-auto',
-    snap and loop.last ? 'hg:snap-last hg:mr-[50vw] hg:md:mr-auto'
+    snap ? 'snap-center min-w-[80vw] sm:min-w-[50vw] md:min-w-auto',
+    snap and loop.first ? 'snap-first ml-[50vw] md:ml-auto',
+    snap and loop.last ? 'snap-last mr-[50vw] md:mr-auto'
   ] %}
   <div {{ row.attributes.addClass(row_classes) }}>
     {{- row.content -}}

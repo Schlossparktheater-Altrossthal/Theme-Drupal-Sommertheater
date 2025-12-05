@@ -6,26 +6,26 @@
 
 {% set heading_variants =
   html_cva(
-    base: ['heading', 'hg:font-display', 'hg:leading-[1.2]', 'hg:tracking-normal'],
+    base: ['heading', 'font-display', 'leading-[1.2]', 'tracking-normal'],
     variants: {
       level: {
-        1: ['hg:leading-none', 'hg:font-[var(--hgc-font-weight-h1)]'],
-        2: ['hg:leading-none', 'hg:font-[var(--hgc-font-weight-h2)]'],
-        3: 'hg:font-[var(--hgc-font-weight-h3)]',
-        4: 'hg:font-[var(--hgc-font-weight-h4)]',
-        5: 'hg:font-[var(--hgc-font-weight-h5)]',
-        6: 'hg:font-[var(--hgc-font-weight-h6)]'
+        1: ['leading-none', 'font-[var(--hgc-font-weight-h1)]'],
+        2: ['leading-none', 'font-[var(--hgc-font-weight-h2)]'],
+        3: 'font-[var(--hgc-font-weight-h3)]',
+        4: 'font-[var(--hgc-font-weight-h4)]',
+        5: 'font-[var(--hgc-font-weight-h5)]',
+        6: 'font-[var(--hgc-font-weight-h6)]'
       },
       align: {
-        left: 'hg:text-left',
-        center: 'hg:text-center',
-        right: 'hg:text-right'
+        left: 'text-left',
+        center: 'text-center',
+        right: 'text-right'
       },
       fontColor: {
-        'text-inherit': 'hg:text-inherit',
-        dark: 'hg:text-body-text-dark',
-        light: 'hg:text-white',
-        brand: 'hg:text-brand'
+        'text-inherit': 'text-inherit',
+        dark: 'text-body-text-dark',
+        light: 'text-white',
+        brand: 'text-brand'
       },
       fontSize: {
         default: '',
@@ -39,7 +39,7 @@
         'heading-responsive-xl': 'heading-responsive-xl'
       },
       hasUrl: {
-        yes: ['hg:hover:underline', 'hg:decoration-2', 'hg:underline-offset-4'],
+        yes: ['hover:underline', 'decoration-2', 'underline-offset-4'],
         no: ''
       }
     }

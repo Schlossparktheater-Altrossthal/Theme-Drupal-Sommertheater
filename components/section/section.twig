@@ -1,45 +1,45 @@
 {% set section =
   html_cva(
-    base: ['section', 'hg:relative', 'hg:flex', 'hg:flex-col', 'hg:items-stretch', 'hg:mx-auto'],
+    base: ['section', 'relative', 'flex', 'flex-col', 'items-stretch', 'mx-auto'],
     variants: {
       width: {
-        '100%': 'hg:lg:max-w-full',
-        '90%': 'hg:lg:max-w-9/10',
-        '80%': 'hg:lg:max-w-8/10',
-        '75%': 'hg:lg:max-w-3/4',
-        '50%': 'hg:lg:max-w-1/2'
+        '100%': 'lg:max-w-full',
+        '90%': 'lg:max-w-9/10',
+        '80%': 'lg:max-w-8/10',
+        '75%': 'lg:max-w-3/4',
+        '50%': 'lg:max-w-1/2'
       },
       marginBlockStart: {
-        '0': 'hg:mt-0',
-        '8': 'hg:mt-2',
-        '20': 'hg:mt-5',
-        '32': 'hg:mt-6 hg:md:mt-7 hg:xl:mt-8',
-        '48': 'hg:mt-8 hg:md:mt-10 hg:xl:mt-12',
-        '64': 'hg:mt-10 hg:md:mt-13 hg:xl:mt-16',
-        '96': 'hg:mt-16 hg:md:mt-20 hg:xl:mt-24',
-        '128': 'hg:mt-20 hg:md:mt-24 hg:xl:mt-32'
+        '0': 'mt-0',
+        '8': 'mt-2',
+        '20': 'mt-5',
+        '32': 'mt-6 md:mt-7 xl:mt-8',
+        '48': 'mt-8 md:mt-10 xl:mt-12',
+        '64': 'mt-10 md:mt-13 xl:mt-16',
+        '96': 'mt-16 md:mt-20 xl:mt-24',
+        '128': 'mt-20 md:mt-24 xl:mt-32'
       },
       marginBlockEnd: {
-        '0': 'hg:mb-0',
-        '8': 'hg:mb-2',
-        '20': 'hg:mb-5',
-        '32': 'hg:mb-6 hg:md:mb-7 hg:xl:mb-8',
-        '48': 'hg:mb-8 hg:md:mb-10 hg:xl:mb-12',
-        '64': 'hg:mb-10 hg:md:mb-13 hg:xl:mb-16',
-        '96': 'hg:mb-16 hg:md:mb-20 hg:xl:mb-24',
-        '128': 'hg:mb-20 hg:md:mb-24 hg:xl:mb-32'
+        '0': 'mb-0',
+        '8': 'mb-2',
+        '20': 'mb-5',
+        '32': 'mb-6 md:mb-7 xl:mb-8',
+        '48': 'mb-8 md:mb-10 xl:mb-12',
+        '64': 'mb-10 md:mb-13 xl:mb-16',
+        '96': 'mb-16 md:mb-20 xl:mb-24',
+        '128': 'mb-20 md:mb-24 xl:mb-32'
       },
       paddingBlockStart: {
-        '0': 'hg:pt-0',
-        '16': 'hg:pt-4',
-        '32': 'hg:pt-6 hg:md:pt-7 hg:xl:pt-8',
-        '64': 'hg:pt-10 hg:md:pt-13 hg:xl:pt-16'
+        '0': 'pt-0',
+        '16': 'pt-4',
+        '32': 'pt-6 md:pt-7 xl:pt-8',
+        '64': 'pt-10 md:pt-13 xl:pt-16'
       },
       paddingBlockEnd: {
-        '0': 'hg:pb-0',
-        '16': 'hg:pb-4',
-        '32': 'hg:pb-6 hg:md:pb-7 hg:xl:pb-8',
-        '64': 'hg:pb-10 hg:md:pb-13 hg:xl:pb-16'
+        '0': 'pb-0',
+        '16': 'pb-4',
+        '32': 'pb-6 md:pb-7 xl:pb-8',
+        '64': 'pb-10 md:pb-13 xl:pb-16'
       }
     }
   )
@@ -57,17 +57,17 @@
 
 {% set background =
   html_cva(
-    base: ['hg:absolute', 'hg:w-screen', 'hg:inset-0', 'hg:z-[-1]', 'hg:ms-[-50vw]', 'hg:left-[50%]'],
+    base: ['absolute', 'w-screen', 'inset-0', 'z-[-1]', 'ms-[-50vw]', 'left-[50%]'],
     variants: {
       backgroundColor: {
-        overlay: 'hg:bg-black/50',
-        brand: 'hg:bg-brand',
-        'brand-light': 'hg:bg-brand-light',
-        'brand-dark': 'hg:bg-brand-dark',
-        accent: 'hg:bg-accent',
-        'accent-light': 'hg:bg-accent-light',
-        'accent-dark': 'hg:bg-accent-dark',
-        noColor: 'hg:bg-none'
+        overlay: 'bg-black/50',
+        brand: 'bg-brand',
+        'brand-light': 'bg-brand-light',
+        'brand-dark': 'bg-brand-dark',
+        accent: 'bg-accent',
+        'accent-light': 'bg-accent-light',
+        'accent-dark': 'bg-accent-dark',
+        noColor: 'bg-none'
       }
     }
   )
@@ -81,19 +81,19 @@
 
 {% set grid =
   html_cva(
-    base: ['section--main', 'hg:grid', 'hg:w-full', 'hg:gap-4', 'hg:md:gap-6', 'hg:xl:gap-8', 'hg:min-w-0', 'hg:[&>*]:w-full', 'hg:[&>*]:hg:min-w-0'],
+    base: ['section--main', 'grid', 'w-full', 'gap-4', 'md:gap-6', 'xl:gap-8', 'min-w-0', '[&>*]:w-full', '[&>*]:min-w-0'],
     variants: {
       columns: {
-        '100': 'hg:grid-cols-1',
-        '50-50': 'hg:md:grid-cols-2',
-        '33-33-33': 'hg:md:grid-cols-3',
-        '75-25': 'hg:md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)]',
-        '25-75': 'hg:md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]',
-        '67-33': 'hg:md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]',
-        '33-67': 'hg:md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]',
-        '50-25-25': 'hg:md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]',
-        '25-25-50': 'hg:md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]',
-        '25-25-25-25': 'hg:grid-cols-1 hg:sm:grid-cols-2 hg:lg:grid-cols-4'
+        '100': 'grid-cols-1',
+        '50-50': 'md:grid-cols-2',
+        '33-33-33': 'md:grid-cols-3',
+        '75-25': 'md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)]',
+        '25-75': 'md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]',
+        '67-33': 'md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]',
+        '33-67': 'md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]',
+        '50-25-25': 'md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]',
+        '25-25-50': 'md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]',
+        '25-25-25-25': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
       }
     }
   )
@@ -105,16 +105,16 @@
   })
 %}
 
-<div class="hg:container hg:mx-auto hg:px-4">
+<div class="container mx-auto px-4">
   <section class="{{ section_classes }}">
     {# if there is background media #}
     {% if background_media is not empty and background_media.src is not empty %}
       {% block background_media_block %}
-        <div class="section--background-media hg:absolute hg:inset-0 hg:left-[50%] hg:z-[-1] hg:ms-[-50vw] hg:w-screen">
+        <div class="section--background-media absolute inset-0 left-[50%] z-[-1] ms-[-50vw] w-screen">
           {% include 'canvas:image' ignore missing with {
             src: background_media.src,
             alt: background_media.alt,
-            class: 'hg:object-cover hg:w-full hg:h-full',
+            class: 'object-cover w-full h-full',
             width: background_media.width,
             height: background_media.height
           } only %}
@@ -134,7 +134,7 @@
         {% endblock %}
       {% endset %}
       {% if header_content|trim is not empty %}
-        <header class="section--header hg:mb-6 hg:md:mb-8 hg:xl:mb-10">
+        <header class="section--header mb-6 md:mb-8 xl:mb-10">
           {{ header_content }}
         </header>
       {% endif %}
@@ -153,7 +153,7 @@
         {% endblock %}
       {% endset %}
       {% if footer_content|trim is not empty %}
-        <footer class="section--footer hg:mt-6 hg:md:mt-8 hg:xl:mt-10">
+        <footer class="section--footer mt-6 md:mt-8 xl:mt-10">
           {{ footer_content }}
         </footer>
       {% endif %}

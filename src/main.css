@@ -1,4 +1,4 @@
-@import "tailwindcss" prefix(hg);
+@import "tailwindcss";
 
 @import "../components/hero-blog/hero-blog.tailwind.css";
 @import "../components/navbar/navbar.tailwind.css";
@@ -194,16 +194,16 @@
   }
 
   body {
-    @apply hg:bg-body-bg hg:font-body hg:font-(--hgc-font-weight-p) hg:text-(--hg-color-body-text);
+    @apply bg-body-bg font-body font-(--hgc-font-weight-p) text-(--color-body-text);
   }
 
   p {
-    @apply hg:mb-4;
+    @apply mb-4;
   }
 
   ul,
   ol {
-    @apply hg:list-disc hg:ps-5;
+    @apply list-disc ps-5;
   }
 
   h1,
@@ -212,61 +212,61 @@
   h4,
   h5,
   h6 {
-    @apply hg:font-display;
+    @apply font-display;
   }
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply hg:text-5xl hg:leading-none hg:font-(--hgc-font-weight-h1) hg:md:text-6xl hg:2xl:text-8xl;
+    @apply text-5xl leading-none font-(--hgc-font-weight-h1) md:text-6xl 2xl:text-8xl;
   }
 
   h2 {
-    @apply hg:text-4xl hg:font-(--hgc-font-weight-h2) hg:md:text-5xl hg:xl:text-6xl;
+    @apply text-4xl font-(--hgc-font-weight-h2) md:text-5xl xl:text-6xl;
   }
 
   h3 {
-    @apply hg:text-2xl hg:font-(--hgc-font-weight-h3) hg:xl:text-3xl;
+    @apply text-2xl font-(--hgc-font-weight-h3) xl:text-3xl;
   }
 
   h4 {
-    @apply hg:text-xl hg:font-(--hgc-font-weight-h4) hg:md:text-2xl;
+    @apply text-xl font-(--hgc-font-weight-h4) md:text-2xl;
   }
 
   h5 {
-    @apply hg:text-lg hg:font-(--hgc-font-weight-h5) hg:md:text-xl;
+    @apply text-lg font-(--hgc-font-weight-h5) md:text-xl;
   }
 
   h6 {
-    @apply hg:text-base hg:font-(--hgc-font-weight-h6) hg:md:text-lg;
+    @apply text-base font-(--hgc-font-weight-h6) md:text-lg;
   }
 
   code,
   pre {
-    @apply hg:font-mono hg:text-sm hg:text-inherit;
+    @apply font-mono text-sm text-inherit;
   }
 
   small {
-    @apply hg:text-sm hg:text-inherit;
+    @apply text-sm text-inherit;
   }
 
   strong,
   b {
-    @apply hg:font-semibold hg:text-inherit;
+    @apply font-semibold text-inherit;
   }
 
   em,
   i {
-    @apply hg:text-inherit hg:italic;
+    @apply text-inherit italic;
   }
 
   hr {
-    @apply hg:my-4 hg:border-t hg:border-gray;
+    @apply my-4 border-t border-gray;
   }
 
   table,
   th,
   td {
-    @apply hg:text-base hg:text-inherit hg:lg:text-lg hg:2xl:text-xl;
+    @apply text-base text-inherit lg:text-lg 2xl:text-xl;
   }
 
   sup {
@@ -286,7 +286,7 @@
 
   /* These apply to rich-text blocks only. */
   .rich-text a {
-    @apply hg:underline hg:decoration-1 hg:underline-offset-2;
+    @apply underline decoration-1 underline-offset-2;
     color: var(--hgc-hyperlink-color);
   }
 
@@ -307,7 +307,7 @@
   /* Responsive width for mobile - applies to all dialogs */
   @media all and (max-width: 48em) {
     .ui-dialog {
-      @apply hg:w-[92%];
+      @apply w-[92%];
     }
   }
 
@@ -318,38 +318,38 @@
 
   /* Button pane - applies to all dialogs */
   .ui-dialog .ui-dialog-buttonpane {
-    @apply hg:mt-0 hg:border-t hg:border-solid hg:border-gray hg:bg-[#f3f4ee] hg:pt-[0.3em] hg:pr-[1em] hg:pb-[0.3em] hg:pl-[1em];
+    @apply mt-0 border-t border-solid border-gray bg-[#f3f4ee] pt-[0.3em] pr-[1em] pb-[0.3em] pl-[1em];
   }
 
   /* Button set - applies to all dialogs */
   .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-    @apply hg:m-0 hg:p-0;
+    @apply m-0 p-0;
   }
 
   /* Button text - applies to all dialogs */
   .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
-    @apply hg:p-0;
+    @apply p-0;
   }
 
   /* Form actions in dialogs - applies to all dialogs */
   .ui-dialog .ui-dialog-content .form-actions {
-    @apply hg:m-0 hg:p-0;
+    @apply m-0 p-0;
   }
 
   /* AJAX progress throbber - applies to all dialogs */
   .ui-dialog .ajax-progress-throbber {
-    @apply hg:fixed hg:top-[48.5%] hg:left-[49%] hg:z-[1000] hg:h-6 hg:w-6 hg:rounded-[7px] hg:bg-[#232323] hg:bg-center hg:bg-no-repeat hg:p-1 hg:opacity-90;
+    @apply fixed top-[48.5%] left-[49%] z-[1000] h-6 w-6 rounded-[7px] bg-[#232323] bg-center bg-no-repeat p-1 opacity-90;
     background-image: url(../../icons/loading-small.svg);
   }
 
   /* Hide throbber elements - applies to all dialogs */
   .ui-dialog .ajax-progress-throbber .throbber,
   .ui-dialog .ajax-progress-throbber .message {
-    @apply hg:hidden;
+    @apply hidden;
   }
 
   .ui-dialog .ui-button-icon::before {
-    @apply hg:absolute hg:inset-0 hg:block hg:h-5 hg:w-5 hg:text-sm hg:font-bold;
+    @apply absolute inset-0 block h-5 w-5 text-sm font-bold;
     content: "✕";
     color: var(--hgc-dialog-close);
   }
@@ -400,47 +400,47 @@
   }
 
   .snap-first > .card {
-    @apply hg:ms-6 hg:sm:ms-0;
+    @apply ms-6 sm:ms-0;
   }
 
   .snap-last > .card {
-    @apply hg:me-6 hg:sm:me-0;
+    @apply me-6 sm:me-0;
   }
   .webform-submission-form {
     .visually-hidden {
-      @apply hg:sr-only;
+      @apply sr-only;
     }
   }
 
   .webform-submission-form,
   .fieldset-wrapper,
   *[id^="edit-page-"] {
-    @apply hg:flex hg:flex-col hg:gap-8;
+    @apply flex flex-col gap-8;
   }
 
   fieldset:not(.webform-type-fieldset) .fieldset-wrapper {
-    @apply hg:gap-1;
+    @apply gap-1;
   }
 
   label,
   .fieldset-legend {
-    @apply hg:mb-1 hg:block hg:text-sm hg:font-semibold hg:text-[var(--hgc-webform-label)] hg:md:text-base;
+    @apply mb-1 block text-sm font-semibold text-[var(--hgc-webform-label)] md:text-base;
   }
 
   .form-item:focus-within,
   .fieldgroup:focus-within {
     > label,
     .fieldset-legend {
-      @apply hg:text-[var(--hgc-webform-label-focus)];
+      @apply text-[var(--hgc-webform-label-focus)];
     }
   }
 
   .webform-element-description {
-    @apply hg:mt-2 hg:text-xs;
+    @apply mt-2 text-xs;
   }
 
   .form-required::after {
-    @apply hg:ml-1 hg:text-red-500;
+    @apply ml-1 text-red-500;
     content: "*";
   }
 
@@ -455,7 +455,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply hg:w-full hg:border-0 hg:border-b hg:border-[var(--hgc-webform-border)] hg:bg-transparent hg:px-0 hg:py-2 hg:text-base hg:text-[var(--hgc-webform-text)] hg:outline-none;
+    @apply w-full border-0 border-b border-[var(--hgc-webform-border)] bg-transparent px-0 py-2 text-base text-[var(--hgc-webform-text)] outline-none;
   }
 
   input[type="text"]:focus,
@@ -469,70 +469,70 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply hg:border-[var(--hgc-webform-focus-border)] hg:shadow-sm;
+    @apply border-[var(--hgc-webform-focus-border)] shadow-sm;
   }
 
   select:focus {
-    @apply hg:text-[var(--hgc-webform-text)];
+    @apply text-[var(--hgc-webform-text)];
   }
 
   input::placeholder,
   textarea::placeholder,
   select {
-    @apply hg:text-[var(--hgc-webform-placeholder)];
+    @apply text-[var(--hgc-webform-placeholder)];
   }
 
   textarea {
-    @apply hg:min-h-[80px];
+    @apply min-h-[80px];
     resize: vertical;
   }
 
   .form-submit,
   input.button {
-    @apply hg:cursor-pointer hg:rounded-lg hg:border hg:border-[var(--hgc-webform-button-border)] hg:bg-[var(--hgc-webform-button-fill)] hg:px-5 hg:py-[10px] hg:text-base hg:text-[var(--hgc-webform-button-text)];
+    @apply cursor-pointer rounded-lg border border-[var(--hgc-webform-button-border)] bg-[var(--hgc-webform-button-fill)] px-5 py-[10px] text-base text-[var(--hgc-webform-button-text)];
     border-radius: var(--hgc-webform-button-radius) !important;
   }
 
   .form-submit:hover,
   input.button:hover {
-    @apply hg:border-[var(--hgc-webform-button-border-hover)] hg:bg-[var(--hgc-webform-button-fill-hover)] hg:text-[var(--hgc-webform-button-text-hover)];
+    @apply border-[var(--hgc-webform-button-border-hover)] bg-[var(--hgc-webform-button-fill-hover)] text-[var(--hgc-webform-button-text-hover)];
   }
 
   .form-item--error input,
   .form-item--error textarea,
   .form-item--error select {
-    @apply hg:border-red-500;
+    @apply border-red-500;
   }
 
   .form-item--error input:focus,
   .form-item--error textarea:focus,
   .form-item--error select:focus {
-    @apply hg:border-red-500 hg:shadow-sm;
+    @apply border-red-500 shadow-sm;
   }
 
   .form-item--error-message {
-    @apply hg:mt-1 hg:mb-3 hg:basis-full hg:text-sm hg:text-red-500;
+    @apply mt-1 mb-3 basis-full text-sm text-red-500;
   }
 
   .webform-options-display-one-column {
-    @apply hg:flex hg:flex-col hg:gap-2;
+    @apply flex flex-col gap-2;
   }
 
   .webform-type-checkbox.form-item,
   .webform-type-radio.form-item {
-    @apply hg:flex hg:flex-wrap hg:gap-2;
+    @apply flex flex-wrap gap-2;
 
     label {
-      @apply hg:m-0 hg:font-normal;
+      @apply m-0 font-normal;
     }
   }
 
   .progress-text {
-    @apply hg:text-inherit!;
+    @apply text-inherit!;
   }
 
   .social-menu--item .ui-icons-menu-text {
-    @apply hg:hidden;
+    @apply hidden;
   }
 
   .utility-menu {
@@ -562,40 +562,40 @@
 @layer utilities {
   /* For custom utility classes with highest precedence. */
   .font-display {
-    font-family: var(--hg-font-display);
+    font-family: var(--font-display);
   }
 
   /* Responsive text size utility */
   .heading-responsive-8xl {
-    @apply hg:text-6xl hg:md:text-7xl hg:xl:text-8xl;
+    @apply text-6xl md:text-7xl xl:text-8xl;
   }
 
   .heading-responsive-7xl {
-    @apply hg:text-5xl hg:md:text-6xl hg:xl:text-7xl;
+    @apply text-5xl md:text-6xl xl:text-7xl;
   }
 
   .heading-responsive-6xl {
-    @apply hg:text-4xl hg:md:text-5xl hg:xl:text-6xl; /* H1 */
+    @apply text-4xl md:text-5xl xl:text-6xl; /* H1 */
   }
 
   .heading-responsive-5xl {
-    @apply hg:text-3xl hg:md:text-4xl hg:xl:text-5xl;
+    @apply text-3xl md:text-4xl xl:text-5xl;
   }
 
   .heading-responsive-4xl {
-    @apply hg:text-3xl hg:xl:text-4xl; /* H2 */
+    @apply text-3xl xl:text-4xl; /* H2 */
   }
 
   .heading-responsive-3xl {
-    @apply hg:text-2xl hg:xl:text-3xl; /* H3 */
+    @apply text-2xl xl:text-3xl; /* H3 */
   }
 
   .heading-responsive-2xl {
-    @apply hg:text-xl hg:md:text-2xl; /* H4 */
+    @apply text-xl md:text-2xl; /* H4 */
   }
 
   .heading-responsive-xl {
-    @apply hg:text-lg hg:md:text-xl; /* H5 */
+    @apply text-lg md:text-xl; /* H5 */
   }
 
   /* Font size multiplier utilities */
@@ -637,5 +637,5 @@
 
 /* Custom overrides placed outside @layer to ensure they load last and override external styles */
 .icon-5xl {
-  font-size: var(--hg-text-5xl);
+  font-size: var(--text-5xl);
 }

@@ -67,19 +67,19 @@ final class ViewsSnapTest extends BrowserTestBase {
     // correct. Each item should have the correct classes too, relative to their
     // position in the list.
     $items = $assert_session->elementExists('css', '.view-content.view-snap')
-      ->findAll('css', '.views-row.hg\:snap-center');
+      ->findAll('css', '.views-row.snap-center');
     $this->assertCount(3, $items);
-    $this->assertTrue($items[0]->hasClass('hg:snap-first'));
-    $this->assertFalse($items[1]->hasClass('hg:snap-first'));
-    $this->assertFalse($items[1]->hasClass('hg:snap-last'));
-    $this->assertTrue($items[2]->hasClass('hg:snap-last'));
+    $this->assertTrue($items[0]->hasClass('snap-first'));
+    $this->assertFalse($items[1]->hasClass('snap-first'));
+    $this->assertFalse($items[1]->hasClass('snap-last'));
+    $this->assertTrue($items[2]->hasClass('snap-last'));
 
     // If the view is removed from the list of views that should snap, all those
     // classes should be gone.
     $view->set('tag', '')->save();
     $this->getSession()->reload();
     $assert_session->elementNotExists('css', '.view-snap');
-    $assert_session->elementNotExists('css', '.views-row.hg\:snap-center');
+    $assert_session->elementNotExists('css', '.views-row.snap-center');
   }
 
 }
