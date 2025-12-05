@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 build/*
-!build/css/main.min.css
+!build/main.min.css
 public/components
 CLAUDE.md
 .claude/*
