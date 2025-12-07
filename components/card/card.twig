@@ -1,6 +1,6 @@
 {% set card =
   html_cva(
-    base: 'card flex flex-col gap-3 md:gap-4 lg:gap-6 transition-colors duration-300 relative',
+    base: 'card relative flex flex-col gap-3 transition-colors duration-300 md:gap-4 lg:gap-6',
     variants: {
       orientation: {
         stacked: '',
@@ -8,8 +8,8 @@
       },
       style: {
         default: 'bg-[var(--hgc-card-bg)] hover:bg-[var(--hgc-card-bg-hover)]',
-        framed: 'p-3 md:p-4 lg:p-6 rounded-md shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] bg-[var(--hgc-card-framed-bg)] hover:bg-[var(--hgc-card-framed-bg-hover)]',
-        featured: 'p-3 md:p-4 lg:p-6 rounded-sm text-center shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] bg-[var(--hgc-card-featured-bg)] hover:bg-[var(--hgc-card-featured-bg-hover)]'
+        framed: 'rounded-md bg-[var(--hgc-card-framed-bg)] p-3 shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:bg-[var(--hgc-card-framed-bg-hover)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] md:p-4 lg:p-6',
+        featured: 'rounded-sm bg-[var(--hgc-card-featured-bg)] p-3 text-center shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:bg-[var(--hgc-card-featured-bg-hover)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] md:p-4 lg:p-6'
       },
       clickable: {
         yes: 'group cursor-pointer',
