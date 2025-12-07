@@ -2,11 +2,6 @@
 
 A modern and flexible Drupal theme designed to help developers quickly build scalable and efficient websites. It utilizes cutting-edge tools to create a seamless development experience.
 
-## Features
-
-- **Tailwind CSS**: Mercury uses [Tailwind CSS](https://tailwindcss.com) to simplify styling by using classes to compose designs directly in the markup. See [the relevant documentation](docs/tailwind.md) for more information about this.
-- **Vite**: A fast and modern build tool for web development, providing lightning-fast hot module replacement (HMR) and optimized production builds.
-
 ## Installation
 
 To customize this theme, you'll need to install [nvm (Node Version Manager)](github.com/nvm-sh/nvm), then follow these steps:
@@ -17,9 +12,21 @@ To customize this theme, you'll need to install [nvm (Node Version Manager)](git
 
 To install the theme in Drupal, run `drush theme:enable mercury`.
 
-## Generating Tailwind CSS
+## Building Tailwind CSS
 
-If you modify classes in a Twig template, you may need to rebuild the CSS with `pnpm run build:css`.
+Mercury uses [Tailwind CSS](https://tailwindcss.com) to simplify styling by using classes to compose designs directly in the markup.
+
+If you modify CSS files or classes in a Twig template, you need to rebuild the CSS:
+
+```bash
+pnpm build
+```
+
+For development, you can watch for changes and automatically rebuild the CSS:
+
+```bash
+pnpm dev
+```
 
 ## Code Formatting
 
