@@ -36,19 +36,13 @@ props:
       type: string
       title: Background color
       enum:
-        - brand
-        - brand-light
-        - brand-dark
+        - primary
+        - secondary
         - accent
-        - accent-light
-        - accent-dark
       meta:enum:
-        brand: Brand
-        brand-light: Brand Light
-        brand-dark: Brand Dark
+        primary: Primary
+        secondary: Secondary
         accent: Accent
-        accent-light: Accent Light
-        accent-dark: Accent Dark
     padding_block_start:
       type: string
       title: Padding top

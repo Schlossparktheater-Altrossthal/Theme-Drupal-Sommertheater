@@ -10,44 +10,15 @@
 {% set badge =
   html_cva(
     base: [
-      'rounded-sm',
-      'border',
-      'flex',
-      'inline-flex',
-      'items-center',
-      'gap-[2px]',
-      'lg:gap-1',
-      'px-[6px]',
-      'lg:px-2',
-      '2xl:px-3',
-      'py-[5px]',
-      'lg:py-[6px]',
-      '2xl:py-2'
+      'rounded-sm border',
+      'flex inline-flex items-center gap-[2px] lg:gap-1',
+      'px-[6px] py-[5px] lg:px-2 lg:py-[6px] 2xl:px-3 2xl:py-2',
+      'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]'
     ],
     variants: {
       style: {
-        primary: [
-          'bg-[var(--hgc-btn-bg)]',
-          'border-[var(--hgc-btn-border)]',
-          'text-[var(--hgc-btn-label)]',
-          'hover:bg-[var(--hgc-btn-bg-hover)]',
-          'hover:border-[var(--hgc-btn-border-hover)]',
-          'hover:text-[var(--hgc-btn-label-hover)]',
-          'focus:bg-[var(--hgc-btn-bg-hover)]',
-          'focus:border-[var(--hgc-btn-border-hover)]',
-          'focus:text-[var(--hgc-btn-label-hover)]'
-        ],
-        secondary: [
-          'bg-[var(--hgc-btn-secondary-bg)]',
-          'border-[var(--hgc-btn-secondary-border)]',
-          'text-[var(--hgc-btn-secondary-label)]',
-          'hover:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'hover:border-[var(--hgc-btn-secondary-border-hover)]',
-          'hover:text-[var(--hgc-btn-secondary-label-hover)]',
-          'focus:bg-[var(--hgc-btn-secondary-bg-hover)]',
-          'focus:border-[var(--hgc-btn-secondary-border-hover)]',
-          'focus:text-[var(--hgc-btn-secondary-label-hover)]'
-        ]
+        primary: ['border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90'],
+        secondary: ['border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90']
       },
       iconFirst: {
         yes: 'flex-row',

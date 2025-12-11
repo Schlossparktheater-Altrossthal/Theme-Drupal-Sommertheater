@@ -1,6 +1,6 @@
 {% set card =
   html_cva(
-    base: ['flex', 'flex-col', 'gap-6', 'bg-[var(--color-body-bg)]', 'text-[var(--color-body-text)]'],
+    base: ['flex flex-col gap-6 bg-background text-foreground'],
     variants: {
       layout: {
         'media-first': 'md:flex-row',
@@ -80,7 +80,10 @@
         {
           heading_text: heading_text|default(''),
           level: level|default(2),
-          url: url|default('')
+          url: url|default(''),
+          text_color: 'default',
+          text_size: 'heading-responsive-4xl',
+          align: 'left'
         },
         with_context: false
       )

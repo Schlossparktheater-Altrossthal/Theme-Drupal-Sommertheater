@@ -15,7 +15,10 @@
           {
             heading_text: heading_text|default(''),
             level: level|default(1),
-            url: 'No URL'
+            url: 'No URL',
+            text_color: 'default',
+            text_size: 'heading-responsive-4xl',
+            align: 'left'
           },
           with_context: false
         )
@@ -33,9 +36,7 @@
 
   {% if block('blog_media') is defined %}
     <div class="relative mx-auto mt-8 px-6 md:mt-12 lg:w-full xl:w-10/12">
-      <div
-        class="absolute -bottom-8 left-1/2 z-[-1] -ml-[50vw] h-[calc(33.3%+32px)] w-screen bg-brand-light md:-bottom-12 md:h-[calc(33.3%+48px)]"
-      ></div>
+      <div class="absolute -bottom-8 left-1/2 z-[-1] -ml-[50vw] h-[calc(33.3%+32px)] w-screen bg-muted md:-bottom-12 md:h-[calc(33.3%+48px)]"></div>
       {% block blog_media %}
 
       {% endblock %}

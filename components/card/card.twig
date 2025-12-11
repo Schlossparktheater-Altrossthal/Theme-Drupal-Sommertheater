@@ -1,18 +1,21 @@
 {% set card =
   html_cva(
-    base: 'card relative flex flex-col gap-3 transition-colors duration-300 md:gap-4 lg:gap-6',
+    base: [
+      'relative flex flex-col gap-3 p-3 in-[.views-row]:h-full md:gap-4 md:p-4 lg:gap-6 lg:p-6',
+      'transition-colors duration-300',
+      'rounded-sm border border-border bg-card text-card-foreground shadow-lg'
+    ],
     variants: {
       orientation: {
         stacked: '',
         landscape: 'md:flex-row'
       },
-      style: {
-        default: 'bg-[var(--hgc-card-bg)] hover:bg-[var(--hgc-card-bg-hover)]',
-        framed: 'rounded-md bg-[var(--hgc-card-framed-bg)] p-3 shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:bg-[var(--hgc-card-framed-bg-hover)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] md:p-4 lg:p-6',
-        featured: 'rounded-sm bg-[var(--hgc-card-featured-bg)] p-3 text-center shadow-lg shadow-[color:var(--hgc-card-shadow-color)] hover:bg-[var(--hgc-card-featured-bg-hover)] hover:shadow-[color:var(--hgc-card-shadow-color-hover)] md:p-4 lg:p-6'
+      isTextCentered: {
+        yes: 'text-center',
+        no: 'text-left'
       },
       clickable: {
-        yes: 'group cursor-pointer',
+        yes: 'group cursor-pointer hover:bg-muted hover:text-muted-foreground',
         no: ''
       }
     }
@@ -20,33 +23,8 @@
 %}
 
 {% set card_orientation = orientation|default('stacked') %}
-{% set card_style = style|default('default') %}
+{% set is_text_centered = is_text_centered|default(false) ? 'yes' : 'no' %}
 {% set is_clickable = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
-{% set has_badges = badges is not empty %}
-
-{% set heading_variants =
-  html_cva(
-    base: 'font-semibold',
-    variants: {
-      hasBadges: {
-        yes: '',
-        no: 'relative'
-      }
-    }
-  )
-%}
-
-{% set link_variants =
-  html_cva(
-    base: '',
-    variants: {
-      hasBadges: {
-        yes: '',
-        no: "after:absolute after:inset-0 after:content-['']"
-      }
-    }
-  )
-%}
 
 {% set card_media =
   html_cva(
@@ -77,7 +55,7 @@
   card.apply(
     {
       orientation: card_orientation,
-      style: card_style,
+      isTextCentered: is_text_centered,
       clickable: is_clickable
     },
     card_classes|default('')
@@ -112,49 +90,10 @@
     })
     }}"
   >
-    {% if card_style != 'featured' and badges is not empty %}
-      {% if block('badges') is defined %}
-        {% block badges %}
-          <ul class="flex list-none items-center gap-2 ps-0">
-            {% for badge in badges %}
-              <li>
-                {{
-                  include(
-                    'mercury:badge',
-                    {
-                      url: badge.url,
-                      label: badge.label,
-                      style: 'secondary'
-                    }
-                  )
-                }}
-              </li>
-            {% endfor %}
-          </ul>
-        {% endblock %}
-      {% endif %}
-    {% endif %}
     <div class="flex w-full flex-col gap-6">
-      <h3
-        class="{{
-        heading_variants.apply({
-          hasBadges: has_badges ? 'yes' : 'no'
-        })
-        }}"
-      >
-        <a
-          href="{{ url }}"
-          class="{{
-          link_variants.apply({
-            hasBadges: has_badges ? 'yes' : 'no'
-          })
-          }}"
-        >
-          {{ heading_text }}
-        </a>
-      </h3>
+      <h3 class="font-semibold"><a href="{{ url }}" class="after:absolute after:inset-0 after:content-['']">{{ heading_text }}</a></h3>
       {% if text is not empty %}
-        <p class="text-lg font-[var(--hgc-font-weight-p)] xl:text-xl">
+        <p class="text-lg xl:text-xl">
           {{ text }}
         </p>
       {% endif %}

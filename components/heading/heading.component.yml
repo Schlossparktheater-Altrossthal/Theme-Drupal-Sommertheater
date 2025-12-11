@@ -5,26 +5,38 @@ status: stable
 description: Text wrapped in a heading tag
 props:
   type: object
+  required:
+    - heading_text
+    - level
+    - text_color
+    - text_size
+    - align
   properties:
     heading_text:
       type: string
-      title: Heading Text
+      title: Heading text
       description: The heading text.
       default: "Enter title"
       examples:
         - One Giant Leap for Open Source
     level:
       type: number
-      title: Heading Level
-      description: The heading level (h1-h6).
+      title: Heading level
+      description: The heading level.
       enum: [1, 2, 3, 4, 5, 6]
-      default: 2
+      meta:enum:
+        1: H1
+        2: H2
+        3: H3
+        4: H4
+        5: H5
+        6: H6
       examples:
         - 2
-    font_size:
+    text_size:
       type: string
-      title: Font Size
-      description: Select Font Size
+      title: Text size
+      description: Select text size.
       enum:
         - default
         - heading-responsive-8xl
@@ -36,44 +48,42 @@ props:
         - heading-responsive-2xl
         - heading-responsive-xl
       meta:enum:
-        default: Default
-        heading-responsive-8xl: 8xl 72px
-        heading-responsive-7xl: 7xl 96px
-        heading-responsive-6xl: 6xl 60px
-        heading-responsive-5xl: 5xl 48px
-        heading-responsive-4xl: 4xl 40px
-        heading-responsive-3xl: 3xl 32px
-        heading-responsive-2xl: 2xl 24px
-        heading-responsive-xl: xl 20px
-      default: default
+        heading-responsive-8xl: 8XL
+        heading-responsive-7xl: 7XL
+        heading-responsive-6xl: 6XL
+        heading-responsive-5xl: 5XL
+        heading-responsive-4xl: 4XL
+        heading-responsive-3xl: 3XL
+        heading-responsive-2xl: 2XL
+        heading-responsive-xl: XL
+      examples:
+        - heading-responsive-4xl
+    text_color:
+      type: string
+      title: Text color
+      description: Select text color.
+      enum:
+        - default
+        - inverted
+        - primary
+      meta:enum:
+        default: Default text
+        inverted: Inverted text
+        primary: Primary
       examples:
         - default
-    font_color:
-      type: string
-      title: Font Color
-      description: Select Font Color
-      enum:
-        - text-inherit
-        - dark
-        - light
-        - brand
-      meta:enum:
-        text-inherit: Default
-        dark: Dark
-        white: Light
-        brand: Brand
-      default: text-inherit
-      examples:
-        - text-inherit
     align:
       type: string
-      title: Text Alignment
+      title: Text alignment
       description: The heading alignment.
       enum:
         - left
         - center
         - right
-      default: left
+      meta:enum:
+        left: Left
+        center: Center
+        right: Right
       examples:
         - left
     url:

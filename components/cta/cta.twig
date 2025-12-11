@@ -1,7 +1,6 @@
 {% set cta_text_align = text_align|default('center') %}
-{% set cta_has_background = has_background_image|default(false) ? 'yes' : 'no' %}
 
-{% set cta_variants = html_cva(base: ['cta', 'relative', 'z-1', 'bg-[var(--color-body-bg)]', 'text-[var(--color-body-text)]']) %}
+{% set cta_variants = html_cva(base: ['cta relative z-1 bg-background text-foreground']) %}
 
 {% set cta_content_variants =
   html_cva(
@@ -47,8 +46,8 @@
 
 <section class="{{ cta_variants.apply({}) }}">
   {% block media %}
-    {% if media.src is not empty and cta_has_background == 'yes' %}
-      <div class="cta--media absolute left-[50%] z-[-1] ms-[-50vw] h-full w-screen">
+    {% if media.src is not empty %}
+      <div class="cta--media absolute z-[-1] h-full w-full">
         <div class="absolute inset-0 bg-black/30"></div>
         {% include 'canvas:image' ignore missing with {
           src: media.src,
@@ -63,8 +62,7 @@
   <div
     class="{{
     cta_content_variants.apply({
-      textAlign: cta_text_align,
-      hasBackground: cta_has_background
+      textAlign: cta_text_align
     })
     }} px-4"
   >
@@ -75,14 +73,15 @@
           heading_text: heading_text|default(''),
           level: level|default(2),
           align: cta_text_align,
-          font_color: cta_has_background == 'yes' ? 'light' : 'text-inherit',
+          text_color: 'default',
           heading_classes: ['font-extrabold'],
-          url: ''
+          url: '',
+          text_size: 'heading-responsive-6xl'
         },
         with_context: false
       )
     }}
-    <p class="text-md font-normal">
+    <p class="text-lg font-normal">
       {{ text }}
     </p>
     {% if block('actions') is defined %}

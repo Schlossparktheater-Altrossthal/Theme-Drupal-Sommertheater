@@ -59,10 +59,8 @@ function mercury_form_system_theme_settings_alter(array &$form): void {
       fn () => theme_get_setting('scheme'),
     ),
     '#options' => [
-      'vanilla-light' => t('Vanilla Light'),
-      'vanilla-dark'  => t('Vanilla Dark'),
-      'byte-light'    => t('Byte Light'),
-      'byte-dark'     => t('Byte Dark'),
+      'light' => t('Light'),
+      'dark' => t('Dark'),
     ],
   ];
 }

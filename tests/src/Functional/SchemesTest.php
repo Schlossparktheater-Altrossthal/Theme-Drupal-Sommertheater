@@ -30,10 +30,8 @@ class SchemesTest extends BrowserTestBase {
   /**
    * Tests toggling Mercury into and out of a color scheme.
    */
-  #[TestWith(['vanilla-light', 'Vanilla Light'])]
-  #[TestWith(['vanilla-dark', 'Vanilla Dark'])]
-  #[TestWith(['byte-light', 'Byte Light'])]
-  #[TestWith(['byte-dark', 'Byte Dark'])]
+  #[TestWith(['light', 'Light'])]
+  #[TestWith(['dark', 'Dark'])]
   public function testColorScheme(string $scheme, string $label): void {
     $this->setUpMercury();
 
@@ -49,7 +47,21 @@ class SchemesTest extends BrowserTestBase {
     $page->pressButton('Save configuration');
     $assert_session->statusMessageContains('The configuration options have been saved.');
     $this->drupalGet('<front>');
-    $assert_session->elementAttributeContains('css', 'html', 'class', "mercury-scheme--$scheme");
+    $html_element = $page->find('css', 'html');
+    $class_attribute = $html_element->getAttribute('class');
+    if ($scheme === 'dark') {
+      $this->assertStringContainsString(
+        'dark',
+        $class_attribute,
+        'The <html> element should have the dark class when dark scheme is selected.'
+      );
+    }
+    else {
+      $this->assertTrue(
+        $class_attribute === NULL || !str_contains($class_attribute, 'dark'),
+        'The <html> element should not have the dark class when light scheme is selected.'
+      );
+    }
   }
 
 }

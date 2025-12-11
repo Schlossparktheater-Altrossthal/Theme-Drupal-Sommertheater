@@ -1,53 +1,12 @@
 @layer components;
 
-/* Colors, typography, sizes. */
-
-.dropdown-menu {
-  --hgc-nav-bg: var(--color-white);
-  --hgc-nav-item-text-desktop: var(--color-brand);
-  --hgc-nav-item-text-mobile: var(--color-black);
-  --hgc-nav-item-hover-text: var(--color-white);
-  --hgc-nav-item-hover-bg: var(--color-brand);
-  --hgc-nav-current-item-bg: var(--color-brand-light);
-  --hgc-nav-current-item-text: var(--color-black);
-  --hgc-nav-submenu-bg: var(--color-brand-light);
-  --hgc-nav-submenu-border: var(--hgc-nav-submenu-bg);
-  --hgc-nav-submenu-text: var(--color-black);
-
-  .mercury-scheme--vanilla-dark & {
-    --hgc-nav-item-text-desktop: var(--color-white);
-    --hgc-nav-item-text-mobile: var(--color-white);
-    --hgc-nav-item-hover-bg: var(--color-brand);
-    --hgc-nav-item-hover-text: var(--color-white);
-    --hgc-nav-submenu-bg: var(--color-brand);
-    --hgc-nav-submenu-text: var(--color-white);
-    --hgc-nav-current-item-bg: var(--color-brand-dark);
-    --hgc-nav-current-item-text: var(--color-white);
-  }
-
-  .mercury-scheme--byte-light & {
-    --hgc-nav-item-text-desktop: var(--color-brand-dark);
-    --hgc-nav-current-item-text: var(--color-brand-dark);
-  }
-
-  .mercury-scheme--byte-dark & {
-    --hgc-nav-current-item-text: var(--color-black);
-    --hgc-nav-item-text-desktop: var(--color-white);
-    --hgc-nav-item-text-mobile: var(--color-white);
-    --hgc-nav-submenu-bg: var(--color-brand-light);
-    --hgc-nav-submenu-text: var(--color-brand);
-  }
-
-  @apply bg-body-bg;
-}
-
 .dropdown-menu__link,
 .dropdown-menu__expand-button {
   &:hover,
   &:active,
   &:focus {
     &:is(.a, :not(.a)) {
-      @apply md:bg-(--hgc-nav-item-hover-bg) md:text-(--hgc-nav-item-hover-text);
+      @apply md:bg-primary md:text-primary-foreground;
     }
   }
 }
@@ -61,12 +20,12 @@
 }
 */
 .dropdown-menu__menu:not([data-level="1"]) {
-  @apply rounded-lg pl-4 md:border-1 md:border-(--hgc-nav-submenu-border) md:bg-(--hgc-nav-submenu-bg) md:p-3;
+  @apply rounded-lg pl-4 md:border md:border-border md:bg-secondary md:p-3;
 }
 
 .dropdown-menu__link:not([data-level="1"]),
 .dropdown-menu__expand-button:not([data-level="1"]) {
-  @apply rounded-sm text-(--hgc-nav-submenu-text) hover:text-(--hgc-nav-submenu-hover-text) md:p-2;
+  @apply rounded-sm text-secondary-foreground md:p-2;
 }
 
 .dropdown-menu__link + .dropdown-menu__expand-button {
@@ -78,7 +37,7 @@
 }
 
 .dropdown-menu__link[data-level="1"] {
-  @apply rounded-md px-3 py-2 md:px-1;
+  @apply rounded-md px-3 py-2 md:px-2;
 }
 
 .dropdown-menu__expand-button[data-level="1"] {
@@ -86,14 +45,14 @@
 }
 
 .dropdown-menu__expand-button[aria-expanded="true"] {
-  @apply text-(--hgc-nav-submenu-text) md:text-(--hgc-nav-item-hover-text);
+  @apply text-secondary-foreground md:text-accent-foreground;
 }
 
 .dropdown-menu__item[data-level="1"]:has([aria-expanded="true"]) {
-  @apply rounded-md bg-(--hgc-nav-submenu-bg) text-(--hgc-nav-submenu-text) md:bg-(--hgc-nav-item-hover-bg) md:text-(--hgc-nav-item-hover-text);
+  @apply rounded-md bg-secondary text-secondary-foreground md:bg-accent md:text-accent-foreground;
 
   > .dropdown-menu__link {
-    @apply text-(--hgc-nav-submenu-text) md:text-(--hgc-nav-item-hover-text);
+    @apply text-secondary-foreground md:text-accent-foreground;
   }
 
   /* Active Trail styling temporarily disabled due to Figma color confusion. */

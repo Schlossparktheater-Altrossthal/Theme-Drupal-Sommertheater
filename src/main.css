@@ -2,11 +2,8 @@
 
 @import "../components/hero-blog/hero-blog.tailwind.css";
 @import "../components/navbar/navbar.tailwind.css";
-@import "../components/footer/footer.tailwind.css";
-@import "../components/card/card.tailwind.css";
 @import "../components/collapsible-section/collapsible-section.tailwind.css";
 @import "../components/dropdown-menu/dropdown-menu.tailwind.css";
-@import "../components/tile-icon/tile-icon.tailwind.css";
 @import "../components/anchor/anchor.tailwind.css";
 @import "../components/logo-grid/logo-grid.tailwind.css";
 @import "./fonts.css";
@@ -15,33 +12,6 @@
 @import "./schemes.css";
 
 @theme {
-  --color-black: #000000;
-  --color-white: #ffffff;
-
-  --color-gray-lightest: #f3f4f6;
-  --color-gray-light: #d1d5db;
-  --color-gray: #6b7280;
-  --color-gray-dark: #374151;
-  --color-gray-darkest: #111827;
-
-  --color-brand-light: #dbeafe;
-  --color-brand: #155dfc;
-  --color-brand-dark: #1c398e;
-
-  --color-accent-light: #fce7f3;
-  --color-accent: #ec4899;
-  --color-accent-dark: #9d174d;
-
-  --color-info: #01a8e4;
-  --color-positive: #00cc41;
-  --color-warning: #ffbf00;
-  --color-negative: #e60032;
-
-  --color-body-bg: #ffffff;
-  --color-body-text: #000000;
-  --color-body-text-dark: #000000;
-  --color-body-text-light: #ffffff;
-
   --text-9xl: 7.5rem; /* 120px */
   --text-9xl--line-height: 1; /* 120px */
 
@@ -97,10 +67,7 @@
   --animate-show-and-expand-horizontally: show-and-expand-horizontally 0ms ease-in-out forwards;
   --animate-collapse-horizontally-and-hide: collapse-horizontally-and-hide 0ms ease-in-out forwards;
 
-  --font-display: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-body: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
-  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-display: var(--font-sans);
 
   /* Second-level (desktop) menu expansion. */
   @keyframes show-and-expand-vertically {
@@ -179,22 +146,12 @@
 
 /* Custom theme classes */
 @layer base {
-  :root {
-    --hgc-font-weight-p: 400;
-    --hgc-font-weight-h1: 600;
-    --hgc-font-weight-h2: 600;
-    --hgc-font-weight-h3: 600;
-    --hgc-font-weight-h4: 500;
-    --hgc-font-weight-h5: 500;
-    --hgc-font-weight-h6: 500;
-  }
-
   .material-symbols-outlined {
     font-size: unset;
   }
 
   body {
-    @apply bg-body-bg font-body font-(--hgc-font-weight-p) text-(--color-body-text);
+    @apply bg-background font-normal text-foreground;
   }
 
   p {
@@ -260,7 +217,7 @@
   }
 
   hr {
-    @apply my-4 border-t border-gray;
+    @apply my-4 border-t border-muted;
   }
 
   table,
@@ -283,120 +240,11 @@
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
   }
-
-  /* These apply to rich-text blocks only. */
-  .rich-text a {
-    @apply underline decoration-1 underline-offset-2;
-    color: var(--hgc-hyperlink-color);
-  }
-
-  .rich-text a:hover,
-  .rich-text a:focus {
-    color: var(--hgc-hyperlink-color-hover);
-  }
 }
 
 @layer components {
-  /* Global dialog container - applies to all Drupal dialogs */
-  .ui-dialog {
-    background-color: var(--hgc-dialog-background);
-    border-color: var(--hgc-dialog-border);
-    color: var(--hgc-dialog-text);
-  }
-
-  /* Responsive width for mobile - applies to all dialogs */
-  @media all and (max-width: 48em) {
-    .ui-dialog {
-      @apply w-[92%];
-    }
-  }
-
-  /* Dialog titlebar - applies to all dialogs */
-  .ui-dialog .ui-dialog-titlebar {
-    border-color: var(--hgc-dialog-border);
-  }
-
-  /* Button pane - applies to all dialogs */
-  .ui-dialog .ui-dialog-buttonpane {
-    @apply mt-0 border-t border-solid border-gray bg-[#f3f4ee] pt-[0.3em] pr-[1em] pb-[0.3em] pl-[1em];
-  }
-
-  /* Button set - applies to all dialogs */
-  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-    @apply m-0 p-0;
-  }
-
-  /* Button text - applies to all dialogs */
-  .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
-    @apply p-0;
-  }
-
-  /* Form actions in dialogs - applies to all dialogs */
-  .ui-dialog .ui-dialog-content .form-actions {
-    @apply m-0 p-0;
-  }
-
-  /* AJAX progress throbber - applies to all dialogs */
-  .ui-dialog .ajax-progress-throbber {
-    @apply fixed top-[48.5%] left-[49%] z-[1000] h-6 w-6 rounded-[7px] bg-[#232323] bg-center bg-no-repeat p-1 opacity-90;
-    background-image: url(../../icons/loading-small.svg);
-  }
-
-  /* Hide throbber elements - applies to all dialogs */
-  .ui-dialog .ajax-progress-throbber .throbber,
-  .ui-dialog .ajax-progress-throbber .message {
-    @apply hidden;
-  }
-
-  .ui-dialog .ui-button-icon::before {
-    @apply absolute inset-0 block h-5 w-5 text-sm font-bold;
-    content: "✕";
-    color: var(--hgc-dialog-close);
-  }
-
   .pager {
-    color: var(--hgc-color-body-text);
-  }
-
-  .breadcrumb-home i {
-    color: var(--hgc-color-breadcrumb-home);
-
-    &:hover,
-    &:focus {
-      color: var(--hgc-color-breadcrumb-home-hover);
-    }
-  }
-
-  .breadcrumb-caret {
-    color: var(--hgc-color-breadcrumb-caret);
-  }
-
-  .breadcrumb-dots {
-    color: var(--hgc-color-breadcrumb-dots);
-  }
-
-  .breadcrumb-item {
-    color: var(--hgc-color-breadcrumb);
-
-    &.active {
-      --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-active);
-    }
-
-    .breadcrumb-home {
-      &:hover,
-      &:focus {
-        --hgc-color-breadcrumb-icon: var(--hgc-color-breadcrumb-icon-hover);
-      }
-    }
-
-    a {
-      color: var(--hgc-color-breadcrumb);
-
-      &:hover,
-      &:focus {
-        --hgc-color-breadcrumb: var(--hgc-color-breadcrumb-hover);
-      }
-    }
+    @apply text-foreground;
   }
 
   .snap-first > .card {
@@ -424,14 +272,14 @@
 
   label,
   .fieldset-legend {
-    @apply mb-1 block text-sm font-semibold text-[var(--hgc-webform-label)] md:text-base;
+    @apply mb-1 block text-sm font-semibold md:text-base;
   }
 
   .form-item:focus-within,
   .fieldgroup:focus-within {
     > label,
     .fieldset-legend {
-      @apply text-[var(--hgc-webform-label-focus)];
+      @apply text-accent-foreground;
     }
   }
 
@@ -455,7 +303,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply w-full border-0 border-b border-[var(--hgc-webform-border)] bg-transparent px-0 py-2 text-base text-[var(--hgc-webform-text)] outline-none;
+    @apply w-full border-0 border-b bg-transparent px-0 py-2 text-base outline-none;
   }
 
   input[type="text"]:focus,
@@ -469,33 +317,27 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply border-[var(--hgc-webform-focus-border)] shadow-sm;
+    @apply border-accent-foreground shadow-sm;
   }
 
   select:focus {
-    @apply text-[var(--hgc-webform-text)];
+    @apply text-accent-foreground;
   }
 
   input::placeholder,
   textarea::placeholder,
   select {
-    @apply text-[var(--hgc-webform-placeholder)];
-  }
-
-  textarea {
-    @apply min-h-[80px];
-    resize: vertical;
+    @apply text-muted-foreground;
   }
 
   .form-submit,
   input.button {
-    @apply cursor-pointer rounded-lg border border-[var(--hgc-webform-button-border)] bg-[var(--hgc-webform-button-fill)] px-5 py-[10px] text-base text-[var(--hgc-webform-button-text)];
-    border-radius: var(--hgc-webform-button-radius) !important;
+    @apply cursor-pointer rounded-lg bg-primary px-5 py-2 text-base text-primary-foreground;
   }
 
   .form-submit:hover,
   input.button:hover {
-    @apply border-[var(--hgc-webform-button-border-hover)] bg-[var(--hgc-webform-button-fill-hover)] text-[var(--hgc-webform-button-text-hover)];
+    @apply bg-primary/85;
   }
 
   .form-item--error input,
@@ -534,29 +376,6 @@
   .social-menu--item .ui-icons-menu-text {
     @apply hidden;
   }
-
-  .utility-menu {
-    .utility-menu--item-text {
-      color: var(--hgc-menu-link-color);
-
-      &:hover,
-      &:focus {
-        color: var(--hgc-menu-link-color-hover);
-      }
-    }
-  }
-
-  .footer-menu {
-    .parent-link,
-    .below-link {
-      color: var(--hgc-menu-link-color);
-
-      &:hover,
-      &:focus {
-        color: var(--hgc-menu-link-color-hover);
-      }
-    }
-  }
 }
 
 @layer utilities {
@@ -567,35 +386,35 @@
 
   /* Responsive text size utility */
   .heading-responsive-8xl {
-    @apply text-6xl md:text-7xl xl:text-8xl;
+    @apply text-6xl font-semibold md:text-7xl xl:text-8xl;
   }
 
   .heading-responsive-7xl {
-    @apply text-5xl md:text-6xl xl:text-7xl;
+    @apply text-5xl font-semibold md:text-6xl xl:text-7xl;
   }
 
   .heading-responsive-6xl {
-    @apply text-4xl md:text-5xl xl:text-6xl; /* H1 */
+    @apply text-4xl font-semibold md:text-5xl xl:text-6xl; /* H1 */
   }
 
   .heading-responsive-5xl {
-    @apply text-3xl md:text-4xl xl:text-5xl;
+    @apply text-3xl font-semibold md:text-4xl xl:text-5xl;
   }
 
   .heading-responsive-4xl {
-    @apply text-3xl xl:text-4xl; /* H2 */
+    @apply text-3xl font-semibold xl:text-4xl; /* H2 */
   }
 
   .heading-responsive-3xl {
-    @apply text-2xl xl:text-3xl; /* H3 */
+    @apply text-2xl font-semibold xl:text-3xl; /* H3 */
   }
 
   .heading-responsive-2xl {
-    @apply text-xl md:text-2xl; /* H4 */
+    @apply text-xl font-semibold md:text-2xl; /* H4 */
   }
 
   .heading-responsive-xl {
-    @apply text-lg md:text-xl; /* H5 */
+    @apply text-lg font-semibold md:text-xl; /* H5 */
   }
 
   /* Font size multiplier utilities */

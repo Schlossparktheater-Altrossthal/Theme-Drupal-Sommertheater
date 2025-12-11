@@ -4,18 +4,18 @@
 
 {% set tile =
   html_cva(
-    base: ['icon-tile', 'relative', '[&_*]:leading-tight'],
+    base: ['relative bg-background text-foreground [&_*]:leading-tight [&_.ph]:text-foreground'],
     variants: {
       hasBorder: {
-        yes: 'border p-6',
+        yes: 'border border-border p-6',
         no: ''
       },
       hasUrl: {
-        yes: 'has-link transition-all duration-300',
+        yes: 'group cursor-pointer transition-colors duration-300 focus-within:bg-muted hover:bg-muted hover:text-muted-foreground',
         no: ''
       },
       hasBackground: {
-        yes: 'has-bg p-6',
+        yes: 'bg-secondary p-6',
         no: ''
       },
       tileSize: {
@@ -131,19 +131,19 @@
         {% if url is not empty %}
           <a href="{{ url }}" class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3 class="icon-tile--link-title">{{ text }}</h3>
+              <h3 class="text-foreground">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--link--text mt-1">{{ description }}</span>
+              <span class="mt-3 text-foreground opacity-75">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}
           <span class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3 class="icon-tile--title">{{ text }}</h3>
+              <h3 class="text-foreground">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="icon-tile--text mt-1 opacity-75">{{ description }}</span>
+              <span class="mt-3 text-muted-foreground">{{ description }}</span>
             {% endif %}
           </span>
         {% endif %}

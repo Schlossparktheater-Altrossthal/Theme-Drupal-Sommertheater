@@ -2,23 +2,23 @@
 
 {% set cite_attr = cite_url and cite_url != 'No URL' ? 'cite="' ~ cite_url ~ '"' : '' %}
 
-<blockquote class="{{ classes|join(' ') }} font-semibold text-body-text" {{ cite_attr }}>
-  <p class="blockquote-text text-xl leading-[1.5] font-semibold text-inherit">
+<blockquote class="{{ classes|join(' ') }} font-semibold text-foreground" {{ cite_attr }}>
+  <p class="text-xl leading-[1.5] font-semibold text-inherit">
     {{ text }}
   </p>
-  <footer class="blockquote-name text-left text-xl leading-[1.2] font-bold not-italic">
+  <footer class="text-left text-xl leading-[1.2] font-bold not-italic">
     {{ cite_name }}<br />
-    <cite class="blockquote-cite">
+    <cite>
       {% if cite_url and cite_url != 'No URL' %}
         <a
           href="{{ cite_url }}"
           target="_blank"
-          class="blockquote-cite--text text-base leading-[1.2] font-normal italic underline duration-300 hover:underline hover:opacity-80"
+          class="text-base leading-[1.2] font-normal italic underline duration-300 hover:underline hover:opacity-80"
         >
           {{ cite_text }}
         </a>
       {% else %}
-        <span class="blockquote-cite--text text-base leading-[1.2] font-normal italic">{{ cite_text }}</span>
+        <span class="text-base leading-[1.2] font-normal italic">{{ cite_text }}</span>
       {% endif %}
     </cite>
   </footer>

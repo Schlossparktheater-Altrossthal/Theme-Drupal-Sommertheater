@@ -1,6 +1,0 @@
-@layer components {
-  /* Cards inside views rows should take full height */
-  .views-row .card {
-    height: 100%;
-  }
-}

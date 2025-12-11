@@ -1,6 +1,6 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: CTA
-description: A CTA section with inline styles for testing purposes
+description: A call to action with a heading, description and slot for buttons.
 group: Components
 props:
   type: object
@@ -8,12 +8,11 @@ props:
     heading_text:
       type: string
       title: Heading
-      description: The main heading of the cta
       examples:
-        - Lorem ipsum dolor sit amet finibus aliquam pharetra
+        - Lorem ipsum dolor sit amet
     level:
       type: number
-      title: Heading Level
+      title: Heading level
       enum: [1, 2, 3, 4, 5, 6]
       examples:
         - 2
@@ -21,32 +20,19 @@ props:
       type: string
       title: Text
       examples:
-        - Lorem ipsum dolor sit amet finibus aliquam pharetra mauris aenean pellentesque enim mus.
+        - Lorem ipsum dolor sit amet.
     text_align:
       type: string
       title: Text alignment
-      description: Set alignment of text
       enum: ["center", "left", "right"]
       default: center
       examples:
         - center
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Background Image
-      description: The background image for the cta.
+      title: Background image
       type: object
-      examples:
-        - src: "assets/256381.jpg"
-          alt: "Photo by pixabay"
-          width: 1280
-          height: 852
-    has_background_image:
-      type: boolean
-      title: Show Background image
-      description: Set if the background image is used.
-      default: false
 
 slots:
   actions:
     title: Buttons
-    description: This is the links as buttons

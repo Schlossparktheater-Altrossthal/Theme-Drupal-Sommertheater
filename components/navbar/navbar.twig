@@ -38,7 +38,7 @@
   </div>
 
   <div
-    class="navbar--menu fixed inset-0 top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px)-var(--navbar-scroll-top,0px))] grid shrink-1 grow-1 grid-cols-[1fr] grid-rows-[auto_1fr_auto] flex-col items-stretch justify-start bg-body-bg pb-8 md:static md:flex md:h-auto md:flex-row md:items-center md:pb-0"
+    class="navbar--menu fixed inset-0 top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px)-var(--navbar-scroll-top,0px))] grid shrink-1 grow-1 grid-cols-[1fr] grid-rows-[auto_1fr_auto] flex-col items-stretch justify-start bg-background pb-8 md:static md:flex md:h-auto md:flex-row md:items-center md:pb-0"
   >
     <div
       class="navbar--modal-top relative z-[500] col-span-1 col-start-1 row-span-1 row-start-1 container mx-auto flex w-full justify-between p-2 md:hidden"
@@ -66,7 +66,7 @@
     </div>
 
     <div
-      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 min-h-0 w-full flex-1 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-body-bg after:content-[''] md:after:content-none"
+      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 min-h-0 w-full flex-1 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-background after:content-[''] md:after:content-none"
     >
       <div class="{{ dropdown_menu_classes }}">
         {% block navigation %}
@@ -86,7 +86,8 @@
               variant: 'primary',
               label: 'Button'|t,
               icon: 'arrow-right',
-              href: 'https://example.com'
+              href: 'https://example.com',
+              size: 'medium'
             }
           )
         }}
@@ -98,7 +99,8 @@
               variant: 'secondary',
               label: 'Another'|t,
               icon: 'arrow-right',
-              href: 'https://example.com'
+              href: 'https://example.com',
+              size: 'medium'
             }
           )
         }}

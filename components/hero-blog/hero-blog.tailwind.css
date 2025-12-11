@@ -1,6 +1,6 @@
 @layer components {
   .hero-blog {
-    color: var(--color-body-text);
+    @apply text-foreground;
 
     .heading.heading--size-default {
       --text-8xl: 3.5rem;
@@ -14,6 +14,6 @@
   }
 
   .hero-blog--author > a {
-    @apply text-body-text;
+    @apply text-foreground;
   }
 }

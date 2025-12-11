@@ -84,19 +84,13 @@ props:
       type: string
       title: Background color
       enum:
-        - brand
-        - brand-light
-        - brand-dark
+        - primary
+        - secondary
         - accent
-        - accent-light
-        - accent-dark
       meta:enum:
-        brand: Brand
-        brand-light: Brand light
-        brand-dark: Brand dark
+        primary: Primary
+        secondary: Secondary
         accent: Accent
-        accent-light: Accent light
-        accent-dark: Accent dark
 
 slots:
   group_slot:

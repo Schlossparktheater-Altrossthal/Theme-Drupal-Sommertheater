@@ -4,6 +4,9 @@ description: Basic card with image, title, teaser, tags
 group: Components/Cards
 props:
   type: object
+  required:
+    - heading_text
+    - orientation
   properties:
     heading_text:
       type: string
@@ -41,22 +44,19 @@ props:
       title: Description
       examples:
         - "Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis."
-    style:
-      type: string
-      title: Card style
-      enum:
-        - "default"
-        - "framed"
-        - "featured"
-      default: "framed"
+    is_text_centered:
+      type: boolean
+      title: Center text
       examples:
-        - "framed"
+        - false
     orientation:
       type: string
       title: Orientation
       enum:
         - "stacked"
         - "landscape"
-      default: "stacked"
+      meta:enum:
+        stacked: Stacked
+        landscape: Landscape
       examples:
-        - "stacked"
+        - stacked

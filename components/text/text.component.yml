@@ -5,8 +5,8 @@ group: Base
 props:
   type: object
   required:
-    - font_color
-    - font_size_multiplier
+    - text_color
+    - text_size
   properties:
     text:
       type: string
@@ -15,7 +15,7 @@ props:
       x-formatting-context: block
       examples:
         - <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique pretium pellentesque semper enim aliquam.</p>
-    font_size_multiplier:
+    text_size:
       type: string
       title: Text size
       enum:
@@ -34,28 +34,18 @@ props:
         text-scale-125: 20px
         text-scale-137: 22px
         text-scale-150: 24px
-      default: normal
       examples:
         - normal
-    font_color:
+    text_color:
       type: string
       title: Text color
       enum:
-        - text-inherit
-        - dark
-        - light
-        - brand
-        - brand-light
-        - accent
-        - accent-light
+        - default
+        - inverted
+        - primary
       meta:enum:
-        text-inherit: Default
-        dark: Dark
-        white: Light
-        brand: Brand
-        brand-light: Brand light
-        accent: Accent
-        accent-light: Accent light
-      default: text-inherit
+        default: Default text
+        inverted: Inverted text
+        primary: Primary
       examples:
-        - text-inherit
+        - default

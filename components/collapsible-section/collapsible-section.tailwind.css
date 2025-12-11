@@ -16,7 +16,7 @@
 /* Active state when parent has .collapsible-section--open (JS-added class) */
 .collapsible-section--title {
   .collapsible-section--open & {
-    background-color: var(--hgc-collapsible-title-bg-active);
+    @apply bg-background;
   }
 }
 

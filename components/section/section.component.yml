@@ -95,21 +95,13 @@ props:
       type: string
       title: Background color
       enum:
-        - overlay
-        - brand
-        - brand-light
-        - brand-dark
+        - primary
+        - secondary
         - accent
-        - accent-light
-        - accent-dark
       meta:enum:
-        overlay: Overlay tint
-        brand: Brand
-        brand-light: Brand light
-        brand-dark: Brand dark
+        primary: Primary
+        secondary: Secondary
         accent: Accent
-        accent-light: Accent light
-        accent-dark: Accent dark
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image

@@ -5,27 +5,31 @@ description: "A versatile button component that can be rendered as a button or l
 status: stable
 props:
   type: object
+  required:
+    - variant
+    - size
   properties:
     variant:
       type: string
       title: Variant
-      description: "The style of button."
+      description: "The style of the button."
       enum:
         - primary
-        - primary-accent
         - secondary
-        - secondary-accent
         - negative
-      default: primary
+      meta:enum:
+        primary: Primary
+        secondary: Secondary
+        negative: Negative
       examples:
         - primary
     label:
       type: string
       title: Label
       description: "The text content of the button."
-      default: "Button Label"
+      default: "Button label"
       examples:
-        - "Button Label"
+        - "Button label"
     href:
       type: string
       title: Link
@@ -36,7 +40,10 @@ props:
         - small
         - medium
         - large
-      default: medium
+      meta:enum:
+        small: Small
+        medium: Medium
+        large: Large
       examples:
         - medium
     mobile_width:
@@ -46,7 +53,6 @@ props:
     icon:
       type: string
       title: Icon
-      description: "Enter icon name without the 'ph-' prefix (e.g., 'user', 'heart', 'settings')."
       enum:
         - arrow-right
         - arrow-left
@@ -54,7 +60,13 @@ props:
         - caret-left
         - download
         - user-plus
-      default: arrow-right
+      meta:enum:
+        arrow-right: Arrow right
+        arrow-left: Arrow left
+        caret-right: Caret right
+        caret-left: Caret left
+        download: Download
+        user-plus: User plus
       examples:
         - arrow-right
     icon_first:

@@ -1,4 +1,7 @@
 {# For an explanation of the [&>*:] syntax @see https://medium.com/@replynamanjain/tailwind-css-targeting-child-elements-b60c0ca11652 #}
+{% set text_text_color = text_color|default('default') %}
+{% set text_text_size = text_size|default('normal') %}
+
 {% set text_component =
   html_cva(
     base: [
@@ -11,19 +14,17 @@
       '[&_li]:mb-1',
       '[&_ol]:list-decimal',
       '[&>*:first-child]:mt-0',
-      '[&>*:last-child]:mb-0'
+      '[&>*:last-child]:mb-0',
+      '[&_a]:underline',
+      '[&_a]:underline-offset-2'
     ],
     variants: {
-      fontColor: {
-        'text-inherit': 'text-inherit',
-        dark: 'text-body-text-dark',
-        light: 'text-white',
-        brand: 'text-brand',
-        'brand-light': 'text-brand-light',
-        accent: 'text-accent',
-        'accent-light': 'text-accent-light'
+      textColor: {
+        default: 'text-foreground [&_a]:hover:text-accent-foreground',
+        inverted: 'text-background [&_a]:hover:text-muted',
+        primary: 'text-primary [&_a]:hover:text-accent'
       },
-      fontSizeMultiplier: {
+      textSize: {
         'text-scale-75': 'text-scale-75',
         'text-scale-87': 'text-scale-87',
         normal: '',
@@ -38,8 +39,8 @@
 
 {% set text_classes =
   text_component.apply({
-    fontColor: font_color|default('text-inherit'),
-    fontSizeMultiplier: font_size_multiplier|default('normal')
+    textColor: text_text_color,
+    textSize: text_text_size
   })
 %}
 
