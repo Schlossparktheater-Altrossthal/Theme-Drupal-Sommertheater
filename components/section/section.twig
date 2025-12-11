@@ -1,6 +1,6 @@
 {% set section =
   html_cva(
-    base: ['section', 'relative', 'flex', 'flex-col', 'items-stretch', 'mx-auto'],
+    base: ['relative', 'flex', 'flex-col', 'items-stretch', 'mx-auto'],
     variants: {
       width: {
         '100%': 'lg:max-w-full',
@@ -47,7 +47,6 @@
 
 {% set section_classes =
   section.apply({
-    width: width|default('100%'),
     marginBlockStart: margin_block_start,
     marginBlockEnd: margin_block_end,
     paddingBlockStart: padding_block_start,
@@ -55,9 +54,15 @@
   })
 %}
 
+{% set section_content =
+  section.apply({
+    width: width|default('100%')
+  })
+%}
+
 {% set background =
   html_cva(
-    base: ['absolute', 'w-screen', 'inset-0', 'z-[-1]', 'ms-[-50vw]', 'left-[50%]'],
+    base: ['absolute', 'inset-0', 'z-[-1]'],
     variants: {
       backgroundColor: {
         overlay: 'bg-black/50',
@@ -81,7 +86,7 @@
 
 {% set grid =
   html_cva(
-    base: ['section--main', 'grid', 'w-full', 'gap-4', 'md:gap-6', 'xl:gap-8', 'min-w-0', '[&>*]:w-full', '[&>*]:min-w-0'],
+    base: ['grid', 'w-full', 'gap-4', 'md:gap-6', 'xl:gap-8', 'min-w-0', '[&>*]:w-full', '[&>*]:min-w-0'],
     variants: {
       columns: {
         '100': 'grid-cols-1',
@@ -105,58 +110,60 @@
   })
 %}
 
-<div class="container mx-auto px-4">
-  <section class="{{ section_classes }}">
-    {# if there is background media #}
-    {% if background_media is not empty and background_media.src is not empty %}
-      {% block background_media_block %}
-        <div class="section--background-media absolute inset-0 left-[50%] z-[-1] ms-[-50vw] w-screen">
-          {% include 'canvas:image' ignore missing with {
-            src: background_media.src,
-            alt: background_media.alt,
-            class: 'object-cover w-full h-full',
-            width: background_media.width,
-            height: background_media.height
-          } only %}
-        </div>
-      {% endblock %}
-    {% endif %}
+<section class="{{ section_classes }}">
+  {# if there is background media #}
+  {% if background_media is not empty and background_media.src is not empty %}
+    {% block background_media_block %}
+      <div class="absolute inset-0 z-[-1]">
+        {% include 'canvas:image' ignore missing with {
+          src: background_media.src,
+          alt: background_media.alt,
+          class: 'object-cover w-full h-full',
+          width: background_media.width,
+          height: background_media.height
+        } only %}
+      </div>
+    {% endblock %}
+  {% endif %}
 
-    {# if there is background color (can work with or without background media) #}
-    {% if background_color is not empty %}
-      <div class="{{ background_classes }}"></div>
-    {% endif %}
+  {# if there is background color (can work with or without background media) #}
+  {% if background_color is not empty %}
+    <div class="{{ background_classes }}"></div>
+  {% endif %}
 
-    {% if section_header %}
-      {% set header_content %}
-        {% block header_slot %}
+  <div class="container mx-auto px-4">
+    <div class="{{ section_content }}">
+      {% if section_header %}
+        {% set header_content %}
+          {% block header_slot %}
+
+          {% endblock %}
+        {% endset %}
+        {% if header_content|trim is not empty %}
+          <header class="mb-6 md:mb-8 xl:mb-10">
+            {{ header_content }}
+          </header>
+        {% endif %}
+      {% endif %}
+
+      <div class="{{ grid_classes }}">
+        {% block main_slot %}
 
         {% endblock %}
-      {% endset %}
-      {% if header_content|trim is not empty %}
-        <header class="section--header mb-6 md:mb-8 xl:mb-10">
-          {{ header_content }}
-        </header>
+      </div>
+
+      {% if section_footer %}
+        {% set footer_content %}
+          {% block footer_slot %}
+
+          {% endblock %}
+        {% endset %}
+        {% if footer_content|trim is not empty %}
+          <footer class="mt-6 md:mt-8 xl:mt-10">
+            {{ footer_content }}
+          </footer>
+        {% endif %}
       {% endif %}
-    {% endif %}
-
-    <div class="{{ grid_classes }}">
-      {% block main_slot %}
-
-      {% endblock %}
     </div>
-
-    {% if section_footer %}
-      {% set footer_content %}
-        {% block footer_slot %}
-
-        {% endblock %}
-      {% endset %}
-      {% if footer_content|trim is not empty %}
-        <footer class="section--footer mt-6 md:mt-8 xl:mt-10">
-          {{ footer_content }}
-        </footer>
-      {% endif %}
-    {% endif %}
-  </section>
-</div>
+  </div>
+</section>
