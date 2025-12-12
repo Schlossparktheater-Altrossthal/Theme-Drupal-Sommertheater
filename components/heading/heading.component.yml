@@ -16,7 +16,7 @@ props:
       title: Heading
       default: "Enter title"
       examples:
-        - One giant leap for Open Source
+        - Your heading here
     level:
       type: number
       title: Heading level
