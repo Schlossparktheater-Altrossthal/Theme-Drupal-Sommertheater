@@ -1,13 +1,13 @@
-{% set button_id = 'collapsible-section--title'|clean_unique_id %}
-{% set content_id = 'collapsible-section--content'|clean_unique_id %}
+{% set button_id = 'accordion--title'|clean_unique_id %}
+{% set content_id = 'accordion--content'|clean_unique_id %}
 {% set heading_level = heading_level|default('3') %}
 
-{% set section = html_cva(base: ['collapsible-section', 'overflow-hidden', 'border-b border-border', 'bg-clip-padding', 'bg-background']) %}
+{% set section = html_cva(base: ['accordion', 'overflow-hidden', 'border-b border-border', 'bg-clip-padding', 'bg-background']) %}
 
 {% set section_classes = section.apply({}) %}
 
 {% set title_button =
-  html_cva(base: ['collapsible-section--title flex w-full cursor-pointer items-center justify-between bg-background p-4 text-left text-2xl'])
+  html_cva(base: ['accordion--title flex w-full cursor-pointer items-center justify-between bg-background p-4 text-left text-2xl'])
 %}
 
 {% set title_button_classes = title_button.apply({}) %}
@@ -15,7 +15,7 @@
 {% set content =
   html_cva(
     base: [
-      'collapsible-section--content h-auto px-4 pb-2 text-base text-foreground transition-[height,padding] duration-(--animate-speed) [&>:first-child]:mt-0 [&>:last-child]:mb-0'
+      'accordion--content h-auto px-4 pb-2 text-base text-foreground transition-[height,padding] duration-(--animate-speed) [&>:first-child]:mt-0 [&>:last-child]:mb-0'
     ]
   )
 %}
@@ -28,7 +28,7 @@
   {% set button_content %}
     <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="{{ title_button_classes }}">
       {{ title }}
-      <i class="collapsible-section--icon ph-bold ph-caret-down transition-transform duration-(--animate-speed)"></i>
+      <i class="accordion--icon ph-bold ph-caret-down transition-transform duration-(--animate-speed)"></i>
     </button>
   {% endset %}
 
@@ -49,7 +49,7 @@
   {% endif %}
 
   <div class="{{ content_classes }}" id="{{ content_id }}" role="region" aria-labelledby="{{ button_id }}">
-    {% block collapsible_content %}
+    {% block accordion_content %}
 
     {% endblock %}
   </div>

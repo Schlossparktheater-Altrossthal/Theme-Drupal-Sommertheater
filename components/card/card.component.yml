@@ -1,7 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: Card
-description: Basic card with image, title, teaser, tags
-group: Components/Cards
+name: Image card
+group: Card
 props:
   type: object
   required:
@@ -26,13 +25,9 @@ props:
     url:
       type: string
       title: Link
-      default: "https://www.example.com"
-      examples:
-        - "https://www.example.com"
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Image
-      description: Media and Alt for the card.
       type: object
       examples:
         - src: "assets/277628-911758.jpg"
@@ -53,10 +48,10 @@ props:
       type: string
       title: Orientation
       enum:
-        - "stacked"
-        - "landscape"
+        - "vertical"
+        - "horizontal"
       meta:enum:
-        stacked: Stacked
-        landscape: Landscape
+        stacked: Vertical
+        landscape: Horizontal
       examples:
-        - stacked
+        - vertical

@@ -2,7 +2,6 @@
 name: Section
 group: Layout
 status: stable
-description: A section for nested components
 props:
   type: object
   required:
@@ -98,10 +97,14 @@ props:
         - primary
         - secondary
         - accent
+        - muted
+        - "accent-light"
       meta:enum:
         primary: Primary
         secondary: Secondary
         accent: Accent
+        "accent-light": Accent light
+        muted: Muted
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image

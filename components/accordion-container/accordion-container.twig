@@ -1,11 +1,11 @@
 <div class="accordion-container">
   {% block accordion_content %}
-    {% embed 'mercury:collapsible-section'
+    {% embed 'mercury:accordion'
       with {
-        title: 'Collapsible 1'
+        title: 'Accordion 1'
       }
     %}
-      {% block collapsible_content %}
+      {% block accordion_content %}
         <div class="rich-text">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -17,12 +17,12 @@
       {% endblock %}
     {% endembed %}
 
-    {% embed 'mercury:collapsible-section'
+    {% embed 'mercury:accordion'
       with {
-        title: 'Collapsible 2'
+        title: 'Accordion 2'
       }
     %}
-      {% block collapsible_content %}
+      {% block accordion_content %}
         <div class="rich-text">
           <p>
             Sed ut perspiciatis unde <a href="https://example.com">omnis iste natus</a> error sit voluptatem accusantium doloremque laudantium, totam rem
@@ -37,12 +37,12 @@
       {% endblock %}
     {% endembed %}
 
-    {% embed 'mercury:collapsible-section'
+    {% embed 'mercury:accordion'
       with {
-        title: 'Collapsible 3'
+        title: 'Accordion 3'
       }
     %}
-      {% block collapsible_content %}
+      {% block accordion_content %}
         <div class="rich-text">
           <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et

@@ -1,7 +1,6 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Navbar
-description: Navigation bar with branding, a menu, and miscellaneous calls to action
-group: Navigation
+group: Layout
 props:
   type: object
   properties:
@@ -21,7 +20,7 @@ slots:
   navigation:
     title: Navigation menu
   links:
-    title: Misc. CTAs
+    title: CTAs
 
 libraryOverrides:
   js:

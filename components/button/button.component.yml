@@ -1,7 +1,6 @@
 $schema: "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Button
 group: Base
-description: "A versatile button component that can be rendered as a button or link with various styles and sizes."
 status: stable
 props:
   type: object
@@ -11,8 +10,7 @@ props:
   properties:
     variant:
       type: string
-      title: Variant
-      description: "The style of the button."
+      title: Style
       enum:
         - primary
         - secondary
@@ -26,7 +24,6 @@ props:
     label:
       type: string
       title: Label
-      description: "The text content of the button."
       default: "Button label"
       examples:
         - "Button label"
@@ -72,14 +69,12 @@ props:
     icon_first:
       type: boolean
       title: Display icon first
-      description: "By default, the icon is displayed after the label. If you want to display the icon first, set this to true."
       default: false
       examples:
         - false
     disabled:
       type: boolean
       title: Disabled
-      description: "Style button as disabled (rarely used)."
       default: false
       examples:
         - false

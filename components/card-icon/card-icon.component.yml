@@ -1,13 +1,12 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: Icon Tile
-description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
-group: Components
+name: Icon card
+group: Card
 props:
   type: object
   properties:
     tile_size:
       type: string
-      title: Tile aspect ratio
+      title: Aspect ratio
       enum:
         - square
         - "4:3"
@@ -87,7 +86,8 @@ props:
       title: Link
     icon:
       type: string
-      title: Icon name (exclude prefix)
+      title: Icon name
+      description: The ID of an icon from the <a href=\"https://phosphoricons.com/\" target=\"_blank\">Phosphor Icons</a> library.
       default: "rocket"
       examples:
         - "rocket"

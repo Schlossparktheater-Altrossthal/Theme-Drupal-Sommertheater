@@ -2,7 +2,6 @@
 name: Group
 group: Layout
 status: stable
-description: A group for nested components
 props:
   type: object
   required:

@@ -7,14 +7,14 @@ class AccordionContainer extends ComponentInstance {
       return;
     }
 
-    // Listen for `collapsibleopen` events bubbling up from descendant
-    // collapsibles.
-    this.el.addEventListener("collapsibleopen", (e) => {
-      // Close all descendant collapsibles except the one that just opened.
-      const otherCollapsibleInstances = window.mercuryComponents.collapsibleSection.instances.filter(
-        (collapsible) => this.el.contains(collapsible.el) && e.target !== collapsible.el,
+    // Listen for `accordionopen` events bubbling up from descendant
+    // accordions.
+    this.el.addEventListener("accordionopen", (e) => {
+      // Close all descendant accordions except the one that just opened.
+      const otherAccordionInstances = window.mercuryComponents.accordion.instances.filter(
+        (accordion) => this.el.contains(accordion.el) && e.target !== accordion.el,
       );
-      otherCollapsibleInstances.forEach((instance) => {
+      otherAccordionInstances.forEach((instance) => {
         instance.isOpen = false;
       });
     });

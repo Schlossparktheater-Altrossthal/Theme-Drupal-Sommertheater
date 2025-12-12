@@ -1,14 +1,12 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: Testimonial
-description: A testimonial card component with quote, author information, and optional media.
-group: Components/Cards
+name: Testimonial card
+group: Card
 props:
   type: object
   properties:
     text:
       type: string
       title: Blockquote text
-      description: The blockquote text.
       examples:
         - "My career’s guidance was crucial in helping me understand the tech industry landscape and ultimately secure my role."
     cite_name:
@@ -27,7 +25,6 @@ props:
     align:
       type: string
       title: Text alignment
-      description: Set alignment of text.
       enum:
         - center
         - left
@@ -36,8 +33,7 @@ props:
         - center
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Card Media
-      description: Media and Alt for the card.
+      title: Image
       type: object
       examples:
         - src: "assets/portrait.png"

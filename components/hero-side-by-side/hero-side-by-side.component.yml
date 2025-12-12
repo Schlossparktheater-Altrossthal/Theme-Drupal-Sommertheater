@@ -1,7 +1,7 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero side-by-side
 description: Hero with side-by-side slots for media and content.
-group: Layout
+group: Hero
 props:
   type: object
   required:
@@ -65,8 +65,7 @@ props:
         - "0"
     image_size:
       type: string
-      title: Image size
-      description: Set the image aspect ratio
+      title: Aspect ratio
       enum:
         - "2:1"
         - "16:9"
@@ -85,7 +84,6 @@ props:
     image_position:
       type: string
       title: Image position
-      description: Set the image position
       enum:
         - left
         - right
@@ -98,7 +96,6 @@ props:
     image_radius:
       type: string
       title: Image border radius
-      description: Set the image border radius
       enum:
         - small
         - large
@@ -112,8 +109,7 @@ props:
         - "small"
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Media Image
-      description: Media image for the hero.
+      title: Image
       type: object
       examples:
         - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"

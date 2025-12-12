@@ -1,21 +1,20 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero blog
 description: Hero with side by side slots for media and content.
-group: Layout
-
+group: Hero
 props:
   type: object
   properties:
     heading_text:
       type: string
-      title: Heading Text
+      title: Heading
       default: "Enter the title"
       examples:
         - "Vivamus curae metus neque mollis orci ipsum sapien velit cursus"
 
     level:
       type: integer
-      title: Heading Level
+      title: Heading level
       enum: [1, 2, 3, 4, 5, 6]
       examples:
         - 1
@@ -42,8 +41,7 @@ props:
 
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Media Image
-      description: Media image for the hero.
+      title: Image
       type: object
       examples:
         - src: "assets/boliviainteligente-I1rJ9ViO3ik-unsplash.jpg"

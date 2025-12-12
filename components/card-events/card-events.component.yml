@@ -1,19 +1,18 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: Event
-description: Event card with date, heading, description
-group: Components/Cards
+name: Event card
+group: Card
 props:
   type: object
   properties:
     title:
       type: string
-      title: Heading Text
+      title: Heading
       default: "Enter name of event"
       examples:
         - "Transition"
     event_date:
       type: string
-      title: Event Date
+      title: Date
       default: "2026-01-01"
       examples:
         - "2026-02-12"
@@ -24,9 +23,8 @@ props:
       examples:
         - "Atque libero fuga blanditiis quo qui impedit debitis. Aut ut nam unde velit."
     place:
-      title: Place
-      description: Place of the event
+      title: Location
       type: string
-      default: "Add location"
+      default: "123 Main St"
       examples:
-        - "29013 Bednar Spurs"
+        - "123 Main St"

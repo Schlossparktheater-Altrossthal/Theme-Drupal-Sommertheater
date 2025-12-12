@@ -6,8 +6,7 @@ boliviainteligente
 brandable
 codepen
 codesandbox
-collapsibleopen
-collapsibles
+accordionopen
 consectetuer
 csvg
 customise

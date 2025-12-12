@@ -1,7 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero billboard
-description: Hero with stacked slots for media and content.
-group: Layout
+group: Hero
 props:
   type: object
   required:
@@ -9,7 +8,7 @@ props:
   properties:
     height:
       type: string
-      title: Hero height
+      title: Height
       enum:
         - full
         - large
@@ -30,17 +29,16 @@ props:
         - bottom-left
         - hero-center
       meta:enum:
-        top-left: Top/left
-        center-left: Center/left
-        bottom-left: Bottom/left
-        hero-center: Center/Center
+        top-left: Top left
+        center-left: Center left
+        bottom-left: Bottom left
+        hero-center: Center
       default: center-left
       examples:
         - center-left
     overlay_opacity:
       type: string
       title: Overlay opacity
-      description: Set overlay opacity
       enum:
         - "0%"
         - "20%"
@@ -63,7 +61,6 @@ props:
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
-      description: Media image for the hero.
       type: object
       examples:
         - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"

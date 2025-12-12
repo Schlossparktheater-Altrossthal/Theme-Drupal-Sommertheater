@@ -1,7 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: Profile
-description: Basic card with image, title, teaser, tags
-group: Components/Cards
+name: Profile card
+group: Card
 props:
   type: object
   properties:
@@ -20,8 +19,7 @@ props:
       title: Link
     media:
       $ref: json-schema-definitions://canvas.module/image
-      title: Card Media
-      description: Media and Alt for the card.
+      title: Image
       type: object
       examples:
         - src: "assets/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.jpg"

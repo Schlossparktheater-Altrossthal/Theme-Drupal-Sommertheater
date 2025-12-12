@@ -55,7 +55,7 @@ pnpm format:check
 1. Extend the `ComponentInstance` class to a new class with the code for your component.
 2. Create a new instance of the `ComponentType` class to automatically activate all the component instances on that page.
 
-For example, here's a stub of `collapsible-section.js`:
+For example, here's a stub of `accordion.js`:
 
 ```js
 import { ComponentType, ComponentInstance } from "../../lib/component.js";
@@ -66,10 +66,10 @@ import { ComponentType, ComponentInstance } from "../../lib/component.js";
 // the component container, whose selector you provide below. You don't
 // have an array of elements that you have to `.forEach()` over yourself;
 // the ComponentType class handles all that for you.
-class CollapsibleSection extends ComponentInstance {
+class Accordion extends ComponentInstance {
   // Every subclass must have an `init` method to activate the component.
   init() {
-    this.el.querySelector(".collapsible-section__content").classList.toggle("visible");
+    this.el.querySelector(".accordion--content").classList.toggle("visible");
     this.el.addClass("js");
   }
 
@@ -87,19 +87,19 @@ class CollapsibleSection extends ComponentInstance {
 // our script.
 new ComponentType(
   // First argument: The subclass of ComponentInstance we just created above.
-  CollapsibleSection,
+  Accordion,
   // Second argument: A camel-case unique ID for the behavior (and for `once()`
   // if applicable).
-  "collapsibleSection",
+  "accordion",
   // Third argument: A selector for `querySelectorAll()`. All matching elements
   // on the page get their own instance of the subclass you created, each of
   // which has `this.el` pointing to one of those matches.
-  ".collapsible-section",
+  ".accordion",
 );
 ```
 
 This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and adding them to `Drupal.behaviors`.
 
-All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `mercuryComponents`, you would find the Collapsible Section's ComponentType instance at `window.mercuryComponents.collapsibleSection`.
+All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `mercuryComponents`, you would find the Accordion's ComponentType instance at `window.mercuryComponents.accordion`.
 
-Furthermore, `window.mercuryComponents.collapsibleSection.instances` is an array of all the ComponentInstance objects, and `window.mercuryComponents.collapsibleSection.elements` is an array of all the component container elements.
+Furthermore, `window.mercuryComponents.accordion.instances` is an array of all the ComponentInstance objects, and `window.mercuryComponents.accordion.elements` is an array of all the component container elements.

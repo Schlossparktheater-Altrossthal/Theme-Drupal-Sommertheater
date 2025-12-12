@@ -1,7 +1,7 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
-name: CTA
+name: Hero CTA
 description: A call to action with a heading, description and slot for buttons.
-group: Components
+group: Hero
 props:
   type: object
   properties:

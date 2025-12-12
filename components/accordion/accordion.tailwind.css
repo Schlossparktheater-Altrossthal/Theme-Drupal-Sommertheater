@@ -1,0 +1,44 @@
+/* Base styles before JS gets involved. */
+.accordion {
+  --animate-speed: 0s;
+
+  /* Uses :has() pseudo-selector - cannot be done in Twig */
+  &:has(button[aria-expanded="true"]) .accordion--content {
+    @apply py-4;
+  }
+
+  /* Uses adjacent sibling selector with :not(:has()) - cannot be done in Twig */
+  &:not(:has(+ .accordion)) {
+    @apply border-b-0;
+  }
+}
+
+/* Active state when parent has .accordion--open (JS-added class) */
+.accordion--title {
+  .accordion--open & {
+    @apply bg-background;
+  }
+}
+
+/* Styles involving collapsing/expanding - all use JS-added classes */
+.accordion--js:not(.accordion--open) .accordion--content {
+  @apply h-0 pb-0;
+}
+
+.accordion--animate {
+  --animate-speed: 500ms;
+}
+
+.accordion--open {
+  .accordion--icon {
+    rotate: 180deg;
+  }
+
+  .accordion--content {
+    @apply h-(--natural-height) pb-2;
+  }
+}
+
+.accordion--resizing.accordion--open .accordion--content {
+  height: auto;
+}

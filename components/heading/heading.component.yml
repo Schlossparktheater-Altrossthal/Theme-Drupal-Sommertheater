@@ -2,7 +2,6 @@
 name: Heading
 group: Base
 status: stable
-description: Text wrapped in a heading tag
 props:
   type: object
   required:
@@ -14,15 +13,13 @@ props:
   properties:
     heading_text:
       type: string
-      title: Heading text
-      description: The heading text.
+      title: Heading
       default: "Enter title"
       examples:
-        - One Giant Leap for Open Source
+        - One giant leap for Open Source
     level:
       type: number
       title: Heading level
-      description: The heading level.
       enum: [1, 2, 3, 4, 5, 6]
       meta:enum:
         1: H1
@@ -36,7 +33,6 @@ props:
     text_size:
       type: string
       title: Text size
-      description: Select text size.
       enum:
         - default
         - heading-responsive-8xl
@@ -61,7 +57,6 @@ props:
     text_color:
       type: string
       title: Text color
-      description: Select text color.
       enum:
         - default
         - inverted
@@ -75,7 +70,6 @@ props:
     align:
       type: string
       title: Text alignment
-      description: The heading alignment.
       enum:
         - left
         - center
