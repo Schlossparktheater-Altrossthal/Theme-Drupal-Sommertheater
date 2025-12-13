@@ -27,37 +27,66 @@
 {{ menus.menu_links(items, attributes, 0) }}
 
 {% macro menu_links(items, attributes, menu_level) %}
+  {% set primary_nav_level = 'menu--level-' ~ (menu_level + 1) %}
   {% import _self as menus %}
   {% set menu_classes =
     menu_classes|default([])|merge(['utility-menu', 'list-none', 'gap-4', 'flex', 'flex-wrap', 'p-0', 'flex-row'])|filter(v => v is not empty)
   %}
 
   {% if items %}
-    {% set menu_items %}
+    <ul {{ attributes.addClass('menu', primary_nav_level) }}>
+      {% set attributes = attributes.removeClass(primary_nav_level) %}
       {% for item in items %}
-        {% set classes = [
-          'flex flex-col gap-y-4 max-w-fit',
-          'menu-item',
-          item.is_expanded ? 'menu-item--expanded',
-          item.is_collapsed ? 'menu-item--collapsed',
-          item.in_active_trail ? 'menu-item--active-trail'
+        {% if item.url.isRouted and item.url.routeName == '<nolink>' %}
+          {% set menu_item_type = 'nolink' %}
+        {% elseif item.url.isRouted and item.url.routeName == '<button>' %}
+          {% set menu_item_type = 'button' %}
+        {% else %}
+          {% set menu_item_type = 'link' %}
+        {% endif %}
+
+        {% set item_classes = [
+          'menu__item',
+          'menu__item--' ~ menu_item_type,
+          'menu__item--level-' ~ (menu_level + 1),
+          item.in_active_trail ? 'menu__item--active-trail',
+          item.below ? 'menu__item--has-children'
         ] %}
-        <li {{ item.attributes.addClass(classes) }}>
-          <a href="{{ item.url }}" class="group flex items-center justify-between gap-x-1 hover:underline hover:underline-offset-2">
-            <span class="utility-menu--item-text leading-tight hover:underline">{{ item.title }}</span>
-          </a>
+
+        {% set link_classes = [
+          'flex flex-row gap-y-4 items-center',
+          'hover:underline',
+          'hover:underline-offset-2',
+          'menu__link',
+          'menu__link--' ~ menu_item_type,
+          'menu__link--level-' ~ (menu_level + 1),
+          item.in_active_trail ? 'menu__link--active-trail',
+          item.below ? 'menu__link--has-children'
+        ] %}
+
+        <li {{ item.attributes.addClass(item_classes) }}>
+          {#
+          A unique HTML ID should be used, but that isn't available through
+          Twig yet, so the |clean_id filter is used for now.
+          @see https://www.drupal.org/project/drupal/issues/3115445
+          #}
+          {% set aria_id = (item.title ~ '-submenu-' ~ loop.index)|clean_id %}
+
+          {{
+            link(
+              item.title,
+              item.url,
+              {
+                class: link_classes
+              }
+            )
+          }}
+
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
         </li>
       {% endfor %}
-    {% endset %}
-
-    {% if menu_level == 0 %}
-      <ul class="{{ menu_classes|join(' ') }}">
-        {{ menu_items }}
-      </ul>
-    {% else %}
-      <ul class="menu">
-        {{ menu_items }}
-      </ul>
-    {% endif %}
+    </ul>
   {% endif %}
 {% endmacro %}
