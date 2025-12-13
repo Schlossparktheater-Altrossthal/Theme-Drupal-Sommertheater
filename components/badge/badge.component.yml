@@ -29,7 +29,8 @@ props:
         - primary
     icon:
       type: string
-      title: Icon name (exclude prefix)
+      title: Icon name
+      description: 'The ID of an icon from the <a href="https://phosphoricons.com/" target="_blank">Phosphor Icons</a> library.'
       default: "rocket"
       examples:
         - "rocket"

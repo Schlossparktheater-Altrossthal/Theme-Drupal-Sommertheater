@@ -44,26 +44,6 @@
   })
 %}
 
-{% set inner_container =
-  html_cva(
-    base: ['flex', 'h-full', 'flex-col'],
-    variants: {
-      flexAlign: {
-        start: 'justify-start',
-        center: 'justify-center',
-        end: 'justify-end',
-        between: 'justify-between'
-      }
-    }
-  )
-%}
-
-{% set inner_classes =
-  inner_container.apply({
-    flexAlign: flex_align|default('center')
-  })
-%}
-
 {% set icon_container =
   html_cva(
     base: ['flex', 'w-full'],
@@ -86,8 +66,8 @@
 {% set icon_size_map = {
   small: 'text-2xl',
   medium: 'text-4xl',
-  regular: 'text-4xl',
-  large: 'text-6xl'
+  large: 'text-5xl',
+  'extra-large': 'text-6xl'
 } %}
 
 {% set text_container =
@@ -110,7 +90,7 @@
 %}
 
 <div class="{{ tile_classes }}">
-  <div class="{{ inner_classes }}">
+  <div class="flex h-full flex-col justify-center">
     <div class="{{ icon_container_classes }}">
       {% if icon %}
         {{

@@ -3,6 +3,8 @@ name: Icon card
 group: Card
 props:
   type: object
+  required:
+    - text_align
   properties:
     tile_size:
       type: string
@@ -17,18 +19,71 @@ props:
         "16:9": Rectangle 16 × 9
       examples:
         - square
-    flex_align:
+    text:
       type: string
-      title: Alignment
-      enum:
-        - start
-        - center
-        - end
-        - between
-      default:
-        - "center"
+      title: Heading
       examples:
-        - "center"
+        - Heading
+    description:
+      type: string
+      title: Description
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - "<p>This is placeholder text.</p>"
+    text_align:
+      type: string
+      title: Text alignment
+      enum:
+        - left
+        - center
+        - right
+      meta:enum:
+        left: Left
+        center: Center
+        right: Right
+      default: center
+      examples:
+        - center
+    url:
+      type: string
+      title: Link
+    icon:
+      type: string
+      title: Icon name
+      description: 'The ID of an icon from the <a href="https://phosphoricons.com/" target="_blank">Phosphor Icons</a> library.'
+      default: "rocket"
+      examples:
+        - "rocket"
+    icon_size:
+      type: string
+      title: Icon size
+      enum:
+        - small
+        - medium
+        - large
+        - extra-large
+      meta:enum:
+        small: Small
+        medium: Medium
+        large: Large
+        extra-large: Extra large
+      examples:
+        - medium
+    icon_align:
+      type: string
+      title: Icon alignment
+      enum:
+        - left
+        - right
+        - center
+      meta:enum:
+        left: Left
+        center: Center
+        right: Right
+      default: center
+      examples:
+        - center
     border:
       type: boolean
       title: Border
@@ -55,67 +110,3 @@ props:
       default: FALSE
       examples:
         - FALSE
-    text:
-      type: string
-      title: Heading text
-      examples:
-        - Heading
-    description:
-      type: string
-      title: Paragraph text
-      contentMediaType: text/html
-      x-formatting-context: block
-      examples:
-        - "<p>This is placeholder text.</p>"
-    text_align:
-      type: string
-      title: Text alignment
-      enum:
-        - left
-        - center
-        - right
-      meta:enum:
-        left: Left
-        center: Center
-        right: Right
-      default: center
-      examples:
-        - center
-    url:
-      type: string
-      title: Link
-    icon:
-      type: string
-      title: Icon name
-      description: The ID of an icon from the <a href=\"https://phosphoricons.com/\" target=\"_blank\">Phosphor Icons</a> library.
-      default: "rocket"
-      examples:
-        - "rocket"
-    icon_size:
-      type: string
-      title: Icon size
-      enum:
-        - small
-        - regular
-        - large
-      meta:enum:
-        small: Small
-        regular: Regular
-        large: Large
-      default: regular
-      examples:
-        - regular
-    icon_align:
-      type: string
-      title: Icon alignment
-      enum:
-        - left
-        - right
-        - center
-      meta:enum:
-        left: Left
-        center: Center
-        right: Right
-      default: center
-      examples:
-        - center

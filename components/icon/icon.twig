@@ -3,4 +3,14 @@
   bold: 'ph-bold'
 } %}
 
-<i class="{{ class_from_weight[weight|default('normal')] }} ph-{{ icon }} {{ icon_size|default('text-base') }}"></i>
+{% set size_class_map = {
+  'extra-small': 'text-1xl leading-5',
+  small: 'text-2xl leading-7',
+  medium: 'text-3xl leading-9',
+  large: 'text-4xl leading-12',
+  'extra-large': 'text-6xl leading-14'
+} %}
+
+{% set resolved_size = size_class_map[icon_size]|default(icon_size)|default('text-base') %}
+
+<i class="{{ class_from_weight[weight|default('normal')] }} ph-{{ icon }} {{ resolved_size }}"></i>
