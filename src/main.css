@@ -353,10 +353,6 @@
   .progress-text {
     @apply text-inherit!;
   }
-
-  .social-menu--item .ui-icons-menu-text {
-    @apply hidden;
-  }
 }
 
 @layer utilities {
@@ -393,41 +389,5 @@
 
   .heading-responsive-xl {
     @apply text-lg md:text-xl; /* H5 */
-  }
-
-  /* Font size multiplier utilities */
-  .text-scale-75 {
-    font-size: 75%;
-    --container-font-scale: 0.75;
-  }
-
-  .text-scale-87 {
-    font-size: 87.5%;
-    --container-font-scale: 0.875;
-  }
-
-  .text-scale-100 {
-    font-size: 100%;
-    --container-font-scale: 1;
-  }
-
-  .text-scale-112 {
-    font-size: 112.5%;
-    --container-font-scale: 1.125;
-  }
-
-  .text-scale-125 {
-    font-size: 125%;
-    --container-font-scale: 1.25;
-  }
-
-  .text-scale-137 {
-    font-size: 137.5%;
-    --container-font-scale: 1.375;
-  }
-
-  .text-scale-150 {
-    font-size: 150%;
-    --container-font-scale: 1.5;
   }
 }

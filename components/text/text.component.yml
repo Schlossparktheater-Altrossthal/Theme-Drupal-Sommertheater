@@ -18,21 +18,21 @@ props:
       type: string
       title: Text size
       enum:
-        - text-scale-75
-        - text-scale-87
+        - text-xs
+        - text-sm
         - normal
-        - text-scale-112
-        - text-scale-125
-        - text-scale-137
-        - text-scale-150
+        - text-lg
+        - text-xl
+        - text-2xl
+        - text-3xl
       meta:enum:
-        text-scale-75: 12px
-        text-scale-87: 14px
+        text-xs: 12px
+        text-sm: 14px
         normal: 16px (default)
-        text-scale-112: 18px
-        text-scale-125: 20px
-        text-scale-137: 22px
-        text-scale-150: 24px
+        text-lg: 18px
+        text-xl: 20px
+        text-2xl: 24px
+        text-3xl: 32px
       examples:
         - normal
     text_color:

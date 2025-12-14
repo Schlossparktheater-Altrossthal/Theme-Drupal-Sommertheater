@@ -19,8 +19,8 @@ props:
       meta:enum:
         primary: Primary
         secondary: Secondary
-        primary-reverse: Primary inverted
-        secondary-reverse: Secondary inverted
+        primary-inverted: Primary inverted
+        secondary-inverted: Secondary inverted
       examples:
         - primary
     label:
