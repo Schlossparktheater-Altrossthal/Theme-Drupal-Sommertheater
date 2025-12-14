@@ -69,8 +69,8 @@ props:
       type: object
       examples:
         - src: "assets/jj-ying-8bghKxNU1j0-unsplash.jpg"
-          width: 640
-          height: 480
+          width: 1200
+          height: 900
           alt: "Photo by jjying: https://unsplash.com/photos/purple-and-blue-light-digital-wallpaper-8bghKxNU1j0"
     text:
       type: string
