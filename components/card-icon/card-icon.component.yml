@@ -84,6 +84,12 @@ props:
       default: center
       examples:
         - center
+    background:
+      type: boolean
+      title: Background
+      default: FALSE
+      examples:
+        - FALSE
     border:
       type: boolean
       title: Border
@@ -104,9 +110,3 @@ props:
       default: small
       examples:
         - small
-    background:
-      type: boolean
-      title: Background
-      default: FALSE
-      examples:
-        - FALSE

@@ -64,10 +64,10 @@
 %}
 
 {% set icon_size_map = {
-  small: 'text-2xl',
-  medium: 'text-4xl',
-  large: 'text-5xl',
-  'extra-large': 'text-6xl'
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  'extra-large': 'extra-large'
 } %}
 
 {% set text_container =
@@ -98,7 +98,7 @@
             '@mercury/components/icon/icon.twig',
             {
               icon: icon,
-              icon_size: icon_size_map[icon_size]|default('text-4xl')
+              icon_size: icon_size_map[icon_size]|default('medium')
             },
             with_context: false
           )
