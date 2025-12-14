@@ -6,7 +6,7 @@
 {% set button_variants =
   html_cva(
     base: [
-      'flex items-center justify-center',
+      'group flex items-center justify-center transition duration-300 ease-in-out',
       'leading-tight font-medium',
       'cursor-pointer no-underline outline-none hover:no-underline',
       'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
@@ -19,9 +19,10 @@
         large: 'gap-3 rounded-xl px-6 py-3 text-lg leading-[22px]'
       },
       variant: {
-        primary: ['bg-primary text-primary-foreground hover:bg-primary/85'],
-        secondary: ['bg-secondary text-secondary-foreground hover:bg-secondary/80'],
-        negative: ['bg-destructive text-destructive-foreground hover:bg-destructive/80']
+        primary: ['bg-primary text-primary-foreground duration-300 ease-in-out hover:bg-primary/85'],
+        secondary: ['bg-secondary text-secondary-foreground duration-300 ease-in-out hover:bg-secondary/80'],
+        'primary-inverted': ['bg-primary-foreground text-primary duration-300 ease-in-out hover:bg-primary-foreground/85'],
+        'secondary-inverted': ['bg-secondary-foreground text-secondary duration-300 ease-in-out hover:bg-secondary-foreground/80']
       },
       width: {
         full: 'w-full sm:w-fit',
@@ -72,17 +73,19 @@
     {{ disabled_attr }}
   >
     {% if has_icon %}
-      {{
-        include(
-          '@mercury/components/icon/icon.twig',
-          {
-            weight: 'bold',
-            icon: icon,
-            icon_size: icon_size_map[button_size]
-          },
-          with_context: false
-        )
-      }}
+      <span class="transition duration-300 ease-in-out group-hover:translate-x-1">
+        {{
+          include(
+            '@mercury/components/icon/icon.twig',
+            {
+              weight: 'bold',
+              icon: icon,
+              icon_size: icon_size_map[button_size]
+            },
+            with_context: false
+          )
+        }}
+      </span>
     {% endif %}
     {{ label }}
   </a>

@@ -6,7 +6,7 @@
   &:active,
   &:focus {
     &:is(.a, :not(.a)) {
-      @apply md:bg-primary md:text-primary-foreground;
+      @apply duration-300 md:bg-primary md:text-primary-foreground;
     }
   }
 }
@@ -37,7 +37,7 @@
 }
 
 .dropdown-menu__link[data-level="1"] {
-  @apply rounded-md px-3 py-2 md:px-2;
+  @apply rounded-md p-2;
 }
 
 .dropdown-menu__expand-button[data-level="1"] {

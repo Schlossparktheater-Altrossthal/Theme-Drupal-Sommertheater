@@ -1,28 +1,36 @@
 {% set card =
   html_cva(
-    base: [
-      'relative flex flex-col gap-3 p-3 in-[.views-row]:h-full md:gap-4 md:p-4 lg:gap-6 lg:p-6',
-      'transition-colors duration-300',
-      'rounded-sm border border-border bg-card text-card-foreground shadow-lg'
-    ],
+    base: ['group relative flex cursor-pointer rounded-md shadow-lg transition duration-300 hover:scale-103 in-[.views-row]:h-full'],
     variants: {
       orientation: {
-        stacked: '',
-        landscape: 'md:flex-row'
+        vertical: 'flex-col',
+        horizontal: 'md:flex-row'
       },
       isTextCentered: {
         yes: 'text-center',
         no: 'text-left'
       },
       clickable: {
-        yes: 'group cursor-pointer hover:bg-muted hover:text-muted-foreground',
+        yes: '',
         no: ''
+      },
+      style: {
+        framed: 'gap-4 p-4 lg:p-6',
+        full: ''
+      },
+      backgroundColor: {
+        default: 'bg-card text-card-foreground hover:bg-card/80',
+        accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
+        primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
+        inverted: 'bg-foreground text-background hover:bg-foreground/80'
       }
     }
   )
 %}
 
-{% set card_orientation = orientation|default('stacked') %}
+{% set card_orientation = orientation|default('vertical') %}
+{% set card_style = style|default('framed') %}
+{% set card_background = background|default('dark') %}
 {% set is_text_centered = is_text_centered|default(false) ? 'yes' : 'no' %}
 {% set is_clickable = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
 
@@ -31,21 +39,49 @@
     base: 'aspect-video overflow-hidden',
     variants: {
       orientation: {
-        stacked: '',
-        landscape: 'md:aspect-auto md:flex-[0_1_50%]'
+        vertical: '',
+        horizontal: 'md:aspect-auto md:flex-[0_1_50%]'
       }
-    }
+    },
+    compound_variants: [
+      {
+        orientation: ['horizontal'],
+        style: ['full'],
+        class: 'rounded-l-md'
+      },
+      {
+        orientation: ['vertical'],
+        style: ['full'],
+        class: 'rounded-t-md'
+      }
+    ]
   )
 %}
 
 {% set card_content =
   html_cva(
-    base: 'flex w-full flex-col items-baseline gap-4',
+    base: 'flex w-full flex-col items-baseline',
     variants: {
       orientation: {
-        stacked: '',
-        landscape: 'md:flex-[0_1_50%] md:py-4'
-      }
+        vertical: '',
+        horizontal: 'md:flex-[0_1_50%]'
+      },
+      style: {
+        framed: '',
+        full: 'rounded-b p-6 lg:p-8'
+      },
+      compound_variants: [
+        {
+          orientation: ['horizontal'],
+          style: ['full'],
+          class: 'py-0'
+        },
+        {
+          orientation: ['horizontal'],
+          style: ['framed'],
+          class: 'md:py-4'
+        }
+      ]
     }
   )
 %}
@@ -56,7 +92,9 @@
     {
       orientation: card_orientation,
       isTextCentered: is_text_centered,
-      clickable: is_clickable
+      clickable: is_clickable,
+      style: card_style,
+      backgroundColor: card_background
     },
     card_classes|default('')
   )
@@ -66,7 +104,8 @@
     <div
       class="{{
       card_media.apply({
-        orientation: card_orientation
+        orientation: card_orientation,
+        style: card_style
       })
       }}"
     >
@@ -86,14 +125,19 @@
   <div
     class="{{
     card_content.apply({
-      orientation: card_orientation
+      orientation: card_orientation,
+      style: card_style
     })
     }}"
   >
-    <div class="flex w-full flex-col gap-6">
-      <h3 class="font-semibold"><a href="{{ url }}" class="after:absolute after:inset-0 after:content-['']">{{ heading_text }}</a></h3>
+    <div class="flex w-full flex-col gap-1 md:gap-2">
+      <h3 class="font-semibold">
+        {% if is_clickable %}
+          <a href="{{ url }}" class="after:absolute after:inset-0 after:content-['']">{{ heading_text }}</a>
+        {% endif %}
+      </h3>
       {% if text is not empty %}
-        <p class="text-lg xl:text-xl">
+        <p class="mb-0 text-lg xl:text-xl">
           {{ text }}
         </p>
       {% endif %}

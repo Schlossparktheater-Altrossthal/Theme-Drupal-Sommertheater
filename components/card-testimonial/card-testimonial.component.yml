@@ -3,10 +3,14 @@ name: Testimonial card
 group: Card
 props:
   type: object
+  required:
+    - align
+    - style
   properties:
     text:
       type: string
-      title: Blockquote text
+      title: Quote text
+      pattern: "(.|\\r?\\n)*"
       examples:
         - "My career’s guidance was crucial in helping me understand the tech industry landscape and ultimately secure my role."
     cite_name:
@@ -24,13 +28,25 @@ props:
       title: Citation link
     align:
       type: string
-      title: Text alignment
+      title: Alignment
       enum:
         - center
         - left
       default: center
       examples:
         - center
+    style:
+      type: string
+      title: Style
+      enum:
+        - default
+        - inverted
+      meta:enum:
+        default: Default
+        inverted: Inverted
+      default: default
+      examples:
+        - default
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Image

@@ -38,14 +38,8 @@
         [
           'dropdown-menu__item',
           item.in_active_trail ? 'dropdown-menu__item--active-trail' : '',
-          'flex',
-          'flex-wrap',
-          'justify-between',
-          'md:flex-nowrap',
-          'w-full',
-          'md:w-auto',
-          'md:relative',
-          'md:max-w-[375px]',
+          'flex flex-wrap justify-between md:flex-nowrap',
+          'w-full md:w-auto md:relative md:max-w-[375px]',
           'text-base font-medium'
         ]|filter(c => c is not empty)
       %}

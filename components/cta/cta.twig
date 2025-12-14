@@ -1,22 +1,25 @@
 {% set cta_text_align = text_align|default('center') %}
+{% set background_color = background_color|default('noColor') %}
 
-{% set cta_variants = html_cva(base: ['cta relative z-1 bg-background text-foreground']) %}
+{% set cta_variants =
+  html_cva(
+    base: ['relative z-1'],
+    variants: {
+      backgroundColor: {
+        primary: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
+        accent: 'bg-accent text-accent-foreground',
+        muted: 'bg-muted text-muted-foreground',
+        inverted: 'bg-foreground text-background',
+        noColor: 'bg-none text-foreground'
+      }
+    }
+  )
+%}
 
 {% set cta_content_variants =
   html_cva(
-    base: [
-      'cta--content',
-      'relative',
-      'flex',
-      'min-h-80',
-      'flex-col',
-      'justify-center',
-      'gap-6',
-      'py-[90px]',
-      'lg:gap-8',
-      'lg:py-[115px]',
-      'xl:py-[140px]'
-    ],
+    base: ['relative', 'flex flex-col justify-center', 'min-h-80', 'gap-6 lg:gap-8', 'py-[90px] lg:py-[115px] xl:py-[140px]'],
     variants: {
       textAlign: {
         left: ['text-left'],
@@ -33,7 +36,7 @@
 
 {% set cta_links_variants =
   html_cva(
-    base: ['cta--links', 'flex', 'w-full', 'flex-col', 'gap-6', 'sm:flex-row'],
+    base: ['flex', 'w-full', 'flex-col', 'gap-6', 'sm:flex-row'],
     variants: {
       textAlign: {
         left: 'md:justify-start',
@@ -44,10 +47,16 @@
   )
 %}
 
-<section class="{{ cta_variants.apply({}) }}">
+<section
+  class="{{
+  cta_variants.apply({
+    backgroundColor: background_color
+  })
+  }}"
+>
   {% block media %}
     {% if media.src is not empty %}
-      <div class="cta--media absolute z-[-1] h-full w-full">
+      <div class="absolute z-[-1] h-full w-full">
         <div class="absolute inset-0 bg-black/30"></div>
         {% include 'canvas:image' ignore missing with {
           src: media.src,
@@ -74,14 +83,14 @@
           level: level|default(2),
           align: cta_text_align,
           text_color: 'default',
-          heading_classes: ['font-extrabold'],
           url: '',
-          text_size: 'heading-responsive-6xl'
+          heading_classes: 'max-w-3xl',
+          text_size: 'heading-responsive-7xl'
         },
         with_context: false
       )
     }}
-    <p class="text-lg font-normal">
+    <p class="max-w-2xl text-xl font-normal">
       {{ text }}
     </p>
     {% if block('actions') is defined %}

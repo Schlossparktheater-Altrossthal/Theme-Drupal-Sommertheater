@@ -98,12 +98,10 @@ props:
         - secondary
         - accent
         - muted
-        - "accent-light"
       meta:enum:
         primary: Primary
         secondary: Secondary
         accent: Accent
-        "accent-light": Accent light
         muted: Muted
     background_media:
       $ref: json-schema-definitions://canvas.module/image

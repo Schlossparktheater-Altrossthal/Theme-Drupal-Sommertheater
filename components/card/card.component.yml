@@ -6,12 +6,50 @@ props:
   required:
     - heading_text
     - orientation
+    - style
   properties:
+    background:
+      type: string
+      title: Background
+      enum:
+        - default
+        - accent
+        - primary
+        - inverted
+      meta:enum:
+        default: Default
+        accent: Accent
+        primary: Primary
+        inverted: Inverted
+      examples:
+        - default
+    style:
+      type: string
+      title: Style
+      enum:
+        - framed
+        - full
+      meta:enum:
+        framed: Framed
+        full: Full width
+      examples:
+        - framed
+    orientation:
+      type: string
+      title: Orientation
+      enum:
+        - vertical
+        - horizontal
+      meta:enum:
+        vertical: Vertical
+        horizontal: Horizontal
+      examples:
+        - vertical
     heading_text:
       type: string
       title: Heading
       examples:
-        - "This is my title eu torquent suscipit"
+        - "This is your card title"
     level:
       type: number
       title: Heading level
@@ -30,28 +68,18 @@ props:
       title: Image
       type: object
       examples:
-        - src: "assets/277628-911758.jpg"
+        - src: "assets/jj-ying-8bghKxNU1j0-unsplash.jpg"
           width: 640
-          height: 427
-          alt: "Photo by gdtography: https://www.pexels.com/photo/long-exposure-photography-white-dome-building-interior-911758/"
+          height: 480
+          alt: "Photo by jjying: https://unsplash.com/photos/purple-and-blue-light-digital-wallpaper-8bghKxNU1j0"
     text:
       type: string
       title: Description
+      pattern: "(.|\\r?\\n)*"
       examples:
-        - "Quaerat laborum rerum dolores dolores dolor qui. Laudantium itaque sint aut culpa omnis eius pariatur. Quia laborum commodi excepturi neque tempore. Fuga dolor dolores perspiciatis."
+        - "Quaerat laborum rerum dolores dolores dolor qui."
     is_text_centered:
       type: boolean
       title: Center text
       examples:
         - false
-    orientation:
-      type: string
-      title: Orientation
-      enum:
-        - "vertical"
-        - "horizontal"
-      meta:enum:
-        stacked: Vertical
-        landscape: Horizontal
-      examples:
-        - vertical

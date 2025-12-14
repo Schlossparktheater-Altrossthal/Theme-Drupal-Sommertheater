@@ -14,11 +14,13 @@ props:
       enum:
         - primary
         - secondary
-        - negative
+        - primary-inverted
+        - secondary-inverted
       meta:enum:
         primary: Primary
         secondary: Secondary
-        negative: Negative
+        primary-reverse: Primary inverted
+        secondary-reverse: Secondary inverted
       examples:
         - primary
     label:
@@ -43,10 +45,6 @@ props:
         large: Large
       examples:
         - medium
-    mobile_width:
-      type: boolean
-      title: Full width on mobile
-      default: false
     icon:
       type: string
       title: Icon
@@ -66,6 +64,10 @@ props:
         user-plus: User plus
       examples:
         - arrow-right
+    mobile_width:
+      type: boolean
+      title: Full width on mobile
+      default: false
     icon_first:
       type: boolean
       title: Display icon first

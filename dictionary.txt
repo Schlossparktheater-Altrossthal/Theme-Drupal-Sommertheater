@@ -17,6 +17,8 @@ extralight
 fediverse
 filemap
 fullwidth
+ying
+jjying
 gdtography
 goodreads
 horz
