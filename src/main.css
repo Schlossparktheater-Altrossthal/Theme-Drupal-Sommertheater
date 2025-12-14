@@ -67,8 +67,6 @@
   --animate-show-and-expand-horizontally: show-and-expand-horizontally 0ms ease-in-out forwards;
   --animate-collapse-horizontally-and-hide: collapse-horizontally-and-hide 0ms ease-in-out forwards;
 
-  --font-display: var(--font-sans);
-
   /* Second-level (desktop) menu expansion. */
   @keyframes show-and-expand-vertically {
     0% {
@@ -146,10 +144,6 @@
 
 /* Custom theme classes */
 @layer base {
-  .material-symbols-outlined {
-    font-size: unset;
-  }
-
   body {
     @apply bg-background font-normal text-foreground;
   }
@@ -163,22 +157,13 @@
     @apply list-disc ps-5;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
-  }
-
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply text-5xl leading-none font-semibold md:text-6xl 2xl:text-8xl;
+    @apply text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
   }
 
   h2 {
-    @apply text-4xl font-semibold md:text-5xl xl:text-6xl;
+    @apply text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
   }
 
   h3 {
@@ -243,10 +228,6 @@
 }
 
 @layer components {
-  .pager {
-    @apply text-foreground;
-  }
-
   .snap-first > .card {
     @apply ms-6 sm:ms-0;
   }
@@ -380,9 +361,6 @@
 
 @layer utilities {
   /* For custom utility classes with highest precedence. */
-  .font-display {
-    font-family: var(--font-display);
-  }
 
   /* Responsive text size utility */
   .heading-responsive-8xl {
@@ -452,9 +430,4 @@
     font-size: 150%;
     --container-font-scale: 1.5;
   }
-}
-
-/* Custom overrides placed outside @layer to ensure they load last and override external styles */
-.icon-5xl {
-  font-size: var(--text-5xl);
 }
