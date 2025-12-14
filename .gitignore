@@ -27,3 +27,6 @@ build/*
 public/components
 CLAUDE.md
 .claude/*
+
+*storybook.log
+storybook-static
