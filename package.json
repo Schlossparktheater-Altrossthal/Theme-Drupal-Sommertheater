@@ -8,13 +8,21 @@
     "build": "$npm_execpath run s:tailwindcss",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "s:tailwindcss": "tailwindcss --input ./src/main.css --minify --output ./build/main.min.css"
+    "s:tailwindcss": "tailwindcss --input ./src/main.css --minify --output ./build/main.min.css",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@storybook/html-vite": "^10.1.8",
     "@tailwindcss/cli": "^4.1.17",
     "@zackad/prettier-plugin-twig": "^0.16.0",
+    "class-variance-authority": "^0.7.1",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.17"
+    "storybook": "^10.1.8",
+    "storybook-addon-sdc": "^0.19.2",
+    "tailwindcss": "^4.1.17",
+    "vite": "^6",
+    "vite-plugin-twing-drupal": "^1.0.14"
   }
 }
