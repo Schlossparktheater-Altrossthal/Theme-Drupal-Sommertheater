@@ -41,6 +41,7 @@ replit
 revindex
 safelisted
 sbdocs
+shadcn
 sidebyside
 sidebysidehero
 soundcloud
