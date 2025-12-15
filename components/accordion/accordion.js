@@ -16,6 +16,10 @@ class Accordion extends ComponentInstance {
 
   init() {
     if (currentlyInCanvasEditor()) {
+      // In Canvas editor, show content by removing collapsed state classes
+      const content = this.el.querySelector(".accordion--content");
+      content.classList.remove("h-0", "py-0", "overflow-hidden");
+      content.classList.add("h-auto", "py-4", "overflow-visible");
       return;
     }
 

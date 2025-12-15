@@ -4,6 +4,8 @@ description: A single section of content than can be collapsed and expanded.
 group: Layout
 props:
   type: object
+  required:
+    - heading_level
   properties:
     title:
       type: string

@@ -2,7 +2,6 @@
 
 @import "../components/hero-blog/hero-blog.tailwind.css";
 @import "../components/navbar/navbar.tailwind.css";
-@import "../components/accordion/accordion.tailwind.css";
 @import "../components/dropdown-menu/dropdown-menu.tailwind.css";
 @import "../components/anchor/anchor.tailwind.css";
 @import "../components/logo-grid/logo-grid.tailwind.css";
