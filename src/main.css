@@ -2,7 +2,6 @@
 
 @import "../components/hero-blog/hero-blog.tailwind.css";
 @import "../components/navbar/navbar.tailwind.css";
-@import "../components/dropdown-menu/dropdown-menu.tailwind.css";
 @import "../components/anchor/anchor.tailwind.css";
 @import "../components/logo-grid/logo-grid.tailwind.css";
 @import "./fonts.css";
@@ -59,85 +58,6 @@
   --font-weight-bold: 700;
 
   --spacing: 4px;
-
-  --animate-show-and-expand-vertically: show-and-expand-vertically 0ms ease-in-out forwards;
-  --animate-collapse-vertically-and-hide: collapse-vertically-and-hide 0ms ease-in-out forwards;
-  --animate-show-and-expand-horizontally: show-and-expand-horizontally 0ms ease-in-out forwards;
-  --animate-collapse-horizontally-and-hide: collapse-horizontally-and-hide 0ms ease-in-out forwards;
-
-  /* Second-level (desktop) menu expansion. */
-  @keyframes show-and-expand-vertically {
-    0% {
-      --hgc-display-mode: "none";
-      visibility: visible;
-      scale: 1 0;
-      height: 0;
-    }
-
-    1% {
-      /*
-       * An invalid display value falls back to the second argument of `var()`.
-       * This way each element can have its own default display mode, whether
-       * block or flex or whatever.
-       */
-      --hgc-display-mode: invaliddisplay;
-      height: auto;
-    }
-
-    100% {
-      scale: 1 1;
-    }
-  }
-
-  /* Second-level (desktop) menu collapse. */
-  @keyframes collapse-vertically-and-hide {
-    0% {
-      --hgc-display-mode: invaliddisplay;
-      scale: 1;
-      visibility: visible;
-      height: auto;
-    }
-
-    99% {
-      --hgc-display-mode: invaliddisplay;
-      scale: 1 0;
-      height: auto;
-    }
-
-    100% {
-      --hgc-display-mode: "none";
-      visibility: hidden;
-      height: 0;
-    }
-  }
-
-  /* Third-level and greater menu expansion (all levels on mobile). */
-  @keyframes show-and-expand-horizontally {
-    from {
-      visibility: visible;
-      scale: 0 1;
-    }
-
-    to {
-      scale: 1 1;
-    }
-  }
-
-  /* Third-level and greater menu collapse (all levels on mobile). */
-  @keyframes collapse-horizontally-and-hide {
-    0% {
-      scale: 1;
-      visibility: visible;
-    }
-
-    99% {
-      scale: 0 1;
-    }
-
-    100% {
-      visibility: hidden;
-    }
-  }
 }
 
 /* Custom theme classes */

@@ -38,7 +38,7 @@ props:
       meta:enum:
         small: Small
         medium: Medium
-        large: large
+        large: Large
       default: small
       examples:
         - small

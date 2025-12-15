@@ -8,8 +8,3 @@ global:
         # aggregates where it may get duplicated across files.
         preprocess: false
         minified: true
-dropdown-menu:
-  js:
-    components/dropdown-menu/dropdown-menu.js:
-      attributes:
-        type: module
