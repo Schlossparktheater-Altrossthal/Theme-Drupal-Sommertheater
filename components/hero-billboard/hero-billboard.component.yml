@@ -4,6 +4,9 @@ group: Hero
 props:
   type: object
   required:
+    - height
+    - flex_position
+    - object_position
     - overlay_opacity
   properties:
     height:

@@ -18,14 +18,16 @@
 
 {% set resolved_size = size_map[icon_size]|default(size_map['small']) %}
 
-{{
-  icon(
-    'phosphor',
-    icon,
-    {
-      size: resolved_size,
-      color: icon_color|default('currentColor'),
-      alt: alt|default('')
-    }
-  )
-}}
+<div class="min-w:{{ resolved_size }}">
+  {{
+    icon(
+      'phosphor',
+      icon,
+      {
+        size: resolved_size,
+        color: icon_color|default('currentColor'),
+        alt: alt|default('')
+      }
+    )
+  }}
+</div>

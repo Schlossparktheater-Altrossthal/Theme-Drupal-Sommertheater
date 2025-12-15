@@ -7,6 +7,7 @@ props:
   required:
     - flex_direction
     - flex_align
+    - items_align
   properties:
     flex_direction:
       type: string
@@ -35,6 +36,20 @@ props:
         xl: Extra-Large
       examples:
         - md
+    items_align:
+      type: string
+      title: Alignment within group
+      enum:
+        - start
+        - center
+        - end
+      meta:enum:
+        start: Start
+        center: Center
+        end: End
+      default: "start"
+      examples:
+        - "start"
     flex_align:
       type: string
       title: Alignment within parent

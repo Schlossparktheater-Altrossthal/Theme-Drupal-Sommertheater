@@ -8,6 +8,11 @@
         'column-reverse': 'flex-col-reverse',
         'row-reverse': 'flex-row-reverse'
       },
+      groupAlign: {
+        start: 'items-start justify-start',
+        center: 'items-center justify-center',
+        end: 'items-end justify-end'
+      },
       flexAlign: {
         start: 'self-start',
         center: 'self-center',
@@ -43,6 +48,7 @@
 {% set group_classes =
   group.apply({
     flexDirection: flex_direction,
+    groupAlign: items_align|default('start'),
     flexAlign: flex_align|default('center'),
     flexGap: flex_gap,
     radius: radius,
