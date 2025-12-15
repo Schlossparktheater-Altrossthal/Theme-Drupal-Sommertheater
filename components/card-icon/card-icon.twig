@@ -1,22 +1,19 @@
-{% set has_border = border|default(false) ? 'yes' : 'no' %}
 {% set has_url = url is not empty ? 'yes' : 'no' %}
-{% set has_background = background|default(false) ? 'yes' : 'no' %}
 
 {% set tile =
   html_cva(
-    base: ['relative bg-background text-foreground [&_*]:leading-tight [&_.ph]:text-foreground'],
+    base: ['relative p-6'],
     variants: {
-      hasBorder: {
-        yes: 'border border-border p-6',
-        no: ''
-      },
       hasUrl: {
-        yes: 'group cursor-pointer transition-colors duration-300 focus-within:bg-muted hover:bg-muted hover:text-muted-foreground',
+        yes: 'group cursor-pointer transition duration-300 hover:scale-103',
         no: ''
       },
-      hasBackground: {
-        yes: 'bg-secondary p-6',
-        no: ''
+      backgroundColor: {
+        primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
+        muted: 'bg-muted text-muted-foreground hover:bg-muted/80',
+        noColor: 'border border-border bg-none text-foreground hover:bg-background/80'
       },
       tileSize: {
         square: 'aspect-square',
@@ -26,8 +23,8 @@
       },
       borderRadius: {
         small: 'rounded-sm',
-        large: 'rounded-xl md:rounded-2xl',
-        'extra-large': 'rounded-[24px] md:rounded-[32px]',
+        medium: 'rounded-xl md:rounded-2xl',
+        large: 'rounded-[24px] md:rounded-[32px]',
         noRadius: 'rounded-none'
       }
     }
@@ -36,9 +33,8 @@
 
 {% set tile_classes =
   tile.apply({
-    hasBorder: has_border,
     hasUrl: has_url,
-    hasBackground: has_background,
+    backgroundColor: background_color|default('noColor'),
     tileSize: tile_size|default('noSize'),
     borderRadius: border_radius|default('noRadius')
   })
@@ -111,19 +107,19 @@
         {% if url is not empty %}
           <a href="{{ url }}" class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3 class="text-foreground">{{ text }}</h3>
+              <h3>{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="mt-3 text-foreground opacity-75">{{ description }}</span>
+              <span class="mt-3 opacity-75">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}
           <span class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3 class="text-foreground">{{ text }}</h3>
+              <h3>{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="mt-3 text-muted-foreground">{{ description }}</span>
+              <span class="mt-3">{{ description }}</span>
             {% endif %}
           </span>
         {% endif %}

@@ -5,6 +5,7 @@ props:
   type: object
   required:
     - text_align
+    - icon_align
   properties:
     tile_size:
       type: string
@@ -19,35 +20,33 @@ props:
         "16:9": Rectangle 16 × 9
       examples:
         - square
-    text:
+    background_color:
       type: string
-      title: Heading
-      examples:
-        - Heading
-    description:
-      type: string
-      title: Description
-      contentMediaType: text/html
-      x-formatting-context: block
-      examples:
-        - "<p>This is placeholder text.</p>"
-    text_align:
-      type: string
-      title: Text alignment
+      title: Background color
       enum:
-        - left
-        - center
-        - right
+        - primary
+        - secondary
+        - accent
+        - muted
       meta:enum:
-        left: Left
-        center: Center
-        right: Right
-      default: center
-      examples:
-        - center
-    url:
+        primary: Primary
+        secondary: Secondary
+        accent: Accent
+        muted: Muted
+    border_radius:
       type: string
-      title: Link
+      title: Border radius
+      enum:
+        - small
+        - medium
+        - large
+      meta:enum:
+        small: Small
+        medium: Medium
+        large: Large
+      default: medium
+      examples:
+        - medium
     icon:
       type: string
       title: Icon name
@@ -69,7 +68,7 @@ props:
         large: Large
         extra-large: Extra large
       examples:
-        - medium
+        - large
     icon_align:
       type: string
       title: Icon alignment
@@ -84,29 +83,32 @@ props:
       default: center
       examples:
         - center
-    background:
-      type: boolean
-      title: Background
-      default: FALSE
-      examples:
-        - FALSE
-    border:
-      type: boolean
-      title: Border
-      default: TRUE
-      examples:
-        - TRUE
-    border_radius:
+    url:
       type: string
-      title: Border radius
-      enum:
-        - small
-        - large
-        - extra-large
-      meta:enum:
-        small: Small
-        large: Large
-        extra-large: Extra large
-      default: small
+      title: Link
+    text:
+      type: string
+      title: Heading
       examples:
-        - small
+        - Your heading here
+    description:
+      type: string
+      title: Description
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - "<p>This is placeholder text.</p>"
+    text_align:
+      type: string
+      title: Text alignment
+      enum:
+        - left
+        - center
+        - right
+      meta:enum:
+        left: Left
+        center: Center
+        right: Right
+      default: center
+      examples:
+        - center

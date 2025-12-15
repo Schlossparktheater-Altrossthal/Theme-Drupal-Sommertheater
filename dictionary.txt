@@ -19,6 +19,8 @@ filemap
 fullwidth
 ying
 jjying
+mittermeier
+Mittermeier
 gdtography
 goodreads
 horz
@@ -30,6 +32,7 @@ nonbinary
 occaecati
 onigiri
 pede
+pexels
 pinterest
 pixabay
 potenti

@@ -9,10 +9,10 @@ props:
       title: Image
       type: object
       examples:
-        - src: "assets/957040.jpg"
-          alt: "Placeholder text."
-          width: 640
-          height: 427
+        - src: "assets/pexels-felix-mittermeier-1209650.jpg"
+          alt: "Photo by Felix Mittermeier: https://www.pexels.com/photo/atmospheric-evening-bavaria-beautiful-clouds-1209650/"
+          width: 1920
+          height: 1014
     size:
       title: Aspect ratio
       type: string
@@ -47,3 +47,6 @@ props:
     caption:
       title: Caption
       type: string
+    url:
+      type: string
+      title: Link

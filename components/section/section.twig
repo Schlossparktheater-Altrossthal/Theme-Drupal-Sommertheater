@@ -1,3 +1,8 @@
+{# Boolean for conditionals #}
+{% set has_background_image = background_media is not empty and background_media.src is not empty %}
+{# String for CVA variants #}
+{% set has_background_image_variant = has_background_image ? 'yes' : 'no' %}
+
 {% set section =
   html_cva(
     base: ['relative', 'flex', 'flex-col', 'items-stretch', 'mx-auto'],
@@ -40,6 +45,13 @@
         '16': 'pb-4',
         '32': 'pb-6 md:pb-7 xl:pb-8',
         '64': 'pb-10 md:pb-13 xl:pb-16'
+      },
+      backgroundColor: {
+        primary: 'text-primary-foreground',
+        secondary: 'text-secondary-foreground',
+        accent: 'text-accent-foreground',
+        muted: 'text-muted-foreground',
+        noColor: 'text-foreground'
       }
     }
   )
@@ -50,7 +62,8 @@
     marginBlockStart: margin_block_start,
     marginBlockEnd: margin_block_end,
     paddingBlockStart: padding_block_start,
-    paddingBlockEnd: padding_block_end
+    paddingBlockEnd: padding_block_end,
+    backgroundColor: background_color|default('noColor')
   })
 %}
 
@@ -65,11 +78,15 @@
     base: ['absolute', 'inset-0', 'z-[-1]'],
     variants: {
       backgroundColor: {
-        primary: 'bg-primary text-primary-foreground',
-        secondary: 'bg-secondary text-secondary-foreground',
-        accent: 'bg-accent text-accent-foreground',
-        muted: 'bg-muted text-muted-foreground',
-        noColor: 'bg-none text-foreground'
+        primary: 'bg-primary',
+        secondary: 'bg-secondary',
+        accent: 'bg-accent',
+        muted: 'bg-muted',
+        noColor: 'bg-none'
+      },
+      backgroundImage: {
+        yes: 'opacity-50',
+        no: ''
       }
     }
   )
@@ -77,7 +94,8 @@
 
 {% set background_classes =
   background.apply({
-    backgroundColor: background_color|default('noColor')
+    backgroundColor: background_color|default('noColor'),
+    backgroundImage: has_background_image_variant
   })
 %}
 
