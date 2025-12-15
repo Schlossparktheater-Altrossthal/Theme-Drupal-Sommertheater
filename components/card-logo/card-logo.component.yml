@@ -1,6 +1,6 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Logo card
-description: A component showing its children in a grid on desktop and in a horizontally-scrolling line on mobile.
+description: A component with an image and optional background and link.
 group: Card
 props:
   type: object

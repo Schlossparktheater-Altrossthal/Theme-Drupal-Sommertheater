@@ -6,6 +6,7 @@ props:
   type: object
   required:
     - columns
+    - mobile_columns
     - width
     - margin_block_start
     - margin_block_end
@@ -27,6 +28,7 @@ props:
     columns:
       type: string
       title: Grid layout
+      description: Layout selected applies on desktop and tablet.
       enum:
         - "100"
         - "50-50"
@@ -42,6 +44,15 @@ props:
         - "50-50"
       default:
         - "50-50"
+    mobile_columns:
+      type: string
+      title: Columns on mobile
+      enum:
+        - "1"
+        - "2"
+        - "3"
+      examples:
+        - "1"
     margin_block_start:
       type: string
       title: Margin top
