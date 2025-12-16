@@ -1,60 +1,61 @@
-{% set card =
-  html_cva(
-    base: ['group relative flex cursor-pointer rounded-md shadow-lg transition duration-300 hover:scale-103 in-[.views-row]:h-full'],
-    variants: {
-      orientation: {
-        vertical: 'flex-col',
-        horizontal: 'md:flex-row'
-      },
-      isTextCentered: {
-        yes: 'text-center',
-        no: 'text-left'
-      },
-      clickable: {
-        yes: '',
-        no: ''
-      },
-      style: {
-        framed: 'gap-4 p-4 lg:p-6',
-        full: ''
-      },
-      backgroundColor: {
-        default: 'bg-card text-card-foreground hover:bg-card/80',
-        accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
-        inverted: 'bg-foreground text-background hover:bg-foreground/80'
-      }
-    }
-  )
-%}
-
 {% set card_orientation = orientation|default('vertical') %}
 {% set card_style = style|default('framed') %}
-{% set card_background = background|default('dark') %}
+{% set card_background = background|default('noColor') %}
 {% set is_text_centered = is_text_centered|default(false) ? 'yes' : 'no' %}
 {% set is_clickable = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
+
+{% set card =
+  html_cva(
+    base: ['group relative flex rounded-md shadow-lg in-[.views-row]:h-full'],
+    variants: {
+    orientation: {
+      vertical: 'flex-col',
+      horizontal: 'md:flex-row'
+    },
+    isTextCentered: {
+      yes: 'text-center',
+      no: 'text-left'
+    },
+    clickable: {
+      yes: 'cursor-pointer transition duration-300 hover:scale-103',
+      no: ''
+    },
+    style: {
+      framed: 'gap-4 p-4',
+      full: ''
+    },
+    backgroundColor: {
+      default: 'bg-card text-card-foreground hover:bg-card/80',
+      accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
+      primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
+      inverted: 'bg-foreground text-background hover:bg-foreground/80',
+      noColor: 'shadow-none'
+    }
+  }
+  )
+%}
 
 {% set card_media =
   html_cva(
     base: 'aspect-video overflow-hidden',
     variants: {
-      orientation: {
-        vertical: '',
-        horizontal: 'md:aspect-auto md:flex-[0_1_50%]'
-      }
-    },
+    orientation: {
+      vertical: '',
+      horizontal: 'md:aspect-auto md:flex-[0_1_50%]'
+    }
+  },
     compound_variants: [
-      {
-        orientation: ['horizontal'],
-        style: ['full'],
-        class: 'rounded-l-md'
-      },
-      {
-        orientation: ['vertical'],
-        style: ['full'],
-        class: 'rounded-t-md'
-      }
-    ]
+    {
+      orientation: ['horizontal'],
+      style: ['full'],
+      class: 'rounded-l-md'
+    },
+    {
+      orientation: ['vertical'],
+      style: ['full'],
+      class: 'rounded-t-md'
+    }
+  ]
   )
 %}
 
@@ -62,27 +63,39 @@
   html_cva(
     base: 'flex w-full flex-col items-baseline',
     variants: {
-      orientation: {
-        vertical: '',
-        horizontal: 'md:flex-[0_1_50%]'
-      },
-      style: {
-        framed: '',
-        full: 'rounded-b p-6 lg:p-8'
-      },
-      compound_variants: [
-        {
-          orientation: ['horizontal'],
-          style: ['full'],
-          class: 'py-0'
-        },
-        {
-          orientation: ['horizontal'],
-          style: ['framed'],
-          class: 'md:py-4'
-        }
-      ]
+    orientation: {
+      vertical: '',
+      horizontal: 'md:flex-[0_1_50%]'
+    },
+    style: {
+      framed: '',
+      full: 'rounded-b p-4'
     }
+  },
+    compound_variants: [
+    {
+      orientation: ['horizontal'],
+      style: ['full'],
+      class: 'p-4 lg:p-6'
+    },
+    {
+      orientation: ['horizontal'],
+      style: ['framed'],
+      class: ''
+    },
+    {
+      orientation: ['vertical'],
+      backgroundColor: ['noColor'],
+      style: ['full'],
+      class: 'px-0!'
+    },
+    {
+      orientation: ['horizontal'],
+      backgroundColor: ['noColor'],
+      style: ['full'],
+      class: 'py-0!'
+    }
+  ]
   )
 %}
 
@@ -126,7 +139,8 @@
     class="{{
     card_content.apply({
       orientation: card_orientation,
-      style: card_style
+      style: card_style,
+      backgroundColor: card_background
     })
     }}"
   >
