@@ -13,4 +13,4 @@ build/
 components/**/*.css
 !components/**/*.tailwind.css
 # We do not care about the lock file's formatting.
-pnpm-lock.yaml
+package-lock.json

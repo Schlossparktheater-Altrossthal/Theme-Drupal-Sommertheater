@@ -7,5 +7,5 @@
 /vitePlugins export-ignore
 /.gitlab-ci.yml export-ignore
 /dictionary.txt export-ignore
-/pnpm-lock.yaml export-ignore
+/package-lock.json export-ignore
 /*.config.js export-ignore

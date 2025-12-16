@@ -501,18 +501,18 @@ Or use a wrapper approach:
 
 ### Run Format and Build After Changes
 
-**Rule**: After completing any changes to the Mercury theme, always run `pnpm format` and `pnpm build` to ensure code is properly formatted and the build artifacts are up to date.
+**Rule**: After completing any changes to the Mercury theme, always run `npm run format` and `npm run build` to ensure code is properly formatted and the build artifacts are up to date.
 
 **Required Steps:**
 
-1. **Format code**: Run `pnpm format` to format all code according to the project's formatting rules
-2. **Build assets**: Run `pnpm build` to compile CSS, JavaScript, and other assets
+1. **Format code**: Run `npm run format` to format all code according to the project's formatting rules
+2. **Build assets**: Run `npm run build` to compile CSS, JavaScript, and other assets
 
 **Example:**
 
 ```bash
-pnpm format
-pnpm build
+npm run format
+npm run build
 ```
 
 **Note**: These commands should be run from the Mercury theme directory (`web/themes/custom/mercury/`). Running these commands ensures that:
@@ -534,4 +534,4 @@ pnpm build
 10. **No dynamic tag names** - Use explicit HTML tags or proper conditionals
 11. **Always use `with only` or `with_context: false`** - When including components, prevent context pollution
 12. **Only pass configurable props** - When including components, only pass props that are actually configurable in the current component's schema or template
-13. **Run `pnpm format` and `pnpm build`** - After completing changes, format code and rebuild assets
+13. **Run `npm run format` and `npm run build`** - After completing changes, format code and rebuild assets

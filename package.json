@@ -11,10 +11,10 @@
     "s:tailwindcss": "tailwindcss --input ./src/main.css --minify --output ./build/main.min.css"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.17",
-    "@zackad/prettier-plugin-twig": "^0.16.0",
+    "@tailwindcss/cli": "^4.1.18",
+    "@zackad/prettier-plugin-twig": "^0.16.2",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.18"
   }
 }
