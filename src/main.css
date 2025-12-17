@@ -311,6 +311,12 @@
   background: inherit;
 }
 
+/* Ensure the page content does not cover the top bar when scrolling */
+.layout-container {
+  position: relative;
+  z-index: 1;
+}
+
 @layer utilities {
   /* For custom utility classes with highest precedence. */
 
