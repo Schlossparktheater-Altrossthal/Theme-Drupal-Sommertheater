@@ -1,11 +1,4 @@
-/components/*/*.tailwind.css export-ignore
-/components/*/*~main.twig
-/docs export-ignore
-/src/common export-ignore
-/scripts export-ignore
-/tests export-ignore
-/vitePlugins export-ignore
+/.cspell-project-words.txt export-ignore
 /.gitlab-ci.yml export-ignore
-/dictionary.txt export-ignore
 /package-lock.json export-ignore
-/*.config.js export-ignore
+/tests export-ignore

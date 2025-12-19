@@ -30,8 +30,6 @@ variables:
   OPT_IN_TEST_NEXT_MAJOR: "1"
   # Don't install JavaScript dependencies; they're not used in this CI process right now.
   _COMPOSER_YARN_INSTALL: "0"
-  # @see https://project.pages.drupalcode.org/gitlab_templates/jobs/cspell
-  _CSPELL_DICTIONARY: "dictionary.txt"
   _CSPELL_IGNORE_PATHS: "build/main.min.css, package-lock.json"
   # Don't let any linting jobs fail.
   _ALL_VALIDATE_ALLOW_FAILURE: 0
