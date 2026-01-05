@@ -1,3 +1,11 @@
+/**
+ * Defines the fonts used in the theme.
+ *
+ * You can customize these values without rebuilding the compiled CSS. Copy this
+ * file to your web root, so it sits next to index.php, and clear Drupal's
+ * cache. Then, any changes you make in this file should be reflected right away.
+ */
+
 /* latin-ext */
 @font-face {
   font-family: "Outfit";

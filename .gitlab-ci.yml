@@ -33,6 +33,8 @@ variables:
   _CSPELL_IGNORE_PATHS: "build/main.min.css, package-lock.json"
   # Don't let any linting jobs fail.
   _ALL_VALIDATE_ALLOW_FAILURE: 0
+  # @todo Remove when https://www.drupal.org/i/3563698 is released.
+  CORE_STABLE: 11.3.1
 
 stages:
   - build
