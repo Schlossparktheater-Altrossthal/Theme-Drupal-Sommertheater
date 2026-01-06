@@ -10,6 +10,7 @@ use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\IgnoreDeprecations;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -20,6 +21,7 @@ use Symfony\Component\Process\Process;
  * Tests that Mercury can be used as a starter kit.
  */
 #[Group('mercury')]
+#[IgnoreDeprecations]
 #[RunTestsInSeparateProcesses]
 final class StarterKitTest extends BrowserTestBase {
 
@@ -77,6 +79,14 @@ final class StarterKitTest extends BrowserTestBase {
       $name = $file->getBasename('.component.yml');
       $this->assertArrayHasKey("$theme_name:$name", $component_definitions);
     }
+
+    // Confirm the NPM lock file doesn't have any unexpected name collisions.
+    $package_lock = file_get_contents($path . '/package-lock.json');
+    $this->assertIsString($package_lock);
+    $this->assertSame(2, substr_count($package_lock, $theme_name));
+
+    // The generated theme should not itself be a starter kit.
+    $this->assertFileDoesNotExist("$path/$theme_name.starterkit.yml");
   }
 
 }
