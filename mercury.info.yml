@@ -13,3 +13,6 @@ regions:
   footer: Footer
 dependencies:
   - cva:cva
+version: '1.0.0-beta3'
+project: mercury
+datestamp: 'whatever'
