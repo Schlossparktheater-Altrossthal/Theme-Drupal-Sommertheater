@@ -11,9 +11,5 @@ regions:
   content: Content
   header: Header
   footer: Footer
-components:
-  namespaces:
-    mercury_theme: components
-    drupalRoot: components
 dependencies:
   - cva:cva
