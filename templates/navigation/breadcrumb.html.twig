@@ -11,7 +11,9 @@
 {% if breadcrumb %}
   {% set needs_truncation = (breadcrumb|length) > 3 %}
 
-  <nav aria-label="breadcrumb" class="container mx-auto mb-2 w-full px-4 md:my-3 2xl:my-4">
+  {% set item_classes = 'flex items-center text-sm md:text-lg 2xl:text-xl' %}
+
+  <nav aria-label="breadcrumb" class="container mx-auto my-2 w-full px-4 md:my-3 2xl:my-4">
     <h2 id="system-breadcrumb" class="sr-only">{{ 'Breadcrumb' }}</h2>
     <ol class="m-0 flex list-none flex-row items-center gap-1 p-0 leading-none text-foreground md:gap-2">
       {% for item in breadcrumb %}
@@ -20,7 +22,7 @@
         {% set should_show = not needs_truncation or is_first or is_last_two %}
 
         {% if loop.first %}
-          <li class="flex items-center gap-1 text-xs md:gap-2 md:text-sm 2xl:text-base" aria-labelledby="{{ item.text }}">
+          <li class="gap-1 md:gap-2 2xl:text-base" aria-labelledby="{{ item.text }}">
             <a href="{{ item.url }}" class="flex items-center no-underline hover:opacity-80">
               {{
                 include(
@@ -38,7 +40,7 @@
 
         {# Insert ellipsis after first item if truncation is needed #}
         {% if needs_truncation and loop.index == 2 %}
-          <li aria-hidden="true" class="flex items-center text-xs md:text-sm">
+          <li aria-hidden="true">
             {{
               include(
                 '@mercury/components/icon/icon.twig',
@@ -50,7 +52,7 @@
               )
             }}
           </li>
-          <li aria-hidden="true" class="flex items-center text-xs md:text-sm">
+          <li aria-hidden="true">
             {{
               include(
                 '@mercury/components/icon/icon.twig',
@@ -67,16 +69,16 @@
         {# Render breadcrumb item #}
         {% if should_show %}
           {% if loop.last %}
-            <li class="active flex items-center text-xs md:text-sm 2xl:text-base" aria-current="page">{{ item.text }}</li>
+            <li class="{{ item_classes }} active" aria-current="page">{{ item.text }}</li>
           {% elseif item.url and not is_first %}
-            <li class="flex items-center text-xs md:text-sm 2xl:text-base">
+            <li class="{{ item_classes }}">
               <a href="{{ item.url }}" class="no-underline hover:underline hover:underline-offset-2 focus:underline">{{ item.text }}</a>
             </li>
           {% endif %}
 
           {# Add chevron after item (except last) #}
           {% if not loop.last and (not needs_truncation or is_last_two or is_first) %}
-            <li aria-hidden="true" class="flex items-center text-xs md:text-sm">
+            <li aria-hidden="true">
               {{
                 include(
                   '@mercury/components/icon/icon.twig',
