@@ -104,16 +104,4 @@ final class ThemeHooks {
     $variables['mercury_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('mercury');
   }
 
-  /**
-   * Implements template_preprocess_views_view().
-   */
-  #[Hook('preprocess_views_view')]
-  #[Hook('preprocess_views_view_unformatted')]
-  public function preprocessView(array &$variables): void {
-    $view = $variables['view'];
-    assert($view instanceof ViewExecutable);
-    $view_tags = preg_split('/\s+/', $view->storage->get('tag'));
-    $variables['snap'] = in_array('snap', $view_tags, TRUE);
-  }
-
 }

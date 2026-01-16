@@ -2,6 +2,7 @@
 {% set hero_flex_position = flex_position|default('center-left') %}
 {% set hero_overlay_opacity = overlay_opacity|default('40%') %}
 {% set hero_object_position = object_position|default('center') %}
+{% set hero_overlap_navbar = overlap_navbar|default(false) ? 'yes' : 'no' %}
 
 {# Normalize classes - handle both array and string formats #}
 {% set additional_classes = classes|default('') %}
@@ -11,18 +12,22 @@
 
 {% set hero_variants =
   html_cva(
-    base: ['hero-overlay', 'relative', 'flex', 'flex-col'],
+    base: ['cq-full relative flex flex-col'],
     variants: {
       height: {
         full: 'h-dvh',
-        large: ['h-3/4', 'min-h-[500px]', 'md:max-h-[600px]', 'xl:max-h-[800px]'],
-        ribbon: ['h-1/2', 'md:min-h-[400px]', 'md:max-h-[450px]', 'xl:max-h-[600px]']
+        large: ['h-3/4 min-h-[500px] md:max-h-[600px] xl:max-h-[800px]'],
+        ribbon: ['h-1/2 md:max-h-[450px] md:min-h-[400px] xl:max-h-[600px]']
       },
       flexPosition: {
         'top-left': 'justify-start',
         'center-left': 'justify-center-safe',
         'bottom-left': 'justify-end',
         'hero-center': 'justify-center'
+      },
+      overlapNavbar: {
+        yes: 'mt-[calc(var(--navbar-height)*-1)]',
+        no: ''
       }
     }
   )
@@ -30,7 +35,7 @@
 
 {% set overlay_variants =
   html_cva(
-    base: ['absolute', 'inset-0'],
+    base: ['absolute inset-0'],
     variants: {
       opacity: {
         '0%': 'bg-black/0',
@@ -45,7 +50,7 @@
 
 {% set image_variants =
   html_cva(
-    base: ['h-full', 'w-full', 'object-cover'],
+    base: ['h-full w-full object-cover'],
     variants: {
       position: {
         top: 'object-top',
@@ -58,13 +63,17 @@
 
 {% set content_variants =
   html_cva(
-    base: ['hero-overlay--content', 'relative', 'z-1', 'flex', 'flex-col', 'gap-6', 'py-6', 'md:py-10', 'xl:py-20'],
+    base: ['relative z-1 flex flex-col gap-6 py-6 md:py-10 xl:py-20'],
     variants: {
       flexPosition: {
         'top-left': 'lg:max-w-2/3',
         'center-left': 'lg:max-w-2/3',
         'bottom-left': 'lg:max-w-2/3',
-        'hero-center': ['text-center', 'items-center', 'lg:mx-auto', 'lg:max-w-2/3']
+        'hero-center': ['items-center text-center lg:mx-auto lg:max-w-2/3']
+      },
+      overlapNavbar: {
+        yes: 'pt-[calc(var(--navbar-height)+1.5rem)] md:pt-[calc(var(--navbar-height)+2.5rem)] xl:pt-[calc(var(--navbar-height)+5rem)]',
+        no: ''
       }
     }
   )
@@ -75,14 +84,15 @@
   hero_variants.apply(
     {
       height: hero_height,
-      flexPosition: hero_flex_position
+      flexPosition: hero_flex_position,
+      overlapNavbar: hero_overlap_navbar
     },
     additional_classes
   )
   }}"
 >
   {% if media.src is not empty %}
-    <div class="hero-overlay--media absolute z-[-1] h-full w-full">
+    <div class="absolute z-[-1] h-full w-full">
       {% block hero_media %}
         {% if media.src is not empty %}
           <div
@@ -109,7 +119,8 @@
     <div
       class="{{
       content_variants.apply({
-        flexPosition: hero_flex_position
+        flexPosition: hero_flex_position,
+        overlapNavbar: hero_overlap_navbar
       })
       }}"
     >
