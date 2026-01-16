@@ -44,14 +44,6 @@ props:
         - "50-50"
       default:
         - "50-50"
-    views_columns:
-      type: string
-      title: Views grid
-      description: If you are using a view in this section, select the grid layout.
-      enum:
-        - "50-50"
-        - "33-33-33"
-        - "25-25-25-25"
     mobile_columns:
       type: string
       title: Columns on mobile

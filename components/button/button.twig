@@ -7,22 +7,22 @@
   html_cva(
     base: [
       'group flex items-center justify-center transition duration-300 ease-in-out',
-      'rounded-lg leading-tight font-medium',
+      'leading-tight font-medium',
       'cursor-pointer no-underline outline-none hover:no-underline',
       'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
       'disabled:pointer-events-none disabled:opacity-50'
     ],
     variants: {
       size: {
-        small: 'gap-1 px-4 py-2 text-sm xl:py-2.5 xl:text-md',
-        medium: 'gap-2 px-5 py-2 text-md xl:py-3 xl:text-lg',
-        large: 'gap-3 px-6 py-3 text-lg xl:py-3.5 xl:text-xl'
+        small: 'gap-1 rounded-md px-4 py-[6px] text-sm',
+        medium: 'gap-2 rounded-lg px-5 py-[10px] text-base',
+        large: 'gap-3 rounded-xl px-6 py-3 text-lg leading-[22px]'
       },
       variant: {
         primary: ['bg-primary text-primary-foreground duration-300 ease-in-out hover:bg-primary/85'],
-        secondary: ['bg-accent text-accent-foreground duration-300 ease-in-out hover:bg-accent/80'],
+        secondary: ['bg-secondary text-secondary-foreground duration-300 ease-in-out hover:bg-secondary/80'],
         'primary-inverted': ['bg-primary-foreground text-primary duration-300 ease-in-out hover:bg-primary-foreground/85'],
-        'secondary-inverted': ['border border-accent bg-accent-foreground text-accent duration-300 ease-in-out hover:bg-accent-foreground/80']
+        'secondary-inverted': ['bg-secondary-foreground text-secondary duration-300 ease-in-out hover:bg-secondary-foreground/80']
       },
       width: {
         full: 'w-full sm:w-fit',

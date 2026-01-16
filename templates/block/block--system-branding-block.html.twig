@@ -21,7 +21,7 @@
     {% block branding %}
       {% if site_logo %}
         <div class="branding">
-          <img class="h-full w-full" src="{{ site_logo_url }}" alt="{{ site_name }}" />
+          <img class="h-full w-full object-contain" src="{{ site_logo_url }}" alt="{{ site_name }}" />
         </div>
       {% endif %}
       {% if site_name %}

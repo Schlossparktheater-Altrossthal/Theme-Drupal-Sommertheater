@@ -1,14 +1,14 @@
 {% set card =
   html_cva(
-    base: ['flex h-full flex-col rounded-md p-8'],
+    base: ['flex flex-col self-start rounded-md p-8 shadow-lg'],
     variants: {
       align: {
         center: 'items-center gap-6 text-center',
         left: 'items-start gap-4 text-left'
       },
       style: {
-        default: 'bg-card',
-        inverted: 'bg-card-foreground text-card'
+        default: 'bg-card text-card-foreground',
+        inverted: 'bg-foreground text-background'
       }
     }
   )
@@ -19,8 +19,8 @@
     base: ['absolute'],
     variants: {
       style: {
-        default: 'text-card-foreground/10',
-        inverted: 'text-card/10'
+        default: 'text-muted',
+        inverted: 'text-card-foreground'
       }
     }
   )
@@ -72,8 +72,8 @@
       fill="currentColor"
     ></path>
   </svg>
-  <blockquote class="relative z-10 flex grow flex-col gap-4" cite="{{ cite_url }}">
-    <p class="grow text-xl text-inherit italic">
+  <blockquote class="relative z-10 flex flex-col gap-4" cite="{{ cite_url }}">
+    <p class="text-xl text-inherit">
       {{ text }}
     </p>
 
