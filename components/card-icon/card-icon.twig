@@ -2,18 +2,18 @@
 
 {% set tile =
   html_cva(
-    base: ['relative p-6'],
+    base: ['relative p-6 md:p-8'],
     variants: {
       hasUrl: {
-        yes: 'group cursor-pointer transition duration-300 hover:scale-103',
+        yes: 'group cursor-pointer hover:scale-103',
         no: ''
       },
       backgroundColor: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
-        muted: 'bg-muted text-muted-foreground hover:bg-muted/80',
-        noColor: 'border border-border bg-none text-foreground hover:bg-background/80'
+        primary: 'bg-primary text-primary-foreground transition duration-300 hover:bg-primary/80',
+        secondary: 'bg-secondary text-secondary-foreground transition duration-300 hover:bg-secondary/80',
+        accent: 'bg-accent text-accent-foreground transition duration-300 hover:bg-accent/80',
+        muted: 'bg-muted text-muted-foreground transition duration-300 hover:bg-muted/80',
+        noColor: 'border border-border bg-none text-foreground transition duration-300 hover:text-foreground/70'
       },
       tileSize: {
         square: 'aspect-square',
@@ -110,7 +110,7 @@
               <h3>{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="mt-3 opacity-75">{{ description }}</span>
+              <span class="mt-3">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}

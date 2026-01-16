@@ -37,7 +37,7 @@
 .navbar--logo,
 .navbar--modal-logo {
   .branding {
-    @apply h-6 md:h-7;
+    @apply h-8 md:h-10;
     svg,
     img[src$=".svg"] {
       @apply h-auto! max-h-full;

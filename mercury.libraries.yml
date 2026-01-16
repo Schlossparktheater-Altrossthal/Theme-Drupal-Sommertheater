@@ -12,3 +12,11 @@ global:
         minified: true
       src/theme.css:
         preprocess: false
+
+messages:
+  version: VERSION
+  js:
+    lib/messages.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

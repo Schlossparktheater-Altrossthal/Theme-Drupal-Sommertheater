@@ -67,7 +67,7 @@
   --text-2xl--line-height: 1.3333; /* 32px */
 
   --text-xl: 1.25rem; /* 20px */
-  --text-xl--line-height: 1.5; /* 30px */
+  --text-xl--line-height: 1.35; /* 30px */
 
   --text-lg: 1.125rem; /* 18px */
   --text-lg--line-height: 1.5; /* 27px */
@@ -179,13 +179,6 @@
 }
 
 @layer components {
-  .snap-first > .card {
-    @apply ms-6 sm:ms-0;
-  }
-
-  .snap-last > .card {
-    @apply me-6 sm:me-0;
-  }
   .webform-submission-form {
     .visually-hidden {
       @apply sr-only;
@@ -235,7 +228,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply w-full border-0 border-b bg-transparent px-0 py-2 text-base outline-none;
+    @apply w-full border-0 border-b bg-transparent p-2 text-base outline-none;
   }
 
   input[type="text"]:focus,
@@ -249,7 +242,7 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply border-accent shadow-sm;
+    @apply border-accent bg-muted/60 shadow-sm;
   }
 
   select:focus {
@@ -319,6 +312,22 @@
 
 @layer utilities {
   /* For custom utility classes with highest precedence. */
+
+  /* Set the container query context for full-width elements. */
+  .layout-content {
+    container-type: inline-size;
+  }
+
+  /* Set a fixed width on the main content container. */
+  .region-content {
+    @apply container mx-auto px-4 pb-8;
+  }
+
+  /* Add a utility class for full-width elements. */
+  .cq-full {
+    width: 100cqw;
+    margin-inline: calc(-50cqw + 50%);
+  }
 
   /* Responsive text size utility */
   .heading-responsive-8xl {

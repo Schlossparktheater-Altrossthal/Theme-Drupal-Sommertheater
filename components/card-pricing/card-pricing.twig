@@ -1,5 +1,5 @@
 {% set is_promoted = promote|default(false) ? 'yes' : 'no' %}
-{% set button_variant = promote|default(false) ? 'secondary' : 'primary' %}
+{% set button_variant = promote|default(false) ? 'primary-inverted' : 'primary' %}
 
 {% set card =
   html_cva(
