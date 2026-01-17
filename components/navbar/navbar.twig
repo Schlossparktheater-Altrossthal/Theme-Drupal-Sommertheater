@@ -1,18 +1,6 @@
 {% set dropdown_menu =
   html_cva(
-    base: [
-      'navbar--dropdown-menu',
-      'flex',
-      'max-h-full',
-      'flex-col',
-      'items-stretch',
-      'justify-start',
-      'gap-2',
-      'overflow-auto',
-      'pl-8',
-      'md:flex-row',
-      'md:overflow-visible'
-    ],
+    base: ['navbar--dropdown-menu', 'flex flex-col items-stretch justify-start gap-2 md:flex-row', 'max-h-full', 'overflow-auto md:overflow-visible'],
     variants: {
       menuAlign: {
         left: 'md:justify-start',
@@ -65,7 +53,7 @@
     </div>
 
     <div
-      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 min-h-0 w-full flex-1 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-background after:content-[''] md:after:content-none"
+      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 container mx-auto min-h-0 w-full flex-1 p-2 px-4 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-background after:content-[''] md:p-0 md:after:content-none"
     >
       <div class="{{ dropdown_menu_classes }}">
         {% block navigation %}
