@@ -44,8 +44,10 @@ props:
       title: Image
       type: object
       examples:
-        - src: "assets/boliviainteligente-I1rJ9ViO3ik-unsplash.jpg"
-          alt: "Placeholder image"
+        - src: "assets/luke-chesser-pJadQetzTkI-unsplash.jpg"
+          alt: "Green blue gradient placeholder image"
+          width: 1920
+          height: 1344
 slots:
   blog_media:
     title: "Place Image"

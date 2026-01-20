@@ -112,10 +112,10 @@ props:
       title: Image
       type: object
       examples:
-        - src: "assets/boliviainteligente-QPu42AAJ5ZY-unsplash.jpg"
-          alt: "Placeholder image"
+        - src: "assets/luke-chesser-pJadQetzTkI-unsplash.jpg"
+          alt: "Green blue gradient placeholder image"
           width: 1920
-          height: 1075
+          height: 1344
 slots:
   hero_slot:
     title: "Content"

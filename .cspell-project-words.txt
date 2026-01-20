@@ -2,8 +2,8 @@ autodocs
 bandaids
 bednar
 behance
-boliviainteligente
 brandable
+chesser
 codepen
 codesandbox
 accordionopen
@@ -36,6 +36,7 @@ pexels
 pinterest
 pixabay
 potenti
+qetz
 rdne
 replit
 revindex
