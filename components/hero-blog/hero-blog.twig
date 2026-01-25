@@ -8,40 +8,38 @@
       <time datetime="{{ date_formatted }}">{{ date_formatted }}</time>
     </p>
 
-    {% block title %}
-      {{
-        include(
-          'mercury:heading',
-          {
-            heading_text: heading_text|default(''),
-            level: level|default(1),
-            url: 'No URL',
-            text_color: 'default',
-            text_size: 'heading-responsive-4xl',
-            align: 'left'
-          },
-          with_context: false
-        )
-      }}
-    {% endblock %}
+    {{
+      include(
+        'mercury:heading',
+        {
+          heading_text: heading_text|default(''),
+          level: level|default(1),
+          url: 'No URL',
+          text_color: 'default',
+          text_size: 'heading-responsive-6xl',
+          align: 'left'
+        },
+        with_context: false
+      )
+    }}
 
-    {% block author %}
-      {% if author is not empty %}
-        <p>
-          By {{ author }}
-        </p>
-      {% endif %}
-    {% endblock %}
+    {% if author is not empty %}
+      <p>
+        By {{ author }}
+      </p>
+    {% endif %}
   </div>
 
-  {% if block('blog_media') is defined %}
-    <div class="w:full relative [&_.cq-full]:mx-0 [&_.cq-full]:w-full">
-      <div class="relative mx-auto mt-8 px-6 md:mt-12 lg:w-full xl:w-10/12">
-        {% block blog_media %}
-
-        {% endblock %}
-      </div>
-      <div class="absolute -bottom-8 z-[-1] h-[calc(33.3%+32px)] w-full bg-accent md:-bottom-12 md:h-[calc(33.3%+48px)]"></div>
+  <div class="w:full relative [&_.cq-full]:mx-0 [&_.cq-full]:w-full">
+    <div class="relative mx-auto mt-8 px-6 md:mt-12 lg:w-full xl:w-10/12">
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt,
+        width: media.width,
+        height: media.height,
+        loading: 'eager'
+      } only %}
     </div>
-  {% endif %}
+    <div class="absolute -bottom-8 z-[-1] h-[calc(33.3%+32px)] w-full bg-accent md:-bottom-12 md:h-[calc(33.3%+48px)]"></div>
+  </div>
 </section>

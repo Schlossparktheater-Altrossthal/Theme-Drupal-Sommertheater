@@ -1,6 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero blog
-description: Hero with side by side slots for media and content.
+description: Hero component for the blog content type.
 group: Hero
 props:
   type: object
@@ -48,6 +48,3 @@ props:
           alt: "Green blue gradient placeholder image"
           width: 1920
           height: 1344
-slots:
-  blog_media:
-    title: "Place Image"

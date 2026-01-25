@@ -228,7 +228,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply w-full border-0 border-b bg-transparent p-2 text-base outline-none;
+    @apply w-full border-0 border-b bg-transparent p-1.5 text-base outline-none;
   }
 
   input[type="text"]:focus,
@@ -327,6 +327,15 @@
   .cq-full {
     width: 100cqw;
     margin-inline: calc(-50cqw + 50%);
+  }
+
+  /* Provide basic styles for views elements */
+  .views-exposed-form {
+    @apply flex items-center gap-2;
+  }
+
+  .view-header {
+    @apply pb-4 md:pb-6;
   }
 
   /* Responsive text size utility */

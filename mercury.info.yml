@@ -12,4 +12,4 @@ regions:
   header: Header
   footer: Footer
 dependencies:
-  - cva:cva
+  - "cva:cva"
