@@ -14,3 +14,5 @@ components/**/*.css
 !components/**/*.tailwind.css
 # We do not care about the lock file's formatting.
 package-lock.json
+# JSON files are indented differently according to Drupal coding standards.
+composer.json
