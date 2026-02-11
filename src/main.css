@@ -228,7 +228,9 @@
   input[type="time"],
   textarea,
   select {
-    @apply w-full border-0 border-b bg-transparent p-1.5 text-base outline-none;
+    @apply w-full border-0 border-b bg-transparent text-base outline-none;
+    /* @todo Add p-1.5 when this is fixed in Canvas: https://www.drupal.org/i/3572963. */
+    padding: calc(var(--spacing) * 1.5);
   }
 
   input[type="text"]:focus,
