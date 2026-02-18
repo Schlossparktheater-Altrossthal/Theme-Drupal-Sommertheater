@@ -12,6 +12,8 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Messenger\MessengerTrait;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\mercury\RenderCallbacks;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
@@ -22,6 +24,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
  * Contains hook implementations for Mercury.
  */
 final class ThemeHooks {
+
+  use MessengerTrait;
+  use StringTranslationTrait;
 
   /**
    * The Drupal root.
@@ -86,6 +91,10 @@ final class ThemeHooks {
         'dark' => t('Dark'),
       ],
     ];
+    $message = $this->t("See <code>@path</code> to learn how to customize Mercury's fonts, colors, and components.", [
+      '@path' => $this->themeList->getPath('mercury') . '/CUSTOMIZING.md',
+    ]);
+    $this->messenger()->addMessage($message, 'info');
   }
 
   /**
