@@ -126,20 +126,6 @@ props:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
       type: object
-    section_header:
-      type: boolean
-      title: Show header region
-      examples:
-        - true
-      default:
-        - true
-    section_footer:
-      type: boolean
-      title: Show footer region
-      examples:
-        - true
-      default:
-        - true
 
 slots:
   header_slot:
