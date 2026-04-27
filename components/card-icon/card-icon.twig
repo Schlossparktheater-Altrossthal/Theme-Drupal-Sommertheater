@@ -2,7 +2,7 @@
 
 {% set tile =
   html_cva(
-    base: ['relative p-6 md:p-8'],
+    base: ['@container relative p-6 md:p-8'],
     variants: {
       hasUrl: {
         yes: 'group cursor-pointer hover:scale-103',
@@ -10,6 +10,7 @@
       },
       backgroundColor: {
         primary: 'bg-primary text-primary-foreground transition duration-300 hover:bg-primary/80',
+        background: 'border border-border bg-background text-foreground hover:bg-background/90 hover:text-foreground/90',
         secondary: 'bg-secondary text-secondary-foreground transition duration-300 hover:bg-secondary/80',
         accent: 'bg-accent text-accent-foreground transition duration-300 hover:bg-accent/80',
         muted: 'bg-muted text-muted-foreground transition duration-300 hover:bg-muted/80',
@@ -85,6 +86,9 @@
   })
 %}
 
+{% set heading_classes = ['text-2xl font-semibold @sm:text-3xl @2xl:text-4xl'] %}
+{% set description_classes = ['mt-3 font-body text-md @sm:text-lg @2xl:text-xl'] %}
+
 <div class="{{ tile_classes }}">
   <div class="flex h-full flex-col justify-center">
     <div class="{{ icon_container_classes }}">
@@ -107,19 +111,19 @@
         {% if url is not empty %}
           <a href="{{ url }}" class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3>{{ text }}</h3>
+              <h3 class="{{ heading_classes|join(' ') }}">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="mt-3">{{ description }}</span>
+              <span class="{{ description_classes|join(' ') }}">{{ description }}</span>
             {% endif %}
           </a>
         {% else %}
           <span class="flex w-full flex-col before:absolute before:inset-0 before:content-['']">
             {% if text is not empty %}
-              <h3>{{ text }}</h3>
+              <h3 class="{{ heading_classes|join(' ') }}">{{ text }}</h3>
             {% endif %}
             {% if description is not empty %}
-              <span class="mt-3 font-body">{{ description }}</span>
+              <span class="{{ description_classes|join(' ') }}">{{ description }}</span>
             {% endif %}
           </span>
         {% endif %}

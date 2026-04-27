@@ -16,11 +16,13 @@ props:
         - accent
         - primary
         - inverted
+        - background
       meta:enum:
         default: Default
         accent: Accent
         primary: Primary
         inverted: Inverted
+        background: Background
       examples:
         - default
     style:

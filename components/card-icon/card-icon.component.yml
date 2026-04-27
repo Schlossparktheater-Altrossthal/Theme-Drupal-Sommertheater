@@ -28,11 +28,13 @@ props:
         - secondary
         - accent
         - muted
+        - background
       meta:enum:
         primary: Primary
         secondary: Secondary
         accent: Accent
         muted: Muted
+        background: Background
     border_radius:
       type: string
       title: Border radius
