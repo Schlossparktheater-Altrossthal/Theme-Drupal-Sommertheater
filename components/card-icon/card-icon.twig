@@ -60,6 +60,25 @@
   })
 %}
 
+{% set icon_style_attr =
+  html_cva(
+    base: [''],
+    variants: {
+      iconStyle: {
+        primary: 'text-primary',
+        primary_background: 'rounded-md bg-accent p-2 text-primary',
+        secondary_background: 'rounded-md bg-muted p-2 text-muted-foreground'
+      }
+    }
+  )
+%}
+
+{% set icon_style_classes =
+  icon_style_attr.apply({
+    iconStyle: icon_style
+  })
+%}
+
 {% set icon_size_map = {
   small: 'small',
   medium: 'medium',
@@ -92,18 +111,20 @@
 <div class="{{ tile_classes }}">
   <div class="flex h-full flex-col justify-center">
     <div class="{{ icon_container_classes }}">
-      {% if icon %}
-        {{
-          include(
-            '@mercury/components/icon/icon.twig',
-            {
-              icon: icon,
-              icon_size: icon_size_map[icon_size]|default('medium')
-            },
-            with_context: false
-          )
-        }}
-      {% endif %}
+      <div class="{{ icon_style_classes }}">
+        {% if icon %}
+          {{
+            include(
+              '@mercury/components/icon/icon.twig',
+              {
+                icon: icon,
+                icon_size: icon_size_map[icon_size]|default('medium')
+              },
+              with_context: false
+            )
+          }}
+        {% endif %}
+      </div>
     </div>
 
     <div class="{{ text_container_classes }}">

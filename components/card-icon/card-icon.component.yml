@@ -18,8 +18,6 @@ props:
         square: Square
         "4:3": Rectangle 4 × 3
         "16:9": Rectangle 16 × 9
-      examples:
-        - square
     background_color:
       type: string
       title: Background color
@@ -85,6 +83,17 @@ props:
       default: center
       examples:
         - center
+    icon_style:
+      type: string
+      title: Icon style
+      enum:
+        - primary
+        - primary_background
+        - secondary_background
+      meta:enum:
+        primary: Primary
+        primary_background: Primary with background
+        secondary_background: Secondary with background
     url:
       type: string
       title: Link
