@@ -1,4 +1,4 @@
-{% set heading_level = level|default(2) %}
+{% set heading_level = level %}
 {% set heading_align = align|default('left') %}
 {% set heading_text_color = text_color|default('default') %}
 {% set heading_text_size = text_size|default('heading-responsive-4xl') %}
@@ -15,23 +15,33 @@
       textColor: {
         default: 'text-inherit',
         inverted: 'text-background',
-        primary: 'text-primary'
+        primary: 'text-primary',
+        muted: 'text-muted-foreground',
+        accent: 'text-accent'
       },
       textSize: {
-        'heading-responsive-8xl': 'heading-responsive-8xl',
-        'heading-responsive-7xl': 'heading-responsive-7xl',
-        'heading-responsive-6xl': 'heading-responsive-6xl',
-        'heading-responsive-5xl': 'heading-responsive-5xl',
-        'heading-responsive-4xl': 'heading-responsive-4xl',
-        'heading-responsive-3xl': 'heading-responsive-3xl',
-        'heading-responsive-2xl': 'heading-responsive-2xl',
-        'heading-responsive-xl': 'heading-responsive-xl'
+        'heading-responsive-8xl': 'text-6xl md:text-7xl lg:text-8xl',
+        'heading-responsive-7xl': 'text-5xl md:text-6xl lg:text-7xl',
+        'heading-responsive-6xl': 'text-4xl md:text-5xl lg:text-6xl',
+        'heading-responsive-5xl': 'text-3xl md:text-4xl lg:text-5xl',
+        'heading-responsive-4xl': 'text-2xl md:text-3xl lg:text-4xl',
+        'heading-responsive-3xl': 'text-2xl lg:text-3xl',
+        'heading-responsive-2xl': 'text-xl lg:text-2xl',
+        'heading-responsive-2xl': 'text-xl lg:text-2xl',
+        'heading-responsive-xl': 'text-lg lg:text-xl',
+        'heading-responsive-lg': 'text-md lg:text-lg'
       },
       hasUrl: {
         yes: 'duration-300 hover:scale-105 hover:opacity-90',
         no: ''
       }
-    }
+    },
+    compound_variants: [
+      {
+        heading_level: ['1', '2', '3', '4', '5', '6'],
+        class: 'font-semibold'
+      }
+    ]
   )
 %}
 
@@ -74,5 +84,5 @@
 {% elseif heading_level == 6 %}
   <h6 class="{{ heading_class_attr }}">{{ heading_content }}</h6>
 {% else %}
-  <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+  <span class="{{ heading_class_attr }} block">{{ heading_content }}</span>
 {% endif %}
