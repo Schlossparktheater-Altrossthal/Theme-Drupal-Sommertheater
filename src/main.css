@@ -25,6 +25,7 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
+  --font-body: var(--font-body);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -110,27 +111,27 @@
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
+    @apply font-sans text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
   }
 
   h2 {
-    @apply text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
+    @apply font-sans text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
   }
 
   h3 {
-    @apply text-2xl font-semibold xl:text-3xl;
+    @apply font-sans text-2xl font-semibold xl:text-3xl;
   }
 
   h4 {
-    @apply text-xl font-semibold md:text-2xl;
+    @apply font-sans text-xl font-semibold md:text-2xl;
   }
 
   h5 {
-    @apply text-lg font-semibold md:text-xl;
+    @apply font-sans text-lg font-semibold md:text-xl;
   }
 
   h6 {
-    @apply text-base font-semibold md:text-lg;
+    @apply font-sans text-base font-semibold md:text-lg;
   }
 
   code,

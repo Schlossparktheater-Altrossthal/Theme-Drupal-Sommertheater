@@ -28,6 +28,7 @@
   --font-sans: "Outfit", "Helvetica Neue", Arial, Helvetica, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
+  --font-body: "Inter", Arial, Helvetica, sans-serif;
   --radius: 0.5rem;
   --shadow-x: 0;
   --shadow-y: 1px;
