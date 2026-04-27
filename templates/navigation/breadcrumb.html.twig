@@ -22,7 +22,7 @@
         {% set should_show = not needs_truncation or is_first or is_last_two %}
 
         {% if loop.first %}
-          <li class="gap-1 md:gap-2 2xl:text-base" aria-labelledby="{{ item.text }}">
+          <li class="gap-1 md:gap-2 2xl:text-base">
             <a href="{{ item.url }}" class="flex items-center no-underline hover:opacity-80">
               {{
                 include(
@@ -34,6 +34,7 @@
                   }
                 )
               }}
+              <span class="sr-only">{{ item.text }}</span>
             </a>
           </li>
         {% endif %}
