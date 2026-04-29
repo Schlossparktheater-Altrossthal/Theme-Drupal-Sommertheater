@@ -29,7 +29,9 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% set primary_nav_level = 'menu--level-' ~ (menu_level + 1) %}
   {% import _self as menus %}
-  {% set menu_classes = menu_classes|default([])|merge(['list-none', 'gap-4', 'flex', 'flex-wrap', 'p-0', 'flex-row'])|filter(v => v is not empty) %}
+  {% set menu_classes =
+    menu_classes|default([])|merge(['list-none', 'font-body', 'gap-4', 'flex', 'flex-wrap', 'p-0', 'flex-row'])|filter(v => v is not empty)
+  %}
 
   {% if items %}
     <ul {{ attributes.addClass('menu', menu_classes, primary_nav_level) }}>

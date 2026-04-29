@@ -36,6 +36,7 @@ props:
         - heading-responsive-xl
         - heading-responsive-lg
       meta:enum:
+        default: Default for heading level
         heading-responsive-8xl: 8XL
         heading-responsive-7xl: 7XL
         heading-responsive-6xl: 6XL

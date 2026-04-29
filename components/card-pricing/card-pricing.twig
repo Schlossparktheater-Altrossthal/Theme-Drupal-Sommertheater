@@ -21,6 +21,23 @@
   })
 %}
 
+{% set description_text =
+  html_cva(
+    variants: {
+      promoted: {
+        no: ['default'],
+        yes: ['inverted']
+      }
+    }
+  )
+%}
+
+{% set description_text_color =
+  description_text.apply({
+    promoted: is_promoted
+  })
+%}
+
 <article class="{{ card_classes }}">
   <header class="flex flex-col gap-2">
     {{
@@ -61,7 +78,7 @@
             'mercury:text',
             {
               text: text,
-              text_color: 'default',
+              text_color: description_text_color,
               text_size: 'normal'
             },
             with_context: false

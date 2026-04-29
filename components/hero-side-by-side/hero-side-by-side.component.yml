@@ -7,6 +7,7 @@ props:
   required:
     - padding_block_start
     - padding_block_end
+    - justify_content
   properties:
     hero_flex_gap:
       type: string
@@ -20,6 +21,20 @@ props:
       default: large
       examples:
         - "large"
+    justify_content:
+      type: string
+      title: Justify content
+      enum:
+        - start
+        - center
+        - end
+      meta:enum:
+        start: Start
+        center: Center
+        end: End
+      default: center
+      examples:
+        - "center"
     hero_flex_direction_mobile:
       type: string
       title: Mobile flex direction

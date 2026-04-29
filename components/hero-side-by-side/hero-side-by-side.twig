@@ -63,6 +63,19 @@
   )
 %}
 
+{% set content =
+  html_cva(
+    base: ['flex-1', 'overflow-hidden', 'rounded-none'],
+    variants: {
+      justifyContent: {
+        start: 'justify-start',
+        center: 'justify-center',
+        end: 'justify-end'
+      }
+    }
+  )
+%}
+
 {% set hero_classes =
   hero.apply({
     imagePosition: image_position,
@@ -85,6 +98,11 @@
     imageRadius: image_radius
   })
 %}
+{% set content_classes =
+  content.apply({
+    justifyContent: justify_content
+  })
+%}
 
 <section class="{{ hero_classes }}">
   {% if background is not empty and background != 'None' %}
@@ -104,7 +122,7 @@
       } only %}
     {% endblock %}
   </div>
-  <div class="flex flex-1 flex-col gap-2 md:gap-4">
+  <div class="{{ content_classes }} flex flex-1 flex-col gap-2 md:gap-4">
     {% block hero_content %}
       {% block hero_slot %}
 
