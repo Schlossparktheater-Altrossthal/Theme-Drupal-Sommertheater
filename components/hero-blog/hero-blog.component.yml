@@ -1,5 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
 name: Hero blog
+status: obsolete
 description: Hero component for the blog content type.
 group: Hero
 props:
