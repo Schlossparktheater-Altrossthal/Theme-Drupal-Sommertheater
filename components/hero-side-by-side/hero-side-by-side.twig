@@ -30,19 +30,6 @@
   )
 %}
 
-{% set bgd =
-  html_cva(
-    base: ['absolute', 'inset-0', 'z-[-1]'],
-    variants: {
-      background: {
-        primary: 'bg-primary text-primary-foreground',
-        secondary: 'bg-secondary text-secondary-foreground',
-        accent: 'bg-accent text-accent-foreground'
-      }
-    }
-  )
-%}
-
 {% set image =
   html_cva(
     base: ['flex-1', 'overflow-hidden', 'rounded-none'],
@@ -86,12 +73,6 @@
   })
 %}
 
-{% set bgd_classes =
-  bgd.apply({
-    background: background
-  })
-%}
-
 {% set image_classes =
   image.apply({
     imageSize: image_size,
@@ -105,10 +86,6 @@
 %}
 
 <section class="{{ hero_classes }}">
-  {% if background is not empty and background != 'None' %}
-    <div class="{{ bgd_classes }}"></div>
-  {% endif %}
-
   <div class="{{ image_classes }}">
     {% block hero_media %}
       {% include 'canvas:image' ignore missing with {

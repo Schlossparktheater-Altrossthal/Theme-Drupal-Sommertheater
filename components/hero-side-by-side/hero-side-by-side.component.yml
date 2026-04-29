@@ -47,17 +47,6 @@ props:
       default: vertical
       examples:
         - "vertical"
-    background:
-      type: string
-      title: Background color
-      enum:
-        - primary
-        - secondary
-        - accent
-      meta:enum:
-        primary: Primary
-        secondary: Secondary
-        accent: Accent
     padding_block_start:
       type: string
       title: Padding top
