@@ -83,7 +83,7 @@ composer (next minor):
 
 release:
   stage: publish
-  image: ghcr.io/drupal-canvas/drupal-testing:1.0.2
+  image: ghcr.io/drupal-canvas/drupal-testing:2.1.1
   needs: []
   rules:
     # The release flow is triggered from a v-prefixed tag, then pushes
