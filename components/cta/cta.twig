@@ -1,5 +1,6 @@
 {% set cta_text_align = text_align|default('center') %}
 {% set background_color = background_color|default('noColor') %}
+{% set cta_overlay_opacity = overlay_opacity|default('20%') %}
 
 {% set cta_variants =
   html_cva(
@@ -12,6 +13,21 @@
         muted: 'bg-muted text-muted-foreground',
         inverted: 'bg-foreground text-background',
         noColor: 'bg-none text-foreground'
+      }
+    }
+  )
+%}
+
+{% set overlay_variants =
+  html_cva(
+    base: ['absolute inset-0'],
+    variants: {
+      opacity: {
+        '0%': 'bg-black/0',
+        '20%': 'bg-black/20',
+        '40%': 'bg-black/40',
+        '60%': 'bg-black/60',
+        '75%': 'bg-black/75'
       }
     }
   )
@@ -57,7 +73,13 @@
   {% block media %}
     {% if media.src is not empty %}
       <div class="absolute z-[-1] h-full w-full">
-        <div class="absolute inset-0 bg-black/30"></div>
+        <div
+          class="{{
+          overlay_variants.apply({
+            opacity: cta_overlay_opacity
+          })
+          }}"
+        ></div>
         {% include 'canvas:image' ignore missing with {
           src: media.src,
           alt: media.alt,
