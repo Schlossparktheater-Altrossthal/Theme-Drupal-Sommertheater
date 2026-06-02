@@ -58,7 +58,7 @@ final class ThemeCssOverrideTest extends KernelTestBase {
     // Confirm that the override is now used.
     $libraries = $discovery->getLibrariesByExtension('mercury');
     $all_css = array_column($libraries['global']['css'], 'data');
-    $this->assertContains($file_name, $all_css);
+    $this->assertContains($directory . '/' . $file_name, $all_css);
     $this->assertNotContains($original_css, $all_css);
   }
 

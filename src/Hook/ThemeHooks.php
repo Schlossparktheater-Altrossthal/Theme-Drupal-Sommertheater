@@ -158,7 +158,7 @@ final class ThemeHooks {
    */
   public function saveCss(array &$form, FormStateInterface $form_state): void {
     $files = [
-      'theme_css' => $this->cssDirectory. '/theme.css',
+      'theme_css' => $this->cssDirectory . '/theme.css',
       'fonts_css' => $this->cssDirectory . '/fonts.css',
     ];
     // If any of these files don't exist already, we'll need a cache clear.
