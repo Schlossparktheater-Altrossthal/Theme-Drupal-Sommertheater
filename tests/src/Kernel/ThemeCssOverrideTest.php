@@ -49,10 +49,10 @@ final class ThemeCssOverrideTest extends KernelTestBase {
     $this->assertNotContains($file_name, $all_css);
     $this->assertContains($original_css, array_column($libraries['global']['css'], 'data'));
 
-    // Put an override file in the "web root".
-    $property = new \ReflectionProperty(ThemeHooks::class, 'appRoot');
-    $property->setValue(NULL, 'public://');
-    touch("public://$file_name");
+    // Put an override file where CSS overrides should go.
+    $directory = \Drupal::service(ThemeHooks::class)->cssDirectory;
+    mkdir($directory, recursive: TRUE);
+    touch($directory . '/' . $file_name);
     $discovery->clear();
 
     // Confirm that the override is now used.
