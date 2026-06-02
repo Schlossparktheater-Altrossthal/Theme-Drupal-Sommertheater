@@ -8,6 +8,7 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface;
 use Drupal\Core\Cache\CacheCollectorInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
+use Drupal\Core\DrupalKernelInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
@@ -47,9 +48,11 @@ final class ThemeHooks {
     private readonly ModuleHandlerInterface $moduleHandler,
     #[Autowire(service: 'library.discovery')] private readonly CacheCollectorInterface $libraryDiscovery,
     private readonly FileSystemInterface $fileSystem,
-    #[Autowire(param: 'app.root')] string $appRoot,
+    DrupalKernelInterface $kernel,
   ) {
-    self::$appRoot ??= $appRoot;
+    self::$appRoot ??= drupal_valid_test_ua()
+      ? $kernel->getSitePath()
+      : $kernel->getAppRoot();
   }
 
   /**
