@@ -6,11 +6,14 @@ namespace Drupal\mercury\Hook;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface;
+use Drupal\Core\Cache\CacheCollectorInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeSettingsProvider;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -42,6 +45,8 @@ final class ThemeHooks {
     private readonly TitleResolverInterface $titleResolver,
     private readonly ChainBreadcrumbBuilderInterface $breadcrumb,
     private readonly ModuleHandlerInterface $moduleHandler,
+    #[Autowire(service: 'library.discovery')] private readonly CacheCollectorInterface $libraryDiscovery,
+    private readonly FileSystemInterface $fileSystem,
     #[Autowire(param: 'app.root')] string $appRoot,
   ) {
     self::$appRoot ??= $appRoot;
@@ -91,10 +96,61 @@ final class ThemeHooks {
         'dark' => t('Dark'),
       ],
     ];
+
+    $library = $this->libraryDiscovery->getLibraryByName('mercury', 'global');
+
+    if ($library && is_writable(self::$appRoot)) {
+      foreach ($library['css'] ?? [] as ['data' => $file]) {
+        $file = self::$appRoot . '/' . $file;
+
+        if (basename($file) === 'theme.css') {
+          $form['theme_css'] = [
+            '#type' => 'textarea',
+            '#title' => $this->t('Color scheme'),
+            '#default_value' => file_get_contents($file),
+            '#rows' => 20,
+          ];
+        }
+        elseif (basename($file) === 'fonts.css') {
+          $form['fonts_css'] = [
+            '#type' => 'textarea',
+            '#title' => $this->t('Fonts'),
+            '#default_value' => file_get_contents($file),
+            '#rows' => 20,
+          ];
+        }
+      }
+      $form['#submit'][] = [$this, 'saveCss'];
+    }
+    else {
+      $message = $this->t('The fonts and colors cannot be edited from here because the web root is not writable.');
+      $this->messenger()->addWarning($message);
+    }
+
     $message = $this->t("See <code>@path</code> to learn how to customize Mercury's fonts, colors, and components.", [
       '@path' => $this->themeList->getPath('mercury') . '/CUSTOMIZING.md',
     ]);
     $this->messenger()->addMessage($message, 'info');
+  }
+
+  /**
+   * Submit handler for the CSS editing textareas.
+   */
+  public function saveCss(array &$form, FormStateInterface $form_state): void {
+    $files = [
+      'theme_css' => self::$appRoot . '/theme.css',
+      'fonts_css' => self::$appRoot . '/fonts.css',
+    ];
+    $clear_cache = !array_all($files, 'file_exists');
+
+    foreach ($files as $form_key => $path) {
+      file_put_contents($path, $form_state->getValue($form_key));
+      // For safety's sake, always make the file non-executable.
+      $this->fileSystem->chmod($path, 0644);
+    }
+    if ($clear_cache) {
+      $this->libraryDiscovery->clear();
+    }
   }
 
   /**
