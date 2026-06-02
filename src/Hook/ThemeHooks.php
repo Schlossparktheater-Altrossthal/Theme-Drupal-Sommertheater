@@ -110,7 +110,7 @@ final class ThemeHooks {
         if (basename($file) === 'theme.css') {
           $form['css']['theme_css'] = [
             '#type' => 'textarea',
-            '#title' => $this->t('Color scheme'),
+            '#title' => $this->t('Colors'),
             '#default_value' => file_get_contents($file),
             '#rows' => 20,
           ];
@@ -124,7 +124,7 @@ final class ThemeHooks {
           ];
         }
       }
-      $form['#submit'][] = [$this, 'saveCss'];
+      array_unshift($form['#submit'], [$this, 'saveCss']);
     }
     else {
       $message = $this->t('The fonts and colors cannot be edited from here because the web root is not writable.');
@@ -155,6 +155,9 @@ final class ThemeHooks {
     if ($clear_cache) {
       $this->libraryDiscovery->clear();
     }
+    // We don't want these bleeding into configuration.
+    $form_state->unsetValue('theme_css');
+    $form_state->unsetValue('fonts_css');
   }
 
   /**
