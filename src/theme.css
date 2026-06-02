@@ -4,8 +4,9 @@
  *
  * You can customize these values without rebuilding the compiled CSS.
  * Tools like https://tweakcn.com can help generate these values. Copy this
- * file to your web root, so it sits next to index.php, and clear Drupal's
- * cache. Then, any changes you make in this file should be reflected right away.
+ * file to your site directory (usually `sites/default`) so it sits next to
+ * settings.php, and clear Drupal's cache. Then, any changes you make in this
+ * file should be reflected right away.
  */
 
 :root {
