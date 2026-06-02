@@ -128,7 +128,10 @@ final class ThemeHooks {
             '#title' => $this->t('Colors'),
             '#default_value' => file_get_contents($file),
             '#rows' => 15,
-            '#description' => $this->t('This will be saved to <code>@dir/theme.css</code>.', ['@dir' => $this->cssDirectory]),
+            '#description' => $this->t('This will be saved to <code>@dir/theme.css</code>. Tools like <a href="@tweakcn" target="_blank">tweakcn</a> can help you adjust these values to your liking.', [
+              '@dir' => $this->cssDirectory,
+              '@tweakcn' => 'https://tweakcn.com',
+            ]),
           ];
         }
         elseif (basename($file) === 'fonts.css') {
