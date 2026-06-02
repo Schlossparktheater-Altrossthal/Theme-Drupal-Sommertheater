@@ -6,11 +6,14 @@ namespace Drupal\mercury\Hook;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface;
+use Drupal\Core\Cache\CacheCollectorInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeSettingsProvider;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -29,9 +32,11 @@ final class ThemeHooks {
   use StringTranslationTrait;
 
   /**
-   * The Drupal root.
+   * The directory where overridden CSS should go.
+   *
+   * @var string
    */
-  private static ?string $appRoot = NULL;
+  public readonly string $cssDirectory;
 
   public function __construct(
     private readonly ThemeSettingsProvider $themeSettings,
@@ -42,9 +47,15 @@ final class ThemeHooks {
     private readonly TitleResolverInterface $titleResolver,
     private readonly ChainBreadcrumbBuilderInterface $breadcrumb,
     private readonly ModuleHandlerInterface $moduleHandler,
-    #[Autowire(param: 'app.root')] string $appRoot,
+    #[Autowire(service: 'library.discovery')] private readonly CacheCollectorInterface $libraryDiscovery,
+    private readonly FileSystemInterface $fileSystem,
+    #[Autowire(param: 'site.path')] string $siteDirectory,
   ) {
-    self::$appRoot ??= $appRoot;
+    $directory = $siteDirectory;
+    if (drupal_valid_test_ua()) {
+      $directory .= '/css';
+    }
+    $this->cssDirectory = $directory;
   }
 
   /**
@@ -68,11 +79,22 @@ final class ThemeHooks {
       NestedArray::unsetValue($libraries, $old_parents);
     };
     if ($extension === 'mercury') {
-      if (file_exists(self::$appRoot . '/theme.css')) {
-        $override('src/theme.css', '/theme.css');
+      if (file_exists($this->cssDirectory . '/theme.css')) {
+        $override('src/theme.css', '/' . $this->cssDirectory . '/theme.css');
       }
-      if (file_exists(self::$appRoot . '/fonts.css')) {
-        $override('src/fonts.css', '/fonts.css');
+      // For backwards compatibility, also check for overrides in the web root.
+      // @todo Deprecate for removal in Mercury 2.x.
+      elseif (file_exists('theme.css')) {
+        $override('theme.css', '/theme.css');
+      }
+
+      if (file_exists($this->cssDirectory . '/fonts.css')) {
+        $override('src/fonts.css', '/' . $this->cssDirectory . '/fonts.css');
+      }
+      // For backwards compatibility, also check for overrides in the web root.
+      // @todo Deprecate for removal in Mercury 2.x.
+      elseif (file_exists('fonts.css')) {
+        $override('fonts.css', '/fonts.css');
       }
     }
   }
@@ -91,10 +113,68 @@ final class ThemeHooks {
         'dark' => t('Dark'),
       ],
     ];
+
+    $form['css'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Edit CSS (advanced)'),
+    ];
+
+    $library = $this->libraryDiscovery->getLibraryByName('mercury', 'global');
+    if ($library && is_writable($this->cssDirectory)) {
+      foreach ($library['css'] ?? [] as ['data' => $file]) {
+        if (basename($file) === 'theme.css') {
+          $form['css']['theme_css'] = [
+            '#type' => 'textarea',
+            '#title' => $this->t('Colors'),
+            '#default_value' => file_get_contents($file),
+            '#rows' => 15,
+            '#description' => $this->t('This will be saved to <code>@dir/theme.css</code>. Tools like <a href="@tweakcn" target="_blank">tweakcn</a> can help you adjust these values to your liking.', [
+              '@dir' => $this->cssDirectory,
+              '@tweakcn' => 'https://tweakcn.com',
+            ]),
+          ];
+        }
+        elseif (basename($file) === 'fonts.css') {
+          $form['css']['fonts_css'] = [
+            '#type' => 'textarea',
+            '#title' => $this->t('Fonts'),
+            '#default_value' => file_get_contents($file),
+            '#rows' => 15,
+            '#description' => $this->t('This will be saved to <code>@dir/fonts.css</code>.', ['@dir' => $this->cssDirectory]),
+          ];
+        }
+      }
+      $form['actions']['submit']['#submit'][] = $this->saveCss(...);
+    }
+    else {
+      $form['css']['#description'] = $this->t('Disabled because the <code>@dir</code> directory is not writable.', ['@dir' => $this->cssDirectory]);
+    }
+
     $message = $this->t("See <code>@path</code> to learn how to customize Mercury's fonts, colors, and components.", [
       '@path' => $this->themeList->getPath('mercury') . '/CUSTOMIZING.md',
     ]);
     $this->messenger()->addMessage($message, 'info');
+  }
+
+  /**
+   * Submit handler for the CSS editing textareas.
+   */
+  public function saveCss(array &$form, FormStateInterface $form_state): void {
+    $files = [
+      'theme_css' => $this->cssDirectory . '/theme.css',
+      'fonts_css' => $this->cssDirectory . '/fonts.css',
+    ];
+    // If any of these files don't exist already, we'll need a cache clear.
+    $clear_cache = array_any($files, fn (string $f): bool => !file_exists($f));
+
+    foreach ($files as $form_key => $path) {
+      file_put_contents($path, $form_state->getValue($form_key));
+      // For safety's sake, always make the file non-executable.
+      $this->fileSystem->chmod($path, 0644);
+    }
+    if ($clear_cache) {
+      $this->libraryDiscovery->clear();
+    }
   }
 
   /**

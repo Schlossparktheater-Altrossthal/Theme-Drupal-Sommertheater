@@ -33,8 +33,8 @@ final class IconsTest extends KernelTestBase {
       ->getIcons();
 
     $icon_dir = implode('/', [
-      $this->getDrupalRoot(),
-      $this->container->get(ThemeExtensionList::class)->getPath('mercury'),
+      $this->root,
+      \Drupal::service(ThemeExtensionList::class)->getPath('mercury'),
       'icons/phosphor',
     ]);
     $dir = opendir($icon_dir);

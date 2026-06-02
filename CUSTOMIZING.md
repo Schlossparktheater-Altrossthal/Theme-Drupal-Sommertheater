@@ -4,7 +4,9 @@
 
 ### Fonts & colors
 
-To change the fonts or colors, copy the `src/theme.css` and `src/fonts.css` files to the web root, so that `theme.css` and `fonts.css` are sitting next to `index.php`. Commit them to your Git repository, and clear Drupal's cache. You can customize them however you like; changes you make to it will be reflected immediately on your site.
+To change the fonts or colors, copy the `src/theme.css` and `src/fonts.css` files to the site directory (usually `sites/default`), so that `theme.css` and `fonts.css` are sitting next to `settings.php`. Commit them to your Git repository, and clear Drupal's cache. You can customize them however you like; changes you make to it will be reflected immediately on your site.
+
+If the site directory is writable, you can do this directly from the theme settings page at `/admin/appearance/settings/mercury`.
 
 ### Advanced customizations
 
