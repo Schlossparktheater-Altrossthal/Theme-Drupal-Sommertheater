@@ -60,9 +60,9 @@ class CssEditUiTest extends BrowserTestBase {
     $assert_session->fieldValueEquals('fonts_css', '/* My fonts.css override */');
 
     // Nothing should have leaked into configuration.
-    $settings = $this->config('mercury.settings');
-    $this->assertNull($settings->get('theme_css'));
-    $this->assertNull($settings->get('fonts_css'));
+    $settings = $this->config('mercury.settings')->get();
+    $this->assertArrayNotHasKey('theme_css', $settings);
+    $this->assertArrayNotHasKey('fonts_css', $settings);
   }
 
 }

@@ -165,7 +165,6 @@ final class ThemeHooks {
     $clear_cache = array_any($files, fn (string $f): bool => !file_exists($f));
 
     foreach ($files as $form_key => $path) {
-      print_r($form_state->getValue($form_key));
       file_put_contents($path, $form_state->getValue($form_key));
       // For safety's sake, always make the file non-executable.
       $this->fileSystem->chmod($path, 0644);
@@ -173,8 +172,6 @@ final class ThemeHooks {
     if ($clear_cache) {
       $this->libraryDiscovery->clear();
     }
-    // We don't want these bleeding into configuration.
-    $form_state->unsetValue('theme_css')->unsetValue('fonts_css');
   }
 
   /**
