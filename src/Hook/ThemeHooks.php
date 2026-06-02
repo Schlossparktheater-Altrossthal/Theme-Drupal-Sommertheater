@@ -100,11 +100,15 @@ final class ThemeHooks {
     $library = $this->libraryDiscovery->getLibraryByName('mercury', 'global');
 
     if ($library && is_writable(self::$appRoot)) {
+      $form['css'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Edit CSS'),
+      ];
       foreach ($library['css'] ?? [] as ['data' => $file]) {
         $file = self::$appRoot . '/' . $file;
 
         if (basename($file) === 'theme.css') {
-          $form['theme_css'] = [
+          $form['css']['theme_css'] = [
             '#type' => 'textarea',
             '#title' => $this->t('Color scheme'),
             '#default_value' => file_get_contents($file),
@@ -112,7 +116,7 @@ final class ThemeHooks {
           ];
         }
         elseif (basename($file) === 'fonts.css') {
-          $form['fonts_css'] = [
+          $form['css']['fonts_css'] = [
             '#type' => 'textarea',
             '#title' => $this->t('Fonts'),
             '#default_value' => file_get_contents($file),
