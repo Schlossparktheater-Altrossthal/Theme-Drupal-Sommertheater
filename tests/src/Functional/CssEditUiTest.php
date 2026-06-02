@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  */
 #[Group('mercury')]
 #[RunTestsInSeparateProcesses]
-class OverrideCssTest extends BrowserTestBase {
+class CssEditUiTest extends BrowserTestBase {
 
   use MercuryTestTrait;
 
@@ -21,6 +21,9 @@ class OverrideCssTest extends BrowserTestBase {
    */
   protected $defaultTheme = 'stark';
 
+  /**
+   * Tests that Mercury's CSS can be edited (overridden) in the UI.
+   */
   public function testCssEditInUi(): void {
     $this->setUpMercury();
 
