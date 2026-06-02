@@ -102,7 +102,7 @@ final class ThemeHooks {
     if ($library && is_writable(self::$appRoot)) {
       $form['css'] = [
         '#type' => 'details',
-        '#title' => $this->t('Edit CSS'),
+        '#title' => $this->t('Edit CSS (advanced)'),
       ];
       foreach ($library['css'] ?? [] as ['data' => $file]) {
         $file = self::$appRoot . '/' . $file;
@@ -113,6 +113,7 @@ final class ThemeHooks {
             '#title' => $this->t('Colors'),
             '#default_value' => file_get_contents($file),
             '#rows' => 20,
+            '#description' => $this->t('This will be saved to <code>@root/theme.css</code>.', ['@root' => self::$appRoot]),
           ];
         }
         elseif (basename($file) === 'fonts.css') {
@@ -121,9 +122,11 @@ final class ThemeHooks {
             '#title' => $this->t('Fonts'),
             '#default_value' => file_get_contents($file),
             '#rows' => 20,
+            '#description' => $this->t('This will be saved to <code>@root/fonts.css</code>.', ['@root' => self::$appRoot]),
           ];
         }
       }
+      $form['#submit'] ??= ['::submitForm'];
       array_unshift($form['#submit'], [$this, 'saveCss']);
     }
     else {

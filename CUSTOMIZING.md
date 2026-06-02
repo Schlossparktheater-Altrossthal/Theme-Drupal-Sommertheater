@@ -6,6 +6,8 @@
 
 To change the fonts or colors, copy the `src/theme.css` and `src/fonts.css` files to the web root, so that `theme.css` and `fonts.css` are sitting next to `index.php`. Commit them to your Git repository, and clear Drupal's cache. You can customize them however you like; changes you make to it will be reflected immediately on your site.
 
+If the web root is writable, you can do this directly from the theme settings page at `/admin/appearance/settings/mercury`.
+
 ### Advanced customizations
 
 If you want to make deeper customizations (e.g., to components or JavaScript), you will need to convert Mercury to a custom theme with the same machine name. You can do this by running the following at the command line, from the Drupal project root (assuming `web` is the web root):
