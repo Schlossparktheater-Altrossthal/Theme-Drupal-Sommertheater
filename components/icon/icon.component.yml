@@ -8,6 +8,11 @@ props:
     - icon
     - icon_size
   properties:
+    alt:
+      type: string
+      title: Alt text
+      description: "Accessibility alternative text, leave empty for decorative icon."
+      default: ""
     icon:
       type: string
       title: Icon name
