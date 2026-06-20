@@ -17,11 +17,11 @@
 {% block content %}
   {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
 
-  <a href="{{ home_url|default('/') }}" class="inline-block" rel="home">
+  <a href="{{ home_url|default('/') }}" class="inline-block" rel="home" aria-label="{{ site_name is not empty ? site_name : 'Home'|t }}">
     {% block branding %}
       {% if site_logo %}
         <div class="branding">
-          <img class="h-full w-full" src="{{ site_logo_url }}" alt="{{ site_name }}" />
+          <img class="h-full w-full" src="{{ site_logo_url }}" alt="{{ site_name is not empty ? site_name : 'Home'|t }}" />
         </div>
       {% endif %}
       {% if site_name %}
