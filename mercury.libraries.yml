@@ -1,5 +1,4 @@
 global:
-  version: VERSION
   css:
     theme:
       src/fonts.css:
@@ -14,7 +13,6 @@ global:
         preprocess: false
 
 messages:
-  version: VERSION
   js:
     lib/messages.js: {}
   dependencies:
