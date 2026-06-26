@@ -50,7 +50,7 @@ final class StarterKitTest extends BrowserTestBase {
       '--path=' . dirname($path),
       '--no-interaction',
     ];
-    $process = new Process($command, $this->getDrupalRoot());
+    $process = new Process($command, $this->root);
     $process->mustRun();
 
     // We just effectively added a new extension, so reset ExtensionDiscovery's
