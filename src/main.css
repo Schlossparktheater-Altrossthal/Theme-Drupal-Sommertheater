@@ -181,6 +181,63 @@
 }
 
 @layer components {
+  .sommertheater-hero {
+    isolation: isolate;
+    background: var(--background);
+  }
+
+  .sommertheater-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgb(13 23 21 / 0.28) 0%, rgb(13 23 21 / 0.76) 72%, var(--background) 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .sommertheater-hero__content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .sommertheater-hero__content > * {
+    max-width: 68rem;
+  }
+
+  .sommertheater-hero__content h1 {
+    width: min(100%, 68rem);
+    padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 5vw, 4rem);
+    border: 1px solid rgb(232 208 132 / 0.45);
+    border-radius: 2rem;
+    background: rgb(24 37 34 / 0.68);
+    color: var(--foreground);
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    text-wrap: balance;
+    box-shadow: var(--shadow-xl);
+    backdrop-filter: blur(8px);
+  }
+
+  @media (min-width: 768px) {
+    .sommertheater-hero__content h1 {
+      font-size: 5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .sommertheater-hero__content h1 {
+      font-size: 8rem;
+    }
+  }
+
+  .sommertheater-hero__content p {
+    color: var(--foreground);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+
   .sommertheater-wordmark {
     color: var(--foreground);
     font-family: var(--font-serif);
@@ -485,6 +542,29 @@
 }
 
 @layer utilities {
+  .layout-content {
+    background: linear-gradient(180deg, var(--background), rgb(24 37 34 / 0.35));
+  }
+
+  .layout-content > * {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+  }
+
+  .layout-content h1,
+  .layout-content h2,
+  .layout-content h3,
+  .layout-content h4 {
+    color: var(--foreground);
+    font-family: var(--font-serif);
+  }
+
+  .layout-content .views-row,
+  .layout-content .view-content > article,
+  .layout-content .paragraph {
+    border-color: var(--border);
+  }
+
   .sommertheater-page-pattern {
     background-image:
       linear-gradient(120deg, rgb(182 138 69 / 0.04) 1px, transparent 1px), linear-gradient(60deg, rgb(182 138 69 / 0.03) 1px, transparent 1px);
