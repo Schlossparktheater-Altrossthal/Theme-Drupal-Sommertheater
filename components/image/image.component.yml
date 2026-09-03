@@ -44,6 +44,16 @@ props:
         extra-large: Extra large
       examples:
         - "small"
+    frame:
+      type: string
+      title: Frame style
+      enum:
+        - modern
+        - archive
+      meta:enum:
+        modern: Modern
+        archive: Archive
+      default: modern
     caption:
       title: Caption
       type: string

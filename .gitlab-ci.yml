@@ -52,8 +52,8 @@ lint:
   rules:
     - when: always
 
-# Ensure that Mercury is physically installed in the Drupal code base, rather
-# than symlinked, so that the theme generator can use Mercury as a starter kit.
+# Ensure that Sommertheater is physically installed in the Drupal code base, rather
+# than symlinked, so that the theme generator can use Sommertheater as a starter kit.
 composer:
   extends: .composer-base
   variables:
@@ -61,13 +61,13 @@ composer:
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: 1
   before_script:
     - rm .gitattributes
-    - composer archive --file=mercury --format=tar
+    - composer archive --file=sommertheater --format=tar
   after_script:
-    - THEME_DIR=web/themes/custom/mercury
+    - THEME_DIR=web/themes/custom/sommertheater
     - rm -r -f $THEME_DIR
     - mkdir -p $THEME_DIR
-    - tar -x -f mercury.tar -C $THEME_DIR
-    - rm mercury.tar
+    - tar -x -f sommertheater.tar -C $THEME_DIR
+    - rm sommertheater.tar
     # The CVA dependency should be there.
     - test -d web/modules/contrib/cva
 

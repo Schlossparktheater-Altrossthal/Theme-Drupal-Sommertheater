@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\mercury\Hook;
+namespace Drupal\sommertheater\Hook;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface;
@@ -15,14 +15,14 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\mercury\RenderCallbacks;
+use Drupal\sommertheater\RenderCallbacks;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Contains hook implementations for Mercury.
+ * Contains hook implementations for Sommertheater.
  */
 final class ThemeHooks {
 
@@ -68,7 +68,7 @@ final class ThemeHooks {
       NestedArray::setValue($libraries, $new_parents, $css_settings);
       NestedArray::unsetValue($libraries, $old_parents);
     };
-    if ($extension === 'mercury') {
+    if ($extension === 'sommertheater') {
       if (file_exists(self::$appRoot . '/theme.css')) {
         $override('src/theme.css', '/theme.css');
       }
@@ -92,8 +92,8 @@ final class ThemeHooks {
         'dark' => t('Dark'),
       ],
     ];
-    $message = $this->t("See <code>@path</code> to learn how to customize Mercury's fonts, colors, and components.", [
-      '@path' => $this->themeList->getPath('mercury') . '/CUSTOMIZING.md',
+    $message = $this->t("See <code>@path</code> to learn how to customize Sommertheater's fonts, colors, and components.", [
+      '@path' => $this->themeList->getPath('sommertheater') . '/CUSTOMIZING.md',
     ]);
     $this->messenger()->addMessage($message, 'info');
   }
@@ -121,7 +121,7 @@ final class ThemeHooks {
   public function preprocessHtml(array &$variables): void {
     $variables['scheme'] = $this->themeSettings->getSetting('scheme');
     // Get the theme base path for font preloading.
-    $variables['mercury_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('mercury');
+    $variables['sommertheater_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater');
   }
 
   /**

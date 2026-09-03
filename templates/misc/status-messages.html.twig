@@ -19,7 +19,7 @@
  *   - class: HTML classes.
  */
 #}
-{{ attach_library('mercury/messages') }}
+{{ attach_library('sommertheater/messages') }}
 <div data-drupal-messages class="fixed bottom-4 z-50 flex flex-col gap-3 px-4 sm:right-4 sm:max-w-lg sm:p-0 md:max-w-xl xl:max-w-2xl">
   {% for type, messages in message_list %}
     {% if type == 'status' %}
@@ -51,7 +51,7 @@
         <div class="message-{{ type }}-icon my-auto">
           {{
             include(
-              '@mercury/components/icon/icon.twig',
+              '@sommertheater/components/icon/icon.twig',
               {
                 icon: type_icon,
                 icon_size: 'medium'
@@ -81,7 +81,7 @@
       >
         {{
           include(
-            '@mercury/components/icon/icon.twig',
+            '@sommertheater/components/icon/icon.twig',
             {
               icon: 'x',
               icon_size: 'small'

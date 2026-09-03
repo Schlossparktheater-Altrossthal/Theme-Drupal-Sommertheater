@@ -112,15 +112,15 @@
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply font-sans text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
+    @apply font-serif text-5xl leading-none font-bold md:text-6xl lg:text-7xl 2xl:text-8xl;
   }
 
   h2 {
-    @apply font-sans text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
+    @apply font-serif text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
   }
 
   h3 {
-    @apply font-sans text-2xl font-semibold xl:text-3xl;
+    @apply font-serif text-2xl font-bold xl:text-3xl;
   }
 
   h4 {
@@ -215,7 +215,7 @@
   }
 
   .form-required::after {
-    @apply ml-1 text-red-500;
+    @apply ml-1 text-destructive;
     content: "*";
   }
 
@@ -272,17 +272,17 @@
   .form-item--error input,
   .form-item--error textarea,
   .form-item--error select {
-    @apply border-red-500;
+    @apply border-destructive;
   }
 
   .form-item--error input:focus,
   .form-item--error textarea:focus,
   .form-item--error select:focus {
-    @apply border-red-500 shadow-sm;
+    @apply border-destructive shadow-sm;
   }
 
   .form-item--error-message {
-    @apply mt-1 mb-3 basis-full text-sm text-red-500;
+    @apply mt-1 mb-3 basis-full text-sm text-destructive;
   }
 
   .webform-options-display-one-column {
@@ -315,6 +315,21 @@
 }
 
 @layer utilities {
+  .sommertheater-ornament {
+    position: relative;
+    color: var(--secondary);
+  }
+
+  .sommertheater-ornament::before,
+  .sommertheater-ornament::after {
+    display: inline-block;
+    width: 3rem;
+    margin-inline: 0.75rem;
+    border-top: 1px solid currentColor;
+    content: "";
+    vertical-align: middle;
+  }
+
   /* For custom utility classes with highest precedence. */
 
   /* Set the container query context for full-width elements. */

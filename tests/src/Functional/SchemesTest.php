@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Drupal\Tests\mercury\Functional;
+namespace Drupal\Tests\sommertheater\Functional;
 
 use Drupal\mercury\Hook\ThemeHooks;
 use Drupal\Tests\BrowserTestBase;
-use Drupal\Tests\mercury\Traits\MercuryTestTrait;
+use Drupal\Tests\sommertheater\Traits\SommertheaterTestTrait;
 use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\TestWith;
 
 /**
- * Tests that Mercury's color scheme can be changed by a setting.
+ * Tests that Sommertheater's color scheme can be changed by a setting.
  */
-#[Group('mercury')]
+#[Group('sommertheater')]
 #[CoversMethod(ThemeHooks::class, 'preprocessHtml')]
 #[CoversMethod(ThemeHooks::class, 'themeSettingsFormAlter')]
 #[RunTestsInSeparateProcesses]
 class SchemesTest extends BrowserTestBase {
 
-  use MercuryTestTrait;
+  use SommertheaterTestTrait;
 
   /**
    * {@inheritdoc}
@@ -29,12 +29,12 @@ class SchemesTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests toggling Mercury into and out of a color scheme.
+   * Tests toggling Sommertheater into and out of a color scheme.
    */
   #[TestWith(['light', 'Light'])]
   #[TestWith(['dark', 'Dark'])]
   public function testColorScheme(string $scheme, string $label): void {
-    $this->setUpMercury();
+    $this->setUpSommertheater();
 
     $this->drupalGet('<front>');
     $assert_session = $this->assertSession();
@@ -42,7 +42,7 @@ class SchemesTest extends BrowserTestBase {
 
     $account = $this->drupalCreateUser(['administer themes']);
     $this->drupalLogin($account);
-    $this->drupalGet('/admin/appearance/settings/mercury');
+    $this->drupalGet('/admin/appearance/settings/sommertheater');
     $page = $this->getSession()->getPage();
     $page->findField($label)->selectOption($scheme);
     $page->pressButton('Save configuration');

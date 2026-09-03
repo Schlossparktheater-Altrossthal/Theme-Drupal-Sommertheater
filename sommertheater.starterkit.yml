@@ -1,6 +1,6 @@
 ignore:
   - "/.gitlab-ci.yml"
-  - "/mercury.starterkit.yml"
+  - "/sommertheater.starterkit.yml"
   - "/tests/**"
 # Remove certain keys from the generated info file: specifically, the ones
 # that would cause it to fail a PHPCS job on GitLab CI.

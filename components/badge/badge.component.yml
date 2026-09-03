@@ -23,9 +23,13 @@ props:
       enum:
         - primary
         - secondary
+        - status
+        - neutral
       meta:enum:
         primary: Primary
         secondary: Secondary
+        status: Status
+        neutral: Neutral
       examples:
         - primary
     icon:

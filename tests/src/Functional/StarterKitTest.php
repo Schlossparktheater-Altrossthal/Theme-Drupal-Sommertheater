@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Drupal\Tests\mercury\Functional;
+namespace Drupal\Tests\sommertheater\Functional;
 
 use Composer\InstalledVersions;
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\Tests\BrowserTestBase;
-use Drupal\Tests\mercury\Traits\MercuryTestTrait;
+use Drupal\Tests\sommertheater\Traits\SommertheaterTestTrait;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\IgnoreDeprecations;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
@@ -19,14 +19,14 @@ use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
 /**
- * Tests that Mercury can be used as a starter kit.
+ * Tests that Sommertheater can be used as a starter kit.
  */
-#[Group('mercury')]
+#[Group('sommertheater')]
 #[IgnoreDeprecations]
 #[RunTestsInSeparateProcesses]
 final class StarterKitTest extends BrowserTestBase {
 
-  use MercuryTestTrait;
+  use SommertheaterTestTrait;
 
   /**
    * {@inheritdoc}
@@ -34,10 +34,10 @@ final class StarterKitTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests using Mercury as a starter kit with the `generate-theme` command.
+   * Tests using Sommertheater as a starter kit with the `generate-theme` command.
    */
-  public function testGenerateThemeFromMercury(): void {
-    $this->setUpMercury();
+  public function testGenerateThemeFromSommertheater(): void {
+    $this->setUpSommertheater();
 
     $path = uniqid($this->siteDirectory . '/themes/theme_');
     $theme_name = basename($path);
@@ -52,7 +52,7 @@ final class StarterKitTest extends BrowserTestBase {
       $dr,
       'generate-theme',
       $theme_name,
-      '--starterkit=mercury',
+      '--starterkit=sommertheater',
       '--path=' . dirname($path),
       '--no-interaction',
     ];
@@ -67,7 +67,7 @@ final class StarterKitTest extends BrowserTestBase {
     // We should be able to install the theme without errors.
     $this->container->get(ThemeInstallerInterface::class)
       ->install([$theme_name]);
-    // All of Mercury's SDCs should be available in the new theme, copied into
+    // All of Sommertheater's SDCs should be available in the new theme, copied into
     // its own namespace.
     $component_manager = $this->container->get(ComponentPluginManager::class);
     $component_manager->clearCachedDefinitions();

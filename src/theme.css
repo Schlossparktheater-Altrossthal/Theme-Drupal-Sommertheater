@@ -1,6 +1,6 @@
 /**
  * @file theme.css
- * shadcn/ui-compatible theme variables for Mercury.
+ * shadcn/ui-compatible theme variables for Sommertheater.
  *
  * You can customize these values without rebuilding the compiled CSS.
  * Tools like https://tweakcn.com can help generate these values. Copy this
@@ -9,25 +9,27 @@
  */
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.13 0.043 265.132);
-  --card: oklch(0.967 0.003 264.542);
-  --card-foreground: oklch(0.21 0.032 264.665);
-  --primary: oklch(0.547 0.246 262.866);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9219 0 0);
-  --secondary-foreground: oklch(0.28 0.041 260.329);
-  --muted: oklch(0.967 0.003 264.542);
-  --muted-foreground: oklch(0.13 0.043 265.132);
-  --accent: oklch(0.932 0.032 255.585);
+  --paper-surface: #e8d6b4;
+  --paper-ink: #38291c;
+  --background: #ffe8d0;
+  --foreground: #0d1715;
+  --card: #f6e8d3;
+  --card-foreground: #0d1715;
+  --primary: #e5a808;
+  --primary-foreground: #0d1715;
+  --secondary: #b68a45;
+  --secondary-foreground: #0d1715;
+  --muted: #87968a;
+  --muted-foreground: #4b452e;
+  --accent: #b6ba45;
   --accent-foreground: var(--foreground);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.872 0.009 258.338);
-  --input: oklch(0.872 0.009 258.338);
-  --ring: oklch(0.547 0.246 262.866);
-  --font-sans: "Outfit", "Helvetica Neue", Arial, Helvetica, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --destructive: #86452e;
+  --destructive-foreground: #ffe8d0;
+  --border: #b68a45;
+  --input: #b68a45;
+  --ring: #e5a808;
+  --font-sans: "Inter", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
   --font-body: "Inter", Arial, Helvetica, sans-serif;
   --radius: 0.5rem;
@@ -57,25 +59,27 @@
 }
 
 .dark {
-  --background: oklch(0.13 0.043 265.132);
-  --foreground: oklch(1 0 89.876);
-  --card: oklch(0.208 0.042 266.359);
-  --card-foreground: var(--foreground);
-  --primary: oklch(0.547 0.246 262.866);
-  --primary-foreground: var(--foreground);
-  --secondary: oklch(0.704 0.04 256.993);
-  --secondary-foreground: oklch(0.13 0.043 265.132);
-  --muted: oklch(0.28 0.041 260.329);
-  --muted-foreground: oklch(0.967 0.003 264.542);
-  --accent: oklch(0.932 0.032 255.585);
-  --accent-foreground: oklch(0.13 0.043 265.132);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.373 0.031 259.733);
-  --input: oklch(0.373 0.031 259.733);
-  --ring: oklch(0.623 0.214 259.815);
-  --font-sans: "Outfit", "Helvetica Neue", Arial, Helvetica, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --paper-surface: #e8d6b4;
+  --paper-ink: #38291c;
+  --background: #0d1715;
+  --foreground: #f6e8d3;
+  --card: #182522;
+  --card-foreground: #f6e8d3;
+  --primary: #e5a808;
+  --primary-foreground: #0d1715;
+  --secondary: #b68a45;
+  --secondary-foreground: #f6e8d3;
+  --muted: #87968a;
+  --muted-foreground: #c6a77a;
+  --accent: #b6ba45;
+  --accent-foreground: #0d1715;
+  --destructive: #86452e;
+  --destructive-foreground: #ffe8d0;
+  --border: #4b452e;
+  --input: #4b452e;
+  --ring: #e5a808;
+  --font-sans: "Inter", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
   --radius: 0.5rem;
   --shadow-x: 0;

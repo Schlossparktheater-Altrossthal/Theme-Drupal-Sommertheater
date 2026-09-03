@@ -1,12 +1,12 @@
-mercury.settings:
+sommertheater.settings:
   type: theme_settings
-  label: "Mercury settings"
+  label: "Sommertheater settings"
   mapping:
     scheme:
       type: string
       label: Color scheme
       constraints:
         Choice:
-          # @see \Drupal\mercury\Hook\ThemeHooks::themeSettingsFormAlter()
+          # @see \Drupal\sommertheater\Hook\ThemeHooks::themeSettingsFormAlter()
           - light
           - dark

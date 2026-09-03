@@ -22,7 +22,8 @@
       },
       style: {
         framed: 'gap-4 p-4 lg:gap-4 lg:p-6',
-        full: ''
+        full: '',
+        archive: 'gap-4 border border-secondary bg-[var(--paper-surface)] p-4 text-[var(--paper-ink)] shadow-lg lg:gap-6 lg:p-6'
       },
       backgroundColor: {
         default: 'bg-card text-card-foreground hover:bg-card/90 hover:text-card-foreground/90',
@@ -30,6 +31,7 @@
         accent: 'bg-accent text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground/80',
         primary: 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground/90',
         inverted: 'bg-foreground text-background hover:bg-foreground/90 hover:text-background/90',
+        glass: 'border border-secondary/60 bg-card/60 text-card-foreground backdrop-blur-sm hover:border-primary/80',
         noColor: 'shadow-none hover:text-foreground/90'
       }
     },
@@ -53,7 +55,8 @@
       },
       style: {
         framed: 'rounded-lg',
-        full: 'rounded-xl'
+        full: 'rounded-xl',
+        archive: 'rounded-sm border border-secondary/60'
       }
     }
   )
@@ -69,7 +72,8 @@
       },
       style: {
         framed: '',
-        full: 'rounded-b p-4 lg:p-6'
+        full: 'rounded-b p-4 lg:p-6',
+        archive: 'rounded-sm p-2 lg:p-4'
       }
     },
     compound_variants: [

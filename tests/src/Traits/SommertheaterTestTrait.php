@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\Tests\mercury\Traits;
+namespace Drupal\Tests\sommertheater\Traits;
 
 use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Extension\ThemeInstallerInterface;
@@ -10,27 +10,27 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Provides helper methods for Mercury's tests.
+ * Provides helper methods for Sommertheater's tests.
  *
  * @internal
- *   This is an internal part of Mercury and may be changed or removed at any
+ *   This is an internal part of Sommertheater and may be changed or removed at any
  *   time without warning. External code should not touch this trait.
  */
-trait MercuryTestTrait {
+trait SommertheaterTestTrait {
 
   /**
-   * Installs Mercury and its dependencies, and makes it the default theme.
+   * Installs Sommertheater and its dependencies, and makes it the default theme.
    */
-  private function setUpMercury(): void {
+  private function setUpSommertheater(): void {
     assert($this instanceof BrowserTestBase || $this instanceof KernelTestBase);
 
     $this->container->get(ModuleInstallerInterface::class)->install(['cva']);
     $this->container = $this->container->get('kernel')->getContainer();
 
-    $this->container->get(ThemeInstallerInterface::class)->install(['mercury']);
+    $this->container->get(ThemeInstallerInterface::class)->install(['sommertheater']);
     $this->container = $this->container->get('kernel')->getContainer();
 
-    $this->config('system.theme')->set('default', 'mercury')->save();
+    $this->config('system.theme')->set('default', 'sommertheater')->save();
   }
 
 }

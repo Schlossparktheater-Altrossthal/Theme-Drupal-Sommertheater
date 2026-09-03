@@ -42,7 +42,7 @@
   <header class="flex flex-col gap-2">
     {{
       include(
-        'mercury:heading',
+        'sommertheater:heading',
         {
           heading_text: heading_text|default(''),
           level: 3,
@@ -75,7 +75,7 @@
       {% block richtext %}
         {{
           include(
-            'mercury:text',
+            'sommertheater:text',
             {
               text: text,
               text_color: description_text_color,
@@ -91,7 +91,7 @@
   <footer class="mt-auto">
     {{
       include(
-        'mercury:button',
+        'sommertheater:button',
         {
           href: button_url|default(''),
           label: button_label,

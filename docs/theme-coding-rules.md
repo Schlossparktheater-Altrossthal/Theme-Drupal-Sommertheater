@@ -1,6 +1,6 @@
-# Mercury Theme - Theme Coding Rules
+# Sommertheater Theme - Theme Coding Rules
 
-This document contains detailed coding rules and conventions for the Mercury theme. It is the technical reference for the rules summarized in [AGENTS.md](../AGENTS.md). Entry point for humans: [README.md](../README.md).
+This document contains detailed coding rules and conventions for the Sommertheater theme. It is the technical reference for the rules summarized in [AGENTS.md](../AGENTS.md). Entry point for humans: [README.md](../README.md).
 
 ## CVA (Class Variant Authority) Usage
 
@@ -120,31 +120,20 @@ clickable: { yes: 'group cursor-pointer', no: '' }
 **❌ Bad:**
 
 ```twig
-variant: {
-  primary: 'border-[var(--hgc-btn-border)] bg-[var(--hgc-btn-bg)] text-[var(--hgc-btn-label)] hover:border-[var(--hgc-btn-border-hover)] hover:bg-[var(--hgc-btn-bg-hover)] hover:text-[var(--hgc-btn-label-hover)] focus:border-[var(--hgc-btn-border-hover)] focus:bg-[var(--hgc-btn-bg-hover)] focus:text-[var(--hgc-btn-label-hover)] disabled:cursor-default disabled:border-[var(--hgc-btn-border-disabled)] disabled:bg-[var(--hgc-btn-bg-disabled)] disabled:text-[var(--hgc-btn-label-disabled)]'
-}
+variant: { primary: 'border-[var(--hgc-btn-border)] bg-[var(--hgc-btn-bg)] text-[var(--hgc-btn-label)] hover:border-[var(--hgc-btn-border-hover)]
+hover:bg-[var(--hgc-btn-bg-hover)] hover:text-[var(--hgc-btn-label-hover)] focus:border-[var(--hgc-btn-border-hover)]
+focus:bg-[var(--hgc-btn-bg-hover)] focus:text-[var(--hgc-btn-label-hover)] disabled:cursor-default disabled:border-[var(--hgc-btn-border-disabled)]
+disabled:bg-[var(--hgc-btn-bg-disabled)] disabled:text-[var(--hgc-btn-label-disabled)]' }
 ```
 
 **✅ Good:**
 
 ```twig
-variant: {
-  primary: [
-    'border-[var(--hgc-btn-border)]',
-    'bg-[var(--hgc-btn-bg)]',
-    'text-[var(--hgc-btn-label)]',
-    'hover:border-[var(--hgc-btn-border-hover)]',
-    'hover:bg-[var(--hgc-btn-bg-hover)]',
-    'hover:text-[var(--hgc-btn-label-hover)]',
-    'focus:border-[var(--hgc-btn-border-hover)]',
-    'focus:bg-[var(--hgc-btn-bg-hover)]',
-    'focus:text-[var(--hgc-btn-label-hover)]',
-    'disabled:cursor-default',
-    'disabled:border-[var(--hgc-btn-border-disabled)]',
-    'disabled:bg-[var(--hgc-btn-bg-disabled)]',
-    'disabled:text-[var(--hgc-btn-label-disabled)]'
-  ]
-}
+variant: { primary: [ 'border-[var(--hgc-btn-border)]', 'bg-[var(--hgc-btn-bg)]', 'text-[var(--hgc-btn-label)]',
+'hover:border-[var(--hgc-btn-border-hover)]', 'hover:bg-[var(--hgc-btn-bg-hover)]', 'hover:text-[var(--hgc-btn-label-hover)]',
+'focus:border-[var(--hgc-btn-border-hover)]', 'focus:bg-[var(--hgc-btn-bg-hover)]', 'focus:text-[var(--hgc-btn-label-hover)]',
+'disabled:cursor-default', 'disabled:border-[var(--hgc-btn-border-disabled)]', 'disabled:bg-[var(--hgc-btn-bg-disabled)]',
+'disabled:text-[var(--hgc-btn-label-disabled)]' ] }
 ```
 
 **Note**: Arrays can be used directly in CVA variant definitions without needing to join them. CVA will handle the array format automatically. This makes long class strings much more readable and easier to maintain.
@@ -270,7 +259,7 @@ Or using CVA (preferred):
 <div {{ attributes }}></div>
 ```
 
-**Note**: Even though Drupal core templates sometimes use `<div{{ attributes }}>`, this pattern is not allowed in Mercury theme components.
+**Note**: Even though Drupal core templates sometimes use `<div{{ attributes }}>`, this pattern is not allowed in Sommertheater theme components.
 
 ### No Inline Control Structures in Attributes
 
@@ -383,7 +372,7 @@ Or use a wrapper approach:
 ```twig
 {{
   include(
-    '@mercury/components/icon/icon.twig',
+    '@sommertheater/components/icon/icon.twig',
     {
       weight: 'bold',
       icon: icon
@@ -397,7 +386,7 @@ Or use a wrapper approach:
 ```twig
 {{
   include(
-    '@mercury/components/icon/icon.twig',
+    '@sommertheater/components/icon/icon.twig',
     {
       weight: 'bold',
       icon: icon
@@ -412,7 +401,7 @@ Or use a wrapper approach:
 **❌ Bad:**
 
 ```twig
-{% include '@mercury/components/icon/icon.twig' with {
+{% include '@sommertheater/components/icon/icon.twig' with {
   weight: 'bold',
   icon: icon
 } %}
@@ -421,13 +410,14 @@ Or use a wrapper approach:
 **✅ Good:**
 
 ```twig
-{% include '@mercury/components/icon/icon.twig' with {
+{% include '@sommertheater/components/icon/icon.twig' with {
   weight: 'bold',
   icon: icon
 } only %}
 ```
 
 **Note**:
+
 - Use `with_context: false` with the `include()` function syntax
 - Use `with only` with the `{% include %}` tag syntax
 - Both achieve the same result: preventing context pollution by only passing explicitly defined variables
@@ -441,7 +431,7 @@ Or use a wrapper approach:
 ```twig
 {{
   include(
-    'mercury:heading',
+    'sommertheater:heading',
     {
       heading_text: heading_text|default(''),
       level: level|default(2),
@@ -463,7 +453,7 @@ Or use a wrapper approach:
 ```twig
 {{
   include(
-    'mercury:heading',
+    'sommertheater:heading',
     {
       heading_text: heading_text|default(''),
       level: level|default(2),
@@ -484,7 +474,7 @@ Or use a wrapper approach:
 ```twig
 {{
   include(
-    'mercury:heading',
+    'sommertheater:heading',
     {
       heading_text: heading_text|default(''),
       level: 3,
@@ -502,7 +492,7 @@ Or use a wrapper approach:
 
 ### Run Format and Build After Changes
 
-**Rule**: After completing any changes to the Mercury theme, always run `npm run format` and `npm run build` to ensure code is properly formatted and the build artifacts are up to date.
+**Rule**: After completing any changes to the Sommertheater theme, always run `npm run format` and `npm run build` to ensure code is properly formatted and the build artifacts are up to date.
 
 **Required Steps:**
 
@@ -516,7 +506,7 @@ npm run format
 npm run build
 ```
 
-**Note**: These commands should be run from the Mercury theme directory (`web/themes/custom/mercury/`). Running these commands ensures that:
+**Note**: These commands should be run from the Sommertheater theme directory (`web/themes/custom/sommertheater/`). Running these commands ensures that:
 
 - Code follows consistent formatting standards
 - Build artifacts (compiled CSS, minified JS, etc.) are regenerated

@@ -4,12 +4,12 @@
 
 ### 1. Triggering the release
 
-1. Go to https://git.drupalcode.org/project/mercury/-/tags/new.
+1. Go to https://git.drupalcode.org/project/sommertheater/-/tags/new.
 2. Create a new tag from the `1.x` branch.
 3. Name the tag according to the new version, prefixed with a `v` (for example,
    `v1.0.4`).
 4. Track the resulting pipeline at
-   https://git.drupalcode.org/project/mercury/-/pipelines. Make sure it succeeds.
+   https://git.drupalcode.org/project/sommertheater/-/pipelines. Make sure it succeeds.
 
 ### 2. Publishing on Drupal.org
 

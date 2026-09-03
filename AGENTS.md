@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> Entry point for AI agents and developers in the **Mercury** project.
+> Entry point for AI agents and developers in the **Sommertheater** project.
 > Summary of rules (WHAT applies and WHY). Human entry point: [README.md](README.md).
 > Theme-specific coding rules are detailed in [docs/theme-coding-rules.md](docs/theme-coding-rules.md).
 
@@ -8,7 +8,7 @@
 
 ## Project Overview
 
-- **Mercury** is a component-based Drupal theme, providing a modern and flexible starting point for site owners to build scalable and efficient websites using Drupal Canvas.
+- **Sommertheater** is a component-based Drupal theme, providing a modern and flexible starting point for site owners to build scalable and efficient websites using Drupal Canvas.
 - Target audience / access: Drupal site builders and developers; theme is publicly available from drupal.org.
 - Key features / pipeline stages:
   - Single-directory components (SDC) with a `component.yml` schema per component
@@ -31,7 +31,7 @@
   - `src/theme.css` — shadcn/ui-compatible theme variables (light/dark), customizable without rebuild
   - `src/motion.js` — animation entry point, bundled via esbuild into `build/motion.js`
   - `lib/component.js` — Drupal behavior helper classes (`ComponentInstance`, `ComponentType`)
-  - `mercury.info.yml` — theme metadata, regions, library declarations
+  - `sommertheater.info.yml` — theme metadata, regions, library declarations
 - **Explicitly excluded:** None deliberately excluded beyond what the Drupal ecosystem implies; do not introduce frameworks such as Next.js, React, Vue, or Redux.
 
 ---
@@ -45,7 +45,7 @@
 - Acceptable approaches:
   - `src/theme.css` is customizable at runtime by copying it to the web root — do not hard-code colors in components; use the semantic CSS variables.
   - `src/fonts.css` defines the font faces; customize by copying to the web root.
-- Do not subtheme Mercury. For deeper customizations, copy the theme to `web/themes/custom/mercury` and remove the contrib dependency (see [CUSTOMIZING.md](CUSTOMIZING.md)).
+- Do not subtheme Sommertheater. For deeper customizations, copy the theme to `web/themes/custom/sommertheater` and remove the contrib dependency (see [CUSTOMIZING.md](CUSTOMIZING.md)).
 - Before deleting a module or export, verify all usages. A module is only dead when no import path references it.
 - Never leave empty catch blocks — log the error or rethrow it.
 - No runtime or logic code may depend on loose types; JS should use clean, predictable structures and avoid implicit type coercions where avoidable.
@@ -62,14 +62,14 @@
   - surface/card → `--card` / `--card-foreground`
   - muted/nested surface → `--muted` / `--muted-foreground`
   - destructive/errors → `--destructive` / `--destructive-foreground`
-- Customizing fonts, colors, and tokens is documented in [CUSTOMIZING.md](CUSTOMIZING.md). Theme token reference lives in `src/theme.css`.
+- Customizing fonts, colors, and tokens is documented in [CUSTOMIZING.md](CUSTOMIZING.md). Theme token reference lives in `src/theme.css` and the visual specification in [docs/design-system.md](docs/design-system.md).
 
 ---
 
 ## Routing
 
-- Routing is handled entirely by Drupal; Mercury provides template overrides in `templates/` (layout, navigation, block, views, misc).
-- The theme's regions are defined in `mercury.info.yml`: `content`, `header`, `footer`.
+- Routing is handled entirely by Drupal; Sommertheater provides template overrides in `templates/` (layout, navigation, block, views, misc).
+- The theme's regions are defined in `sommertheater.info.yml`: `content`, `header`, `footer`.
 - Known gaps: none that require route creation in this theme. Do not introduce routing logic; this is a theme, not a module.
 
 ---
@@ -182,7 +182,7 @@
 
 ## Theme Coding Rules
 
-The detailed, Mercury-specific coding rules are maintained in
+The detailed, Sommertheater-specific coding rules are maintained in
 [docs/theme-coding-rules.md](docs/theme-coding-rules.md).
 
 Summary:

@@ -17,12 +17,14 @@ props:
         - primary
         - inverted
         - background
+        - glass
       meta:enum:
         default: Default
         accent: Accent
         primary: Primary
         inverted: Inverted
         background: Background
+        glass: Glass
       examples:
         - default
     style:
@@ -31,9 +33,11 @@ props:
       enum:
         - framed
         - full
+        - archive
       meta:enum:
         framed: Framed
         full: Full width
+        archive: Archive paper
       examples:
         - framed
     orientation:

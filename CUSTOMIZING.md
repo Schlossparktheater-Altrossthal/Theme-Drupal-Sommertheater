@@ -1,6 +1,6 @@
-## Customizing Mercury
+## Customizing Sommertheater
 
-**Don't subtheme Mercury!** It does not provide backwards compatibility. This allows us to rapidly innovate, iterate, and improve it. If you create a sub-theme of Mercury, it is likely to break in the future.
+**Don't subtheme Sommertheater!** It does not provide backwards compatibility. This allows us to rapidly innovate, iterate, and improve it. If you create a sub-theme of Sommertheater, it is likely to break in the future.
 
 ### Fonts & colors
 
@@ -10,24 +10,24 @@ If you change the fonts, make sure to update `templates/includes/preload.twig`, 
 
 ### Advanced customizations
 
-If you want to make deeper customizations (e.g., to components or JavaScript), you will need to convert Mercury to a custom theme with the same machine name. You can do this by running the following at the command line, from the Drupal project root (assuming `web` is the web root):
+If you want to make deeper customizations (e.g., to components or JavaScript), you will need to convert Sommertheater to a custom theme with the same machine name. You can do this by running the following at the command line, from the Drupal project root (assuming `web` is the web root):
 
 ```shell
 mkdir -p web/themes/custom
-cp -R web/themes/contrib/mercury web/themes/custom/mercury
-git add web/themes/custom/mercury
-composer remove drupal/mercury
+cp -R web/themes/contrib/sommertheater web/themes/custom/sommertheater
+git add web/themes/custom/sommertheater
+composer remove drupal/sommertheater
 ```
 
 Finally, clear Drupal's cache (via the UI, or `drush cache:rebuild`).
 
 ### Custom components
 
-Mercury uses [single-directory components](https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components) and comes with a variety of commonly used components. You can add new components and modify existing ones, but be sure to rebuild the CSS when you make changes.
+Sommertheater uses [single-directory components](https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components) and comes with a variety of commonly used components. You can add new components and modify existing ones, but be sure to rebuild the CSS when you make changes.
 
 ## Building CSS
 
-Mercury uses [Tailwind](https://tailwindcss.com) to simplify styling by using classes to compose designs directly in the markup.
+Sommertheater uses [Tailwind](https://tailwindcss.com) to simplify styling by using classes to compose designs directly in the markup.
 
 If you want to customize the Tailwind-generated CSS, install the development tooling dependencies by running `npm install` in your theme's directory.
 
@@ -35,7 +35,7 @@ If you modify CSS files or classes in a Twig template, run `npm run build` to re
 
 ## Code Formatting
 
-Mercury uses [Prettier](https://prettier.io) to automatically format code for consistency. The project is configured with plugins for Tailwind CSS and Twig templates.
+Sommertheater uses [Prettier](https://prettier.io) to automatically format code for consistency. The project is configured with plugins for Tailwind CSS and Twig templates.
 
 For the best experience, [set up Prettier in your editor](https://prettier.io/docs/editors) to automatically format files on save.
 
@@ -95,6 +95,6 @@ new ComponentType(
 
 This is all the code required to be in each component. The ComponentType instance handles finding the elements, running them through `once` if available, and adding them to `Drupal.behaviors`.
 
-All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `mercuryComponents`, you would find the Accordion's ComponentType instance at `window.mercuryComponents.accordion`.
+All the objects created this way will be stored in a global variable so you can do stuff with them later. Since the `namespace` variable at the top of component.js is `sommertheaterComponents`, you would find the Accordion's ComponentType instance at `window.sommertheaterComponents.accordion`.
 
-Furthermore, `window.mercuryComponents.accordion.instances` is an array of all the ComponentInstance objects, and `window.mercuryComponents.accordion.elements` is an array of all the component container elements.
+Furthermore, `window.sommertheaterComponents.accordion.instances` is an array of all the ComponentInstance objects, and `window.sommertheaterComponents.accordion.elements` is an array of all the component container elements.

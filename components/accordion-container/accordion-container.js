@@ -11,7 +11,7 @@ class AccordionContainer extends ComponentInstance {
     // accordions.
     this.el.addEventListener("accordionopen", (e) => {
       // Close all descendant accordions except the one that just opened.
-      const otherAccordionInstances = window.mercuryComponents.accordion.instances.filter(
+      const otherAccordionInstances = window.sommertheaterComponents.accordion.instances.filter(
         (accordion) => this.el.contains(accordion.el) && e.target !== accordion.el,
       );
       otherAccordionInstances.forEach((instance) => {

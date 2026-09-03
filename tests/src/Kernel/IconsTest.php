@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Drupal\Tests\mercury\Kernel;
+namespace Drupal\Tests\sommertheater\Kernel;
 
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Theme\Icon\Plugin\IconPackManagerInterface;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\mercury\Traits\MercuryTestTrait;
+use Drupal\Tests\sommertheater\Traits\SommertheaterTestTrait;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Tests that all of Mercury's icons are discoverable.
+ * Tests that all of Sommertheater's icons are discoverable.
  */
-#[Group('mercury')]
+#[Group('sommertheater')]
 #[RunTestsInSeparateProcesses]
 final class IconsTest extends KernelTestBase {
 
-  use MercuryTestTrait;
+  use SommertheaterTestTrait;
 
   /**
    * {@inheritdoc}
@@ -26,17 +26,17 @@ final class IconsTest extends KernelTestBase {
   protected static $modules = ['system'];
 
   /**
-   * Tests that all Mercury icons are discoverable.
+   * Tests that all Sommertheater icons are discoverable.
    */
   public function testIconsAreDiscoverable(): void {
-    $this->setUpMercury();
+    $this->setUpSommertheater();
 
     $icons = $this->container->get(IconPackManagerInterface::class)
       ->getIcons();
 
     $icon_dir = implode('/', [
       $this->root,
-      $this->container->get(ThemeExtensionList::class)->getPath('mercury'),
+      $this->container->get(ThemeExtensionList::class)->getPath('sommertheater'),
       'icons/phosphor',
     ]);
     $dir = opendir($icon_dir);

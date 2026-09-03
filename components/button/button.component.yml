@@ -14,11 +14,13 @@ props:
       enum:
         - primary
         - secondary
+        - textlink
         - primary-inverted
         - secondary-inverted
       meta:enum:
         primary: Primary
         secondary: Secondary
+        textlink: Text link
         primary-inverted: Primary inverted
         secondary-inverted: Secondary inverted
       examples:

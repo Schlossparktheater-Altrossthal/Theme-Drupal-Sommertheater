@@ -1,5 +1,6 @@
 {% set has_radius = radius is not empty ? 'yes' : 'no' %}
 {% set has_url = url is not empty ? 'yes' : 'no' %}
+{% set frame_style = frame|default('modern') %}
 
 {% set image_container =
   html_cva(
@@ -20,6 +21,10 @@
         small: 'rounded-sm',
         large: 'rounded-xl md:rounded-2xl',
         'extra-large': 'rounded-[24px] md:rounded-[32px]'
+      },
+      frame: {
+        modern: 'border border-border',
+        archive: 'border-4 border-secondary p-1 shadow-md'
       }
     }
   )
@@ -29,7 +34,8 @@
   image_container.apply({
     size: size,
     hasRadius: has_radius,
-    radius: radius
+    radius: radius,
+    frame: frame_style
   })
 %}
 

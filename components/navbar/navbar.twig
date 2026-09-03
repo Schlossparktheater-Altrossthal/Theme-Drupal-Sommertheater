@@ -20,7 +20,7 @@
 <div class="navbar relative z-[500] container mx-auto flex justify-between p-2 px-4 md:py-4">
   <div class="navbar--logo self-center [&>div]:flex [&>div]:flex-col [&>div]:justify-center">
     {% block logo %}
-      {{ include('@mercury/templates/block/block--system-branding-block.html.twig') }}
+      {{ include('@sommertheater/templates/block/block--system-branding-block.html.twig') }}
     {% endblock %}
   </div>
 
@@ -42,7 +42,7 @@
       >
         {{
           include(
-            '@mercury/components/icon/icon.twig',
+            '@sommertheater/components/icon/icon.twig',
             {
               icon: 'x',
               icon_size: 'medium'
@@ -68,7 +68,7 @@
       {% block links %}
         {{
           include(
-            'mercury:button',
+            'sommertheater:button',
             {
               variant: 'primary',
               label: 'Button'|t,
@@ -81,7 +81,7 @@
 
         {{
           include(
-            'mercury:button',
+            'sommertheater:button',
             {
               variant: 'secondary',
               label: 'Another'|t,
@@ -99,7 +99,7 @@
     <button class="navbar--hamburger flex items-center justify-center" aria-label="{{ 'Show menu'|t }}">
       {{
         include(
-          '@mercury/components/icon/icon.twig',
+          '@sommertheater/components/icon/icon.twig',
           {
             icon: 'list',
             icon_size: 'medium'

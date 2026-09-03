@@ -21,6 +21,9 @@ messages:
     - core/drupal
     - core/once
 
+breadcrumb:
+  version: VERSION
+
 motion:
   js:
     build/motion.js: { minified: true }
