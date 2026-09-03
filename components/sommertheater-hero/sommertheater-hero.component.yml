@@ -1,0 +1,44 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Sommertheater hero
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: Sommertheater Altrossthal
+    heading:
+      type: string
+      title: Heading
+      default: Das Geheimnis im Schlosspark
+    text:
+      type: string
+      title: Intro text
+      default: Ein Sommer. Ein Wochenende. Ein einziges Stück – verborgen zwischen Licht und Laub.
+    cta_label:
+      type: string
+      title: CTA label
+      default: Chronik
+    cta_url:
+      type: string
+      title: CTA link
+      format: uri-reference
+      default: /chronik
+    media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Background image
+      type: object
+    overlay:
+      type: string
+      title: Overlay intensity
+      enum:
+        - soft
+        - strong
+      meta:enum:
+        soft: Soft
+        strong: Strong
+      default: strong

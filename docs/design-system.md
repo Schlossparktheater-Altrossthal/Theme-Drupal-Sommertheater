@@ -34,6 +34,10 @@ Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier-
 
 ## Komponenten
 
+### Sommertheater hero
+
+Der eigenständige Hero liegt in `components/sommertheater-hero/` und kann in Drupal Canvas oder Twig über `sommertheater:sommertheater-hero` verwendet werden. Er bietet ein Hintergrundbild, Eyebrow, Überschrift, Intro, Chronik-Link und eine starke oder weiche Waldgrün-Überlagerung. Das JavaScript sorgt für eine dezente Mausbewegung auf Desktop und respektiert `prefers-reduced-motion`.
+
 - Buttons: primär gold gefüllt, sekundär dunkel mit Messingrahmen, Textlink mit Pfeil, deaktiviert grau-grün
 - Karten: Archiv-Papierkarte, dunkle Eventkarte und moderne Glas-Karte
 - Navigation: Desktop-Navigation, kompaktes mobiles Menü, Breadcrumb und Pagination

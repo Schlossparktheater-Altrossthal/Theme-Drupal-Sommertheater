@@ -1,0 +1,116 @@
+.sommertheater-hero-component {
+  position: relative;
+  display: grid;
+  min-height: min(48rem, 82vh);
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.sommertheater-hero-component__media,
+.sommertheater-hero-component__media::after {
+  position: absolute;
+  inset: 0;
+}
+
+.sommertheater-hero-component__media {
+  z-index: -2;
+  transform: translate(var(--hero-shift-x, 0), var(--hero-shift-y, 0)) scale(1.03);
+  transition: transform 700ms ease-out;
+}
+
+.sommertheater-hero-component__media::after {
+  z-index: 1;
+  background: linear-gradient(180deg, rgb(13 23 21 / 0.2), rgb(13 23 21 / 0.72) 70%, var(--background));
+  content: "";
+}
+
+.sommertheater-hero--soft .sommertheater-hero-component__media::after {
+  background: linear-gradient(180deg, rgb(13 23 21 / 0.08), rgb(13 23 21 / 0.58) 70%, var(--background));
+}
+
+.sommertheater-hero-component__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) sepia(0.12) contrast(1.08);
+}
+
+.sommertheater-hero-component__content {
+  display: grid;
+  width: min(100% - 2rem, 68rem);
+  justify-items: center;
+  gap: 1.25rem;
+  padding: 6rem 1.5rem;
+  border: 1px solid rgb(182 138 69 / 0.55);
+  border-radius: 1rem;
+  background: rgb(24 37 34 / 0.7);
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(8px);
+}
+
+.sommertheater-hero-component__eyebrow {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.sommertheater-hero-component h1 {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.sommertheater-hero-component__text {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--foreground);
+  font-size: 1.125rem;
+}
+
+.sommertheater-hero-component__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--primary);
+  padding: 0.75rem 1.5rem;
+  color: var(--primary-foreground);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.sommertheater-hero-component__cta:hover,
+.sommertheater-hero-component__cta:focus-visible {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .sommertheater-hero-component__content {
+    padding: 8rem 4rem;
+  }
+
+  .sommertheater-hero-component h1 {
+    font-size: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sommertheater-hero-component__media {
+    transition: none;
+  }
+}
