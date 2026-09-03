@@ -17,7 +17,7 @@
 {% block content %}
   {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
 
-  <a href="{{ home_url|default('/') }}" class="inline-block" rel="home">
+  <a href="{{ home_url|default('/') }}" class="sommertheater-wordmark inline-block" rel="home">
     {% block branding %}
       {% if site_logo %}
         <div class="branding">

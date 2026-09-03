@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" role="img" aria-labelledby="title">
+  <title id="title">Sommertheater Altfrossthal</title>
+  <path fill="none" stroke="#B68A45" stroke-width="2" d="M8 36h42m260 0h42M62 16h236M62 56h236"/>
+  <circle cx="56" cy="36" r="5" fill="#E5A808"/>
+  <circle cx="304" cy="36" r="5" fill="#E5A808"/>
+  <text x="180" y="30" fill="#F6E8D3" font-family="Georgia,serif" font-size="24" letter-spacing="3" text-anchor="middle">SOMMERTHEATER</text>
+  <text x="180" y="51" fill="#C6A77A" font-family="Arial,sans-serif" font-size="11" letter-spacing="2" text-anchor="middle">ALTFROSSTHAL</text>
+</svg>
