@@ -51,6 +51,28 @@
 - No runtime or logic code may depend on loose types; JS should use clean, predictable structures and avoid implicit type coercions where avoidable.
 - Search for an existing helper before adding a new one — never create duplicates (check `lib/` and existing components first).
 
+### Drupal Canvas and SDC Workflow
+
+- Drupal Canvas builds its visual component library on Single Directory Components (SDC). New Canvas components belong in `components/<kebab-case-name>/` inside this theme or a module.
+- Each component directory contains matching files: `<name>.component.yml` for metadata/schema and `<name>.twig` for markup. Component-local `<name>.css` and `<name>.js` are allowed when the component needs its own styles or behavior; Canvas discovers and loads them when the component is used.
+- The SDC schema is the source of truth for Canvas editor inputs. Keep `props` synchronized with Twig and use `slots` for nested Canvas content. Every configurable prop needs a `title`; required props must also provide an `examples` value or Canvas will mark the component incompatible and omit it from the library.
+- Use a stable `group` value so Canvas places the component in a predictable library category. The Sommertheater hero belongs to the existing `Hero` group and is identified as `sommertheater:sommertheater-hero`.
+- After adding or changing an SDC, rebuild Drupal caches with `drush cr`. Canvas also regenerates its component configuration through `Drupal\canvas\ComponentSource\ComponentSourceManager::generateComponents()` during rebuild. Check Canvas incompatibility reasons when a registered SDC is missing from the library.
+- A registered SDC and a Canvas component configuration are separate concerns: the Drupal SDC plugin can exist while the corresponding `sdc.*` Canvas component entity is disabled or absent. Verify both discovery and enabled status before debugging the Canvas UI.
+- Canvas-compatible props should use supported JSON Schema shapes. For complex fields, use Drupal/Canvas-supported media schemas such as `json-schema-definitions://canvas.module/image`; do not invent unsupported widgets. Entity references and other complex field types require a Canvas-supported prop source or a custom component source.
+- Canvas components are draggable editor elements, not automatically created content. Editors still need to create a Canvas page, place the components, configure their props, and publish the page.
+- Layout Builder, Media, Media Library, and CVA are separate Drupal capabilities. Enable them only in the Drupal project when needed; this theme repository must not add database migrations or content configuration.
+
+### Sommertheater Page Architecture
+
+- The homepage consists of a full-width hero, a configurable premiere countdown, FAQ accordion, and footer.
+- `/ueber-uns` uses an intro hero, statistics, a trades/workgroups grid, feature blocks, an atmosphere quote, values cards, and a milestone timeline.
+- `/chronik` uses a production listing sorted by year descending. A production should expose year, author, director, location, image, and unlimited source links. Production detail pages add a hero, production metadata, gallery, and press sources.
+- `/unsere-schulkatze` uses editorial text, a gallery, an entry form, and a list of submitted memories.
+- `/impressum` and `/datenschutz` are simple text pages.
+- Current theme regions are `header`, `hero`, `primary_menu`, `content`, `sidebar`, `footer_first`, `footer_second`, and `footer_third`. Keep the region structure aligned with `sommertheater.info.yml` and the page template.
+- Prefer Layout Builder or Canvas for page composition and Paragraphs for repeatable editorial blocks such as statistics, workgroup cards, feature blocks, and timeline entries. Keep production data in a dedicated `produktion` content type or equivalent structured entity rather than hard-coding it in Twig.
+
 ---
 
 ## Design System & Theming
@@ -69,7 +91,7 @@
 ## Routing
 
 - Routing is handled entirely by Drupal; Sommertheater provides template overrides in `templates/` (layout, navigation, block, views, misc).
-- The theme's regions are defined in `sommertheater.info.yml`: `content`, `header`, `footer`.
+- The theme's regions are defined in `sommertheater.info.yml`: `header`, `hero`, `primary_menu`, `content`, `sidebar`, `footer_first`, `footer_second`, and `footer_third`.
 - Known gaps: none that require route creation in this theme. Do not introduce routing logic; this is a theme, not a module.
 
 ---
