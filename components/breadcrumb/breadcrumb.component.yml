@@ -11,6 +11,7 @@ props:
       type: array
       title: Items
       description: Liste der Breadcrumb-Einträge. Der letzte Eintrag wird als aktuelle Seite markiert.
+      minItems: 1
       items:
         type: string
       examples:

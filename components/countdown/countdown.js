@@ -10,13 +10,10 @@ class Countdown extends ComponentInstance {
         const raw = (item.dataset.countdownDatetime || "").trim();
         // Normalize "YYYY-MM-DD HH:MM" to an ISO string parsable by Date.
         const date = new Date(raw.replace(" ", "T"));
-        return {
-          title: item.dataset.countdownTitle || "",
-          datetime: raw,
-          timestamp: date.getTime(),
-        };
+        return { datetime: raw, timestamp: date.getTime() };
       })
-      .filter((item) => !Number.isNaN(item.timestamp));
+      .filter((item) => !Number.isNaN(item.timestamp))
+      .sort((a, b) => a.timestamp - b.timestamp);
 
     this.tick();
     this.timer = window.setInterval(() => this.tick(), 1000);
@@ -48,14 +45,18 @@ class Countdown extends ComponentInstance {
     const seconds = totalSeconds % 60;
 
     this.display.innerHTML = `
-      <p class="sommertheater-countdown__title">${this.escapeHtml(next.title)}</p>
-      <div class="sommertheater-countdown__timer" role="timer" aria-label="${this.escapeHtml(next.title)}">
+      <div class="sommertheater-countdown__timer" role="timer" aria-label="Countdown">
         <span class="sommertheater-countdown__unit"><b>${days}</b> Tage</span>
         <span class="sommertheater-countdown__unit"><b>${hours}</b> Stunden</span>
         <span class="sommertheater-countdown__unit"><b>${minutes}</b> Minuten</span>
         <span class="sommertheater-countdown__unit"><b>${seconds}</b> Sekunden</span>
       </div>
+      <p class="sommertheater-countdown__next">Nächste Vorstellung: ${this.escapeHtml(this.formatDate(next.timestamp))}</p>
     `;
+  }
+
+  formatDate(timestamp) {
+    return new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeStyle: "short" }).format(new Date(timestamp));
   }
 
   renderFinished() {

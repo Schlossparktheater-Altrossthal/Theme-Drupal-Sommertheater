@@ -47,14 +47,27 @@ class SommertheaterHero extends ComponentInstance {
   }
 
   initOverlap() {
-    if (this.el.hasAttribute("data-sommertheater-overlap")) {
-      document.body.dataset.overlappingHero = "1";
+    if (!this.el.hasAttribute("data-sommertheater-overlap")) {
+      return;
     }
+
+    document.body.dataset.overlappingHero = "1";
+
+    this.onScroll = () => {
+      document.querySelectorAll("header[role='banner']").forEach((header) => {
+        header.classList.toggle("header--scrolled", window.scrollY > 8);
+      });
+    };
+    this.onScroll();
+    window.addEventListener("scroll", this.onScroll, { passive: true });
   }
 
   remove() {
     if (this.slideTimer) {
       window.clearInterval(this.slideTimer);
+    }
+    if (this.onScroll) {
+      window.removeEventListener("scroll", this.onScroll);
     }
   }
 }

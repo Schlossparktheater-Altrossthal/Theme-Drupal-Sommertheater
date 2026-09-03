@@ -62,6 +62,8 @@ Die Mockup-Elemente sind als eigenständige Single-Directory-Components umgesetz
 | Formular-Feld | `sommertheater:form-field`   | Text-, E-Mail-, Such-, Select-, Textarea- und Checkbox-Feld mit Fokus-/Fehlerzustand                        |
 | Countdown     | `sommertheater:countdown`    | Aktivierbarer Premieren-Countdown mit mehreren Vorstellungen (Datum + Uhrzeit), Live-Ticker und Hinweistext |
 
+Der Header wird vom Theme verwaltet: Der Branding-Block (Seitenname als Text-Link zur Startseite) und der Hauptnavigation-Block gehören in die Region `header`; die optionale Block-Konfiguration liegt in `config/optional/`. Der Hero (`sommertheater:sommertheater-hero`) kann den Header mit `overlap_navbar` hintergreifen – der Header liegt dann transparent darüber und wird beim Scrollen solide (sticky).
+
 ## Maße
 
 Spacing-Skala: `4px`, `8px`, `12px`, `16px`, `24px`, `32px`, `48px`.

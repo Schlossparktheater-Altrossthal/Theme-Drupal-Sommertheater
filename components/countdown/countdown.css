@@ -25,11 +25,10 @@
   justify-items: center;
 }
 
-.sommertheater-countdown__title {
+.sommertheater-countdown__next {
   margin: 0;
-  color: var(--foreground);
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
+  color: var(--muted-foreground);
+  font-size: 1rem;
 }
 
 .sommertheater-countdown__timer {

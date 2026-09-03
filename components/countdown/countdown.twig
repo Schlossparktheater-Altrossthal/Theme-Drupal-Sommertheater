@@ -19,8 +19,8 @@
         data-countdown-finished-text="{{ finished_text|default('Alle Vorstellungen sind vorbei.') }}"
       >
         <ol class="sommertheater-countdown__performances" hidden>
-          {% for performance in performances|default([]) %}
-            <li data-countdown-title="{{ performance.title|default('') }}" data-countdown-datetime="{{ performance.datetime|default('') }}"></li>
+          {% for datetime in performances|default([]) %}
+            <li data-countdown-datetime="{{ datetime }}"></li>
           {% endfor %}
         </ol>
         <div class="sommertheater-countdown__display" aria-live="polite"></div>

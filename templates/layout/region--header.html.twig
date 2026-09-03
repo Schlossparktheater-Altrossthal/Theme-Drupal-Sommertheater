@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override to display the header region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's .info.yml file.
+ */
+#}
+{% set classes = ['region', 'region-' ~ (region|clean_class)] %}
+{% if content %}
+  <div {{ attributes.addClass(classes) }}>
+    <div class="container mx-auto flex flex-col items-stretch gap-2 px-4 py-3 md:flex-row md:items-center md:justify-between md:gap-6 md:py-4">
+      {{ content }}
+    </div>
+  </div>
+{% endif %}

@@ -60,12 +60,14 @@
 - After adding or changing an SDC, rebuild Drupal caches with `drush cr`. Canvas also regenerates its component configuration through `Drupal\canvas\ComponentSource\ComponentSourceManager::generateComponents()` during rebuild. Check Canvas incompatibility reasons when a registered SDC is missing from the library.
 - A registered SDC and a Canvas component configuration are separate concerns: the Drupal SDC plugin can exist while the corresponding `sdc.*` Canvas component entity is disabled or absent. Verify both discovery and enabled status before debugging the Canvas UI.
 - Canvas-compatible props should use supported JSON Schema shapes. For complex fields, use Drupal/Canvas-supported media schemas such as `json-schema-definitions://canvas.module/image`; do not invent unsupported widgets. Entity references and other complex field types require a Canvas-supported prop source or a custom component source.
+- Arrays are only Canvas-compatible when their items are scalar values (e.g. `items: { type: string }`) or known media schemas (an image `$ref`). Arrays of objects (`items: { type: object }`) have no widget in Canvas and mark the component incompatible — use flat props or fixed slots instead.
 - Canvas components are draggable editor elements, not automatically created content. Editors still need to create a Canvas page, place the components, configure their props, and publish the page.
+- The premiere countdown is the Canvas component `sommertheater:countdown` (toggle `enabled`, list ISO datetimes in `performances`). The header is theme-managed: the branding block and the main navigation block belong in the `header` region (optional block config ships in `config/optional/`), with the site name rendered as a text link to the front page.
 - Layout Builder, Media, Media Library, and CVA are separate Drupal capabilities. Enable them only in the Drupal project when needed; this theme repository must not add database migrations or content configuration.
 
 ### Sommertheater Page Architecture
 
-- The homepage consists of a full-width hero, a configurable premiere countdown, FAQ accordion, and footer.
+- The homepage consists of a full-width hero, a configurable premiere countdown (`sommertheater:countdown`), FAQ accordion, and footer.
 - `/ueber-uns` uses an intro hero, statistics, a trades/workgroups grid, feature blocks, an atmosphere quote, values cards, and a milestone timeline.
 - `/chronik` uses a production listing sorted by year descending. A production should expose year, author, director, location, image, and unlimited source links. Production detail pages add a hero, production metadata, gallery, and press sources.
 - `/unsere-schulkatze` uses editorial text, a gallery, an entry form, and a list of submitted memories.

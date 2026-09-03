@@ -26,19 +26,11 @@ props:
     performances:
       type: array
       title: Vorstellungen
-      description: Liste der Vorstellungen mit Titel und Zeitpunkt im ISO-Format (z. B. 2025-07-12T20:00).
+      description: Liste der Zeitpunkte im ISO-Format (z. B. 2025-07-12T20:00). Der Countdown läuft zur nächsten kommenden Vorstellung.
       items:
-        type: object
-        properties:
-          title:
-            type: string
-            title: Titel
-          datetime:
-            type: string
-            title: Zeitpunkt
+        type: string
       examples:
-        - - title: Premiere
-            datetime: "2025-07-12T20:00"
+        - ["2025-07-12T20:00", "2025-07-13T20:00"]
     disabled_text:
       type: string
       title: Text bei deaktiviert

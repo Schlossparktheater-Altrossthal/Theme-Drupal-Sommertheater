@@ -1,0 +1,25 @@
+uuid: 3385b4aa-9637-4234-8a8d-416cbbdd2fa0
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - sommertheater
+id: sommertheater_main_menu
+theme: sommertheater
+region: header
+weight: 1
+provider: null
+plugin: "system_menu_block:main"
+settings:
+  id: "system_menu_block:main"
+  label: "Hauptnavigation"
+  label_display: "0"
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {}

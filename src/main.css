@@ -429,13 +429,34 @@
   }
 
   .layout-container > header[role="banner"] {
+    position: sticky;
+    top: 0;
+    z-index: 500;
     border-bottom: 1px solid rgb(182 138 69 / 0.6);
     background: var(--background);
+    transition:
+      background-color 300ms ease,
+      border-color 300ms ease;
+  }
+
+  /* Transparent über einem überlappenden Hero, bis gescrollt wird. */
+  body[data-overlapping-hero="1"] .layout-container > header[role="banner"]:not(.header--scrolled) {
+    border-bottom-color: transparent;
+    background: transparent;
   }
 
   .layout-container > header[role="banner"] > .region-header {
     width: min(100% - 2rem, 80rem);
     margin-inline: auto;
+  }
+
+  .region-header .block-system-branding-block {
+    flex-shrink: 0;
+  }
+
+  .region-header .block-system-menu-block {
+    display: flex;
+    align-items: center;
   }
 
   .layout-container > header[role="banner"] .block-page-title-block {

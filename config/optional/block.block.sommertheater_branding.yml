@@ -1,0 +1,23 @@
+uuid: 4f19a86c-7b9f-4f17-ba8a-5f3516ffaa91
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - sommertheater
+id: sommertheater_branding
+theme: sommertheater
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: "Seiten-Branding"
+  label_display: "0"
+  provider: system
+  use_site_logo: false
+  use_site_name: true
+  use_site_slogan: false
+visibility: {}
