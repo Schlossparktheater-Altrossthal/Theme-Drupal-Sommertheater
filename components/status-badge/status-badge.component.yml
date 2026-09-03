@@ -1,0 +1,36 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Status badge
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - status
+  properties:
+    status:
+      type: string
+      title: Status
+      enum:
+        - new
+        - updated
+        - sold-out
+        - cancelled
+      meta:enum:
+        new: Neu
+        updated: Aktualisiert
+        sold-out: Ausverkauft
+        cancelled: Abgesagt
+      examples:
+        - new
+    label:
+      type: string
+      title: Label
+      description: Optional. Falls leer, wird der Standardtext des Status verwendet.
+      examples:
+        - Neu
+    icon:
+      type: string
+      title: Icon
+      description: 'Optional. Die ID eines Icons aus der <a href="https://phosphoricons.com" target="_blank">Phosphor Icons</a> Bibliothek.'
+      examples:
+        - sparkle

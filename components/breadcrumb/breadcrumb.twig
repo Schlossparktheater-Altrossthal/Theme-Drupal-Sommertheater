@@ -1,0 +1,50 @@
+{# Normalize items: accept both an array and a single string #}
+{% set breadcrumb_items = items|default([]) %}
+{% if breadcrumb_items is not iterable %}
+  {% set breadcrumb_items = [breadcrumb_items] %}
+{% endif %}
+
+<nav class="flex flex-wrap items-center gap-1 font-body text-sm text-muted-foreground md:gap-2 md:text-base" aria-label="{{ 'Breadcrumb'|t }}">
+  <ol class="m-0 flex list-none flex-row flex-wrap items-center gap-1 p-0 md:gap-2">
+    {% for item in breadcrumb_items %}
+      {% set is_first = loop.first %}
+      {% set is_last = loop.last %}
+
+      <li class="flex items-center gap-1 md:gap-2">
+        {% if is_first %}
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'house',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+        {% endif %}
+
+        {% if is_last %}
+          <span class="text-foreground" aria-current="page">{{ item }}</span>
+        {% else %}
+          <span>{{ item }}</span>
+        {% endif %}
+      </li>
+
+      {% if not is_last %}
+        <li aria-hidden="true">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'caret-right',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

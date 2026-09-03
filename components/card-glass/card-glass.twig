@@ -1,0 +1,66 @@
+{# Compute all values before rendering #}
+{% set has_link = link_url is not empty ? 'yes' : 'no' %}
+{% set has_stats = stat_one_value is not empty or stat_two_value is not empty %}
+
+<div
+  class="sommertheater-card--glass flex flex-col overflow-hidden rounded-xl border border-secondary/60 bg-card/60 text-card-foreground shadow-xl backdrop-blur-sm md:flex-row"
+>
+  {% if media.src is not empty %}
+    <div class="aspect-video overflow-hidden md:aspect-auto md:w-2/5">
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt|default(''),
+        width: media.width,
+        height: media.height,
+        class: 'h-full w-full object-cover'
+      } only %}
+    </div>
+  {% endif %}
+
+  <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
+    <h3 class="m-0 font-serif text-xl font-bold xl:text-2xl">{{ heading_text }}</h3>
+
+    {% if text is not empty %}
+      <p class="m-0 font-body text-base leading-relaxed text-foreground/80 md:text-lg">
+        {{ text }}
+      </p>
+    {% endif %}
+
+    {% if has_stats %}
+      <div class="mt-auto flex flex-wrap gap-x-10 gap-y-4 pt-2">
+        {% if stat_one_value is not empty %}
+          <div class="flex flex-col gap-1">
+            <span class="font-serif text-3xl font-bold text-primary xl:text-4xl">{{ stat_one_value }}</span>
+            {% if stat_one_label is not empty %}
+              <span class="font-body text-sm text-muted-foreground">{{ stat_one_label }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if stat_two_value is not empty %}
+          <div class="flex flex-col gap-1">
+            <span class="font-serif text-3xl font-bold text-primary xl:text-4xl">{{ stat_two_value }}</span>
+            {% if stat_two_label is not empty %}
+              <span class="font-body text-sm text-muted-foreground">{{ stat_two_label }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if has_link == 'yes' %}
+      <a href="{{ link_url }}" class="mt-auto inline-flex items-center gap-2 text-primary no-underline hover:opacity-80">
+        {{ link_label }}
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'arrow-right',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </a>
+    {% endif %}
+  </div>
+</div>

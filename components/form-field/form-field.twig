@@ -1,0 +1,108 @@
+{# Compute all values before rendering #}
+{% set field_type = type|default('text') %}
+{% set is_disabled = disabled|default(false) ? 'yes' : 'no' %}
+{% set has_error = error_message is not empty ? 'yes' : 'no' %}
+{% set is_search = field_type == 'search' ? 'yes' : 'no' %}
+{% set is_select = field_type == 'select' ? 'yes' : 'no' %}
+{% set is_textarea = field_type == 'textarea' ? 'yes' : 'no' %}
+{% set field_name = name|default('') %}
+{% set field_placeholder = placeholder|default('') %}
+{% set disabled_attr = is_disabled == 'yes' ? 'disabled' : '' %}
+
+{% set field_classes =
+  html_cva(
+    base: [
+      'w-full rounded-lg border bg-background/80 px-4 py-3',
+      'font-body text-base text-foreground transition outline-none',
+      'placeholder:text-muted-foreground',
+      'focus:border-primary focus:bg-background focus:shadow-[0_0_0_2px_rgb(229_138_8/0.2)]',
+      'disabled:cursor-not-allowed disabled:opacity-50'
+    ],
+    variants: {
+      hasError: {
+        yes: 'border-destructive',
+        no: 'border-secondary/40'
+      },
+      isSearch: {
+        yes: 'ps-11',
+        no: ''
+      }
+    }
+  )
+%}
+
+{% set field_classes_attr =
+  field_classes.apply({
+    hasError: has_error,
+    isSearch: is_search
+  })
+%}
+
+{% if field_type == 'checkbox' %}
+  <label class="flex cursor-pointer items-center gap-2 font-sans text-sm font-normal text-foreground md:text-base">
+    <input
+      type="checkbox"
+      name="{{ field_name }}"
+      {{ disabled_attr }}
+      class="h-5 w-5 rounded border-secondary/40 text-primary accent-primary focus:ring-primary/50 disabled:cursor-not-allowed disabled:opacity-50"
+    />
+    <span>{{ label }}</span>
+  </label>
+{% else %}
+  <label class="mb-0 flex flex-col gap-2">
+    {% if label is not empty %}
+      <span class="block font-sans text-sm font-semibold text-foreground md:text-base">{{ label }}</span>
+    {% endif %}
+
+    <div class="relative">
+      {% if is_search == 'yes' %}
+        <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center ps-4 text-muted-foreground" aria-hidden="true">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'magnifying-glass',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+        </span>
+      {% endif %}
+
+      {% if is_select == 'yes' %}
+        <select name="{{ field_name }}" {{ disabled_attr }} class="{{ field_classes_attr }}">
+          {% for option in options|default('')|split(',') %}
+            {% set option = option|trim %}
+            {% if option is not empty %}
+              <option value="{{ option }}">
+                {{ option }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      {% elseif is_textarea == 'yes' %}
+        <textarea
+          name="{{ field_name }}"
+          {{ disabled_attr }}
+          placeholder="{{ field_placeholder }}"
+          rows="4"
+          class="{{ field_classes_attr }}"
+        ></textarea>
+      {% else %}
+        {% set input_type = field_type == 'email' ? 'email' : field_type == 'search' ? 'search' : 'text' %}
+        <input
+          type="{{ input_type }}"
+          name="{{ field_name }}"
+          {{ disabled_attr }}
+          placeholder="{{ field_placeholder }}"
+          class="{{ field_classes_attr }}"
+        />
+      {% endif %}
+    </div>
+
+    {% if has_error == 'yes' %}
+      <span class="block font-body text-sm text-destructive">{{ error_message }}</span>
+    {% endif %}
+  </label>
+{% endif %}

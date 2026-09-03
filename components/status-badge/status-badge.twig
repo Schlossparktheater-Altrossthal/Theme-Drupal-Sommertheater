@@ -1,0 +1,54 @@
+{# Compute all values before rendering #}
+{% set badge_status = status|default('new') %}
+{% set badge_label = label|default('') %}
+
+{% set status_labels = {
+  new: 'Neu',
+  updated: 'Aktualisiert',
+  'sold-out': 'Ausverkauft',
+  cancelled: 'Abgesagt'
+} %}
+
+{% set status_icons = {
+  new: 'sparkle',
+  updated: 'arrows-clockwise',
+  'sold-out': 'x-circle',
+  cancelled: 'prohibit'
+} %}
+
+{% set resolved_label = badge_label is not empty ? badge_label : status_labels[badge_status] %}
+{% set resolved_icon = icon is not empty ? icon : status_icons[badge_status] %}
+
+{% set status_badge =
+  html_cva(
+    base: ['inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5', 'font-sans text-sm leading-none font-semibold'],
+    variants: {
+      status: {
+        new: 'border-transparent bg-primary text-primary-foreground',
+        updated: 'border-transparent bg-accent text-accent-foreground',
+        'sold-out': 'border-transparent bg-destructive text-destructive-foreground',
+        cancelled: 'border-muted bg-muted/20 text-muted-foreground'
+      }
+    }
+  )
+%}
+
+{% set status_badge_classes =
+  status_badge.apply({
+    status: badge_status
+  })
+%}
+
+<span class="{{ status_badge_classes }}">
+  {{
+    include(
+      '@sommertheater/components/icon/icon.twig',
+      {
+        icon: resolved_icon,
+        icon_size: 'extra-small'
+      },
+      with_context: false
+    )
+  }}
+  <span>{{ resolved_label }}</span>
+</span>

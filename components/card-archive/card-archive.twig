@@ -1,0 +1,60 @@
+{# Compute all values before rendering #}
+{% set has_link = link_url is not empty ? 'yes' : 'no' %}
+
+<div
+  class="sommertheater-card--archive flex flex-col overflow-hidden rounded-lg border border-secondary bg-[var(--paper-surface)] text-[var(--paper-ink)] shadow-lg"
+>
+  {% if media.src is not empty %}
+    <div class="aspect-video overflow-hidden">
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt|default(''),
+        width: media.width,
+        height: media.height,
+        class: 'h-full w-full object-cover'
+      } only %}
+    </div>
+  {% endif %}
+
+  <div class="flex flex-1 flex-col gap-3 p-5 lg:p-6">
+    <h3 class="m-0 font-serif text-xl font-bold xl:text-2xl">{{ heading_text }}</h3>
+
+    {% if location is not empty %}
+      <p class="m-0 flex items-center gap-2 font-body text-sm text-[var(--paper-ink)]/70 md:text-base">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'map-pin',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+        {{ location }}
+      </p>
+    {% endif %}
+
+    {% if text is not empty %}
+      <p class="m-0 font-body text-base leading-relaxed md:text-lg">
+        {{ text }}
+      </p>
+    {% endif %}
+
+    {% if has_link == 'yes' %}
+      <a href="{{ link_url }}" class="mt-auto inline-flex items-center gap-2 pt-1 font-semibold underline underline-offset-4 hover:opacity-70">
+        {{ link_label }}
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'arrow-right',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </a>
+    {% endif %}
+  </div>
+</div>

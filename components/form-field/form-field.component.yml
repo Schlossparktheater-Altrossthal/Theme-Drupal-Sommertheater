@@ -1,0 +1,56 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Form field
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - type
+  properties:
+    type:
+      type: string
+      title: Field type
+      enum:
+        - text
+        - email
+        - search
+        - select
+        - textarea
+        - checkbox
+      meta:enum:
+        text: Text field
+        email: Email field
+        search: Search field
+        select: Select field
+        textarea: Textarea
+        checkbox: Checkbox
+      examples:
+        - text
+    label:
+      type: string
+      title: Label
+      examples:
+        - "Vorname"
+    placeholder:
+      type: string
+      title: Placeholder
+      examples:
+        - "Dein Name"
+    options:
+      type: string
+      title: Options
+      description: Kommagetrennte Liste von Optionen (nur für Select-Felder).
+      examples:
+        - "Alle Kategorien, Abenteuer, Familie, Künstler, Musik"
+    error_message:
+      type: string
+      title: Error message
+      examples:
+        - "Ungültige E-Mail-Adresse"
+    disabled:
+      type: boolean
+      title: Disabled
+      default: false
+    name:
+      type: string
+      title: Field name

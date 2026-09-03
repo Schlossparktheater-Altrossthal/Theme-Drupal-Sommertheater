@@ -1,0 +1,103 @@
+{# Compute all values before rendering #}
+{% set current = current_page|default(1) %}
+{% set total = total_pages|default(5) %}
+
+{% set page_variants =
+  html_cva(
+    base: [
+      'flex h-10 min-h-10 w-10 min-w-10 items-center justify-center rounded-lg',
+      'font-sans text-sm font-semibold tabular-nums md:text-base',
+      'transition-colors duration-300'
+    ],
+    variants: {
+      isCurrent: {
+        yes: 'bg-primary text-primary-foreground',
+        no: 'text-foreground hover:bg-muted/40'
+      }
+    }
+  )
+%}
+
+<nav class="flex flex-wrap items-center justify-center gap-1" role="navigation" aria-label="{{ 'Pagination'|t }}">
+  {# Previous #}
+  {% if prev_url is not empty %}
+    <a
+      href="{{ prev_url }}"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors duration-300 hover:bg-muted/40"
+      aria-label="{{ 'Previous page'|t }}"
+    >
+      {{
+        include(
+          '@sommertheater/components/icon/icon.twig',
+          {
+            icon: 'caret-left',
+            icon_size: 'extra-small'
+          },
+          with_context: false
+        )
+      }}
+    </a>
+  {% else %}
+    <span class="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground/50" aria-hidden="true">
+      {{
+        include(
+          '@sommertheater/components/icon/icon.twig',
+          {
+            icon: 'caret-left',
+            icon_size: 'extra-small'
+          },
+          with_context: false
+        )
+      }}
+    </span>
+  {% endif %}
+
+  {# Pages #}
+  {% for page in 1..total %}
+    {% set is_current = page == current ? 'yes' : 'no' %}
+    {% set aria_current = is_current == 'yes' ? 'aria-current="page"' : '' %}
+    <span
+      class="{{
+      page_variants.apply({
+        isCurrent: is_current
+      })
+      }}"
+      {{ aria_current }}
+    >
+      {{ page }}
+    </span>
+  {% endfor %}
+
+  {# Next #}
+  {% if next_url is not empty %}
+    <a
+      href="{{ next_url }}"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors duration-300 hover:bg-muted/40"
+      aria-label="{{ 'Next page'|t }}"
+    >
+      {{
+        include(
+          '@sommertheater/components/icon/icon.twig',
+          {
+            icon: 'caret-right',
+            icon_size: 'extra-small'
+          },
+          with_context: false
+        )
+      }}
+    </a>
+  {% else %}
+    <span class="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground/50" aria-hidden="true">
+      {{
+        include(
+          '@sommertheater/components/icon/icon.twig',
+          {
+            icon: 'caret-right',
+            icon_size: 'extra-small'
+          },
+          with_context: false
+        )
+      }}
+    </span>
+  {% endif %}
+</nav>

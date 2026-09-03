@@ -1,0 +1,37 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Archive card
+group: Card
+status: stable
+props:
+  type: object
+  required:
+    - heading_text
+  properties:
+    heading_text:
+      type: string
+      title: Heading
+      examples:
+        - "Das Geheimnis im Schlosspark"
+    media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Image
+      type: object
+    location:
+      type: string
+      title: Location
+      examples:
+        - "Schlosspark Altrossthal"
+    text:
+      type: string
+      title: Description
+      pattern: "(.|\\r?\\n)*"
+      examples:
+        - "Ein Sommer voller Rätsel, verborgener Wege und einer wunderbaren Begegnung."
+    link_label:
+      type: string
+      title: Link label
+      default: "Eintrag öffnen"
+    link_url:
+      type: string
+      title: Link
+      format: uri-reference

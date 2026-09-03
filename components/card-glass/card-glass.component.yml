@@ -1,0 +1,52 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Glass card
+group: Card
+status: stable
+props:
+  type: object
+  required:
+    - heading_text
+  properties:
+    heading_text:
+      type: string
+      title: Heading
+      examples:
+        - "Über das Sommertheater"
+    media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Image
+      type: object
+    text:
+      type: string
+      title: Description
+      pattern: "(.|\\r?\\n)*"
+      examples:
+        - "Seit 1923 verwandelt sich der Wald zur Bühne für Geschichten, die unter freiem Himmel lebendig werden."
+    stat_one_value:
+      type: string
+      title: Stat 1 value
+      examples:
+        - "28 Jahre"
+    stat_one_label:
+      type: string
+      title: Stat 1 label
+      examples:
+        - "Tradition"
+    stat_two_value:
+      type: string
+      title: Stat 2 value
+      examples:
+        - "150+"
+    stat_two_label:
+      type: string
+      title: Stat 2 label
+      examples:
+        - "Vorstellungen jährlich"
+    link_label:
+      type: string
+      title: Link label
+      default: "Mehr über uns"
+    link_url:
+      type: string
+      title: Link
+      format: uri-reference

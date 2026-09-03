@@ -47,6 +47,20 @@ Der eigenständige Hero liegt in `components/sommertheater-hero/` und kann in Dr
 - Ornamente: feine Messinglinien, florale/theatralische Mittelornamente und dezentes Blattmuster
 - Icons: feinlinige warme Messingfarbe; bevorzugt Phosphor-Icons
 
+### Canvas-Komponenten (Designsystem)
+
+Die Mockup-Elemente sind als eigenständige Single-Directory-Components umgesetzt und direkt in Drupal Canvas verfügbar:
+
+| Komponente    | Canvas-ID                    | Beschreibung                                                                         |
+| ------------- | ---------------------------- | ------------------------------------------------------------------------------------ |
+| Event-Karte   | `sommertheater:card-event`   | Dunkle Eventkarte mit Bild, Ort, Termin, Zeit, Tag-Pills und Link                    |
+| Archiv-Karte  | `sommertheater:card-archive` | Papierkarte mit Ornament-Rahmen, Monogramm und Link                                  |
+| Glas-Karte    | `sommertheater:card-glass`   | Moderne Glas-Karte mit Statistiken und Link                                          |
+| Status-Badge  | `sommertheater:status-badge` | Neu / Aktualisiert / Ausverkauft / Abgesagt                                          |
+| Breadcrumb    | `sommertheater:breadcrumb`   | Breadcrumb-Pfad mit Startseiten-Icon                                                 |
+| Pagination    | `sommertheater:pagination`   | Seitenzahlen mit Vor-/Zurück-Pfeilen                                                 |
+| Formular-Feld | `sommertheater:form-field`   | Text-, E-Mail-, Such-, Select-, Textarea- und Checkbox-Feld mit Fokus-/Fehlerzustand |
+
 ## Maße
 
 Spacing-Skala: `4px`, `8px`, `12px`, `16px`, `24px`, `32px`, `48px`.

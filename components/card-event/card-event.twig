@@ -1,0 +1,124 @@
+{# Compute all values before rendering #}
+{% set has_link = link_url is not empty ? 'yes' : 'no' %}
+{% set has_media = media.src is not empty ? 'yes' : 'no' %}
+
+{# Normalize tags into a trimmed list #}
+{% set tags_array = tags|default('')|split(',') %}
+
+{% set card =
+  html_cva(
+    base: [
+      'group relative flex flex-col overflow-hidden',
+      'rounded-xl border border-secondary/60 bg-card text-card-foreground',
+      'shadow-lg transition duration-300',
+      'md:flex-row'
+    ]
+  )
+%}
+
+{% set card_media = html_cva(base: 'aspect-video overflow-hidden md:aspect-auto md:w-2/5') %}
+
+{% set card_body = html_cva(base: 'flex flex-1 flex-col gap-3 p-5 lg:gap-4 lg:p-6') %}
+
+<div class="{{ card.apply({}) }}">
+  {% if has_media == 'yes' %}
+    <div class="{{ card_media.apply({}) }}">
+      {% include 'canvas:image' ignore missing with {
+        src: media.src,
+        alt: media.alt|default(''),
+        width: media.width,
+        height: media.height,
+        class: 'h-full w-full object-cover transition duration-300 group-hover:scale-105'
+      } only %}
+    </div>
+  {% endif %}
+
+  <div class="{{ card_body.apply({}) }}">
+    <h3 class="m-0 font-serif text-xl font-bold xl:text-2xl">{{ heading_text }}</h3>
+
+    <ul class="m-0 flex list-none flex-col gap-2 p-0 font-body text-sm text-muted-foreground md:text-base">
+      {% if location is not empty %}
+        <li class="flex items-center gap-2">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'map-pin',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+          {{ location }}
+        </li>
+      {% endif %}
+      {% if date is not empty %}
+        <li class="flex items-center gap-2">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'calendar',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+          {{ date }}
+        </li>
+      {% endif %}
+      {% if time is not empty %}
+        <li class="flex items-center gap-2">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'clock',
+                icon_size: 'extra-small'
+              },
+              with_context: false
+            )
+          }}
+          {{ time }}
+        </li>
+      {% endif %}
+    </ul>
+
+    {% if tags_array is not empty %}
+      <div class="flex flex-wrap gap-2">
+        {% for tag in tags_array %}
+          {% set tag = tag|trim %}
+          {% if tag is not empty %}
+            {{
+              include(
+                'sommertheater:badge',
+                {
+                  label: tag,
+                  style: 'secondary',
+                  icon: ''
+                },
+                with_context: false
+              )
+            }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if has_link == 'yes' %}
+      <a href="{{ link_url }}" class="mt-auto inline-flex items-center gap-2 pt-1 text-primary no-underline hover:opacity-80">
+        {{ link_label }}
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'arrow-right',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </a>
+    {% endif %}
+  </div>
+</div>

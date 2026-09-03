@@ -1,0 +1,30 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Pagination
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - current_page
+    - total_pages
+  properties:
+    current_page:
+      type: number
+      title: Current page
+      default: 1
+      examples:
+        - 1
+    total_pages:
+      type: number
+      title: Total pages
+      default: 5
+      examples:
+        - 5
+    prev_url:
+      type: string
+      title: Previous link
+      format: uri-reference
+    next_url:
+      type: string
+      title: Next link
+      format: uri-reference

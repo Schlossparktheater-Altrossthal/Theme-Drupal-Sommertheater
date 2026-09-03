@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Breadcrumb
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - items
+  properties:
+    items:
+      type: array
+      title: Items
+      description: Liste der Breadcrumb-Einträge. Der letzte Eintrag wird als aktuelle Seite markiert.
+      items:
+        type: string
+      examples:
+        - ["Startseite", "Chronik", "2025", "Das Geheimnis im Schlosspark"]

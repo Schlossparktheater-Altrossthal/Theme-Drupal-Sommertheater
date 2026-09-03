@@ -1,0 +1,47 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Event card
+group: Card
+status: stable
+props:
+  type: object
+  required:
+    - heading_text
+  properties:
+    heading_text:
+      type: string
+      title: Heading
+      examples:
+        - "Der verlorene Stern"
+    media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Image
+      type: object
+    location:
+      type: string
+      title: Location
+      examples:
+        - "Waldbühne Altrossthal"
+    date:
+      type: string
+      title: Date
+      examples:
+        - "Samstag, 12. Juli 2025"
+    time:
+      type: string
+      title: Time
+      examples:
+        - "20:00 Uhr"
+    tags:
+      type: string
+      title: Tags
+      description: Kommagetrennte Liste von Schlagwörtern.
+      examples:
+        - "Familie, Abenteuer"
+    link_label:
+      type: string
+      title: Link label
+      default: "Mehr erfahren"
+    link_url:
+      type: string
+      title: Link
+      format: uri-reference
