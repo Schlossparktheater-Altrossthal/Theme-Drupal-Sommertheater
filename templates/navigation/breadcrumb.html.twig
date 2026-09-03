@@ -7,7 +7,6 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-{{ attach_library('sommertheater/breadcrumb') }}
 {% if breadcrumb %}
   {% set needs_truncation = (breadcrumb|length) > 3 %}
 
