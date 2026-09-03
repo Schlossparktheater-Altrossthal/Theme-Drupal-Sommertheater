@@ -52,12 +52,13 @@
 <div class="layout-container">
   <header role="banner">
     {{ page.header }}
-    {% if not rendered_by_canvas %}
-      <div class="container mx-auto px-4 pb-4">
-        {{ breadcrumb }}
-      </div>
-    {% endif %}
   </header>
+
+  {% if page.hero %}
+    <section class="region-hero" aria-label="{{ 'Hero'|t }}">
+      {{ page.hero }}
+    </section>
+  {% endif %}
 
   {{ page.primary_menu }}
   {{ page.secondary_menu }}
@@ -76,21 +77,18 @@
     </div>
     {# /.layout-content #}
 
-    {% if page.sidebar_first %}
-      <aside class="layout-sidebar-first" role="complementary">
-        {{ page.sidebar_first }}
-      </aside>
-    {% endif %}
-
-    {% if page.sidebar_second %}
-      <aside class="layout-sidebar-second" role="complementary">
-        {{ page.sidebar_second }}
+    {% if page.sidebar %}
+      <aside class="layout-sidebar" role="complementary">
+        {{ page.sidebar }}
       </aside>
     {% endif %}
   </main>
 
-  {% if page.footer %}
+  {% if page.footer_first or page.footer_second or page.footer_third or page.footer %}
     <footer role="contentinfo">
+      {{ page.footer_first }}
+      {{ page.footer_second }}
+      {{ page.footer_third }}
       {{ page.footer }}
     </footer>
   {% endif %}

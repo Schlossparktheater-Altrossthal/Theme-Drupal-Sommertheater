@@ -461,9 +461,7 @@
   input[type="time"],
   textarea,
   select {
-    @apply w-full border-0 border-b bg-transparent text-base outline-none;
-    /* @todo Add p-1.5 when this is fixed in Canvas: https://www.drupal.org/i/3572963. */
-    padding: calc(var(--spacing) * 1.5);
+    @apply w-full rounded-lg border border-secondary/40 bg-background/80 px-4 py-3 text-base text-foreground outline-none;
   }
 
   input[type="text"]:focus,
@@ -477,7 +475,7 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply border-primary bg-muted/60 shadow-sm;
+    @apply border-primary bg-background shadow-[0_0_0_2px_rgb(229_138_8/0.2)];
   }
 
   select:focus {

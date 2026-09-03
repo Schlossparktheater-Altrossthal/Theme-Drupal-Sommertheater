@@ -14,7 +14,11 @@
 }
 
 .navbar {
-  @apply border-b border-secondary/60 bg-background/95 backdrop-blur-sm;
+  @apply sticky top-0 border-b border-secondary/20 bg-background/95 backdrop-blur-sm;
+}
+
+.navbar--dropdown-menu a {
+  @apply relative rounded-none border-b border-transparent text-foreground transition-colors hover:border-primary hover:bg-transparent hover:text-primary focus:border-primary focus:bg-transparent focus:text-primary md:min-h-auto;
 }
 
 /* Child component styling that can't be moved to Twig */

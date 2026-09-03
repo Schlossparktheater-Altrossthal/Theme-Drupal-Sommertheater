@@ -15,12 +15,12 @@ Diese Datei ist die verbindliche visuelle Referenz für das Theme und orientiert
 | --------------- | --------- | ---------------------------------------- |
 | Waldgrün        | `#0D1715` | Haupthintergrund und tiefe Flächen       |
 | Oberfläche      | `#182522` | Karten, Navigation und Panels            |
-| Papier-Basis    | `#E8D6B4` | Archivkarten und Papierflächen           |
+| Papier-Basis    | `#EBD6B4` | Archivkarten und Papierflächen           |
 | Papier-Geleert  | `#C6A77A` | gedämpfte Papierflächen und Sekundärtext |
-| CTA-Gold        | `#E5A808` | primäre Aktionen und Fokus               |
+| CTA-Gold        | `#E58A08` | primäre Aktionen und Fokus               |
 | Messing         | `#B68A45` | Linien, Ornamente und sekundäre Akzente  |
-| Terrakotta      | `#86452E` | Warnungen, aktive Zustände und Status    |
-| Text-Aufhellung | `#F6E8D3` | Haupttext auf dunklen Flächen            |
+| Terrakotta      | `#88452E` | Warnungen, aktive Zustände und Status    |
+| Text-Aufhellung | `#F6EBD3` | Haupttext auf dunklen Flächen            |
 | Sekundärtext    | `#87968A` | Beschreibungen und Captions              |
 
 Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier- und Cremeflächen mit Waldgrün als Textfarbe.
@@ -47,7 +47,7 @@ Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier-
 
 Spacing-Skala: `4px`, `8px`, `12px`, `16px`, `24px`, `32px`, `48px`.
 
-Radien: `4px`, `8px`, `16px`, `24px`, `32px`; runde Icon-Flächen dürfen vollständig kreisförmig sein.
+Radien: `4px`, `8px`, `16px`, `24px`, `32px`, `48px`; runde Icon-Flächen dürfen vollständig kreisförmig sein.
 
 Schatten: zurückhaltend und warm, damit Karten auf dem dunklen Waldgrün lesbar bleiben.
 

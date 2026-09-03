@@ -1,15 +1,20 @@
-name: Sommertheater
+name: Sommertheater Altrossthal
 type: theme
 "base theme": false
 libraries:
   - sommertheater/global
 logo: logo-sommertheater.svg
-description: "A scalable, modern Drupal CMS prototype theme, integrating cutting-edge front-end tools and a flexible, component-based design system."
-core_version_requirement: ^11.3
+description: "Custom Theme für das Sommertheater Altrossthal."
+core_version_requirement: ^10 || ^11
 generator: "starterkit_theme:11.1.1"
 regions:
-  content: Content
   header: Header
-  footer: Footer
+  hero: Hero
+  primary_menu: Hauptnavigation
+  content: Inhalt
+  sidebar: Seitenleiste
+  footer_first: Footer Spalte 1
+  footer_second: Footer Spalte 2
+  footer_third: Footer Spalte 3
 dependencies:
   - "cva:cva"
