@@ -100,6 +100,24 @@
 @layer base {
   body {
     @apply bg-background font-normal text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    letter-spacing: 0;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
   }
 
   p {
@@ -182,6 +200,157 @@
 }
 
 @layer components {
+  .layout-container {
+    min-height: 100vh;
+    background: var(--background);
+  }
+
+  .region-hero {
+    width: 100%;
+  }
+
+  .layout-content {
+    width: 100%;
+    padding-block: 2rem;
+  }
+
+  .layout-content > .region-content,
+  .layout-content > .block,
+  .layout-content > article {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+  }
+
+  .layout-content > .region-content > * + *,
+  .layout-content > .block + .block {
+    margin-top: 3rem;
+  }
+
+  .layout-content .view-content,
+  .layout-content .field--name-field-content,
+  .layout-content .paragraph--type--grid {
+    gap: 1.5rem;
+  }
+
+  .layout-content .view-content,
+  .layout-content .field--name-field-content {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .layout-content .view-content,
+    .layout-content .field--name-field-content {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .layout-content .view-content,
+    .layout-content .field--name-field-content {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .layout-content .views-row,
+  .layout-content .view-content > article {
+    min-width: 0;
+    border: 1px solid rgb(182 138 69 / 0.45);
+    border-radius: 0.5rem;
+    background: var(--card);
+    color: var(--card-foreground);
+    box-shadow: var(--shadow-md);
+  }
+
+  .layout-content .views-row img,
+  .layout-content .view-content > article img {
+    display: block;
+    width: 100%;
+    border-radius: 0.35rem;
+    filter: sepia(0.16) contrast(1.05) saturate(0.88);
+  }
+
+  .layout-content .views-field-title a,
+  .layout-content .node__title a {
+    color: var(--foreground);
+    font-family: var(--font-serif);
+  }
+
+  .block h2,
+  .region-content > h2 {
+    color: var(--secondary);
+  }
+
+  .field--name-body,
+  .text-long,
+  .prose {
+    max-width: 70ch;
+    color: var(--foreground);
+    font-family: var(--font-body);
+    line-height: 1.65;
+  }
+
+  .sommertheater-card--archive {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 0.4);
+  }
+
+  .sommertheater-card--archive::before {
+    position: absolute;
+    inset: 0.5rem;
+    border: 1px solid rgb(136 69 46 / 0.4);
+    border-radius: 0.25rem;
+    content: "";
+    pointer-events: none;
+  }
+
+  .sommertheater-image--archive {
+    filter: sepia(0.3) contrast(1.1);
+    box-shadow: 4px 4px 0 var(--destructive);
+  }
+
+  .sommertheater-date-badge {
+    border-color: var(--destructive);
+    background: var(--destructive);
+    color: var(--destructive-foreground);
+  }
+
+  .sommertheater-date-badge__month,
+  .sommertheater-date-badge__year {
+    color: var(--destructive-foreground);
+  }
+
+  [class*="badge"] {
+    font-family: var(--font-body);
+  }
+
+  .sommertheater-ornament {
+    margin-block: 1.5rem;
+    text-align: center;
+  }
+
+  .sommertheater-dialog,
+  .sommertheater-toast,
+  .sommertheater-card--glass {
+    backdrop-filter: blur(12px);
+  }
+
+  .sommertheater-dialog h2,
+  .sommertheater-dialog p {
+    color: var(--paper-ink);
+  }
+
+  .site-footer,
+  footer[role="contentinfo"] {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  footer[role="contentinfo"] a:hover,
+  footer[role="contentinfo"] a:focus-visible {
+    color: var(--primary);
+  }
+
   .sommertheater-hero {
     isolation: isolate;
     background: var(--background);
