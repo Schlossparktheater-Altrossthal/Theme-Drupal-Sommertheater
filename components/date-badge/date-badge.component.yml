@@ -13,14 +13,20 @@ props:
       type: string
       title: Day
       default: "12"
+      examples:
+        - "12"
     month:
       type: string
       title: Month
       default: JUL
+      examples:
+        - JUL
     year:
       type: string
       title: Year
       default: "2025"
+      examples:
+        - "2025"
     label:
       type: string
       title: Accessible label

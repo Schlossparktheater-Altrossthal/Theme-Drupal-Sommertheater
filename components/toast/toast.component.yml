@@ -11,6 +11,8 @@ props:
       type: string
       title: Message
       default: Successfully saved.
+      examples:
+        - Successfully saved.
     status:
       type: string
       title: Status

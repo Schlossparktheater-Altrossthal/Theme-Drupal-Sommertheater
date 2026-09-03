@@ -11,6 +11,8 @@ props:
       type: string
       title: Heading
       default: Open entry?
+      examples:
+        - Open entry?
     text:
       type: string
       title: Text
