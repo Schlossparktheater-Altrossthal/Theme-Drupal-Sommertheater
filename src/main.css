@@ -267,6 +267,10 @@
     margin-inline: auto;
   }
 
+  .layout-container > header[role="banner"] .block-page-title-block {
+    display: none;
+  }
+
   .sommertheater-card--archive {
     position: relative;
     overflow: hidden;

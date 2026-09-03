@@ -24,7 +24,7 @@
           <img class="h-full w-full" src="{{ site_logo_url }}" alt="{{ site_name }}" />
         </div>
       {% endif %}
-      {% if site_name %}
+      {% if site_name and not site_logo %}
         <div class="heading-responsive-4xl font-[var(--hgc-font-weight-h1)]">
           {{ site_name }}
         </div>
