@@ -36,7 +36,7 @@ Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier-
 
 ### Sommertheater hero
 
-Der eigenständige Hero liegt in `components/sommertheater-hero/` und kann in Drupal Canvas oder Twig über `sommertheater:sommertheater-hero` verwendet werden. Er bietet ein Hintergrundbild, Eyebrow, Überschrift, Intro, Chronik-Link und eine starke oder weiche Waldgrün-Überlagerung. Das JavaScript sorgt für eine dezente Mausbewegung auf Desktop und respektiert `prefers-reduced-motion`.
+Der eigenständige Hero liegt in `components/sommertheater-hero/` und kann in Drupal Canvas oder Twig über `sommertheater:sommertheater-hero` verwendet werden. Er bietet eine Diashow aus mehreren Hintergrundbildern (automatischer Crossfade), Eyebrow, Überschrift, Intro, frei platzierbare Buttons über den Slot `actions` (Fallback: Chronik-Link) und eine starke oder weiche Waldgrün-Überlagerung. Über `overlap_navbar` beginnt der Hero hinter dem Header (der Header liegt transparent darüber und wird beim Scrollen solide). Das JavaScript steuert Diashow und dezente Mausbewegung und respektiert `prefers-reduced-motion`.
 
 - Buttons: primär gold gefüllt, sekundär dunkel mit Messingrahmen, Textlink mit Pfeil, deaktiviert grau-grün
 - Karten: Archiv-Papierkarte, dunkle Eventkarte und moderne Glas-Karte
@@ -51,15 +51,16 @@ Der eigenständige Hero liegt in `components/sommertheater-hero/` und kann in Dr
 
 Die Mockup-Elemente sind als eigenständige Single-Directory-Components umgesetzt und direkt in Drupal Canvas verfügbar:
 
-| Komponente    | Canvas-ID                    | Beschreibung                                                                         |
-| ------------- | ---------------------------- | ------------------------------------------------------------------------------------ |
-| Event-Karte   | `sommertheater:card-event`   | Dunkle Eventkarte mit Bild, Ort, Termin, Zeit, Tag-Pills und Link                    |
-| Archiv-Karte  | `sommertheater:card-archive` | Papierkarte mit Ornament-Rahmen, Monogramm und Link                                  |
-| Glas-Karte    | `sommertheater:card-glass`   | Moderne Glas-Karte mit Statistiken und Link                                          |
-| Status-Badge  | `sommertheater:status-badge` | Neu / Aktualisiert / Ausverkauft / Abgesagt                                          |
-| Breadcrumb    | `sommertheater:breadcrumb`   | Breadcrumb-Pfad mit Startseiten-Icon                                                 |
-| Pagination    | `sommertheater:pagination`   | Seitenzahlen mit Vor-/Zurück-Pfeilen                                                 |
-| Formular-Feld | `sommertheater:form-field`   | Text-, E-Mail-, Such-, Select-, Textarea- und Checkbox-Feld mit Fokus-/Fehlerzustand |
+| Komponente    | Canvas-ID                    | Beschreibung                                                                                                |
+| ------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Event-Karte   | `sommertheater:card-event`   | Dunkle Eventkarte mit Bild, Ort, Termin, Zeit, Tag-Pills und Link                                           |
+| Archiv-Karte  | `sommertheater:card-archive` | Papierkarte mit Ornament-Rahmen, Monogramm und Link                                                         |
+| Glas-Karte    | `sommertheater:card-glass`   | Moderne Glas-Karte mit Statistiken und Link                                                                 |
+| Status-Badge  | `sommertheater:status-badge` | Neu / Aktualisiert / Ausverkauft / Abgesagt                                                                 |
+| Breadcrumb    | `sommertheater:breadcrumb`   | Breadcrumb-Pfad mit Startseiten-Icon                                                                        |
+| Pagination    | `sommertheater:pagination`   | Seitenzahlen mit Vor-/Zurück-Pfeilen                                                                        |
+| Formular-Feld | `sommertheater:form-field`   | Text-, E-Mail-, Such-, Select-, Textarea- und Checkbox-Feld mit Fokus-/Fehlerzustand                        |
+| Countdown     | `sommertheater:countdown`    | Aktivierbarer Premieren-Countdown mit mehreren Vorstellungen (Datum + Uhrzeit), Live-Ticker und Hinweistext |
 
 ## Maße
 

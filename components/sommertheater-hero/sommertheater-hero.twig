@@ -1,17 +1,35 @@
 {% set overlay_class = 'sommertheater-hero--' ~ (overlay|default('strong')) %}
-<section class="sommertheater-hero-component {{ overlay_class }}" data-sommertheater-hero>
-  {% if media.src %}
+{% set overlap_class = overlap_navbar|default(true) ? 'sommertheater-hero--overlap' : '' %}
+{% set overlap_attr = overlap_class is not empty ? 'data-sommertheater-overlap' : '' %}
+
+{# Normalize the slideshow images: prefer the image list, fall back to the single background image #}
+{% set hero_images = images|default([]) %}
+{% if hero_images is not iterable %}
+  {% set hero_images = [] %}
+{% endif %}
+{% if hero_images is empty and media.src is not empty %}
+  {% set hero_images = [media] %}
+{% endif %}
+
+<section class="sommertheater-hero-component {{ overlay_class }} {{ overlap_class }}" data-sommertheater-hero {{ overlap_attr }}>
+  {% if hero_images is not empty %}
     <div class="sommertheater-hero-component__media" aria-hidden="true">
-      {% include 'canvas:image' ignore missing with {
-        src: media.src,
-        alt: media.alt|default(''),
-        width: media.width,
-        height: media.height,
-        loading: 'eager',
-        class: 'sommertheater-hero-component__image'
-      } only %}
+      {% for image in hero_images %}
+        {% set slide_class = loop.first ? 'sommertheater-hero-component__slide is-active' : 'sommertheater-hero-component__slide' %}
+        <div class="{{ slide_class }}">
+          {% include 'canvas:image' ignore missing with {
+            src: image.src,
+            alt: image.alt|default(''),
+            width: image.width,
+            height: image.height,
+            loading: loop.first ? 'eager' : 'lazy',
+            class: 'sommertheater-hero-component__image'
+          } only %}
+        </div>
+      {% endfor %}
     </div>
   {% endif %}
+
   <div class="sommertheater-hero-component__content">
     {% if eyebrow %}
       <p class="sommertheater-hero-component__eyebrow">
@@ -24,7 +42,18 @@
         {{ text }}
       </p>
     {% endif %}
-    {% if cta_label and cta_url %}
+
+    {% set actions_content %}
+      {% block actions %}
+
+      {% endblock %}
+    {% endset %}
+
+    {% if actions_content|trim is not empty %}
+      <div class="sommertheater-hero-component__actions">
+        {{ actions_content }}
+      </div>
+    {% elseif cta_label and cta_url %}
       <a class="sommertheater-hero-component__cta" href="{{ cta_url }}">
         <span>{{ cta_label }}</span>
         <span aria-hidden="true">&#8594;</span>

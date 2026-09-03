@@ -15,19 +15,10 @@
 #}
 
 {% block content %}
-  {% set site_logo_url = site_logo ? file_url(site_logo) : '' %}
-
   <a href="{{ home_url|default('/') }}" class="sommertheater-wordmark inline-block" rel="home">
     {% block branding %}
-      {% if site_logo %}
-        <div class="branding">
-          <img class="h-full w-full" src="{{ site_logo_url }}" alt="{{ site_name }}" />
-        </div>
-      {% endif %}
-      {% if site_name and not site_logo %}
-        <div class="heading-responsive-4xl font-[var(--hgc-font-weight-h1)]">
-          {{ site_name }}
-        </div>
+      {% if site_name %}
+        <span class="text-md leading-none font-semibold md:text-lg">{{ site_name }}</span>
       {% endif %}
     {% endblock %}
   </a>

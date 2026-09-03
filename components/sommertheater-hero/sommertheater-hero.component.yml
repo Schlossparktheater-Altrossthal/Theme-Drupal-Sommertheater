@@ -34,6 +34,12 @@ props:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
       type: object
+    images:
+      type: array
+      title: Diashow-Bilder
+      description: Mehrere Bilder für den automatischen Bildwechsel. Leer lassen, um das einzelne Hintergrundbild zu verwenden.
+      items:
+        $ref: json-schema-definitions://canvas.module/image
     overlay:
       type: string
       title: Overlay intensity
@@ -44,3 +50,18 @@ props:
         soft: Soft
         strong: Strong
       default: strong
+    overlap_navbar:
+      type: boolean
+      title: Header überlappen
+      description: Aktivieren, damit der Hero hinter dem Header beginnt.
+      default: true
+
+slots:
+  actions:
+    title: "Buttons"
+
+libraryOverrides:
+  js:
+    sommertheater-hero.js:
+      attributes:
+        type: module

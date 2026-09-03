@@ -1,0 +1,34 @@
+{# Compute all values before rendering #}
+{% set countdown_enabled = enabled|default(true) %}
+{% set is_enabled = countdown_enabled ? 'yes' : 'no' %}
+
+<section class="sommertheater-countdown cq-full py-12 md:py-16 xl:py-20">
+  <div class="container mx-auto px-4 text-center">
+    {% if eyebrow is not empty %}
+      <p class="sommertheater-countdown__eyebrow">
+        {{ eyebrow }}
+      </p>
+    {% endif %}
+
+    <h2 class="sommertheater-countdown__heading">{{ heading }}</h2>
+
+    {% if is_enabled == 'yes' %}
+      <div
+        class="sommertheater-countdown__app"
+        data-sommertheater-countdown
+        data-countdown-finished-text="{{ finished_text|default('Alle Vorstellungen sind vorbei.') }}"
+      >
+        <ol class="sommertheater-countdown__performances" hidden>
+          {% for performance in performances|default([]) %}
+            <li data-countdown-title="{{ performance.title|default('') }}" data-countdown-datetime="{{ performance.datetime|default('') }}"></li>
+          {% endfor %}
+        </ol>
+        <div class="sommertheater-countdown__display" aria-live="polite"></div>
+      </div>
+    {% else %}
+      <p class="sommertheater-countdown__disabled">
+        {{ disabled_text|default('Der Countdown ist aktuell deaktiviert.') }}
+      </p>
+    {% endif %}
+  </div>
+</section>

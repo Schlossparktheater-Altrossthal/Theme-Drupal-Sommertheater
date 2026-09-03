@@ -11,9 +11,9 @@ props:
         - left
         - center
         - right
-      default: center
+      default: right
       examples:
-        - center
+        - right
 slots:
   logo:
     title: Site logo

@@ -55,6 +55,17 @@ class Navbar extends ComponentInstance {
     });
 
     intersectionObserver.observe(this.el);
+
+    // Toggle the solid background once the page is scrolled past the hero.
+    this.onWindowScroll = () => {
+      this.el.classList.toggle("navbar--scrolled", window.scrollY > 8);
+    };
+    this.onWindowScroll();
+    window.addEventListener("scroll", this.onWindowScroll, { passive: true });
+  }
+
+  remove() {
+    window.removeEventListener("scroll", this.onWindowScroll);
   }
 
   set isOpen(value) {

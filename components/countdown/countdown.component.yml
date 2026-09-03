@@ -1,0 +1,54 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Premieren-Countdown
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    enabled:
+      type: boolean
+      title: Aktiviert
+      default: true
+      examples:
+        - true
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: Sommertheater Altrossthal
+    heading:
+      type: string
+      title: Heading
+      default: Premieren-Countdown
+      examples:
+        - Premieren-Countdown
+    performances:
+      type: array
+      title: Vorstellungen
+      description: Liste der Vorstellungen mit Titel und Zeitpunkt im ISO-Format (z. B. 2025-07-12T20:00).
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            title: Titel
+          datetime:
+            type: string
+            title: Zeitpunkt
+      examples:
+        - - title: Premiere
+            datetime: "2025-07-12T20:00"
+    disabled_text:
+      type: string
+      title: Text bei deaktiviert
+      default: Der Countdown ist aktuell deaktiviert.
+    finished_text:
+      type: string
+      title: Text wenn alle Vorstellungen vorbei sind
+      default: Alle Vorstellungen sind vorbei.
+libraryOverrides:
+  js:
+    countdown.js:
+      attributes:
+        type: module
