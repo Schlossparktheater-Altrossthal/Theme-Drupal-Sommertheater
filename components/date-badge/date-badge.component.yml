@@ -1,0 +1,27 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Date badge
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - day
+    - month
+    - year
+  properties:
+    day:
+      type: string
+      title: Day
+      default: "12"
+    month:
+      type: string
+      title: Month
+      default: JUL
+    year:
+      type: string
+      title: Year
+      default: "2025"
+    label:
+      type: string
+      title: Accessible label
+      default: Event date

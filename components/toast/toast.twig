@@ -1,0 +1,6 @@
+{% set toast_class = 'sommertheater-toast--' ~ (status|default('success')) %}
+<div class="sommertheater-toast {{ toast_class }}" role="status">
+  <span class="sommertheater-toast__icon" aria-hidden="true">&#10003;</span>
+  <span>{{ message }}</span>
+  <button type="button" aria-label="{{ 'Dismiss notification'|t }}">&#10005;</button>
+</div>

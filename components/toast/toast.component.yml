@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Toast notification
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - message
+  properties:
+    message:
+      type: string
+      title: Message
+      default: Successfully saved.
+    status:
+      type: string
+      title: Status
+      enum:
+        - success
+        - warning
+        - error
+      meta:enum:
+        success: Success
+        warning: Warning
+        error: Error
+      default: success

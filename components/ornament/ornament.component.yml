@@ -1,0 +1,11 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Ornament divider
+group: Sommertheater
+status: stable
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+      default: ""

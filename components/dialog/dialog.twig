@@ -1,0 +1,13 @@
+<section class="sommertheater-dialog" role="dialog" aria-labelledby="sommertheater-dialog-title" aria-modal="true">
+  <button class="sommertheater-dialog__close" type="button" aria-label="{{ 'Close dialog'|t }}">&#10005;</button>
+  <h2 id="sommertheater-dialog-title">{{ heading }}</h2>
+  {% if text %}
+    <p>
+      {{ text }}
+    </p>
+  {% endif %}
+  <div class="sommertheater-dialog__actions">
+    <button class="sommertheater-dialog__cancel" type="button">{{ cancel_label }}</button>
+    <button class="sommertheater-dialog__confirm" type="button">{{ confirm_label }}</button>
+  </div>
+</section>

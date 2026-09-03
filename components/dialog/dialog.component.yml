@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Archive dialog
+group: Sommertheater
+status: stable
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Heading
+      default: Open entry?
+    text:
+      type: string
+      title: Text
+      default: Do you want to open this archive entry?
+    cancel_label:
+      type: string
+      title: Cancel label
+      default: Cancel
+    confirm_label:
+      type: string
+      title: Confirm label
+      default: Open
