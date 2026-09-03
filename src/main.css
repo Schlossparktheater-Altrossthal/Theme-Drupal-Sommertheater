@@ -193,6 +193,23 @@
     padding: 0.25rem;
   }
 
+  .sommertheater-wordmark .branding img,
+  .sommertheater-wordmark .branding svg {
+    display: block;
+    width: min(100%, 18rem);
+    height: auto;
+  }
+
+  .layout-container > header[role="banner"] {
+    border-bottom: 1px solid rgb(182 138 69 / 0.6);
+    background: var(--background);
+  }
+
+  .layout-container > header[role="banner"] > .region-header {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+  }
+
   .sommertheater-card--archive {
     position: relative;
     overflow: hidden;
