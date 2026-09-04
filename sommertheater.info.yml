@@ -1,10 +1,10 @@
-name: Sommertheater Altrossthal
+name: Sommertheater Altroßthal
 type: theme
 "base theme": false
 libraries:
   - sommertheater/global
 logo: logo-sommertheater.svg
-description: "Custom Theme für das Sommertheater Altrossthal."
+description: "Custom Theme für das Sommertheater Altroßthal."
 core_version_requirement: ^10 || ^11
 generator: "starterkit_theme:11.1.1"
 regions:

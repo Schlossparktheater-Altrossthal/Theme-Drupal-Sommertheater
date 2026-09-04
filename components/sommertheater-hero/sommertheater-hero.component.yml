@@ -10,7 +10,7 @@ props:
     eyebrow:
       type: string
       title: Eyebrow
-      default: Sommertheater Altrossthal
+      default: Sommertheater Altroßthal
     heading:
       type: string
       title: Heading
