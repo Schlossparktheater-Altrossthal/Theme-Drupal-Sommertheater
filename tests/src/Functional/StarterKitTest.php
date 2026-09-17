@@ -44,8 +44,9 @@ final class StarterKitTest extends BrowserTestBase {
 
     // Prefer Composer's `dr` binary. When invoked from core, it can fail to
     // resolve the autoloader depending on the project layout.
-    $bin_dir = $GLOBALS['_composer_bin_dir'] ?? InstalledVersions::getRootPackage()['install_path'] . '/vendor/bin';
-    $dr = file_exists("$bin_dir/dr") ? "$bin_dir/dr" : 'core/scripts/dr';
+    ['install_path' => $project_root] = InstalledVersions::getRootPackage();
+    $dr = $project_root . '/vendor/bin/dr';
+    $this->assertFileExists($dr);
     $command = [
       (new PhpExecutableFinder())->find(),
       $dr,
@@ -92,6 +93,9 @@ final class StarterKitTest extends BrowserTestBase {
 
     // The generated theme should not itself be a starter kit.
     $this->assertFileDoesNotExist("$path/$theme_name.starterkit.yml");
+    // And it shouldn't include our CI configuration, or tests.
+    $this->assertFileDoesNotExist("$path/.gitlab-ci.yml");
+    $this->assertDirectoryDoesNotExist("$path/tests");
   }
 
 }

@@ -28,6 +28,7 @@ variables:
   SKIP_ESLINT: "1"
   SKIP_STYLELINT: "1"
   OPT_IN_TEST_NEXT_MINOR: "1"
+  OPT_IN_TEST_NEXT_MAJOR: "1"
   # Don't install JavaScript dependencies; they're not used in this CI process right now.
   _COMPOSER_YARN_INSTALL: "0"
   _CSPELL_IGNORE_PATHS: "build/**, package-lock.json"
