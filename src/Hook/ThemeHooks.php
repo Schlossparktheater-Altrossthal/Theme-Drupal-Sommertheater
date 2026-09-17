@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeSettingsProvider;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -81,7 +82,7 @@ final class ThemeHooks {
    * Implements hook_form_FORM_ID_alter().
    */
   #[Hook('form_system_theme_settings_alter')]
-  public function themeSettingsFormAlter(array &$form): void {
+  public function themeSettingsFormAlter(array &$form, FormStateInterface $form_state): void {
     $form['scheme'] = [
       '#type' => 'radios',
       '#title' => t('Color scheme'),

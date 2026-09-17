@@ -21,6 +21,7 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
+  --color-ring: var(--ring);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -205,7 +206,7 @@
   .fieldgroup:focus-within {
     > label,
     .fieldset-legend {
-      @apply text-accent;
+      @apply text-primary;
     }
   }
 
@@ -245,11 +246,11 @@
   input[type="time"]:focus,
   textarea:focus,
   select:focus {
-    @apply border-accent bg-muted/60 shadow-sm;
+    @apply border-primary bg-muted/60 shadow-sm;
   }
 
   select:focus {
-    @apply text-accent;
+    @apply text-primary;
   }
 
   input::placeholder,

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
+use Drupal\mercury\Hook\ThemeHooks;
 use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\mercury\Traits\MercuryTestTrait;
-use PHPUnit\Framework\Attributes\CoversFunction;
+use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -15,8 +16,8 @@ use PHPUnit\Framework\Attributes\TestWith;
  * Tests that Mercury's color scheme can be changed by a setting.
  */
 #[Group('mercury')]
-#[CoversFunction('mercury_preprocess_html')]
-#[CoversFunction('mercury_form_system_theme_settings_alter')]
+#[CoversMethod(ThemeHooks::class, 'preprocessHtml')]
+#[CoversMethod(ThemeHooks::class, 'themeSettingsFormAlter')]
 #[RunTestsInSeparateProcesses]
 class SchemesTest extends BrowserTestBase {
 

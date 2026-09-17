@@ -7,8 +7,6 @@ mercury.settings:
       label: Color scheme
       constraints:
         Choice:
-          # @see mercury_form_system_theme_settings_alter()
-          - vanilla-light
-          - vanilla-dark
-          - byte-light
-          - byte-dark
+          # @see \Drupal\mercury\Hook\ThemeHooks::themeSettingsFormAlter()
+          - light
+          - dark

@@ -25,7 +25,9 @@
     <li class="social-menu--item">
       <a
         href="{{ item.url }}"
-        aria-label="Follow us on {{ item.title|striptags|trim }}"
+        aria-label="{{ 'Follow us on @name'|t({
+          '@name': item.title|striptags|trim
+        }) }}"
         target="_blank"
         rel="noopener noreferrer"
         class="social-menu--icon align-center flex aspect-square text-3xl opacity-60 hover:opacity-100"

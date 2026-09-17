@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\mercury\Functional;
 
+use Composer\InstalledVersions;
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Extension\ThemeInstallerInterface;
 use Drupal\Core\Theme\ComponentPluginManager;
@@ -41,9 +42,13 @@ final class StarterKitTest extends BrowserTestBase {
     $path = uniqid($this->siteDirectory . '/themes/theme_');
     $theme_name = basename($path);
 
+    // Prefer Composer's `dr` binary. When invoked from core, it can fail to
+    // resolve the autoloader depending on the project layout.
+    $bin_dir = $GLOBALS['_composer_bin_dir'] ?? InstalledVersions::getRootPackage()['install_path'] . '/vendor/bin';
+    $dr = file_exists("$bin_dir/dr") ? "$bin_dir/dr" : 'core/scripts/dr';
     $command = [
       (new PhpExecutableFinder())->find(),
-      'core/scripts/drupal',
+      $dr,
       'generate-theme',
       $theme_name,
       '--starterkit=mercury',

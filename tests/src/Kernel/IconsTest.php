@@ -9,11 +9,13 @@ use Drupal\Core\Theme\Icon\Plugin\IconPackManagerInterface;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\mercury\Traits\MercuryTestTrait;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests that all of Mercury's icons are discoverable.
  */
 #[Group('mercury')]
+#[RunTestsInSeparateProcesses]
 final class IconsTest extends KernelTestBase {
 
   use MercuryTestTrait;
@@ -33,7 +35,7 @@ final class IconsTest extends KernelTestBase {
       ->getIcons();
 
     $icon_dir = implode('/', [
-      $this->getDrupalRoot(),
+      $this->root,
       $this->container->get(ThemeExtensionList::class)->getPath('mercury'),
       'icons/phosphor',
     ]);

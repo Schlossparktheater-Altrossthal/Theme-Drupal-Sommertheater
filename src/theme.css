@@ -25,6 +25,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.872 0.009 258.338);
   --input: oklch(0.872 0.009 258.338);
+  --ring: oklch(0.547 0.246 262.866);
   --font-sans: "Outfit", "Helvetica Neue", Arial, Helvetica, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
@@ -72,6 +73,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.373 0.031 259.733);
   --input: oklch(0.373 0.031 259.733);
+  --ring: oklch(0.623 0.214 259.815);
   --font-sans: "Outfit", "Helvetica Neue", Arial, Helvetica, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Fira Mono", "Menlo", "Consolas", "Liberation Mono", monospace;

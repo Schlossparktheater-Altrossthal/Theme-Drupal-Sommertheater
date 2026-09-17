@@ -64,16 +64,18 @@
   })
 %}
 
-{% set group_attributes = group_attributes|default(create_attribute()) %}
+{% set group_attributes = group_attributes|default(create_attribute()).addClass(group_classes) %}
 
-<div
-  {{
-  group_attributes.addClass(group_classes).setAttribute('data-animation', animation).setAttribute('data-delay', animation_delay).setAttribute(
-    'data-duration',
-    animation_duration
-  )
-  }}
->
+{% if animation is not empty %}
+  {% set group_attributes =
+    group_attributes.setAttribute('data-animation', animation).setAttribute('data-delay', animation_delay).setAttribute(
+      'data-duration',
+      animation_duration
+    )
+  %}
+{% endif %}
+
+<div {{ group_attributes }}>
   {% block group_slot %}
 
   {% endblock %}
