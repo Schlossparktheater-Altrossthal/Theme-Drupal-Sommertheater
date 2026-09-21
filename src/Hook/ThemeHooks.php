@@ -163,6 +163,8 @@ final class ThemeHooks {
     else {
       $variables['rendered_by_canvas'] = FALSE;
     }
+
+    $variables['#cache']['contexts'][] = 'route';
   }
 
 }

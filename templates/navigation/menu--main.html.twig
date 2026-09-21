@@ -20,7 +20,7 @@
 #}
 
 {% set classes = 'flex justify-start relative' %}
-{% set attributes = attributes ? attributes.addClass(classes) : ' class="' ~ classes ~ '"' %}
+{% do attributes.addClass(classes) %}
 
 <nav {{ attributes }} aria-label="{{ menu_label }}">
   <ul class="flex flex-col gap-1 p-0 font-body md:w-auto md:flex-row" data-level="1">
@@ -41,14 +41,10 @@
         ]|filter(c => c is not empty)
       %}
 
-      {% if item.attributes %}
-        {% do item.attributes.addClass(item_classes) %}
-        {% do item.attributes.setAttribute('data-level', 1) %}
-      {% else %}
-        {% set item_attributes_string = 'class="' ~ (item_classes|join(' ')) ~ '" data-level="1"' %}
-      {% endif %}
+      {% do item.attributes.addClass(item_classes) %}
+      {% do item.attributes.setAttribute('data-level', 1) %}
 
-      <li {{ item.attributes ? : item_attributes_string }}>
+      <li {{ item.attributes }}>
         {% if url is not empty %}
           <a
             href="{{ url }}"

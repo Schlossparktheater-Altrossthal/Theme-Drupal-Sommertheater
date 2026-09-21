@@ -53,9 +53,11 @@ class SommertheaterHero extends ComponentInstance {
 
     document.body.dataset.overlappingHero = "1";
 
+    this.headers = Array.from(document.querySelectorAll("header[role='banner']"));
     this.onScroll = () => {
-      document.querySelectorAll("header[role='banner']").forEach((header) => {
-        header.classList.toggle("header--scrolled", window.scrollY > 8);
+      const scrolled = window.scrollY > 8;
+      this.headers.forEach((header) => {
+        header.classList.toggle("header--scrolled", scrolled);
       });
     };
     this.onScroll();
