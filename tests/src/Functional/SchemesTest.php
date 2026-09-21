@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\sommertheater\Functional;
 
-use Drupal\mercury\Hook\ThemeHooks;
+use Drupal\sommertheater\Hook\ThemeHooks;
 use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\sommertheater\Traits\SommertheaterTestTrait;
 use PHPUnit\Framework\Attributes\CoversMethod;
