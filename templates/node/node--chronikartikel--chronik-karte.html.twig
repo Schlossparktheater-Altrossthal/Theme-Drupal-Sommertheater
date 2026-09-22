@@ -5,9 +5,14 @@
  *
  * Rendert den Node ueber die Karten-Komponente des Designsystems statt der
  * generischen Feldausgabe, damit neue Chronikartikel ohne Seitenumbau im
- * Zeitstrahl erscheinen.
+ * Zeitstrahl erscheinen. Der Jahres-Punkt/-Badge kommt direkt aus dem
+ * Node-Feld statt aus der Views-Gruppierung: deren Titel bleibt beim
+ * Entity-Row-Plugin unzuverlaessig leer (Views rendert Feldwerte nur, wenn
+ * der Style-Plugin usesFields() zurueckgibt, was beim Entity-Row nicht der
+ * Fall ist), waehrend das Node-Feld hier immer verlaesslich verfuegbar ist.
  */
 #}
+{% set year = node.field_jahr.value %}
 {% set media_entity = node.field_featured_image.entity %}
 {% set image_item = media_entity ? media_entity.field_media_image : null %}
 {% set image_uri = image_item ? image_item.entity.uri.value : null %}
@@ -21,17 +26,28 @@
   : null
 %}
 
-{{
-  include(
-    'sommertheater:card-archive',
-    {
-      heading_text: node.label,
-      media: media,
-      location: node.field_spielort.value,
-      text: node.field_content.value ? node.field_content.value|striptags|trim : '',
-      link_label: 'Eintrag öffnen'|t,
-      link_url: url
-    },
-    with_context: false
-  )
-}}
+<div class="flex items-stretch gap-4 md:gap-6">
+  <div class="relative flex w-8 flex-none flex-col items-center md:w-10">
+    <span class="z-10 mt-1 h-4 w-4 flex-none rounded-full border-2 border-primary bg-background" aria-hidden="true"></span>
+    <span class="w-0.5 flex-1 bg-primary/40"></span>
+  </div>
+  <div class="min-w-0 flex-1 pb-8">
+    {% if year %}
+      <span class="mb-4 inline-block rounded-full border border-primary px-4 py-1 font-serif text-lg font-bold text-primary">{{ year }}</span>
+    {% endif %}
+    {{
+      include(
+        'sommertheater:card-archive',
+        {
+          heading_text: node.label,
+          media: media,
+          location: node.field_spielort.value,
+          text: node.field_content.value ? node.field_content.value|striptags|trim : '',
+          link_label: 'Eintrag öffnen'|t,
+          link_url: url
+        },
+        with_context: false
+      )
+    }}
+  </div>
+</div>
