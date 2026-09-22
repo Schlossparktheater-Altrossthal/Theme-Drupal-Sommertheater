@@ -441,8 +441,14 @@
 
   /* Transparent über einem überlappenden Hero, bis gescrollt wird. */
   body[data-overlapping-hero="1"] .layout-container > header[role="banner"]:not(.header--scrolled) {
+    /* Über dem dunklen Hero gelten auch im hellen Schema die dunklen Tokens,
+       damit Navigation und mobiles Menü lesbar bleiben. */
+    --background: #0d1715;
+    --foreground: #f6ebd3;
+    --muted: #87968a;
     border-bottom-color: transparent;
     background: transparent;
+    color: var(--foreground);
   }
 
   .layout-container > header[role="banner"] > .region-header {

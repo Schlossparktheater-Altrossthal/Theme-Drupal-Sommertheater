@@ -1,49 +1,61 @@
 import { ComponentInstance, ComponentType } from "../../lib/component.js";
 
+const SLIDE_INTERVAL = 8000;
+
 class SommertheaterHero extends ComponentInstance {
   init() {
     this.slides = Array.from(this.el.querySelectorAll(".sommertheater-hero-component__slide"));
     this.activeIndex = 0;
     this.slideTimer = null;
+    this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    this.initParallax();
     this.initSlideshow();
+    this.initParallax();
     this.initOverlap();
   }
 
-  initParallax() {
-    this.el.addEventListener("pointermove", (event) => {
-      const bounds = this.el.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-      this.el.style.setProperty("--hero-shift-x", `${x * 4}px`);
-      this.el.style.setProperty("--hero-shift-y", `${y * 4}px`);
-    });
-
-    this.el.addEventListener("pointerleave", () => {
-      this.el.style.removeProperty("--hero-shift-x");
-      this.el.style.removeProperty("--hero-shift-y");
-    });
-  }
-
   initSlideshow() {
-    if (this.slides.length < 2) {
-      return;
-    }
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (this.slides.length < 2 || this.reducedMotion) {
       return;
     }
 
     this.slideTimer = window.setInterval(() => {
-      this.nextSlide();
-    }, 5000);
+      // Im Hintergrund-Tab nicht weiterblättern.
+      if (!document.hidden) {
+        this.nextSlide();
+      }
+    }, SLIDE_INTERVAL);
   }
 
   nextSlide() {
     this.slides[this.activeIndex].classList.remove("is-active");
     this.activeIndex = (this.activeIndex + 1) % this.slides.length;
     this.slides[this.activeIndex].classList.add("is-active");
+  }
+
+  initParallax() {
+    if (this.reducedMotion) {
+      return;
+    }
+
+    this.parallaxFrame = null;
+    this.onParallaxScroll = () => {
+      if (this.parallaxFrame) {
+        return;
+      }
+      this.parallaxFrame = window.requestAnimationFrame(() => {
+        this.parallaxFrame = null;
+        const scrolled = Math.max(0, -this.el.getBoundingClientRect().top);
+        if (scrolled > this.el.offsetHeight) {
+          return;
+        }
+        this.el.style.setProperty("--hero-parallax", `${scrolled * 0.35}px`);
+        this.el.style.setProperty("--hero-blur", `${Math.min(scrolled * 0.012, 5)}px`);
+        this.el.style.setProperty("--hero-content-shift", `${scrolled * -0.15}px`);
+      });
+    };
+    this.onParallaxScroll();
+    window.addEventListener("scroll", this.onParallaxScroll, { passive: true });
   }
 
   initOverlap() {
@@ -54,6 +66,15 @@ class SommertheaterHero extends ComponentInstance {
     document.body.dataset.overlappingHero = "1";
 
     this.headers = Array.from(document.querySelectorAll("header[role='banner']"));
+
+    // Der Hero rückt genau um die tatsächliche Header-Höhe nach oben.
+    if (this.headers[0] && "ResizeObserver" in window) {
+      this.headerObserver = new ResizeObserver(() => {
+        this.el.style.setProperty("--hero-header-offset", `${this.headers[0].offsetHeight}px`);
+      });
+      this.headerObserver.observe(this.headers[0]);
+    }
+
     this.onScroll = () => {
       const scrolled = window.scrollY > 8;
       this.headers.forEach((header) => {
@@ -70,6 +91,12 @@ class SommertheaterHero extends ComponentInstance {
     }
     if (this.onScroll) {
       window.removeEventListener("scroll", this.onScroll);
+    }
+    if (this.onParallaxScroll) {
+      window.removeEventListener("scroll", this.onParallaxScroll);
+    }
+    if (this.headerObserver) {
+      this.headerObserver.disconnect();
     }
   }
 }
