@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Chronikartikel im Chronik-Zeitstrahl (View "chronik_zeitstrahl").
+ *
+ * Rendert den Node ueber die Karten-Komponente des Designsystems statt der
+ * generischen Feldausgabe, damit neue Chronikartikel ohne Seitenumbau im
+ * Zeitstrahl erscheinen.
+ */
+#}
+{% set media_entity = node.field_featured_image.entity %}
+{% set image_item = media_entity ? media_entity.field_media_image : null %}
+{% set image_uri = image_item ? image_item.entity.uri.value : null %}
+{% set media = image_uri
+  ? {
+    src: file_url(image_uri),
+    alt: image_item.alt|default(''),
+    width: image_item.width,
+    height: image_item.height
+  }
+  : null
+%}
+
+{{
+  include(
+    'sommertheater:card-archive',
+    {
+      heading_text: node.label,
+      media: media,
+      location: node.field_spielort.value,
+      text: node.field_content.value ? node.field_content.value|striptags|trim : '',
+      link_label: 'Eintrag öffnen'|t,
+      link_url: url
+    },
+    with_context: false
+  )
+}}
