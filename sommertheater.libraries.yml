@@ -26,3 +26,10 @@ motion:
     build/motion.js: { minified: true }
   dependencies:
     - core/once
+
+scheme-toggle:
+  js:
+    lib/scheme-toggle.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

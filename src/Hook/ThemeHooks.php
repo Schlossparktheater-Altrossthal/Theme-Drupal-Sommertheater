@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\sommertheater\Hook;
 
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -43,6 +44,7 @@ final class ThemeHooks {
     private readonly TitleResolverInterface $titleResolver,
     private readonly ChainBreadcrumbBuilderInterface $breadcrumb,
     private readonly ModuleHandlerInterface $moduleHandler,
+    private readonly ConfigFactoryInterface $configFactory,
     #[Autowire(param: 'app.root')] string $appRoot,
   ) {
     self::$appRoot ??= $appRoot;
@@ -122,6 +124,20 @@ final class ThemeHooks {
     $variables['scheme'] = $this->themeSettings->getSetting('scheme');
     // Get the theme base path for font preloading.
     $variables['sommertheater_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater');
+  }
+
+  /**
+   * Implements template_preprocess_block() for the branding block.
+   *
+   * The header always shows logo and site name, independent of the block
+   * settings (the block is placed via Canvas, where they are not editable).
+   */
+  #[Hook('preprocess_block__system_branding_block')]
+  public function preprocessBrandingBlock(array &$variables): void {
+    if (empty($variables['site_name'])) {
+      $variables['site_name'] = $this->configFactory->get('system.site')->get('name');
+    }
+    $variables['sommertheater_logo'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater') . '/images/logo-sommertheater.png';
   }
 
   /**

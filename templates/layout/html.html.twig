@@ -35,6 +35,15 @@
 <html {{ html_attributes.addClass(html_classes) }}>
   <head>
     <head-placeholder token="{{ placeholder_token }}">
+    {# Gespeicherte Besucherwahl (Hell/Dunkel) vor dem ersten Zeichnen setzen, siehe lib/scheme-toggle.js. #}
+    <script>
+      try {
+        var sommertheaterScheme = window.localStorage.getItem('sommertheater-scheme');
+        if (sommertheaterScheme === 'dark' || sommertheaterScheme === 'light') {
+          document.documentElement.classList.toggle('dark', sommertheaterScheme === 'dark');
+        }
+      } catch (error) {}
+    </script>
     <title>
       {{ head_title|safe_join(' | ') }}
     </title>

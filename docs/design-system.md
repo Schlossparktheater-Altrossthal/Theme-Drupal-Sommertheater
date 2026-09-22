@@ -23,11 +23,11 @@ Diese Datei ist die verbindliche visuelle Referenz für das Theme und orientiert
 | Text-Aufhellung | `#F6EBD3` | Haupttext auf dunklen Flächen            |
 | Sekundärtext    | `#87968A` | Beschreibungen und Captions              |
 
-Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier- und Cremeflächen mit Waldgrün als Textfarbe.
+Der dunkle Modus ist die primäre Darstellung. Der helle Modus verwendet Papier- und Cremeflächen mit Waldgrün als Textfarbe. Das Standardschema legt die Theme-Einstellung fest; Besucher können über den Mond/Sonne-Button im Header umschalten (`lib/scheme-toggle.js`, Wahl im localStorage, vor dem ersten Zeichnen per Inline-Skript in `html.html.twig` gesetzt).
 
 ## Typografie
 
-- Display und Überschriften: elegante Display-Serifenschrift, H1 regular/bold, H2 semibold, H3 bold
+- Display und Überschriften: Playfair Display (variable Schrift, selbst gehostet in `fonts/PlayfairDisplay/`, SIL OFL), H1 regular/bold, H2 semibold, H3 bold
 - Interface und Fließtext: gut lesbare humanistische Sans-Serifenschrift
 - Captions: Sans Serif medium
 - Keine negative Zeichenweite; Text soll ruhig und großzügig gesetzt sein
@@ -62,7 +62,7 @@ Die Mockup-Elemente sind als eigenständige Single-Directory-Components umgesetz
 | Formular-Feld | `sommertheater:form-field`   | Text-, E-Mail-, Such-, Select-, Textarea- und Checkbox-Feld mit Fokus-/Fehlerzustand                        |
 | Countdown     | `sommertheater:countdown`    | Aktivierbarer Premieren-Countdown mit mehreren Vorstellungen (Datum + Uhrzeit), Live-Ticker und Hinweistext |
 
-Der Header wird vom Theme verwaltet: Der Branding-Block (Seitenname als Text-Link zur Startseite) und der Hauptnavigation-Block gehören in die Region `header`; die optionale Block-Konfiguration liegt in `config/optional/`. Der Hero (`sommertheater:sommertheater-hero`) kann den Header mit `overlap_navbar` hintergreifen – der Header liegt dann transparent darüber und wird beim Scrollen solide (sticky).
+Der Header wird vom Theme verwaltet: Der Branding-Block (rundes Logo `images/logo-sommertheater.png` und Seitenname wie auf der alten Webseite, auf dem Handy nur das Logo; der Seitenname kommt immer aus den Website-Einstellungen) und der Hauptnavigation-Block gehören in die Region `header`; die optionale Block-Konfiguration liegt in `config/optional/`. Der Hero (`sommertheater:sommertheater-hero`) kann den Header mit `overlap_navbar` hintergreifen – der Header liegt dann transparent darüber und wird beim Scrollen solide (sticky).
 
 ## Maße
 

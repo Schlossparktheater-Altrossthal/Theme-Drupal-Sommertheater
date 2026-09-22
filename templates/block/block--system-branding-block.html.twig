@@ -15,10 +15,11 @@
 #}
 
 {% block content %}
-  <a href="{{ home_url|default('/') }}" class="sommertheater-wordmark inline-block" rel="home">
+  <a href="{{ path('<front>') }}" class="sommertheater-wordmark" rel="home">
     {% block branding %}
+      <img class="sommertheater-wordmark__logo" src="{{ sommertheater_logo }}" width="44" height="44" alt="" />
       {% if site_name %}
-        <span class="text-md leading-none font-semibold md:text-lg">{{ site_name }}</span>
+        <span class="sommertheater-wordmark__name">{{ site_name }}</span>
       {% endif %}
     {% endblock %}
   </a>

@@ -3,7 +3,7 @@ type: theme
 "base theme": false
 libraries:
   - sommertheater/global
-logo: logo-sommertheater.svg
+logo: images/logo-sommertheater.png
 description: "Custom Theme für das Sommertheater Altroßthal."
 core_version_requirement: ^11.3
 regions:

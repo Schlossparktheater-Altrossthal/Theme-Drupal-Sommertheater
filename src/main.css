@@ -409,23 +409,48 @@
     font-size: clamp(1rem, 2vw, 1.5rem);
   }
 
+  /* Logo und Seitenname wie auf der alten Webseite; auf dem Handy nur das Logo. */
   .sommertheater-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
     color: var(--foreground);
-    font-family: var(--font-serif);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    text-decoration: none;
   }
 
-  .sommertheater-wordmark .branding {
-    border: 1px solid var(--secondary);
-    padding: 0.25rem;
+  .sommertheater-wordmark__logo {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    transition: transform 300ms ease;
   }
 
-  .sommertheater-wordmark .branding img,
-  .sommertheater-wordmark .branding svg {
-    display: block;
-    width: min(100%, 18rem);
-    height: auto;
+  .sommertheater-wordmark:hover .sommertheater-wordmark__logo,
+  .sommertheater-wordmark:focus-visible .sommertheater-wordmark__logo {
+    transform: rotate(-6deg) scale(1.05);
+  }
+
+  .sommertheater-wordmark__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .sommertheater-wordmark__name {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip-path: none;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
   }
 
   .layout-container > header[role="banner"] {
@@ -449,6 +474,41 @@
     border-bottom-color: transparent;
     background: transparent;
     color: var(--foreground);
+  }
+
+  .region-header__main {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .sommertheater-scheme-toggle {
+    display: inline-grid;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid rgb(182 138 69 / 0.6);
+    border-radius: 9999px;
+    color: var(--foreground);
+    cursor: pointer;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+  }
+
+  .sommertheater-scheme-toggle:hover,
+  .sommertheater-scheme-toggle:focus-visible {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .sommertheater-scheme-toggle__sun,
+  .dark .sommertheater-scheme-toggle__moon {
+    display: none;
+  }
+
+  .dark .sommertheater-scheme-toggle__sun {
+    display: block;
   }
 
   .layout-container > header[role="banner"] > .region-header {
