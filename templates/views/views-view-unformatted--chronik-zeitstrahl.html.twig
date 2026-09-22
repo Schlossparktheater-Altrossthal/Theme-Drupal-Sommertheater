@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Ein Jahr im Chronik-Zeitstrahl (View "chronik_zeitstrahl").
+ *
+ * Rendert Jahres-Punkt, verbindende Linie und die Artikelkarten dieses
+ * Jahres nebeneinander, damit aufeinanderfolgende Jahresgruppen optisch zu
+ * einer durchgehenden Zeitstrahl-Linie verschmelzen.
+ *
+ * @see views-view-unformatted.html.twig
+ */
+#}
+<div class="flex items-stretch gap-4 md:gap-6">
+  <div class="relative flex w-8 flex-none flex-col items-center md:w-10">
+    {% if title %}
+      <span class="z-10 mt-1 h-4 w-4 flex-none rounded-full border-2 border-primary bg-background" aria-hidden="true"></span>
+    {% endif %}
+    <span class="w-0.5 flex-1 bg-primary/40"></span>
+  </div>
+  <div class="min-w-0 flex-1 pb-8">
+    {% if title %}
+      <span class="mb-4 inline-block rounded-full border border-primary px-4 py-1 font-serif text-lg font-bold text-primary">{{ title }}</span>
+    {% endif %}
+    <div class="flex flex-col gap-6">
+      {% for row in rows %}
+        {% set row_classes = [default_row_class ? 'views-row'] %}
+        <div {{ row.attributes.addClass(row_classes) }}>
+          {{- row.content -}}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
