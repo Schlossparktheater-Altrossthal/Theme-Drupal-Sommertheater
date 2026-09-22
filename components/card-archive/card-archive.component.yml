@@ -16,6 +16,11 @@ props:
       $ref: json-schema-definitions://canvas.module/image
       title: Image
       type: object
+    year:
+      type: string
+      title: Season stamp year
+      examples:
+        - "2025"
     location:
       type: string
       title: Location

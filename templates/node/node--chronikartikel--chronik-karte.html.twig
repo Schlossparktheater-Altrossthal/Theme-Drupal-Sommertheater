@@ -13,6 +13,7 @@
  */
 #}
 {% set year = node.field_jahr.value %}
+{% set paw_position_classes = node.id.value % 2 == 0 ? '-left-1 -rotate-12' : '-right-1 rotate-12' %}
 {% set media_entity = node.field_featured_image.entity %}
 {% set image_item = media_entity ? media_entity.field_media_image : null %}
 {% set image_uri = image_item ? image_item.entity.uri.value : null %}
@@ -30,6 +31,18 @@
   <div class="relative flex w-8 flex-none flex-col items-center md:w-10">
     <span class="z-10 mt-1 h-4 w-4 flex-none rounded-full border-2 border-primary bg-background" aria-hidden="true"></span>
     <span class="w-0.5 flex-1 bg-primary/40"></span>
+    <span class="absolute top-10 {{ paw_position_classes }} text-primary/30" aria-hidden="true">
+      {{
+        include(
+          '@sommertheater/components/icon/icon.twig',
+          {
+            icon: 'paw-print',
+            icon_size: 'extra-small'
+          },
+          with_context: false
+        )
+      }}
+    </span>
   </div>
   <div class="min-w-0 flex-1 pb-8">
     {% if year %}
@@ -41,6 +54,7 @@
         {
           heading_text: node.label,
           media: media,
+          year: year,
           location: node.field_spielort.value,
           text: node.field_content.value ? node.field_content.value|striptags|trim : '',
           link_label: 'Eintrag öffnen'|t,

@@ -5,7 +5,7 @@
   class="sommertheater-card--archive flex flex-col overflow-hidden rounded-lg border border-secondary bg-[var(--paper-surface)] text-[var(--paper-ink)] shadow-lg"
 >
   {% if media.src is not empty %}
-    <div class="aspect-video overflow-hidden">
+    <div class="relative aspect-video overflow-hidden">
       {% include 'canvas:image' ignore missing with {
         src: media.src,
         alt: media.alt|default(''),
@@ -13,6 +13,15 @@
         height: media.height,
         class: 'h-full w-full object-cover'
       } only %}
+
+      {% if year is not empty %}
+        <div
+          class="absolute top-3 right-3 rotate-3 rounded border border-dashed border-primary bg-[var(--paper-surface)]/90 px-3 py-1.5 text-center leading-none text-[var(--paper-ink)] shadow-md"
+        >
+          <span class="block font-body text-[0.6rem] font-semibold tracking-[0.2em] text-primary uppercase">{{ 'Spielzeit'|t }}</span>
+          <span class="block font-serif text-lg font-bold">{{ year }}</span>
+        </div>
+      {% endif %}
     </div>
   {% endif %}
 
