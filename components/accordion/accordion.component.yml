@@ -18,6 +18,19 @@ props:
       title: Heading level
       examples:
         - 3
+    style:
+      type: string
+      title: Style
+      description: Card renders each item as a rounded, translucent card (FAQ look).
+      enum:
+        - default
+        - card
+      meta:enum:
+        default: Divider lines
+        card: Card
+      default: default
+      examples:
+        - default
     open_by_default:
       type: boolean
       title: Expanded by default

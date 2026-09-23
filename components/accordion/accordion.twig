@@ -1,42 +1,104 @@
 {% set button_id = 'accordion--title'|clean_unique_id %}
 {% set content_id = 'accordion--content'|clean_unique_id %}
 {% set heading_level = heading_level|default('3') %}
+{% set accordion_style = style|default('default') %}
 
-{% set section = html_cva(base: ['accordion', 'overflow-hidden', 'border-b border-border', 'bg-clip-padding', 'bg-background']) %}
-
-{% set section_classes = section.apply({}) %}
-
-{% set title_button =
-  html_cva(base: ['accordion--title', 'flex w-full cursor-pointer items-center justify-between', 'bg-card hover:bg-muted', 'p-4 text-left text-2xl'])
+{% set section =
+  html_cva(
+    base: ['accordion', 'overflow-hidden', 'bg-clip-padding'],
+    variants: {
+      style: {
+        default: 'border-b border-border bg-background',
+        card: [
+          'rounded-2xl border border-border/60 bg-background/60 shadow-lg backdrop-blur',
+          'transition-colors duration-300',
+          '[&.accordion--open]:border-primary/40 [&.accordion--open]:bg-background/80'
+        ]
+      }
+    }
+  )
 %}
 
-{% set title_button_classes = title_button.apply({}) %}
+{% set section_classes =
+  section.apply({
+    style: accordion_style
+  })
+%}
+
+{% set title_button =
+  html_cva(
+    base: ['accordion--title', 'flex w-full cursor-pointer items-center justify-between gap-4', 'text-left'],
+    variants: {
+      style: {
+        default: 'bg-card p-4 text-2xl hover:bg-muted',
+        card: [
+          'bg-transparent p-6 font-body text-lg font-semibold text-foreground md:text-xl',
+          'hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none'
+        ]
+      }
+    }
+  )
+%}
+
+{% set title_button_classes =
+  title_button.apply({
+    style: accordion_style
+  })
+%}
+
+{% set icon_wrapper =
+  html_cva(
+    base: ['accordion--icon shrink-0 transition-transform duration-500 in-[.accordion--js.accordion--open]:rotate-180'],
+    variants: {
+      style: {
+        default: '',
+        card: 'text-primary'
+      }
+    }
+  )
+%}
+
+{% set icon_wrapper_classes =
+  icon_wrapper.apply({
+    style: accordion_style
+  })
+%}
 
 {% set content =
   html_cva(
     base: [
       'accordion--content',
-      'h-0 overflow-hidden px-4 py-0',
-      'text-base text-foreground',
+      'h-0 overflow-hidden py-0',
+      'text-base',
       'transition-[height,padding] duration-0 in-[.accordion--animate]:duration-500',
       '[&>:first-child]:mt-0 [&>:last-child]:mb-0',
-      'in-[.accordion--open]:overflow-visible in-[.accordion--open]:py-5',
+      'in-[.accordion--open]:overflow-visible',
       'in-[.accordion--open:not(.accordion--js)]:h-auto',
       'in-[.accordion--js.accordion--open]:h-(--natural-height)',
       'in-[.accordion--resizing.accordion--open]:h-auto'
-    ]
+    ],
+    variants: {
+      style: {
+        default: 'px-4 text-foreground in-[.accordion--open]:py-5',
+        card: 'px-6 leading-relaxed text-muted-foreground in-[.accordion--open]:pt-0 in-[.accordion--open]:pb-6'
+      }
+    }
   )
 %}
 
-{% set content_classes = content.apply({}) %}
+{% set content_classes =
+  content.apply({
+    style: accordion_style
+  })
+%}
 
 <div class="{{ section_classes }}" data-open-by-default="{{ open_by_default ? 'true' : 'false' }}">
   {# The heading tag is necessary for accessibility reasons. #}
-  {% set heading_class = 'text-2xl' %}
+  {% set heading_class = accordion_style == 'card' ? 'm-0' : 'text-2xl' %}
   {% set button_content %}
-    <button id="{{ button_id }}" aria-controls="{{ content_id }}" class="{{ title_button_classes }}">
+    <button type="button" id="{{ button_id }}" aria-controls="{{ content_id }}" class="{{ title_button_classes }}">
       {{ title }}
-      <span class="accordion--icon transition-transform duration-500 in-[.accordion--js.accordion--open]:rotate-180">
+      <span class="{{ icon_wrapper_classes }}" aria-hidden="true">
         {{
           include(
             '@sommertheater/components/icon/icon.twig',

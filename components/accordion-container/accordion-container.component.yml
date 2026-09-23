@@ -4,7 +4,32 @@ description: A container for any content, only one of whose accordions may be op
 group: Layout
 props:
   type: object
-  properties: {}
+  properties:
+    style:
+      type: string
+      title: Style
+      description: FAQ wraps the accordions in a glowing panel with an optional eyebrow and heading. Use Card-style accordions inside.
+      enum:
+        - plain
+        - faq
+      meta:enum:
+        plain: Plain
+        faq: FAQ panel
+      default: plain
+      examples:
+        - plain
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small uppercase label above the heading (FAQ panel only).
+      examples:
+        - FAQ
+    heading:
+      type: string
+      title: Heading
+      description: Section heading (FAQ panel only), rendered as h2.
+      examples:
+        - Häufig gestellte Fragen
 slots:
   accordion_content:
     title: Accordion content
