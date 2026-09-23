@@ -1,0 +1,80 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Gallery
+description: >-
+  A framed preview that cross-fades through the images, opening a lightbox with
+  arrows, keyboard navigation and thumbnails. Alt texts come from the images.
+group: Media
+props:
+  type: object
+  properties:
+    images:
+      type: array
+      title: Images
+      items:
+        $ref: json-schema-definitions://canvas.module/image
+        type: object
+    caption:
+      type: string
+      title: Caption
+      examples:
+        - Dieter Dennis von Altroßthal war über viele Jahre Teil unserer Schulgemeinschaft.
+    title:
+      type: string
+      title: Lightbox title
+      default: Galerie
+      examples:
+        - Galerie unserer Schulkatze
+    aspect_ratio:
+      type: string
+      title: Preview aspect ratio
+      enum:
+        - "3:4"
+        - "1:1"
+        - "4:3"
+        - "16:9"
+      meta:enum:
+        "3:4": Portrait 3 × 4
+        "1:1": Square
+        "4:3": Landscape 4 × 3
+        "16:9": Wide 16 × 9
+      default: "3:4"
+      examples:
+        - "3:4"
+    rotate:
+      type: boolean
+      title: Cross-fade the preview
+      description: Disabled automatically for visitors who prefer reduced motion.
+      default: true
+      examples:
+        - true
+    interval:
+      type: string
+      title: Cross-fade interval
+      enum:
+        - "4"
+        - "6"
+        - "9"
+      meta:enum:
+        "4": 4 seconds
+        "6": 6 seconds
+        "9": 9 seconds
+      default: "6"
+      examples:
+        - "6"
+    max_width:
+      type: string
+      title: Preview width
+      enum:
+        - small
+        - medium
+        - full
+      meta:enum:
+        small: Small (20rem)
+        medium: Medium (28rem)
+        full: Full width
+      default: small
+      examples:
+        - small
+libraryOverrides:
+  js:
+    gallery.js: { attributes: { type: module } }

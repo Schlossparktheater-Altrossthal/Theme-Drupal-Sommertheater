@@ -1,0 +1,245 @@
+{% set gallery_images = images|default([])|filter(image => image.src is not empty) %}
+{% set image_count = gallery_images|length %}
+{% set lightbox_title = title|default('Galerie') %}
+{% set dialog_id = 'gallery--dialog'|clean_unique_id %}
+{% set dialog_title_id = 'gallery--title'|clean_unique_id %}
+{% set has_multiple = image_count > 1 ? 'yes' : 'no' %}
+{% set interval_ms = (interval|default('6')) * 1000 %}
+{% set should_rotate = rotate is same as(false) ? 'false' : 'true' %}
+
+{% set figure =
+  html_cva(
+    base: ['gallery relative mx-auto w-full overflow-hidden rounded-3xl border border-border bg-background shadow-lg'],
+    variants: {
+      maxWidth: {
+        small: 'max-w-xs',
+        medium: 'max-w-md',
+        full: 'max-w-none'
+      }
+    }
+  )
+%}
+
+{% set preview =
+  html_cva(
+    base: ['relative w-full'],
+    variants: {
+      ratio: {
+        '3:4': 'aspect-3/4',
+        '1:1': 'aspect-square',
+        '4:3': 'aspect-4/3',
+        '16:9': 'aspect-video'
+      }
+    }
+  )
+%}
+
+{% set nav =
+  html_cva(
+    base: [
+      'absolute top-1/2 z-10 inline-flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full',
+      'border border-border bg-background/90 text-foreground shadow-lg backdrop-blur',
+      'hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none'
+    ],
+    variants: {
+      side: {
+        prev: 'left-3',
+        next: 'right-3'
+      },
+      hasMultiple: {
+        yes: '',
+        no: 'hidden'
+      }
+    }
+  )
+%}
+
+{% set frame =
+  html_cva(
+    base: ['gallery--frame absolute inset-0 block transition-opacity duration-700 ease-in-out'],
+    variants: {
+      isFirst: {
+        yes: 'opacity-100',
+        no: 'opacity-0'
+      }
+    }
+  )
+%}
+
+{% set figure_classes =
+  figure.apply({
+    maxWidth: max_width|default('small')
+  })
+%}
+{% set preview_classes =
+  preview.apply({
+    ratio: aspect_ratio|default('3:4')
+  })
+%}
+{% set prev_classes =
+  nav.apply({
+    side: 'prev',
+    hasMultiple: has_multiple
+  })
+%}
+{% set next_classes =
+  nav.apply({
+    side: 'next',
+    hasMultiple: has_multiple
+  })
+%}
+
+{% if image_count > 0 %}
+  <figure class="{{ figure_classes }}" data-rotate="{{ should_rotate }}" data-interval="{{ interval_ms }}">
+    <button
+      type="button"
+      class="gallery--open group relative block w-full cursor-pointer p-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      aria-haspopup="dialog"
+      aria-controls="{{ dialog_id }}"
+    >
+      <span class="{{ preview_classes }} block">
+        {% for image in gallery_images %}
+          {# Only the first image is exposed to assistive technology; the others are decorative cross-fade frames. #}
+          {% set frame_hidden = loop.first ? 'false' : 'true' %}
+          {% set frame_classes =
+            frame.apply({
+              isFirst: loop.first ? 'yes' : 'no'
+            })
+          %}
+          <span class="{{ frame_classes }}" data-index="{{ loop.index0 }}" aria-hidden="{{ frame_hidden }}">
+            {% include 'canvas:image' ignore missing with {
+              src: image.src,
+              alt: image.alt|default(''),
+              width: image.width,
+              height: image.height,
+              loading: loop.first ? 'eager' : 'lazy',
+              class: 'h-full w-full object-cover'
+            } only %}
+          </span>
+        {% endfor %}
+      </span>
+      <span
+        class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/45 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+        aria-hidden="true"
+      >
+
+      </span>
+      <span
+        class="pointer-events-none absolute bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-background/95 px-4 py-2 font-sans text-sm font-medium whitespace-nowrap text-foreground shadow ring-1 ring-border transition-transform duration-200 group-hover:-translate-y-0.5 group-focus-visible:-translate-y-0.5"
+      >
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'images',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+        Galerie ansehen ({{ image_count }})
+      </span>
+    </button>
+    {% if caption is not empty %}
+      <figcaption class="border-t border-border bg-background px-4 py-3 font-body text-sm text-muted-foreground">
+        {{ caption }}
+      </figcaption>
+    {% endif %}
+
+    {# Native dialog: focus trap, Escape and the top layer come for free. #}
+    <dialog
+      id="{{ dialog_id }}"
+      class="gallery--dialog m-auto h-[min(95dvh,72rem)] w-[min(95vw,80rem)] max-w-none overflow-hidden rounded-3xl border border-border/60 bg-background p-0 text-foreground shadow-2xl backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+      aria-labelledby="{{ dialog_title_id }}"
+    >
+      <div class="flex h-full flex-col gap-4 p-4 md:p-6">
+        <header class="flex items-start justify-between gap-4">
+          <div>
+            <h2 id="{{ dialog_title_id }}" class="m-0 font-serif text-xl font-bold md:text-2xl">{{ lightbox_title }}</h2>
+            <p class="gallery--counter m-0 mt-1 font-sans text-sm text-muted-foreground" aria-live="polite">
+              Bild 1 von {{ image_count }}
+            </p>
+          </div>
+          <button
+            type="button"
+            class="gallery--close inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-background hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+            aria-label="Galerie schließen"
+          >
+            {{
+              include(
+                '@sommertheater/components/icon/icon.twig',
+                {
+                  icon: 'x',
+                  icon_size: 'extra-small'
+                },
+                with_context: false
+              )
+            }}
+          </button>
+        </header>
+
+        <div class="relative min-h-0 flex-1 overflow-hidden rounded-2xl border border-border/60 bg-muted/60">
+          {% for image in gallery_images %}
+            <span class="gallery--slide absolute inset-0 block" data-index="{{ loop.index0 }}">
+              {% include 'canvas:image' ignore missing with {
+                src: image.src,
+                alt: image.alt|default(''),
+                width: image.width,
+                height: image.height,
+                sizes: '(min-width: 1440px) 1200px, 90vw',
+                loading: 'lazy',
+                class: 'h-full w-full object-contain'
+              } only %}
+            </span>
+          {% endfor %}
+          <button type="button" class="gallery--prev {{ prev_classes }}" aria-label="Vorheriges Bild">
+            {{
+              include(
+                '@sommertheater/components/icon/icon.twig',
+                {
+                  icon: 'caret-left',
+                  icon_size: 'extra-small'
+                },
+                with_context: false
+              )
+            }}
+          </button>
+          <button type="button" class="gallery--next {{ next_classes }}" aria-label="Nächstes Bild">
+            {{
+              include(
+                '@sommertheater/components/icon/icon.twig',
+                {
+                  icon: 'caret-right',
+                  icon_size: 'extra-small'
+                },
+                with_context: false
+              )
+            }}
+          </button>
+        </div>
+
+        {% if has_multiple == 'yes' %}
+          <div class="flex shrink-0 gap-2 overflow-x-auto pb-1" role="group" aria-label="Bildauswahl">
+            {% for image in gallery_images %}
+              <button
+                type="button"
+                class="gallery--thumb relative aspect-3/4 w-16 shrink-0 cursor-pointer overflow-hidden rounded-lg border border-border/60 p-0 opacity-70 transition hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none md:w-20"
+                data-index="{{ loop.index0 }}"
+                aria-label="Bild {{ loop.index }} anzeigen"
+              >
+                {% include 'canvas:image' ignore missing with {
+                  src: image.src,
+                  alt: '',
+                  width: image.width,
+                  height: image.height,
+                  loading: 'lazy',
+                  class: 'h-full w-full object-cover'
+                } only %}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </dialog>
+  </figure>
+{% endif %}
