@@ -7,6 +7,19 @@ props:
     - text_align
     - icon_align
   properties:
+    layout:
+      type: string
+      title: Layout
+      description: Inline places a round icon next to the text (feature list style) and ignores the icon style.
+      enum:
+        - stacked
+        - inline
+      meta:enum:
+        stacked: Icon above text
+        inline: Icon next to text
+      default: stacked
+      examples:
+        - stacked
     tile_size:
       type: string
       title: Aspect ratio

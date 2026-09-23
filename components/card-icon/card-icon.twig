@@ -1,9 +1,14 @@
 {% set has_url = url is not empty ? 'yes' : 'no' %}
+{% set card_layout = layout|default('stacked') %}
 
 {% set tile =
   html_cva(
-    base: ['@container relative p-6 md:p-8'],
+    base: ['@container relative'],
     variants: {
+      layout: {
+        stacked: 'p-6 md:p-8',
+        inline: 'bg-card/60 p-4 transition hover:border-primary/50 hover:bg-card/80 md:p-5'
+      },
       hasUrl: {
         yes: 'group cursor-pointer motion-safe:hover:scale-103',
         no: ''
@@ -34,6 +39,7 @@
 
 {% set tile_classes =
   tile.apply({
+    layout: card_layout,
     hasUrl: has_url,
     backgroundColor: background_color|default('noColor'),
     tileSize: tile_size|default('noSize'),
@@ -41,10 +47,31 @@
   })
 %}
 
+{% set inner =
+  html_cva(
+    variants: {
+      layout: {
+        stacked: 'flex h-full flex-col justify-center',
+        inline: 'flex flex-row items-start gap-4'
+      }
+    }
+  )
+%}
+
+{% set inner_classes =
+  inner.apply({
+    layout: card_layout
+  })
+%}
+
 {% set icon_container =
   html_cva(
-    base: ['flex', 'w-full'],
+    base: ['flex'],
     variants: {
+      layout: {
+        stacked: 'w-full',
+        inline: 'mt-1 w-auto shrink-0'
+      },
       iconAlign: {
         left: 'justify-start',
         center: 'justify-center',
@@ -56,6 +83,7 @@
 
 {% set icon_container_classes =
   icon_container.apply({
+    layout: card_layout,
     iconAlign: icon_align|default('center')
   })
 %}
@@ -67,7 +95,8 @@
       iconStyle: {
         primary: 'text-primary',
         primary_background: 'rounded-md bg-accent p-2 text-primary',
-        secondary_background: 'rounded-md bg-muted p-2 text-muted-foreground'
+        secondary_background: 'rounded-md bg-muted p-2 text-muted-foreground',
+        circle: 'flex size-12 items-center justify-center rounded-full bg-primary/15 text-primary'
       }
     }
   )
@@ -75,7 +104,7 @@
 
 {% set icon_style_classes =
   icon_style_attr.apply({
-    iconStyle: icon_style
+    iconStyle: card_layout == 'inline' ? 'circle' : icon_style
   })
 %}
 
@@ -88,8 +117,12 @@
 
 {% set text_container =
   html_cva(
-    base: ['w-full', 'pt-2'],
+    base: ['w-full'],
     variants: {
+      layout: {
+        stacked: 'pt-2',
+        inline: 'pt-0'
+      },
       textAlign: {
         left: 'text-start',
         center: 'text-center',
@@ -101,15 +134,46 @@
 
 {% set text_container_classes =
   text_container.apply({
+    layout: card_layout,
     textAlign: text_align|default('center')
   })
 %}
 
-{% set heading_classes = ['text-2xl font-semibold @sm:text-3xl @2xl:text-4xl'] %}
-{% set description_classes = ['mt-3 font-body text-md @sm:text-lg @2xl:text-xl'] %}
+{% set heading =
+  html_cva(
+    variants: {
+      layout: {
+        stacked: 'text-2xl font-semibold @sm:text-3xl @2xl:text-4xl',
+        inline: 'm-0 text-lg font-bold'
+      }
+    }
+  )
+%}
+
+{% set description =
+  html_cva(
+    variants: {
+      layout: {
+        stacked: 'mt-3 font-body text-md @sm:text-lg @2xl:text-xl',
+        inline: 'mt-1 font-body text-sm text-muted-foreground'
+      }
+    }
+  )
+%}
+
+{% set heading_classes = [
+  heading.apply({
+    layout: card_layout
+  })
+] %}
+{% set description_classes = [
+  description.apply({
+    layout: card_layout
+  })
+] %}
 
 <div class="{{ tile_classes }}">
-  <div class="flex h-full flex-col justify-center">
+  <div class="{{ inner_classes }}">
     <div class="{{ icon_container_classes }}">
       <div class="{{ icon_style_classes }}">
         {% if icon %}
