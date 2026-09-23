@@ -8,9 +8,105 @@
   }
 }
 
-/* Menu visibility toggle (controlled by JS) */
-.navbar--menu:not(.navbar--menu--open) {
-  @apply hidden md:flex;
+/*
+ * Mobiles Menü als Schublade von rechts (wie im alten Mitgliederbereich).
+ * Statt display: none blenden transform + visibility aus, damit Öffnen und
+ * Schließen animiert werden; visibility schaltet beim Schließen erst nach
+ * der Animation um. Der Schatten mit großem Spread dunkelt die Seite ab.
+ */
+@media (width < 48rem) {
+  .navbar--menu {
+    @apply left-auto! w-[min(85vw,24rem)]! rounded-l-2xl border-l border-foreground/15 bg-background/95! pt-2! backdrop-blur-md;
+    box-shadow: 0 0 0 100vmax rgb(0 0 0 / 0);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition:
+      transform 300ms cubic-bezier(0.4, 0, 1, 1),
+      box-shadow 300ms ease,
+      visibility 0s linear 300ms;
+  }
+
+  .navbar--menu.navbar--menu--open {
+    box-shadow: 0 0 0 100vmax rgb(0 0 0 / 0.5);
+    transform: none;
+    visibility: visible;
+    transition:
+      transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 450ms ease,
+      visibility 0s;
+  }
+
+  /* Menüpunkte gleiten nacheinander herein. */
+  .navbar--menu .navbar--dropdown-menu > * li[data-level="1"],
+  .navbar--menu .navbar--links > * {
+    opacity: 0;
+    transform: translateX(1.5rem);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+
+  .navbar--menu--open .navbar--dropdown-menu > * li[data-level="1"],
+  .navbar--menu--open .navbar--links > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 400ms ease,
+      transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar--menu--open li[data-level="1"]:nth-child(2) {
+    transition-delay: 60ms;
+  }
+  .navbar--menu--open li[data-level="1"]:nth-child(3) {
+    transition-delay: 120ms;
+  }
+  .navbar--menu--open li[data-level="1"]:nth-child(4) {
+    transition-delay: 180ms;
+  }
+  .navbar--menu--open li[data-level="1"]:nth-child(5) {
+    transition-delay: 240ms;
+  }
+  .navbar--menu--open li[data-level="1"]:nth-child(n + 6),
+  .navbar--menu--open .navbar--links > * {
+    transition-delay: 300ms;
+  }
+
+  /* In der schmalen Schublade reicht das Schließen-Kreuz, kein zweites Logo. */
+  .navbar--modal-logo {
+    @apply invisible;
+  }
+
+  /* Aktive Seite als umrandete Karte wie im alten Menü. */
+  .navbar--dropdown-menu .menu-item--active-trail {
+    @apply rounded-lg border border-primary/60 bg-primary/10;
+  }
+
+  .navbar--dropdown-menu a {
+    @apply border-b-0! px-4 text-lg;
+  }
+
+  .navbar--dropdown-menu nav,
+  .navbar--dropdown-menu ul {
+    @apply w-full;
+  }
+
+  .navbar--dropdown-menu {
+    @apply pe-2;
+  }
+
+  .navbar--dropdown-menu-wrapper::after {
+    @apply hidden;
+  }
+}
+
+@media (width < 48rem) and (prefers-reduced-motion: reduce) {
+  .navbar--menu,
+  .navbar--menu *,
+  .navbar--menu.navbar--menu--open {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
 
 .navbar {
@@ -123,4 +219,9 @@ header.header--scrolled .region-header__bar::before {
 
 .region-header .navbar--hamburger {
   @apply h-10 w-10 rounded-full border border-foreground/20 transition-colors hover:border-primary hover:text-primary;
+}
+
+/* Unterseiten ohne Hero: Abstand zwischen Leiste und Inhalt. */
+body:not([data-overlapping-hero="1"]) .layout-container > header[role="banner"] {
+  @apply pb-6 md:pb-8;
 }

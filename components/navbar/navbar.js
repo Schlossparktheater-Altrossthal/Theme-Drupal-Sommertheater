@@ -22,6 +22,21 @@ class Navbar extends ComponentInstance {
       this.isOpen = false;
     });
 
+    // Klick auf die abgedunkelte Seite oder Escape schließt die Schublade.
+    this.onDocumentClick = (event) => {
+      if (this.isOpen && !this.menu.contains(event.target) && !this.menuButton.contains(event.target)) {
+        this.isOpen = false;
+      }
+    };
+    this.onKeydown = (event) => {
+      if (this.isOpen && event.key === "Escape") {
+        this.isOpen = false;
+        this.menuButton.focus();
+      }
+    };
+    document.addEventListener("click", this.onDocumentClick);
+    document.addEventListener("keydown", this.onKeydown);
+
     // Toggle the solid background once the page is scrolled past the hero.
     this.onWindowScroll = () => {
       this.el.classList.toggle("navbar--scrolled", window.scrollY > 8);
@@ -78,6 +93,8 @@ class Navbar extends ComponentInstance {
 
   remove() {
     window.removeEventListener("scroll", this.onWindowScroll);
+    document.removeEventListener("click", this.onDocumentClick);
+    document.removeEventListener("keydown", this.onKeydown);
   }
 
   set isOpen(value) {
