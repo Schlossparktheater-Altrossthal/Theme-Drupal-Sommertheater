@@ -1,0 +1,17 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Timeline
+description: A vertical timeline with a gradient line. Add Timeline item components to the slot.
+group: Layout
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Accessible label
+      description: Read by screen readers, e.g. "Meilensteine".
+      examples:
+        - Meilensteine
+slots:
+  timeline_items:
+    title: Timeline items
+    description: Add Timeline item components here.

@@ -1,0 +1,11 @@
+{% set list_classes = [
+  'relative m-0 flex list-none flex-col gap-8 p-0',
+  "before:absolute before:top-1 before:bottom-1 before:left-3 before:w-px before:content-['']",
+  'before:bg-linear-to-b before:from-primary/60 before:via-primary/20 before:to-transparent'
+] %}
+
+<ol class="{{ list_classes|join(' ') }}" aria-label="{{ label|default('Timeline') }}">
+  {% block timeline_items %}
+
+  {% endblock %}
+</ol>

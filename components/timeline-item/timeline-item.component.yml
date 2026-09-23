@@ -1,0 +1,34 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Timeline item
+description: A single entry in a Timeline, with a date pill, heading and text.
+group: Layout
+props:
+  type: object
+  required:
+    - title
+    - heading_level
+  properties:
+    date:
+      type: string
+      title: Date or year
+      examples:
+        - "2009"
+    title:
+      type: string
+      title: Heading
+      examples:
+        - Gründung des Ensembles
+    heading_level:
+      type: number
+      title: Heading level
+      enum: [2, 3, 4, 5, 6]
+      default: 3
+      examples:
+        - 3
+    text:
+      type: string
+      title: Text
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - "<p>Die erste Inszenierung im Schlosspark.</p>"

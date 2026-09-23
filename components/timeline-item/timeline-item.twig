@@ -1,0 +1,32 @@
+{% set heading_level = heading_level|default(3) %}
+{% set heading_classes = 'm-0 font-serif text-lg font-bold text-foreground' %}
+
+{# The dot sits on the Timeline line (left 0.75rem); the date is a pill so long values stay readable. #}
+<li class="relative flex flex-col gap-2 pl-10">
+  <span class="absolute top-1.5 left-1.5 size-3 rounded-full border-2 border-primary bg-background ring-4 ring-primary/15" aria-hidden="true"></span>
+  {% if date is not empty %}
+    <span
+      class="inline-flex w-fit rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 font-sans text-xs font-semibold tracking-wider text-primary"
+    >
+      {{- date -}}
+    </span>
+  {% endif %}
+
+  {% if heading_level == 2 %}
+    <h2 class="{{ heading_classes }}">{{ title }}</h2>
+  {% elseif heading_level == 4 %}
+    <h4 class="{{ heading_classes }}">{{ title }}</h4>
+  {% elseif heading_level == 5 %}
+    <h5 class="{{ heading_classes }}">{{ title }}</h5>
+  {% elseif heading_level == 6 %}
+    <h6 class="{{ heading_classes }}">{{ title }}</h6>
+  {% else %}
+    <h3 class="{{ heading_classes }}">{{ title }}</h3>
+  {% endif %}
+
+  {% if text is not empty %}
+    <div class="font-body text-sm text-muted-foreground [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+      {{ text }}
+    </div>
+  {% endif %}
+</li>
