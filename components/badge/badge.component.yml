@@ -25,11 +25,13 @@ props:
         - secondary
         - status
         - neutral
+        - eyebrow
       meta:enum:
         primary: Primary
         secondary: Secondary
         status: Status
         neutral: Neutral
+        eyebrow: Eyebrow (uppercase kicker above headings)
       examples:
         - primary
     icon:
