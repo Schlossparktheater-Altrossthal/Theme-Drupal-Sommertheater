@@ -52,6 +52,24 @@
         accent: 'text-accent-foreground',
         muted: 'text-muted-foreground',
         noColor: 'text-foreground'
+      },
+      ambientGlow: {
+        off: '',
+        top: [
+          'isolate overflow-x-clip',
+          "before:pointer-events-none before:absolute before:-top-[10%] before:left-1/2 before:-z-10 before:content-['']",
+          'before:h-[28rem] before:w-[120vw] before:-translate-x-1/2 before:opacity-60 before:blur-3xl',
+          'before:bg-linear-to-r before:from-primary/20 before:via-primary/10 before:to-transparent'
+        ],
+        both: [
+          'isolate overflow-x-clip',
+          "before:pointer-events-none before:absolute before:-top-[10%] before:left-1/2 before:-z-10 before:content-['']",
+          'before:h-[28rem] before:w-[120vw] before:-translate-x-1/2 before:opacity-60 before:blur-3xl',
+          'before:bg-linear-to-r before:from-primary/20 before:via-primary/10 before:to-transparent',
+          "after:pointer-events-none after:absolute after:right-[-10%] after:bottom-[-20%] after:-z-10 after:content-['']",
+          'after:h-[22rem] after:w-[90vw] after:opacity-50 after:blur-3xl',
+          'after:bg-linear-to-br after:from-primary/25 after:via-primary/5 after:to-transparent'
+        ]
       }
     }
   )
@@ -63,7 +81,8 @@
     marginBlockEnd: margin_block_end,
     paddingBlockStart: padding_block_start,
     paddingBlockEnd: padding_block_end,
-    backgroundColor: background_color|default('noColor')
+    backgroundColor: background_color|default('noColor'),
+    ambientGlow: ambient_glow|default('off')
   })
 %}
 

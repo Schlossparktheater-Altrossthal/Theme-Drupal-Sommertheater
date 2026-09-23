@@ -122,6 +122,21 @@ props:
         secondary: Secondary
         accent: Accent
         muted: Muted
+    ambient_glow:
+      type: string
+      title: Ambient glow
+      description: Soft, blurred primary-colour light behind the section content. Best without a background colour, which covers it.
+      enum:
+        - "off"
+        - top
+        - both
+      meta:enum:
+        "off": None
+        top: Top
+        both: Top and bottom right
+      default: "off"
+      examples:
+        - "off"
     background_media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
