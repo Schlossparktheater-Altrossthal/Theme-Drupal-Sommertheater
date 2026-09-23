@@ -1,0 +1,78 @@
+@layer components;
+
+/*
+ * Erweiterter Footer nach Vorbild des alten Mitgliederbereichs.
+ * Die Regeln stehen bewusst außerhalb der Layer, damit sie die
+ * Tailwind-Utilities der Menü-Templates (flex-row, Hover-Hintergrund) schlagen.
+ */
+
+/* Eyebrow-Titel, Beschreibung und Adresse in der Branding-Spalte */
+.site-footer__branding {
+  h2,
+  h3,
+  h4 {
+    @apply text-sm font-semibold tracking-[0.18em] text-primary/80 uppercase;
+  }
+
+  p {
+    @apply max-w-xl text-balance;
+  }
+
+  a {
+    @apply transition-colors hover:text-primary;
+  }
+}
+
+/* Navigationsspalten: Überschrift + senkrechte Linkliste */
+.site-footer__nav {
+  h2:not(.visually-hidden),
+  h3,
+  h4 {
+    @apply text-sm font-semibold tracking-[0.16em] text-muted-foreground uppercase;
+  }
+
+  nav {
+    @apply block;
+  }
+
+  ul {
+    @apply mt-4 flex flex-col items-start gap-3 p-0;
+  }
+
+  li {
+    @apply block w-auto max-w-none text-sm;
+  }
+
+  a {
+    @apply inline min-h-0 rounded-none bg-transparent p-0 text-sm text-muted-foreground transition-colors;
+
+    &:hover,
+    &:focus-visible {
+      @apply bg-transparent text-primary;
+    }
+  }
+}
+
+/* Untere Leiste: Copyright links, rechtliche Links rechts */
+.site-footer__copyright p {
+  @apply m-0 text-sm text-muted-foreground;
+}
+
+.site-footer__utility {
+  ul {
+    @apply m-0 flex flex-wrap items-center gap-x-6 gap-y-2 p-0;
+  }
+
+  li {
+    @apply text-sm;
+  }
+
+  a {
+    @apply text-muted-foreground transition-colors;
+
+    &:hover,
+    &:focus-visible {
+      @apply text-primary;
+    }
+  }
+}

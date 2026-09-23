@@ -9,9 +9,24 @@ props:
       title: Display links horizontally
       examples:
         - true
+    social_label:
+      type: string
+      title: Social-Media-Überschrift
+      examples:
+        - Folge uns
+    instagram_url:
+      type: string
+      format: uri
+      title: Instagram-URL
+      examples:
+        - https://www.instagram.com/schlossparktheater
 slots:
   footer_first:
     title: Branding & Social
+  footer_nav_first:
+    title: Navigationsspalte 1
+  footer_nav_second:
+    title: Navigationsspalte 2
   footer_last:
     title: Call to action
   footer_utility_first:

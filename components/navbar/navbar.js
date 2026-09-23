@@ -22,40 +22,6 @@ class Navbar extends ComponentInstance {
       this.isOpen = false;
     });
 
-    // Keep up with scroll amount for mobile menu positioning.
-    const scrollHandler = this.measureScrollTop.bind(this);
-    const desktopMQ = window.matchMedia("(min-width: 48rem)");
-
-    // Attach on page load only if less than desktop width AND navbar is visible.
-    if (!desktopMQ.matches && this.el.getBoundingClientRect().bottom > 0) {
-      scrollHandler();
-      window.addEventListener("scroll", scrollHandler);
-    }
-
-    // Respond to window width changes, also checking scroll position.
-    desktopMQ.addEventListener("change", (e) => {
-      if (!e.matches && this.el.getBoundingClientRect().bottom > 0) {
-        scrollHandler();
-        window.addEventListener("scroll", scrollHandler);
-      } else {
-        window.removeEventListener("scroll", scrollHandler);
-      }
-    });
-
-    // Respond to scroll position changes, also checking window width.
-    const intersectionObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting && !desktopMQ.matches) {
-          scrollHandler();
-          window.addEventListener("scroll", scrollHandler);
-        } else {
-          window.removeEventListener("scroll", scrollHandler);
-        }
-      }
-    });
-
-    intersectionObserver.observe(this.el);
-
     // Toggle the solid background once the page is scrolled past the hero.
     this.onWindowScroll = () => {
       this.el.classList.toggle("navbar--scrolled", window.scrollY > 8);
@@ -83,10 +49,6 @@ class Navbar extends ComponentInstance {
 
   get isOpen() {
     return this.#savedAsOpen;
-  }
-
-  measureScrollTop() {
-    document.documentElement.style.setProperty("--navbar-scroll-top", `${window.scrollY}px`);
   }
 }
 

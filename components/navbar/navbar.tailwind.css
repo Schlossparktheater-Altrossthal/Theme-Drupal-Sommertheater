@@ -14,15 +14,27 @@
 }
 
 .navbar {
-  @apply sticky top-0 border-b border-secondary/20 bg-background/95 backdrop-blur-sm;
-  transition:
-    background-color 300ms ease,
-    border-color 300ms ease;
+  @apply sticky top-0 border-b border-secondary/20;
+  transition: border-color 300ms ease;
+}
+
+/*
+ * Hintergrund und Blur liegen auf einem Pseudo-Element: backdrop-filter auf
+ * .navbar selbst macht sie zum Containing Block für position: fixed, dann
+ * schrumpft das mobile Menü-Overlay auf die Höhe der Leiste.
+ */
+.navbar::before {
+  @apply pointer-events-none absolute inset-0 -z-10 bg-background/95 backdrop-blur-sm;
+  content: "";
+  transition: opacity 300ms ease;
 }
 
 /* Transparent über einem überlappenden Hero, bis gescrollt wird. */
 body[data-overlapping-hero="1"] .navbar:not(.navbar--scrolled) {
-  @apply border-transparent bg-transparent backdrop-blur-none;
+  @apply border-transparent;
+  &::before {
+    @apply opacity-0;
+  }
 }
 
 .navbar--dropdown-menu a {
