@@ -1,0 +1,28 @@
+{% set stat =
+  html_cva(
+    base: ['flex h-full flex-col gap-2 rounded-xl border border-primary/50 bg-card/70 p-5', 'text-card-foreground shadow-sm'],
+    variants: {
+      align: {
+        center: 'items-center text-center',
+        left: 'items-start text-left'
+      }
+    }
+  )
+%}
+
+{% set stat_classes =
+  stat.apply({
+    align: align|default('center')
+  })
+%}
+
+{# A description list keeps label and value associated for assistive technology. #}
+<dl class="{{ stat_classes }}">
+  <dt class="m-0 font-sans text-xs font-semibold tracking-widest text-primary uppercase">
+    {{ label }}
+  </dt>
+  <dd class="m-0 font-serif text-[clamp(1.8rem,3vw,2.4rem)] leading-none font-bold text-primary">{{ value }}</dd>
+  {% if detail is not empty %}
+    <dd class="m-0 font-body text-sm text-muted-foreground">{{ detail }}</dd>
+  {% endif %}
+</dl>

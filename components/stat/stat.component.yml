@@ -1,0 +1,38 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Statistic
+description: A key figure tile with a small label, a large value and an optional detail line. Place several in a grid.
+group: Card
+props:
+  type: object
+  required:
+    - label
+    - value
+  properties:
+    label:
+      type: string
+      title: Label
+      examples:
+        - Ensemble
+    value:
+      type: string
+      title: Value
+      description: The key figure, e.g. "42" or "seit 2009".
+      examples:
+        - "42"
+    detail:
+      type: string
+      title: Detail
+      examples:
+        - Mitglieder in der aktuellen Produktion
+    align:
+      type: string
+      title: Alignment
+      enum:
+        - center
+        - left
+      meta:enum:
+        center: Center
+        left: Left
+      default: center
+      examples:
+        - center
