@@ -28,6 +28,52 @@ class Navbar extends ComponentInstance {
     };
     this.onWindowScroll();
     window.addEventListener("scroll", this.onWindowScroll, { passive: true });
+
+    this.showMemberAvatar();
+  }
+
+  // Ein CTA, der auf die Login-Seite des Mitgliederbereichs zeigt, wird für
+  // angemeldete Mitglieder zum Avatar. Die Seite selbst bleibt für alle gleich
+  // (Varnish-Cache); der Login-Status kommt per API aus dem Mitgliederbereich.
+  async showMemberAvatar() {
+    const link = this.el.querySelector('.navbar--links a[href$="/login"]');
+    if (!link) return;
+
+    let data;
+    try {
+      const response = await fetch(new URL("/api/public/me", link.href), {
+        credentials: "include",
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) return;
+      data = await response.json();
+    } catch {
+      return;
+    }
+    if (!data?.authenticated) return;
+
+    const avatar = document.createElement("a");
+    avatar.className = "navbar--member";
+    avatar.href = data.profileUrl;
+    avatar.title = `Mitgliederbereich (${data.name})`;
+    avatar.setAttribute("aria-label", `Mitgliederbereich – angemeldet als ${data.name}`);
+
+    const initials = document.createElement("span");
+    initials.className = "navbar--member-initials";
+    initials.textContent = data.initials || "?";
+    avatar.append(initials);
+
+    if (data.avatarUrl) {
+      const img = document.createElement("img");
+      img.src = data.avatarUrl;
+      img.alt = "";
+      img.width = 40;
+      img.height = 40;
+      img.addEventListener("error", () => img.remove());
+      avatar.append(img);
+    }
+
+    link.replaceWith(avatar);
   }
 
   remove() {

@@ -72,3 +72,12 @@ body[data-overlapping-hero="1"] .navbar:not(.navbar--scrolled) {
     }
   }
 }
+
+/* Avatar angemeldeter Mitglieder (ersetzt den Anmelden-Button, siehe navbar.js) */
+.navbar--member {
+  @apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center self-center overflow-hidden rounded-full border border-border bg-muted text-sm font-medium text-foreground no-underline transition hover:ring-2 hover:ring-primary/50 focus-visible:ring-2 focus-visible:ring-ring;
+
+  img {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+}
