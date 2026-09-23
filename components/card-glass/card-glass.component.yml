@@ -7,6 +7,19 @@ props:
   required:
     - heading_text
   properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small uppercase label above the heading, e.g. "Atmosphäre".
+      examples:
+        - Atmosphäre
+    glow:
+      type: boolean
+      title: Golden glow
+      description: Radial primary-colour glow from the top, for mood or quote panels.
+      default: false
+      examples:
+        - false
     heading_text:
       type: string
       title: Heading

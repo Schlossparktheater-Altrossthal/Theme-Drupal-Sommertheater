@@ -1,10 +1,33 @@
 {# Compute all values before rendering #}
 {% set has_link = link_url is not empty ? 'yes' : 'no' %}
 {% set has_stats = stat_one_value is not empty or stat_two_value is not empty %}
+{% set has_glow = glow ? 'yes' : 'no' %}
 
-<div
-  class="sommertheater-card--glass flex flex-col overflow-hidden rounded-xl border border-secondary/60 bg-card/60 text-card-foreground shadow-xl backdrop-blur-sm md:flex-row"
->
+{% set card =
+  html_cva(
+    base: [
+      'sommertheater-card--glass flex flex-col overflow-hidden rounded-xl border border-secondary/60 bg-card/60 text-card-foreground shadow-xl backdrop-blur-sm md:flex-row'
+    ],
+    variants: {
+      hasGlow: {
+        yes: [
+          'relative isolate',
+          "before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:content-['']",
+          'before:bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_60%)]'
+        ],
+        no: ''
+      }
+    }
+  )
+%}
+
+{% set card_classes =
+  card.apply({
+    hasGlow: has_glow
+  })
+%}
+
+<div class="{{ card_classes }}">
   {% if media.src is not empty %}
     <div class="aspect-video overflow-hidden md:aspect-auto md:w-2/5">
       {% include 'canvas:image' ignore missing with {
@@ -18,6 +41,11 @@
   {% endif %}
 
   <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
+    {% if eyebrow is not empty %}
+      <p class="m-0 font-sans text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+        {{ eyebrow }}
+      </p>
+    {% endif %}
     <h3 class="m-0 font-serif text-xl font-bold xl:text-2xl">{{ heading_text }}</h3>
 
     {% if text is not empty %}
