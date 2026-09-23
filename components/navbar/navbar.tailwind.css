@@ -81,3 +81,46 @@ body[data-overlapping-hero="1"] .navbar:not(.navbar--scrolled) {
     @apply absolute inset-0 h-full w-full object-cover;
   }
 }
+
+/*
+ * Header-Leiste als schwebende Glas-Pille (Mockup "image2"). Hintergrund und
+ * Blur liegen auf ::before, damit das mobile Menü (position: fixed) weiter den
+ * ganzen Bildschirm füllt.
+ */
+.region-header__bar {
+  @apply relative isolate;
+  &::before {
+    @apply pointer-events-none absolute inset-0 -z-10 rounded-full border border-foreground/15 bg-background/55 shadow-lg backdrop-blur-md;
+    content: "";
+    transition: background-color 300ms ease;
+  }
+}
+
+header.header--scrolled .region-header__bar::before {
+  @apply bg-background/80;
+}
+
+/* Die Navbar sitzt in der Pille und bringt keinen eigenen Rahmen mit. */
+.region-header .navbar {
+  @apply static border-0 p-0;
+  &::before {
+    @apply hidden;
+  }
+}
+
+.navbar--dropdown-menu a {
+  @apply text-foreground/80;
+}
+
+.navbar--dropdown-menu .menu-item--active-trail > a {
+  @apply text-primary;
+}
+
+/* CTA in der Leiste: schmaler Outline-Button statt Farbfläche. */
+.navbar--links > a:not(.navbar--member) {
+  @apply mx-6 mb-2 rounded-full! border! border-primary/70! bg-transparent! px-4! py-1.5! text-primary! shadow-none! hover:bg-primary/10! md:m-0;
+}
+
+.region-header .navbar--hamburger {
+  @apply h-10 w-10 rounded-full border border-foreground/20 transition-colors hover:border-primary hover:text-primary;
+}

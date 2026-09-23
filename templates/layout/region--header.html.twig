@@ -12,7 +12,7 @@
 {% set classes = ['region', 'region-' ~ (region|clean_class)] %}
 {% if content %}
   <div {{ attributes.addClass(classes) }}>
-    <div class="container mx-auto flex items-center gap-2 px-4 py-3 md:gap-6 md:py-4">
+    <div class="region-header__bar container mx-auto flex items-center gap-2 py-1.5 ps-4 pe-1.5 md:gap-4 md:ps-5">
       <div class="region-header__main">
         {{ content }}
       </div>
