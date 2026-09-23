@@ -47,9 +47,14 @@
     @apply inline min-h-0 rounded-none bg-transparent p-0 text-sm text-muted-foreground transition-colors;
 
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &.is-active {
       @apply bg-transparent text-primary;
     }
+  }
+
+  li {
+    @apply bg-transparent;
   }
 }
 

@@ -804,7 +804,7 @@
 
 @layer utilities {
   .layout-content {
-    background: linear-gradient(180deg, var(--background), rgb(24 37 34 / 0.35));
+    background: linear-gradient(180deg, var(--background), color-mix(in srgb, var(--muted) 35%, var(--background)));
   }
 
   .layout-content > * {
@@ -818,6 +818,11 @@
   .layout-content h4 {
     color: var(--foreground);
     font-family: var(--font-serif);
+  }
+
+  .layout-content .sommertheater-card--archive :is(h2, h3, h4),
+  .layout-content .sommertheater-dialog :is(h2, h3, h4) {
+    color: var(--paper-ink);
   }
 
   .layout-content .views-row,

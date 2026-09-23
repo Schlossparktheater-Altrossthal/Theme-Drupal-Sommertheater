@@ -1,6 +1,6 @@
 .sommertheater-countdown {
   border-block: 1px solid rgb(182 138 69 / 0.35);
-  background: linear-gradient(180deg, rgb(24 37 34 / 0.6), var(--background));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 70%, transparent), var(--background));
 }
 
 .sommertheater-countdown__eyebrow {
