@@ -1,0 +1,86 @@
+/* Carousel: state styles live here (unlayered) so they win over utilities. */
+.carousel {
+  --carousel-gap: 1.5rem;
+}
+
+.carousel--track {
+  display: flex;
+  gap: var(--carousel-gap);
+  padding-block: 1rem;
+}
+
+.carousel--track > * {
+  flex: 0 0 min(var(--carousel-item-width), 80vw);
+  scroll-snap-align: start;
+}
+
+/* Swipe mode (also the fallback for reduced motion and the Canvas editor). */
+.carousel--viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+.carousel--pause {
+  display: none;
+}
+
+.carousel--icon-play,
+.carousel--paused .carousel--icon-pause {
+  display: none;
+}
+
+.carousel--paused .carousel--icon-play {
+  display: inline;
+}
+
+/* Autoplay mode: set by carousel.js once it has cloned the cards. */
+.carousel--autoplay .carousel--viewport {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
+.carousel--autoplay .carousel--track {
+  width: max-content;
+  animation: carousel-marquee var(--carousel-duration) linear infinite;
+}
+
+.carousel--autoplay[data-direction="right"] .carousel--track {
+  animation-direction: reverse;
+}
+
+.carousel--autoplay .carousel--pause {
+  display: inline-flex;
+}
+
+.carousel--autoplay .carousel--arrows {
+  display: none;
+}
+
+.carousel--paused .carousel--track,
+.carousel--autoplay[data-pause-on-hover="true"] .carousel--viewport:hover .carousel--track,
+.carousel--autoplay[data-pause-on-hover="true"] .carousel--viewport:focus-within .carousel--track {
+  animation-play-state: paused;
+}
+
+.carousel--fade {
+  mask-image: linear-gradient(to right, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+}
+
+@keyframes carousel-marquee {
+  to {
+    /* One full set of cards plus the gap between the original and the clones. */
+    transform: translateX(calc(-50% - var(--carousel-gap) / 2));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel--autoplay .carousel--track {
+    animation: none;
+  }
+
+  .carousel--viewport {
+    scroll-behavior: auto;
+  }
+}

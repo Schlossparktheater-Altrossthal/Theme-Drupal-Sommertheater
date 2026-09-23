@@ -1,0 +1,135 @@
+{% set carousel_mode = mode|default('swipe') %}
+{% set duration_map = {
+  slow: '90s',
+  medium: '60s',
+  fast: '35s'
+} %}
+{% set width_map = {
+  small: '16rem',
+  medium: '20rem',
+  large: '24rem'
+} %}
+{% set duration = duration_map[speed|default('slow')]|default('90s') %}
+{% set item_width_value = width_map[item_width|default('medium')]|default('20rem') %}
+{% set has_arrows = show_arrows is same as(false) ? 'no' : 'yes' %}
+{% set has_edge_fade = edge_fade is same as(false) ? 'no' : 'yes' %}
+{% set pauses_on_hover = pause_on_hover is same as(false) ? 'false' : 'true' %}
+{% set mobile_autoplay = autoplay_on_mobile ? 'true' : 'false' %}
+
+{% set viewport =
+  html_cva(
+    base: ['carousel--viewport relative -mx-4 px-4 sm:mx-0 sm:px-0', 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none'],
+    variants: {
+      edgeFade: {
+        yes: 'carousel--fade',
+        no: ''
+      }
+    }
+  )
+%}
+
+{% set viewport_classes =
+  viewport.apply({
+    edgeFade: has_edge_fade
+  })
+%}
+
+{% set arrows =
+  html_cva(
+    base: ['carousel--arrows gap-2'],
+    variants: {
+      hasArrows: {
+        yes: 'flex',
+        no: 'hidden'
+      }
+    }
+  )
+%}
+
+{% set arrows_classes =
+  arrows.apply({
+    hasArrows: has_arrows
+  })
+%}
+
+{% set control_button_classes = [
+  'inline-flex size-10 cursor-pointer items-center justify-center rounded-full',
+  'border border-primary/40 bg-background/80 text-primary shadow-sm backdrop-blur transition',
+  'hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+  'disabled:cursor-default disabled:opacity-40'
+] %}
+
+<section
+  class="carousel relative"
+  aria-roledescription="carousel"
+  aria-label="{{ label|default('Karussell') }}"
+  data-mode="{{ carousel_mode }}"
+  data-direction="{{ direction|default('left') }}"
+  data-pause-on-hover="{{ pauses_on_hover }}"
+  data-autoplay-on-mobile="{{ mobile_autoplay }}"
+  style="--carousel-duration: {{ duration }}; --carousel-item-width: {{ item_width_value }};"
+>
+  <div class="carousel--controls mb-2 flex min-h-10 justify-end gap-2">
+    <button type="button" class="carousel--pause {{ control_button_classes|join(' ') }}" aria-pressed="false" aria-label="Karussell anhalten">
+      <span class="carousel--icon-pause">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'pause',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </span>
+      <span class="carousel--icon-play">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'play',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </span>
+    </button>
+    <div class="{{ arrows_classes }}">
+      <button type="button" class="carousel--prev {{ control_button_classes|join(' ') }}" aria-label="Zurück">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'caret-left',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </button>
+      <button type="button" class="carousel--next {{ control_button_classes|join(' ') }}" aria-label="Weiter">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'caret-right',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </button>
+    </div>
+  </div>
+
+  {# The viewport is a focusable scroll region so keyboard users can scroll it with the arrow keys. #}
+  <div class="{{ viewport_classes }}" tabindex="0" role="group" aria-label="{{ label|default('Karussell') }}">
+    <div class="carousel--track">
+      {% block carousel_items %}
+
+      {% endblock %}
+    </div>
+  </div>
+</section>

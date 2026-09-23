@@ -1,0 +1,102 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Carousel
+description: >-
+  A horizontal row of cards. "Swipe" is a scroll-snap strip with optional arrow buttons;
+  "Autoplay" scrolls endlessly with a visible pause button. Autoplay falls back to swipe
+  when the visitor prefers reduced motion.
+group: Layout
+props:
+  type: object
+  required:
+    - mode
+  properties:
+    label:
+      type: string
+      title: Accessible label
+      description: Read by screen readers, e.g. "Gewerke des Ensembles".
+      examples:
+        - Gewerke des Ensembles
+    mode:
+      type: string
+      title: Mode
+      enum:
+        - swipe
+        - autoplay
+      meta:enum:
+        swipe: Swipe / scroll (no motion)
+        autoplay: Autoplay (endless)
+      default: swipe
+      examples:
+        - swipe
+    speed:
+      type: string
+      title: Autoplay speed
+      enum:
+        - slow
+        - medium
+        - fast
+      meta:enum:
+        slow: Slow
+        medium: Medium
+        fast: Fast
+      default: slow
+      examples:
+        - slow
+    direction:
+      type: string
+      title: Autoplay direction
+      enum:
+        - left
+        - right
+      meta:enum:
+        left: Right to left
+        right: Left to right
+      default: left
+      examples:
+        - left
+    pause_on_hover:
+      type: boolean
+      title: Pause autoplay on hover and focus
+      default: true
+      examples:
+        - true
+    autoplay_on_mobile:
+      type: boolean
+      title: Autoplay on small screens
+      description: When off, phones get the swipe strip.
+      default: false
+      examples:
+        - false
+    show_arrows:
+      type: boolean
+      title: Show arrow buttons (swipe mode)
+      default: true
+      examples:
+        - true
+    item_width:
+      type: string
+      title: Card width
+      enum:
+        - small
+        - medium
+        - large
+      meta:enum:
+        small: Small (16rem)
+        medium: Medium (20rem)
+        large: Large (24rem)
+      default: medium
+      examples:
+        - medium
+    edge_fade:
+      type: boolean
+      title: Fade out the edges
+      default: true
+      examples:
+        - true
+slots:
+  carousel_items:
+    title: Cards
+    description: Each direct child becomes one card, e.g. Icon cards.
+libraryOverrides:
+  js:
+    carousel.js: { attributes: { type: module } }
