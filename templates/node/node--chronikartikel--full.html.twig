@@ -1,0 +1,303 @@
+{#
+/**
+ * @file
+ * Detailseite eines Chronikartikels (vergangene Produktion).
+ *
+ * Aufbau nach der Chronik-Detailseite des alten Mitgliederbereichs: Hero mit
+ * Teaserbild und Glas-Panel (Saison, Titel, Eckdaten), danach Artikeltext,
+ * Ensemble & Rollen, Pressestimmen, Zeitzeugnisse, Quellen und Galerie.
+ * Leere Felder blenden ihren Abschnitt aus.
+ *
+ * Besetzung: ein Feldwert pro Rolle im Format "Rolle: Name, Name".
+ */
+#}
+{% set year = node.field_jahr.value %}
+{% set heading = node.label %}
+
+{% set media_entity = node.field_featured_image.entity %}
+{% set image_item = media_entity ? media_entity.field_media_image : null %}
+{% set image_uri = image_item ? image_item.entity.uri.value : null %}
+{% set has_image = image_uri ? 'yes' : 'no' %}
+
+{% set details = [] %}
+{% for detail in [
+  {
+    label: 'Termine'|t,
+    value: node.field_termine.value
+  },
+  {
+    label: 'Autor / Vorlage'|t,
+    value: node.field_autor.value
+  },
+  {
+    label: 'Regie'|t,
+    value: node.field_regie.value
+  },
+  {
+    label: 'Spielort'|t,
+    value: node.field_spielort.value
+  }
+] %}
+  {% if detail.value is not empty %}
+    {% set details = details|merge([detail]) %}
+  {% endif %}
+{% endfor %}
+
+{% set cast = [] %}
+{% for item in node.field_besetzung %}
+  {% set parts = item.value|split(':', 2) %}
+  {% set cast =
+    cast|merge(
+      [
+        {
+          role: (parts|length) > 1 ? parts[0]|trim : '',
+          players: (parts|length) > 1 ? parts[1]|trim : parts[0]|trim
+        }
+      ]
+    )
+  %}
+{% endfor %}
+
+{% set gallery_images = [] %}
+{% for media_item in node.field_galerie %}
+  {% set gallery_image = media_item.entity ? media_item.entity.field_media_image : null %}
+  {% if gallery_image and gallery_image.entity %}
+    {% set gallery_images =
+      gallery_images|merge(
+        [
+          {
+            src: file_url(gallery_image.entity.uri.value),
+            alt: gallery_image.alt|default(heading),
+            width: gallery_image.width,
+            height: gallery_image.height
+          }
+        ]
+      )
+    %}
+  {% endif %}
+{% endfor %}
+
+{% set hero =
+  html_cva(
+    base: ['cq-full relative isolate overflow-hidden border-b border-border/60'],
+    variants: {
+      hasImage: {
+        yes: 'min-h-[65vh] bg-muted',
+        no: 'bg-[radial-gradient(ellipse_60rem_40rem_at_30%_20%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_75%)]'
+      }
+    }
+  )
+%}
+
+{% set hero_inner =
+  html_cva(
+    base: ['relative mx-auto flex w-[min(100%-2rem,80rem)] items-end'],
+    variants: {
+      hasImage: {
+        yes: 'min-h-[65vh] py-12 md:py-16',
+        no: 'pt-10 pb-12 md:pt-16 md:pb-16'
+      }
+    }
+  )
+%}
+
+{% set article_classes = ['chronik-detail'] %}
+<article {{ attributes.addClass(article_classes) }}>
+  <header
+    class="{{
+    hero.apply({
+      hasImage: has_image
+    })
+    }}"
+  >
+    {% if image_uri %}
+      <div class="absolute inset-0 -z-10" aria-hidden="true">
+        {% include 'canvas:image' ignore missing with {
+          src: file_url(image_uri),
+          alt: '',
+          width: image_item.width,
+          height: image_item.height,
+          loading: 'eager',
+          class: 'h-full w-full object-cover'
+        } only %}
+        <div class="absolute inset-0 bg-linear-to-t from-black/75 via-black/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-linear-to-b from-transparent via-background/20 to-background/90"></div>
+      </div>
+    {% endif %}
+
+    <div
+      class="{{
+      hero_inner.apply({
+        hasImage: has_image
+      })
+      }}"
+    >
+      <div
+        class="mx-auto w-full max-w-4xl space-y-6 rounded-3xl border border-border/60 bg-background/80 p-6 text-foreground shadow-2xl backdrop-blur-sm sm:p-8"
+      >
+        <div class="flex flex-wrap items-center gap-3 font-sans text-sm font-medium">
+          <a href="/chronik" class="inline-flex items-center gap-2 font-semibold text-foreground no-underline hover:text-primary">
+            {{
+              include(
+                '@sommertheater/components/icon/icon.twig',
+                {
+                  icon: 'caret-left',
+                  icon_size: 'extra-small'
+                },
+                with_context: false
+              )
+            }}
+            {{ 'Zur Chronik'|t }}
+          </a>
+          {% if year %}
+            <span class="rounded-full border border-primary/30 bg-primary/15 px-3 py-1 text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+              {{
+                'Saison @year'|t({
+                  '@year': year
+                })
+              }}
+            </span>
+          {% endif %}
+        </div>
+
+        <h1 class="m-0 font-serif text-3xl leading-tight font-bold text-balance sm:text-4xl md:text-5xl">{{ heading }}</h1>
+
+        {% if node.field_autor.value %}
+          <p class="m-0 max-w-3xl font-body text-base leading-relaxed text-foreground/85 md:text-lg">
+            {{ node.field_autor.value }}
+          </p>
+        {% endif %}
+
+        {% if details is not empty %}
+          <dl class="m-0 grid gap-4 sm:grid-cols-2">
+            {% for detail in details %}
+              <div class="rounded-2xl border border-border/60 bg-muted/40 p-4 shadow-inner">
+                <dt class="font-sans text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                  {{ detail.label }}
+                </dt>
+                <dd class="m-0 mt-1 font-body text-base font-semibold md:text-lg">{{ detail.value }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="space-y-16 py-16">
+    <section class="mx-auto max-w-3xl space-y-4">
+      <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Über diese Saison'|t }}</h2>
+      {% if node.field_content.value %}
+        <div class="font-body text-base leading-relaxed text-foreground/90 md:text-lg [&_p]:mb-4">
+          {{ node.field_content.processed }}
+        </div>
+      {% else %}
+        <p class="m-0 font-body text-base leading-relaxed text-muted-foreground md:text-lg">
+          {{
+            'Noch haben wir keine weiteren Hintergründe zu dieser Saison aufgezeichnet. Wenn du Informationen beitragen möchtest, freuen wir uns über eine Nachricht.'|t
+          }}
+        </p>
+      {% endif %}
+    </section>
+
+    {% if cast is not empty %}
+      <section class="mx-auto max-w-5xl space-y-6">
+        <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Ensemble & Rollen'|t }}</h2>
+        <ul class="m-0 grid list-none gap-4 p-0 sm:grid-cols-2">
+          {% for entry in cast %}
+            <li
+              class="rounded-2xl border border-border/60 bg-card/80 p-4 text-card-foreground shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              {% if entry.role %}
+                <span class="block font-serif text-lg font-semibold">{{ entry.role }}</span>
+              {% endif %}
+              <span class="mt-2 block font-body text-sm text-foreground/80 md:text-base">{{ entry.players }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if node.field_pressestimmen is not empty %}
+      <section class="mx-auto max-w-4xl space-y-5">
+        <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Pressestimmen'|t }}</h2>
+        <div class="space-y-4">
+          {% for quote in node.field_pressestimmen %}
+            <blockquote class="m-0 rounded-3xl border border-border/60 bg-muted/40 p-6 font-serif text-lg text-foreground/90 italic shadow-inner">
+              {{ quote.value }}
+            </blockquote>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if node.field_zeitzeugnisse is not empty %}
+      <section class="mx-auto max-w-4xl space-y-4">
+        <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Zeitzeugnisse'|t }}</h2>
+        <ul class="m-0 grid list-disc gap-3 pl-6 font-body text-base text-foreground/80 marker:text-primary">
+          {% for snippet in node.field_zeitzeugnisse %}
+            <li>{{ snippet.value }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if node.field_pressequellen is not empty %}
+      <section class="mx-auto max-w-4xl space-y-5">
+        <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Weiterführende Quellen'|t }}</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {% for source in node.field_pressequellen %}
+            {% set source_url = source.uri %}
+            <a
+              href="{{ source_url }}"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="group flex flex-col rounded-2xl border border-border/60 bg-card/80 p-4 text-card-foreground no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg"
+            >
+              <span class="inline-flex items-center gap-2 font-sans text-sm font-semibold">
+                <span class="text-primary">
+                  {{
+                    include(
+                      '@sommertheater/components/icon/icon.twig',
+                      {
+                        icon: 'arrow-square-out',
+                        icon_size: 'extra-small'
+                      },
+                      with_context: false
+                    )
+                  }}
+                </span>
+                {{
+                  source.title|default(
+                    'Quelle @number'|t({
+                      '@number': loop.index
+                    })
+                  )
+                }}
+              </span>
+              <span class="mt-2 font-sans text-xs break-words text-muted-foreground group-hover:text-foreground/80">{{ source_url }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if gallery_images is not empty %}
+      <section class="mx-auto max-w-5xl space-y-5">
+        <h2 class="m-0 font-serif text-3xl font-bold">{{ 'Galerie'|t }}</h2>
+        {{
+          include(
+            'sommertheater:gallery',
+            {
+              images: gallery_images,
+              title: heading,
+              max_width: 'medium',
+              aspect_ratio: '4:3'
+            },
+            with_context: false
+          )
+        }}
+      </section>
+    {% endif %}
+  </div>
+</article>
