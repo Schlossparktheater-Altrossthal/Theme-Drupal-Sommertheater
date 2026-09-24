@@ -26,6 +26,12 @@ props:
       title: Location
       examples:
         - "Schlosspark Altrossthal"
+    director:
+      type: string
+      title: Director
+      description: Optional. Wer Regie geführt hat.
+      examples:
+        - "Hannes Sell"
     text:
       type: string
       title: Description

@@ -44,6 +44,22 @@
       </p>
     {% endif %}
 
+    {% if director is not empty %}
+      <p class="m-0 flex items-center gap-2 font-body text-sm text-[var(--paper-ink)]/70 md:text-base">
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'film-slate',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+        <span>{{ 'Regie'|t }}: {{ director }}</span>
+      </p>
+    {% endif %}
+
     {% if text is not empty %}
       <p class="m-0 font-body text-base leading-relaxed md:text-lg">
         {{ text }}
