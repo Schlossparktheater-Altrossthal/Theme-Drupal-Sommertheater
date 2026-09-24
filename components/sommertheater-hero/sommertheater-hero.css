@@ -247,3 +247,17 @@
     filter: none;
   }
 }
+
+/*
+ * Chronik-Detailseiten: Der Hero steht im Node-Template statt als erstes
+ * Canvas-Element und ist niedriger; unten bleibt Platz fuer die
+ * ueberlappende Eckdaten-Leiste.
+ */
+.layout-content:has(.chronik-detail) {
+  padding-top: 0;
+}
+
+.chronik-detail .sommertheater-hero-component {
+  min-height: min(82svh, 52rem);
+  padding-bottom: 4rem;
+}
