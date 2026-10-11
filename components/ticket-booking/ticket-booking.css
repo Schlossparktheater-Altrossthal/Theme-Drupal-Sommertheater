@@ -1,0 +1,108 @@
+.sommertheater-tickets__eyebrow {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.sommertheater-tickets__heading {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--foreground);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+}
+
+.sommertheater-tickets__intro,
+.sommertheater-tickets__phone,
+.sommertheater-tickets__loading,
+.sommertheater-tickets__empty {
+  color: var(--muted-foreground);
+}
+
+.sommertheater-tickets__app {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.sommertheater-tickets__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+}
+
+.sommertheater-tickets__list,
+.sommertheater-tickets__prices {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sommertheater-tickets__list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sommertheater-tickets__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.sommertheater-tickets__row[data-tone="off"] {
+  opacity: 0.7;
+}
+
+.sommertheater-tickets__date {
+  margin: 0;
+  font-weight: 600;
+}
+
+.sommertheater-tickets__status {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+
+.sommertheater-tickets__row[data-tone="warn"] .sommertheater-tickets__status {
+  color: var(--secondary);
+}
+
+.sommertheater-tickets__button,
+.sommertheater-tickets__fallback {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 1.1rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sommertheater-tickets__prices {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.sommertheater-tickets__prices li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted-foreground);
+}
+
+.sommertheater-tickets__phone {
+  margin-top: 1.5rem;
+}

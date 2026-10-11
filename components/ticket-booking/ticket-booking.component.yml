@@ -1,0 +1,44 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Kartenreservierung
+group: Sommertheater
+status: stable
+description: Zeigt die kommenden Vorstellungen mit Buchungsstand aus dem Mitgliederbereich und verlinkt zur Reservierung.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: Karten
+    heading:
+      type: string
+      title: Überschrift
+      default: Karten reservieren
+      examples:
+        - Karten reservieren
+    intro:
+      type: string
+      title: Einleitung
+      default: Wähle deine Vorstellung – die Bestätigung kommt per Mail, bezahlt wird an der Abendkasse.
+    api_url:
+      type: string
+      title: Schnittstelle
+      description: Öffentliche Karten-Schnittstelle des Mitgliederbereichs.
+      default: https://app.sommertheater-altrossthal.de/api/public/karten
+      examples:
+        - https://app.sommertheater-altrossthal.de/api/public/karten
+    phone:
+      type: string
+      title: Telefon für Reservierungen
+      description: Optional, wird unter der Liste angezeigt.
+    empty_text:
+      type: string
+      title: Text ohne Vorstellungen
+      default: Zurzeit sind keine Vorstellungen buchbar. Schau bald wieder vorbei!
+libraryOverrides:
+  js:
+    ticket-booking.js:
+      attributes:
+        type: module

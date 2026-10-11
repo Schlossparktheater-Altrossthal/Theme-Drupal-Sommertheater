@@ -1,0 +1,34 @@
+{# Kartenreservierung: Daten kommen per fetch aus dem Mitgliederbereich (/api/public/karten). #}
+{% set api = api_url|default('https://app.sommertheater-altrossthal.de/api/public/karten') %}
+{% set booking_url = api|replace({'/api/public/karten': '/karten'}) %}
+
+<section class="sommertheater-tickets cq-full py-12 md:py-16 xl:py-20">
+  <div class="container mx-auto max-w-3xl px-4">
+    {% if eyebrow is not empty %}
+      <p class="sommertheater-tickets__eyebrow">{{ eyebrow }}</p>
+    {% endif %}
+    <h2 class="sommertheater-tickets__heading">{{ heading }}</h2>
+    {% if intro is not empty %}
+      <p class="sommertheater-tickets__intro">{{ intro }}</p>
+    {% endif %}
+
+    <div
+      class="sommertheater-tickets__app"
+      data-sommertheater-tickets
+      data-tickets-api="{{ api }}"
+      data-tickets-empty="{{ empty_text|default('Zurzeit sind keine Vorstellungen buchbar.') }}"
+      aria-live="polite"
+    >
+      <p class="sommertheater-tickets__loading">Vorstellungen werden geladen …</p>
+      <noscript>
+        <a class="sommertheater-tickets__fallback" href="{{ booking_url }}">Zur Kartenreservierung</a>
+      </noscript>
+    </div>
+
+    {% if phone is not empty %}
+      <p class="sommertheater-tickets__phone">
+        Lieber telefonisch? <a href="tel:{{ phone|replace({' ': '', '/': '', '-': ''}) }}">{{ phone }}</a>
+      </p>
+    {% endif %}
+  </div>
+</section>
