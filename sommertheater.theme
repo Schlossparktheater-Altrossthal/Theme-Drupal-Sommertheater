@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * Theme-Hooks für Sommertheater.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Strukturierte Daten (schema.org, JSON-LD) für das Theater auf der
+ * Startseite, damit Suchmaschinen Name, Spielort und Kontakt zuordnen können.
+ */
+function sommertheater_page_attachments_alter(array &$attachments): void {
+  $attachments['#cache']['contexts'][] = 'url.path.is_front';
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+
+  $base = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+  $theme = \Drupal::service('extension.list.theme')->getPath('sommertheater');
+  $site_name = \Drupal::config('system.site')->get('name');
+  $address = [
+    '@type' => 'PostalAddress',
+    'streetAddress' => 'Altroßthal 1',
+    'postalCode' => '01169',
+    'addressLocality' => 'Dresden',
+    'addressRegion' => 'Sachsen',
+    'addressCountry' => 'DE',
+  ];
+
+  $data = [
+    '@context' => 'https://schema.org',
+    '@graph' => [
+      [
+        '@type' => 'TheaterGroup',
+        '@id' => $base . '#theater',
+        'name' => $site_name,
+        'alternateName' => 'Schlossparktheater Altroßthal',
+        'url' => $base,
+        'logo' => rtrim($base, '/') . '/' . $theme . '/images/logo-sommertheater.png',
+        'description' => 'Ehrenamtliches Freilichttheater des Beruflichen Schulzentrums für Agrarwirtschaft und Ernährung Dresden, das seit 2009 jeden Sommer ein Stück im Schlosspark Altroßthal spielt.',
+        'foundingDate' => '2008',
+        'email' => 'info@bsz-ae-dd.de',
+        'address' => $address,
+        'location' => ['@id' => $base . '#spielort'],
+        'sameAs' => ['https://www.instagram.com/schlossparktheater/'],
+      ],
+      [
+        '@type' => 'Place',
+        '@id' => $base . '#spielort',
+        'name' => 'Schlosspark Altroßthal',
+        'address' => $address,
+      ],
+      [
+        '@type' => 'WebSite',
+        '@id' => $base . '#website',
+        'url' => $base,
+        'name' => $site_name,
+        'inLanguage' => 'de',
+        'publisher' => ['@id' => $base . '#theater'],
+      ],
+    ],
+  ];
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => ['type' => 'application/ld+json'],
+      '#value' => json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+    ],
+    'sommertheater_schema_org',
+  ];
+}
