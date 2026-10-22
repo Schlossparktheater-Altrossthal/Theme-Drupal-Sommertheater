@@ -81,3 +81,61 @@
     }
   }
 }
+
+/* Förderer (Stadt Dresden, groß und farbig) und Unterstützer (einfarbig in Textfarbe) */
+.site-footer__partners {
+  @apply grid gap-10 border-t border-border/50 py-10 md:grid-cols-[auto_minmax(0,1fr)] md:gap-16;
+}
+
+.site-footer__partners-label {
+  @apply m-0 mb-4 text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase;
+}
+
+.site-footer__support-list {
+  @apply m-0 flex list-none flex-wrap items-center gap-x-10 gap-y-6 p-0 md:min-h-[7.13rem];
+}
+
+.partner-logo {
+  @apply block transition-colors focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4 focus-visible:ring-offset-background focus-visible:outline-none;
+}
+
+/* Stadtlogo in Originalfarben auf heller Fläche, damit es auch im Dunkelmodus lesbar bleibt */
+.partner-logo--dresden {
+  @apply rounded-lg p-4 shadow-sm;
+  width: calc(11rem + 2rem);
+  height: calc(5.13rem + 2rem);
+  background: #fbf8f1 url("../images/partner/dresden.svg") center / 11rem auto no-repeat;
+  background-origin: content-box;
+
+  &:hover {
+    box-shadow: 0 0 24px -4px var(--mystic-glow, rgb(229 138 8 / 0.4));
+  }
+}
+
+/* Unterstützer: Logo als Maske, Farbe folgt dem Theme */
+.partner-logo--bsz,
+.partner-logo--ffaue,
+.partner-logo--brauerbund {
+  @apply bg-muted-foreground hover:bg-primary;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.partner-logo--bsz {
+  mask-image: url("../images/partner/bsz-agrar-ernaehrung.png");
+  width: 15rem;
+  height: 2.31rem;
+}
+
+.partner-logo--ffaue {
+  mask-image: url("../images/partner/ffaue.svg");
+  width: 7.5rem;
+  height: 4.2rem;
+}
+
+.partner-logo--brauerbund {
+  mask-image: url("../images/partner/saechsischer-brauerbund.png");
+  width: 7.5rem;
+  height: 3.75rem;
+}

@@ -90,6 +90,65 @@
       </div>
     </div>
 
+    {# Förderer und Unterstützer: Logos liegen in images/partner, Stil in footer.tailwind.css. #}
+    <div class="site-footer__partners">
+      <div class="site-footer__funding">
+        <p class="site-footer__partners-label">
+          {{ 'Gefördert von'|t }}
+        </p>
+        <a
+          class="partner-logo partner-logo--dresden"
+          href="https://www.dresden.de/"
+          rel="noreferrer noopener"
+          target="_blank"
+          aria-label="Landeshauptstadt Dresden"
+        >
+
+        </a>
+      </div>
+
+      <div class="site-footer__support">
+        <p class="site-footer__partners-label">
+          {{ 'Mit freundlicher Unterstützung von'|t }}
+        </p>
+        <ul class="site-footer__support-list">
+          <li>
+            <a
+              class="partner-logo partner-logo--bsz"
+              href="https://bsz-ae-dd.de/"
+              rel="noreferrer noopener"
+              target="_blank"
+              aria-label="Berufliches Schulzentrum für Agrarwirtschaft und Ernährung Dresden"
+            >
+
+            </a>
+          </li>
+          <li>
+            <a
+              class="partner-logo partner-logo--ffaue"
+              href="https://bsz-ae-dd.de/organisatorisches/wohnen/foerderverein/"
+              rel="noreferrer noopener"
+              target="_blank"
+              aria-label="FFAuE – Freunde und Förderer des Beruflichen Schulzentrums für Agrarwirtschaft und Ernährung e. V."
+            >
+
+            </a>
+          </li>
+          <li>
+            <a
+              class="partner-logo partner-logo--brauerbund"
+              href="https://www.brauerbund-sachsen.de/"
+              rel="noreferrer noopener"
+              target="_blank"
+              aria-label="Sächsischer Brauerbund e. V."
+            >
+
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <div class="{{ footer_bottom_variants.apply({}) }}">
       {% if block('footer_utility_last') is defined %}
         <div class="site-footer__copyright">
