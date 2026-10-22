@@ -30,56 +30,6 @@
     --chronik-photo-frame: #8a6a3a;
   }
 
-  /* Atmosphaere: Waldlicht oben, Gluehwuermchen auf der ganzen Seite */
-  .region-content:has(.view-chronik-zeitstrahl)::before {
-    position: absolute;
-    z-index: -1;
-    inset: -6rem calc(50% - 50vw) 0;
-    background:
-      radial-gradient(ellipse 60% 22rem at 70% 6rem, rgb(229 138 8 / 0.16), transparent 70%),
-      radial-gradient(ellipse 45% 30rem at 15% 40%, rgb(182 186 69 / 0.07), transparent 70%),
-      radial-gradient(ellipse 50% 30rem at 85% 75%, rgb(229 138 8 / 0.06), transparent 70%);
-    content: "";
-    pointer-events: none;
-  }
-
-  .region-content:has(.view-chronik-zeitstrahl)::after {
-    position: absolute;
-    z-index: -1;
-    inset: 0 calc(50% - 50vw);
-    background-image:
-      radial-gradient(circle, rgb(255 210 120 / 0.9) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle, rgb(255 210 120 / 0.6) 0 1px, transparent 2px),
-      radial-gradient(circle, rgb(255 230 160 / 0.7) 0 1.2px, transparent 2.2px);
-    background-position:
-      0 0,
-      90px 140px,
-      210px 60px;
-    background-size:
-      260px 340px,
-      330px 290px,
-      410px 380px;
-    content: "";
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .dark .region-content:has(.view-chronik-zeitstrahl)::after {
-    opacity: 0.55;
-    animation: chronik-fireflies 9s ease-in-out infinite alternate;
-  }
-
-  @keyframes chronik-fireflies {
-    from {
-      opacity: 0.25;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0.65;
-      transform: translateY(-14px);
-    }
-  }
-
   /* Seitenkopf */
   .layout-content .region-content:has(.view-chronik-zeitstrahl) > h1 {
     margin-top: 1.5rem;
@@ -502,10 +452,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .dark .region-content:has(.view-chronik-zeitstrahl)::after {
-      animation: none;
-    }
-
     .chronik-entry__card,
     .layout-content .chronik-entry__media img {
       transition: none;

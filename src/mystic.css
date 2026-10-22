@@ -1,0 +1,229 @@
+/**
+ * Mystische Grundstimmung fuer die ganze Seite: Waldlicht und Gluehwuermchen
+ * im Hintergrund, Glaskarten mit Goldrand, goldene Ornamente unter
+ * Abschnittsueberschriften, leuchtender Footer. Hell = warmes Pergament,
+ * dunkel = Waldgruen mit Gold. Liegt im Utilities-Layer, damit die Regeln
+ * gegen die Tailwind-Klassen der Komponenten gewinnen.
+ */
+:root {
+  --mystic-gold: #b9852c;
+  --mystic-glow: rgb(229 138 8 / 0.3);
+  --mystic-glass: rgb(255 248 236 / 0.75);
+  --mystic-glass-border: rgb(182 138 69 / 0.45);
+}
+
+.dark {
+  --mystic-gold: #d9a441;
+  --mystic-glow: rgb(229 138 8 / 0.45);
+  --mystic-glass: rgb(20 32 29 / 0.72);
+  --mystic-glass-border: rgb(217 164 65 / 0.28);
+}
+
+@layer utilities {
+  /* Hintergrund: Waldlicht, fest hinter dem Inhalt */
+  body::before {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 55% 40% at 75% 0%, rgb(229 138 8 / 0.14), transparent 70%),
+      radial-gradient(ellipse 45% 45% at 5% 45%, rgb(182 186 69 / 0.08), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 95% 90%, rgb(229 138 8 / 0.07), transparent 70%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .dark body::before {
+    background:
+      radial-gradient(ellipse 55% 40% at 75% 0%, rgb(229 138 8 / 0.13), transparent 70%),
+      radial-gradient(ellipse 45% 45% at 5% 45%, rgb(182 186 69 / 0.06), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 95% 90%, rgb(229 138 8 / 0.06), transparent 70%),
+      linear-gradient(to bottom, transparent 60%, rgb(0 0 0 / 0.35));
+  }
+
+  /* Gluehwuermchen, nur im Dunkelmodus */
+  .dark body::after {
+    position: fixed;
+    z-index: -1;
+    inset: -20px 0;
+    background-image:
+      radial-gradient(circle, rgb(255 210 120 / 0.9) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle, rgb(255 210 120 / 0.6) 0 1px, transparent 2px),
+      radial-gradient(circle, rgb(255 230 160 / 0.7) 0 1.2px, transparent 2.2px);
+    background-position:
+      0 0,
+      90px 140px,
+      210px 60px;
+    background-size:
+      260px 340px,
+      330px 290px,
+      410px 380px;
+    content: "";
+    opacity: 0.45;
+    pointer-events: none;
+    animation: mystic-fireflies 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes mystic-fireflies {
+    from {
+      opacity: 0.2;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0.55;
+      transform: translateY(-14px);
+    }
+  }
+
+  /* Seitentitel leuchten leicht */
+  .layout-content h1 {
+    text-shadow: 0 0 36px var(--mystic-glow);
+  }
+
+  /* Goldenes Ornament unter Abschnittsueberschriften */
+  .layout-content
+    h2:not(
+      :is(
+          [class*="bg-card"],
+          [class*="border"],
+          .sommertheater-card--archive,
+          .sommertheater-hero-component,
+          .sommertheater-dialog,
+          .view-chronik-zeitstrahl
+        )
+        h2
+    )::after {
+    display: block;
+    width: 7rem;
+    margin-top: 0.7rem;
+    background: linear-gradient(to right, var(--mystic-gold) 0 2.7rem, transparent 2.7rem 4.3rem, var(--mystic-gold) 4.3rem) 0 50% / 100% 1px
+      no-repeat;
+    color: var(--mystic-gold);
+    content: "\25C6";
+    font-size: 0.6rem;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .layout-content :is(.text-center, [class*="items-center"]) > h2::after,
+  .layout-content h2.text-center::after {
+    margin-inline: auto;
+  }
+
+  /* Glaskarten mit Goldrand */
+  .layout-content
+    :is(
+      [class~="bg-card"][class*="border"],
+      [class~="bg-card/60"][class*="border"],
+      [class~="bg-card/70"][class*="border"],
+      [class~="@container"][class~="bg-background"][class*="border"],
+      .sommertheater-card--glass
+    ) {
+    border-color: var(--mystic-glass-border);
+    background-color: var(--mystic-glass);
+    box-shadow:
+      0 18px 40px -22px rgb(0 0 0 / 0.5),
+      inset 0 1px 0 rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(6px);
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .layout-content
+    :is(
+      [class~="bg-card"][class*="border"],
+      [class~="bg-card/60"][class*="border"],
+      [class~="@container"][class~="bg-background"][class*="border"],
+      .sommertheater-card--glass
+    ):hover {
+    border-color: var(--mystic-gold);
+    box-shadow:
+      0 22px 50px -22px rgb(0 0 0 / 0.55),
+      0 0 26px -8px var(--mystic-glow);
+  }
+
+  /* Archivkarten (Startseite "Aus der Chronik"): dunkel als Glas statt Papier */
+  .dark .sommertheater-card--archive {
+    --paper-surface: rgb(20 32 29 / 0.78);
+    --paper-ink: #f6ebd3;
+
+    border-color: var(--mystic-glass-border);
+    background-image: none;
+    backdrop-filter: blur(6px);
+  }
+
+  .dark .sommertheater-card--archive::before {
+    border-color: rgb(217 164 65 / 0.18);
+  }
+
+  .sommertheater-card--archive {
+    transition:
+      box-shadow 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .sommertheater-card--archive:hover {
+    box-shadow: 0 0 28px -6px var(--mystic-glow);
+    transform: translateY(-3px);
+  }
+
+  .sommertheater-card--archive::after {
+    border-color: var(--mystic-gold);
+    color: var(--mystic-gold);
+  }
+
+  /* Hauptbuttons gluehen beim Ueberfahren */
+  a[class~="bg-primary"],
+  button[class~="bg-primary"] {
+    box-shadow: 0 0 0 transparent;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  a[class~="bg-primary"]:hover,
+  button[class~="bg-primary"]:hover {
+    box-shadow: 0 0 24px -2px var(--mystic-glow);
+  }
+
+  /* Footer: Goldlinie mit Leuchten, dunkler Waldboden */
+  footer[role="contentinfo"] {
+    position: relative;
+    background:
+      radial-gradient(ellipse 60% 100% at 50% 0%, rgb(229 138 8 / 0.08), transparent 70%), linear-gradient(to bottom, transparent, rgb(0 0 0 / 0.06));
+  }
+
+  .dark footer[role="contentinfo"] {
+    background:
+      radial-gradient(ellipse 60% 100% at 50% 0%, rgb(229 138 8 / 0.08), transparent 70%),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+  }
+
+  footer[role="contentinfo"] .site-footer,
+  .site-footer {
+    background: transparent;
+  }
+
+  footer[role="contentinfo"]::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(100% - 2rem, 80rem);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--mystic-gold), transparent);
+    box-shadow: 0 0 14px var(--mystic-glow);
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dark body::after {
+      animation: none;
+    }
+  }
+}
