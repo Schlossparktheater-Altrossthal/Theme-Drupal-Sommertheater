@@ -92,6 +92,21 @@
 
     {# Förderer und Unterstützer: Logos liegen in images/partner, Stil in footer.tailwind.css. #}
     <div class="site-footer__partners">
+      <div class="site-footer__home">
+        <p class="site-footer__partners-label">
+          {{ 'Ein Projekt des'|t }}
+        </p>
+        <a
+          class="partner-logo partner-logo--bsz"
+          href="https://bsz-ae-dd.de/"
+          rel="noreferrer noopener"
+          target="_blank"
+          aria-label="Berufliches Schulzentrum für Agrarwirtschaft und Ernährung Dresden"
+        >
+
+        </a>
+      </div>
+
       <div class="site-footer__funding">
         <p class="site-footer__partners-label">
           {{ 'Gefördert von'|t }}
@@ -112,17 +127,6 @@
           {{ 'Mit freundlicher Unterstützung von'|t }}
         </p>
         <ul class="site-footer__support-list">
-          <li>
-            <a
-              class="partner-logo partner-logo--bsz"
-              href="https://bsz-ae-dd.de/"
-              rel="noreferrer noopener"
-              target="_blank"
-              aria-label="Berufliches Schulzentrum für Agrarwirtschaft und Ernährung Dresden"
-            >
-
-            </a>
-          </li>
           <li>
             <a
               class="partner-logo partner-logo--ffaue"

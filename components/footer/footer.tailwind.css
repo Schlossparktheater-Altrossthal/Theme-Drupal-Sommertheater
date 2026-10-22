@@ -82,9 +82,9 @@
   }
 }
 
-/* Förderer (Stadt Dresden, groß und farbig) und Unterstützer (einfarbig in Textfarbe) */
+/* Träger (BSZ), Förderer (Stadt Dresden, groß und farbig) und Unterstützer (einfarbig in Textfarbe) */
 .site-footer__partners {
-  @apply grid gap-10 border-t border-border/50 py-10 md:grid-cols-[auto_minmax(0,1fr)] md:gap-16;
+  @apply flex flex-col gap-10 border-t border-border/50 py-10 md:flex-row md:flex-wrap md:gap-x-16 md:gap-y-10;
 }
 
 .site-footer__partners-label {
@@ -122,10 +122,15 @@
   mask-size: contain;
 }
 
+/* Logo-Zeilen gleich hoch wie die Fläche des Stadtlogos, damit alle Gruppen auf einer Linie stehen */
+.site-footer__home {
+  @apply flex flex-col md:[&>a]:my-[2.4rem];
+}
+
 .partner-logo--bsz {
   mask-image: url("../images/partner/bsz-agrar-ernaehrung.png");
-  width: 15rem;
-  height: 2.31rem;
+  width: 18rem;
+  height: 2.77rem;
 }
 
 .partner-logo--ffaue {
