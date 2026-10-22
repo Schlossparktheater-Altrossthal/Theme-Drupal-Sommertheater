@@ -39,6 +39,24 @@ props:
       type: string
       title: Text wenn alle Vorstellungen vorbei sind
       default: Alle Vorstellungen sind vorbei.
+    api_url:
+      type: string
+      title: Termine aus dem Mitgliederbereich
+      description: Leer lassen, um die Vorstellungen oben von Hand zu pflegen. Sonst holt der Countdown Termine und (ab der Enthüllung) den Stücktitel automatisch.
+      default: ""
+      examples:
+        - https://app.sommertheater-altrossthal.de/api/public/saison
+    announce_reveal:
+      type: boolean
+      title: Enthüllung ankündigen
+      description: Nur mit Mitgliederbereich-Terminen. Zählt bis zur Stück-Enthüllung herunter und nennt deren Datum; aus = Countdown läuft direkt auf die Premiere.
+      default: false
+      examples:
+        - false
+    reveal_heading:
+      type: string
+      title: Überschrift bis zur Enthüllung
+      default: Bald verraten wir, was wir spielen
 libraryOverrides:
   js:
     countdown.js:

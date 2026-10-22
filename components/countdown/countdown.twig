@@ -10,13 +10,18 @@
       </p>
     {% endif %}
 
-    <h2 class="sommertheater-countdown__heading">{{ heading }}</h2>
+    <h2 class="sommertheater-countdown__heading" data-countdown-heading>{{ heading }}</h2>
 
     {% if is_enabled == 'yes' %}
       <div
         class="sommertheater-countdown__app"
         data-sommertheater-countdown
         data-countdown-finished-text="{{ finished_text|default('Alle Vorstellungen sind vorbei.') }}"
+        {% if api_url is not empty %}
+          data-countdown-api="{{ api_url }}"
+          data-countdown-announce-reveal="{{ announce_reveal ? 'yes' : 'no' }}"
+          data-countdown-reveal-heading="{{ reveal_heading|default('Bald verraten wir, was wir spielen') }}"
+        {% endif %}
       >
         <ol class="sommertheater-countdown__performances" hidden>
           {% for datetime in performances|default([]) %}
