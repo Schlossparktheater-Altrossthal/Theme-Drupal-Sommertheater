@@ -3,65 +3,90 @@
  * @file
  * Chronikartikel im Chronik-Zeitstrahl (View "chronik_zeitstrahl").
  *
- * Rendert den Node ueber die Karten-Komponente des Designsystems statt der
- * generischen Feldausgabe, damit neue Chronikartikel ohne Seitenumbau im
- * Zeitstrahl erscheinen. Der Jahres-Punkt/-Badge kommt direkt aus dem
- * Node-Feld statt aus der Views-Gruppierung: deren Titel bleibt beim
- * Entity-Row-Plugin unzuverlaessig leer (Views rendert Feldwerte nur, wenn
+ * Eigene Zeitstrahl-Karte (Styles in src/chronik.css): Desktop mittige Linie
+ * mit abwechselnden Seiten, mobil Linie links. Der Jahres-Punkt/-Badge kommt
+ * direkt aus dem Node-Feld statt aus der Views-Gruppierung: deren Titel bleibt
+ * beim Entity-Row-Plugin unzuverlaessig leer (Views rendert Feldwerte nur, wenn
  * der Style-Plugin usesFields() zurueckgibt, was beim Entity-Row nicht der
  * Fall ist), waehrend das Node-Feld hier immer verlaesslich verfuegbar ist.
  */
 #}
 {% set year = node.field_jahr.value %}
-{% set paw_position_classes = node.id.value % 2 == 0 ? '-left-1 -rotate-12' : '-right-1 rotate-12' %}
 {% set media_entity = node.field_featured_image.entity %}
 {% set image_item = media_entity ? media_entity.field_media_image : null %}
 {% set image_uri = image_item ? image_item.entity.uri.value : null %}
-{% set media = image_uri
-  ? {
-    src: file_url(image_uri),
-    alt: image_item.alt|default(''),
-    width: image_item.width,
-    height: image_item.height
-  }
-  : null
-%}
+{% set director = node.field_regie.value %}
+{% set teaser = node.field_content.value ? node.field_content.value|striptags|trim : '' %}
+{% if (teaser|length) > 170 %}
+  {% set teaser = (teaser|slice(0, 170)|split(' ')|slice(0, -1)|join(' ')) ~ ' …' %}
+{% endif %}
 
-<div class="flex items-stretch gap-4 md:gap-6">
-  <div class="relative flex w-8 flex-none flex-col items-center md:w-10">
-    <span class="z-10 mt-1 h-4 w-4 flex-none rounded-full border-2 border-primary bg-background" aria-hidden="true"></span>
-    <span class="w-0.5 flex-1 bg-primary/40"></span>
-    <span class="absolute top-10 {{ paw_position_classes }} text-primary/30" aria-hidden="true">
-      {{
-        include(
-          '@sommertheater/components/icon/icon.twig',
-          {
-            icon: 'paw-print',
-            icon_size: 'extra-small'
-          },
-          with_context: false
-        )
-      }}
-    </span>
-  </div>
-  <div class="min-w-0 flex-1 pb-8">
-    {% if year %}
-      <span class="mb-4 inline-block rounded-full border border-primary px-4 py-1 font-serif text-lg font-bold text-primary">{{ year }}</span>
-    {% endif %}
+<article class="chronik-entry">
+  <span class="chronik-entry__marker" aria-hidden="true"></span>
+  <span class="chronik-entry__paw" aria-hidden="true">
     {{
       include(
-        'sommertheater:card-archive',
+        '@sommertheater/components/icon/icon.twig',
         {
-          heading_text: node.label,
-          media: media,
-          year: year,
-          director: node.field_regie.value,
-          text: node.field_content.value ? node.field_content.value|striptags|trim : '',
-          link_label: 'Eintrag öffnen'|t,
-          link_url: url
+          icon: 'paw-print',
+          icon_size: 'extra-small'
         },
         with_context: false
       )
     }}
+  </span>
+  {% if year %}
+    <p class="chronik-entry__year">
+      <span class="visually-hidden">{{ 'Spielzeit'|t }}</span>{{ year }}
+    </p>
+  {% endif %}
+
+  <div class="chronik-entry__card">
+    <a href="{{ url }}" class="chronik-entry__media" tabindex="-1" aria-hidden="true">
+      {% if image_uri %}
+        <img src="{{ file_url(image_uri) }}" alt="" width="{{ image_item.width }}" height="{{ image_item.height }}" loading="lazy" decoding="async" />
+      {% else %}
+        <span class="chronik-entry__placeholder">
+          {{
+            include(
+              '@sommertheater/components/icon/icon.twig',
+              {
+                icon: 'sparkle',
+                icon_size: 'medium'
+              },
+              with_context: false
+            )
+          }}
+          <span>{{ year }}</span>
+        </span>
+      {% endif %}
+    </a>
+
+    <div class="chronik-entry__body">
+      <h3 class="chronik-entry__title"><a href="{{ url }}">{{ node.label }}</a></h3>
+      {% if director %}
+        <p class="chronik-entry__badge">
+          {{ 'Regie'|t }}: {{ director }}
+        </p>
+      {% endif %}
+      {% if teaser %}
+        <p class="chronik-entry__text">
+          {{ teaser }}
+        </p>
+      {% endif %}
+      <a href="{{ url }}" class="chronik-entry__link" aria-label="{{ 'Eintrag öffnen'|t }}: {{ node.label }}">
+        {{ 'Eintrag öffnen'|t }}
+        {{
+          include(
+            '@sommertheater/components/icon/icon.twig',
+            {
+              icon: 'arrow-right',
+              icon_size: 'extra-small'
+            },
+            with_context: false
+          )
+        }}
+      </a>
+    </div>
   </div>
-</div>
+</article>

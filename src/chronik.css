@@ -1,0 +1,514 @@
+/**
+ * Chronik: Zeitstrahl der vergangenen Sommer (View "chronik_zeitstrahl",
+ * Karten aus node--chronikartikel--chronik-karte.html.twig).
+ *
+ * Seitenkopf, Liste am Seitenende und Hintergrund werden ueber :has() an der
+ * Region erkannt, damit die Canvas-Seite selbst unveraendert bleiben kann.
+ * Desktop: Linie mittig, Karten wechseln die Seite; mobil: Linie links.
+ */
+@layer components {
+  .region-content:has(.view-chronik-zeitstrahl) {
+    --chronik-gold: #d9a441;
+    --chronik-glow: rgb(229 138 8 / 0.45);
+    --chronik-card: rgb(255 248 236 / 0.82);
+    --chronik-card-border: rgb(182 138 69 / 0.45);
+    --chronik-ink: var(--paper-ink);
+    --chronik-muted: #5c4630;
+    --chronik-photo-frame: #c9a46a;
+    --chronik-line: linear-gradient(to bottom, transparent, var(--chronik-gold) 4%, var(--chronik-gold) 92%, transparent);
+
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 4rem;
+  }
+
+  .dark .region-content:has(.view-chronik-zeitstrahl) {
+    --chronik-card: rgb(20 32 29 / 0.72);
+    --chronik-card-border: rgb(217 164 65 / 0.28);
+    --chronik-ink: #f6ebd3;
+    --chronik-muted: #c9b89a;
+    --chronik-photo-frame: #8a6a3a;
+  }
+
+  /* Atmosphaere: Waldlicht oben, Gluehwuermchen auf der ganzen Seite */
+  .region-content:has(.view-chronik-zeitstrahl)::before {
+    position: absolute;
+    z-index: -1;
+    inset: -6rem calc(50% - 50vw) 0;
+    background:
+      radial-gradient(ellipse 60% 22rem at 70% 6rem, rgb(229 138 8 / 0.16), transparent 70%),
+      radial-gradient(ellipse 45% 30rem at 15% 40%, rgb(182 186 69 / 0.07), transparent 70%),
+      radial-gradient(ellipse 50% 30rem at 85% 75%, rgb(229 138 8 / 0.06), transparent 70%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .region-content:has(.view-chronik-zeitstrahl)::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0 calc(50% - 50vw);
+    background-image:
+      radial-gradient(circle, rgb(255 210 120 / 0.9) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle, rgb(255 210 120 / 0.6) 0 1px, transparent 2px),
+      radial-gradient(circle, rgb(255 230 160 / 0.7) 0 1.2px, transparent 2.2px);
+    background-position:
+      0 0,
+      90px 140px,
+      210px 60px;
+    background-size:
+      260px 340px,
+      330px 290px,
+      410px 380px;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dark .region-content:has(.view-chronik-zeitstrahl)::after {
+    opacity: 0.55;
+    animation: chronik-fireflies 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes chronik-fireflies {
+    from {
+      opacity: 0.25;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0.65;
+      transform: translateY(-14px);
+    }
+  }
+
+  /* Seitenkopf */
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > h1 {
+    margin-top: 1.5rem;
+    color: var(--chronik-ink);
+    font-size: clamp(2.75rem, 9vw, 5.5rem);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    text-align: center !important;
+    text-shadow: 0 0 40px var(--chronik-glow);
+    text-transform: uppercase;
+  }
+
+  .region-content:has(.view-chronik-zeitstrahl) > h1::after {
+    display: block;
+    width: min(18rem, 70%);
+    margin: 1.1rem auto 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--chronik-gold) 25%,
+        var(--chronik-gold) 43%,
+        transparent 43% 57%,
+        var(--chronik-gold) 57%,
+        var(--chronik-gold) 75%,
+        transparent
+      )
+      center / 100% 1px no-repeat;
+    color: var(--chronik-gold);
+    content: "\25C6";
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--chronik-glow);
+  }
+
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > h1 + * {
+    margin-top: 1.25rem;
+    color: var(--chronik-muted);
+    font-family: var(--font-serif) !important;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .region-content:has(.view-chronik-zeitstrahl) > h1 + * p {
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+
+  /* Zeitstrahl */
+  .layout-content .view-chronik-zeitstrahl .view-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 68rem;
+    margin-inline: auto;
+    padding-block: 1rem;
+  }
+
+  .view-chronik-zeitstrahl .view-content::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    width: 2px;
+    background: var(--chronik-line);
+    box-shadow: 0 0 12px var(--chronik-glow);
+    content: "";
+  }
+
+  .layout-content .view-chronik-zeitstrahl .views-row {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .chronik-entry {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.75rem;
+  }
+
+  .chronik-entry__marker {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 2px solid var(--chronik-gold);
+    border-radius: 9999px;
+    background: radial-gradient(circle, var(--primary) 0 35%, var(--background) 40%);
+    box-shadow:
+      0 0 0 4px rgb(229 138 8 / 0.15),
+      0 0 18px var(--chronik-glow);
+  }
+
+  .chronik-entry__paw {
+    position: absolute;
+    top: 55%;
+    left: 0.35rem;
+    color: var(--chronik-gold);
+    opacity: 0.35;
+    transform: rotate(-14deg);
+  }
+
+  .views-row:nth-child(even) .chronik-entry__paw {
+    transform: rotate(16deg) translateX(0.6rem);
+  }
+
+  .layout-content .chronik-entry__year {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: start;
+    margin: 0;
+    padding: 0.15rem 0.9rem;
+    border: 1px solid var(--chronik-gold);
+    border-radius: 0.4rem;
+    background: rgb(229 138 8 / 0.08);
+    color: var(--primary);
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+  }
+
+  .chronik-entry__card {
+    grid-row: 2;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--chronik-card-border);
+    border-radius: 0.9rem;
+    background: var(--chronik-card);
+    color: var(--chronik-ink);
+    box-shadow:
+      0 18px 40px -20px rgb(0 0 0 / 0.55),
+      inset 0 1px 0 rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(6px);
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .chronik-entry__card:hover,
+  .chronik-entry__card:focus-within {
+    border-color: var(--chronik-gold);
+    box-shadow:
+      0 22px 50px -20px rgb(0 0 0 / 0.6),
+      0 0 28px -6px var(--chronik-glow);
+    transform: translateY(-3px);
+  }
+
+  .chronik-entry__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--chronik-card-border);
+    background: #1a1410;
+  }
+
+  .layout-content .chronik-entry__media img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    filter: sepia(0.35) saturate(0.85) contrast(1.05) brightness(0.92);
+    transition:
+      filter 0.6s ease,
+      transform 0.8s ease;
+  }
+
+  .chronik-entry__media::after {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgb(13 23 21 / 0.55));
+    box-shadow: inset 0 0 0 1px rgb(255 230 180 / 0.12);
+    content: "";
+  }
+
+  .layout-content .chronik-entry__card:hover .chronik-entry__media img {
+    filter: sepia(0.05) saturate(1) contrast(1.05) brightness(1);
+    transform: scale(1.04);
+  }
+
+  .chronik-entry__placeholder {
+    display: grid;
+    height: 100%;
+    place-content: center;
+    justify-items: center;
+    gap: 0.4rem;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgb(229 138 8 / 0.28), transparent 60%),
+      repeating-linear-gradient(45deg, rgb(217 164 65 / 0.06) 0 1px, transparent 1px 12px), #14201d;
+    color: var(--chronik-gold);
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 20px var(--chronik-glow);
+  }
+
+  .chronik-entry__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 1.1rem 1.25rem 1.25rem;
+  }
+
+  .layout-content .chronik-entry__title {
+    margin: 0;
+    color: var(--chronik-ink);
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+  .chronik-entry__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .chronik-entry__badge {
+    margin: 0;
+    padding: 0.1rem 0.6rem;
+    border: 1px solid rgb(217 164 65 / 0.45);
+    border-radius: 9999px;
+    background: rgb(229 138 8 / 0.12);
+    color: var(--chronik-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  :root:not(.dark) .chronik-entry__badge,
+  :root:not(.dark) .layout-content .chronik-entry__year {
+    color: #9a5f08;
+  }
+
+  .chronik-entry__text {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: var(--chronik-muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .layout-content .chronik-entry__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(229 138 8 / 0.4);
+    text-underline-offset: 0.3em;
+  }
+
+  .chronik-entry__link > * {
+    transition: transform 0.25s ease;
+  }
+
+  .chronik-entry__card:hover .chronik-entry__link > :last-child {
+    transform: translateX(4px);
+  }
+
+  /* Desktop: Linie mittig, Karte und Jahr wechseln die Seite */
+  @media (min-width: 900px) {
+    .view-chronik-zeitstrahl .view-content::before {
+      left: calc(50% - 1px);
+    }
+
+    .layout-content .view-chronik-zeitstrahl .view-content {
+      gap: 0;
+    }
+
+    .layout-content .view-chronik-zeitstrahl .views-row + .views-row {
+      margin-top: -11rem;
+    }
+
+    .chronik-entry {
+      grid-template-columns: minmax(0, 1fr) 4rem minmax(0, 1fr);
+      align-items: center;
+      column-gap: 0;
+    }
+
+    .chronik-entry__marker {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    .chronik-entry__paw {
+      top: auto;
+      bottom: -1.75rem;
+      left: calc(50% - 1.75rem);
+    }
+
+    .layout-content .chronik-entry__year {
+      grid-row: 1;
+      grid-column: 3;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--chronik-gold);
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      text-shadow: 0 0 24px var(--chronik-glow);
+    }
+
+    .chronik-entry__card {
+      grid-row: 1;
+      grid-column: 1;
+      max-width: 30rem;
+      justify-self: end;
+      width: 100%;
+    }
+
+    .views-row:nth-child(even) .chronik-entry__card {
+      grid-column: 3;
+      justify-self: start;
+    }
+
+    .layout-content .views-row:nth-child(even) .chronik-entry__year {
+      grid-column: 1;
+      justify-self: end;
+    }
+
+    /* Verbindungsstrich vom Punkt zur Karte */
+    .chronik-entry::before {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      width: 2rem;
+      height: 1px;
+      background: linear-gradient(to left, var(--chronik-gold), transparent);
+      content: "";
+    }
+
+    .views-row:nth-child(even) .chronik-entry::before {
+      right: auto;
+      left: 50%;
+      background: linear-gradient(to right, var(--chronik-gold), transparent);
+    }
+  }
+
+  /* Liste aller Spielzeiten am Seitenende als Archiv-Kasten */
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > :last-child:has(> ul) {
+    max-width: 68rem;
+    margin-inline: auto;
+    padding: 1.75rem;
+    border: 1px solid var(--chronik-card-border);
+    border-radius: 0.9rem;
+    background: var(--chronik-card);
+    color: var(--chronik-ink);
+    backdrop-filter: blur(6px);
+  }
+
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > :last-child:has(> ul)::before {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--chronik-ink);
+    content: "Alle Spielzeiten auf einen Blick";
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+  }
+
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > :last-child > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .layout-content .region-content:has(.view-chronik-zeitstrahl) > :last-child > ul > li {
+    margin: 0;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgb(217 164 65 / 0.35);
+    border-radius: 9999px;
+    color: var(--chronik-muted);
+    font-size: 0.85rem;
+  }
+
+  /* Dekoratives Icon vor der Liste ausblenden */
+  .region-content:has(.view-chronik-zeitstrahl) > :has(+ :last-child > ul):not(:has(.view-chronik-zeitstrahl)) {
+    display: none;
+  }
+
+  /* Karten beim Scrollen sanft einblenden (nur wo unterstuetzt) */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .chronik-entry {
+        animation: chronik-reveal linear both;
+        animation-range: entry 0% entry 60%;
+        animation-timeline: view();
+      }
+    }
+  }
+
+  @keyframes chronik-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(2.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dark .region-content:has(.view-chronik-zeitstrahl)::after {
+      animation: none;
+    }
+
+    .chronik-entry__card,
+    .layout-content .chronik-entry__media img {
+      transition: none;
+    }
+  }
+}
