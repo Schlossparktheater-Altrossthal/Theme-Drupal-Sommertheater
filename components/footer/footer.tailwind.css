@@ -144,3 +144,42 @@
   width: 7.5rem;
   height: 3.75rem;
 }
+
+/* Credits-Zeile ganz unten: leise, Namen erst beim Hover als Link erkennbar */
+.site-footer__credits {
+  @apply pb-6 text-center text-xs text-muted-foreground/80;
+}
+
+.site-footer__credits a {
+  @apply text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:text-primary focus-visible:underline;
+}
+
+.site-footer__heart {
+  @apply inline-block text-primary;
+}
+
+.site-footer__credits:hover .site-footer__heart {
+  animation: site-footer-heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes site-footer-heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__credits:hover .site-footer__heart {
+    animation: none;
+  }
+}
