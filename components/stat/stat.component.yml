@@ -36,3 +36,33 @@ props:
       default: center
       examples:
         - center
+    api_url:
+      type: string
+      title: Wert aus dem Mitgliederbereich
+      description: Leer lassen für den festen Wert oben. Sonst wird der Wert aus dieser Schnittstelle übernommen; der feste Wert bleibt Rückfall.
+      default: ""
+      examples:
+        - https://app.sommertheater-altrossthal.de/api/public/kennzahlen
+    metric:
+      type: string
+      title: Kennzahl
+      enum:
+        - productions
+        - members
+        - departments
+        - performances
+        - since
+      meta:enum:
+        productions: Inszenierungen bisher
+        members: Mitwirkende der aktuellen Saison
+        departments: Gewerke der aktuellen Saison
+        performances: Vorstellungen der aktuellen Saison
+        since: Erstes Sommertheater (Jahr)
+      default: productions
+      examples:
+        - productions
+libraryOverrides:
+  js:
+    stat.js:
+      attributes:
+        type: module
