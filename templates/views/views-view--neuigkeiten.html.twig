@@ -2,7 +2,8 @@
 /**
  * @file
  * Neuigkeiten (Blog): auf der Seite /neuigkeiten mit eigenem Seitenkopf,
- * als Block (z. B. Startseite) nur die Karten. Styles in src/blog.css.
+ * als Block (Startseite) mit Überschrift und Link; ohne Beiträge rendert
+ * Drupal den Block gar nicht. Styles in src/blog.css.
  */
 #}
 {% extends 'views-view.html.twig' %}
@@ -12,6 +13,11 @@
       <h1 class="neuigkeiten-kopf__titel">{{ 'Neuigkeiten'|t }}</h1>
       <p class="neuigkeiten-kopf__text">{{ 'Was hinter den Kulissen passiert: Aufrufe, Probenluft und Geschichten aus dem Schlosspark.'|t }}</p>
     </header>
+  {% elseif rows %}
+    <div class="neuigkeiten-blockkopf">
+      <h2 class="neuigkeiten-blockkopf__titel">{{ 'Neuigkeiten'|t }}</h2>
+      <a href="/neuigkeiten" class="neuigkeiten-blockkopf__link">{{ 'Alle Neuigkeiten'|t }} →</a>
+    </div>
   {% endif %}
   {{ parent() }}
 {% endblock %}

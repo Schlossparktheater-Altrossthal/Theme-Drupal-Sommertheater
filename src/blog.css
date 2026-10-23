@@ -253,3 +253,37 @@
     border-radius: 0.75rem;
   }
 }
+
+@layer components {
+  .neuigkeiten-liste--block {
+    width: min(90%, 70rem);
+    margin-block: 4rem 0;
+  }
+
+  .neuigkeiten-blockkopf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .neuigkeiten-blockkopf__titel {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.875rem, 3vw, 2.25rem);
+    font-weight: 700;
+  }
+
+  .neuigkeiten-blockkopf__link {
+    margin-top: 1rem;
+    color: var(--blog-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .neuigkeiten-blockkopf__link:hover {
+    text-decoration: underline;
+  }
+}
