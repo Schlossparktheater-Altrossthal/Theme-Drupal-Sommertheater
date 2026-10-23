@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Beitrag als Karte in der Neuigkeiten-Liste (View "neuigkeiten").
+ *
+ * Bild oben (Platzhalter mit Funkeln, wenn keins gesetzt), darunter Datum,
+ * Titel und Kurztext; ohne Kurztext ein gekürzter Anfang des Textes.
+ */
+#}
+{% set media_entity = node.field_featured_image.entity %}
+{% set image_item = media_entity ? media_entity.field_media_image : null %}
+{% set image_uri = image_item and image_item.entity ? image_item.entity.uri.value : null %}
+{% set teaser = node.field_description.value|default(node.field_content.value ? node.field_content.value|striptags|trim : '') %}
+{% if (teaser|length) > 180 %}
+  {% set teaser = (teaser|slice(0, 180)|split(' ')|slice(0, -1)|join(' ')) ~ ' …' %}
+{% endif %}
+
+<article class="beitrag-karte">
+  <a href="{{ url }}" class="beitrag-karte__media" tabindex="-1" aria-hidden="true">
+    {% if image_uri %}
+      <img src="{{ file_url(image_uri) }}" alt="" width="{{ image_item.width }}" height="{{ image_item.height }}" loading="lazy" decoding="async" />
+    {% else %}
+      <span class="beitrag-karte__placeholder">
+        {{ include('@sommertheater/components/icon/icon.twig', { icon: 'sparkle', icon_size: 'medium' }, with_context: false) }}
+      </span>
+    {% endif %}
+  </a>
+  <div class="beitrag-karte__body">
+    <p class="beitrag-karte__datum">
+      <time datetime="{{ node.createdtime|date('c') }}">{{ node.createdtime|format_date('custom', 'j. F Y') }}</time>
+    </p>
+    <h2 class="beitrag-karte__titel"><a href="{{ url }}">{{ label }}</a></h2>
+    {% if teaser %}
+      <p class="beitrag-karte__text">{{ teaser }}</p>
+    {% endif %}
+    <span class="beitrag-karte__mehr" aria-hidden="true">
+      {{ 'Weiterlesen'|t }}
+      {{ include('@sommertheater/components/icon/icon.twig', { icon: 'arrow-right', icon_size: 'extra-small' }, with_context: false) }}
+    </span>
+  </div>
+</article>

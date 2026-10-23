@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import "./chronik.css";
+@import "./blog.css";
 @import "./mystic.css";
 @import "../components/sommertheater-hero/sommertheater-hero.css";
 @import "../components/countdown/countdown.css";

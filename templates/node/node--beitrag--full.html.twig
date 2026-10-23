@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Detailseite eines Beitrags (Neuigkeiten/Blog).
+ *
+ * Bühnen-Hero mit Titelbild, Datum als Eyebrow und Kurztext, darunter der
+ * Artikeltext in Lesebreite mit Kategorien und Link zurück zur Übersicht.
+ */
+#}
+{% set media_entity = node.field_featured_image.entity %}
+{% set image_item = media_entity ? media_entity.field_media_image : null %}
+{% set image_uri = image_item and image_item.entity ? image_item.entity.uri.value : null %}
+{% set hero_media = image_uri
+  ? {
+    src: file_url(image_uri),
+    alt: '',
+    width: image_item.width,
+    height: image_item.height
+  }
+  : null
+%}
+
+<article {{ attributes.addClass(['beitrag-detail']) }}>
+  {{
+    include(
+      'sommertheater:sommertheater-hero',
+      {
+        eyebrow: 'Neuigkeiten · @date'|t({
+          '@date': node.createdtime|format_date('custom', 'j. F Y')
+        }),
+        heading: label|render|striptags|trim,
+        text: node.field_description.value,
+        media: hero_media,
+        overlay: 'strong',
+        overlap_navbar: true
+      },
+      with_context: false
+    )
+  }}
+
+  <div class="mx-auto flex w-full max-w-3xl flex-col gap-10 py-14 md:py-20">
+    {% if node.field_content.value %}
+      <div class="beitrag-detail__text">
+        {{ node.field_content.processed }}
+      </div>
+    {% endif %}
+
+    {% if node.field_tags is not empty %}
+      <ul class="m-0 flex list-none flex-wrap gap-2 p-0" aria-label="{{ 'Kategorien'|t }}">
+        {% for tag in node.field_tags %}
+          {% if tag.entity %}
+            <li class="rounded-full border border-primary/40 px-3 py-1 font-sans text-xs font-semibold text-primary">{{ tag.entity.label }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="mx-auto flex w-full max-w-6xl justify-center border-t border-border/60 pt-10 pb-6">
+    <a
+      href="/neuigkeiten"
+      class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 font-sans text-sm font-semibold text-primary no-underline hover:bg-primary/10"
+    >
+      {{ include('@sommertheater/components/icon/icon.twig', { icon: 'caret-left', icon_size: 'extra-small' }, with_context: false) }}
+      {{ 'Alle Neuigkeiten'|t }}
+    </a>
+  </div>
+</article>

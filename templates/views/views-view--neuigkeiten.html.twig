@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Neuigkeiten (Blog): auf der Seite /neuigkeiten mit eigenem Seitenkopf,
+ * als Block (z. B. Startseite) nur die Karten. Styles in src/blog.css.
+ */
+#}
+{% extends 'views-view.html.twig' %}
+{% block view_content %}
+  {% if display_id == 'page_1' %}
+    <header class="neuigkeiten-kopf">
+      <h1 class="neuigkeiten-kopf__titel">{{ 'Neuigkeiten'|t }}</h1>
+      <p class="neuigkeiten-kopf__text">{{ 'Was hinter den Kulissen passiert: Aufrufe, Probenluft und Geschichten aus dem Schlosspark.'|t }}</p>
+    </header>
+  {% endif %}
+  {{ parent() }}
+{% endblock %}
