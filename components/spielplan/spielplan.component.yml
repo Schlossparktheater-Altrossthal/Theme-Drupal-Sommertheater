@@ -1,0 +1,54 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Spielplan
+group: Sommertheater
+status: stable
+description: Zeigt die Vorstellungstermine der nächsten Saison aus dem Mitgliederbereich, ohne Buchung. Den Stücktitel erst ab der Enthüllung.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: Spielplan
+    heading:
+      type: string
+      title: Überschrift
+      default: Unsere Vorstellungen
+      examples:
+        - Unsere Vorstellungen
+    intro:
+      type: string
+      title: Einleitung
+      default: ""
+    api_url:
+      type: string
+      title: Schnittstelle
+      default: https://app.sommertheater-altrossthal.de/api/public/saison
+      examples:
+        - https://app.sommertheater-altrossthal.de/api/public/saison
+    announce_reveal:
+      type: boolean
+      title: Enthüllungsdatum nennen
+      description: Vor der Enthüllung „Welches Stück wir spielen, verraten wir am …“ statt „… verraten wir bald“.
+      default: false
+      examples:
+        - false
+    default_location:
+      type: string
+      title: Ort, wenn keiner angegeben ist
+      default: Schlosspark Altroßthal
+    note:
+      type: string
+      title: Hinweis unter den Terminen
+      default: Der Vorverkauf startet bald – Karten gibt es dann hier.
+    empty_text:
+      type: string
+      title: Text ohne Termine
+      default: Der Spielplan für den nächsten Sommer steht noch nicht fest. Schau bald wieder vorbei!
+libraryOverrides:
+  js:
+    spielplan.js:
+      attributes:
+        type: module
