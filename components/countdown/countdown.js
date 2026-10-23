@@ -128,11 +128,11 @@ class Countdown extends ComponentInstance {
   }
 
   formatDate(timestamp) {
-    return new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeStyle: "short" }).format(new Date(timestamp));
+    return `${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", dateStyle: "long", timeStyle: "short" }).format(new Date(timestamp))} Uhr`;
   }
 
   formatDay(timestamp) {
-    return new Intl.DateTimeFormat("de-DE", { dateStyle: "long" }).format(new Date(timestamp));
+    return new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", dateStyle: "long" }).format(new Date(timestamp));
   }
 
   renderFinished() {
