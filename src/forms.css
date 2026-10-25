@@ -236,20 +236,4 @@
     font-size: 0.8rem;
     color: var(--muted-foreground);
   }
-
-  .webform-submission-form .form-actions .form-submit {
-    width: 100%;
-    padding: 0.85rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    box-shadow: 0 10px 30px -12px var(--mystic-glow);
-  }
-
-  @media (min-width: 640px) {
-    .webform-submission-form .form-actions .form-submit {
-      width: auto;
-      min-width: 12rem;
-    }
-  }
 }
