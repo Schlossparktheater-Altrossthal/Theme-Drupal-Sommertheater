@@ -1,0 +1,231 @@
+{% set fieldset = 'flex flex-col gap-2' %}
+{% set legend = 'mb-1 text-sm font-semibold' %}
+{% set chip =
+  'logo-generator--chip cursor-pointer rounded-full border border-border px-3 py-1 text-sm transition has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-primary-foreground has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary'
+%}
+{% set colors = [
+  {
+    value: '#171717',
+    label: 'Schwarz'
+  },
+  {
+    value: '#ffffff',
+    label: 'Weiß'
+  },
+  {
+    value: '#004D6B',
+    label: 'BSZ-Blau'
+  },
+  {
+    value: '#E84820',
+    label: 'Vorhangrot'
+  }
+] %}
+
+<div
+  class="logo-generator grid gap-6 rounded-2xl border border-border bg-card p-5 text-card-foreground shadow-sm md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:p-8"
+  data-base="{{ base_path|default('/themes/custom/sommertheater/downloads/design') }}"
+>
+  <div class="flex flex-col gap-4">
+    <div>
+      <h3 class="font-serif text-2xl font-semibold">{{ heading|default('Logo-Generator') }}</h3>
+      {% if text is not empty %}
+        <p class="mt-1 text-sm text-muted-foreground">
+          {{ text }}
+        </p>
+      {% endif %}
+    </div>
+    <div
+      class="logo-generator--stage flex aspect-square items-center justify-center rounded-xl border border-border p-4"
+      style="background-image: conic-gradient(#eee 25%, #fff 0 50%, #eee 0 75%, #fff 0); background-size: 24px 24px"
+    >
+      <div class="logo-generator--preview flex h-full w-full items-center justify-center [&>svg]:max-h-full [&>svg]:max-w-full" aria-live="polite">
+        <p class="text-sm text-muted-foreground">
+          Logo wird geladen …
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-end gap-3">
+      <label class="flex flex-col gap-1 text-sm">
+        <span class="font-semibold">PNG-Größe</span>
+        <select name="size" class="rounded-lg border border-border bg-background px-3 py-2">
+          <option value="256">
+            256 px
+          </option>
+          <option value="512">
+            512 px
+          </option>
+          <option value="1024" selected>
+            1024 px
+          </option>
+          <option value="2048">
+            2048 px
+          </option>
+          <option value="4096">
+            4096 px
+          </option>
+        </select>
+      </label>
+      <button type="button" class="logo-generator--svg rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">↓ SVG</button>
+      <button
+        type="button"
+        class="logo-generator--png rounded-full border border-border px-4 py-2 text-sm font-semibold hover:border-primary hover:text-primary"
+      >
+        ↓ PNG
+      </button>
+    </div>
+  </div>
+
+  <form class="logo-generator--form flex flex-col gap-5" onsubmit="return false">
+    <fieldset class="{{ fieldset }}">
+      <legend class="{{ legend }}">
+        Motiv
+      </legend>
+      <div class="flex flex-wrap gap-2">
+        {% for m in [
+          {
+            value: 'ring',
+            label: 'Logo mit Ring'
+          },
+          {
+            value: 'rahmen',
+            label: 'Logo ohne Ring'
+          },
+          {
+            value: 'katze',
+            label: 'Nur Katze'
+          },
+          {
+            value: 'kopf',
+            label: 'Nur Kopf'
+          },
+          {
+            value: 'symbol',
+            label: 'Symbol'
+          }
+        ] %}
+          <label class="{{ chip }}">
+            <input class="sr-only" type="radio" name="motif" value="{{ m.value }}" {{ loop.first ? 'checked' }} /> {{ m.label }}
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}" data-only="ring rahmen">
+      <legend class="{{ legend }}">
+        Farbe
+      </legend>
+      <div class="flex flex-wrap gap-2">
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="scheme" value="voll" checked />Vollfarbe</label>
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="scheme" value="ein" />Einfarbig</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}" data-only="ring" data-scheme="voll">
+      <legend class="{{ legend }}">
+        Ring
+      </legend>
+      <div class="flex flex-wrap gap-2">
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="ring" value="bunt" checked />Bunt</label>
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="ring" value="ein" />In Logofarbe</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}" data-only="ring rahmen">
+      <legend class="{{ legend }}">
+        Schwarzer Rahmen um die Bühne
+      </legend>
+      <div class="flex flex-wrap gap-2">
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="frame" value="1" checked />Mit Rahmen</label>
+        <label class="{{ chip }}"><input class="sr-only" type="radio" name="frame" value="0" />Ohne Rahmen</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}" data-ink>
+      <legend class="{{ legend }}">
+        Logofarbe
+      </legend>
+      <div class="flex flex-wrap items-center gap-2">
+        {% for c in colors %}
+          <label class="{{ chip }}">
+            <input class="sr-only" type="radio" name="ink" value="{{ c.value }}" {{ loop.first ? 'checked' }} /> <span
+              class="inline-block size-3 rounded-full border border-border align-middle"
+              style="background: {{ c.value }}"
+            >
+
+            </span> {{ c.label }}
+          </label>
+        {% endfor %}
+        <label class="{{ chip }}">
+          <input class="sr-only" type="radio" name="ink" value="custom" />Eigene<input
+            type="color"
+            name="ink_custom"
+            value="#7a1fa2"
+            class="ml-1 h-5 w-7 cursor-pointer align-middle"
+            aria-label="Eigene Logofarbe"
+          />
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}">
+      <legend class="{{ legend }}">
+        Hintergrund
+      </legend>
+      <div class="flex flex-wrap gap-2">
+        {% for b in [
+          {
+            value: 'none',
+            label: 'Transparent'
+          },
+          {
+            value: 'square',
+            label: 'Quadrat'
+          },
+          {
+            value: 'rounded',
+            label: 'Abgerundet'
+          },
+          {
+            value: 'circle',
+            label: 'Kreis'
+          }
+        ] %}
+          <label class="{{ chip }}">
+            <input class="sr-only" type="radio" name="bg" value="{{ b.value }}" {{ loop.first ? 'checked' }} /> {{ b.label }}
+          </label>
+        {% endfor %}
+      </div>
+      <div class="flex flex-wrap items-center gap-2" data-bg-color>
+        {% for c in colors %}
+          <label class="{{ chip }}">
+            <input class="sr-only" type="radio" name="paper" value="{{ c.value }}" {{ loop.index == 2 ? 'checked' }} /> <span
+              class="inline-block size-3 rounded-full border border-border align-middle"
+              style="background: {{ c.value }}"
+            >
+
+            </span> {{ c.label }}
+          </label>
+        {% endfor %}
+        <label class="{{ chip }}">
+          <input class="sr-only" type="radio" name="paper" value="custom" />Eigene<input
+            type="color"
+            name="paper_custom"
+            value="#f4ecd8"
+            class="ml-1 h-5 w-7 cursor-pointer align-middle"
+            aria-label="Eigene Hintergrundfarbe"
+          />
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="{{ fieldset }}">
+      <legend class="{{ legend }}">
+        Abstand zum Rand
+      </legend>
+      <input type="range" name="pad" min="0" max="30" value="6" class="w-full accent-primary" aria-label="Abstand zum Rand in Prozent" />
+    </fieldset>
+
+    <p class="logo-generator--hint text-xs text-muted-foreground"></p>
+  </form>
+</div>

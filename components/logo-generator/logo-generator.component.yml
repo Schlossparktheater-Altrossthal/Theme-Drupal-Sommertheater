@@ -1,0 +1,28 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Logo generator
+description: Build a custom logo variant in the browser (motif, colours, ring, frame, background, spacing) and download it as SVG or PNG.
+group: Interactive
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      default: Logo-Generator
+      examples:
+        - Logo-Generator
+    text:
+      type: string
+      title: Text
+      examples:
+        - Stell dir dein Logo zusammen und lade es als SVG oder PNG herunter.
+    base_path:
+      type: string
+      title: Path to the logo source files
+      description: Folder with sommertheater-logo-vollfarbe.svg, sommertheater-katze-schwarz.svg, sommertheater-katze-kopf-schwarz.svg and sommertheater-symbol-schwarz.svg
+      default: /themes/custom/sommertheater/downloads/design
+      examples:
+        - /themes/custom/sommertheater/downloads/design
+libraryOverrides:
+  js:
+    logo-generator.js: { attributes: { type: module } }

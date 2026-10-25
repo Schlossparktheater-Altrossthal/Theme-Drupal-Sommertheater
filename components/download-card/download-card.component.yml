@@ -66,3 +66,6 @@ props:
       type: string
       title: Link 4 URL
       format: uri-reference
+libraryOverrides:
+  js:
+    download-card.js: { attributes: { type: module } }
