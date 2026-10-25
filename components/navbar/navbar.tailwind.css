@@ -14,7 +14,7 @@
  * Schließen animiert werden; visibility schaltet beim Schließen erst nach
  * der Animation um. Der Schatten mit großem Spread dunkelt die Seite ab.
  */
-@media (width < 48rem) {
+@media (width < 80rem) {
   .navbar--menu {
     @apply left-auto! w-[min(85vw,24rem)]! rounded-l-2xl border-l border-foreground/15 bg-background/95! pt-2! backdrop-blur-md;
     box-shadow: 0 0 0 100vmax rgb(0 0 0 / 0);
@@ -100,7 +100,7 @@
   }
 }
 
-@media (width < 48rem) and (prefers-reduced-motion: reduce) {
+@media (width < 80rem) and (prefers-reduced-motion: reduce) {
   .navbar--menu,
   .navbar--menu *,
   .navbar--menu.navbar--menu--open {
@@ -134,20 +134,20 @@ body[data-overlapping-hero="1"] .navbar:not(.navbar--scrolled) {
 }
 
 .navbar--dropdown-menu a {
-  @apply relative rounded-none border-b border-transparent text-foreground transition-colors hover:border-primary hover:bg-transparent hover:text-primary focus:border-primary focus:bg-transparent focus:text-primary md:min-h-auto;
+  @apply relative rounded-none border-b border-transparent text-foreground transition-colors hover:border-primary hover:bg-transparent hover:text-primary focus:border-primary focus:bg-transparent focus:text-primary xl:min-h-auto;
 }
 
 /* Child component styling that can't be moved to Twig */
 .navbar--links .button.button {
-  @apply mx-8 w-[calc(100%-var(--spacing)*16)] md:m-auto md:w-auto;
+  @apply mx-8 w-[calc(100%-var(--spacing)*16)] xl:m-auto xl:w-auto;
 }
 
 .navbar--dropdown-menu .dropdown-menu {
-  @apply w-full md:w-auto;
+  @apply w-full xl:w-auto;
 }
 
 .navbar--dropdown-menu-wrapper > :last-child {
-  @apply pb-24 md:pb-0;
+  @apply pb-24 xl:pb-0;
 }
 
 /* External region styling */
@@ -161,7 +161,7 @@ body[data-overlapping-hero="1"] .navbar:not(.navbar--scrolled) {
 .navbar--logo,
 .navbar--modal-logo {
   .branding {
-    @apply h-8 md:h-10;
+    @apply h-8 xl:h-10;
     svg,
     img[src$=".svg"] {
       @apply h-auto! max-h-full;
@@ -214,7 +214,7 @@ header.header--scrolled .region-header__bar::before {
 
 /* CTA in der Leiste: schmaler Outline-Button statt Farbfläche. */
 .navbar--links > a:not(.navbar--member) {
-  @apply mx-6 mb-2 rounded-full! border! border-primary/70! bg-transparent! px-4! py-1.5! text-primary! shadow-none! hover:bg-primary/10! md:m-0;
+  @apply mx-6 mb-2 rounded-full! border! border-primary/70! bg-transparent! px-4! py-1.5! text-primary! shadow-none! hover:bg-primary/10! xl:m-0;
 }
 
 .region-header .navbar--hamburger {
@@ -223,5 +223,5 @@ header.header--scrolled .region-header__bar::before {
 
 /* Unterseiten ohne Hero: Abstand zwischen Leiste und Inhalt. */
 body:not([data-overlapping-hero="1"]) .layout-container > header[role="banner"] {
-  @apply pb-6 md:pb-8;
+  @apply pb-6 xl:pb-8;
 }
