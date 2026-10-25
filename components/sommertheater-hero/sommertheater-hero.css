@@ -229,6 +229,22 @@
   outline-offset: 3px;
 }
 
+/* Zweiter Button: Glas statt Vollfarbe, damit der erste führt. */
+.sommertheater-hero-component__cta--secondary {
+  border-color: rgb(255 255 255 / 0.55);
+  background: rgb(13 23 21 / 0.35);
+  color: #fff;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+.sommertheater-hero-component__cta--secondary:hover,
+.sommertheater-hero-component__cta--secondary:focus-visible {
+  border-color: var(--primary);
+  background: rgb(13 23 21 / 0.55);
+  box-shadow: none;
+}
+
 @media (min-width: 768px) {
   .sommertheater-hero-component__content {
     gap: 2rem;

@@ -71,6 +71,12 @@
           <span>{{ cta_label }}</span>
           <span aria-hidden="true">&#8594;</span>
         </a>
+        {% if cta2_label and cta2_url %}
+          <a class="sommertheater-hero-component__cta sommertheater-hero-component__cta--secondary" href="{{ cta2_url }}">
+            <span>{{ cta2_label }}</span>
+            <span aria-hidden="true">&#8594;</span>
+          </a>
+        {% endif %}
       </div>
     {% endif %}
   </div>

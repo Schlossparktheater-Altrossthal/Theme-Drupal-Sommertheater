@@ -30,6 +30,14 @@ props:
       title: CTA link
       format: uri-reference
       default: /chronik
+    cta2_label:
+      type: string
+      title: Zweiter Button (Text)
+      description: Optional, leer lassen für nur einen Button.
+    cta2_url:
+      type: string
+      title: Zweiter Button (Link)
+      format: uri-reference
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Background image
