@@ -180,6 +180,10 @@ final class ThemeHooks {
       $variables['rendered_by_canvas'] = FALSE;
     }
 
+    // Webform-Seiten haben keinen Canvas-Seitenkopf: Titel selbst ausgeben.
+    $webform = $route_name === 'entity.webform.canonical' ? $this->routeMatch->getParameter('webform') : NULL;
+    $variables['webform_title'] = $webform?->label();
+
     $variables['#cache']['contexts'][] = 'route';
   }
 

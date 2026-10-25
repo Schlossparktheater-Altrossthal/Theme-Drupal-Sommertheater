@@ -1,0 +1,255 @@
+/*
+ * Webformulare (Kontakt, Ehemalige, Umfragen): Seitenkopf wie Neuigkeiten,
+ * Formular als Glaskarte mit schmaler Lesebreite, eigene Checkboxen/Radios
+ * in Gold, Auswahlfelder als Kacheln. Utilities-Layer, damit die Regeln die
+ * Grundformulare aus main.css uebersteuern.
+ */
+@layer utilities {
+  .formular-kopf {
+    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .layout-content .formular-kopf__titel {
+    margin: 1.5rem 0 0;
+    font-size: clamp(2.25rem, 7vw, 4.25rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.05;
+    text-shadow: 0 0 40px var(--mystic-glow);
+    text-transform: uppercase;
+  }
+
+  .formular-kopf__titel::after {
+    display: block;
+    width: min(16rem, 70%);
+    height: 1px;
+    margin: 1.1rem auto 0;
+    background: linear-gradient(to right, transparent, var(--mystic-gold), transparent);
+    content: "";
+  }
+
+  .layout-content > .region-content:has(> .webform-submission-form, > .webform-confirmation) {
+    width: min(100% - 1.5rem, 46rem);
+    padding-bottom: 4rem;
+  }
+
+  .webform-submission-form,
+  .webform-confirmation {
+    gap: 1.75rem;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid var(--mystic-glass-border);
+    border-radius: 1.25rem;
+    background-color: var(--mystic-glass);
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.04) inset,
+      0 20px 50px -25px var(--mystic-glow);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Einleitungstext */
+  .webform-submission-form .form-type-webform-markup {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+
+  /* Titel steht im Seitenkopf, nicht doppelt im Einleitungstext */
+  .layout-content:has(.formular-kopf) .form-type-webform-markup h1 {
+    display: none;
+  }
+
+  /* Gruppen (z. B. Bewertungsfragen) mit etwas Luft zwischen den Fragen */
+  .webform-submission-form .webform-type-fieldset .fieldset-wrapper {
+    gap: 1.5rem;
+  }
+
+  .webform-submission-form label:not(.option),
+  .webform-submission-form .fieldset-legend {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .webform-submission-form :is(input[type="text"], input[type="email"], input[type="tel"], textarea, select) {
+    border-color: var(--mystic-glass-border);
+    border-radius: 0.75rem;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+
+  .webform-submission-form :is(input[type="text"], input[type="email"], input[type="tel"], textarea):hover {
+    border-color: var(--mystic-gold);
+  }
+
+  /* Eigene Checkboxen und Radios */
+  .webform-submission-form :is(input[type="checkbox"], input[type="radio"]) {
+    appearance: none;
+    display: grid;
+    flex: 0 0 auto;
+    place-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.15rem 0 0;
+    border: 1.5px solid var(--mystic-gold);
+    border-radius: 0.35rem;
+    background: var(--background);
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      box-shadow 0.15s;
+  }
+
+  .webform-submission-form input[type="radio"] {
+    border-radius: 9999px;
+  }
+
+  .webform-submission-form input[type="checkbox"]::before {
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--primary-foreground);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    content: "";
+    transform: scale(0);
+    transition: transform 0.12s;
+  }
+
+  .webform-submission-form input[type="radio"]::before {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: var(--primary-foreground);
+    content: "";
+    transform: scale(0);
+    transition: transform 0.12s;
+  }
+
+  .webform-submission-form :is(input[type="checkbox"], input[type="radio"]):checked {
+    border-color: var(--primary);
+    background: var(--primary);
+  }
+
+  .webform-submission-form :is(input[type="checkbox"], input[type="radio"]):checked::before {
+    transform: scale(1);
+  }
+
+  .webform-submission-form :is(input[type="checkbox"], input[type="radio"]):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--mystic-glow);
+  }
+
+  /* Einzelne Checkbox: Kasten links, Text daneben (kein Umbruch darunter) */
+  .webform-submission-form :is(.webform-type-checkbox, .webform-type-radio).form-item {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .webform-submission-form :is(.webform-type-checkbox, .webform-type-radio) label {
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  /* Optionen als Kacheln (Mehrfachauswahl, Bewertungsskalen) */
+  .webform-submission-form .webform-options-display-one-column {
+    gap: 0.5rem;
+  }
+
+  .webform-submission-form :is(.form-checkboxes, .form-radios, .js-webform-radios, .js-webform-checkboxes) > .form-item {
+    align-items: center;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--mystic-glass-border);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--background) 55%, transparent);
+    transition:
+      border-color 0.15s,
+      background-color 0.15s;
+  }
+
+  .webform-submission-form :is(.form-checkboxes, .form-radios, .js-webform-radios, .js-webform-checkboxes) > .form-item:hover {
+    border-color: var(--mystic-gold);
+  }
+
+  .webform-submission-form :is(.form-checkboxes, .form-radios, .js-webform-radios, .js-webform-checkboxes) > .form-item:has(input:checked) {
+    border-color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+
+  .webform-submission-form :is(.form-checkboxes, .form-radios, .js-webform-radios, .js-webform-checkboxes) > .form-item label {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .webform-submission-form .webform-options-display-side-by-side {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .webform-submission-form .webform-options-display-side-by-side > .form-item {
+    display: flex !important;
+    flex-direction: row;
+    gap: 0.6rem;
+    margin: 0 !important;
+    flex: 1 1 8rem;
+  }
+
+  /* Einwilligungen am Ende optisch absetzen */
+  .webform-submission-form .form-item-kontakt-erlaubt,
+  .webform-submission-form .form-item-datenschutz {
+    font-size: 0.9rem;
+  }
+
+  .webform-submission-form .form-item-kontakt-erlaubt {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--mystic-glass-border);
+  }
+
+  .webform-submission-form .form-item-datenschutz a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Captcha */
+  .webform-submission-form .captcha {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 0;
+  }
+
+  .webform-submission-form .captcha .fieldset-legend {
+    display: none;
+  }
+
+  .webform-submission-form .frc-captcha {
+    max-width: 100%;
+    border-color: var(--mystic-glass-border) !important;
+    border-radius: 0.75rem;
+  }
+
+  .webform-submission-form .captcha .description {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+  }
+
+  .webform-submission-form .form-actions .form-submit {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 10px 30px -12px var(--mystic-glow);
+  }
+
+  @media (min-width: 640px) {
+    .webform-submission-form .form-actions .form-submit {
+      width: auto;
+      min-width: 12rem;
+    }
+  }
+}

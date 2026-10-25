@@ -72,6 +72,11 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
+      {% if webform_title %}
+        <header class="formular-kopf">
+          <h1 class="formular-kopf__titel">{{ webform_title }}</h1>
+        </header>
+      {% endif %}
       {{ page.content }}
     </div>
     {# /.layout-content #}
