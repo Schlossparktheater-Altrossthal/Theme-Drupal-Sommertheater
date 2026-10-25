@@ -44,7 +44,29 @@ class Navbar extends ComponentInstance {
     this.onWindowScroll();
     window.addEventListener("scroll", this.onWindowScroll, { passive: true });
 
+    // Volle Leiste nur, wenn sie hineinpasst – sonst Hamburger. Gemessen wird
+    // statt eines festen Breakpoints, weil die Breite vom Menü abhängt.
+    this.bar = this.el.closest(".region-header__bar") || this.el;
+    this.onResize = () => {
+      cancelAnimationFrame(this.fitFrame);
+      this.fitFrame = requestAnimationFrame(() => this.fit());
+    };
+    this.fit();
+    window.addEventListener("resize", this.onResize);
+    document.fonts?.ready.then(this.onResize);
+
     this.showMemberAvatar();
+  }
+
+  fit() {
+    const wasWide = this.el.classList.contains("navbar--wide");
+    // Ohne Transitions messen, sonst zählt der Einblend-Versatz der Schublade mit.
+    this.el.classList.add("navbar--measuring", "navbar--wide");
+    const overflows = [this.bar, this.el, this.menu].some((node) => node.scrollWidth > node.clientWidth + 1);
+    this.el.classList.toggle("navbar--wide", !overflows);
+    void this.el.offsetWidth;
+    this.el.classList.remove("navbar--measuring");
+    if (!overflows && !wasWide && this.isOpen) this.isOpen = false;
   }
 
   // Ein CTA, der auf die Login-Seite des Mitgliederbereichs zeigt, wird für
@@ -89,9 +111,11 @@ class Navbar extends ComponentInstance {
     }
 
     link.replaceWith(avatar);
+    this.fit();
   }
 
   remove() {
+    window.removeEventListener("resize", this.onResize);
     window.removeEventListener("scroll", this.onWindowScroll);
     document.removeEventListener("click", this.onDocumentClick);
     document.removeEventListener("keydown", this.onKeydown);

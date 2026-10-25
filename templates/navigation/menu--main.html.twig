@@ -23,7 +23,7 @@
 {% do attributes.addClass(classes) %}
 
 <nav {{ attributes }} aria-label="{{ menu_label }}">
-  <ul class="flex flex-col gap-1 p-0 font-body xl:w-auto xl:flex-row" data-level="1">
+  <ul class="flex flex-col gap-1 p-0 font-body nav-wide:w-auto nav-wide:flex-row" data-level="1">
     {% for item in items %}
       {% set title = item.title is not empty ? item.title : item.text %}
       {# Capture the rendered URL before testing it for emptiness, since it's a Drupal object under the hood.
@@ -35,8 +35,8 @@
       {% set item_classes =
         [
           item.in_active_trail ? 'menu-item--active-trail' : '',
-          'flex flex-wrap justify-between xl:flex-nowrap',
-          'xl:w-auto xl:relative xl:max-w-[375px]',
+          'flex flex-wrap justify-between nav-wide:flex-nowrap',
+          'nav-wide:w-auto nav-wide:relative nav-wide:max-w-[375px]',
           'text-base rounded-md'
         ]|filter(c => c is not empty)
       %}
@@ -48,7 +48,7 @@
         {% if url is not empty %}
           <a
             href="{{ url }}"
-            class="flex min-h-[44px] shrink-1 grow-1 basis-0 items-center gap-1 rounded-md p-2 whitespace-nowrap duration-300 xl:min-h-auto xl:px-3"
+            class="flex min-h-[44px] shrink-1 grow-1 basis-0 items-center gap-1 rounded-md p-2 whitespace-nowrap duration-300 xl:px-3 nav-wide:min-h-auto"
             data-level="1"
           >
             {{ title }}

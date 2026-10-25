@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Volle Menüleiste, sobald sie hineinpasst (misst navbar.js, kein fester Breakpoint). */
+@custom-variant nav-wide (&:where(.navbar--wide, .navbar--wide *));
+
 @import "./chronik.css";
 @import "./blog.css";
 @import "./mystic.css";

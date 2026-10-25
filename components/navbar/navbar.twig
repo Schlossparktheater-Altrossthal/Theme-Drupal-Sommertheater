@@ -1,11 +1,16 @@
 {% set dropdown_menu =
   html_cva(
-    base: ['navbar--dropdown-menu', 'flex flex-col items-stretch justify-start gap-2 xl:flex-row', 'max-h-full', 'overflow-auto xl:overflow-visible'],
+    base: [
+      'navbar--dropdown-menu',
+      'flex flex-col items-stretch justify-start gap-2 nav-wide:flex-row',
+      'max-h-full',
+      'overflow-auto nav-wide:overflow-visible'
+    ],
     variants: {
       menuAlign: {
-        left: 'xl:justify-start',
-        center: 'xl:justify-center',
-        right: 'xl:justify-end'
+        left: 'nav-wide:justify-start',
+        center: 'nav-wide:justify-center',
+        right: 'nav-wide:justify-end'
       }
     }
   )
@@ -17,27 +22,27 @@
   })
 %}
 
-<div class="navbar relative z-[500] container mx-auto flex justify-between p-2 px-4 xl:py-4">
-  <div class="navbar--logo self-center [&>div]:flex [&>div]:flex-col [&>div]:justify-center">
+<div class="navbar relative z-[500] container mx-auto flex justify-between p-2 px-4 nav-wide:py-4">
+  <div class="navbar--logo self-center whitespace-nowrap [&>div]:flex [&>div]:flex-col [&>div]:justify-center">
     {% block logo %}
       {{ include('@sommertheater/templates/block/block--system-branding-block.html.twig') }}
     {% endblock %}
   </div>
 
   <div
-    class="navbar--menu fixed inset-0 top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px))] grid shrink-1 grow-1 grid-cols-[1fr] grid-rows-[auto_1fr_auto] flex-col items-stretch justify-start bg-background pb-8 xl:static xl:flex xl:h-auto xl:flex-row xl:items-center xl:bg-transparent xl:pb-0"
+    class="navbar--menu fixed inset-0 top-[calc(var(--drupal-displace-offset-top,0px)+var(--gin-toolbar-height,0px))] grid shrink-1 grow-1 grid-cols-[1fr] grid-rows-[auto_1fr_auto] flex-col items-stretch justify-start bg-background pb-8 nav-wide:static nav-wide:flex nav-wide:h-auto nav-wide:flex-row nav-wide:items-center nav-wide:bg-transparent nav-wide:pb-0"
   >
     <div
-      class="navbar--modal-top relative z-[500] col-span-1 col-start-1 row-span-1 row-start-1 container mx-auto flex w-full justify-between p-2 xl:hidden"
+      class="navbar--modal-top relative z-[500] col-span-1 col-start-1 row-span-1 row-start-1 container mx-auto flex w-full justify-between p-2 nav-wide:hidden"
     >
       <div
-        class="navbar--modal-logo flex min-h-[44px] flex-1 flex-col items-start justify-center xl:hidden [&>div]:flex [&>div]:flex-col [&>div]:justify-center"
+        class="navbar--modal-logo flex min-h-[44px] flex-1 flex-col items-start justify-center nav-wide:hidden [&>div]:flex [&>div]:flex-col [&>div]:justify-center"
       >
         {{ block('logo') }}
       </div>
 
       <button
-        class="navbar--hide-menu flex h-[44px] w-[44px] flex-0 cursor-pointer items-center justify-center p-2 xl:hidden"
+        class="navbar--hide-menu flex h-[44px] w-[44px] flex-0 cursor-pointer items-center justify-center p-2 nav-wide:hidden"
         aria-label="{{ 'Hide menu'|t }}"
       >
         {{
@@ -53,7 +58,7 @@
     </div>
 
     <div
-      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 container mx-auto min-h-0 w-full flex-1 p-2 px-4 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-background after:content-[''] xl:p-0 xl:after:content-none"
+      class="navbar--dropdown-menu-wrapper relative col-span-1 col-start-1 row-span-1 row-start-2 container mx-auto min-h-0 w-full flex-1 p-2 px-4 after:pointer-events-none after:absolute after:bottom-0 after:z-3 after:h-24 after:w-full after:bg-linear-to-b after:from-transparent after:to-background after:content-[''] nav-wide:p-0 nav-wide:after:content-none"
     >
       <div class="{{ dropdown_menu_classes }}">
         {% block navigation %}
@@ -63,7 +68,7 @@
     </div>
 
     <div
-      class="navbar--links col-span-1 col-start-1 row-span-1 row-start-3 ml-auto flex w-full flex-initial shrink-0 grow-0 flex-col justify-end gap-2 xl:w-auto xl:flex-row"
+      class="navbar--links col-span-1 col-start-1 row-span-1 row-start-3 ml-auto flex w-full flex-initial shrink-0 grow-0 flex-col justify-end gap-2 nav-wide:w-auto nav-wide:flex-row"
     >
       {% block links %}
 
@@ -71,7 +76,7 @@
     </div>
   </div>
 
-  <div class="navbar--hamburger-container flex min-h-[44px] min-w-[44px] shrink-0 grow-0 items-center justify-center xl:hidden">
+  <div class="navbar--hamburger-container flex min-h-[44px] min-w-[44px] shrink-0 grow-0 items-center justify-center nav-wide:hidden">
     <button class="navbar--hamburger flex items-center justify-center" aria-label="{{ 'Show menu'|t }}">
       {{
         include(
