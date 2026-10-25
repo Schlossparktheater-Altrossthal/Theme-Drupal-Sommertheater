@@ -4,7 +4,7 @@ import { ComponentType, ComponentInstance } from "../../lib/component.js";
 // Alle Teile stammen aus den Logo-Dateien (Mitgliederbereich docs/logo/skripte/export_web.py).
 
 // Bump when the logo files change – Cloudflare caches downloads/design for 30 days.
-const VERSION = "2026-10-25g";
+const VERSION = "2026-10-25h";
 
 const RING = ["#FFDD00", "#C7A100", "#744A27", "#015824", "#09783A", "#004D6B"];
 const STAGE_INK = ["#171717", "#E84820", "#3C1B00"];
@@ -121,6 +121,10 @@ const PRESETS = [
       bg_color: "#004D6B",
     },
   ],
+  // App-Icon wie im Mitgliederbereich (docs/logo/skripte/app_icons.py): volles Logo, Katze 1,25×, weißes Quadrat.
+  ["App-Icon", { size: 125, bg: "square", bg_color: "#ffffff", pad: 5 }],
+  // Android „maskable“: alles in der sicheren Zone (Kreis 80 % der Kante).
+  ["App-Icon Android", { size: 125, bg: "square", bg_color: "#ffffff", pad: 11 }],
   ["Katze im Ring", { stage: "off", frame: "off", size: 130 }],
   ["Kopf im Rahmen", { motif: "kopf", stage: "off", ring: "off", inner: "color", inner_color: "#E84820", size: 110 }],
   ["Katze allein", { stage: "off", frame: "off", ring: "off" }],
