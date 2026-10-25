@@ -31,16 +31,16 @@
     </div>
   {% endif %}
   <div class="flex flex-1 flex-col gap-3 p-5">
-    <h3 class="font-serif text-xl font-semibold">{{ heading }}</h3>
+    <h3 class="font-serif text-xl font-semibold break-words hyphens-auto">{{ heading }}</h3>
     {% if text is not empty %}
       <p class="text-sm text-muted-foreground">
         {{ text }}
       </p>
     {% endif %}
-    <ul class="mt-auto flex flex-wrap gap-2 pt-2">
+    <ul class="mt-auto flex flex-wrap gap-2 pt-2" style="list-style: none; padding-left: 0; margin: 0">
       {% for link in links %}
         {% if link.url is not empty %}
-          <li>
+          <li style="list-style: none; margin: 0">
             <a
               href="{{ link.url }}"
               download
