@@ -1,0 +1,68 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Download card
+description: Preview image (by URL) with a heading, short text and up to four download links, e.g. for logo files on a design page.
+group: Card
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples:
+        - Logo Vollfarbe
+    text:
+      type: string
+      title: Text
+      examples:
+        - Für Druck und Web auf hellem Grund.
+    preview:
+      type: string
+      title: Preview image URL
+      description: Path or URL of the preview image, e.g. /themes/custom/sommertheater/downloads/design/sommertheater-logo-vollfarbe.svg
+      format: uri-reference
+      examples:
+        - /themes/custom/sommertheater/downloads/design/sommertheater-logo-vollfarbe.svg
+    preview_background:
+      type: string
+      title: Preview background
+      enum:
+        - light
+        - dark
+        - muted
+      meta:enum:
+        light: Light
+        dark: Dark
+        muted: Muted
+      default: light
+    link1_label:
+      type: string
+      title: Link 1 label
+      examples:
+        - SVG
+    link1_url:
+      type: string
+      title: Link 1 URL
+      format: uri-reference
+    link2_label:
+      type: string
+      title: Link 2 label
+    link2_url:
+      type: string
+      title: Link 2 URL
+      format: uri-reference
+    link3_label:
+      type: string
+      title: Link 3 label
+    link3_url:
+      type: string
+      title: Link 3 URL
+      format: uri-reference
+    link4_label:
+      type: string
+      title: Link 4 label
+    link4_url:
+      type: string
+      title: Link 4 URL
+      format: uri-reference

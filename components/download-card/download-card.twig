@@ -1,0 +1,56 @@
+{% set preview_classes = {
+  light: 'bg-white',
+  dark: 'bg-neutral-900',
+  muted: 'bg-muted'
+} %}
+{% set links = [
+  {
+    label: link1_label,
+    url: link1_url
+  },
+  {
+    label: link2_label,
+    url: link2_url
+  },
+  {
+    label: link3_label,
+    url: link3_url
+  },
+  {
+    label: link4_label,
+    url: link4_url
+  }
+] %}
+
+<article
+  class="download-card flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm md:rounded-2xl"
+>
+  {% if preview is not empty %}
+    <div class="{{ preview_classes[preview_background|default('light')] ?? 'bg-white' }} flex aspect-square items-center justify-center p-8">
+      <img src="{{ preview }}" alt="{{ heading }}" class="max-h-full max-w-full object-contain" loading="lazy" />
+    </div>
+  {% endif %}
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <h3 class="font-serif text-xl font-semibold">{{ heading }}</h3>
+    {% if text is not empty %}
+      <p class="text-sm text-muted-foreground">
+        {{ text }}
+      </p>
+    {% endif %}
+    <ul class="mt-auto flex flex-wrap gap-2 pt-2">
+      {% for link in links %}
+        {% if link.url is not empty %}
+          <li>
+            <a
+              href="{{ link.url }}"
+              download
+              class="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-sm font-medium transition hover:border-primary hover:text-primary"
+            >
+              <span aria-hidden="true">↓</span> {{ link.label|default('Download') }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</article>
