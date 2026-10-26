@@ -1,9 +1,9 @@
 import { ComponentType, ComponentInstance } from "../../lib/component.js";
 
 // Logo-Baukasten: Ring, Rahmen, Bühne, Innenfläche und Motiv sind unabhängige Ebenen.
-// Alle Teile stammen aus den Logo-Dateien (Mitgliederbereich docs/logo/skripte/export_web.py).
+// Alle Teile stammen aus den Logo-Dateien (Repo Schlossparktheater-Altrossthal/Logo, skripte/export_web.py).
 
-// Bump when the logo files change – Cloudflare caches downloads/design for 30 days.
+// Cloudflare caches downloads/design for 30 days. Wird beim Ausrollen aus dem Repo Logo automatisch gesetzt.
 const VERSION = "2026-10-25h";
 
 const RING = ["#FFDD00", "#C7A100", "#744A27", "#015824", "#09783A", "#004D6B"];
@@ -121,7 +121,7 @@ const PRESETS = [
       bg_color: "#004D6B",
     },
   ],
-  // App-Icon wie im Mitgliederbereich (docs/logo/skripte/app_icons.py): volles Logo, Katze 1,25×, weißes Quadrat.
+  // App-Icon wie im Mitgliederbereich (Repo Logo, skripte/app_icons.py): volles Logo, Katze 1,25×, weißes Quadrat.
   ["App-Icon", { size: 125, bg: "square", bg_color: "#ffffff", pad: 5 }],
   // Android „maskable“: alles in der sicheren Zone (Kreis 80 % der Kante).
   ["App-Icon Android", { size: 125, bg: "square", bg_color: "#ffffff", pad: 11 }],
