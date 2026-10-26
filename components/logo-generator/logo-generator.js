@@ -26,7 +26,7 @@ const FILES = {
 const COLORS = [
   [FARBE.schwarz, "Schwarz"],
   ["#ffffff", "Weiß"],
-  [FARBE.blau, "BSZ-Blau"],
+  [FARBE.blau, "Blau"],
   [FARBE.vorhangrot, "Vorhangrot"],
   [FARBE.faltenrot, "Faltenrot"],
   [FARBE.boden, "Boden"],
