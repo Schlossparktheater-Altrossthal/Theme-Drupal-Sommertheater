@@ -6,9 +6,13 @@ import { ComponentType, ComponentInstance } from "../../lib/component.js";
 // Cloudflare caches downloads/design for 30 days. Wird beim Ausrollen aus dem Repo Logo automatisch gesetzt.
 const VERSION = "logo-fb935dbb";
 
-const RING = ["#FFDD00", "#C7A100", "#744A27", "#015824", "#09783A", "#004D6B"];
-const STAGE_INK = ["#171717", "#E84820", "#3C1B00"];
-const STAGE_PAPER = ["#fff", "#A00A0A", "#D2924D"];
+// FARBEN-ANFANG – wird beim Ausrollen aus dem Repo Logo (farben.json) gesetzt, nicht von Hand ändern
+const FARBE = {"schwarz":"#171717","gelb":"#FFDD00","ocker":"#C7A100","braun":"#744A27","dunkelgruen":"#015824","gruen":"#09783A","blau":"#004D6B","vorhangrot":"#E84820","faltenrot":"#A00A0A","boden":"#D2924D","fuge":"#3C1B00","weiss":"#FFFFFF"};
+// FARBEN-ENDE
+
+const RING = [FARBE.gelb, FARBE.ocker, FARBE.braun, FARBE.dunkelgruen, FARBE.gruen, FARBE.blau];
+const STAGE_INK = [FARBE.schwarz, FARBE.vorhangrot, FARBE.fuge];
+const STAGE_PAPER = ["#fff", FARBE.faltenrot, FARBE.boden];
 const C = 512;
 const R_STAGE = 343; // Bühnenkreis (0,750 R + 1)
 const UNIT = 4.56; // 1 % des Ringradius im 1024er-Raster
@@ -20,12 +24,12 @@ const FILES = {
 };
 
 const COLORS = [
-  ["#171717", "Schwarz"],
+  [FARBE.schwarz, "Schwarz"],
   ["#ffffff", "Weiß"],
-  ["#004D6B", "BSZ-Blau"],
-  ["#E84820", "Vorhangrot"],
-  ["#A00A0A", "Faltenrot"],
-  ["#D2924D", "Boden"],
+  [FARBE.blau, "BSZ-Blau"],
+  [FARBE.vorhangrot, "Vorhangrot"],
+  [FARBE.faltenrot, "Faltenrot"],
+  [FARBE.boden, "Boden"],
 ];
 
 // Formularaufbau: [name, Überschrift, Optionen | "color" | [min, max], Standard, sichtbar wenn]
@@ -41,7 +45,7 @@ const FIELDS = [
     ],
     "katze",
   ],
-  ["motif_color", "Farbe des Motivs", "color", "#171717", (o) => o.motif !== "none"],
+  ["motif_color", "Farbe des Motivs", "color", FARBE.schwarz, (o) => o.motif !== "none"],
   ["size", "Größe des Motivs", [30, 250], 100, (o) => o.motif !== "none"],
   ["dx", "Motiv waagerecht verschieben", [-60, 60], 0, (o) => o.motif !== "none"],
   ["dy", "Motiv senkrecht verschieben", [-60, 60], 0, (o) => o.motif !== "none"],
@@ -55,7 +59,7 @@ const FIELDS = [
     ],
     "voll",
   ],
-  ["stage_color", "Farbe der Bühne", "color", "#171717", (o) => o.stage === "ein"],
+  ["stage_color", "Farbe der Bühne", "color", FARBE.schwarz, (o) => o.stage === "ein"],
   ["stage_paper", "Helle Flächen der Bühne", "color", "#ffffff", (o) => o.stage === "ein"],
   [
     "inner",
@@ -77,7 +81,7 @@ const FIELDS = [
     ],
     "on",
   ],
-  ["frame_color", "Farbe des Rahmens", "color", "#171717", (o) => o.frame === "on"],
+  ["frame_color", "Farbe des Rahmens", "color", FARBE.schwarz, (o) => o.frame === "on"],
   [
     "ring",
     "Ring",
@@ -88,7 +92,7 @@ const FIELDS = [
     ],
     "bunt",
   ],
-  ["ring_color", "Farbe des Rings", "color", "#171717", (o) => o.ring === "ein"],
+  ["ring_color", "Farbe des Rings", "color", FARBE.schwarz, (o) => o.ring === "ein"],
   [
     "bg",
     "Hintergrund",
@@ -112,13 +116,13 @@ const PRESETS = [
     {
       stage: "ein",
       stage_color: "#ffffff",
-      stage_paper: "#004D6B",
+      stage_paper: FARBE.blau,
       ring: "ein",
       ring_color: "#ffffff",
       frame_color: "#ffffff",
       motif_color: "#ffffff",
       bg: "circle",
-      bg_color: "#004D6B",
+      bg_color: FARBE.blau,
     },
   ],
   // App-Icon wie im Mitgliederbereich (Repo Logo, skripte/app_icons.py): volles Logo, Katze 1,25×, weißes Quadrat.
@@ -126,7 +130,7 @@ const PRESETS = [
   // Android „maskable“: alles in der sicheren Zone (Kreis 80 % der Kante).
   ["App-Icon Android", { size: 125, bg: "square", bg_color: "#ffffff", pad: 11 }],
   ["Katze im Ring", { stage: "off", frame: "off", size: 130 }],
-  ["Kopf im Rahmen", { motif: "kopf", stage: "off", ring: "off", inner: "color", inner_color: "#E84820", size: 110 }],
+  ["Kopf im Rahmen", { motif: "kopf", stage: "off", ring: "off", inner: "color", inner_color: FARBE.vorhangrot, size: 110 }],
   ["Katze allein", { stage: "off", frame: "off", ring: "off" }],
   ["Kopf allein", { motif: "kopf", stage: "off", frame: "off", ring: "off" }],
 ];
