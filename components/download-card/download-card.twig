@@ -3,6 +3,11 @@
   dark: 'bg-neutral-900',
   muted: 'bg-muted'
 } %}
+{# Wird beim Ausrollen aus dem Repo Logo gesetzt (Cache-Busting für downloads/design). #}
+{% set logo_version = '2026-10-26' %}
+{% if preview is not empty and '/downloads/design/' in preview and '?' not in preview %}
+  {% set preview = preview ~ '?v=' ~ logo_version %}
+{% endif %}
 {% set links = [
   {
     label: link1_label,
@@ -74,7 +79,7 @@
         {% if link.url is not empty %}
           <li style="list-style: none; margin: 0">
             <a
-              href="{{ link.url }}"
+              href="{{ link.url ~ ('/downloads/design/' in link.url and '?' not in link.url ? '?v=' ~ logo_version : '') }}"
               download
               class="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-sm font-medium transition hover:border-primary hover:text-primary"
             >

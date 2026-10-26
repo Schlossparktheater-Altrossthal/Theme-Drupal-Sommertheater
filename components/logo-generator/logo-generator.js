@@ -4,7 +4,7 @@ import { ComponentType, ComponentInstance } from "../../lib/component.js";
 // Alle Teile stammen aus den Logo-Dateien (Repo Schlossparktheater-Altrossthal/Logo, skripte/export_web.py).
 
 // Cloudflare caches downloads/design for 30 days. Wird beim Ausrollen aus dem Repo Logo automatisch gesetzt.
-const VERSION = "2026-10-25h";
+const VERSION = "2026-10-26";
 
 const RING = ["#FFDD00", "#C7A100", "#744A27", "#015824", "#09783A", "#004D6B"];
 const STAGE_INK = ["#171717", "#E84820", "#3C1B00"];
