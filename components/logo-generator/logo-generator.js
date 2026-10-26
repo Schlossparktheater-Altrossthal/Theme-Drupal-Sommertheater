@@ -4,10 +4,10 @@ import { ComponentType, ComponentInstance } from "../../lib/component.js";
 // Alle Teile stammen aus den Logo-Dateien (Repo Schlossparktheater-Altrossthal/Logo, skripte/export_web.py).
 
 // Cloudflare caches downloads/design for 30 days. Wird beim Ausrollen aus dem Repo Logo automatisch gesetzt.
-const VERSION = "logo-fb935dbb";
+const VERSION = "logo-2d13a562";
 
 // FARBEN-ANFANG – wird beim Ausrollen aus dem Repo Logo (farben.json) gesetzt, nicht von Hand ändern
-const FARBE = {"schwarz":"#171717","gelb":"#FFDD00","ocker":"#C7A100","braun":"#744A27","dunkelgruen":"#015824","gruen":"#09783A","blau":"#004D6B","vorhangrot":"#E84820","faltenrot":"#A00A0A","boden":"#D2924D","fuge":"#3C1B00","weiss":"#FFFFFF"};
+const FARBE = {"schwarz":"#1E2020","gelb":"#FFE205","ocker":"#C5A104","braun":"#784F27","dunkelgruen":"#0F5D2C","gruen":"#0E7A3C","blau":"#034C6A","vorhangrot":"#E84724","faltenrot":"#7B262D","boden":"#D49449","fuge":"#442517","weiss":"#FFFFFF"};
 // FARBEN-ENDE
 
 const RING = [FARBE.gelb, FARBE.ocker, FARBE.braun, FARBE.dunkelgruen, FARBE.gruen, FARBE.blau];

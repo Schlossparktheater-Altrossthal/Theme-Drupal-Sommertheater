@@ -17,18 +17,18 @@ Mindestgrößen im Druck
 
 Schutzzone: rundum mindestens 10 % des Logodurchmessers frei lassen.
 
-Farben (CMYK für gestrichenes Papier, aus FOGRA39 abgeleitet; RGB/HEX für Bildschirm)
-  Schwarz      C  0 M  0 Y  0 K100   RGB   0/  0/  0   #000000
-  Gelb         C  0 M  8 Y 95 K  0   RGB 255/221/  0   #FFDD00
-  Ocker        C 10 M 25 Y100 K 15   RGB 199/161/  0   #C7A100
-  Braun        C 30 M 60 Y 95 K 50   RGB 116/ 74/ 39   #744A27
-  Dunkelgrün   C 85 M 15 Y100 K 55   RGB   1/ 88/ 36   #015824
-  Grün         C 85 M  5 Y 95 K 35   RGB   9/120/ 58   #09783A
-  BSZ-Blau     C 95 M 45 Y 20 K 50   RGB   0/ 77/107   #004D6B
-  Vorhangrot   C  0 M 80 Y 95 K  0   RGB 232/ 72/ 32   #E84820
-  Faltenrot    C  0 M 95 Y 95 K 30   RGB 160/ 10/ 10   #A00A0A
-  Boden        C 15 M 45 Y 80 K  5   RGB 210/146/ 77   #D2924D
-  Dielenfuge   C  0 M 75 Y100 K 90   RGB  60/ 27/  0   #3C1B00
+Farben – CMYK ist verbindlich (gestrichenes Papier, FOGRA39), RGB/HEX daraus abgeleitet, Bildschirm und Druck stimmen überein
+  Schwarz      C 60 M 40 Y 40 K100   RGB  30/ 32/ 32   #1E2020
+  Gelb         C  0 M  8 Y 95 K  0   RGB 255/226/  5   #FFE205
+  Ocker        C  0 M 20 Y100 K 30   RGB 197/161/  4   #C5A104
+  Braun        C 30 M 60 Y 95 K 50   RGB 120/ 79/ 39   #784F27
+  Dunkelgrün   C 85 M  0 Y100 K 60   RGB  15/ 93/ 44   #0F5D2C
+  Grün         C 85 M  5 Y 95 K 35   RGB  14/122/ 60   #0E7A3C
+  BSZ-Blau     C 95 M 45 Y 20 K 50   RGB   3/ 76/106   #034C6A
+  Vorhangrot   C  0 M 85 Y100 K  0   RGB 232/ 71/ 36   #E84724
+  Faltenrot    C 30 M100 Y 80 K 45   RGB 123/ 38/ 45   #7B262D
+  Boden        C 15 M 45 Y 80 K  5   RGB 212/148/ 73   #D49449
+  Dielenfuge   C  0 M 80 Y100 K 90   RGB  68/ 37/ 23   #442517
 
-Einfarbig: 100 % Schwarz (0/0/0/100). Auf dunklem Grund die Negativ-Fassung nehmen.
+Schwarz ist im Vollfarb-Logo ein Tiefschwarz, in den einfarbigen Dateien 100 % K (0/0/0/100). Auf dunklem Grund die Negativ-Fassung nehmen.
 Bei großen Auflagen oder ungestrichenem Papier vorher einen Farbproof machen lassen.
