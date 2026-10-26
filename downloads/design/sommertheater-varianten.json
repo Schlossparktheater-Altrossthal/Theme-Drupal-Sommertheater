@@ -1,0 +1,388 @@
+{
+ "varianten": [
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-vollfarbe.svg",
+   "druck": "sommertheater-v-logo-vollfarbe"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-vollfarbe-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-vollfarbe-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-vollfarbe-frei.svg",
+   "druck": "sommertheater-v-logo-vollfarbe-frei"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-vollfarbe-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-vollfarbe-frei-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-schwarz.svg",
+   "druck": "sommertheater-v-logo-schwarz"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-schwarz-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "schwarz",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-schwarz-frei.svg",
+   "druck": "sommertheater-v-logo-schwarz-frei"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "schwarz",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-schwarz-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-weiss.svg",
+   "druck": "sommertheater-v-logo-weiss"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-weiss-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "weiss",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-weiss-frei.svg",
+   "druck": "sommertheater-v-logo-weiss-frei"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "weiss",
+   "buehne": "frei",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-weiss-frei-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-blau.svg",
+   "druck": "sommertheater-v-logo-blau"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-blau-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo",
+   "farbe": "blau",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-blau-frei.svg",
+   "druck": "sommertheater-v-logo-blau-frei"
+  },
+  {
+   "motiv": "logo",
+   "farbe": "blau",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-blau-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-vollfarbe"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe-frei.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-vollfarbe-frei"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "vollfarbe",
+   "buehne": "frei",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-ohne-ring-vollfarbe-frei-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-schwarz.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-schwarz"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-schwarz-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "schwarz",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-schwarz-frei.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-schwarz-frei"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "schwarz",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-schwarz-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-weiss.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-weiss"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-ohne-ring-weiss-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "weiss",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-weiss-frei.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-weiss-frei"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "weiss",
+   "buehne": "frei",
+   "hg": "blau",
+   "svg": "sommertheater-v-logo-ohne-ring-weiss-frei-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-blau.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-blau"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-blau-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "blau",
+   "buehne": "frei",
+   "hg": "keiner",
+   "svg": "sommertheater-v-logo-ohne-ring-blau-frei.svg",
+   "druck": "sommertheater-v-logo-ohne-ring-blau-frei"
+  },
+  {
+   "motiv": "logo-ohne-ring",
+   "farbe": "blau",
+   "buehne": "frei",
+   "hg": "weiss",
+   "svg": "sommertheater-v-logo-ohne-ring-blau-frei-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "katze",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-katze-schwarz.svg",
+   "druck": "sommertheater-v-katze-schwarz"
+  },
+  {
+   "motiv": "katze",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-katze-schwarz-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "katze",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-katze-weiss.svg",
+   "druck": "sommertheater-v-katze-weiss"
+  },
+  {
+   "motiv": "katze",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-katze-weiss-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "katze",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-katze-blau.svg",
+   "druck": "sommertheater-v-katze-blau"
+  },
+  {
+   "motiv": "katze",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-katze-blau-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-kopf-schwarz.svg",
+   "druck": "sommertheater-v-kopf-schwarz"
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "schwarz",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-kopf-schwarz-hg-weiss.svg",
+   "druck": null
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-kopf-weiss.svg",
+   "druck": "sommertheater-v-kopf-weiss"
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "weiss",
+   "buehne": "gefuellt",
+   "hg": "blau",
+   "svg": "sommertheater-v-kopf-weiss-hg-blau.svg",
+   "druck": null
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "keiner",
+   "svg": "sommertheater-v-kopf-blau.svg",
+   "druck": "sommertheater-v-kopf-blau"
+  },
+  {
+   "motiv": "kopf",
+   "farbe": "blau",
+   "buehne": "gefuellt",
+   "hg": "weiss",
+   "svg": "sommertheater-v-kopf-blau-hg-weiss.svg",
+   "druck": null
+  }
+ ]
+}
