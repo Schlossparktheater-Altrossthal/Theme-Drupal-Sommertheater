@@ -24,7 +24,7 @@ Farben – CMYK ist verbindlich (gestrichenes Papier, FOGRA39), RGB/HEX daraus a
   Braun        C 30 M 60 Y 95 K 50   RGB 120/ 79/ 39   #784F27
   Dunkelgrün   C 85 M  0 Y100 K 60   RGB  15/ 93/ 44   #0F5D2C
   Grün         C 85 M  5 Y 95 K 35   RGB  14/122/ 60   #0E7A3C
-  BSZ-Blau     C 95 M 45 Y 20 K 50   RGB   3/ 76/106   #034C6A
+  Blau         C 95 M 45 Y 20 K 50   RGB   3/ 76/106   #034C6A
   Vorhangrot   C  0 M 85 Y100 K  0   RGB 232/ 71/ 36   #E84724
   Faltenrot    C 30 M100 Y 80 K 45   RGB 123/ 38/ 45   #7B262D
   Boden        C 15 M 45 Y 80 K  5   RGB 212/148/ 73   #D49449
