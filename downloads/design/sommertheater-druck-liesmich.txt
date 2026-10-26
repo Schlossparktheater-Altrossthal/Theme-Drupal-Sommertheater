@@ -1,0 +1,34 @@
+Sommertheater Altroßthal – Logo-Druckdaten
+==========================================
+
+Für Druckerei, Flyer, Plakate, Banner, T-Shirts usw.
+
+*.pdf   Vektor, CMYK, beliebig skalierbar – bevorzugt verwenden
+*.eps   Vektor, CMYK – für ältere Programme/Plotter (Folie, Textildruck)
+*.tif   CMYK-Raster, 300 dpi bei 100 mm Breite – nur wenn kein Vektor geht
+
+Für Word, PowerPoint und Bildschirm die PNG/SVG aus dem Logo-Paket nehmen (RGB).
+Die Dateien haben keinen Beschnitt und keinen Hintergrund; Weiß im Logo ist eine echte Fläche.
+
+Mindestgrößen im Druck
+  Logo mit Ring:   20 mm Durchmesser
+  Logo ohne Ring:  15 mm
+  darunter das Symbol (sommertheater-druck-symbol-*) verwenden
+
+Schutzzone: rundum mindestens 10 % des Logodurchmessers frei lassen.
+
+Farben (CMYK für gestrichenes Papier, aus FOGRA39 abgeleitet; RGB/HEX für Bildschirm)
+  Schwarz      C  0 M  0 Y  0 K100   RGB   0/  0/  0   #000000
+  Gelb         C  0 M  8 Y 95 K  0   RGB 255/221/  0   #FFDD00
+  Ocker        C 10 M 25 Y100 K 15   RGB 199/161/  0   #C7A100
+  Braun        C 30 M 60 Y 95 K 50   RGB 116/ 74/ 39   #744A27
+  Dunkelgrün   C 85 M 15 Y100 K 55   RGB   1/ 88/ 36   #015824
+  Grün         C 85 M  5 Y 95 K 35   RGB   9/120/ 58   #09783A
+  BSZ-Blau     C 95 M 45 Y 20 K 50   RGB   0/ 77/107   #004D6B
+  Vorhangrot   C  0 M 80 Y 95 K  0   RGB 232/ 72/ 32   #E84820
+  Faltenrot    C  0 M 95 Y 95 K 30   RGB 160/ 10/ 10   #A00A0A
+  Boden        C 15 M 45 Y 80 K  5   RGB 210/146/ 77   #D2924D
+  Dielenfuge   C  0 M 75 Y100 K 90   RGB  60/ 27/  0   #3C1B00
+
+Einfarbig: 100 % Schwarz (0/0/0/100). Auf dunklem Grund die Negativ-Fassung nehmen.
+Bei großen Auflagen oder ungestrichenem Papier vorher einen Farbproof machen lassen.

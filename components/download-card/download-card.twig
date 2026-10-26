@@ -4,7 +4,7 @@
   muted: 'bg-muted'
 } %}
 {# Wird beim Ausrollen aus dem Repo Logo gesetzt (Cache-Busting für downloads/design). #}
-{% set logo_version = '2026-10-26' %}
+{% set logo_version = 'logo-fb935dbb' %}
 {% if preview is not empty and '/downloads/design/' in preview and '?' not in preview %}
   {% set preview = preview ~ '?v=' ~ logo_version %}
 {% endif %}
