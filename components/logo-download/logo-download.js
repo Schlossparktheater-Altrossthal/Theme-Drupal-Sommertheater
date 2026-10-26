@@ -172,6 +172,9 @@ class LogoDownload extends ComponentInstance {
     const v = this.find(this.selection());
     this.current = v;
     this.preview.src = this.url(v.svg);
+    // Weiß auf hellem Karomuster wäre unsichtbar: dann dunkles Karomuster.
+    const [a, b] = v.farbe === "weiss" && v.hg === "keiner" ? ["#3a3a3a", "#2a2a2a"] : ["#eee", "#fff"];
+    this.el.querySelector(".logo-download--stage").style.backgroundImage = `conic-gradient(${a} 25%, ${b} 0 50%, ${a} 0 75%, ${b} 0)`;
 
     const select = this.form.querySelector('select[name="format"]');
     const vorher = select.value;
