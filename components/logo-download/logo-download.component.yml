@@ -1,0 +1,43 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Logo download
+description: Karte für ein Logo-Motiv; „Herunterladen“ öffnet ein Auswahlfenster (Farbe, Bühne, Hintergrund, Format). Dateien und Liste kommen aus dem Repo Logo (sommertheater-varianten.json).
+group: Card
+props:
+  type: object
+  required:
+    - heading
+    - motiv
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples:
+        - Logo mit Ring
+    text:
+      type: string
+      title: Text
+      examples:
+        - Das Hauptlogo für Plakate, Programmheft und Website.
+    motiv:
+      type: string
+      title: Motiv
+      enum:
+        - logo
+        - logo-ohne-ring
+        - katze
+        - kopf
+      meta:enum:
+        logo: Logo mit Ring
+        logo-ohne-ring: Logo ohne Ring
+        katze: Katze
+        kopf: Kopf
+      default: logo
+      examples:
+        - logo
+    base_path:
+      type: string
+      title: Ordner der Dateien
+      default: /themes/custom/sommertheater/downloads/design
+libraryOverrides:
+  js:
+    logo-download.js: { attributes: { type: module } }
