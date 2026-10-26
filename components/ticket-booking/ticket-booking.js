@@ -25,7 +25,7 @@ class TicketBooking extends ComponentInstance {
       console.error("[sommertheater-tickets] Vorstellungen konnten nicht geladen werden", error);
       const fallback = this.api.replace(/\/api\/public\/karten\/?$/, "/karten");
       this.el.innerHTML = `<p class="sommertheater-tickets__empty">Die Vorstellungen konnten gerade nicht geladen werden.</p>
-        <a class="sommertheater-tickets__fallback" href="${this.escape(fallback)}">Zur Kartenreservierung</a>`;
+        <a class="sommertheater-tickets__fallback" href="${this.escape(fallback)}" data-umami-event="Karten reservieren" data-umami-event-vorstellung="Übersicht">Zur Kartenreservierung</a>`;
     }
   }
 
@@ -49,7 +49,7 @@ class TicketBooking extends ComponentInstance {
       .map((performance) => {
         const status = STATUS[performance.status] || STATUS.available;
         const action = status.bookable
-          ? `<a class="sommertheater-tickets__button" href="${this.escape(performance.url)}">${performance.status === "sold_out" ? "Warteliste" : "Reservieren"}</a>`
+          ? `<a class="sommertheater-tickets__button" href="${this.escape(performance.url)}" data-umami-event="${performance.status === "sold_out" ? "Warteliste" : "Karten reservieren"}" data-umami-event-stueck="${this.escape(show.title || "")}" data-umami-event-vorstellung="${this.escape(performance.start || "")}">${performance.status === "sold_out" ? "Warteliste" : "Reservieren"}</a>`
           : "";
         return `<li class="sommertheater-tickets__row" data-tone="${status.tone}">
           <div>

@@ -201,6 +201,7 @@ class LogoDownload extends ComponentInstance {
     const a = document.createElement("a");
     a.href = href;
     a.download = name;
+    window.sommertheaterTrack?.("Download", { datei: name });
     document.body.append(a);
     a.click();
     a.remove();

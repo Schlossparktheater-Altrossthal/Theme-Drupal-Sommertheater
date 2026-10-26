@@ -12,6 +12,8 @@ global:
         minified: true
       src/theme.css:
         preprocess: false
+  js:
+    lib/analytics.js: {}
 
 messages:
   version: VERSION
