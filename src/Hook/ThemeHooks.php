@@ -137,7 +137,17 @@ final class ThemeHooks {
     if (empty($variables['site_name'])) {
       $variables['site_name'] = $this->configFactory->get('system.site')->get('name');
     }
-    $variables['sommertheater_logo'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater') . '/images/logo-sommertheater.png';
+    $variables['sommertheater_logo'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater') . '/images/logo-sommertheater.png?v=' . self::logoVersion();
+  }
+
+  /**
+   * Version der Logo-Dateien für Cache-Busting (Cloudflare cacht Theme-Dateien bis 30 Tage).
+   *
+   * logo-version.txt wird beim Ausrollen aus dem Repo Schlossparktheater-Altrossthal/Logo gesetzt.
+   */
+  public static function logoVersion(): string {
+    static $version;
+    return $version ??= trim((string) @file_get_contents(dirname(__DIR__, 2) . '/logo-version.txt')) ?: '0';
   }
 
   /**

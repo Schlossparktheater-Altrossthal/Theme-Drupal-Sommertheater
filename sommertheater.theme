@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 use Drupal\Core\Url;
+use Drupal\sommertheater\Hook\ThemeHooks;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -16,6 +17,13 @@ use Drupal\Core\Url;
  * Startseite, damit Suchmaschinen Name, Spielort und Kontakt zuordnen können.
  */
 function sommertheater_page_attachments_alter(array &$attachments): void {
+  // Favicon mit Logo-Version, sonst bleibt nach einer Logo-Änderung das alte im Cache.
+  foreach ($attachments['#attached']['html_head_link'] ?? [] as $i => $link) {
+    if (($link[0]['rel'] ?? '') === 'icon' && !str_contains($link[0]['href'] ?? '', '?')) {
+      $attachments['#attached']['html_head_link'][$i][0]['href'] .= '?v=' . ThemeHooks::logoVersion();
+    }
+  }
+
   $attachments['#cache']['contexts'][] = 'url.path.is_front';
   if (!\Drupal::service('path.matcher')->isFrontPage()) {
     return;
