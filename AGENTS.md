@@ -73,6 +73,7 @@
 - `/unsere-schulkatze` uses editorial text, a gallery, an entry form, and a list of submitted memories.
 - `/impressum` and `/datenschutz` are simple text pages.
 - Current theme regions are `header`, `hero`, `primary_menu`, `content`, `sidebar`, `footer_first`, `footer_second`, and `footer_third`. Keep the region structure aligned with `sommertheater.info.yml` and the page template.
+- **No hard-coded site parameters.** Site-wide values (organisation data for schema.org, social profiles, member area base URL, Umami settings incl. extra attributes/scripts, news page texts) live in `sommertheater.settings:theater`, read via `Drupal\sommertheater\TheaterSettings` (defaults = previous state). Editable under Appearance → Settings → Sommertheater and via the MCP tools `theme_settings_get`/`theme_settings_update` (module `theater_tools` in the Drupal repo). Add new keys to `TheaterSettings::DEFAULTS`, the schema in `config/schema/` and the form in `ThemeHooks`. Content such as footer partners and credits belongs in Canvas slots (`footer_partners` with `partner-group`/`partner-logo`, `footer_credits`), not in Twig.
 - Prefer Layout Builder or Canvas for page composition and Paragraphs for repeatable editorial blocks such as statistics, workgroup cards, feature blocks, and timeline entries. Keep production data in a dedicated `produktion` content type or equivalent structured entity rather than hard-coding it in Twig.
 
 ---

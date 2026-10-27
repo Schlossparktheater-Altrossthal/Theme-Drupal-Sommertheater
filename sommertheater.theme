@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 use Drupal\Core\Url;
 use Drupal\sommertheater\Hook\ThemeHooks;
+use Drupal\sommertheater\TheaterSettings;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -24,6 +25,10 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
     }
   }
 
+  // Host des Mitgliederbereichs für lib/analytics.js.
+  $attachments['#attached']['drupalSettings']['sommertheater']['memberHost'] = parse_url(TheaterSettings::memberBaseUrl(), PHP_URL_HOST);
+  $attachments['#cache']['tags'] = array_merge($attachments['#cache']['tags'] ?? [], TheaterSettings::cacheTags());
+
   $attachments['#cache']['contexts'][] = 'url.path.is_front';
   if (!\Drupal::service('path.matcher')->isFrontPage()) {
     return;
@@ -32,21 +37,18 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
   $base = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
   $theme = \Drupal::service('extension.list.theme')->getPath('sommertheater');
   $site_name = \Drupal::config('system.site')->get('name');
+  $settings = TheaterSettings::all();
+  $org = $settings['organisation'];
   $address = [
     '@type' => 'PostalAddress',
-    'streetAddress' => 'Altroßthal 1',
-    'postalCode' => '01169',
-    'addressLocality' => 'Dresden',
-    'addressRegion' => 'Sachsen',
-    'addressCountry' => 'DE',
+    'streetAddress' => $org['street'],
+    'postalCode' => $org['postal_code'],
+    'addressLocality' => $org['locality'],
+    'addressRegion' => $org['region'],
+    'addressCountry' => $org['country'],
   ];
-
-  $alternate_names = [
-    'Schlossparktheater',
-    'Schlossparktheater Dresden',
-    'Schlossparktheater Altroßthal',
-  ];
-
+  $alternate_names = $org['alternate_names'];
+  $same_as = array_values(array_filter([$settings['social']['instagram_url'], ...$settings['social']['other_profiles']]));
   $data = [
     '@context' => 'https://schema.org',
     '@graph' => [
@@ -57,17 +59,17 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
         'alternateName' => $alternate_names,
         'url' => $base,
         'logo' => rtrim($base, '/') . '/' . $theme . '/images/logo-sommertheater.png',
-        'description' => 'Ehrenamtliches Freilichttheater des Beruflichen Schulzentrums für Agrarwirtschaft und Ernährung Dresden, das seit 2009 jeden Sommer ein Stück im Schlosspark Altroßthal spielt.',
-        'foundingDate' => '2008',
-        'email' => 'info@bsz-ae-dd.de',
+        'description' => $org['description'],
+        'foundingDate' => $org['founding_date'],
+        'email' => $org['email'],
         'address' => $address,
         'location' => ['@id' => $base . '#spielort'],
-        'sameAs' => ['https://www.instagram.com/schlossparktheater/'],
+        'sameAs' => $same_as,
       ],
       [
         '@type' => 'Place',
         '@id' => $base . '#spielort',
-        'name' => 'Schlosspark Altroßthal',
+        'name' => $org['venue_name'],
         'address' => $address,
       ],
       [

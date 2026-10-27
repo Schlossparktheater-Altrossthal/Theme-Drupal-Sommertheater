@@ -52,11 +52,13 @@
     {% include '@sommertheater/includes/preload.twig' %}
     {#
       Besucherstatistik (Umami, cookielos, selbst gehostet unter stats.*).
-      Nur fuer anonyme Besucher und ausserhalb /admin; data-domains verhindert
-      Zaehlungen aus lokalen Vorschauen.
+      Nur fuer anonyme Besucher und ausserhalb /admin. Skripte und Attribute
+      kommen aus den Theme-Einstellungen (TheaterSettings, analytics).
     #}
     {% if not logged_in and root_path != 'admin' %}
-      <script defer src="https://stats.sommertheater-altrossthal.de/st.js" data-website-id="7017b0eb-c723-4a2f-b750-be503f1283ba" data-domains="sommertheater-altrossthal.de" data-do-not-track="true"></script>
+      {% for script in umami_scripts %}
+        <script{{ create_attribute(script) }}></script>
+      {% endfor %}
     {% endif %}
   </head>
   <body {{ attributes.addClass(body_classes) }}>

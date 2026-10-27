@@ -1,0 +1,146 @@
+sommertheater.settings:
+  type: theme_settings
+  label: 'Sommertheater-Einstellungen'
+  mapping:
+    scheme:
+      type: string
+      label: 'Farbschema'
+    theater:
+      type: mapping
+      label: 'Seitenweite Angaben'
+      mapping:
+        organisation:
+          type: mapping
+          label: 'Verein (strukturierte Daten)'
+          mapping:
+            alternate_names:
+              type: sequence
+              label: 'Namensvarianten'
+              sequence:
+                type: string
+            description:
+              type: string
+              label: 'Beschreibung'
+            founding_date:
+              type: string
+              label: 'Gründungsjahr'
+            email:
+              type: string
+              label: 'E-Mail'
+            street:
+              type: string
+              label: 'Straße'
+            postal_code:
+              type: string
+              label: 'PLZ'
+            locality:
+              type: string
+              label: 'Ort'
+            region:
+              type: string
+              label: 'Bundesland'
+            country:
+              type: string
+              label: 'Land'
+            venue_name:
+              type: string
+              label: 'Spielort'
+        social:
+          type: mapping
+          label: 'Profile'
+          mapping:
+            instagram_url:
+              type: string
+              label: 'Instagram'
+            other_profiles:
+              type: sequence
+              label: 'Weitere Profile'
+              sequence:
+                type: string
+        member:
+          type: mapping
+          label: 'Mitgliederbereich'
+          mapping:
+            base_url:
+              type: string
+              label: 'Basis-URL'
+        analytics:
+          type: mapping
+          label: 'Besucherstatistik (Umami)'
+          mapping:
+            enabled:
+              type: boolean
+              label: 'Aktiv'
+            script_url:
+              type: string
+              label: 'Skript-URL'
+            website_id:
+              type: string
+              label: 'Website-ID'
+            host_url:
+              type: string
+              label: 'Host-URL'
+            domains:
+              type: string
+              label: 'Domains'
+            do_not_track:
+              type: boolean
+              label: 'Do Not Track beachten'
+            auto_track:
+              type: boolean
+              label: 'Seitenaufrufe automatisch zählen'
+            performance:
+              type: boolean
+              label: 'Web Vitals messen'
+            exclude_search:
+              type: boolean
+              label: 'Suchparameter ignorieren'
+            exclude_hash:
+              type: boolean
+              label: 'Hash ignorieren'
+            tag:
+              type: string
+              label: 'Tag'
+            extra_attributes:
+              type: sequence
+              label: 'Weitere Attribute'
+              sequence:
+                type: mapping
+                mapping:
+                  name:
+                    type: string
+                    label: 'Name'
+                  value:
+                    type: string
+                    label: 'Wert'
+            extra_scripts:
+              type: sequence
+              label: 'Zusätzliche Skripte'
+              sequence:
+                type: mapping
+                mapping:
+                  src:
+                    type: string
+                    label: 'URL'
+                  attributes:
+                    type: sequence
+                    label: 'Attribute'
+                    sequence:
+                      type: mapping
+                      mapping:
+                        name:
+                          type: string
+                          label: 'Name'
+                        value:
+                          type: string
+                          label: 'Wert'
+        news:
+          type: mapping
+          label: 'Neuigkeiten-Seite'
+          mapping:
+            intro:
+              type: string
+              label: 'Einleitung'
+            instagram_hint:
+              type: string
+              label: 'Instagram-Hinweis'

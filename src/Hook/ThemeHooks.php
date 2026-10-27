@@ -17,6 +17,7 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\sommertheater\RenderCallbacks;
+use Drupal\sommertheater\TheaterSettings;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -55,7 +56,8 @@ final class ThemeHooks {
    */
   #[Hook('element_info_alter')]
   public function alterElementInfo(array &$info): void {
-    $info['component']['#pre_render'][] = [RenderCallbacks::class, 'preRenderComponent'];
+    // Vor dem Core-Callback, der aus den Props das Template baut; sonst wirken Prop-Änderungen nicht.
+    array_unshift($info['component']['#pre_render'], [RenderCallbacks::class, 'preRenderComponent']);
   }
 
   /**
@@ -94,10 +96,180 @@ final class ThemeHooks {
         'dark' => t('Dark'),
       ],
     ];
+    $this->addTheaterSettings($form);
     $message = $this->t("See <code>@path</code> to learn how to customize Sommertheater's fonts, colors, and components.", [
       '@path' => $this->themeList->getPath('sommertheater') . '/CUSTOMIZING.md',
     ]);
     $this->messenger()->addMessage($message, 'info');
+  }
+
+  /**
+   * Formular für die seitenweiten Angaben (TheaterSettings).
+   */
+  private function addTheaterSettings(array &$form): void {
+    $s = TheaterSettings::all();
+    $lines = static fn(array $items): string => implode("\n", $items);
+    $pairs = static fn(array $items): string => implode("\n", array_map(static fn(array $a): string => $a['name'] . '=' . $a['value'], $items));
+
+    $form['theater_values'] = [
+      '#type' => 'container',
+      '#tree' => TRUE,
+      '#parents' => ['theater'],
+      '#weight' => -20,
+    ];
+    $t = &$form['theater_values'];
+
+    $t['organisation'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Verein und Spielort'),
+      '#description' => $this->t('Für Suchmaschinen (schema.org auf der Startseite).'),
+    ];
+    $o = $s['organisation'];
+    $t['organisation']['alternate_names'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Namensvarianten'),
+      '#description' => $this->t('Eine pro Zeile.'),
+      '#default_value' => $lines($o['alternate_names']),
+      '#rows' => 3,
+      '#element_validate' => [[self::class, 'validateLines']],
+    ];
+    $t['organisation']['description'] = ['#type' => 'textarea', '#title' => $this->t('Beschreibung'), '#default_value' => $o['description'], '#rows' => 3];
+    $t['organisation']['founding_date'] = ['#type' => 'textfield', '#title' => $this->t('Gründungsjahr'), '#default_value' => $o['founding_date'], '#size' => 10];
+    $t['organisation']['email'] = ['#type' => 'email', '#title' => $this->t('E-Mail'), '#default_value' => $o['email']];
+    $t['organisation']['venue_name'] = ['#type' => 'textfield', '#title' => $this->t('Spielort'), '#default_value' => $o['venue_name']];
+    $t['organisation']['street'] = ['#type' => 'textfield', '#title' => $this->t('Straße'), '#default_value' => $o['street']];
+    $t['organisation']['postal_code'] = ['#type' => 'textfield', '#title' => $this->t('PLZ'), '#default_value' => $o['postal_code'], '#size' => 10];
+    $t['organisation']['locality'] = ['#type' => 'textfield', '#title' => $this->t('Ort'), '#default_value' => $o['locality']];
+    $t['organisation']['region'] = ['#type' => 'textfield', '#title' => $this->t('Bundesland'), '#default_value' => $o['region']];
+    $t['organisation']['country'] = ['#type' => 'textfield', '#title' => $this->t('Land (ISO-Code)'), '#default_value' => $o['country'], '#size' => 4];
+
+    $t['social'] = ['#type' => 'details', '#title' => $this->t('Profile')];
+    $t['social']['instagram_url'] = ['#type' => 'url', '#title' => $this->t('Instagram'), '#default_value' => $s['social']['instagram_url']];
+    $t['social']['other_profiles'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Weitere Profile'),
+      '#description' => $this->t('URLs, eine pro Zeile (für Suchmaschinen).'),
+      '#default_value' => $lines($s['social']['other_profiles']),
+      '#rows' => 3,
+      '#element_validate' => [[self::class, 'validateLines']],
+    ];
+
+    $t['member'] = ['#type' => 'details', '#title' => $this->t('Mitgliederbereich')];
+    $t['member']['base_url'] = [
+      '#type' => 'url',
+      '#title' => $this->t('Basis-URL'),
+      '#description' => $this->t('Spielplan, Countdown, Kennzahlen und Kartenbuchung laden ihre Daten von hier.'),
+      '#default_value' => $s['member']['base_url'],
+    ];
+
+    $a = $s['analytics'];
+    $t['analytics'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Besucherstatistik (Umami)'),
+      '#description' => $this->t('Wird nur für anonyme Besucher außerhalb von /admin geladen.'),
+    ];
+    $t['analytics']['enabled'] = ['#type' => 'checkbox', '#title' => $this->t('Statistik aktiv'), '#default_value' => $a['enabled']];
+    $t['analytics']['script_url'] = ['#type' => 'url', '#title' => $this->t('Skript-URL'), '#default_value' => $a['script_url']];
+    $t['analytics']['website_id'] = ['#type' => 'textfield', '#title' => $this->t('Website-ID'), '#default_value' => $a['website_id']];
+    $t['analytics']['host_url'] = ['#type' => 'url', '#title' => $this->t('Host-URL (data-host-url)'), '#description' => $this->t('Leer = Server des Skripts.'), '#default_value' => $a['host_url']];
+    $t['analytics']['domains'] = ['#type' => 'textfield', '#title' => $this->t('Domains (data-domains)'), '#description' => $this->t('Kommagetrennt; nur dort wird gezählt.'), '#default_value' => $a['domains']];
+    $t['analytics']['tag'] = ['#type' => 'textfield', '#title' => $this->t('Tag (data-tag)'), '#default_value' => $a['tag']];
+    $t['analytics']['do_not_track'] = ['#type' => 'checkbox', '#title' => $this->t('„Do Not Track“ des Browsers beachten'), '#default_value' => $a['do_not_track']];
+    $t['analytics']['auto_track'] = ['#type' => 'checkbox', '#title' => $this->t('Seitenaufrufe automatisch zählen'), '#default_value' => $a['auto_track']];
+    $t['analytics']['performance'] = ['#type' => 'checkbox', '#title' => $this->t('Ladezeiten messen (Web Vitals, data-performance)'), '#default_value' => $a['performance']];
+    $t['analytics']['exclude_search'] = ['#type' => 'checkbox', '#title' => $this->t('URL-Parameter nicht erfassen'), '#default_value' => $a['exclude_search']];
+    $t['analytics']['exclude_hash'] = ['#type' => 'checkbox', '#title' => $this->t('URL-Hash nicht erfassen'), '#default_value' => $a['exclude_hash']];
+    $t['analytics']['extra_attributes'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Weitere Attribute'),
+      '#description' => $this->t('Für neue Umami-Funktionen, je Zeile <code>data-name=wert</code>.'),
+      '#default_value' => $pairs($a['extra_attributes']),
+      '#rows' => 3,
+      '#element_validate' => [[self::class, 'validateAttributes']],
+    ];
+    $t['analytics']['extra_scripts'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Zusätzliche Skripte'),
+      '#description' => $this->t('Z. B. Recorder/Heatmap. Je Zeile: <code>https://…/skript.js data-name=wert data-name2=wert2</code>. Gleiche Bedingungen wie das Hauptskript (anonym, Opt-out).'),
+      '#default_value' => implode("\n", array_map(static fn(array $x): string => trim($x['src'] . ' ' . implode(' ', array_map(static fn(array $at): string => $at['name'] . '=' . $at['value'], $x['attributes'] ?? []))), $a['extra_scripts'])),
+      '#rows' => 3,
+      '#element_validate' => [[self::class, 'validateScripts']],
+    ];
+
+    $t['news'] = ['#type' => 'details', '#title' => $this->t('Neuigkeiten-Seite')];
+    $t['news']['intro'] = ['#type' => 'textarea', '#title' => $this->t('Einleitung'), '#default_value' => $s['news']['intro'], '#rows' => 2];
+    $t['news']['instagram_hint'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Instagram-Hinweis'),
+      '#description' => $this->t('Dahinter folgt der Instagram-Link. Leer = kein Hinweis.'),
+      '#default_value' => $s['news']['instagram_hint'],
+    ];
+  }
+
+  /**
+   * Zeilen in eine Liste umwandeln.
+   */
+  public static function validateLines(array &$element, FormStateInterface $form_state): void {
+    $form_state->setValueForElement($element, self::splitLines((string) $element['#value']));
+  }
+
+  /**
+   * "data-name=wert"-Zeilen in Attribut-Paare umwandeln.
+   */
+  public static function validateAttributes(array &$element, FormStateInterface $form_state): void {
+    $result = [];
+    foreach (self::splitLines((string) $element['#value']) as $line) {
+      $pair = self::parseAttribute($line);
+      if ($pair === NULL) {
+        $form_state->setError($element, t('Ungültiges Attribut „@line“ (erlaubt: data-name=wert).', ['@line' => $line]));
+        return;
+      }
+      $result[] = $pair;
+    }
+    $form_state->setValueForElement($element, $result);
+  }
+
+  /**
+   * Skript-Zeilen in URL plus Attribute umwandeln.
+   */
+  public static function validateScripts(array &$element, FormStateInterface $form_state): void {
+    $result = [];
+    foreach (self::splitLines((string) $element['#value']) as $line) {
+      $parts = preg_split('/\s+/', $line);
+      $src = array_shift($parts);
+      if (!str_starts_with($src, 'https://')) {
+        $form_state->setError($element, t('Skript-URL muss mit https:// beginnen: „@src“.', ['@src' => $src]));
+        return;
+      }
+      $attributes = [];
+      foreach ($parts as $part) {
+        $pair = self::parseAttribute($part);
+        if ($pair === NULL) {
+          $form_state->setError($element, t('Ungültiges Attribut „@line“ (erlaubt: data-name=wert).', ['@line' => $part]));
+          return;
+        }
+        $attributes[] = $pair;
+      }
+      $result[] = ['src' => $src, 'attributes' => $attributes];
+    }
+    $form_state->setValueForElement($element, $result);
+  }
+
+  /**
+   * Nicht leere, getrimmte Zeilen.
+   */
+  private static function splitLines(string $value): array {
+    return array_values(array_filter(array_map('trim', preg_split('/\R/', $value)), 'strlen'));
+  }
+
+  /**
+   * "data-name=wert" zerlegen; nur data-*-Attribute sind erlaubt.
+   */
+  public static function parseAttribute(string $text): ?array {
+    if (!preg_match('/^(data-[a-z0-9-]+)=(.*)$/', trim($text), $m)) {
+      return NULL;
+    }
+    return ['name' => $m[1], 'value' => trim($m[2], '"\'')];
   }
 
   /**
@@ -122,8 +294,69 @@ final class ThemeHooks {
   #[Hook('preprocess_html')]
   public function preprocessHtml(array &$variables): void {
     $variables['scheme'] = $this->themeSettings->getSetting('scheme');
+    $variables['umami_scripts'] = self::umamiScripts();
+    $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'] ?? [], TheaterSettings::cacheTags());
     // Get the theme base path for font preloading.
     $variables['sommertheater_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeList->getPath('sommertheater');
+  }
+
+  /**
+   * Implements template_preprocess_views_view() für die Neuigkeiten.
+   */
+  #[Hook('preprocess_views_view')]
+  public function preprocessViewsView(array &$variables): void {
+    if ($variables['view']->id() !== 'neuigkeiten') {
+      return;
+    }
+    $all = TheaterSettings::all();
+    $variables['theater_news'] = $all['news'];
+    $variables['theater_instagram_url'] = $all['social']['instagram_url'];
+    $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'] ?? [], TheaterSettings::cacheTags());
+  }
+
+  /**
+   * Umami-Skripte als Liste von Attribut-Arrays (Hauptskript zuerst).
+   */
+  public static function umamiScripts(): array {
+    $a = TheaterSettings::get('analytics');
+    if (empty($a['enabled']) || empty($a['script_url']) || empty($a['website_id'])) {
+      return [];
+    }
+    $main = [
+      'defer' => TRUE,
+      'src' => $a['script_url'],
+      'data-website-id' => $a['website_id'],
+    ];
+    $optional = [
+      'data-host-url' => $a['host_url'],
+      'data-domains' => $a['domains'],
+      'data-tag' => $a['tag'],
+    ];
+    $main += array_filter($optional, 'strlen');
+    $flags = [
+      'data-do-not-track' => [$a['do_not_track'], 'true'],
+      'data-auto-track' => [!$a['auto_track'], 'false'],
+      'data-performance' => [$a['performance'], 'true'],
+      'data-exclude-search' => [$a['exclude_search'], 'true'],
+      'data-exclude-hash' => [$a['exclude_hash'], 'true'],
+    ];
+    foreach ($flags as $name => [$active, $value]) {
+      if ($active) {
+        $main[$name] = $value;
+      }
+    }
+    foreach ($a['extra_attributes'] as $pair) {
+      $main[$pair['name']] = $pair['value'];
+    }
+    $scripts = [$main];
+    foreach ($a['extra_scripts'] as $extra) {
+      $script = ['defer' => TRUE, 'src' => $extra['src']];
+      foreach ($extra['attributes'] ?? [] as $pair) {
+        $script[$pair['name']] = $pair['value'];
+      }
+      $scripts[] = $script;
+    }
+    return $scripts;
   }
 
   /**
