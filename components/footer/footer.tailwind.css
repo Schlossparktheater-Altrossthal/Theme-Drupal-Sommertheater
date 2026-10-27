@@ -183,3 +183,48 @@
     animation: none;
   }
 }
+
+/* Partnergruppen und -logos aus dem Canvas-Slot footer_partners */
+.partner-group__logos {
+  @apply flex flex-wrap items-center gap-x-10 gap-y-6;
+}
+
+.partner-logo--einfarbig,
+.partner-logo--original {
+  width: var(--partner-width, 8rem);
+  aspect-ratio: var(--partner-ratio, 2 / 1);
+}
+
+.partner-logo--einfarbig {
+  @apply bg-muted-foreground hover:bg-primary;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.partner-logo--original {
+  @apply box-content rounded-lg p-4 shadow-sm;
+  background: #fbf8f1;
+
+  & img {
+    @apply block h-full w-full object-contain;
+  }
+
+  &:hover {
+    box-shadow: 0 0 24px -4px var(--mystic-glow, rgb(229 138 8 / 0.4));
+  }
+}
+
+/* Credits aus dem Canvas-Slot: Text-Komponente soll wie die feste Zeile aussehen */
+.site-footer__credits :is(div, p) {
+  font-size: inherit !important;
+  color: inherit !important;
+}
+
+.site-footer__credits a {
+  text-decoration: none !important;
+}
+
+.site-footer__credits a:is(:hover, :focus-visible) {
+  text-decoration: underline !important;
+}

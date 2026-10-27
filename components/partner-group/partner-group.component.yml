@@ -1,0 +1,18 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Partnergruppe
+description: Überschrift mit einer Reihe Partnerlogos, z. B. „Gefördert von“. Für den Footer-Slot „Förderer und Unterstützer“.
+group: Layout
+props:
+  type: object
+  required:
+    - label
+  properties:
+    label:
+      type: string
+      title: Überschrift
+      examples:
+        - Gefördert von
+slots:
+  logos:
+    title: Logos
+    description: Partnerlogo-Komponenten.

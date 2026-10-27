@@ -33,3 +33,9 @@ slots:
     title: Utility links
   footer_utility_last:
     title: Copyright text
+  footer_partners:
+    title: Förderer und Unterstützer
+    description: Partnergruppen mit Partnerlogos. Leer = bisheriger fester Stand.
+  footer_credits:
+    title: Credits
+    description: Zeile ganz unten. Leer = bisheriger fester Text.

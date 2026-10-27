@@ -3,6 +3,7 @@
 templates/layout/html.html.twig
 # The setAttribute function is parsed poorly.
 components/video/video.twig
+components/partner-logo/partner-logo.twig
 AGENTS.md
 # The GitLab CI pipeline installs Drupal in a `web/` directory placed at the
 # root of this codebase and symlinks all files to the right place.

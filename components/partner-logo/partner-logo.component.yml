@@ -1,0 +1,59 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+name: Partnerlogo
+description: Verlinktes Logo eines Förderers oder Unterstützers. „Einfarbig“ färbt das Logo in Textfarbe ein (Hover in Primärfarbe), „Original“ zeigt es farbig auf heller Fläche.
+group: Media
+props:
+  type: object
+  required:
+    - name
+    - logo
+  properties:
+    name:
+      type: string
+      title: Name
+      description: Vollständiger Name, für Screenreader.
+      examples:
+        - Landeshauptstadt Dresden
+    url:
+      type: string
+      format: uri
+      title: Link
+      examples:
+        - https://www.dresden.de/
+    logo:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Logo
+      examples:
+        - src: "../../images/partner/dresden.svg"
+          alt: ""
+          width: 176
+          height: 82
+    darstellung:
+      type: string
+      title: Darstellung
+      enum:
+        - einfarbig
+        - original
+      meta:enum:
+        einfarbig: Einfarbig (eingefärbt)
+        original: Original auf heller Fläche
+      default: einfarbig
+      examples:
+        - einfarbig
+    breite:
+      type: string
+      title: Breite
+      enum:
+        - s
+        - m
+        - l
+        - xl
+      meta:enum:
+        s: Schmal (7,5 rem)
+        m: Mittel (8 rem)
+        l: Breit (11 rem)
+        xl: Sehr breit (18 rem)
+      default: m
+      examples:
+        - m

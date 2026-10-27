@@ -1,0 +1,23 @@
+{#
+  Einfarbig: Logo als CSS-Maske, Farbe aus dem Theme. Höhe ergibt sich aus
+  dem Seitenverhältnis des Bildes.
+#}
+{% set widths = { s: '7.5rem', m: '8rem', l: '11rem', xl: '18rem' } %}
+{% set width = widths[breite|default('m')] ?? '8rem' %}
+{% set ratio = logo.width is not empty and logo.height is not empty ? logo.width ~ ' / ' ~ logo.height : '2 / 1' %}
+{% set mode = darstellung|default('einfarbig') %}
+{% set src = logo.src|split('?')|first %}
+{% set style = '--partner-width: ' ~ width ~ '; --partner-ratio: ' ~ ratio ~ ';' ~ (mode == 'einfarbig' ? " mask-image: url('" ~ src ~ "');" : '') %}
+{% set link_attributes = create_attribute({
+  class: ['partner-logo', 'partner-logo--' ~ mode],
+  'aria-label': name,
+  style: style
+}) %}
+{% if url is not empty %}
+  {% set link_attributes = link_attributes.setAttribute('href', url).setAttribute('rel', 'noreferrer noopener').setAttribute('target', '_blank') %}
+{% endif %}
+<a{{ link_attributes }}>
+  {% if mode == 'original' %}
+    <img src="{{ src }}" alt="" />
+  {% endif %}
+</a>
