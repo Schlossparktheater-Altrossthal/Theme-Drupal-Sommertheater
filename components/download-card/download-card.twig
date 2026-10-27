@@ -4,7 +4,7 @@
   muted: 'bg-muted'
 } %}
 {# Wird beim Ausrollen aus dem Repo Logo gesetzt (Cache-Busting für downloads/design). #}
-{% set logo_version = 'logo-7ccf0e17' %}
+{% set logo_version = 'logo-81310103' %}
 {% if preview is not empty and '/downloads/design/' in preview and '?' not in preview %}
   {% set preview = preview ~ '?v=' ~ logo_version %}
 {% endif %}
