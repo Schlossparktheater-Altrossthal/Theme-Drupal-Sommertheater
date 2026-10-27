@@ -1,6 +1,6 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
 name: Logo download
-description: Karte für ein Logo-Motiv; „Herunterladen“ öffnet ein Auswahlfenster (Farbe, Bühne, Hintergrund, Format). Dateien und Liste kommen aus dem Repo Logo (sommertheater-varianten.json).
+description: Karte für ein Logo-Motiv; „Herunterladen“ öffnet ein Auswahlfenster (Farbe, Vorhangfalten, Bühne, Hintergrund, Format). Dateien und Liste kommen aus dem Repo Logo (sommertheater-varianten.json).
 group: Card
 props:
   type: object

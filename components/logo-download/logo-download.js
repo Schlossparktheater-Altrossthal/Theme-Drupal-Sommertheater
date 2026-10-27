@@ -1,7 +1,7 @@
 import { ComponentType, ComponentInstance } from "../../lib/component.js";
 import currentlyInCanvasEditor from "../../lib/currentlyInCanvasEditor.js";
 
-// Auswahlfenster: Farbe → Bühne → Hintergrund → Wofür. Angeboten wird nur, was in
+// Auswahlfenster: Farbe → Vorhangfalten → Bühne → Hintergrund → Wofür. Angeboten wird nur, was in
 // sommertheater-varianten.json steht (Repo Logo, skripte/export_varianten.py); PNG entsteht im Browser aus dem SVG.
 
 const STEPS = [
@@ -13,6 +13,15 @@ const STEPS = [
       ["schwarz", "Schwarz"],
       ["weiss", "Weiß"],
       ["blau", "Blau"],
+    ],
+  ],
+  [
+    "falten",
+    "Vorhangfalten",
+    [
+      ["flach", "Flächig"],
+      ["kontur", "Mit Kontur"],
+      ["schraffur", "Schraffiert"],
     ],
   ],
   [
@@ -60,6 +69,8 @@ const FORMATE = {
 const HINWEIS = {
   frei: "Die Bühne ist durchsichtig – der Untergrund scheint durch.",
   gefuellt: "Die Bühne ist gefüllt (bei Weiß blau, sonst weiß).",
+  kontur: "Die dunklen Vorhangfalten bekommen einen Umriss, damit die Vorhangkante sichtbar bleibt.",
+  schraffur: "Die dunklen Vorhangfalten sind schraffiert und wirken wie ein Mittelton – nicht für Plotter und Folie.",
   druck: "Druckdaten gibt es ohne Hintergrund; Weiß nur für Folie oder Textildruck.",
 };
 
@@ -142,7 +153,7 @@ class LogoDownload extends ComponentInstance {
 
   // Passende Variante; fehlende Schritte (z. B. Bühne bei der Katze) gelten als egal.
   find(sel) {
-    return this.varianten.find((v) => ["farbe", "buehne", "hg"].every((k) => sel[k] === undefined || v[k] === sel[k]));
+    return this.varianten.find((v) => ["farbe", "falten", "buehne", "hg"].every((k) => sel[k] === undefined || v[k] === sel[k]));
   }
 
   update() {
@@ -154,7 +165,7 @@ class LogoDownload extends ComponentInstance {
       if (keiner) keiner.checked = true;
     }
     // Jede Option sperren, die mit den übrigen Schritten keine Datei ergibt; ungültige Auswahl weiterschieben.
-    ["farbe", "buehne", "hg"].forEach((key) => {
+    ["farbe", "falten", "buehne", "hg"].forEach((key) => {
       const inputs = [...this.form.querySelectorAll(`input[name="${key}"]`)];
       inputs.forEach((input) => {
         const sel = this.selection();
@@ -182,7 +193,7 @@ class LogoDownload extends ComponentInstance {
     select.innerHTML = formate.map(([f, t]) => `<option value="${f}">${t}</option>`).join("");
     if (formate.some(([f]) => f === vorher)) select.value = vorher;
 
-    const hint = [HINWEIS[v.buehne && this.form.querySelector('[data-step="buehne"]') ? v.buehne : ""], zweck === "druck" ? HINWEIS.druck : ""]
+    const hint = [HINWEIS[v.falten], HINWEIS[v.buehne && this.form.querySelector('[data-step="buehne"]') ? v.buehne : ""], zweck === "druck" ? HINWEIS.druck : ""]
       .filter(Boolean)
       .join(" ");
     this.form.querySelector(".logo-download--hint").textContent = hint;
@@ -190,7 +201,7 @@ class LogoDownload extends ComponentInstance {
 
   selection() {
     const sel = {};
-    ["farbe", "buehne", "hg"].forEach((k) => {
+    ["farbe", "falten", "buehne", "hg"].forEach((k) => {
       const value = this.get(k);
       if (value !== undefined) sel[k] = value;
     });
