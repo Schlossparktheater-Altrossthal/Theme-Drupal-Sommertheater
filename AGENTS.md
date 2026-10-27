@@ -87,6 +87,7 @@
   - surface/card → `--card` / `--card-foreground`
   - muted/nested surface → `--muted` / `--muted-foreground`
   - destructive/errors → `--destructive` / `--destructive-foreground`
+- **Live token values live in Drupal, not in the theme.** `src/theme.css` only holds defaults inside `@layer sommertheater-defaults`; the values actually used come from Canvas's global CSS (`asset_library.global`, blocks `:root` and `.dark`), editable under Appearance → Canvas Styles (light only), in the Canvas Global CSS tab, or via MCP `design_tokens_get`/`design_tokens_update` (module `theater_tools`). Changing a default in `theme.css` therefore has no effect once the token exists in Canvas. New tokens: add the default here and, if it should be editable, to the global CSS.
 - Customizing fonts, colors, and tokens is documented in [CUSTOMIZING.md](CUSTOMIZING.md). Theme token reference lives in `src/theme.css` and the visual specification in [docs/design-system.md](docs/design-system.md).
 
 ---
