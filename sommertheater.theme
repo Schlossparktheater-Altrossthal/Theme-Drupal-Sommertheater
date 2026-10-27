@@ -41,6 +41,12 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
     'addressCountry' => 'DE',
   ];
 
+  $alternate_names = [
+    'Schlossparktheater',
+    'Schlossparktheater Dresden',
+    'Schlossparktheater Altroßthal',
+  ];
+
   $data = [
     '@context' => 'https://schema.org',
     '@graph' => [
@@ -48,7 +54,7 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
         '@type' => 'TheaterGroup',
         '@id' => $base . '#theater',
         'name' => $site_name,
-        'alternateName' => 'Schlossparktheater Altroßthal',
+        'alternateName' => $alternate_names,
         'url' => $base,
         'logo' => rtrim($base, '/') . '/' . $theme . '/images/logo-sommertheater.png',
         'description' => 'Ehrenamtliches Freilichttheater des Beruflichen Schulzentrums für Agrarwirtschaft und Ernährung Dresden, das seit 2009 jeden Sommer ein Stück im Schlosspark Altroßthal spielt.',
@@ -69,6 +75,7 @@ function sommertheater_page_attachments_alter(array &$attachments): void {
         '@id' => $base . '#website',
         'url' => $base,
         'name' => $site_name,
+        'alternateName' => $alternate_names,
         'inLanguage' => 'de',
         'publisher' => ['@id' => $base . '#theater'],
       ],
